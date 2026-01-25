@@ -3,366 +3,1721 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TheUniMentor</title>
-  <link href="styles/rest-of-home-page.css" rel="stylesheet">
-
-  <link href="styles/landing-page.css" rel="stylesheet">
-  <link href="styles/slideshow.css" rel="stylesheet">
-
-  <link rel="stylesheet" href="styles/faq.css">
-
-
+  <title>USMLE300 | Small-Group USMLE Bootcamps</title>
+  <meta name="description" content="Interactive USMLE Step 1 & Step 2 CK prep. Small groups of 3-6 students. High-yield content. Real accountability.">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+  
+  <link rel="icon" href="images/logo.png" type="image/png">
+  
+  <style>
+    :root {
+      --burgundy: #722F37;
+      --burgundy-dark: #5a252c;
+      --burgundy-light: #8a3a44;
+      --cream: #FAF9F6;
+      --cream-dark: #F0EEEB;
+      --charcoal: #2D2D2D;
+      --charcoal-light: #4A4A4A;
+      --success: #2E7D4A;
+      --gold: #C9A227;
+    }
 
-  <link rel="icon" href="images/icons/the-insight-mentor-logo.png" type="image/png">
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .headline {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(250, 249, 246, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(114, 47, 55, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    header.scrolled {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .logo img {
+      height: 45px;
+    }
+
+    .logo-text {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--burgundy);
+    }
+
+    nav {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--charcoal);
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--burgundy);
+    }
+
+    .cta-button {
+      background: var(--burgundy);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      border: 2px solid var(--burgundy);
+    }
+
+    .cta-button:hover {
+      background: var(--burgundy-dark);
+      border-color: var(--burgundy-dark);
+      transform: translateY(-1px);
+    }
+
+    .cta-button.secondary {
+      background: transparent;
+      color: var(--burgundy);
+    }
+
+    .cta-button.secondary:hover {
+      background: var(--burgundy);
+      color: white;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .mobile-menu span {
+      width: 25px;
+      height: 2px;
+      background: var(--burgundy);
+      transition: all 0.3s;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 2rem 80px;
+      background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 80%;
+      height: 150%;
+      background: radial-gradient(ellipse, rgba(114, 47, 55, 0.03) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-content {
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(114, 47, 55, 0.1);
+      color: var(--burgundy);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badge::before {
+      content: '●';
+      color: var(--success);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span {
+      color: var(--burgundy);
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--charcoal-light);
+      margin-bottom: 2rem;
+      max-width: 500px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+    }
+
+    .stat {
+      text-align: left;
+    }
+
+    .stat-number {
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--burgundy);
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--charcoal-light);
+    }
+
+    .hero-visual {
+      position: relative;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    .hero-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: 10px;
+      bottom: 10px;
+      background: var(--burgundy);
+      border-radius: 16px;
+      z-index: -1;
+      opacity: 0.1;
+    }
+
+    .session-preview {
+      border: 2px solid var(--cream-dark);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .session-header {
+      background: var(--burgundy);
+      color: white;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .session-title {
+      font-weight: 600;
+    }
+
+    .session-live {
+      background: var(--success);
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .session-body {
+      padding: 1.5rem;
+    }
+
+    .session-topic {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+
+    .session-meta {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--charcoal-light);
+    }
+
+    .session-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .participants {
+      display: flex;
+      align-items: center;
+    }
+
+    .participant {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--burgundy);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-left: -10px;
+      border: 2px solid white;
+    }
+
+    .participant:first-child {
+      margin-left: 0;
+    }
+
+    .participant.more {
+      background: var(--cream-dark);
+      color: var(--charcoal);
+    }
+
+    .participants-label {
+      margin-left: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--charcoal-light);
+    }
+
+    /* ===== SECTIONS COMMON ===== */
+    section {
+      padding: 100px 2rem;
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-label {
+      color: var(--burgundy);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--charcoal-light);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ===== WHY DIFFERENT ===== */
+    .why-different {
+      background: white;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .comparison-card {
+      padding: 2.5rem;
+      border-radius: 16px;
+      position: relative;
+    }
+
+    .comparison-card.others {
+      background: var(--cream-dark);
+      border: 2px dashed rgba(114, 47, 55, 0.2);
+    }
+
+    .comparison-card.us {
+      background: linear-gradient(135deg, var(--burgundy) 0%, var(--burgundy-dark) 100%);
+      color: white;
+    }
+
+    .comparison-card.us::before {
+      content: 'USMLE300';
+      position: absolute;
+      top: -12px;
+      left: 2rem;
+      background: var(--gold);
+      color: var(--charcoal);
+      padding: 0.25rem 1rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .comparison-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .comparison-list {
+      list-style: none;
+    }
+
+    .comparison-list li {
+      padding: 0.75rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .comparison-card.us .comparison-list li {
+      border-bottom-color: rgba(255,255,255,0.1);
+    }
+
+    .comparison-list li:last-child {
+      border-bottom: none;
+    }
+
+    .comparison-list .icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+    }
+
+    .comparison-card.others .icon {
+      background: rgba(114, 47, 55, 0.1);
+      color: var(--burgundy);
+    }
+
+    .comparison-card.us .icon {
+      background: rgba(255,255,255,0.2);
+      color: white;
+    }
+
+    /* ===== TOPICS ===== */
+    .topics {
+      background: var(--cream);
+    }
+
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .topic-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      cursor: pointer;
+    }
+
+    .topic-card:hover {
+      border-color: var(--burgundy);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(114, 47, 55, 0.1);
+    }
+
+    .topic-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(114, 47, 55, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.5rem;
+    }
+
+    .topic-name {
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.25rem;
+    }
+
+    .topic-duration {
+      font-size: 0.85rem;
+      color: var(--charcoal-light);
+    }
+
+    /* ===== HOW IT WORKS ===== */
+    .how-it-works {
+      background: white;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .step {
+      text-align: center;
+      position: relative;
+    }
+
+    .step:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -1.25rem;
+      top: 2rem;
+      color: var(--burgundy);
+      font-size: 1.5rem;
+      opacity: 0.3;
+    }
+
+    .step-number {
+      width: 60px;
+      height: 60px;
+      background: var(--burgundy);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 auto 1.5rem;
+    }
+
+    .step-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1.25rem;
+      color: var(--charcoal);
+      margin-bottom: 0.75rem;
+    }
+
+    .step-desc {
+      font-size: 0.95rem;
+      color: var(--charcoal-light);
+    }
+
+    /* ===== PRICING ===== */
+    .pricing {
+      background: linear-gradient(135deg, var(--burgundy) 0%, var(--burgundy-dark) 100%);
+      color: white;
+    }
+
+    .pricing .section-label {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .pricing .section-title,
+    .pricing .section-subtitle {
+      color: white;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .pricing-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2.5rem;
+      text-align: center;
+      color: var(--charcoal);
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .pricing-card.featured {
+      transform: scale(1.05);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .pricing-card.featured:hover {
+      transform: scale(1.05) translateY(-8px);
+    }
+
+    .pricing-card.featured::before {
+      content: 'MOST POPULAR';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--charcoal);
+      padding: 0.25rem 1rem;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .pricing-name {
+      font-family: 'Fraunces', serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-desc {
+      font-size: 0.9rem;
+      color: var(--charcoal-light);
+      margin-bottom: 1.5rem;
+    }
+
+    .pricing-price {
+      font-family: 'Fraunces', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--burgundy);
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-price span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--charcoal-light);
+    }
+
+    .pricing-per {
+      font-size: 0.85rem;
+      color: var(--charcoal-light);
+      margin-bottom: 2rem;
+    }
+
+    .pricing-features {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+
+    .pricing-features li {
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .pricing-features li::before {
+      content: '✓';
+      color: var(--success);
+      font-weight: 700;
+    }
+
+    .pricing-card .cta-button {
+      width: 100%;
+      display: block;
+      text-align: center;
+    }
+
+    /* ===== INSTRUCTOR ===== */
+    .instructor {
+      background: var(--cream);
+    }
+
+    .instructor-content {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .instructor-image {
+      position: relative;
+    }
+
+    .instructor-image img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    }
+
+    .instructor-image::before {
+      content: '';
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      right: 15px;
+      bottom: 15px;
+      background: var(--burgundy);
+      border-radius: 16px;
+      z-index: -1;
+      opacity: 0.1;
+    }
+
+    .score-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: var(--burgundy);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(114, 47, 55, 0.3);
+    }
+
+    .score-badge .score {
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .score-badge .label {
+      font-size: 0.75rem;
+      opacity: 0.8;
+    }
+
+    .instructor-info h3 {
+      font-size: 2rem;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+
+    .instructor-title {
+      color: var(--burgundy);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .instructor-bio {
+      color: var(--charcoal-light);
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+    }
+
+    .instructor-credentials {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .credential {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .credential-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(114, 47, 55, 0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--burgundy);
+    }
+
+    .credential-text {
+      font-size: 0.9rem;
+    }
+
+    .credential-text strong {
+      display: block;
+      color: var(--charcoal);
+    }
+
+    .credential-text span {
+      color: var(--charcoal-light);
+    }
+
+    /* ===== FAQ ===== */
+    .faq {
+      background: white;
+    }
+
+    .faq-grid {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--cream-dark);
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 1.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      transition: color 0.2s;
+    }
+
+    .faq-question:hover {
+      color: var(--burgundy);
+    }
+
+    .faq-question .icon {
+      font-size: 1.5rem;
+      color: var(--burgundy);
+      transition: transform 0.3s;
+    }
+
+    .faq-item.active .faq-question .icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding-bottom: 1.5rem;
+    }
+
+    .faq-answer p {
+      color: var(--charcoal-light);
+      line-height: 1.7;
+    }
+
+    /* ===== CTA SECTION ===== */
+    .cta-section {
+      background: var(--cream);
+      text-align: center;
+    }
+
+    .cta-box {
+      background: white;
+      border-radius: 24px;
+      padding: 4rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cta-box h2 {
+      font-size: 2.5rem;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+
+    .cta-box p {
+      font-size: 1.1rem;
+      color: var(--charcoal-light);
+      margin-bottom: 2rem;
+    }
+
+    .cta-box .cta-button {
+      font-size: 1.1rem;
+      padding: 1rem 2.5rem;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--charcoal);
+      color: white;
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-brand .logo-text {
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-brand p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.95rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 4rem;
+    }
+
+    .footer-column h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-column a {
+      display: block;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      padding: 0.35rem 0;
+      transition: color 0.2s;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .footer-social a:hover {
+      background: var(--burgundy);
+    }
+
+    /* ===== MOBILE RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-content {
+        order: 1;
+      }
+
+      .hero-visual {
+        order: 0;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .hero-subtitle {
+        margin: 0 auto 2rem;
+      }
+
+      .hero-ctas {
+        justify-content: center;
+      }
+
+      .hero-stats {
+        justify-content: center;
+      }
+
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .step:not(:last-child)::after {
+        display: none;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      .pricing-card.featured {
+        transform: none;
+      }
+
+      .instructor-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .instructor-image {
+        max-width: 250px;
+        margin: 0 auto;
+      }
+
+      .instructor-credentials {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: flex;
+      }
+
+      .hero {
+        padding: 100px 1.5rem 60px;
+      }
+
+      .topics-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-top {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      .cta-box {
+        padding: 2.5rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .stat {
+        text-align: center;
+      }
+
+      .topics-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .instructor-credentials {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+    /* ===== POPUP/MODAL ===== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      background: white;
+      border-radius: 16px;
+      padding: 2.5rem;
+      max-width: 500px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      transform: translateY(20px);
+      transition: transform 0.3s;
+    }
+
+    .modal-overlay.active .modal {
+      transform: translateY(0);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--charcoal-light);
+    }
+
+    .modal h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--charcoal);
+    }
+
+    .modal p {
+      color: var(--charcoal-light);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--cream);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--charcoal);
+      transition: all 0.2s;
+    }
+
+    .contact-method:hover {
+      background: var(--cream-dark);
+      transform: translateX(5px);
+    }
+
+    .contact-method .icon {
+      width: 40px;
+      height: 40px;
+      background: var(--burgundy);
+      color: white;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
 </head>
 <body>
 
-  <div class="fade-out hidden"></div>
-
+  <!-- HEADER -->
   <header>
-    <div class="logo-container">
-      <img class="hamburger-menu" src="images/icons/hamburger-menu-icon.svg">
-      <a href="https://www.theunimentor.com">
-        <img class="logo" src="images/icons/the-insight-mentor-logo-name.png">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <img src="images/logo.png" alt="USMLE300">
+        <span class="logo-text">USMLE300</span>
       </a>
-    </div>
-    <a href="#home">
-      <div class="selected-header-category header-category">
-        HOME
+      <nav>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#topics">Topics</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" class="cta-button">Book Free Consult</a>
+      </nav>
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
-    </a>
-    <a href="#our-team"> 
-      <div class="header-category">
-        OUR TEAM
-      </div>
-    </a> 
-    <a href="#our-services">
-      <div class="header-category">
-        OUR SERVICES
-      </div>
-    </a>
-    <a href="#our-results">
-      <div class="header-category">
-        OUR RESULTS
-      </div>
-    </a>
-    <div class="contact-us-container">
-      CONTACT US
     </div>
   </header>
 
-  <nav>
-    <div class="nav-category selected-nav-category">
-      <a href="#home">HOME</a>
-    </div>
-    <div class="nav-category">
-      <a href="#our-team">OUR TEAM</a>
-    </div>
-    <div class="nav-category">
-      <a href="#our-services">OUR SERVICES</a>
-    </div>
-    <div class="nav-category">
-      <a href="#our-commitment">OUR COMMITMENT</a>
-    </div>
-    <div class="nav-category">
-      <a href="#our-results">OUR RESULTS</a>
-    </div>
-  </nav>
-
-  <div class="whatsapp-icon-container">
-    <a class="whatsapp-link" href="https://wa.me/85255625110">
-      <img class="whatsapp-icon" src="images/icons/whatsapp-color-icon.svg">
-    </a>
-  </div>
-
-  <main>
-    <div class="homepage-container" id="home">
-      <img class="homepage-image" src="images/home-image.jpg">
-      <div class="homepage-grid">
-        <div class="homepage-text-container">
-          <div class="homepage-title">
-            Our experienced consultants help students meet their potential and get into the best universities in the world.
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">Now Enrolling for Step 1 & Step 2 CK</div>
+        <h1>USMLE Prep That Actually <span>Keeps You Accountable</span></h1>
+        <p class="hero-subtitle">Small-group live bootcamps with 3-6 students. Interactive sessions. Assigned homework. Real results.</p>
+        <div class="hero-ctas">
+          <a href="#pricing" class="cta-button">View Bootcamps</a>
+          <a href="#contact" class="cta-button secondary">Free Strategy Call</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-number">267</div>
+            <div class="stat-label">Instructor Step 2 Score</div>
           </div>
-          <button class="find-tutor-button">
-            Get a free 30-minute consultation 
+          <div class="stat">
+            <div class="stat-number">3-6</div>
+            <div class="stat-label">Students Per Session</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">20</div>
+            <div class="stat-label">High-Yield Topics</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="session-preview">
+            <div class="session-header">
+              <span class="session-title">Live Session</span>
+              <span class="session-live">● LIVE</span>
+            </div>
+            <div class="session-body">
+              <div class="session-topic">Cardiology Bootcamp</div>
+              <div class="session-meta">
+                <span>🕐 90 min</span>
+                <span>📅 Today, 8pm ET</span>
+              </div>
+              <div class="participants">
+                <div class="participant">JK</div>
+                <div class="participant">MR</div>
+                <div class="participant">AS</div>
+                <div class="participant">LP</div>
+                <div class="participant more">+2</div>
+                <span class="participants-label">6 students enrolled</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY DIFFERENT -->
+  <section class="why-different" id="why">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">Why USMLE300</div>
+        <h2 class="section-title">Not Another Pre-Recorded Course</h2>
+        <p class="section-subtitle">Most USMLE prep is passive. Ours is interactive, collaborative, and designed to keep you on track.</p>
+      </div>
+      <div class="comparison-grid">
+        <div class="comparison-card others">
+          <h3 class="comparison-title">Typical USMLE Prep</h3>
+          <ul class="comparison-list">
+            <li><span class="icon">📺</span> Pre-recorded videos you'll never finish</li>
+            <li><span class="icon">👤</span> Study alone, lose motivation</li>
+            <li><span class="icon">📚</span> Massive question banks with no guidance</li>
+            <li><span class="icon">💰</span> $500+ for content you could find free</li>
+            <li><span class="icon">❓</span> No one to answer your questions</li>
+            <li><span class="icon">📉</span> Easy to fall behind schedule</li>
+          </ul>
+        </div>
+        <div class="comparison-card us">
+          <h3 class="comparison-title">The USMLE300 Way</h3>
+          <ul class="comparison-list">
+            <li><span class="icon">🎯</span> Live, interactive topic bootcamps</li>
+            <li><span class="icon">👥</span> Small groups of 3-6 for real discussion</li>
+            <li><span class="icon">📝</span> Curated high-yield content from a 267 scorer</li>
+            <li><span class="icon">✅</span> Homework assigned and reviewed each session</li>
+            <li><span class="icon">🗣️</span> Ask questions, explain concepts, stay engaged</li>
+            <li><span class="icon">📈</span> Built-in accountability — your peers expect you</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOPICS -->
+  <section class="topics" id="topics">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">20 Bootcamps</div>
+        <h2 class="section-title">Every High-Yield Topic Covered</h2>
+        <p class="section-subtitle">Each bootcamp is 90-120 minutes of focused, interactive review. Take them individually or as a complete series.</p>
+      </div>
+      <div class="topics-grid">
+        <div class="topic-card"><div class="topic-icon">❤️</div><div class="topic-name">Cardiology</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card"><div class="topic-icon">🫁</div><div class="topic-name">Pulmonology</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card"><div class="topic-icon">🧠</div><div class="topic-name">Neurology</div><div class="topic-duration">120 min</div></div>
+        <div class="topic-card"><div class="topic-icon">🩸</div><div class="topic-name">Heme/Onc</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card"><div class="topic-icon">💊</div><div class="topic-name">Pharmacology</div><div class="topic-duration">120 min</div></div>
+        <div class="topic-card"><div class="topic-icon">🦠</div><div class="topic-name">Microbiology</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card"><div class="topic-icon">🔬</div><div class="topic-name">Pathology</div><div class="topic-duration">120 min</div></div>
+        <div class="topic-card"><div class="topic-icon">🧬</div><div class="topic-name">Biochemistry</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card"><div class="topic-icon">🛡️</div><div class="topic-name">Immunology</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card"><div class="topic-icon">🫀</div><div class="topic-name">GI / Hepatology</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card"><div class="topic-icon">💧</div><div class="topic-name">Nephrology/GU</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card"><div class="topic-icon">⚡</div><div class="topic-name">Endocrinology</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card"><div class="topic-icon">🦴</div><div class="topic-name">MSK / Rheum</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card"><div class="topic-icon">🧴</div><div class="topic-name">Dermatology</div><div class="topic-duration">60 min</div></div>
+        <div class="topic-card"><div class="topic-icon">👶</div><div class="topic-name">Pediatrics</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card"><div class="topic-icon">🧠</div><div class="topic-name">Psychiatry</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card"><div class="topic-icon">👁️</div><div class="topic-name">Ophthalmology</div><div class="topic-duration">60 min</div></div>
+        <div class="topic-card"><div class="topic-icon">👂</div><div class="topic-name">ENT</div><div class="topic-duration">60 min</div></div>
+        <div class="topic-card"><div class="topic-icon">📊</div><div class="topic-name">Biostatistics</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card"><div class="topic-icon">⚖️</div><div class="topic-name">Ethics / Legal</div><div class="topic-duration">60 min</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">The Process</div>
+        <h2 class="section-title">How Each Bootcamp Works</h2>
+        <p class="section-subtitle">A structured, interactive session designed to maximize retention and keep you accountable.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3 class="step-title">Homework Review</h3>
+          <p class="step-desc">Start by reviewing the assigned UWorld block or Divine podcast. What tripped you up?</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3 class="step-title">Question Circle</h3>
+          <p class="step-desc">Each student answers a question and asks one. Gamified accountability that keeps everyone engaged.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3 class="step-title">High-Yield Content</h3>
+          <p class="step-desc">Interactive walkthrough of must-know concepts. You'll explain, not just listen.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3 class="step-title">UWorld Together</h3>
+          <p class="step-desc">Work through 10 questions as a group. Discuss reasoning, traps, and test strategy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">Simple Pricing</div>
+        <h2 class="section-title">Invest in Your Score</h2>
+        <p class="section-subtitle">Pay per topic or save with bundles. No hidden fees.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3 class="pricing-name">Single Bootcamp</h3>
+          <p class="pricing-desc">Try one topic</p>
+          <div class="pricing-price">$29</div>
+          <div class="pricing-per">per bootcamp</div>
+          <ul class="pricing-features">
+            <li>One 90-120 min live session</li>
+            <li>Small group (3-6 students)</li>
+            <li>Homework + accountability</li>
+            <li>High-yield notes access</li>
+          </ul>
+          <a href="#contact" class="cta-button secondary">Get Started</a>
+        </div>
+        <div class="pricing-card featured">
+          <h3 class="pricing-name">Full Bundle</h3>
+          <p class="pricing-desc">All 20 topics</p>
+          <div class="pricing-price">$449 <span>$580</span></div>
+          <div class="pricing-per">23% savings</div>
+          <ul class="pricing-features">
+            <li>All 20 topic bootcamps</li>
+            <li>Small group (3-6 students)</li>
+            <li>Full homework + accountability</li>
+            <li>Complete high-yield notes</li>
+            <li>Priority scheduling</li>
+          </ul>
+          <a href="#contact" class="cta-button">Get Full Access</a>
+        </div>
+        <div class="pricing-card">
+          <h3 class="pricing-name">10-Topic Pack</h3>
+          <p class="pricing-desc">Choose your topics</p>
+          <div class="pricing-price">$239</div>
+          <div class="pricing-per">$23.90 per topic</div>
+          <ul class="pricing-features">
+            <li>Any 10 bootcamps</li>
+            <li>Small group (3-6 students)</li>
+            <li>Homework + accountability</li>
+            <li>High-yield notes access</li>
+          </ul>
+          <a href="#contact" class="cta-button secondary">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTRUCTOR -->
+  <section class="instructor" id="instructor">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">Your Instructor</div>
+        <h2 class="section-title">Learn From Someone Who's Been There</h2>
+      </div>
+      <div class="instructor-content">
+        <div class="instructor-image">
+          <img src="images/instructor.jpg" alt="USMLE300 Instructor">
+          <div class="score-badge">
+            <div class="score">267</div>
+            <div class="label">Step 2 CK</div>
+          </div>
+        </div>
+        <div class="instructor-info">
+          <h3>Hi, I'm the founder of USMLE300</h3>
+          <p class="instructor-title">Step 2 CK: 267 (Top 5%)</p>
+          <p class="instructor-bio">I built USMLE300 because I saw too many classmates struggle with solo studying. They had all the resources — UWorld, First Aid, Divine — but no structure, no accountability, and no one to study with. These bootcamps are designed to fix that. Small groups, interactive sessions, and real homework that gets reviewed. If you show up, you will improve.</p>
+          <div class="instructor-credentials">
+            <div class="credential">
+              <div class="credential-icon">✓</div>
+              <div class="credential-text">
+                <strong>Step 1</strong>
+                <span>Pass</span>
+              </div>
+            </div>
+            <div class="credential">
+              <div class="credential-icon">✓</div>
+              <div class="credential-text">
+                <strong>Step 2 CK</strong>
+                <span>267 (Top 5%)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">FAQ</div>
+        <h2 class="section-title">Common Questions</h2>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do the live sessions work?</span>
+            <span class="icon">+</span>
           </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="interested-popup popup-container hidden">
-      <div class="interested-popup-title">
-        Please send us a message including the following:
-      </div>
-      <div>
-        <ol>
-          <li>The year group you are in</li>
-          <li>The subjects you take</li>
-          <li>Your academic/career aspirations</li>
-        </ol>
-        We will endevour to respond within 2 working days; all details can be flexibly discussed during the consultation.<br><br>
-      </div>
-      <div class="interested-popup-contact">
-        WhatsApp: +852 5562 5110
-      </div>
-      <div class="interested-popup-contact">
-        WeChat: +852 5562 5110
-      </div>
-      <div class="interested-popup-contact">
-        Email: support@theunimentor.com
-      </div>
-      <div class="close-popup">&#10006;</div>
-    </div>
-
-
-
-    <div class="chart-container">
-      <div class="element-title">What Diffrentiates Us</div>
-
-      <div class="diff-container">
-        <div class="diff-container-text">
-          <div class="text-header-diff">Our Experience and High Standards...</div>
-          <div style="margin-left: 52px; margin-right: 20px">
-            <br>
-          <ol>
-          <li >We ensure that from day 1 you know what goals you want to achieve, and we find the way to help you get there.</li><br>
-          <li >Our success-tested frameworks for entrance into top universities, tailored to each student’s goals and profile.</li><br>
-          <li >All of our educators are selected from the top 10% at the top universities globally.</li><br>
-          <li >Our holistic service, in which we can solve a range of issues students may be facing.</li>
-          </ol>
+          <div class="faq-answer">
+            <p>Sessions are held on Zoom with 3-6 students. You'll receive a link after booking. Each bootcamp is 90-120 minutes and follows our structured format: homework review, question circle, high-yield content, and group UWorld practice.</p>
           </div>
-          <br><br>
         </div>
-        <div class="diff-container-graph">
-          <div class="text-header-diff">
-            Admission into Top Universities...
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What if I can't make a scheduled session?</span>
+            <span class="icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>You can reschedule up to 24 hours before the session at no charge. We run multiple time slots for each topic to accommodate different time zones.</p>
           </div>
-
-          <div class="diff-container-graph-div">
-            <br><br>
-            <img
-              src="images/diffgraph.png"
-              class="diff-container-graph-img"
-              style="margin-left:12px;margin-right:12px"
-              alt=""
-            >
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Do I need UWorld or other resources?</span>
+            <span class="icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>We recommend having UWorld access for homework, but it's not required. We provide high-yield notes and question sets. Some homework may include Divine Intervention podcast episodes, which are free.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Is this for Step 1 or Step 2?</span>
+            <span class="icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Both! The topics we cover are high-yield for both exams. When you book, you'll indicate which exam you're preparing for, and we'll group you with students at the same stage.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What's your refund policy?</span>
+            <span class="icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Full refund if requested before your first session. After attending, no refunds — but you can transfer your remaining sessions to a friend.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do I know this will help me?</span>
+            <span class="icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>The content is curated from a 267 scorer's notes and follows high-yield topics that appear repeatedly on the exam. But more importantly, the structure — small groups, homework, accountability — ensures you actually engage with the material instead of passively watching videos.</p>
           </div>
         </div>
       </div>
-      <a style="text-align:left;font-style:italic; padding-left: 20px;padding-right:20px;margin-top: 20px;">*Our results are based on our 2025 Graduation Cohort of students which have been with us for at least the duration of their IB / A-Levels. When we say "Top Universities", we mean: Ivy League, Oxbridge or Imperial.</a>
     </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="cta-section" id="contact">
+    <div class="section-inner">
+      <div class="cta-box">
+        <h2>Ready to Study Smarter?</h2>
+        <p>Book a free 15-minute strategy call to see if USMLE300 is right for you. No pressure, no pitch — just honest advice on your study plan.</p>
+        <a href="https://calendly.com/usmle300" class="cta-button" target="_blank">Book Free Strategy Call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo-text">USMLE300</div>
+          <p>Small-group USMLE bootcamps that keep you accountable.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Product</h4>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#topics">Topics</a>
+            <a href="#pricing">Pricing</a>
+          </div>
+          <div class="footer-column">
+            <h4>Support</h4>
+            <a href="#faq">FAQ</a>
+            <a href="mailto:support@usmle300.com">Contact</a>
+          </div>
+          <div class="footer-column">
+            <h4>Contact</h4>
+            <a href="mailto:support@usmle300.com">support@usmle300.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 USMLE300. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="#" title="Instagram">📷</a>
+          <a href="#" title="Twitter">🐦</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CONTACT MODAL -->
+  <div class="modal-overlay" id="contactModal">
+    <div class="modal">
+      <button class="modal-close">&times;</button>
+      <h3>Get in Touch</h3>
+      <p>Reach out to book your bootcamp or ask any questions.</p>
+      <div class="contact-methods">
+        <a href="mailto:support@usmle300.com" class="contact-method">
+          <div class="icon">✉️</div>
+          <div>
+            <strong>Email</strong>
+            <span>support@usmle300.com</span>
+          </div>
+        </a>
+        <a href="https://calendly.com/usmle300" target="_blank" class="contact-method">
+          <div class="icon">📅</div>
+          <div>
+            <strong>Book a Call</strong>
+            <span>Free 15-min strategy session</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        
+        // Open clicked if wasn't active
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+
+    // Modal
+    const modal = document.getElementById('contactModal');
     
-  <div class="founder-whole">
-        <div class="founder-flex">
-          <div class="founder-img-container">
-            <img class="founder-img" src="images/anderlucrop-removebg-preview.png">
-          </div>
-          <div class="founder-desc">
-            <div class="founder-desc-heading">
-              Our Founder
-            </div>
-            <div class="founder-desc-context" style="font-size: 22px;">
-              “ Andrew brings a wealth of admissions experience, having earned a full-ride scholarship to Harrow from a school in North London, followed by a scholarship to Oxford. He has since built a successful career in investment banking and business consulting.
-              <br><br> Over the years, Andrew has supported countless students in reaching their academic goals. His approach focuses not only on securing admissions to top universities but also on developing the essential skills that set students up for success beyond. ”<br><br>
-            </div>
-          </div>
-        </div>
-        <div class="founder-signoff" style="font-size:24px; margin-top:400px;">
-          <br><br>Andrew Capon
-        </div>
-      </div>
+    document.querySelectorAll('a[href="#contact"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        modal.classList.add('active');
+      });
+    });
 
-    <div class="card-element-container grey-element" id="our-team">
-      <div class="element-title">Some of Our Team</div>
-      <div class="card-container js-tutor-card-container"></div>
-    </div>
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal || e.target.classList.contains('modal-close')) {
+        modal.classList.remove('active');
+      }
+    });
 
-  
+    // Mobile menu (basic toggle)
+    document.querySelector('.mobile-menu').addEventListener('click', function() {
+      const nav = document.querySelector('nav');
+      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    });
 
-    <div class="white-element js-services-offered-container slider" id="our-services">
-      <div class="element-title">Our Services: Choose The Ones That Suit Your Needs</div>
-
-      <div class="slides">
-        <input type="radio" name="first-radio" value="test-preparation" id="radio1" checked>
-        <input type="radio" name="first-radio" value="academic-tutoring" id="radio2">
-        <input type="radio" name="first-radio" value="admissions-councelling" id="radio3">
-  
-        <div class="slide first picture-text-element-container">
-          <div class="picture-text-container">
-            <div class="element-image-container">
-              <img class="element-image" src="images/test-preparation-image.jpg">
-            </div>
-            <div class="text-container">
-              <div class="text-header">
-                University Success Consulting<span style="font-size: 40px;">&#8482;</span>
-              </div>
-              <div class="text-description">
-                Our top-performing, experienced consultants guide you through our Success-Proven Frameworks that are tailored to you. <br><br>This gives you the tools needed to get into Top Universities, and is ultimately what allows us to deliver such good results to our clients.<br><br>
-
-              </div>
-            </div>
-          </div>
-        </div>
-  
-        <div class="slide picture-text-element-container">
-          <div class="picture-text-container">
-            <div class="element-image-container">
-              <img class="element-image" src="images/tutoring-image.jpg">
-            </div>
-            <div class="text-container">
-              <div class="text-header">
-                Academic Tutoring
-              </div>
-              <div class="text-description">
-                Need support in a specific subject? We match you with a Tutor that knows your subjects inside-out, and has evidenced this with top-percentile grades, to ensure that they can support you in achieving high marks.<br><br> We also have a large private database of preparation materials and private past papers, which allow you to ensure that you are ready for any exam you need to succeed in.
-
-              </div>
-            </div>
-          </div>
-        </div>
-  
-        <div class="slide picture-text-element-container">
-          <div class="picture-text-container">
-            <div class="element-image-container">
-              <img class="element-image" src="images/admissions-image.jpg">
-            </div>
-            <div class="text-container">
-              <div class="text-header">
-                Entrance Testing Courses
-              </div>
-              <div class="text-description">
-                The university entrance exam is an often under-appreciated piece of the puzzle: with one of our courses you can ensure that a poor grade on the entrance exam doesn´t hold you back from reaching your goals, but often preparation is limited to doing past papers - which is not the right way to go.<br><br>
-                Each of our course leaders has scored within the top 1% globally, and templates to ensure good results. Reach out to find out more!
-              </div>
-            </div>
-          </div>
-        </div>
-  
-        <div class="navigation-auto">
-          <div class="auto-btn1"></div>
-          <div class="auto-btn2"></div>
-          <div class="auto-btn3"></div>
-        </div>
-      </div>
-
-      <div class="navigation-manual js-navigation">
-        <label for="radio1" class="manual-btn"></label>
-        <label for="radio2" class="manual-btn"></label>
-        <label for="radio3" class="manual-btn"></label>
-      </div> 
-     
-    </div>
-
-
-    <!-- </div> -->
-    
-
-   
-
-
-    <!-- <div class="picture-text-element-container grey-element js-the-differences-container"id="our-commitment "></div> -->
-
-    <div class="card-element-container white-element" id="our-results">
-      <div class="element-title">The Results</div>
-      <div class="card-container js-result-card-container"></div>     
-    </div>
-
-  
-
- <!-- FAQ -->
- <!--<img class="background" src="assets/images/background-pattern-desktop.svg">-->
- <div class="faqcontainer">
-  <h1><img src="images/faqimages/icon-star.svg">Questions We Frequently Get</h1>
-
-  <div class="question">
-    <details>
-      <summary class = "drop"><img src="images/faqimages/icon-plus.svg" class = "images"><b>What is the best time for my child to start?</b></summary>
-            <div style="margin-top:12px; margin-bottom:12px;">
-      <p style="font-size:14px;">The more time we have to strengthen your child's academic skills and admissions profile, the better the outcome is. <br><br>We generally begin working with students when they are anywhere between Year 9 (4 years from university) and Year 12 (2 years from university). </p>
-      </div>
-    </details>
-  </div>
-
-  <div class="question">
-    <details>
-      <summary class = "drop2"><img src="images/faqimages/icon-plus.svg" class = "images2"><b>What is the cost?</b></summary>
-            <div style="margin-top:12px; margin-bottom:12px;">
-      <p style="font-size:14px;">This depends on the range of services required and the timeframe; we always seek to find an arrangement that works best for the student.</p>
-                </div>
-    </details>
-  </div>
-
-  <div class="question">
-    <details>
-      <summary class = "drop3"><img src="images/faqimages/icon-plus.svg" class = "images3"><b>Can I choose a combination of services?</b></summary>
-            <div style="margin-top:12px; margin-bottom:12px;">
-      <p style="font-size:14px;">Yes, part of what allows us to deliver such strong results to our clients is our holistic service, which fortifies our students in any way that they may need.</p>
-                </div>
-    </details>
-  </div>
-
-  <div class="question">
-    <details>
-      <summary class = "drop4"><img src="images/faqimages/icon-plus.svg" class = "images4"><b>How can I see my child's progress?</b></summary>
-      <div style="margin-top:12px; margin-bottom:12px;">
-      <p style="font-size:14px;">We provide updates with every session, which allows everybody to be on the same page and aknowledge what is going well and what needs to be improved.</p>
-          </div>
-      </div>
-    </details>
-  </div>
-</div>
-
-
-
- 
-
-
- 
-    <!-- <div class="footer">
-      <div class="footer-title">
-        Looking to join as a Uni Mentor?
-      </div>
-      <div class="footer-description">
-        Get in touch for an interview today
-      </div>
-      <div>
-        <button class="footer-button">
-          Apply now
-        </button>
-      </div>
-    </div>
-
-    <div class="apply-popup popup-container hidden">
-      <div class="apply-popup-title">
-        Please send your CV to this Email
-      </div>
-      <div class="apply-popup-email">
-        support@theunimentor.com
-      </div>
-      <div class="apply-popup-information">
-        If succesful, you will be contacted for an interview within 5 working days
-      </div>
-      <div class="close-popup">&#10006;</div>
-    </div> -->
-  </main>
-
-  <script src="scripts/script.js"></script>
-
-
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
-
-
-  <script src="data/servicesOfferedInfo.js"></script>
-  <script src="data/resultsInfo.js"></script>
-  <script src="data/tutorInfo.js"></script>
-
-  <script src="scripts/graph.js"></script>
-  <script src="scripts/homePage.js"></script>
-  <script src="scripts/slideShow.js"></script>
-  <script src="scripts/popUps.js"></script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href !== '#contact' && href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>
-
