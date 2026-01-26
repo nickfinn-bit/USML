@@ -2,1298 +2,288 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#722F37">
   <title>USMLE300 | Small-Group USMLE Bootcamps</title>
-  <meta name="description" content="Interactive USMLE Step 1 & Step 2 CK prep. Small groups of 3-6 students. High-yield content. Real accountability.">
-  
+  <meta name="description" content="Interactive USMLE Step 1 & Step 2 CK prep. Small groups of 3-5 students. 97% pass rate.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="images/logo.png" type="image/png">
-  
+  <link rel="apple-touch-icon" href="images/logo.png">
   <style>
-    :root {
-      --burgundy: #722F37;
-      --burgundy-dark: #5a252c;
-      --burgundy-light: #8a3a44;
-      --cream: #FAF9F6;
-      --cream-dark: #F0EEEB;
-      --charcoal: #2D2D2D;
-      --charcoal-light: #4A4A4A;
-      --success: #2E7D4A;
-      --gold: #C9A227;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--cream);
-      color: var(--charcoal);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    h1, h2, h3, .headline {
-      font-family: 'Fraunces', serif;
-      font-weight: 600;
-      line-height: 1.2;
-    }
-
-    /* ===== HEADER ===== */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: rgba(250, 249, 246, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(114, 47, 55, 0.1);
-      transition: all 0.3s ease;
-    }
-
-    header.scrolled {
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    }
-
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-    }
-
-    .logo img {
-      height: 45px;
-    }
-
-    .logo-text {
-      font-family: 'Fraunces', serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--burgundy);
-    }
-
-    nav {
-      display: flex;
-      gap: 2.5rem;
-      align-items: center;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--charcoal);
-      font-weight: 500;
-      font-size: 0.95rem;
-      letter-spacing: 0.02em;
-      transition: color 0.2s;
-    }
-
-    nav a:hover {
-      color: var(--burgundy);
-    }
-
-    .cta-button {
-      background: var(--burgundy);
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: all 0.2s;
-      border: 2px solid var(--burgundy);
-    }
-
-    .cta-button:hover {
-      background: var(--burgundy-dark);
-      border-color: var(--burgundy-dark);
-      transform: translateY(-1px);
-    }
-
-    .cta-button.secondary {
-      background: transparent;
-      color: var(--burgundy);
-    }
-
-    .cta-button.secondary:hover {
-      background: var(--burgundy);
-      color: white;
-    }
-
-    .mobile-menu {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 10px;
-    }
-
-    .mobile-menu span {
-      width: 25px;
-      height: 2px;
-      background: var(--burgundy);
-      transition: all 0.3s;
-    }
-
-    /* ===== HERO ===== */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 120px 2rem 80px;
-      background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 80%;
-      height: 150%;
-      background: radial-gradient(ellipse, rgba(114, 47, 55, 0.03) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .hero-content {
-      animation: fadeInUp 0.8s ease-out;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(114, 47, 55, 0.1);
-      color: var(--burgundy);
-      padding: 0.5rem 1rem;
-      border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-badge::before {
-      content: '●';
-      color: var(--success);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-
-    .hero h1 {
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      color: var(--charcoal);
-      margin-bottom: 1.5rem;
-    }
-
-    .hero h1 span {
-      color: var(--burgundy);
-    }
-
-    .hero-subtitle {
-      font-size: 1.2rem;
-      color: var(--charcoal-light);
-      margin-bottom: 2rem;
-      max-width: 500px;
-    }
-
-    .hero-ctas {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 3rem;
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 3rem;
-    }
-
-    .stat {
-      text-align: left;
-    }
-
-    .stat-number {
-      font-family: 'Fraunces', serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--burgundy);
-    }
-
-    .stat-label {
-      font-size: 0.85rem;
-      color: var(--charcoal-light);
-    }
-
-    .hero-visual {
-      position: relative;
-      animation: fadeInUp 0.8s ease-out 0.2s both;
-    }
-
-    .hero-card {
-      background: white;
-      border-radius: 16px;
-      padding: 2rem;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-      position: relative;
-    }
-
-    .hero-card::before {
-      content: '';
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      right: 10px;
-      bottom: 10px;
-      background: var(--burgundy);
-      border-radius: 16px;
-      z-index: -1;
-      opacity: 0.1;
-    }
-
-    .session-preview {
-      border: 2px solid var(--cream-dark);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .session-header {
-      background: var(--burgundy);
-      color: white;
-      padding: 1rem 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .session-title {
-      font-weight: 600;
-    }
-
-    .session-live {
-      background: var(--success);
-      padding: 0.25rem 0.75rem;
-      border-radius: 50px;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-
-    .session-body {
-      padding: 1.5rem;
-    }
-
-    .session-topic {
-      font-family: 'Fraunces', serif;
-      font-size: 1.5rem;
-      color: var(--charcoal);
-      margin-bottom: 1rem;
-    }
-
-    .session-meta {
-      display: flex;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-      font-size: 0.9rem;
-      color: var(--charcoal-light);
-    }
-
-    .session-meta span {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .participants {
-      display: flex;
-      align-items: center;
-    }
-
-    .participant {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--burgundy);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-left: -10px;
-      border: 2px solid white;
-    }
-
-    .participant:first-child {
-      margin-left: 0;
-    }
-
-    .participant.more {
-      background: var(--cream-dark);
-      color: var(--charcoal);
-    }
-
-    .participants-label {
-      margin-left: 0.75rem;
-      font-size: 0.85rem;
-      color: var(--charcoal-light);
-    }
-
-    /* ===== SECTIONS COMMON ===== */
-    section {
-      padding: 100px 2rem;
-    }
-
-    .section-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .section-label {
-      color: var(--burgundy);
-      font-weight: 600;
-      font-size: 0.9rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 4vw, 2.75rem);
-      color: var(--charcoal);
-      margin-bottom: 1rem;
-    }
-
-    .section-subtitle {
-      font-size: 1.1rem;
-      color: var(--charcoal-light);
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* ===== WHY DIFFERENT ===== */
-    .why-different {
-      background: white;
-    }
-
-    .comparison-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-    }
-
-    .comparison-card {
-      padding: 2.5rem;
-      border-radius: 16px;
-      position: relative;
-    }
-
-    .comparison-card.others {
-      background: var(--cream-dark);
-      border: 2px dashed rgba(114, 47, 55, 0.2);
-    }
-
-    .comparison-card.us {
-      background: linear-gradient(135deg, var(--burgundy) 0%, var(--burgundy-dark) 100%);
-      color: white;
-    }
-
-    .comparison-card.us::before {
-      content: 'USMLE300';
-      position: absolute;
-      top: -12px;
-      left: 2rem;
-      background: var(--gold);
-      color: var(--charcoal);
-      padding: 0.25rem 1rem;
-      border-radius: 50px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-    }
-
-    .comparison-title {
-      font-family: 'Fraunces', serif;
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .comparison-list {
-      list-style: none;
-    }
-
-    .comparison-list li {
-      padding: 0.75rem 0;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-    }
-
-    .comparison-card.us .comparison-list li {
-      border-bottom-color: rgba(255,255,255,0.1);
-    }
-
-    .comparison-list li:last-child {
-      border-bottom: none;
-    }
-
-    .comparison-list .icon {
-      flex-shrink: 0;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-    }
-
-    .comparison-card.others .icon {
-      background: rgba(114, 47, 55, 0.1);
-      color: var(--burgundy);
-    }
-
-    .comparison-card.us .icon {
-      background: rgba(255,255,255,0.2);
-      color: white;
-    }
-
-    /* ===== TOPICS ===== */
-    .topics {
-      background: var(--cream);
-    }
-
-    .topics-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-    }
-
-    .topic-card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 12px;
-      text-align: center;
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
-      cursor: pointer;
-    }
-
-    .topic-card:hover {
-      border-color: var(--burgundy);
-      transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(114, 47, 55, 0.1);
-    }
-
-    .topic-icon {
-      width: 48px;
-      height: 48px;
-      background: rgba(114, 47, 55, 0.1);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-      font-size: 1.5rem;
-    }
-
-    .topic-name {
-      font-weight: 600;
-      color: var(--charcoal);
-      margin-bottom: 0.25rem;
-    }
-
-    .topic-duration {
-      font-size: 0.85rem;
-      color: var(--charcoal-light);
-    }
-
-    /* ===== HOW IT WORKS ===== */
-    .how-it-works {
-      background: white;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-    }
-
-    .step {
-      text-align: center;
-      position: relative;
-    }
-
-    .step:not(:last-child)::after {
-      content: '→';
-      position: absolute;
-      right: -1.25rem;
-      top: 2rem;
-      color: var(--burgundy);
-      font-size: 1.5rem;
-      opacity: 0.3;
-    }
-
-    .step-number {
-      width: 60px;
-      height: 60px;
-      background: var(--burgundy);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Fraunces', serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin: 0 auto 1.5rem;
-    }
-
-    .step-title {
-      font-family: 'Fraunces', serif;
-      font-size: 1.25rem;
-      color: var(--charcoal);
-      margin-bottom: 0.75rem;
-    }
-
-    .step-desc {
-      font-size: 0.95rem;
-      color: var(--charcoal-light);
-    }
-
-    /* ===== PRICING ===== */
-    .pricing {
-      background: linear-gradient(135deg, var(--burgundy) 0%, var(--burgundy-dark) 100%);
-      color: white;
-    }
-
-    .pricing .section-label {
-      color: rgba(255,255,255,0.7);
-    }
-
-    .pricing .section-title,
-    .pricing .section-subtitle {
-      color: white;
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-    }
-
-    .pricing-card {
-      background: white;
-      border-radius: 16px;
-      padding: 2.5rem;
-      text-align: center;
-      color: var(--charcoal);
-      position: relative;
-      transition: transform 0.3s ease;
-    }
-
-    .pricing-card:hover {
-      transform: translateY(-8px);
-    }
-
-    .pricing-card.featured {
-      transform: scale(1.05);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    }
-
-    .pricing-card.featured:hover {
-      transform: scale(1.05) translateY(-8px);
-    }
-
-    .pricing-card.featured::before {
-      content: 'MOST POPULAR';
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--gold);
-      color: var(--charcoal);
-      padding: 0.25rem 1rem;
-      border-radius: 50px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-    }
-
-    .pricing-name {
-      font-family: 'Fraunces', serif;
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .pricing-desc {
-      font-size: 0.9rem;
-      color: var(--charcoal-light);
-      margin-bottom: 1.5rem;
-    }
-
-    .pricing-price {
-      font-family: 'Fraunces', serif;
-      font-size: 3rem;
-      font-weight: 700;
-      color: var(--burgundy);
-      margin-bottom: 0.5rem;
-    }
-
-    .pricing-price span {
-      font-size: 1rem;
-      font-weight: 400;
-      color: var(--charcoal-light);
-    }
-
-    .pricing-per {
-      font-size: 0.85rem;
-      color: var(--charcoal-light);
-      margin-bottom: 2rem;
-    }
-
-    .pricing-features {
-      list-style: none;
-      text-align: left;
-      margin-bottom: 2rem;
-    }
-
-    .pricing-features li {
-      padding: 0.5rem 0;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.95rem;
-    }
-
-    .pricing-features li::before {
-      content: '✓';
-      color: var(--success);
-      font-weight: 700;
-    }
-
-    .pricing-card .cta-button {
-      width: 100%;
-      display: block;
-      text-align: center;
-    }
-
-    /* ===== INSTRUCTOR ===== */
-    .instructor {
-      background: var(--cream);
-    }
-
-    .instructor-content {
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .instructor-image {
-      position: relative;
-    }
-
-    .instructor-image img {
-      width: 100%;
-      border-radius: 16px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-    }
-
-    .instructor-image::before {
-      content: '';
-      position: absolute;
-      top: -15px;
-      left: -15px;
-      right: 15px;
-      bottom: 15px;
-      background: var(--burgundy);
-      border-radius: 16px;
-      z-index: -1;
-      opacity: 0.1;
-    }
-
-    .score-badge {
-      position: absolute;
-      bottom: -20px;
-      right: -20px;
-      background: var(--burgundy);
-      color: white;
-      padding: 1rem 1.5rem;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(114, 47, 55, 0.3);
-    }
-
-    .score-badge .score {
-      font-family: 'Fraunces', serif;
-      font-size: 2rem;
-      font-weight: 700;
-    }
-
-    .score-badge .label {
-      font-size: 0.75rem;
-      opacity: 0.8;
-    }
-
-    .instructor-info h3 {
-      font-size: 2rem;
-      color: var(--charcoal);
-      margin-bottom: 1rem;
-    }
-
-    .instructor-title {
-      color: var(--burgundy);
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-    }
-
-    .instructor-bio {
-      color: var(--charcoal-light);
-      margin-bottom: 2rem;
-      font-size: 1.05rem;
-    }
-
-    .instructor-credentials {
-      display: flex;
-      gap: 2rem;
-    }
-
-    .credential {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .credential-icon {
-      width: 40px;
-      height: 40px;
-      background: rgba(114, 47, 55, 0.1);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--burgundy);
-    }
-
-    .credential-text {
-      font-size: 0.9rem;
-    }
-
-    .credential-text strong {
-      display: block;
-      color: var(--charcoal);
-    }
-
-    .credential-text span {
-      color: var(--charcoal-light);
-    }
-
-    /* ===== FAQ ===== */
-    .faq {
-      background: white;
-    }
-
-    .faq-grid {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .faq-item {
-      border-bottom: 1px solid var(--cream-dark);
-    }
-
-    .faq-question {
-      width: 100%;
-      padding: 1.5rem 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: none;
-      border: none;
-      cursor: pointer;
-      text-align: left;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--charcoal);
-      transition: color 0.2s;
-    }
-
-    .faq-question:hover {
-      color: var(--burgundy);
-    }
-
-    .faq-question .icon {
-      font-size: 1.5rem;
-      color: var(--burgundy);
-      transition: transform 0.3s;
-    }
-
-    .faq-item.active .faq-question .icon {
-      transform: rotate(45deg);
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.3s ease;
-    }
-
-    .faq-item.active .faq-answer {
-      max-height: 300px;
-      padding-bottom: 1.5rem;
-    }
-
-    .faq-answer p {
-      color: var(--charcoal-light);
-      line-height: 1.7;
-    }
-
-    /* ===== CTA SECTION ===== */
-    .cta-section {
-      background: var(--cream);
-      text-align: center;
-    }
-
-    .cta-box {
-      background: white;
-      border-radius: 24px;
-      padding: 4rem;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.05);
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .cta-box h2 {
-      font-size: 2.5rem;
-      color: var(--charcoal);
-      margin-bottom: 1rem;
-    }
-
-    .cta-box p {
-      font-size: 1.1rem;
-      color: var(--charcoal-light);
-      margin-bottom: 2rem;
-    }
-
-    .cta-box .cta-button {
-      font-size: 1.1rem;
-      padding: 1rem 2.5rem;
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: var(--charcoal);
-      color: white;
-      padding: 4rem 2rem 2rem;
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .footer-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 3rem;
-      padding-bottom: 3rem;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .footer-brand .logo-text {
-      color: white;
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-brand p {
-      color: rgba(255,255,255,0.6);
-      font-size: 0.95rem;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 4rem;
-    }
-
-    .footer-column h4 {
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      color: rgba(255,255,255,0.5);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .footer-column a {
-      display: block;
-      color: rgba(255,255,255,0.8);
-      text-decoration: none;
-      padding: 0.35rem 0;
-      transition: color 0.2s;
-    }
-
-    .footer-column a:hover {
-      color: white;
-    }
-
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.5);
-    }
-
-    .footer-social {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .footer-social a {
-      width: 40px;
-      height: 40px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-
-    .footer-social a:hover {
-      background: var(--burgundy);
-    }
-
-    /* ===== MOBILE RESPONSIVE ===== */
-    @media (max-width: 1024px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .hero-content {
-        order: 1;
-      }
-
-      .hero-visual {
-        order: 0;
-        max-width: 500px;
-        margin: 0 auto;
-      }
-
-      .hero-subtitle {
-        margin: 0 auto 2rem;
-      }
-
-      .hero-ctas {
-        justify-content: center;
-      }
-
-      .hero-stats {
-        justify-content: center;
-      }
-
-      .comparison-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .topics-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .steps {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .step:not(:last-child)::after {
-        display: none;
-      }
-
-      .pricing-grid {
-        grid-template-columns: 1fr;
-        max-width: 400px;
-        margin: 0 auto;
-      }
-
-      .pricing-card.featured {
-        transform: none;
-      }
-
-      .instructor-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .instructor-image {
-        max-width: 250px;
-        margin: 0 auto;
-      }
-
-      .instructor-credentials {
-        justify-content: center;
-      }
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        display: none;
-      }
-
-      .mobile-menu {
-        display: flex;
-      }
-
-      .hero {
-        padding: 100px 1.5rem 60px;
-      }
-
-      .topics-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .steps {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-top {
-        flex-direction: column;
-        gap: 2rem;
-      }
-
-      .footer-links {
-        flex-wrap: wrap;
-        gap: 2rem;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-      }
-
-      .cta-box {
-        padding: 2.5rem 1.5rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-stats {
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-
-      .stat {
-        text-align: center;
-      }
-
-      .topics-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .instructor-credentials {
-        flex-direction: column;
-        gap: 1rem;
-      }
-    }
-
-    /* ===== POPUP/MODAL ===== */
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(4px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2000;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s;
-    }
-
-    .modal-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .modal {
-      background: white;
-      border-radius: 16px;
-      padding: 2.5rem;
-      max-width: 500px;
-      width: 90%;
-      max-height: 90vh;
-      overflow-y: auto;
-      transform: translateY(20px);
-      transition: transform 0.3s;
-    }
-
-    .modal-overlay.active .modal {
-      transform: translateY(0);
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: var(--charcoal-light);
-    }
-
-    .modal h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--charcoal);
-    }
-
-    .modal p {
-      color: var(--charcoal-light);
-      margin-bottom: 1.5rem;
-    }
-
-    .contact-methods {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .contact-method {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem;
-      background: var(--cream);
-      border-radius: 10px;
-      text-decoration: none;
-      color: var(--charcoal);
-      transition: all 0.2s;
-    }
-
-    .contact-method:hover {
-      background: var(--cream-dark);
-      transform: translateX(5px);
-    }
-
-    .contact-method .icon {
-      width: 40px;
-      height: 40px;
-      background: var(--burgundy);
-      color: white;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    :root{--burgundy:#722F37;--burgundy-dark:#5a252c;--cream:#FAF9F6;--cream-dark:#F0EEEB;--charcoal:#2D2D2D;--charcoal-light:#4A4A4A;--success:#2E7D4A;--gold:#C9A227}
+    *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--charcoal);line-height:1.6;overflow-x:hidden}
+    body.menu-open{overflow:hidden}
+    h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;line-height:1.2}
+    
+    header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(250,249,246,0.98);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(114,47,55,0.1)}
+    header.scrolled{box-shadow:0 4px 20px rgba(0,0,0,0.08)}
+    .header-inner{max-width:1200px;margin:0 auto;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center}
+    .logo{display:flex;align-items:center;gap:0.5rem;text-decoration:none;z-index:1001}
+    .logo img{height:40px}
+    .logo-text{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:700;color:var(--burgundy)}
+    
+    nav.desktop-nav{display:flex;gap:2rem;align-items:center}
+    nav a{text-decoration:none;color:var(--charcoal);font-weight:500;font-size:0.95rem}
+    nav a:hover{color:var(--burgundy)}
+    
+    .cta-button{background:var(--burgundy);color:white;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;border:2px solid var(--burgundy);display:inline-block;text-align:center}
+    .cta-button:hover{background:var(--burgundy-dark);border-color:var(--burgundy-dark)}
+    .cta-button.secondary{background:transparent;color:var(--burgundy)}
+    .cta-button.secondary:hover{background:var(--burgundy);color:white}
+    
+    .mobile-menu-btn{display:none;flex-direction:column;width:44px;height:44px;background:none;border:none;cursor:pointer;z-index:1001;padding:10px;justify-content:center;align-items:center}
+    .mobile-menu-btn span{display:block;width:24px;height:2px;background:var(--burgundy);margin:3px 0;transition:all 0.3s}
+    .mobile-menu-btn.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+    .mobile-menu-btn.active span:nth-child(2){opacity:0}
+    .mobile-menu-btn.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+    
+    .mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--cream);z-index:999;padding:100px 2rem 2rem;flex-direction:column;opacity:0;visibility:hidden;transition:all 0.3s}
+    .mobile-nav.active{opacity:1;visibility:visible}
+    .mobile-nav a{display:block;padding:1rem 0;font-size:1.25rem;font-weight:600;color:var(--charcoal);text-decoration:none;border-bottom:1px solid var(--cream-dark)}
+    .mobile-nav .cta-button{margin-top:2rem;width:100%;padding:1rem}
+    
+    .hero{min-height:100vh;min-height:100dvh;display:flex;align-items:center;padding:100px 1.5rem 60px;background:linear-gradient(135deg,var(--cream) 0%,var(--cream-dark) 100%)}
+    .hero-inner{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+    .hero-content{animation:fadeInUp 0.8s ease-out}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(114,47,55,0.1);color:var(--burgundy);padding:0.5rem 1rem;border-radius:50px;font-size:0.8rem;font-weight:600;margin-bottom:1.25rem}
+    .hero-badge::before{content:'●';color:var(--success);animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+    .hero h1{font-size:clamp(1.85rem,5vw,3.25rem);color:var(--charcoal);margin-bottom:1.25rem}
+    .hero h1 span{color:var(--burgundy)}
+    .hero-subtitle{font-size:1.05rem;color:var(--charcoal-light);margin-bottom:1.75rem}
+    .hero-ctas{display:flex;gap:0.75rem;margin-bottom:2.5rem;flex-wrap:wrap}
+    .hero-stats{display:flex;gap:2rem;flex-wrap:wrap}
+    .stat-number{font-family:'Fraunces',serif;font-size:1.75rem;font-weight:700;color:var(--burgundy)}
+    .stat-label{font-size:0.8rem;color:var(--charcoal-light)}
+    .hero-visual{animation:fadeInUp 0.8s ease-out 0.2s both}
+    .hero-card{background:white;border-radius:16px;padding:1.5rem;box-shadow:0 20px 60px rgba(0,0,0,0.1);position:relative}
+    .hero-card::before{content:'';position:absolute;top:-10px;left:-10px;right:10px;bottom:10px;background:var(--burgundy);border-radius:16px;z-index:-1;opacity:0.1}
+    .session-preview{border:2px solid var(--cream-dark);border-radius:12px;overflow:hidden}
+    .session-header{background:var(--burgundy);color:white;padding:0.875rem 1.25rem;display:flex;justify-content:space-between;align-items:center}
+    .session-title{font-weight:600;font-size:0.95rem}
+    .session-live{background:var(--success);padding:0.2rem 0.6rem;border-radius:50px;font-size:0.7rem;font-weight:600}
+    .session-body{padding:1.25rem}
+    .session-topic{font-family:'Fraunces',serif;font-size:1.25rem;color:var(--charcoal);margin-bottom:0.75rem}
+    .session-meta{display:flex;gap:1rem;margin-bottom:1.25rem;font-size:0.85rem;color:var(--charcoal-light);flex-wrap:wrap}
+    .participants{display:flex;align-items:center}
+    .participant{width:32px;height:32px;border-radius:50%;background:var(--burgundy);color:white;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:600;margin-left:-8px;border:2px solid white}
+    .participant:first-child{margin-left:0}
+    .participant.more{background:var(--cream-dark);color:var(--charcoal)}
+    .participants-label{margin-left:0.6rem;font-size:0.8rem;color:var(--charcoal-light)}
+    
+    .guarantee-banner{background:var(--burgundy);color:white;padding:1rem 1.5rem;text-align:center}
+    .guarantee-banner p{max-width:800px;margin:0 auto;font-size:0.95rem}
+    .guarantee-banner strong{color:var(--gold)}
+    
+    section{padding:70px 1.5rem}
+    .section-inner{max-width:1200px;margin:0 auto}
+    .section-header{text-align:center;margin-bottom:3rem}
+    .section-label{color:var(--burgundy);font-weight:600;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem}
+    .section-title{font-size:clamp(1.75rem,4vw,2.5rem);color:var(--charcoal);margin-bottom:0.75rem}
+    .section-subtitle{font-size:1rem;color:var(--charcoal-light);max-width:600px;margin:0 auto}
+    
+    .why-different{background:white}
+    .comparison-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+    .comparison-card{padding:2rem;border-radius:16px;position:relative}
+    .comparison-card.others{background:var(--cream-dark);border:2px dashed rgba(114,47,55,0.2)}
+    .comparison-card.us{background:linear-gradient(135deg,var(--burgundy) 0%,var(--burgundy-dark) 100%);color:white}
+    .comparison-card.us::before{content:'USMLE300';position:absolute;top:-12px;left:1.5rem;background:var(--gold);color:var(--charcoal);padding:0.25rem 0.875rem;border-radius:50px;font-size:0.7rem;font-weight:700}
+    .comparison-title{font-family:'Fraunces',serif;font-size:1.25rem;margin-bottom:1.25rem}
+    .comparison-list{list-style:none}
+    .comparison-list li{padding:0.6rem 0;display:flex;align-items:flex-start;gap:0.6rem;border-bottom:1px solid rgba(0,0,0,0.05);font-size:0.95rem}
+    .comparison-card.us .comparison-list li{border-bottom-color:rgba(255,255,255,0.1)}
+    .comparison-list li:last-child{border-bottom:none}
+    .comparison-list .icon{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem}
+    .comparison-card.others .icon{background:rgba(114,47,55,0.1)}
+    .comparison-card.us .icon{background:rgba(255,255,255,0.2)}
+    
+    .topics{background:var(--cream)}
+    .topics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+    .topic-card{background:white;padding:1.25rem 1rem;border-radius:12px;text-align:center;border:2px solid transparent;transition:all 0.3s}
+    .topic-card:hover{border-color:var(--burgundy);transform:translateY(-2px)}
+    .topic-card.featured{border-color:var(--gold);background:linear-gradient(135deg,#fffdf5 0%,#fff 100%)}
+    .topic-card.featured .topic-badge{display:inline-block;background:var(--gold);color:var(--charcoal);font-size:0.65rem;font-weight:700;padding:0.2rem 0.5rem;border-radius:50px;margin-bottom:0.5rem}
+    .topic-badge{display:none}
+    .topic-icon{width:44px;height:44px;background:rgba(114,47,55,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 0.75rem;font-size:1.25rem}
+    .topic-name{font-weight:600;color:var(--charcoal);font-size:0.9rem}
+    .topic-duration{font-size:0.75rem;color:var(--charcoal-light)}
+    
+    .how-it-works{background:white}
+    .method-note{text-align:center;max-width:700px;margin:0 auto 2.5rem;padding:1.25rem;background:var(--cream);border-radius:12px;font-size:0.95rem;color:var(--charcoal-light)}
+    .method-note strong{color:var(--burgundy)}
+    .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
+    .step{text-align:center;position:relative}
+    .step:not(:last-child)::after{content:'→';position:absolute;right:-0.75rem;top:1.75rem;color:var(--burgundy);font-size:1rem;opacity:0.3}
+    .step-number{width:44px;height:44px;background:var(--burgundy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;margin:0 auto 1rem}
+    .step-title{font-family:'Fraunces',serif;font-size:1rem;color:var(--charcoal);margin-bottom:0.4rem}
+    .step-desc{font-size:0.85rem;color:var(--charcoal-light)}
+    
+    .pricing{background:linear-gradient(135deg,var(--burgundy) 0%,var(--burgundy-dark) 100%);color:white}
+    .pricing .section-label{color:rgba(255,255,255,0.7)}
+    .pricing .section-title,.pricing .section-subtitle{color:white}
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:start}
+    .pricing-card{background:white;border-radius:16px;padding:2rem 1.5rem;text-align:center;color:var(--charcoal);position:relative}
+    .pricing-card.featured{transform:scale(1.03);box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+    .pricing-card.featured::before{content:'MOST POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--charcoal);padding:0.25rem 0.875rem;border-radius:50px;font-size:0.65rem;font-weight:700;white-space:nowrap}
+    .pricing-name{font-family:'Fraunces',serif;font-size:1.15rem;margin-bottom:0.35rem}
+    .pricing-desc{font-size:0.85rem;color:var(--charcoal-light);margin-bottom:1.25rem}
+    .pricing-price{font-family:'Fraunces',serif;font-size:2.5rem;font-weight:700;color:var(--burgundy);margin-bottom:0.35rem}
+    .pricing-price span{font-size:0.9rem;font-weight:400;color:var(--charcoal-light);text-decoration:line-through}
+    .pricing-per{font-size:0.8rem;color:var(--charcoal-light);margin-bottom:1.5rem}
+    .pricing-features{list-style:none;text-align:left;margin-bottom:1.5rem}
+    .pricing-features li{padding:0.4rem 0;display:flex;align-items:center;gap:0.6rem;font-size:0.9rem}
+    .pricing-features li::before{content:'✓';color:var(--success);font-weight:700}
+    .pricing-card .cta-button{width:100%;padding:0.875rem 1.5rem}
+    
+    .philosophy{background:var(--cream)}
+    .philosophy-content{max-width:800px;margin:0 auto}
+    .philosophy-content h3{font-size:1.5rem;color:var(--charcoal);margin-bottom:1rem;text-align:center}
+    .philosophy-text{color:var(--charcoal-light);font-size:1rem;line-height:1.8}
+    .philosophy-text p{margin-bottom:1.25rem}
+    .philosophy-highlight{background:white;border-left:4px solid var(--burgundy);padding:1.25rem 1.5rem;margin:1.5rem 0;border-radius:0 8px 8px 0}
+    .philosophy-highlight p{margin:0;font-weight:500;color:var(--charcoal)}
+    .philosophy-stats{display:flex;gap:2rem;justify-content:center;margin-top:2rem;flex-wrap:wrap}
+    .philosophy-stat{text-align:center}
+    .philosophy-stat .num{font-family:'Fraunces',serif;font-size:2rem;font-weight:700;color:var(--burgundy)}
+    .philosophy-stat .label{font-size:0.85rem;color:var(--charcoal-light)}
+    
+    .faq{background:white}
+    .faq-grid{max-width:800px;margin:0 auto}
+    .faq-item{border-bottom:1px solid var(--cream-dark)}
+    .faq-question{width:100%;padding:1.25rem 0;display:flex;justify-content:space-between;align-items:center;background:none;border:none;cursor:pointer;text-align:left;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:600;color:var(--charcoal);gap:1rem}
+    .faq-question:hover{color:var(--burgundy)}
+    .faq-question .icon{font-size:1.5rem;color:var(--burgundy);transition:transform 0.3s;flex-shrink:0}
+    .faq-item.active .faq-question .icon{transform:rotate(45deg)}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height 0.3s}
+    .faq-item.active .faq-answer{max-height:300px;padding-bottom:1.25rem}
+    .faq-answer p{color:var(--charcoal-light);line-height:1.7;font-size:0.95rem}
+    
+    .cta-section{background:var(--cream-dark);text-align:center}
+    .cta-box{background:white;border-radius:20px;padding:3rem 2rem;box-shadow:0 20px 60px rgba(0,0,0,0.05);max-width:700px;margin:0 auto}
+    .cta-box h2{font-size:2rem;color:var(--charcoal);margin-bottom:0.75rem}
+    .cta-box p{font-size:1rem;color:var(--charcoal-light);margin-bottom:1.5rem}
+    .cta-box .cta-button{font-size:1rem;padding:1rem 2rem}
+    
+    footer{background:var(--charcoal);color:white;padding:3rem 1.5rem 1.5rem}
+    .footer-inner{max-width:1200px;margin:0 auto}
+    .footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.1);flex-wrap:wrap;gap:2rem}
+    .footer-brand .logo-text{color:white;margin-bottom:0.4rem}
+    .footer-brand p{color:rgba(255,255,255,0.6);font-size:0.9rem}
+    .footer-links{display:flex;gap:3rem;flex-wrap:wrap}
+    .footer-column h4{font-size:0.8rem;font-weight:600;margin-bottom:0.75rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em}
+    .footer-column a{display:block;color:rgba(255,255,255,0.8);text-decoration:none;padding:0.3rem 0;font-size:0.9rem}
+    .footer-column a:hover{color:white}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:0.85rem;color:rgba(255,255,255,0.5);flex-wrap:wrap;gap:1rem}
+    
+    .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:2000;opacity:0;visibility:hidden;transition:all 0.3s;padding:1rem}
+    .modal-overlay.active{opacity:1;visibility:visible}
+    .modal{background:white;border-radius:16px;padding:2rem;max-width:450px;width:100%;max-height:90vh;overflow-y:auto;transform:translateY(20px);transition:transform 0.3s;position:relative}
+    .modal-overlay.active .modal{transform:translateY(0)}
+    .modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--charcoal-light);width:44px;height:44px}
+    .modal h3{font-size:1.35rem;margin-bottom:0.75rem;padding-right:2rem}
+    .modal p{color:var(--charcoal-light);margin-bottom:1.25rem;font-size:0.95rem}
+    .contact-methods{display:flex;flex-direction:column;gap:0.75rem}
+    .contact-method{display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--cream);border-radius:10px;text-decoration:none;color:var(--charcoal);min-height:60px}
+    .contact-method:hover{background:var(--cream-dark)}
+    .contact-method .icon{width:40px;height:40px;background:var(--burgundy);color:white;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .contact-method strong{display:block;font-size:0.95rem}
+    .contact-method span{font-size:0.85rem;color:var(--charcoal-light)}
+    
+    @media(max-width:1024px){
+      .hero-inner{grid-template-columns:1fr;text-align:center}
+      .hero-content{order:1}.hero-visual{order:0;max-width:450px;margin:0 auto}
+      .hero-subtitle{margin:0 auto 1.75rem}
+      .hero-ctas{justify-content:center}
+      .hero-stats{justify-content:center}
+      .comparison-grid{grid-template-columns:1fr}
+      .topics-grid{grid-template-columns:repeat(3,1fr)}
+      .steps{grid-template-columns:repeat(3,1fr)}
+      .step:not(:last-child)::after{display:none}
+      .pricing-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto}
+      .pricing-card.featured{transform:none;order:-1}
+    }
+    @media(max-width:768px){
+      nav.desktop-nav{display:none}
+      .mobile-menu-btn{display:flex}
+      .mobile-nav{display:flex}
+      .hero{padding:90px 1.25rem 50px}
+      .hero-ctas{flex-direction:column;align-items:center}
+      .hero-ctas .cta-button{width:100%;max-width:280px}
+      section{padding:50px 1.25rem}
+      .topics-grid{grid-template-columns:repeat(2,1fr);gap:0.75rem}
+      .steps{grid-template-columns:1fr;gap:1.5rem}
+      .comparison-card{padding:1.5rem}
+      .footer-top{flex-direction:column}
+      .footer-bottom{flex-direction:column;text-align:center}
+      .cta-box{padding:2rem 1.5rem}
+      .cta-box h2{font-size:1.5rem}
+      .philosophy-stats{gap:1.5rem}
+    }
+    @media(max-width:480px){
+      .header-inner{padding:0.875rem 1rem}
+      .logo img{height:35px}
+      .logo-text{font-size:1.1rem}
+      .hero{padding:85px 1rem 40px}
+      .hero-stats{flex-direction:column;gap:1rem;align-items:center}
+      .stat{text-align:center}
+      section{padding:40px 1rem}
+      .topics-grid{grid-template-columns:1fr 1fr}
+      .pricing-card{padding:1.75rem 1.25rem}
+      .pricing-price{font-size:2.25rem}
+      .modal{padding:1.5rem}
+      .philosophy-stats{flex-direction:column;gap:1rem}
     }
   </style>
 </head>
 <body>
-
-  <!-- HEADER -->
   <header>
     <div class="header-inner">
       <a href="#" class="logo">
         <img src="images/logo.png" alt="USMLE300">
         <span class="logo-text">USMLE300</span>
       </a>
-      <nav>
+      <nav class="desktop-nav">
         <a href="#how-it-works">How It Works</a>
         <a href="#topics">Topics</a>
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
         <a href="#contact" class="cta-button">Book Free Consult</a>
       </nav>
-      <div class="mobile-menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+      <button class="mobile-menu-btn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <!-- HERO -->
+  <nav class="mobile-nav">
+    <a href="#how-it-works">How It Works</a>
+    <a href="#topics">Topics</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#philosophy">Our Approach</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact" class="cta-button">Book Free Consult</a>
+  </nav>
+
   <section class="hero" id="home">
     <div class="hero-inner">
       <div class="hero-content">
         <div class="hero-badge">Now Enrolling for Step 1 & Step 2 CK</div>
-        <h1>USMLE Prep That Actually <span>Keeps You Accountable</span></h1>
-        <p class="hero-subtitle">Small-group live bootcamps with 3-6 students. Interactive sessions. Assigned homework. Real results.</p>
+        <h1><span>97% Pass Rate.</span> Small Groups. Real Accountability.</h1>
+        <p class="hero-subtitle">Live bootcamps with 3-5 students who actually show up prepared. Structured sessions, weekly homework, and instructors who scored 265+. You do the work, you pass.</p>
         <div class="hero-ctas">
           <a href="#pricing" class="cta-button">View Bootcamps</a>
           <a href="#contact" class="cta-button secondary">Free Strategy Call</a>
         </div>
         <div class="hero-stats">
-          <div class="stat">
-            <div class="stat-number">267</div>
-            <div class="stat-label">Instructor Step 2 Score</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">3-6</div>
-            <div class="stat-label">Students Per Session</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">20</div>
-            <div class="stat-label">High-Yield Topics</div>
-          </div>
+          <div class="stat"><div class="stat-number">97%</div><div class="stat-label">Pass Rate</div></div>
+          <div class="stat"><div class="stat-number">265+</div><div class="stat-label">All Instructor Scores</div></div>
+          <div class="stat"><div class="stat-number">3-5</div><div class="stat-label">Students Per Session</div></div>
         </div>
       </div>
       <div class="hero-visual">
@@ -1305,17 +295,14 @@
             </div>
             <div class="session-body">
               <div class="session-topic">Cardiology Bootcamp</div>
-              <div class="session-meta">
-                <span>🕐 90 min</span>
-                <span>📅 Today, 8pm ET</span>
-              </div>
+              <div class="session-meta"><span>🕐 90 min</span><span>📅 Today, 8pm ET</span></div>
               <div class="participants">
                 <div class="participant">JK</div>
                 <div class="participant">MR</div>
                 <div class="participant">AS</div>
                 <div class="participant">LP</div>
-                <div class="participant more">+2</div>
-                <span class="participants-label">6 students enrolled</span>
+                <div class="participant more">+1</div>
+                <span class="participants-label">5 students enrolled</span>
               </div>
             </div>
           </div>
@@ -1324,50 +311,53 @@
     </div>
   </section>
 
-  <!-- WHY DIFFERENT -->
+  <div class="guarantee-banner">
+    <p><strong>Our Promise:</strong> Complete the full series, do the homework, show up to every session. If you don't pass, we work with you for free until you do.</p>
+  </div>
+
   <section class="why-different" id="why">
     <div class="section-inner">
       <div class="section-header">
         <div class="section-label">Why USMLE300</div>
-        <h2 class="section-title">Not Another Pre-Recorded Course</h2>
-        <p class="section-subtitle">Most USMLE prep is passive. Ours is interactive, collaborative, and designed to keep you on track.</p>
+        <h2 class="section-title">Skills Over Resources</h2>
+        <p class="section-subtitle">Everyone's obsessed with finding the perfect resource. The truth? Most of you already have the knowledge. What separates higher scores is exam-taking skill and a proper approach.</p>
       </div>
       <div class="comparison-grid">
         <div class="comparison-card others">
-          <h3 class="comparison-title">Typical USMLE Prep</h3>
+          <h3 class="comparison-title">The Resource Chase</h3>
           <ul class="comparison-list">
             <li><span class="icon">📺</span> Pre-recorded videos you'll never finish</li>
             <li><span class="icon">👤</span> Study alone, lose motivation</li>
-            <li><span class="icon">📚</span> Massive question banks with no guidance</li>
+            <li><span class="icon">📚</span> Searching for some "secret" resource</li>
             <li><span class="icon">💰</span> $500+ for content you could find free</li>
-            <li><span class="icon">❓</span> No one to answer your questions</li>
+            <li><span class="icon">❓</span> No feedback on your approach</li>
             <li><span class="icon">📉</span> Easy to fall behind schedule</li>
           </ul>
         </div>
         <div class="comparison-card us">
           <h3 class="comparison-title">The USMLE300 Way</h3>
           <ul class="comparison-list">
-            <li><span class="icon">🎯</span> Live, interactive topic bootcamps</li>
-            <li><span class="icon">👥</span> Small groups of 3-6 for real discussion</li>
-            <li><span class="icon">📝</span> Curated high-yield content from a 267 scorer</li>
+            <li><span class="icon">🎯</span> Focus on exam strategy and question approach</li>
+            <li><span class="icon">👥</span> Small groups of 3-5 for real discussion</li>
+            <li><span class="icon">📝</span> Build frameworks for the 20-30 key concepts per topic</li>
             <li><span class="icon">✅</span> Homework assigned and reviewed each session</li>
-            <li><span class="icon">🗣️</span> Ask questions, explain concepts, stay engaged</li>
-            <li><span class="icon">📈</span> Built-in accountability — your peers expect you</li>
+            <li><span class="icon">🧠</span> Train your question-taking skills, not just content</li>
+            <li><span class="icon">📈</span> Volume builds stamina. Your peers keep you honest.</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TOPICS -->
   <section class="topics" id="topics">
     <div class="section-inner">
       <div class="section-header">
-        <div class="section-label">20 Bootcamps</div>
+        <div class="section-label">21 Bootcamps</div>
         <h2 class="section-title">Every High-Yield Topic Covered</h2>
-        <p class="section-subtitle">Each bootcamp is 90-120 minutes of focused, interactive review. Take them individually or as a complete series.</p>
+        <p class="section-subtitle">90-120 minutes each. Plus a dedicated exam strategy session that covers question approach, timing, and test-day execution.</p>
       </div>
       <div class="topics-grid">
+        <div class="topic-card featured"><div class="topic-badge">KEY</div><div class="topic-icon">🎯</div><div class="topic-name">Exam Strategy</div><div class="topic-duration">120 min</div></div>
         <div class="topic-card"><div class="topic-icon">❤️</div><div class="topic-name">Cardiology</div><div class="topic-duration">90 min</div></div>
         <div class="topic-card"><div class="topic-icon">🫁</div><div class="topic-name">Pulmonology</div><div class="topic-duration">90 min</div></div>
         <div class="topic-card"><div class="topic-icon">🧠</div><div class="topic-name">Neurology</div><div class="topic-duration">120 min</div></div>
@@ -1392,40 +382,25 @@
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
   <section class="how-it-works" id="how-it-works">
     <div class="section-inner">
       <div class="section-header">
-        <div class="section-label">The Process</div>
+        <div class="section-label">The Structure</div>
         <h2 class="section-title">How Each Bootcamp Works</h2>
-        <p class="section-subtitle">A structured, interactive session designed to maximize retention and keep you accountable.</p>
+        <p class="section-subtitle">Our sessions use evidence-based learning techniques: pretesting, spaced retrieval, and active recall. Not because it sounds fancy, but because they actually work.</p>
       </div>
+      <div class="method-note">
+        <strong>Why this structure?</strong> Research shows testing yourself before learning (pretesting) improves retention by 20-40%, even when you get the answers wrong. We built our sessions around this.</div>
       <div class="steps">
-        <div class="step">
-          <div class="step-number">1</div>
-          <h3 class="step-title">Homework Review</h3>
-          <p class="step-desc">Start by reviewing the assigned UWorld block or Divine podcast. What tripped you up?</p>
-        </div>
-        <div class="step">
-          <div class="step-number">2</div>
-          <h3 class="step-title">Question Circle</h3>
-          <p class="step-desc">Each student answers a question and asks one. Gamified accountability that keeps everyone engaged.</p>
-        </div>
-        <div class="step">
-          <div class="step-number">3</div>
-          <h3 class="step-title">High-Yield Content</h3>
-          <p class="step-desc">Interactive walkthrough of must-know concepts. You'll explain, not just listen.</p>
-        </div>
-        <div class="step">
-          <div class="step-number">4</div>
-          <h3 class="step-title">UWorld Together</h3>
-          <p class="step-desc">Work through 10 questions as a group. Discuss reasoning, traps, and test strategy.</p>
-        </div>
+        <div class="step"><div class="step-number">1</div><h3 class="step-title">Pretest</h3><p class="step-desc">5 quick questions on today's topic. You'll get most wrong. That's the point.</p></div>
+        <div class="step"><div class="step-number">2</div><h3 class="step-title">Homework Review</h3><p class="step-desc">What tripped you up? Surface misconceptions early.</p></div>
+        <div class="step"><div class="step-number">3</div><h3 class="step-title">Content Block</h3><p class="step-desc">High-yield concepts in 15-min chunks with mini-quizzes between.</p></div>
+        <div class="step"><div class="step-number">4</div><h3 class="step-title">Group Practice</h3><p class="step-desc">Work through questions together. Discuss reasoning out loud.</p></div>
+        <div class="step"><div class="step-number">5</div><h3 class="step-title">Takeaways</h3><p class="step-desc">You state your #1 takeaway and #1 confusion. We clarify.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- PRICING -->
   <section class="pricing" id="pricing">
     <div class="section-inner">
       <div class="section-header">
@@ -1441,35 +416,35 @@
           <div class="pricing-per">per bootcamp</div>
           <ul class="pricing-features">
             <li>One 90-120 min live session</li>
-            <li>Small group (3-6 students)</li>
-            <li>Homework + accountability</li>
+            <li>Small group (3-5 students)</li>
+            <li>Homework and accountability</li>
             <li>High-yield notes access</li>
           </ul>
           <a href="#contact" class="cta-button secondary">Get Started</a>
         </div>
         <div class="pricing-card featured">
           <h3 class="pricing-name">Full Bundle</h3>
-          <p class="pricing-desc">All 20 topics</p>
-          <div class="pricing-price">$449 <span>$580</span></div>
-          <div class="pricing-per">23% savings</div>
+          <p class="pricing-desc">All 21 topics</p>
+          <div class="pricing-price">$449 <span>$609</span></div>
+          <div class="pricing-per">26% savings + pass guarantee</div>
           <ul class="pricing-features">
-            <li>All 20 topic bootcamps</li>
-            <li>Small group (3-6 students)</li>
-            <li>Full homework + accountability</li>
-            <li>Complete high-yield notes</li>
-            <li>Priority scheduling</li>
+            <li>All 21 topic bootcamps</li>
+            <li>Includes Exam Strategy session</li>
+            <li>Small group (3-5 students)</li>
+            <li>Full homework and accountability</li>
+            <li>Pass guarantee included</li>
           </ul>
           <a href="#contact" class="cta-button">Get Full Access</a>
         </div>
         <div class="pricing-card">
           <h3 class="pricing-name">10-Topic Pack</h3>
           <p class="pricing-desc">Choose your topics</p>
-          <div class="pricing-price">$239</div>
-          <div class="pricing-per">$23.90 per topic</div>
+          <div class="pricing-price">$249</div>
+          <div class="pricing-per">$24.90 per topic</div>
           <ul class="pricing-features">
             <li>Any 10 bootcamps</li>
-            <li>Small group (3-6 students)</li>
-            <li>Homework + accountability</li>
+            <li>Small group (3-5 students)</li>
+            <li>Homework and accountability</li>
             <li>High-yield notes access</li>
           </ul>
           <a href="#contact" class="cta-button secondary">Get Started</a>
@@ -1478,47 +453,35 @@
     </div>
   </section>
 
-  <!-- INSTRUCTOR -->
-  <section class="instructor" id="instructor">
+  <section class="philosophy" id="philosophy">
     <div class="section-inner">
       <div class="section-header">
-        <div class="section-label">Your Instructor</div>
-        <h2 class="section-title">Learn From Someone Who's Been There</h2>
+        <div class="section-label">Our Approach</div>
+        <h2 class="section-title">The Philosophy Behind USMLE300</h2>
       </div>
-      <div class="instructor-content">
-        <div class="instructor-image">
-          <img src="images/instructor.jpg" alt="USMLE300 Instructor">
-          <div class="score-badge">
-            <div class="score">267</div>
-            <div class="label">Step 2 CK</div>
+      <div class="philosophy-content">
+        <div class="philosophy-text">
+          <p>There's already plenty of excellent write-ups for Step 2, some from people with much higher scores than ours. We're not here to reinvent content.</p>
+          
+          <p>Here's what we actually believe: resources are overrated. Everyone's looking for some magical study guide, the "secret sauce" for a 260+. The truth is, most of you already have the knowledge base you need. What separates higher scores isn't some obscure book. It's your exam-taking skills and your overall approach.</p>
+          
+          <div class="philosophy-highlight">
+            <p>For a 250+, you don't need more resources. You need strong conceptual frameworks for the 20-30 heavily tested concepts within each topic, and you need to train your approach to questions.</p>
           </div>
+          
+          <p>During dedicated, it's about volume. 200+ questions a day is a grind, but it builds something you can't get any other way: exam stamina. On test day, you'll see things you've never seen before. Experimental questions, random vignettes that make you feel like you're taking the wrong exam. If you've built the skill of quickly assessing a question, flagging it, and moving on, these curveballs won't sink you.</p>
+          
+          <p>Our strength isn't knowing content cold. It's dissecting the exam itself. We've spent time comparing different question approaches across multiple blocks to see what actually works under pressure. That's what we teach: not just content review, but attacking the questions.</p>
         </div>
-        <div class="instructor-info">
-          <h3>Hi, I'm the founder of USMLE300</h3>
-          <p class="instructor-title">Step 2 CK: 267 (Top 5%)</p>
-          <p class="instructor-bio">I built USMLE300 because I saw too many classmates struggle with solo studying. They had all the resources — UWorld, First Aid, Divine — but no structure, no accountability, and no one to study with. These bootcamps are designed to fix that. Small groups, interactive sessions, and real homework that gets reviewed. If you show up, you will improve.</p>
-          <div class="instructor-credentials">
-            <div class="credential">
-              <div class="credential-icon">✓</div>
-              <div class="credential-text">
-                <strong>Step 1</strong>
-                <span>Pass</span>
-              </div>
-            </div>
-            <div class="credential">
-              <div class="credential-icon">✓</div>
-              <div class="credential-text">
-                <strong>Step 2 CK</strong>
-                <span>267 (Top 5%)</span>
-              </div>
-            </div>
-          </div>
+        <div class="philosophy-stats">
+          <div class="philosophy-stat"><div class="num">265+</div><div class="label">All Instructor Scores</div></div>
+          <div class="philosophy-stat"><div class="num">97%</div><div class="label">Student Pass Rate</div></div>
+          <div class="philosophy-stat"><div class="num">21</div><div class="label">Topic Bootcamps</div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
   <section class="faq" id="faq">
     <div class="section-inner">
       <div class="section-header">
@@ -1526,198 +489,61 @@
         <h2 class="section-title">Common Questions</h2>
       </div>
       <div class="faq-grid">
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>How do the live sessions work?</span>
-            <span class="icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Sessions are held on Zoom with 3-6 students. You'll receive a link after booking. Each bootcamp is 90-120 minutes and follows our structured format: homework review, question circle, high-yield content, and group UWorld practice.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>What if I can't make a scheduled session?</span>
-            <span class="icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>You can reschedule up to 24 hours before the session at no charge. We run multiple time slots for each topic to accommodate different time zones.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Do I need UWorld or other resources?</span>
-            <span class="icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>We recommend having UWorld access for homework, but it's not required. We provide high-yield notes and question sets. Some homework may include Divine Intervention podcast episodes, which are free.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Is this for Step 1 or Step 2?</span>
-            <span class="icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Both! The topics we cover are high-yield for both exams. When you book, you'll indicate which exam you're preparing for, and we'll group you with students at the same stage.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>What's your refund policy?</span>
-            <span class="icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Full refund if requested before your first session. After attending, no refunds — but you can transfer your remaining sessions to a friend.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>How do I know this will help me?</span>
-            <span class="icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>The content is curated from a 267 scorer's notes and follows high-yield topics that appear repeatedly on the exam. But more importantly, the structure — small groups, homework, accountability — ensures you actually engage with the material instead of passively watching videos.</p>
-          </div>
-        </div>
+        <div class="faq-item"><button class="faq-question"><span>How do the live sessions work?</span><span class="icon">+</span></button><div class="faq-answer"><p>Sessions are on Zoom with 3-5 students. You get a link after booking. Each bootcamp is 90-120 minutes and follows our structured format: pretest, homework review, content blocks with mini-quizzes, group practice, and takeaways.</p></div></div>
+        <div class="faq-item"><button class="faq-question"><span>What if I can't make a scheduled session?</span><span class="icon">+</span></button><div class="faq-answer"><p>You can reschedule up to 24 hours before at no charge. We run multiple time slots for each topic to accommodate different time zones.</p></div></div>
+        <div class="faq-item"><button class="faq-question"><span>What's in the Exam Strategy bootcamp?</span><span class="icon">+</span></button><div class="faq-answer"><p>Question approach (we've tested multiple methods across hundreds of questions), time management, how to handle questions you've never seen, common traps and how to avoid them, and mental strategies for test day. Included free with the full bundle.</p></div></div>
+        <div class="faq-item"><button class="faq-question"><span>Is this for Step 1 or Step 2?</span><span class="icon">+</span></button><div class="faq-answer"><p>Both. The topics are high-yield for both exams. When you book, you indicate which exam you're prepping for, and we group you with students at the same stage.</p></div></div>
+        <div class="faq-item"><button class="faq-question"><span>How does the pass guarantee work?</span><span class="icon">+</span></button><div class="faq-answer"><p>Complete the full bootcamp series, attend every session, do all the homework. If you don't pass, we continue working with you at no extra cost until you do.</p></div></div>
+        <div class="faq-item"><button class="faq-question"><span>What's your refund policy?</span><span class="icon">+</span></button><div class="faq-answer"><p>Full refund if requested before your first session. After attending, no refunds, but you can transfer remaining sessions to a friend.</p></div></div>
       </div>
     </div>
   </section>
 
-  <!-- CTA SECTION -->
   <section class="cta-section" id="contact">
     <div class="section-inner">
       <div class="cta-box">
         <h2>Ready to Study Smarter?</h2>
-        <p>Book a free 15-minute strategy call to see if USMLE300 is right for you. No pressure, no pitch — just honest advice on your study plan.</p>
+        <p>Book a free 15-minute call. We'll review your timeline, identify weak areas, and tell you honestly if our bootcamps are the right fit.</p>
         <a href="https://calendly.com/usmle300" class="cta-button" target="_blank">Book Free Strategy Call</a>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
       <div class="footer-top">
-        <div class="footer-brand">
-          <div class="logo-text">USMLE300</div>
-          <p>Small-group USMLE bootcamps that keep you accountable.</p>
-        </div>
+        <div class="footer-brand"><div class="logo-text">USMLE300</div><p>Small-group USMLE bootcamps. 97% pass rate.</p></div>
         <div class="footer-links">
-          <div class="footer-column">
-            <h4>Product</h4>
-            <a href="#how-it-works">How It Works</a>
-            <a href="#topics">Topics</a>
-            <a href="#pricing">Pricing</a>
-          </div>
-          <div class="footer-column">
-            <h4>Support</h4>
-            <a href="#faq">FAQ</a>
-            <a href="mailto:support@usmle300.com">Contact</a>
-          </div>
-          <div class="footer-column">
-            <h4>Contact</h4>
-            <a href="mailto:support@usmle300.com">support@usmle300.com</a>
-          </div>
+          <div class="footer-column"><h4>Product</h4><a href="#how-it-works">How It Works</a><a href="#topics">Topics</a><a href="#pricing">Pricing</a></div>
+          <div class="footer-column"><h4>Support</h4><a href="#faq">FAQ</a><a href="mailto:support@usmle300.com">Contact</a></div>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 USMLE300. All rights reserved.</p>
-        <div class="footer-social">
-          <a href="#" title="Instagram">📷</a>
-          <a href="#" title="Twitter">🐦</a>
-        </div>
-      </div>
+      <div class="footer-bottom"><p>© 2025 USMLE300. All rights reserved.</p></div>
     </div>
   </footer>
 
-  <!-- CONTACT MODAL -->
   <div class="modal-overlay" id="contactModal">
     <div class="modal">
-      <button class="modal-close">&times;</button>
+      <button class="modal-close">×</button>
       <h3>Get in Touch</h3>
-      <p>Reach out to book your bootcamp or ask any questions.</p>
+      <p>Reach out to book your bootcamp or ask questions.</p>
       <div class="contact-methods">
-        <a href="mailto:support@usmle300.com" class="contact-method">
-          <div class="icon">✉️</div>
-          <div>
-            <strong>Email</strong>
-            <span>support@usmle300.com</span>
-          </div>
-        </a>
-        <a href="https://calendly.com/usmle300" target="_blank" class="contact-method">
-          <div class="icon">📅</div>
-          <div>
-            <strong>Book a Call</strong>
-            <span>Free 15-min strategy session</span>
-          </div>
-        </a>
+        <a href="mailto:support@usmle300.com" class="contact-method"><div class="icon">✉️</div><div><strong>Email</strong><span>support@usmle300.com</span></div></a>
+        <a href="https://calendly.com/usmle300" target="_blank" class="contact-method"><div class="icon">📅</div><div><strong>Book a Call</strong><span>Free 15-min strategy session</span></div></a>
       </div>
     </div>
   </div>
 
   <script>
-    // Header scroll effect
-    window.addEventListener('scroll', () => {
-      const header = document.querySelector('header');
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
-
-    // FAQ accordion
-    document.querySelectorAll('.faq-question').forEach(button => {
-      button.addEventListener('click', () => {
-        const item = button.parentElement;
-        const isActive = item.classList.contains('active');
-        
-        // Close all
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-        
-        // Open clicked if wasn't active
-        if (!isActive) {
-          item.classList.add('active');
-        }
-      });
-    });
-
-    // Modal
-    const modal = document.getElementById('contactModal');
-    
-    document.querySelectorAll('a[href="#contact"]').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        modal.classList.add('active');
-      });
-    });
-
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal || e.target.classList.contains('modal-close')) {
-        modal.classList.remove('active');
-      }
-    });
-
-    // Mobile menu (basic toggle)
-    document.querySelector('.mobile-menu').addEventListener('click', function() {
-      const nav = document.querySelector('nav');
-      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-    });
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href !== '#contact' && href !== '#') {
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        }
-      });
-    });
+    window.addEventListener('scroll',()=>{document.querySelector('header').classList.toggle('scrolled',window.scrollY>50)});
+    const menuBtn=document.querySelector('.mobile-menu-btn'),mobileNav=document.querySelector('.mobile-nav');
+    menuBtn.addEventListener('click',()=>{menuBtn.classList.toggle('active');mobileNav.classList.toggle('active');document.body.classList.toggle('menu-open')});
+    document.querySelectorAll('.mobile-nav a').forEach(a=>a.addEventListener('click',()=>{menuBtn.classList.remove('active');mobileNav.classList.remove('active');document.body.classList.remove('menu-open')}));
+    document.querySelectorAll('.faq-question').forEach(b=>b.addEventListener('click',()=>{const i=b.parentElement,a=i.classList.contains('active');document.querySelectorAll('.faq-item').forEach(x=>x.classList.remove('active'));if(!a)i.classList.add('active')}));
+    const modal=document.getElementById('contactModal');
+    document.querySelectorAll('a[href="#contact"]').forEach(l=>l.addEventListener('click',e=>{e.preventDefault();modal.classList.add('active');document.body.classList.add('menu-open')}));
+    modal.addEventListener('click',e=>{if(e.target===modal||e.target.classList.contains('modal-close')){modal.classList.remove('active');document.body.classList.remove('menu-open')}});
+    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){const h=this.getAttribute('href');if(h!=='#contact'&&h!=='#'){e.preventDefault();const t=document.querySelector(h);if(t)t.scrollIntoView({behavior:'smooth'})}}));
   </script>
 </body>
 </html>
