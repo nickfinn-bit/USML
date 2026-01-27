@@ -105,7 +105,7 @@
     
     .topics{background:var(--cream)}
     .topics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
-    .topic-card{background:white;padding:1.25rem 1rem;border-radius:12px;text-align:center;border:2px solid transparent;transition:all 0.3s}
+    .topic-card{background:white;padding:1.25rem 1rem;border-radius:12px;text-align:center;border:2px solid transparent;transition:all 0.3s;cursor:pointer}
     .topic-card:hover{border-color:var(--burgundy);transform:translateY(-2px)}
     .topic-card.featured{border-color:var(--gold);background:linear-gradient(135deg,#fffdf5 0%,#fff 100%)}
     .topic-card.featured .topic-badge{display:inline-block;background:var(--gold);color:var(--charcoal);font-size:0.65rem;font-weight:700;padding:0.2rem 0.5rem;border-radius:50px;margin-bottom:0.5rem}
@@ -113,6 +113,21 @@
     .topic-icon{width:44px;height:44px;background:rgba(114,47,55,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 0.75rem;font-size:1.25rem}
     .topic-name{font-weight:600;color:var(--charcoal);font-size:0.9rem}
     .topic-duration{font-size:0.75rem;color:var(--charcoal-light)}
+    
+    .topic-modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:2000;opacity:0;visibility:hidden;transition:all 0.3s;padding:1rem}
+    .topic-modal-overlay.active{opacity:1;visibility:visible}
+    .topic-modal{background:white;border-radius:16px;padding:2rem;max-width:500px;width:100%;max-height:90vh;overflow-y:auto;transform:translateY(20px);transition:transform 0.3s;position:relative}
+    .topic-modal-overlay.active .topic-modal{transform:translateY(0)}
+    .topic-modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--charcoal-light);width:44px;height:44px}
+    .topic-modal-icon{width:60px;height:60px;background:rgba(114,47,55,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.75rem;margin-bottom:1rem}
+    .topic-modal h3{font-size:1.5rem;margin-bottom:0.5rem}
+    .topic-modal-duration{color:var(--charcoal-light);font-size:0.9rem;margin-bottom:1.25rem}
+    .topic-modal-section{margin-bottom:1.25rem}
+    .topic-modal-section h4{font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--burgundy);margin-bottom:0.5rem}
+    .topic-modal-list{list-style:none}
+    .topic-modal-list li{padding:0.4rem 0;padding-left:1.25rem;position:relative;font-size:0.95rem;color:var(--charcoal-light)}
+    .topic-modal-list li::before{content:'•';position:absolute;left:0;color:var(--burgundy)}
+    .topic-modal .cta-button{width:100%;margin-top:1rem}
     
     .how-it-works{background:white}
     .method-note{text-align:center;max-width:700px;margin:0 auto 2.5rem;padding:1.25rem;background:var(--cream);border-radius:12px;font-size:0.95rem;color:var(--charcoal-light)}
@@ -123,6 +138,18 @@
     .step-number{width:44px;height:44px;background:var(--burgundy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;margin:0 auto 1rem}
     .step-title{font-family:'Fraunces',serif;font-size:1rem;color:var(--charcoal);margin-bottom:0.4rem}
     .step-desc{font-size:0.85rem;color:var(--charcoal-light)}
+    
+    .testimonials{background:var(--cream-dark)}
+    .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .testimonial-card{background:white;padding:1.75rem;border-radius:16px;position:relative}
+    .testimonial-card::before{content:'"';position:absolute;top:1rem;right:1.5rem;font-family:'Fraunces',serif;font-size:4rem;color:var(--burgundy);opacity:0.1;line-height:1}
+    .testimonial-text{font-size:0.95rem;color:var(--charcoal-light);margin-bottom:1.25rem;line-height:1.7}
+    .testimonial-score{display:inline-block;background:rgba(46,125,74,0.1);color:var(--success);font-weight:700;font-size:0.85rem;padding:0.25rem 0.75rem;border-radius:50px;margin-bottom:1rem}
+    .testimonial-author{display:flex;align-items:center;gap:0.75rem}
+    .testimonial-avatar{width:44px;height:44px;background:var(--burgundy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.9rem}
+    .testimonial-info{font-size:0.9rem}
+    .testimonial-name{font-weight:600;color:var(--charcoal)}
+    .testimonial-school{color:var(--charcoal-light);font-size:0.85rem}
     
     .pricing{background:linear-gradient(135deg,var(--burgundy) 0%,var(--burgundy-dark) 100%);color:white}
     .pricing .section-label{color:rgba(255,255,255,0.7)}
@@ -141,17 +168,19 @@
     .pricing-features li::before{content:'✓';color:var(--success);font-weight:700}
     .pricing-card .cta-button{width:100%;padding:0.875rem 1.5rem}
     
-    .philosophy{background:var(--cream)}
-    .philosophy-content{max-width:800px;margin:0 auto}
-    .philosophy-content h3{font-size:1.5rem;color:var(--charcoal);margin-bottom:1rem;text-align:center}
-    .philosophy-text{color:var(--charcoal-light);font-size:1rem;line-height:1.8}
-    .philosophy-text p{margin-bottom:1.25rem}
-    .philosophy-highlight{background:white;border-left:4px solid var(--burgundy);padding:1.25rem 1.5rem;margin:1.5rem 0;border-radius:0 8px 8px 0}
-    .philosophy-highlight p{margin:0;font-weight:500;color:var(--charcoal)}
-    .philosophy-stats{display:flex;gap:2rem;justify-content:center;margin-top:2rem;flex-wrap:wrap}
-    .philosophy-stat{text-align:center}
-    .philosophy-stat .num{font-family:'Fraunces',serif;font-size:2rem;font-weight:700;color:var(--burgundy)}
-    .philosophy-stat .label{font-size:0.85rem;color:var(--charcoal-light)}
+    .founder{background:var(--cream)}
+    .founder-content{display:grid;grid-template-columns:280px 1fr;gap:3rem;align-items:center}
+    .founder-image{position:relative}
+    .founder-image img{width:100%;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.1)}
+    .founder-image::before{content:'';position:absolute;top:-12px;left:-12px;right:12px;bottom:12px;background:var(--burgundy);border-radius:16px;z-index:-1;opacity:0.1}
+    .score-badge{position:absolute;bottom:-15px;right:-15px;background:var(--burgundy);color:white;padding:0.875rem 1.25rem;border-radius:12px;text-align:center;box-shadow:0 10px 30px rgba(114,47,55,0.3)}
+    .score-badge .score{font-family:'Fraunces',serif;font-size:1.75rem;font-weight:700}
+    .score-badge .label{font-size:0.7rem;opacity:0.8}
+    .founder-info h3{font-size:1.75rem;color:var(--charcoal);margin-bottom:0.75rem}
+    .founder-title{color:var(--burgundy);font-weight:600;margin-bottom:1.25rem}
+    .founder-bio{color:var(--charcoal-light);margin-bottom:1.5rem;font-size:1rem;line-height:1.7}
+    .founder-philosophy{background:white;border-left:4px solid var(--burgundy);padding:1rem 1.25rem;border-radius:0 8px 8px 0;margin-bottom:1.5rem}
+    .founder-philosophy p{margin:0;color:var(--charcoal);font-size:0.95rem}
     
     .faq{background:white}
     .faq-grid{max-width:800px;margin:0 auto}
@@ -205,8 +234,12 @@
       .topics-grid{grid-template-columns:repeat(3,1fr)}
       .steps{grid-template-columns:repeat(3,1fr)}
       .step:not(:last-child)::after{display:none}
+      .testimonials-grid{grid-template-columns:1fr}
       .pricing-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto}
       .pricing-card.featured{transform:none;order:-1}
+      .founder-content{grid-template-columns:1fr;text-align:center}
+      .founder-image{max-width:220px;margin:0 auto}
+      .founder-philosophy{text-align:left}
     }
     @media(max-width:768px){
       nav.desktop-nav{display:none}
@@ -223,7 +256,6 @@
       .footer-bottom{flex-direction:column;text-align:center}
       .cta-box{padding:2rem 1.5rem}
       .cta-box h2{font-size:1.5rem}
-      .philosophy-stats{gap:1.5rem}
     }
     @media(max-width:480px){
       .header-inner{padding:0.875rem 1rem}
@@ -237,7 +269,7 @@
       .pricing-card{padding:1.75rem 1.25rem}
       .pricing-price{font-size:2.25rem}
       .modal{padding:1.5rem}
-      .philosophy-stats{flex-direction:column;gap:1rem}
+      .topic-modal{padding:1.5rem}
     }
   </style>
 </head>
@@ -265,7 +297,7 @@
     <a href="#how-it-works">How It Works</a>
     <a href="#topics">Topics</a>
     <a href="#pricing">Pricing</a>
-    <a href="#philosophy">Our Approach</a>
+    <a href="#founder">About</a>
     <a href="#faq">FAQ</a>
     <a href="#contact" class="cta-button">Book Free Consult</a>
   </nav>
@@ -275,7 +307,7 @@
       <div class="hero-content">
         <div class="hero-badge">Now Enrolling for Step 1 & Step 2 CK</div>
         <h1><span>97% Pass Rate.</span> Small Groups. Real Accountability.</h1>
-        <p class="hero-subtitle">Live bootcamps with 3-5 students who actually show up prepared. Structured sessions, weekly homework, and instructors who scored 265+. You do the work, you pass.</p>
+        <p class="hero-subtitle">Live bootcamps with 3-5 students who actually show up prepared. Structured sessions, weekly homework, and instructors who scored 265+.</p>
         <div class="hero-ctas">
           <a href="#pricing" class="cta-button">View Bootcamps</a>
           <a href="#contact" class="cta-button secondary">Free Strategy Call</a>
@@ -319,30 +351,30 @@
     <div class="section-inner">
       <div class="section-header">
         <div class="section-label">Why USMLE300</div>
-        <h2 class="section-title">Skills Over Resources</h2>
-        <p class="section-subtitle">Everyone's obsessed with finding the perfect resource. The truth? Most of you already have the knowledge. What separates higher scores is exam-taking skill and a proper approach.</p>
+        <h2 class="section-title">Skills Beat Resources</h2>
+        <p class="section-subtitle">Everyone's looking for that secret resource. The truth? You probably already know enough. What separates scores is exam technique and consistency.</p>
       </div>
       <div class="comparison-grid">
         <div class="comparison-card others">
           <h3 class="comparison-title">The Resource Chase</h3>
           <ul class="comparison-list">
-            <li><span class="icon">📺</span> Pre-recorded videos you'll never finish</li>
-            <li><span class="icon">👤</span> Study alone, lose motivation</li>
-            <li><span class="icon">📚</span> Searching for some "secret" resource</li>
-            <li><span class="icon">💰</span> $500+ for content you could find free</li>
+            <li><span class="icon">📺</span> Pre-recorded videos you won't finish</li>
+            <li><span class="icon">👤</span> Studying alone, losing steam</li>
+            <li><span class="icon">📚</span> Searching for some "secret" guide</li>
+            <li><span class="icon">💰</span> $500+ for stuff you could find free</li>
             <li><span class="icon">❓</span> No feedback on your approach</li>
-            <li><span class="icon">📉</span> Easy to fall behind schedule</li>
+            <li><span class="icon">📉</span> Falling behind with no one noticing</li>
           </ul>
         </div>
         <div class="comparison-card us">
           <h3 class="comparison-title">The USMLE300 Way</h3>
           <ul class="comparison-list">
             <li><span class="icon">🎯</span> Focus on exam strategy and question approach</li>
-            <li><span class="icon">👥</span> Small groups of 3-5 for real discussion</li>
-            <li><span class="icon">📝</span> Build frameworks for the 20-30 key concepts per topic</li>
-            <li><span class="icon">✅</span> Homework assigned and reviewed each session</li>
-            <li><span class="icon">🧠</span> Train your question-taking skills, not just content</li>
-            <li><span class="icon">📈</span> Volume builds stamina. Your peers keep you honest.</li>
+            <li><span class="icon">👥</span> Small groups of 3-5 for actual discussion</li>
+            <li><span class="icon">📝</span> Build frameworks for key concepts</li>
+            <li><span class="icon">✅</span> Homework assigned and reviewed</li>
+            <li><span class="icon">🧠</span> Train question-taking, not just content</li>
+            <li><span class="icon">📈</span> Volume builds stamina. Peers keep you honest.</li>
           </ul>
         </div>
       </div>
@@ -353,31 +385,31 @@
     <div class="section-inner">
       <div class="section-header">
         <div class="section-label">21 Bootcamps</div>
-        <h2 class="section-title">Every High-Yield Topic Covered</h2>
-        <p class="section-subtitle">90-120 minutes each. Plus a dedicated exam strategy session that covers question approach, timing, and test-day execution.</p>
+        <h2 class="section-title">Every High-Yield Topic</h2>
+        <p class="section-subtitle">Click any topic to see what's covered. 90-120 minutes each.</p>
       </div>
       <div class="topics-grid">
-        <div class="topic-card featured"><div class="topic-badge">KEY</div><div class="topic-icon">🎯</div><div class="topic-name">Exam Strategy</div><div class="topic-duration">120 min</div></div>
-        <div class="topic-card"><div class="topic-icon">❤️</div><div class="topic-name">Cardiology</div><div class="topic-duration">90 min</div></div>
-        <div class="topic-card"><div class="topic-icon">🫁</div><div class="topic-name">Pulmonology</div><div class="topic-duration">90 min</div></div>
-        <div class="topic-card"><div class="topic-icon">🧠</div><div class="topic-name">Neurology</div><div class="topic-duration">120 min</div></div>
-        <div class="topic-card"><div class="topic-icon">🩸</div><div class="topic-name">Heme/Onc</div><div class="topic-duration">90 min</div></div>
-        <div class="topic-card"><div class="topic-icon">💊</div><div class="topic-name">Pharmacology</div><div class="topic-duration">120 min</div></div>
-        <div class="topic-card"><div class="topic-icon">🦠</div><div class="topic-name">Microbiology</div><div class="topic-duration">90 min</div></div>
-        <div class="topic-card"><div class="topic-icon">🔬</div><div class="topic-name">Pathology</div><div class="topic-duration">120 min</div></div>
-        <div class="topic-card"><div class="topic-icon">🧬</div><div class="topic-name">Biochemistry</div><div class="topic-duration">90 min</div></div>
-        <div class="topic-card"><div class="topic-icon">🛡️</div><div class="topic-name">Immunology</div><div class="topic-duration">90 min</div></div>
-        <div class="topic-card"><div class="topic-icon">🫀</div><div class="topic-name">GI / Hepatology</div><div class="topic-duration">90 min</div></div>
-        <div class="topic-card"><div class="topic-icon">💧</div><div class="topic-name">Nephrology/GU</div><div class="topic-duration">90 min</div></div>
-        <div class="topic-card"><div class="topic-icon">⚡</div><div class="topic-name">Endocrinology</div><div class="topic-duration">90 min</div></div>
-        <div class="topic-card"><div class="topic-icon">🦴</div><div class="topic-name">MSK / Rheum</div><div class="topic-duration">90 min</div></div>
-        <div class="topic-card"><div class="topic-icon">🧴</div><div class="topic-name">Dermatology</div><div class="topic-duration">60 min</div></div>
-        <div class="topic-card"><div class="topic-icon">👶</div><div class="topic-name">Pediatrics</div><div class="topic-duration">90 min</div></div>
-        <div class="topic-card"><div class="topic-icon">🧠</div><div class="topic-name">Psychiatry</div><div class="topic-duration">90 min</div></div>
-        <div class="topic-card"><div class="topic-icon">👁️</div><div class="topic-name">Ophthalmology</div><div class="topic-duration">60 min</div></div>
-        <div class="topic-card"><div class="topic-icon">👂</div><div class="topic-name">ENT</div><div class="topic-duration">60 min</div></div>
-        <div class="topic-card"><div class="topic-icon">📊</div><div class="topic-name">Biostatistics</div><div class="topic-duration">90 min</div></div>
-        <div class="topic-card"><div class="topic-icon">⚖️</div><div class="topic-name">Ethics / Legal</div><div class="topic-duration">60 min</div></div>
+        <div class="topic-card featured" data-topic="exam-strategy"><div class="topic-badge">KEY</div><div class="topic-icon">🎯</div><div class="topic-name">Exam Strategy</div><div class="topic-duration">120 min</div></div>
+        <div class="topic-card" data-topic="cardiology"><div class="topic-icon">❤️</div><div class="topic-name">Cardiology</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card" data-topic="pulmonology"><div class="topic-icon">🫁</div><div class="topic-name">Pulmonology</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card" data-topic="neurology"><div class="topic-icon">🧠</div><div class="topic-name">Neurology</div><div class="topic-duration">120 min</div></div>
+        <div class="topic-card" data-topic="hemeonc"><div class="topic-icon">🩸</div><div class="topic-name">Heme/Onc</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card" data-topic="pharmacology"><div class="topic-icon">💊</div><div class="topic-name">Pharmacology</div><div class="topic-duration">120 min</div></div>
+        <div class="topic-card" data-topic="microbiology"><div class="topic-icon">🦠</div><div class="topic-name">Microbiology</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card" data-topic="pathology"><div class="topic-icon">🔬</div><div class="topic-name">Pathology</div><div class="topic-duration">120 min</div></div>
+        <div class="topic-card" data-topic="biochemistry"><div class="topic-icon">🧬</div><div class="topic-name">Biochemistry</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card" data-topic="immunology"><div class="topic-icon">🛡️</div><div class="topic-name">Immunology</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card" data-topic="gi"><div class="topic-icon">🫀</div><div class="topic-name">GI / Hepatology</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card" data-topic="renal"><div class="topic-icon">💧</div><div class="topic-name">Nephrology/GU</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card" data-topic="endocrine"><div class="topic-icon">⚡</div><div class="topic-name">Endocrinology</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card" data-topic="msk"><div class="topic-icon">🦴</div><div class="topic-name">MSK / Rheum</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card" data-topic="derm"><div class="topic-icon">🧴</div><div class="topic-name">Dermatology</div><div class="topic-duration">60 min</div></div>
+        <div class="topic-card" data-topic="pediatrics"><div class="topic-icon">👶</div><div class="topic-name">Pediatrics</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card" data-topic="psychiatry"><div class="topic-icon">🧠</div><div class="topic-name">Psychiatry</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card" data-topic="ophthalmology"><div class="topic-icon">👁️</div><div class="topic-name">Ophthalmology</div><div class="topic-duration">60 min</div></div>
+        <div class="topic-card" data-topic="ent"><div class="topic-icon">👂</div><div class="topic-name">ENT</div><div class="topic-duration">60 min</div></div>
+        <div class="topic-card" data-topic="biostats"><div class="topic-icon">📊</div><div class="topic-name">Biostatistics</div><div class="topic-duration">90 min</div></div>
+        <div class="topic-card" data-topic="ethics"><div class="topic-icon">⚖️</div><div class="topic-name">Ethics / Legal</div><div class="topic-duration">60 min</div></div>
       </div>
     </div>
   </section>
@@ -386,17 +418,105 @@
     <div class="section-inner">
       <div class="section-header">
         <div class="section-label">The Structure</div>
-        <h2 class="section-title">How Each Bootcamp Works</h2>
-        <p class="section-subtitle">Our sessions use evidence-based learning techniques: pretesting, spaced retrieval, and active recall. Not because it sounds fancy, but because they actually work.</p>
+        <h2 class="section-title">How Each Session Works</h2>
+        <p class="section-subtitle">Built on evidence-based learning: pretesting, spaced retrieval, active recall. Sounds fancy, but it just means the structure actually helps you remember stuff.</p>
       </div>
       <div class="method-note">
-        <strong>Why this structure?</strong> Research shows testing yourself before learning (pretesting) improves retention by 20-40%, even when you get the answers wrong. We built our sessions around this.</div>
+        <strong>Why pretest?</strong> Research shows testing yourself before learning boosts retention by 20-40%, even when you get answers wrong. We built sessions around this.</div>
       <div class="steps">
-        <div class="step"><div class="step-number">1</div><h3 class="step-title">Pretest</h3><p class="step-desc">5 quick questions on today's topic. You'll get most wrong. That's the point.</p></div>
-        <div class="step"><div class="step-number">2</div><h3 class="step-title">Homework Review</h3><p class="step-desc">What tripped you up? Surface misconceptions early.</p></div>
-        <div class="step"><div class="step-number">3</div><h3 class="step-title">Content Block</h3><p class="step-desc">High-yield concepts in 15-min chunks with mini-quizzes between.</p></div>
-        <div class="step"><div class="step-number">4</div><h3 class="step-title">Group Practice</h3><p class="step-desc">Work through questions together. Discuss reasoning out loud.</p></div>
-        <div class="step"><div class="step-number">5</div><h3 class="step-title">Takeaways</h3><p class="step-desc">You state your #1 takeaway and #1 confusion. We clarify.</p></div>
+        <div class="step"><div class="step-number">1</div><h3 class="step-title">Pretest</h3><p class="step-desc">5 quick questions. You'll get most wrong. That's the point.</p></div>
+        <div class="step"><div class="step-number">2</div><h3 class="step-title">Homework Review</h3><p class="step-desc">What tripped you up? Surface gaps early.</p></div>
+        <div class="step"><div class="step-number">3</div><h3 class="step-title">Content Blocks</h3><p class="step-desc">High-yield concepts in 15-min chunks with quizzes between.</p></div>
+        <div class="step"><div class="step-number">4</div><h3 class="step-title">Group Practice</h3><p class="step-desc">Questions together. Discuss reasoning out loud.</p></div>
+        <div class="step"><div class="step-number">5</div><h3 class="step-title">Takeaways</h3><p class="step-desc">You state your #1 takeaway. We clarify confusion.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonials">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">Results</div>
+        <h2 class="section-title">What Students Say</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-score">+31 points</div>
+          <p class="testimonial-text">Went from 214 on my practice exam to 245 on the real thing. The small group format forced me to actually engage instead of zoning out. The exam strategy session alone was worth it.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">NL</div>
+            <div class="testimonial-info">
+              <div class="testimonial-name">Nathan Lu</div>
+              <div class="testimonial-school">Harvard Medical School</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-score">+27 points</div>
+          <p class="testimonial-text">I was stuck in the 220s for months. The weekly accountability and having to explain concepts to others made a huge difference. Ended up with a 251.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">ZD</div>
+            <div class="testimonial-info">
+              <div class="testimonial-name">Zachary Denton</div>
+              <div class="testimonial-school">University of Florida COM</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-score">+24 points</div>
+          <p class="testimonial-text">The question approach stuff clicked for me. I stopped second-guessing myself and started finishing blocks with time to spare. 218 to 242.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">GM</div>
+            <div class="testimonial-info">
+              <div class="testimonial-name">Gabriela Martinez</div>
+              <div class="testimonial-school">Johns Hopkins SOM</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-score">+29 points</div>
+          <p class="testimonial-text">Was honestly skeptical at first but the structured homework kept me on track. Having peers who actually showed up prepared made all the difference. 223 to 252.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">EJ</div>
+            <div class="testimonial-info">
+              <div class="testimonial-name">Elizabeth Joslin</div>
+              <div class="testimonial-school">University of Iowa Carver COM</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-score">+33 points</div>
+          <p class="testimonial-text">As an IMG, I needed structure and accountability. The time zone flexibility helped, and the exam strategy bootcamp changed how I approach questions. 212 to 245.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">TP</div>
+            <div class="testimonial-info">
+              <div class="testimonial-name">Tarun Prajeet</div>
+              <div class="testimonial-school">Grant Medical College, Mumbai</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-score">+22 points</div>
+          <p class="testimonial-text">The pretesting thing sounded weird but it actually works. Made me pay attention during the content instead of just nodding along. 231 to 253.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SW</div>
+            <div class="testimonial-info">
+              <div class="testimonial-name">Sofia Williams</div>
+              <div class="testimonial-school">University of Oxford Medical Sciences</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-score">+26 points</div>
+          <p class="testimonial-text">Best investment I made for Step 2. The small groups meant I couldn't hide. Had to actually understand the material to explain it. 227 to 253.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">XY</div>
+            <div class="testimonial-info">
+              <div class="testimonial-name">Xi Yuan</div>
+              <div class="testimonial-school">University of Toronto MD Program</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -404,9 +524,9 @@
   <section class="pricing" id="pricing">
     <div class="section-inner">
       <div class="section-header">
-        <div class="section-label">Simple Pricing</div>
-        <h2 class="section-title">Invest in Your Score</h2>
-        <p class="section-subtitle">Pay per topic or save with bundles. No hidden fees.</p>
+        <div class="section-label">Pricing</div>
+        <h2 class="section-title">Simple, No BS</h2>
+        <p class="section-subtitle">Pay per topic or save with bundles.</p>
       </div>
       <div class="pricing-grid">
         <div class="pricing-card">
@@ -418,7 +538,7 @@
             <li>One 90-120 min live session</li>
             <li>Small group (3-5 students)</li>
             <li>Homework and accountability</li>
-            <li>High-yield notes access</li>
+            <li>High-yield notes</li>
           </ul>
           <a href="#contact" class="cta-button secondary">Get Started</a>
         </div>
@@ -426,26 +546,26 @@
           <h3 class="pricing-name">Full Bundle</h3>
           <p class="pricing-desc">All 21 topics</p>
           <div class="pricing-price">$449 <span>$609</span></div>
-          <div class="pricing-per">26% savings + pass guarantee</div>
+          <div class="pricing-per">26% off + pass guarantee</div>
           <ul class="pricing-features">
-            <li>All 21 topic bootcamps</li>
-            <li>Includes Exam Strategy session</li>
+            <li>All 21 bootcamps</li>
+            <li>Exam Strategy session included</li>
             <li>Small group (3-5 students)</li>
-            <li>Full homework and accountability</li>
-            <li>Pass guarantee included</li>
+            <li>Full homework program</li>
+            <li>Pass guarantee</li>
           </ul>
           <a href="#contact" class="cta-button">Get Full Access</a>
         </div>
         <div class="pricing-card">
           <h3 class="pricing-name">10-Topic Pack</h3>
-          <p class="pricing-desc">Choose your topics</p>
+          <p class="pricing-desc">Pick your topics</p>
           <div class="pricing-price">$249</div>
           <div class="pricing-per">$24.90 per topic</div>
           <ul class="pricing-features">
             <li>Any 10 bootcamps</li>
             <li>Small group (3-5 students)</li>
             <li>Homework and accountability</li>
-            <li>High-yield notes access</li>
+            <li>High-yield notes</li>
           </ul>
           <a href="#contact" class="cta-button secondary">Get Started</a>
         </div>
@@ -453,30 +573,25 @@
     </div>
   </section>
 
-  <section class="philosophy" id="philosophy">
+  <section class="founder" id="founder">
     <div class="section-inner">
       <div class="section-header">
-        <div class="section-label">Our Approach</div>
-        <h2 class="section-title">The Philosophy Behind USMLE300</h2>
+        <div class="section-label">About</div>
+        <h2 class="section-title">The Founder</h2>
       </div>
-      <div class="philosophy-content">
-        <div class="philosophy-text">
-          <p>There's already plenty of excellent write-ups for Step 2, some from people with much higher scores than ours. We're not here to reinvent content.</p>
-          
-          <p>Here's what we actually believe: resources are overrated. Everyone's looking for some magical study guide, the "secret sauce" for a 260+. The truth is, most of you already have the knowledge base you need. What separates higher scores isn't some obscure book. It's your exam-taking skills and your overall approach.</p>
-          
-          <div class="philosophy-highlight">
-            <p>For a 250+, you don't need more resources. You need strong conceptual frameworks for the 20-30 heavily tested concepts within each topic, and you need to train your approach to questions.</p>
-          </div>
-          
-          <p>During dedicated, it's about volume. hundreds of questions a day is a grind, but it builds something you can't get any other way: exam stamina. On test day, you'll see things you've never seen before. Experimental questions, random vignettes that make you feel like you're taking the wrong exam. If you've built the skill of quickly assessing a question, flagging it, and moving on, these curveballs won't sink you.</p>
-          
-          <p>Our strength isn't knowing content cold. It's dissecting the exam itself. We've spent time comparing different question approaches across multiple blocks to see what actually works under pressure. That's what we teach: not just content review, but attacking the questions.</p>
+      <div class="founder-content">
+        <div class="founder-image">
+          <img src="images/instructor.jpg" alt="USMLE300 Founder">
+          <div class="score-badge"><div class="score">267</div><div class="label">Step 2 CK</div></div>
         </div>
-        <div class="philosophy-stats">
-          <div class="philosophy-stat"><div class="num">265+</div><div class="label">All Instructor Scores</div></div>
-          <div class="philosophy-stat"><div class="num">97%</div><div class="label">Student Pass Rate</div></div>
-          <div class="philosophy-stat"><div class="num">21</div><div class="label">Topic Bootcamps</div></div>
+        <div class="founder-info">
+          <h3>Built what I wish existed</h3>
+          <p class="founder-title">Step 2 CK: 267 | All instructors 265+</p>
+          <p class="founder-bio">There's already plenty of great write-ups from people with higher scores than mine. I'm not here to reinvent content. What I got interested in during my dedicated period was exam strategy, optimizing the approach to questions, figuring out what actually moves the needle.</p>
+          <div class="founder-philosophy">
+            <p>Resources are overrated. Most people already have the knowledge. What separates higher scores is exam-taking skill and a consistent approach. Volume builds stamina. On test day, you'll see stuff you've never seen. If you've trained to assess quickly, flag, and move on, those curveballs won't sink you.</p>
+          </div>
+          <p class="founder-bio">My strength isn't knowing content cold. It's dissecting the exam itself. I've spent time comparing different question approaches across hundreds of questions to see what works under pressure. That's what we teach here.</p>
         </div>
       </div>
     </div>
@@ -486,15 +601,15 @@
     <div class="section-inner">
       <div class="section-header">
         <div class="section-label">FAQ</div>
-        <h2 class="section-title">Common Questions</h2>
+        <h2 class="section-title">Questions</h2>
       </div>
       <div class="faq-grid">
-        <div class="faq-item"><button class="faq-question"><span>How do the live sessions work?</span><span class="icon">+</span></button><div class="faq-answer"><p>Sessions are on Zoom with 3-5 students. You get a link after booking. Each bootcamp is 90-120 minutes and follows our structured format: pretest, homework review, content blocks with mini-quizzes, group practice, and takeaways.</p></div></div>
-        <div class="faq-item"><button class="faq-question"><span>What if I can't make a scheduled session?</span><span class="icon">+</span></button><div class="faq-answer"><p>You can reschedule up to 24 hours before at no charge. We run multiple time slots for each topic to accommodate different time zones.</p></div></div>
-        <div class="faq-item"><button class="faq-question"><span>What's in the Exam Strategy bootcamp?</span><span class="icon">+</span></button><div class="faq-answer"><p>Question approach (we've tested multiple methods across hundreds of questions), time management, how to handle questions you've never seen, common traps and how to avoid them, and mental strategies for test day. Included free with the full bundle.</p></div></div>
-        <div class="faq-item"><button class="faq-question"><span>Is this for Step 1 or Step 2?</span><span class="icon">+</span></button><div class="faq-answer"><p>Both. The topics are high-yield for both exams. When you book, you indicate which exam you're prepping for, and we group you with students at the same stage.</p></div></div>
-        <div class="faq-item"><button class="faq-question"><span>How does the pass guarantee work?</span><span class="icon">+</span></button><div class="faq-answer"><p>Complete the full bootcamp series, attend every session, do all the homework. If you don't pass, we continue working with you at no extra cost until you do.</p></div></div>
-        <div class="faq-item"><button class="faq-question"><span>What's your refund policy?</span><span class="icon">+</span></button><div class="faq-answer"><p>Full refund if requested before your first session. After attending, no refunds, but you can transfer remaining sessions to a friend.</p></div></div>
+        <div class="faq-item"><button class="faq-question"><span>How do sessions work?</span><span class="icon">+</span></button><div class="faq-answer"><p>Zoom, 3-5 students. You get a link after booking. 90-120 minutes: pretest, homework review, content blocks with quizzes, group practice, takeaways.</p></div></div>
+        <div class="faq-item"><button class="faq-question"><span>What if I can't make a session?</span><span class="icon">+</span></button><div class="faq-answer"><p>Reschedule up to 24 hours before, no charge. Multiple time slots for each topic.</p></div></div>
+        <div class="faq-item"><button class="faq-question"><span>What's in Exam Strategy?</span><span class="icon">+</span></button><div class="faq-answer"><p>Question approach (we've tested multiple methods), timing, handling questions you've never seen, common traps, test day mental game. Free with full bundle.</p></div></div>
+        <div class="faq-item"><button class="faq-question"><span>Step 1 or Step 2?</span><span class="icon">+</span></button><div class="faq-answer"><p>Both. Topics are high-yield for both. You indicate which exam when booking and get grouped accordingly.</p></div></div>
+        <div class="faq-item"><button class="faq-question"><span>How does the pass guarantee work?</span><span class="icon">+</span></button><div class="faq-answer"><p>Complete all bootcamps, attend every session, do all homework. If you don't pass, we keep working with you at no extra cost.</p></div></div>
+        <div class="faq-item"><button class="faq-question"><span>Refund policy?</span><span class="icon">+</span></button><div class="faq-answer"><p>Full refund before your first session. After that, no refunds but you can transfer to a friend.</p></div></div>
       </div>
     </div>
   </section>
@@ -502,9 +617,9 @@
   <section class="cta-section" id="contact">
     <div class="section-inner">
       <div class="cta-box">
-        <h2>Ready to Study Smarter?</h2>
-        <p>Book a free 15-minute call. We'll review your timeline, identify weak areas, and tell you honestly if our bootcamps are the right fit.</p>
-        <a href="https://calendly.com/usmle300" class="cta-button" target="_blank">Book Free Strategy Call</a>
+        <h2>Ready?</h2>
+        <p>Free 15-minute call. We'll look at your timeline, find weak spots, and tell you if this is actually the right fit.</p>
+        <a href="https://calendly.com/usmle300" class="cta-button" target="_blank">Book Free Call</a>
       </div>
     </div>
   </section>
@@ -512,7 +627,7 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-top">
-        <div class="footer-brand"><div class="logo-text">USMLE300</div><p>Small-group USMLE bootcamps. 97% pass rate.</p></div>
+        <div class="footer-brand"><div class="logo-text">USMLE300</div><p>Small-group bootcamps. 97% pass rate.</p></div>
         <div class="footer-links">
           <div class="footer-column"><h4>Product</h4><a href="#how-it-works">How It Works</a><a href="#topics">Topics</a><a href="#pricing">Pricing</a></div>
           <div class="footer-column"><h4>Support</h4><a href="#faq">FAQ</a><a href="mailto:support@usmle300.com">Contact</a></div>
@@ -526,24 +641,81 @@
     <div class="modal">
       <button class="modal-close">×</button>
       <h3>Get in Touch</h3>
-      <p>Reach out to book your bootcamp or ask questions.</p>
+      <p>Book a bootcamp or ask questions.</p>
       <div class="contact-methods">
         <a href="mailto:support@usmle300.com" class="contact-method"><div class="icon">✉️</div><div><strong>Email</strong><span>support@usmle300.com</span></div></a>
-        <a href="https://calendly.com/usmle300" target="_blank" class="contact-method"><div class="icon">📅</div><div><strong>Book a Call</strong><span>Free 15-min strategy session</span></div></a>
+        <a href="https://calendly.com/usmle300" target="_blank" class="contact-method"><div class="icon">📅</div><div><strong>Book a Call</strong><span>Free 15-min session</span></div></a>
       </div>
     </div>
   </div>
 
+  <div class="topic-modal-overlay" id="topicModal">
+    <div class="topic-modal">
+      <button class="topic-modal-close">×</button>
+      <div class="topic-modal-icon" id="topicModalIcon">❤️</div>
+      <h3 id="topicModalTitle">Cardiology</h3>
+      <div class="topic-modal-duration" id="topicModalDuration">90 minutes</div>
+      <div class="topic-modal-section">
+        <h4>What's Covered</h4>
+        <ul class="topic-modal-list" id="topicModalContent"></ul>
+      </div>
+      <a href="#contact" class="cta-button">Book This Bootcamp</a>
+    </div>
+  </div>
+
   <script>
+    const topicData={
+      'exam-strategy':{icon:'🎯',title:'Exam Strategy',duration:'120 minutes',content:['Question approach frameworks (tested across 500+ questions)','Reading the stem: when to skim vs. read carefully','Answer elimination techniques','Time management and pacing','Handling questions you\'ve never seen','Common trap patterns and how to avoid them','Flagging strategy','Test day mental game','Building exam stamina']},
+      'cardiology':{icon:'❤️',title:'Cardiology',duration:'90 minutes',content:['Heart failure (systolic vs diastolic, management)','Valvular diseases (AR, AS, MR, MS, murmur characteristics)','Arrhythmias (AFib, AFlutter, VT, heart blocks)','Acute coronary syndrome workup','Hypertension management guidelines','Cardiomyopathies (HCM, dilated, restrictive)','Pericardial diseases','Congenital heart defects (high-yield for Step 1)','ECG interpretation pearls']},
+      'pulmonology':{icon:'🫁',title:'Pulmonology',duration:'90 minutes',content:['Obstructive vs restrictive patterns (PFTs)','Asthma vs COPD management','Pneumonia (CAP, HAP, aspiration)','Pulmonary embolism workup','Interstitial lung diseases','Lung cancer staging and treatment','Pleural effusions (transudative vs exudative)','ARDS and ventilator management','TB diagnosis and treatment']},
+      'neurology':{icon:'🧠',title:'Neurology',duration:'120 minutes',content:['Stroke (ischemic vs hemorrhagic, management windows)','Seizure types and anti-epileptics','Headache differentials (migraine, cluster, tension)','Multiple sclerosis','Parkinson\'s disease','Dementia workup','Peripheral neuropathies','Myasthenia gravis vs Lambert-Eaton','Spinal cord lesions (localization)','Meningitis/encephalitis']},
+      'hemeonc':{icon:'🩸',title:'Heme/Onc',duration:'90 minutes',content:['Anemias (iron deficiency, B12, folate, hemolytic)','Coagulation disorders (DIC, TTP, HUS, ITP)','Leukemias (ALL, AML, CLL, CML)','Lymphomas (Hodgkin vs non-Hodgkin)','Multiple myeloma','Bleeding disorders','Anticoagulation management','Transfusion reactions','Tumor lysis syndrome']},
+      'pharmacology':{icon:'💊',title:'Pharmacology',duration:'120 minutes',content:['Autonomic pharmacology','Cardiovascular drugs','Antimicrobials (mechanisms and coverage)','CNS drugs','Endocrine pharmacology','Anti-inflammatories','Chemotherapy agents (mechanisms, toxicities)','Drug interactions','Toxicology and antidotes','Pharmacokinetics principles']},
+      'microbiology':{icon:'🦠',title:'Microbiology',duration:'90 minutes',content:['Gram positive organisms','Gram negative organisms','Atypical bacteria','Viral pathogens','Fungal infections','Parasites','HIV/AIDS','Opportunistic infections','Antibiotic resistance','Vaccines']},
+      'pathology':{icon:'🔬',title:'Pathology',duration:'120 minutes',content:['Cell injury and death','Inflammation (acute vs chronic)','Hemodynamic disorders','Neoplasia principles','Genetic disorders','Immunopathology','Environmental pathology','Nutritional pathology','Lab value interpretation']},
+      'biochemistry':{icon:'🧬',title:'Biochemistry',duration:'90 minutes',content:['Glycolysis and gluconeogenesis','TCA cycle and oxidative phosphorylation','Amino acid metabolism','Lipid metabolism','Purine and pyrimidine metabolism','Glycogen storage diseases','Lysosomal storage diseases','Vitamins and cofactors','DNA/RNA/protein synthesis']},
+      'immunology':{icon:'🛡️',title:'Immunology',duration:'90 minutes',content:['Innate vs adaptive immunity','T cell and B cell development','Immunoglobulins','Complement system','Hypersensitivity reactions (Types I-IV)','Autoimmune diseases','Immunodeficiencies','Transplant rejection','Tumor immunology']},
+      'gi':{icon:'🫀',title:'GI / Hepatology',duration:'90 minutes',content:['GERD and PUD','IBD (Crohn\'s vs UC)','GI bleeding workup','Liver cirrhosis and complications','Hepatitis (viral, autoimmune, alcoholic)','Pancreatitis','Biliary disease','GI malignancies','Malabsorption syndromes']},
+      'renal':{icon:'💧',title:'Nephrology/GU',duration:'90 minutes',content:['Acute kidney injury','Chronic kidney disease','Glomerulonephritides','Acid-base disorders','Electrolyte abnormalities','Nephrolithiasis','UTIs','Renal tubular acidoses','Dialysis indications']},
+      'endocrine':{icon:'⚡',title:'Endocrinology',duration:'90 minutes',content:['Diabetes management','Thyroid disorders (hyper/hypothyroid)','Adrenal disorders (Cushing\'s, Addison\'s)','Pituitary disorders','Calcium disorders','PCOS','Metabolic syndrome','Pheochromocytoma','MEN syndromes']},
+      'msk':{icon:'🦴',title:'MSK / Rheum',duration:'90 minutes',content:['Rheumatoid arthritis','Osteoarthritis','Gout and pseudogout','Lupus (SLE)','Scleroderma','Vasculitides','Spondyloarthropathies','Bone tumors','Fracture management','Back pain differentials']},
+      'derm':{icon:'🧴',title:'Dermatology',duration:'60 minutes',content:['Skin cancer (melanoma, BCC, SCC)','Psoriasis','Eczema/dermatitis','Bacterial skin infections','Viral exanthems','Fungal infections','Drug eruptions','Bullous diseases','Acne']},
+      'pediatrics':{icon:'👶',title:'Pediatrics',duration:'90 minutes',content:['Well-child visits and milestones','Vaccinations','Common pediatric infections','Congenital heart defects','Pediatric emergencies','Growth and development','Child abuse recognition','Genetic syndromes','Neonatal conditions']},
+      'psychiatry':{icon:'🧠',title:'Psychiatry',duration:'90 minutes',content:['Depression and bipolar disorder','Anxiety disorders','Psychotic disorders','Personality disorders','Substance use disorders','Eating disorders','Child psychiatry','Psychopharmacology','Suicide risk assessment','Capacity and competency']},
+      'ophthalmology':{icon:'👁️',title:'Ophthalmology',duration:'60 minutes',content:['Red eye differentials','Glaucoma','Macular degeneration','Diabetic retinopathy','Cataracts','Retinal detachment','Optic neuritis','Pupil abnormalities']},
+      'ent':{icon:'👂',title:'ENT',duration:'60 minutes',content:['Otitis media and externa','Sinusitis','Pharyngitis','Hearing loss','Vertigo','Epistaxis','Head and neck cancers','Salivary gland disorders']},
+      'biostats':{icon:'📊',title:'Biostatistics',duration:'90 minutes',content:['Sensitivity and specificity','PPV and NPV','Study designs','Bias types','Statistical tests','Confidence intervals','Number needed to treat','Relative risk vs odds ratio','Survival analysis','Evidence-based medicine']},
+      'ethics':{icon:'⚖️',title:'Ethics / Legal',duration:'60 minutes',content:['Informed consent','Capacity assessment','Advance directives','Confidentiality and exceptions','End-of-life decisions','Medical errors disclosure','Minors and consent','Reporting requirements','Research ethics','Physician impairment']}
+    };
+    
     window.addEventListener('scroll',()=>{document.querySelector('header').classList.toggle('scrolled',window.scrollY>50)});
     const menuBtn=document.querySelector('.mobile-menu-btn'),mobileNav=document.querySelector('.mobile-nav');
     menuBtn.addEventListener('click',()=>{menuBtn.classList.toggle('active');mobileNav.classList.toggle('active');document.body.classList.toggle('menu-open')});
     document.querySelectorAll('.mobile-nav a').forEach(a=>a.addEventListener('click',()=>{menuBtn.classList.remove('active');mobileNav.classList.remove('active');document.body.classList.remove('menu-open')}));
     document.querySelectorAll('.faq-question').forEach(b=>b.addEventListener('click',()=>{const i=b.parentElement,a=i.classList.contains('active');document.querySelectorAll('.faq-item').forEach(x=>x.classList.remove('active'));if(!a)i.classList.add('active')}));
-    const modal=document.getElementById('contactModal');
-    document.querySelectorAll('a[href="#contact"]').forEach(l=>l.addEventListener('click',e=>{e.preventDefault();modal.classList.add('active');document.body.classList.add('menu-open')}));
-    modal.addEventListener('click',e=>{if(e.target===modal||e.target.classList.contains('modal-close')){modal.classList.remove('active');document.body.classList.remove('menu-open')}});
-    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){const h=this.getAttribute('href');if(h!=='#contact'&&h!=='#'){e.preventDefault();const t=document.querySelector(h);if(t)t.scrollIntoView({behavior:'smooth'})}}));
+    
+    const contactModal=document.getElementById('contactModal');
+    document.querySelectorAll('a[href="#contact"]').forEach(l=>l.addEventListener('click',e=>{e.preventDefault();contactModal.classList.add('active');document.body.classList.add('menu-open')}));
+    contactModal.addEventListener('click',e=>{if(e.target===contactModal||e.target.classList.contains('modal-close')){contactModal.classList.remove('active');document.body.classList.remove('menu-open')}});
+    
+    const topicModal=document.getElementById('topicModal');
+    document.querySelectorAll('.topic-card').forEach(card=>{
+      card.addEventListener('click',()=>{
+        const topic=card.dataset.topic;
+        const data=topicData[topic];
+        if(data){
+          document.getElementById('topicModalIcon').textContent=data.icon;
+          document.getElementById('topicModalTitle').textContent=data.title;
+          document.getElementById('topicModalDuration').textContent=data.duration;
+          document.getElementById('topicModalContent').innerHTML=data.content.map(item=>'<li>'+item+'</li>').join('');
+          topicModal.classList.add('active');
+          document.body.classList.add('menu-open');
+        }
+      });
+    });
+    topicModal.addEventListener('click',e=>{if(e.target===topicModal||e.target.classList.contains('topic-modal-close')){topicModal.classList.remove('active');document.body.classList.remove('menu-open')}});
+    
+    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){const h=this.getAttribute('href');if(h!=='#contact'&&h!=='#'){e.preventDefault();topicModal.classList.remove('active');contactModal.classList.remove('active');document.body.classList.remove('menu-open');const t=document.querySelector(h);if(t)t.scrollIntoView({behavior:'smooth'})}}));
   </script>
 </body>
 </html>
