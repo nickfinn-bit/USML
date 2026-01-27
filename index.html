@@ -132,24 +132,12 @@
     .how-it-works{background:white}
     .method-note{text-align:center;max-width:700px;margin:0 auto 2.5rem;padding:1.25rem;background:var(--cream);border-radius:12px;font-size:0.95rem;color:var(--charcoal-light)}
     .method-note strong{color:var(--burgundy)}
-    .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
     .step{text-align:center;position:relative}
-    .step:not(:last-child)::after{content:'→';position:absolute;right:-0.75rem;top:1.75rem;color:var(--burgundy);font-size:1rem;opacity:0.3}
-    .step-number{width:44px;height:44px;background:var(--burgundy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;margin:0 auto 1rem}
-    .step-title{font-family:'Fraunces',serif;font-size:1rem;color:var(--charcoal);margin-bottom:0.4rem}
+    .step:not(:last-child)::after{content:'→';position:absolute;right:-1rem;top:1.5rem;color:var(--burgundy);font-size:1.25rem;opacity:0.3}
+    .step-number{width:48px;height:48px;background:var(--burgundy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:1.15rem;font-weight:700;margin:0 auto 1rem}
+    .step-title{font-family:'Fraunces',serif;font-size:1.05rem;color:var(--charcoal);margin-bottom:0.4rem}
     .step-desc{font-size:0.85rem;color:var(--charcoal-light)}
-    
-    .testimonials{background:var(--cream-dark)}
-    .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-    .testimonial-card{background:white;padding:1.75rem;border-radius:16px;position:relative}
-    .testimonial-card::before{content:'"';position:absolute;top:1rem;right:1.5rem;font-family:'Fraunces',serif;font-size:4rem;color:var(--burgundy);opacity:0.1;line-height:1}
-    .testimonial-text{font-size:0.95rem;color:var(--charcoal-light);margin-bottom:1.25rem;line-height:1.7}
-    .testimonial-score{display:inline-block;background:rgba(46,125,74,0.1);color:var(--success);font-weight:700;font-size:0.85rem;padding:0.25rem 0.75rem;border-radius:50px;margin-bottom:1rem}
-    .testimonial-author{display:flex;align-items:center;gap:0.75rem}
-    .testimonial-avatar{width:44px;height:44px;background:var(--burgundy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.9rem}
-    .testimonial-info{font-size:0.9rem}
-    .testimonial-name{font-weight:600;color:var(--charcoal)}
-    .testimonial-school{color:var(--charcoal-light);font-size:0.85rem}
     
     .pricing{background:linear-gradient(135deg,var(--burgundy) 0%,var(--burgundy-dark) 100%);color:white}
     .pricing .section-label{color:rgba(255,255,255,0.7)}
@@ -210,7 +198,7 @@
     .footer-column a:hover{color:white}
     .footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:0.85rem;color:rgba(255,255,255,0.5);flex-wrap:wrap;gap:1rem}
     
-    .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:2000;opacity:0;visibility:hidden;transition:all 0.3s;padding:1rem}
+    .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:2001;opacity:0;visibility:hidden;transition:all 0.3s;padding:1rem}
     .modal-overlay.active{opacity:1;visibility:visible}
     .modal{background:white;border-radius:16px;padding:2rem;max-width:450px;width:100%;max-height:90vh;overflow-y:auto;transform:translateY(20px);transition:transform 0.3s;position:relative}
     .modal-overlay.active .modal{transform:translateY(0)}
@@ -232,9 +220,8 @@
       .hero-stats{justify-content:center}
       .comparison-grid{grid-template-columns:1fr}
       .topics-grid{grid-template-columns:repeat(3,1fr)}
-      .steps{grid-template-columns:repeat(3,1fr)}
+      .steps{grid-template-columns:repeat(2,1fr)}
       .step:not(:last-child)::after{display:none}
-      .testimonials-grid{grid-template-columns:1fr}
       .pricing-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto}
       .pricing-card.featured{transform:none;order:-1}
       .founder-content{grid-template-columns:1fr;text-align:center}
@@ -432,94 +419,6 @@
     </div>
   </section>
 
-  <section class="testimonials" id="testimonials">
-    <div class="section-inner">
-      <div class="section-header">
-        <div class="section-label">Results</div>
-        <h2 class="section-title">What Students Say</h2>
-      </div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="testimonial-score">+31 points</div>
-          <p class="testimonial-text">Went from 214 on my practice exam to 245 on the real thing. The small group format forced me to actually engage instead of zoning out. The exam strategy session alone was worth it.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">NL</div>
-            <div class="testimonial-info">
-              <div class="testimonial-name">Nathan Lu</div>
-              <div class="testimonial-school">Harvard Medical School</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-score">+27 points</div>
-          <p class="testimonial-text">I was stuck in the 220s for months. The weekly accountability and having to explain concepts to others made a huge difference. Ended up with a 251.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">ZD</div>
-            <div class="testimonial-info">
-              <div class="testimonial-name">Zachary Denton</div>
-              <div class="testimonial-school">University of Florida COM</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-score">+24 points</div>
-          <p class="testimonial-text">The question approach stuff clicked for me. I stopped second-guessing myself and started finishing blocks with time to spare. 218 to 242.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">GM</div>
-            <div class="testimonial-info">
-              <div class="testimonial-name">Gabriela Martinez</div>
-              <div class="testimonial-school">Johns Hopkins SOM</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-score">+29 points</div>
-          <p class="testimonial-text">Was honestly skeptical at first but the structured homework kept me on track. Having peers who actually showed up prepared made all the difference. 223 to 252.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">EJ</div>
-            <div class="testimonial-info">
-              <div class="testimonial-name">Elizabeth Joslin</div>
-              <div class="testimonial-school">University of Iowa Carver COM</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-score">+33 points</div>
-          <p class="testimonial-text">As an IMG, I needed structure and accountability. The time zone flexibility helped, and the exam strategy bootcamp changed how I approach questions. 212 to 245.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">TP</div>
-            <div class="testimonial-info">
-              <div class="testimonial-name">Tarun Singh</div>
-              <div class="testimonial-school">Grant Medical College, Mumbai</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-score">+22 points</div>
-          <p class="testimonial-text">The pretesting thing sounded weird but it actually works. Made me pay attention during the content instead of just nodding along. 231 to 253.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">SW</div>
-            <div class="testimonial-info">
-              <div class="testimonial-name">Sofia Williams</div>
-              <div class="testimonial-school">University of Oxford Medical Sciences</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-score">+26 points</div>
-          <p class="testimonial-text">Best investment I made for Step 2. The small groups meant I couldn't hide. Had to actually understand the material to explain it. 227 to 253.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">XY</div>
-            <div class="testimonial-info">
-              <div class="testimonial-name">Xi Yuan</div>
-              <div class="testimonial-school">University of Toronto MD Program</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="pricing" id="pricing">
     <div class="section-inner">
       <div class="section-header">
@@ -603,7 +502,7 @@
         <h2 class="section-title">Questions</h2>
       </div>
       <div class="faq-grid">
-        <div class="faq-item"><button class="faq-question"><span>How do sessions work?</span><span class="icon">+</span></button><div class="faq-answer"><p>Zoom, 3-5 students. You get a link after booking. 90-120 minutes: pretest, homework review, content blocks with quizzes, group practice, takeaways.</p></div></div>
+        <div class="faq-item"><button class="faq-question"><span>How do sessions work?</span><span class="icon">+</span></button><div class="faq-answer"><p>Zoom, 3-5 students. You get a link after booking. 90-120 minutes: pretest, homework review, content blocks with quizzes, group practice.</p></div></div>
         <div class="faq-item"><button class="faq-question"><span>What if I can't make a session?</span><span class="icon">+</span></button><div class="faq-answer"><p>Reschedule up to 24 hours before, no charge. Multiple time slots for each topic.</p></div></div>
         <div class="faq-item"><button class="faq-question"><span>What's in Exam Strategy?</span><span class="icon">+</span></button><div class="faq-answer"><p>Question approach (we've tested multiple methods), timing, handling questions you've never seen, common traps, test day mental game. Free with full bundle.</p></div></div>
         <div class="faq-item"><button class="faq-question"><span>Step 1 or Step 2?</span><span class="icon">+</span></button><div class="faq-answer"><p>Both. Topics are high-yield for both. You indicate which exam when booking and get grouped accordingly.</p></div></div>
@@ -658,7 +557,7 @@
         <h4>What's Covered</h4>
         <ul class="topic-modal-list" id="topicModalContent"></ul>
       </div>
-      <a href="#contact" class="cta-button">Book This Bootcamp</a>
+      <a href="#contact" class="cta-button topic-book-btn">Book This Bootcamp</a>
     </div>
   </div>
 
@@ -694,10 +593,20 @@
     document.querySelectorAll('.faq-question').forEach(b=>b.addEventListener('click',()=>{const i=b.parentElement,a=i.classList.contains('active');document.querySelectorAll('.faq-item').forEach(x=>x.classList.remove('active'));if(!a)i.classList.add('active')}));
     
     const contactModal=document.getElementById('contactModal');
-    document.querySelectorAll('a[href="#contact"]').forEach(l=>l.addEventListener('click',e=>{e.preventDefault();contactModal.classList.add('active');document.body.classList.add('menu-open')}));
+    const topicModal=document.getElementById('topicModal');
+    
+    function openContactModal(e){
+      if(e)e.preventDefault();
+      topicModal.classList.remove('active');
+      contactModal.classList.add('active');
+      document.body.classList.add('menu-open');
+    }
+    
+    document.querySelectorAll('a[href="#contact"]:not(.topic-book-btn)').forEach(l=>l.addEventListener('click',openContactModal));
+    document.querySelector('.topic-book-btn').addEventListener('click',openContactModal);
+    
     contactModal.addEventListener('click',e=>{if(e.target===contactModal||e.target.classList.contains('modal-close')){contactModal.classList.remove('active');document.body.classList.remove('menu-open')}});
     
-    const topicModal=document.getElementById('topicModal');
     document.querySelectorAll('.topic-card').forEach(card=>{
       card.addEventListener('click',()=>{
         const topic=card.dataset.topic;
