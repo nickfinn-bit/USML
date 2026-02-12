@@ -2,130 +2,130 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>USMLE300 | Strategy Lab</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <title>UWorld Style Diagnostic Tool</title>
     <style>
-        :root { --burgundy: #722F37; --nbme-blue: #003366; --nbme-gray: #e5e7eb; }
-        body { font-family: 'DM Sans', sans-serif; background-color: #f3f4f6; }
-        .exam-header { background-color: var(--nbme-blue); color: white; padding: 10px 20px; font-weight: bold; font-size: 0.9rem; }
-        .vignette-box { font-family: 'Times New Roman', serif; font-size: 1.2rem; line-height: 1.6; color: #333; }
-        .option-btn { border: 1px solid #ccc; text-align: left; padding: 12px; width: 100%; margin-bottom: 8px; border-radius: 4px; transition: 0.2s; background: white; }
-        .option-btn:hover { background-color: #f0f7ff; border-color: var(--nbme-blue); }
-        .blur-mode { filter: blur(8px); cursor: pointer; transition: filter 0.3s; }
-        .unblur { filter: blur(0); }
-        .hidden { display: none; }
+        :root { --nbme-blue: #003366; --uworld-blue: #007bff; --text-gray: #333; --correct-green: #28a745; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; margin: 0; display: flex; flex-direction: column; height: 100vh; }
+        #header { background: var(--nbme-blue); color: white; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; }
+        #timer { font-family: monospace; font-size: 1.4em; background: rgba(0,0,0,0.3); padding: 5px 15px; border-radius: 4px; }
+        #main-container { flex: 1; display: flex; justify-content: center; overflow-y: auto; padding: 20px; }
+        .question-card { background: white; width: 100%; max-width: 950px; padding: 40px; border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-top: 4px solid var(--uworld-blue); }
+        .vignette { line-height: 1.7; font-size: 1.1em; margin-bottom: 25px; color: var(--text-gray); }
+        .lead-in { font-weight: bold; margin-bottom: 20px; font-size: 1.15em; color: #000; }
+        .option { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; border: 1px solid #ddd; margin-bottom: 10px; cursor: pointer; border-radius: 4px; transition: 0.2s; }
+        .option:hover { background: #f8fbff; border-color: var(--uworld-blue); }
+        .option.selected { background: #e7f3ff; border-color: var(--uworld-blue); border-width: 2px; }
+        .percentage { color: #888; font-size: 0.9em; font-style: italic; }
+        #footer { background: white; border-top: 1px solid #ddd; padding: 15px 30px; display: flex; justify-content: space-between; }
+        .btn { padding: 10px 25px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .btn-next { background: var(--uworld-blue); color: white; }
+        #report-screen { display: none; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.9em; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
     </style>
 </head>
-<body class="flex flex-col min-h-screen">
+<body>
 
-    <div id="step-selector" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
-        <div class="bg-white p-8 rounded-xl max-w-md w-full text-center">
-            <img src="logo.jpg" class="h-16 mx-auto mb-4" alt="USMLE300">
-            <h2 class="text-2xl font-bold mb-6">Select Your Exam</h2>
-            <div class="space-y-4">
-                <button onclick="startSim('step1')" class="w-full py-3 bg-[#722F37] text-white rounded font-bold">Step 1 (Pathophysiology focus)</button>
-                <button onclick="startSim('step2')" class="w-full py-3 bg-[#722F37] text-white rounded font-bold">Step 2 CK (Clinical focus)</button>
-                <button onclick="startSim('step3')" class="w-full py-3 bg-[#722F37] text-white rounded font-bold">Step 3 (Management focus)</button>
-            </div>
-        </div>
+<div id="header">
+    <div id="exam-title">Loading...</div>
+    <div id="item-count">Item 0 of 0</div>
+    <div id="timer">00:00:00</div>
+</div>
+
+<div id="main-container">
+    <div id="question-area" class="question-card"></div>
+    <div id="report-screen" class="question-card">
+        <h2 style="color: var(--nbme-blue);">Performance Report</h2>
+        <div id="score-summary"></div>
+        <table>
+            <thead><tr><th>#</th><th>Step</th><th>Result</th><th>Objective</th></tr></thead>
+            <tbody id="report-body"></tbody>
+        </table>
     </div>
+</div>
 
-    <div class="exam-header flex justify-between">
-        <span>USMLE300 STRATEGY DIAGNOSTIC</span>
-        <span id="timer">Block Time: 01:15</span>
-    </div>
+<div id="footer">
+    <button class="btn" onclick="prevQuestion()" style="background:#eee">Previous</button>
+    <button class="btn btn-next" id="action-btn" onclick="nextQuestion()">Next</button>
+</div>
 
-    <main class="flex-grow p-4 md:p-8 flex justify-center">
-        <div id="question-container" class="max-w-4xl w-full bg-white shadow-lg border border-gray-300 p-8 hidden">
-            <div id="strategy-banner" class="bg-yellow-100 border-l-4 border-yellow-500 p-3 mb-6 text-sm italic">
-                <strong>MODE: STEM-FIRST.</strong> Read the question at the bottom first, then click the blurred vignette.
-            </div>
+<script>
+    let questions = [];
+    let currentIdx = 0;
+    let userAnswers = [];
+    let timerSeconds = 0;
 
-            <div id="vignette-text" class="vignette-box mb-8 blur-mode" onclick="this.classList.add('unblur')">
-                </div>
-
-            <div id="leadin-text" class="text-xl font-bold mb-6 border-t pt-4">
-                </div>
-
-            <div id="options-list" class="space-y-2">
-                </div>
-        </div>
-
-        <div id="results-screen" class="max-w-2xl w-full bg-white shadow-xl rounded-2xl p-8 hidden text-center">
-            <div class="text-5xl mb-4">🎯</div>
-            <h2 class="text-3xl font-bold text-[#722F37] mb-2">Diagnostic Complete</h2>
-            <p class="text-gray-600 mb-8">Your strategy profile has been analyzed.</p>
-            
-            <div class="grid grid-cols-2 gap-4 mb-8">
-                <div class="p-4 bg-gray-50 rounded-lg">
-                    <div class="text-sm text-gray-500 uppercase">Average Speed</div>
-                    <div class="text-2xl font-bold" id="res-speed">14s</div>
-                </div>
-                <div class="p-4 bg-gray-50 rounded-lg">
-                    <div class="text-sm text-gray-500 uppercase">Strategy Accuracy</div>
-                    <div class="text-2xl font-bold" id="res-acc">100%</div>
-                </div>
-            </div>
-
-            <div class="text-left bg-cream p-6 rounded-lg border border-burgundy/20 mb-8">
-                <h3 class="font-bold mb-2">Our Recommendation:</h3>
-                <p id="recommendation-text">Based on your performance, you struggle with <strong>distractor integration</strong>. You tend to lock in on a diagnosis too early without reconciling negative findings.</p>
-            </div>
-
-            <a href="https://calendly.com/usmle300" class="inline-block px-8 py-4 bg-[#722F37] text-white rounded-lg font-bold">Book Strategy Review</a>
-        </div>
-    </main>
-
-    <script>
-        const questionData = {
-            step1: {
-                vignette: "Physiologists are studying forces governing glomerular ultrafiltration... net filtration pressure is calculated at 10 mm Hg. A substance is instilled into the renal artery... the net filtration pressure after the intervention is 20 mm Hg[cite: 26, 30, 32].",
-                leadin: "Which of the following substances was most likely used in this experiment? [cite: 33]",
-                options: ["Albumin concentrate", "Alpha-adrenergic agonist", "Angiotensin II agonist", "Prostaglandin inhibitor", "Vasopressin 2 antagonist"],
-                correct: 2 // Angiotensin II
-            },
-            step2: {
-                vignette: "A 44-year-old man... unrestrained driver in a high-speed motor vehicle collision... BP 78/40, pulse 135... breath sounds clear on right but diminished on left. Neck veins are collapsed[cite: 52, 54, 57, 58]. Chest x-ray shows opacification of left hemithorax and widened mediastinum[cite: 59].",
-                leadin: "Which of the following is the most likely diagnosis? [cite: 60]",
-                options: ["Bronchial rupture", "Diaphragmatic rupture", "Esophageal rupture", "Myocardial contusion", "Thoracic aortic injury"],
-                correct: 4
-            },
-            step3: {
-                vignette: "A bedside ultrasound reveals a low, posterior placenta extends over the internal cervical os[cite: 194]. During repair of uterine incision, patient reports difficulty breathing... BP 70/40, pulse 124... Pulse oximetry 86%. Profuse bleeding from uterine incision... blood in collection bag[cite: 196, 197, 199, 200].",
-                leadin: "Which of the following most likely led to this patient’s decompensation? [cite: 201]",
-                options: ["Amniotic fluid embolism", "High spinal anesthesia", "Local anesthetic systemic toxicity", "Placenta accreta", "Preeclampsia with pulmonary edema"],
-                correct: 0
-            }
-        };
-
-        let startTime;
-
-        function startSim(step) {
-            document.getElementById('step-selector').classList.add('hidden');
-            document.getElementById('question-container').classList.remove('hidden');
-            const q = questionData[step];
-            document.getElementById('vignette-text').innerText = q.vignette;
-            document.getElementById('leadin-text').innerText = q.leadin;
-            
-            const list = document.getElementById('options-list');
-            q.options.forEach((opt, idx) => {
-                const btn = document.createElement('button');
-                btn.className = "option-btn";
-                btn.innerHTML = `<strong>${String.fromCharCode(65 + idx)}.</strong> ${opt}`;
-                btn.onclick = () => showResults();
-                list.appendChild(btn);
-            });
-            startTime = Date.now();
+    // FETCH FROM EXTERNAL REPOSITORY/FILE
+    async function initExam() {
+        try {
+            const response = await fetch('questions.json');
+            questions = await response.json();
+            userAnswers = new Array(questions.length).fill(null);
+            loadQuestion();
+            startTimer();
+        } catch (error) {
+            document.getElementById('question-area').innerHTML = "Error loading question bank. Ensure questions.json is in the same directory.";
         }
+    }
 
-        function showResults() {
-            const timeTaken = Math.floor((Date.now() - startTime) / 1000);
-            document.getElementById('question-container').classList.add('hidden');
-            document.getElementById('results-screen').classList.remove('hidden');
-            document.getElementById('res-speed').innerText = timeTaken + "s";
-        }
-    </script>
+    function startTimer() {
+        setInterval(() => {
+            timerSeconds++;
+            const h = Math.floor(timerSeconds / 3600).toString().padStart(2, '0');
+            const m = Math.floor((timerSeconds % 3600) / 60).toString().padStart(2, '0');
+            const s = (timerSeconds % 60).toString().padStart(2, '0');
+            document.getElementById('timer').innerText = `${h}:${m}:${s}`;
+        }, 1000);
+    }
+
+    function loadQuestion() {
+        const q = questions[currentIdx];
+        document.getElementById('exam-title').innerText = q.step + " Assessment";
+        document.getElementById('item-count').innerText = `Item ${currentIdx + 1} of ${questions.length}`;
+        
+        let html = `<div class="vignette">${q.text}</div><div class="lead-in">${q.lead}</div><div class="options-list">`;
+        q.options.forEach((opt, i) => {
+            const isSelected = userAnswers[currentIdx] === i ? 'selected' : '';
+            html += `<div class="option ${isSelected}" onclick="selectOption(${i})">
+                        <span>${opt.split(' (')[0]}</span>
+                        <span class="percentage">${opt.match(/\(.*\)/) ? opt.match(/\(.*\)/)[0] : ''}</span>
+                     </div>`;
+        });
+        html += `</div>`;
+        document.getElementById('question-area').innerHTML = html;
+        document.getElementById('action-btn').innerText = currentIdx === questions.length - 1 ? "Submit" : "Next";
+    }
+
+    function selectOption(idx) {
+        userAnswers[currentIdx] = idx;
+        loadQuestion();
+    }
+
+    function nextQuestion() {
+        if (userAnswers[currentIdx] === null) { alert("Select an answer."); return; }
+        if (currentIdx < questions.length - 1) { currentIdx++; loadQuestion(); } 
+        else { showReport(); }
+    }
+
+    function prevQuestion() {
+        if (currentIdx > 0) { currentIdx--; loadQuestion(); }
+    }
+
+    function showReport() {
+        document.getElementById('question-area').style.display = 'none';
+        document.getElementById('report-screen').style.display = 'block';
+        let correctCount = 0;
+        let reportHtml = '';
+        questions.forEach((q, i) => {
+            const isCorrect = userAnswers[i] === q.correct;
+            if(isCorrect) correctCount++;
+            reportHtml += `<tr><td>${i+1}</td><td>${q.step}</td><td style="color:${isCorrect?'green':'red'}">${isCorrect?'Correct':'Incorrect'}</td><td>${q.objective}</td></tr>`;
+        });
+        document.getElementById('score-summary').innerHTML = `Final Score: ${correctCount}/${questions.length}`;
+        document.getElementById('report-body').innerHTML = reportHtml;
+    }
+
+    initExam();
+</script>
 </body>
 </html>
