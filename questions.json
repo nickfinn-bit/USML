@@ -1,0 +1,482 @@
+[
+  {
+    "step": "Step 1",
+    "text": "A 3-month-old boy is evaluated for large-volume diarrhea and failure to thrive. Born via spontaneous vaginal delivery at 38 weeks. Physical examination shows mild abdominal distension, muscle wasting, and pitting edema. Histochemical evaluation reveals absence of enteropeptidase activity in the proximal intestinal villi.",
+    "lead": "Activity of which of the following substances is most likely impaired in this patient?",
+    "options": ["Amylase (8%)", "Bile salts (3%)", "Lactase (10%)", "Pepsin (5%)", "Secretin (4%)", "Trypsin (70%)"],
+    "correct": 5,
+    "objective": "Enteropeptidase activates trypsinogen to trypsin, which is essential for protein digestion."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 73-year-old man undergoes coronary angiography via the femoral approach. He returns 2 days later with blue discoloration of his right toe and livedo reticularis. Serum creatinine is 2.8 mg/dL (preoperatively 1.0 mg/dL).",
+    "lead": "Which of the following histopathologic findings would most likely be seen on biopsy of this patient’s kidney?",
+    "options": ["Cholesterol clefts in arterial lumen (82%)", "Glomerular crescent formation (4%)", "Hyperplastic arteriolar changes (6%)", "Extensive necrosis of proximal tubular cells (8%)"],
+    "correct": 0,
+    "objective": "Atheroembolic renal disease follows invasive vascular procedures and presents with cholesterol clefts."
+  },
+  {
+    "step": "Step 1",
+    "text": "Physiologists studying glomerular ultrafiltration find a net filtration pressure of 10 mm Hg. After instilling a substance into the renal artery, the net filtration pressure increases to 20 mm Hg.",
+    "lead": "Which of the following substances was most likely used in this experiment?",
+    "options": ["Albumin concentrate (10%)", "Alpha-adrenergic agonist (15%)", "Angiotensin II agonist (65%)", "Prostaglandin inhibitor (8%)", "Vasopressin 2 antagonist (2%)"],
+    "correct": 2,
+    "objective": "Angiotensin II preferentially constricts the efferent arteriole, increasing GFR."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 4-year-old boy has coarse facial features, clouded corneas, and restricted joint movement. Plasma lysosomal enzyme analysis shows elevated levels of enzymes that are normally sequestered in lysosomes.",
+    "lead": "The primary defect in this patient involves which of the following processes?",
+    "options": ["Degradation of glycogen (5%)", "Hydroxylation of proline (8%)", "Mannose-6-phosphate tagging (72%)", "Sphingolipid degradation (10%)", "Tyrosine transport (5%)"],
+    "correct": 2,
+    "objective": "I-cell disease is caused by a failure of the Golgi to phosphorylate mannose residues (M6P tagging)."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 24-year-old man with a history of recurrent pulmonary infections presents with a groin abscess. Culture grows Staphylococcus aureus. Nitroblue tetrazolium testing reveals a lack of blue pigment formation in neutrophils.",
+    "lead": "This patient is most likely deficient in which of the following enzymes?",
+    "options": ["Glutathione peroxidase (12%)", "Myeloperoxidase (18%)", "NADPH oxidase (64%)", "Superoxide dismutase (6%)"],
+    "correct": 2,
+    "objective": "Chronic Granulomatous Disease (CGD) is caused by NADPH oxidase deficiency."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 6-year-old boy presents with bone pain and fatigue. A peripheral blood smear shows erythrocytes with a crescent shape. Genetic analysis reveals a point mutation.",
+    "lead": "This mutation results in the substitution of a hydrophobic amino acid for which of the following?",
+    "options": ["Alanine (5%)", "Glutamic acid (80%)", "Lysine (10%)", "Valine (5%)"],
+    "correct": 1,
+    "objective": "Sickle cell anemia involves a Valine for Glutamic Acid substitution."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 32-year-old woman presents with diplopia and ptosis that worsens at the end of the day. Chest CT reveals an anterior mediastinal mass.",
+    "lead": "Antibodies in this patient are most likely directed against which of the following?",
+    "options": ["Presynaptic calcium channels (15%)", "Postsynaptic acetylcholine receptors (75%)", "Presynaptic acetylcholine release sites (5%)", "Ryanodine receptors (5%)"],
+    "correct": 1,
+    "objective": "Myasthenia gravis is caused by autoantibodies against postsynaptic ACh receptors."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 5-month-old boy has recurrent viral and fungal infections. Chest x-ray shows an absent thymic shadow. Adenosine deaminase activity is absent in his erythrocytes.",
+    "lead": "The accumulation of which metabolite is most likely toxic to this patient's lymphocytes?",
+    "options": ["Adenosine (10%)", "dATP (70%)", "Guanosine (10%)", "Inosine (5%)", "Uric acid (5%)"],
+    "correct": 1,
+    "objective": "In SCID due to ADA deficiency, dATP accumulation inhibits DNA synthesis."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 28-year-old African American man develops dark urine and back pain 3 days after taking trimethoprim-sulfamethoxazole for a UTI. Peripheral smear shows bite cells.",
+    "lead": "Which of the following biochemical reactions is most likely impaired?",
+    "options": ["Glucose-6-phosphate to 6-phosphogluconate (78%)", "Pyruvate to lactate (5%)", "Ribose-5-phosphate to fructose-6-phosphate (7%)", "2,3-BPG formation (10%)"],
+    "correct": 0,
+    "objective": "G6PD deficiency impairs the pentose phosphate pathway and glutathione reduction."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 45-year-old vegan presents with fatigue and paresthesias. Laboratory studies show megaloblastic anemia. Methylmalonic acid levels are elevated.",
+    "lead": "This patient's condition is most likely due to a deficiency of a cofactor for which enzyme?",
+    "options": ["Homocysteine methyltransferase (30%)", "Methylmalonyl-CoA mutase (65%)", "Pyruvate carboxylase (3%)", "Thymidylate synthase (2%)"],
+    "correct": 1,
+    "objective": "B12 deficiency leads to elevated methylmalonic acid due to impaired Methylmalonyl-CoA mutase."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 2-year-old girl has had 4 bone fractures after minor trauma. Physical exam shows blue sclerae.",
+    "lead": "This patient most likely has a defect in the synthesis of which protein?",
+    "options": ["Elastin (5%)", "Fibrillin (10%)", "Type I collagen (80%)", "Type II collagen (3%)", "Type IV collagen (2%)"],
+    "correct": 2,
+    "objective": "Osteogenesis Imperfecta is caused by defects in Type I collagen synthesis."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 30-year-old man is evaluated for infertility. He has a history of recurrent sinusitis and bronchiectasis. The point of maximal cardiac impulse is palpable on the right side of the chest.",
+    "lead": "Which of the following cellular structures is most likely defective?",
+    "options": ["Dynein arm (78%)", "Gap junction (2%)", "Microvilli (5%)", "Na/K ATPase (5%)", "Spectrin (10%)"],
+    "correct": 0,
+    "objective": "Kartagener syndrome (Primary Ciliary Dyskinesia) is caused by a dynein arm defect."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 15-year-old boy presents with jaundice and splenomegaly. Labs show a normocytic anemia with an elevated MCHC. An osmotic fragility test is positive.",
+    "lead": "The defect in this patient involves which of the following proteins?",
+    "options": ["Ankyrin and spectrin (75%)", "Dystrophin (5%)", "Hemoglobin A (10%)", "Pyruvate kinase (10%)"],
+    "correct": 0,
+    "objective": "Hereditary Spherocytosis is caused by defects in membrane tethering proteins like ankyrin/spectrin."
+  },
+  {
+    "step": "Step 1",
+    "text": "A newborn screening test is positive for phenylketonuria. The parents are instructed to restrict phenylalanine from the diet.",
+    "lead": "Which of the following amino acids becomes essential for this patient?",
+    "options": ["Alanine (5%)", "Arginine (5%)", "Cysteine (5%)", "Tyrosine (85%)"],
+    "correct": 3,
+    "objective": "In PKU, the conversion of Phenylalanine to Tyrosine is blocked, making Tyrosine essential."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 4-year-old boy with intellectual disability and self-mutilating behavior (biting his fingers) presents with gouty arthritis.",
+    "lead": "Which of the following enzymes is most likely deficient?",
+    "options": ["Adenosine deaminase (5%)", "Hypoxanthine-guanine phosphoribosyltransferase (88%)", "Xanthine oxidase (7%)"],
+    "correct": 1,
+    "objective": "Lesch-Nyhan syndrome is caused by HGPRT deficiency."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 12-year-old girl with cystic fibrosis presents with pneumonia. Her condition is caused by a mutation resulting in misfolding of the CFTR protein.",
+    "lead": "This protein functions as which of the following?",
+    "options": ["ATP-gated chloride channel (82%)", "Calcium-activated chloride channel (5%)", "Voltage-gated sodium channel (10%)", "Water channel (3%)"],
+    "correct": 0,
+    "objective": "CFTR is an ATP-gated chloride channel."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 45-year-old man develops symmetric descending paralysis and dry mouth 24 hours after eating home-canned vegetables.",
+    "lead": "The toxin responsible for this condition exerts its effect by cleaving which of the following?",
+    "options": ["Camp-dependent protein kinase (5%)", "Elongation factor 2 (5%)", "SNARE proteins (85%)", "Sodium channels (5%)"],
+    "correct": 2,
+    "objective": "Botulinum toxin cleaves SNARE proteins, preventing ACh release."
+  },
+  {
+    "step": "Step 1",
+    "text": "A researcher is studying the toxin produced by Vibrio cholerae. The toxin is found to permanently activate a G-protein subunit.",
+    "lead": "This activation leads to an increase in the intracellular concentration of which substance?",
+    "options": ["cGMP (10%)", "cAMP (85%)", "IP3 (3%)", "Calcium (2%)"],
+    "correct": 1,
+    "objective": "Cholera toxin activates Gs, increasing cAMP and causing chloride secretion."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 24-year-old woman experiences numbness of the lips and tongue after eating pufferfish at a sushi restaurant.",
+    "lead": "The toxin responsible blocks which of the following?",
+    "options": ["Calcium channels (5%)", "Potassium channels (10%)", "Sodium channels (80%)", "Chloride channels (5%)"],
+    "correct": 2,
+    "objective": "Tetrodotoxin blocks voltage-gated sodium channels, preventing depolarization."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 55-year-old man with chronic renal failure has secondary hyperparathyroidism. His labs show hypocalcemia and hyperphosphatemia.",
+    "lead": "Which of the following enzymatic steps is most likely impaired in his kidneys?",
+    "options": ["1-alpha-hydroxylation of Vitamin D (85%)", "24-hydroxylation of Vitamin D (5%)", "7-dehydrocholesterol conversion (5%)", "Cholecalciferol hydroxylation (5%)"],
+    "correct": 0,
+    "objective": "The kidney performs the 1-alpha-hydroxylation of 25-OH Vitamin D to its active form."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 69-year-old man undergoes elective surgical repair of a descending thoracic aortic aneurysm. Post-surgery, he has flaccid paralysis of the lower extremities and urinary retention. Vibratory sensation is intact.",
+    "lead": "Which of the following is the most likely cause of this patient’s neurologic dysfunction?",
+    "options": ["Cervical spondylotic myelopathy (2%)", "Epidural hematoma (10%)", "Intraoperative cortical stroke (5%)", "Spinal cord infarction (83%)"],
+    "correct": 3,
+    "objective": "Thoracic aortic repair can interrupt the Artery of Adamkiewicz, causing anterior spinal artery syndrome."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 44-year-old man is unresponsive after a high-speed MVC. BP 78/40, Pulse 135. Trachea is midline, breath sounds diminished on the left, and neck veins are collapsed. CXR shows a widened mediastinum.",
+    "lead": "Which of the following is the most likely diagnosis?",
+    "options": ["Bronchial rupture (5%)", "Diaphragmatic rupture (4%)", "Myocardial contusion (10%)", "Thoracic aortic injury (81%)"],
+    "correct": 3,
+    "objective": "Rapid deceleration trauma with a widened mediastinum suggests blunt traumatic aortic injury."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 67-year-old man with resistant hypertension has a blood pressure of 184/120 mm Hg. Physical examination shows an upper abdominal systolic-diastolic bruit.",
+    "lead": "This finding is best explained by which of the following?",
+    "options": ["Abdominal aortic aneurysm (18%)", "Aortic coarctation (16%)", "Aortic dissection (6%)", "Renal artery stenosis (60%)"],
+    "correct": 3,
+    "objective": "Systolic-diastolic bruits are specific for renal artery stenosis."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 54-year-old man with heart failure presents with worsening dyspnea and edema. BUN is 46 mg/dL (previously 20) and Creatinine is 2.2 mg/dL (previously 1.3). Physical exam shows JVD and crackles.",
+    "lead": "Which of the following is the most likely cause of this patient's acute kidney injury?",
+    "options": ["Elevated central venous pressure (45%)", "Glomerular hyperfiltration (9%)", "Low blood oncotic pressure (8%)", "Reduced left ventricular preload (38%)"],
+    "correct": 0,
+    "objective": "Cardiorenal syndrome involves renal congestion due to elevated central venous pressure."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 26-year-old man is evaluated for infertility. He is tall with gynecomastia and small, firm testes. Chromosomal analysis reveals a 47,XXY karyotype.",
+    "lead": "Which of the following is the most likely cause of this patient's infertility?",
+    "options": ["Congenital GnRH deficiency (17%)", "Dysgenesis of seminiferous tubules (33%)", "Exogenous androgen use (32%)", "Androgen insensitivity (18%)"],
+    "correct": 1,
+    "objective": "Klinefelter syndrome (XXY) causes infertility due to dysgenesis of the seminiferous tubules."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 38-year-old man with schizoaffective disorder presents with malaise, nausea, and RUQ tenderness. He was recently started on a new medication. Labs show AST 360 and ALT 520.",
+    "lead": "Which of the following medications is most likely responsible?",
+    "options": ["Bupropion (0%)", "Clozapine (7%)", "Haloperidol (9%)", "Lithium (19%)", "Valproate (65%)"],
+    "correct": 4,
+    "objective": "Valproate can cause dose-dependent hepatotoxicity."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 34-year-old man has severe lower back pain radiating to the left leg and foot. He has weakness of left ankle dorsiflexion and big toe extension. Pinprick sensation is decreased over the dorsum of the foot.",
+    "lead": "Which of the following is the most likely cause?",
+    "options": ["L2 vertebral disc herniation (14%)", "L5 nerve root compression (62%)", "S1 nerve root compression (10%)", "Common peroneal nerve entrapment (14%)"],
+    "correct": 1,
+    "objective": "L5 radiculopathy causes weakness in ankle dorsiflexion and sensory loss on the foot dorsum."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 31-year-old woman has recurrent burning epigastric pain, constipation, and excess urination. Her calcium is 11.4 mg/dL. Her father had 'stomach ulcers and kidney stones.'",
+    "lead": "Additional evaluation is most likely to reveal which of the following?",
+    "options": ["Glucagonoma (5%)", "Primary hyperparathyroidism (60%)", "Sarcoidosis (1%)", "Milk-alkali syndrome (15%)"],
+    "correct": 1,
+    "objective": "MEN1 syndrome presents with the 3 Ps: Parathyroid (hypercalcemia), Pancreas (ulcers/ZES), and Pituitary."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 4-month-old boy has inspiratory stridor that worsens when supine and improves when prone. He is growing well.",
+    "lead": "Which of the following would confirm the most likely diagnosis?",
+    "options": ["Chest radiography (5%)", "CT scan of neck (4%)", "Flexible fiberoptic laryngoscopy (85%)", "Barium swallow (6%)"],
+    "correct": 2,
+    "objective": "Laryngomalacia is diagnosed by visualizing supraglottic collapse on laryngoscopy."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 6-month-old boy is brought to the ED for lethargy and vomiting. He has had episodes of crying where he draws his legs up to his chest. Stool contains mucus and blood.",
+    "lead": "Which of the following is the most likely diagnosis?",
+    "options": ["Appendicitis (5%)", "Gastroenteritis (15%)", "Intussusception (70%)", "Meckel diverticulum (10%)"],
+    "correct": 2,
+    "objective": "Intussusception presents with episodic pain and 'currant jelly' stools."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 3-week-old boy has projectile non-bilious vomiting after every feed. A firm, olive-sized mass is palpable in the RUQ.",
+    "lead": "Which of the following metabolic abnormalities is most likely present?",
+    "options": ["Hyperkalemic metabolic acidosis (10%)", "Hypochloremic metabolic alkalosis (80%)", "Hypokalemic metabolic acidosis (5%)", "Respiratory acidosis (5%)"],
+    "correct": 1,
+    "objective": "Pyloric stenosis causes hypochloremic metabolic alkalosis due to loss of gastric acid."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 22-year-old woman presents with sudden onset LLQ pain and vaginal spotting. Her last menstrual period was 7 weeks ago. BP is 90/60. Urine pregnancy test is positive.",
+    "lead": "Which of the following is the most likely diagnosis?",
+    "options": ["Appendicitis (5%)", "Ectopic pregnancy (85%)", "Ovarian torsion (5%)", "Ruptured ovarian cyst (5%)"],
+    "correct": 1,
+    "objective": "Ruptured ectopic pregnancy presents with acute pain, hypotension, and a positive pregnancy test."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 42-year-old woman complains of severe dysmenorrhea and pain with intercourse. Pelvic exam shows a fixed, retroverted uterus and nodularity along the uterosacral ligaments.",
+    "lead": "Which of the following is the most likely diagnosis?",
+    "options": ["Adenomyosis (15%)", "Endometriosis (70%)", "Leiomyoma (10%)", "Pelvic inflammatory disease (5%)"],
+    "correct": 1,
+    "objective": "Endometriosis presents with the triad of dysmenorrhea, dyspareunia, and dyschezia."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 45-year-old woman presents with RUQ pain that radiates to the right scapula, fever, and nausea after a fatty meal. Murphy sign is positive.",
+    "lead": "Which of the following is the most likely diagnosis?",
+    "options": ["Acute cholecystitis (80%)", "Ascending cholangitis (10%)", "Biliary colic (5%)", "Pancreatitis (5%)"],
+    "correct": 0,
+    "objective": "Acute cholecystitis presents with fever, RUQ pain, and a positive Murphy sign."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 65-year-old man presents with fever and LLQ pain. He has a history of constipation. CT scan shows colonic wall thickening and pericolonic fat stranding.",
+    "lead": "Which of the following is the most likely diagnosis?",
+    "options": ["Colon cancer (10%)", "Diverticulitis (80%)", "Ischemic colitis (5%)", "Ulcerative colitis (5%)"],
+    "correct": 1,
+    "objective": "Diverticulitis typically presents with fever and LLQ pain."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 72-year-old woman presents with a new headache and jaw pain while chewing. She also reports fatigue and weight loss. ESR is 90 mm/hr.",
+    "lead": "Which of the following is the most appropriate initial step?",
+    "options": ["Start high-dose prednisone (75%)", "Temporal artery biopsy (20%)", "CT head (2%)", "MRI brain (3%)"],
+    "correct": 0,
+    "objective": "In suspected Giant Cell Arteritis, start steroids immediately to prevent blindness before biopsy."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 28-year-old woman presents with acute vision loss in the right eye and pain with eye movement. An afferent pupillary defect is noted.",
+    "lead": "This patient is at highest risk for developing which of the following?",
+    "options": ["Alzheimer disease (2%)", "Guillain-Barre syndrome (3%)", "Multiple sclerosis (85%)", "Myasthenia gravis (10%)"],
+    "correct": 2,
+    "objective": "Optic neuritis is a common initial presentation of Multiple Sclerosis."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 60-year-old man presents with chest pain. ECG shows ST elevation in leads II, III, and aVF. He is bradycardic.",
+    "lead": "Which coronary artery is most likely occluded?",
+    "options": ["Left anterior descending (10%)", "Left circumflex (10%)", "Right coronary artery (80%)"],
+    "correct": 2,
+    "objective": "Inferior MI (II, III, aVF) is usually caused by RCA occlusion."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 35-year-old woman on oral contraceptives presents with sudden shortness of breath and pleuritic chest pain. HR is 110, O2 sat 90%. Lungs are clear.",
+    "lead": "Which of the following is the most likely diagnosis?",
+    "options": ["Asthma exacerbation (5%)", "Pneumothorax (5%)", "Pulmonary embolism (85%)", "Pneumonia (5%)"],
+    "correct": 2,
+    "objective": "PE presents with tachycardia, hypoxia, and clear lungs, especially with risk factors like OCPs."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 50-year-old man with a history of alcohol use presents with severe epigastric pain radiating to the back. Lipase is elevated 3x normal.",
+    "lead": "Which of the following is the most likely diagnosis?",
+    "options": ["Acute pancreatitis (90%)", "Gastric ulcer (5%)", "Abdominal aortic aneurysm (3%)", "Mesenteric ischemia (2%)"],
+    "correct": 0,
+    "objective": "Acute pancreatitis presents with epigastric pain radiating to the back and elevated lipase."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 34-year-old woman undergoing C-section for placenta previa becomes unresponsive during uterine repair. BP 70/40, Pulse 124. Profuse bleeding from the incision and frank blood in the Foley bag are noted.",
+    "lead": "Which of the following most likely led to this patient’s decompensation?",
+    "options": ["Amniotic fluid embolism (78%)", "High spinal anesthesia (5%)", "Local anesthetic toxicity (2%)", "Placenta accreta (15%)"],
+    "correct": 0,
+    "objective": "Amniotic fluid embolism presents with sudden cardio-respiratory collapse and DIC."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 6-month-old boy with a fever (102 F) has a urine culture yielding >50,000 CFU of E. coli. He improves after a course of antibiotics.",
+    "lead": "After completion of the antibiotic course, which of the following is the best next step?",
+    "options": ["Begin prophylactic antibiotics (5%)", "No other intervention (15%)", "Perform renal and bladder ultrasound (75%)", "Perform renal scintigraphy (5%)"],
+    "correct": 2,
+    "objective": "Children <24 months with a first febrile UTI require a renal and bladder ultrasound."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 7-year-old boy has an eyelid laceration from a dog bite. Fatty tissue is protruding at the base of the wound.",
+    "lead": "Which of the following structures is most likely injured?",
+    "options": ["Canaliculi (10%)", "Levator muscle (72%)", "Nasolacrimal duct (5%)", "Nasolacrimal sac (8%)", "Punctum (5%)"],
+    "correct": 1,
+    "objective": "Protruding fat in an eyelid laceration suggests violation of the orbital septum and injury to the levator muscle."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 68-year-old man with COPD presents with increased dyspnea and increased sputum purulence. Oxygen saturation is 89% on room air.",
+    "lead": "In addition to systemic corticosteroids and bronchodilators, which intervention is indicated?",
+    "options": ["Antibiotics (80%)", "Chest physiotherapy (5%)", "Inhaled corticosteroids (5%)", "Theophylline (10%)"],
+    "correct": 0,
+    "objective": "Antibiotics are indicated in COPD exacerbations with increased sputum purulence/volume (GOLD guidelines)."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 25-year-old otherwise healthy woman is diagnosed with community-acquired pneumonia. She has no recent antibiotic use.",
+    "lead": "Which of the following is the best initial treatment?",
+    "options": ["Amoxicillin (70%)", "Ciprofloxacin (5%)", "Levofloxacin (10%)", "Piperacillin-tazobactam (5%)", "Vancomycin (10%)"],
+    "correct": 0,
+    "objective": "Amoxicillin is first-line for outpatient CAP in healthy patients without comorbidities."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 55-year-old man with hypertension is on Amlodipine 10mg daily. His BP remains 150/90. He has no other medical conditions.",
+    "lead": "Which of the following is the best next step in management?",
+    "options": ["Add Lisinopril (80%)", "Add Clonidine (5%)", "Add Hydralazine (5%)", "Increase Amlodipine to 20mg (10%)"],
+    "correct": 0,
+    "objective": "First-line combination therapy for HTN includes ACEi/ARB, CCB, or Thiazide."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 45-year-old woman with type 2 diabetes is on Metformin. Her A1c is 8.5%. She wants a medication that promotes weight loss.",
+    "lead": "Which of the following agents is most appropriate to add?",
+    "options": ["Glipizide (10%)", "Insulin glargine (5%)", "Liraglutide (80%)", "Pioglitazone (5%)"],
+    "correct": 2,
+    "objective": "GLP-1 agonists (Liraglutide) promote weight loss and are preferred add-ons for DM2."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 30-year-old woman has a palpable thyroid nodule. TSH is normal.",
+    "lead": "Which of the following is the best next step?",
+    "options": ["Fine needle aspiration (15%)", "Thyroid ultrasound (80%)", "Thyroid scintigraphy (2%)", "Reassurance (3%)"],
+    "correct": 1,
+    "objective": "The first step for a thyroid nodule with normal TSH is an ultrasound."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 24-year-old woman finds a breast lump. It is mobile and rubbery.",
+    "lead": "Which of the following is the best initial imaging modality?",
+    "options": ["Breast MRI (5%)", "Diagnostic Mammogram (15%)", "Ultrasound (80%)"],
+    "correct": 2,
+    "objective": "In women <30, ultrasound is the preferred initial imaging for a palpable breast mass."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 52-year-old man undergoes a screening colonoscopy. Two tubular adenomas (1.2 cm) are removed.",
+    "lead": "When should his next colonoscopy be performed?",
+    "options": ["1 year (5%)", "3 years (80%)", "5 years (10%)", "10 years (5%)"],
+    "correct": 1,
+    "objective": "High-risk adenomas (>1cm or >3 total) require follow-up in 3 years."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 66-year-old woman asks about screening for osteoporosis. She has no fracture history.",
+    "lead": "Which of the following is the most appropriate screening test?",
+    "options": ["DEXA scan (90%)", "Serum calcium and vitamin D (5%)", "Spine X-ray (5%)"],
+    "correct": 0,
+    "objective": "Screening DEXA is recommended for all women age >65."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 35-year-old man with Major Depressive Disorder has been on Sertraline for 2 weeks with no improvement.",
+    "lead": "Which of the following is the best next step?",
+    "options": ["Add Bupropion (10%)", "Continue current dose (85%)", "Switch to Fluoxetine (5%)"],
+    "correct": 1,
+    "objective": "Antidepressant trials should continue for at least 4-6 weeks before determining failure."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 28-year-old woman has frequent migraines (3-4 times/month) that cause her to miss work.",
+    "lead": "Which of the following is the best medication for prophylaxis?",
+    "options": ["Sumatriptan (20%)", "Topiramate (75%)", "Ibuprofen (5%)"],
+    "correct": 1,
+    "objective": "Topiramate is a first-line prophylactic agent; Triptans are for abortive therapy."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 72-year-old man with hypertension and diabetes is diagnosed with Atrial Fibrillation. His CHA2DS2-VASc score is 4.",
+    "lead": "Which of the following is the most appropriate stroke prophylaxis?",
+    "options": ["Aspirin (5%)", "Clopidogrel (5%)", "Apixaban (90%)"],
+    "correct": 2,
+    "objective": "Oral anticoagulation (DOAC or Warfarin) is indicated for CHA2DS2-VASc score >2."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 55-year-old man is diagnosed with a DVT. He is hemodynamically stable.",
+    "lead": "Which of the following is the most appropriate initial treatment?",
+    "options": ["IV Heparin infusion (10%)", "Oral Rivaroxaban (85%)", "IV tPA (5%)"],
+    "correct": 1,
+    "objective": "DOACs (like Rivaroxaban) are preferred over Warfarin for initial DVT treatment in uncomplicated cases."
+  },
+  {
+    "step": "Step 3",
+    "text": "An 82-year-old man is hospitalized for pneumonia and becomes agitated and confused (delirium) at night.",
+    "lead": "Which of the following is the best initial management?",
+    "options": ["Benzodiazepines (5%)", "Physical restraints (2%)", "Reorientation and treating underlying infection (85%)", "Haloperidol (8%)"],
+    "correct": 2,
+    "objective": "First-line management for delirium is non-pharmacologic (reorientation) and treating the trigger."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 60-year-old man needs elective hip surgery. He has a history of stable angina.",
+    "lead": "Which tool is best for assessing his perioperative cardiac risk?",
+    "options": ["TIMI score (5%)", "Revised Cardiac Risk Index (RCRI) (90%)", "CHADSVASC score (5%)"],
+    "correct": 1,
+    "objective": "RCRI is the standard tool for preoperative cardiac risk stratification."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 2-year-old boy has mild dehydration from viral gastroenteritis.",
+    "lead": "Which of the following is the best initial treatment?",
+    "options": ["IV Normal Saline (10%)", "Oral Rehydration Solution (85%)", "Sports drinks (5%)"],
+    "correct": 1,
+    "objective": "Oral rehydration is preferred for mild-to-moderate dehydration in children."
+  },
+  {
+    "step": "Step 3",
+    "text": "A newborn has jaundice at 36 hours of life. Bilirubin is 18 mg/dL.",
+    "lead": "Which of the following is the most appropriate next step?",
+    "options": ["Exchange transfusion (5%)", "Phototherapy (90%)", "Reassurance (5%)"],
+    "correct": 1,
+    "objective": "Phototherapy is the first-line treatment for significant neonatal hyperbilirubinemia to prevent kernicterus."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 4-year-old boy has a fever and ear pain. Exam shows a bulging, erythematous tympanic membrane.",
+    "lead": "Which of the following is the first-line antibiotic treatment?",
+    "options": ["Amoxicillin (85%)", "Azithromycin (5%)", "Amoxicillin-Clavulanate (10%)"],
+    "correct": 0,
+    "objective": "High-dose Amoxicillin is the first-line treatment for acute otitis media."
+  }
+]
