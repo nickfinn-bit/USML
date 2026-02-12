@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USMLE300 | Strategy Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --burgundy: #722F37; --nbme-blue: #003366; --nbme-gray: #e5e7eb; }
+        body { font-family: 'DM Sans', sans-serif; background-color: #f3f4f6; }
+        .exam-header { background-color: var(--nbme-blue); color: white; padding: 10px 20px; font-weight: bold; font-size: 0.9rem; }
+        .vignette-box { font-family: 'Times New Roman', serif; font-size: 1.2rem; line-height: 1.6; color: #333; }
+        .option-btn { border: 1px solid #ccc; text-align: left; padding: 12px; width: 100%; margin-bottom: 8px; border-radius: 4px; transition: 0.2s; background: white; }
+        .option-btn:hover { background-color: #f0f7ff; border-color: var(--nbme-blue); }
+        .blur-mode { filter: blur(8px); cursor: pointer; transition: filter 0.3s; }
+        .unblur { filter: blur(0); }
+        .hidden { display: none; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <div id="step-selector" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+        <div class="bg-white p-8 rounded-xl max-w-md w-full text-center">
+            <img src="logo.jpg" class="h-16 mx-auto mb-4" alt="USMLE300">
+            <h2 class="text-2xl font-bold mb-6">Select Your Exam</h2>
+            <div class="space-y-4">
+                <button onclick="startSim('step1')" class="w-full py-3 bg-[#722F37] text-white rounded font-bold">Step 1 (Pathophysiology focus)</button>
+                <button onclick="startSim('step2')" class="w-full py-3 bg-[#722F37] text-white rounded font-bold">Step 2 CK (Clinical focus)</button>
+                <button onclick="startSim('step3')" class="w-full py-3 bg-[#722F37] text-white rounded font-bold">Step 3 (Management focus)</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="exam-header flex justify-between">
+        <span>USMLE300 STRATEGY DIAGNOSTIC</span>
+        <span id="timer">Block Time: 01:15</span>
+    </div>
+
+    <main class="flex-grow p-4 md:p-8 flex justify-center">
+        <div id="question-container" class="max-w-4xl w-full bg-white shadow-lg border border-gray-300 p-8 hidden">
+            <div id="strategy-banner" class="bg-yellow-100 border-l-4 border-yellow-500 p-3 mb-6 text-sm italic">
+                <strong>MODE: STEM-FIRST.</strong> Read the question at the bottom first, then click the blurred vignette.
+            </div>
+
+            <div id="vignette-text" class="vignette-box mb-8 blur-mode" onclick="this.classList.add('unblur')">
+                </div>
+
+            <div id="leadin-text" class="text-xl font-bold mb-6 border-t pt-4">
+                </div>
+
+            <div id="options-list" class="space-y-2">
+                </div>
+        </div>
+
+        <div id="results-screen" class="max-w-2xl w-full bg-white shadow-xl rounded-2xl p-8 hidden text-center">
+            <div class="text-5xl mb-4">🎯</div>
+            <h2 class="text-3xl font-bold text-[#722F37] mb-2">Diagnostic Complete</h2>
+            <p class="text-gray-600 mb-8">Your strategy profile has been analyzed.</p>
+            
+            <div class="grid grid-cols-2 gap-4 mb-8">
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <div class="text-sm text-gray-500 uppercase">Average Speed</div>
+                    <div class="text-2xl font-bold" id="res-speed">14s</div>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <div class="text-sm text-gray-500 uppercase">Strategy Accuracy</div>
+                    <div class="text-2xl font-bold" id="res-acc">100%</div>
+                </div>
+            </div>
+
+            <div class="text-left bg-cream p-6 rounded-lg border border-burgundy/20 mb-8">
+                <h3 class="font-bold mb-2">Our Recommendation:</h3>
+                <p id="recommendation-text">Based on your performance, you struggle with <strong>distractor integration</strong>. You tend to lock in on a diagnosis too early without reconciling negative findings.</p>
+            </div>
+
+            <a href="https://calendly.com/usmle300" class="inline-block px-8 py-4 bg-[#722F37] text-white rounded-lg font-bold">Book Strategy Review</a>
+        </div>
+    </main>
+
+    <script>
+        const questionData = {
+            step1: {
+                vignette: "Physiologists are studying forces governing glomerular ultrafiltration... net filtration pressure is calculated at 10 mm Hg. A substance is instilled into the renal artery... the net filtration pressure after the intervention is 20 mm Hg[cite: 26, 30, 32].",
+                leadin: "Which of the following substances was most likely used in this experiment? [cite: 33]",
+                options: ["Albumin concentrate", "Alpha-adrenergic agonist", "Angiotensin II agonist", "Prostaglandin inhibitor", "Vasopressin 2 antagonist"],
+                correct: 2 // Angiotensin II
+            },
+            step2: {
+                vignette: "A 44-year-old man... unrestrained driver in a high-speed motor vehicle collision... BP 78/40, pulse 135... breath sounds clear on right but diminished on left. Neck veins are collapsed[cite: 52, 54, 57, 58]. Chest x-ray shows opacification of left hemithorax and widened mediastinum[cite: 59].",
+                leadin: "Which of the following is the most likely diagnosis? [cite: 60]",
+                options: ["Bronchial rupture", "Diaphragmatic rupture", "Esophageal rupture", "Myocardial contusion", "Thoracic aortic injury"],
+                correct: 4
+            },
+            step3: {
+                vignette: "A bedside ultrasound reveals a low, posterior placenta extends over the internal cervical os[cite: 194]. During repair of uterine incision, patient reports difficulty breathing... BP 70/40, pulse 124... Pulse oximetry 86%. Profuse bleeding from uterine incision... blood in collection bag[cite: 196, 197, 199, 200].",
+                leadin: "Which of the following most likely led to this patient’s decompensation? [cite: 201]",
+                options: ["Amniotic fluid embolism", "High spinal anesthesia", "Local anesthetic systemic toxicity", "Placenta accreta", "Preeclampsia with pulmonary edema"],
+                correct: 0
+            }
+        };
+
+        let startTime;
+
+        function startSim(step) {
+            document.getElementById('step-selector').classList.add('hidden');
+            document.getElementById('question-container').classList.remove('hidden');
+            const q = questionData[step];
+            document.getElementById('vignette-text').innerText = q.vignette;
+            document.getElementById('leadin-text').innerText = q.leadin;
+            
+            const list = document.getElementById('options-list');
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "option-btn";
+                btn.innerHTML = `<strong>${String.fromCharCode(65 + idx)}.</strong> ${opt}`;
+                btn.onclick = () => showResults();
+                list.appendChild(btn);
+            });
+            startTime = Date.now();
+        }
+
+        function showResults() {
+            const timeTaken = Math.floor((Date.now() - startTime) / 1000);
+            document.getElementById('question-container').classList.add('hidden');
+            document.getElementById('results-screen').classList.remove('hidden');
+            document.getElementById('res-speed').innerText = timeTaken + "s";
+        }
+    </script>
+</body>
+</html>
