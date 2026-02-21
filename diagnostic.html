@@ -11,17 +11,22 @@
             --highlight-yellow: #fff3cd; 
             --locked-gray: #e9ecef;
             --blur-strength: 8px;
+            --mcat-purple: #6b46c1;
         }
         body { font-family: 'Segoe UI', Arial, sans-serif; background: #f8f9fa; margin: 0; height: 100vh; display: flex; flex-direction: column; }
         
         /* --- HEADER --- */
         #header { background: var(--nbme-blue); color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        #header.mcat-mode { background: var(--mcat-purple); }
         .strategy-badge { padding: 6px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
 
         /* --- LANDING SCREEN --- */
         #landing-screen { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; }
         .exam-btn { margin: 10px; padding: 20px 40px; font-size: 1.2em; border: 2px solid var(--nbme-blue); background: white; color: var(--nbme-blue); border-radius: 8px; cursor: pointer; transition: 0.2s; width: 300px; font-weight: bold; }
         .exam-btn:hover { background: var(--nbme-blue); color: white; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,51,102,0.3); }
+        .exam-btn.gaby-btn { border-color: var(--mcat-purple); color: var(--mcat-purple); margin-top: 30px; }
+        .exam-btn.gaby-btn:hover { background: var(--mcat-purple); color: white; box-shadow: 0 4px 10px rgba(107,70,193,0.3); }
+        .gaby-label { color: var(--mcat-purple); font-size: 0.9em; margin-top: 20px; font-weight: bold; }
 
         /* --- QUESTION AREA --- */
         #game-screen { display: none; flex: 1; padding: 20px; justify-content: center; overflow-y: auto; }
@@ -42,16 +47,33 @@
         /* TEXT STYLES */
         .vignette { line-height: 1.8; font-size: 1.15em; margin-bottom: 30px; color: #333; }
         .lead-in { font-weight: 700; font-size: 1.2em; margin-bottom: 20px; color: var(--nbme-blue); }
+        .lead-in.mcat-mode { color: var(--mcat-purple); }
         
         /* OPTIONS */
         .option { padding: 15px; border: 1px solid #dee2e6; margin-bottom: 10px; border-radius: 6px; cursor: pointer; display: flex; justify-content: space-between; transition: 0.2s; }
         .option:hover { background: #f1f3f5; border-color: var(--uworld-blue); }
         .option.selected { background: #e7f3ff; border-color: var(--uworld-blue); border-width: 2px; }
+        .option.correct { background: #d4edda; border-color: #28a745; }
+        .option.incorrect { background: #f8d7da; border-color: #dc3545; }
 
         /* FOOTER */
         #footer { background: white; padding: 15px 30px; border-top: 1px solid #dee2e6; display: none; justify-content: space-between; align-items: center; }
         .btn { padding: 10px 25px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 1em; }
         .btn-primary { background: var(--uworld-blue); color: white; }
+
+        /* RESULTS SCREEN */
+        .results-section { margin: 20px 0; padding: 20px; background: #f8f9fa; border-radius: 8px; }
+        .strategy-result { display: flex; justify-content: space-between; align-items: center; padding: 15px; margin: 10px 0; background: white; border-radius: 6px; border-left: 4px solid #dee2e6; }
+        .strategy-result.best { border-left-color: #28a745; background: #d4edda; }
+        .strategy-result.worst { border-left-color: #dc3545; background: #f8d7da; }
+        .strategy-name { font-weight: bold; font-size: 1.1em; }
+        .strategy-stats { text-align: right; }
+        .accuracy { font-size: 1.3em; font-weight: bold; }
+        .time-stat { color: #666; font-size: 0.9em; }
+        .recommendation { padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 8px; margin-top: 20px; }
+        .recommendation h3 { margin-top: 0; }
+        .progress-bar { height: 8px; background: #e9ecef; border-radius: 4px; overflow: hidden; margin-top: 5px; }
+        .progress-fill { height: 100%; background: var(--uworld-blue); transition: width 0.3s; }
     </style>
 </head>
 <body>
@@ -65,12 +87,18 @@
         <button class="exam-btn" onclick="startGame('Step 1')">Step 1 (Mechanism)</button>
         <button class="exam-btn" onclick="startGame('Step 2 CK')">Step 2 CK (Diagnosis)</button>
         <button class="exam-btn" onclick="startGame('Step 3')">Step 3 (Management)</button>
+        
+        <button class="exam-btn gaby-btn" onclick="startGame('MCAT')" style="margin-top: 30px;">Gaby Trainer</button>
+        <p style="color: #888; font-size: 0.85em; max-width: 400px; margin-top: 10px;">
+            Chem/Phys & Bio/Biochem questions with strategy analysis
+        </p>
     </div>
 
     <div id="header" style="display:none;">
         <div style="display: flex; align-items: center;">
             <strong id="exam-label" style="opacity:0.9; margin-right: 20px; font-size: 1.1em;">Step 1</strong>
             <span id="timer" style="font-family: monospace; background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 4px;">00:00</span>
+            <span id="question-counter" style="margin-left: 15px; opacity: 0.8;"></span>
         </div>
         <div id="strategy-display" class="strategy-badge">Strategy: Standard</div>
     </div>
@@ -87,16 +115,214 @@
 
     <script>
         let allQuestions = [];
+        let mcatQuestions = [];
         let examQuestions = [];
         let currentIdx = 0;
         let userAnswers = [];
         let timerSeconds = 0;
         let timerInterval;
+        let questionStartTime = 0;
+        let isMCATMode = false;
 
-        // The 4 Strategies
-        const STRATEGIES = ['STEM_FIRST', 'HIGHLIGHTER', 'SPEED_SCAN', 'OPTIONS_FIRST'];
+        // Strategy tracking for analysis
+        let strategyData = {
+            'STEM_FIRST': { correct: 0, total: 0, totalTime: 0 },
+            'HIGHLIGHTER': { correct: 0, total: 0, totalTime: 0 },
+            'SPEED_SCAN': { correct: 0, total: 0, totalTime: 0 },
+            'OPTIONS_FIRST': { correct: 0, total: 0, totalTime: 0 },
+            'LAST_SENTENCE': { correct: 0, total: 0, totalTime: 0 }
+        };
+
+        // The 5 Strategies
+        const STRATEGIES = ['STEM_FIRST', 'HIGHLIGHTER', 'SPEED_SCAN', 'OPTIONS_FIRST', 'LAST_SENTENCE'];
         let currentStrategy = '';
         let highlightCount = 0;
+
+        // MCAT Questions (Chem/Phys and Bio/Biochem)
+        mcatQuestions = [
+            // Chemical and Physical Foundations
+            {
+                "step": "MCAT",
+                "section": "Chem/Phys",
+                "text": "A researcher is studying enzyme kinetics and observes that adding a competitive inhibitor to an enzyme-catalyzed reaction increases the apparent Km but does not change Vmax. The inhibitor binds to the active site of the enzyme.",
+                "lead": "If the concentration of substrate is increased significantly, what will happen to the rate of the reaction?",
+                "options": ["The rate will remain inhibited regardless of substrate concentration", "The rate will approach Vmax as substrate outcompetes the inhibitor", "The rate will decrease further due to substrate inhibition", "The rate will oscillate between inhibited and uninhibited states"],
+                "correct": 1,
+                "objective": "Competitive inhibitors can be overcome by increasing substrate concentration."
+            },
+            {
+                "step": "MCAT",
+                "section": "Chem/Phys",
+                "text": "A buffer solution contains 0.1 M acetic acid (pKa = 4.76) and 0.1 M sodium acetate. The solution has a pH of 4.76.",
+                "lead": "What will be the approximate pH if 0.02 mol of HCl is added to 1 L of this buffer?",
+                "options": ["4.58", "4.76", "4.94", "3.76"],
+                "correct": 0,
+                "objective": "Henderson-Hasselbalch equation: pH = pKa + log([A-]/[HA]). After adding HCl, ratio becomes 0.08/0.12."
+            },
+            {
+                "step": "MCAT",
+                "section": "Chem/Phys",
+                "text": "An electrochemical cell is constructed using a zinc electrode (E° = -0.76 V) and a copper electrode (E° = +0.34 V). The cell operates under standard conditions.",
+                "lead": "What is the standard cell potential (E°cell) for this galvanic cell?",
+                "options": ["-0.42 V", "+0.42 V", "+1.10 V", "-1.10 V"],
+                "correct": 2,
+                "objective": "E°cell = E°cathode - E°anode = 0.34 - (-0.76) = 1.10 V"
+            },
+            {
+                "step": "MCAT",
+                "section": "Chem/Phys",
+                "text": "A gas undergoes an isothermal expansion from 2 L to 6 L at 300 K. The gas behaves ideally and the process is reversible.",
+                "lead": "Which statement about the entropy change of the system is correct?",
+                "options": ["ΔS = 0 because temperature is constant", "ΔS > 0 because the gas expands and disorder increases", "ΔS < 0 because work is done by the system", "ΔS cannot be determined without knowing the pressure"],
+                "correct": 1,
+                "objective": "For isothermal expansion, ΔS = nR ln(V2/V1) > 0."
+            },
+            {
+                "step": "MCAT",
+                "section": "Chem/Phys",
+                "text": "A solution of NaCl in water has a freezing point of -1.86°C. The molal freezing point depression constant (Kf) for water is 1.86°C/m.",
+                "lead": "What is the molality of the NaCl solution, accounting for dissociation?",
+                "options": ["0.5 m", "1.0 m", "2.0 m", "0.25 m"],
+                "correct": 0,
+                "objective": "ΔTf = i × Kf × m. For NaCl, i = 2. So 1.86 = 2 × 1.86 × m, m = 0.5."
+            },
+            {
+                "step": "MCAT",
+                "section": "Chem/Phys",
+                "text": "Light with a wavelength of 500 nm passes through a single slit of width 0.1 mm. A diffraction pattern is observed on a screen 2 m away.",
+                "lead": "What determines the angular position of the first minimum in the diffraction pattern?",
+                "options": ["sin θ = λ/a, where a is slit width", "sin θ = 2λ/a", "sin θ = λ/2a", "The minimum depends only on screen distance"],
+                "correct": 0,
+                "objective": "Single slit diffraction: first minimum at sin θ = λ/a."
+            },
+            {
+                "step": "MCAT",
+                "section": "Chem/Phys",
+                "text": "A radioactive isotope has a half-life of 8 days. A sample initially contains 64 g of the isotope.",
+                "lead": "How much of the isotope will remain after 24 days?",
+                "options": ["32 g", "16 g", "8 g", "4 g"],
+                "correct": 2,
+                "objective": "After 3 half-lives (24/8 = 3): 64 → 32 → 16 → 8 g."
+            },
+            {
+                "step": "MCAT",
+                "section": "Chem/Phys",
+                "text": "A patient receives an IV solution that is 0.9% NaCl (w/v). Normal human blood has an osmolarity of approximately 300 mOsm/L.",
+                "lead": "Why is 0.9% NaCl considered isotonic with blood?",
+                "options": ["It has the same mass concentration as blood proteins", "Its osmolarity approximately matches blood osmolarity when accounting for NaCl dissociation", "It has the same viscosity as blood", "It contains the same electrolytes as blood plasma"],
+                "correct": 1,
+                "objective": "0.9% NaCl ≈ 154 mM NaCl × 2 (dissociation) ≈ 308 mOsm/L, matching blood."
+            },
+            {
+                "step": "MCAT",
+                "section": "Chem/Phys",
+                "text": "A block slides down a frictionless inclined plane that makes an angle of 30° with the horizontal. The block has a mass of 2 kg.",
+                "lead": "What is the magnitude of the normal force acting on the block?",
+                "options": ["20 N", "17.3 N", "10 N", "5 N"],
+                "correct": 1,
+                "objective": "Normal force = mg cos θ = 2 × 10 × cos 30° = 20 × 0.866 ≈ 17.3 N."
+            },
+            {
+                "step": "MCAT",
+                "section": "Chem/Phys",
+                "text": "An MRI machine uses a magnetic field of 1.5 T. A proton (charge = 1.6 × 10⁻¹⁹ C) moves perpendicular to this field with a velocity of 3 × 10⁶ m/s.",
+                "lead": "What is the magnitude of the magnetic force on the proton?",
+                "options": ["7.2 × 10⁻¹³ N", "4.5 × 10⁻¹³ N", "2.4 × 10⁻¹³ N", "7.2 × 10⁻¹² N"],
+                "correct": 0,
+                "objective": "F = qvB = (1.6 × 10⁻¹⁹)(3 × 10⁶)(1.5) = 7.2 × 10⁻¹³ N."
+            },
+            // Biological and Biochemical Foundations
+            {
+                "step": "MCAT",
+                "section": "Bio/Biochem",
+                "text": "During the citric acid cycle, isocitrate dehydrogenase converts isocitrate to α-ketoglutarate. This reaction is regulated by the energy status of the cell.",
+                "lead": "Which molecule acts as a positive allosteric regulator of isocitrate dehydrogenase?",
+                "options": ["ATP", "NADH", "ADP", "Citrate"],
+                "correct": 2,
+                "objective": "ADP signals low energy status and activates isocitrate dehydrogenase to increase ATP production."
+            },
+            {
+                "step": "MCAT",
+                "section": "Bio/Biochem",
+                "text": "A researcher isolates a mutant bacterial strain that cannot perform oxidative phosphorylation. The bacteria can still grow when glucose is provided.",
+                "lead": "What is the maximum net ATP yield per glucose molecule for these bacteria?",
+                "options": ["2 ATP", "4 ATP", "36 ATP", "0 ATP"],
+                "correct": 0,
+                "objective": "Without oxidative phosphorylation, only glycolysis works, yielding 2 net ATP per glucose."
+            },
+            {
+                "step": "MCAT",
+                "section": "Bio/Biochem",
+                "text": "A patient has a deficiency in the enzyme that converts phenylalanine to tyrosine. Without treatment, toxic metabolites accumulate.",
+                "lead": "Which amino acid becomes essential for this patient?",
+                "options": ["Phenylalanine", "Tryptophan", "Tyrosine", "Methionine"],
+                "correct": 2,
+                "objective": "In PKU, tyrosine cannot be synthesized from phenylalanine, making it essential."
+            },
+            {
+                "step": "MCAT",
+                "section": "Bio/Biochem",
+                "text": "The lac operon in E. coli is regulated by both the lac repressor and CAP-cAMP complex. When glucose is absent and lactose is present, transcription is maximally induced.",
+                "lead": "What is the role of the CAP-cAMP complex in this regulation?",
+                "options": ["It binds to the operator and blocks RNA polymerase", "It binds upstream and enhances RNA polymerase binding to the promoter", "It degrades the lac repressor protein", "It directly activates the lacZ gene product"],
+                "correct": 1,
+                "objective": "CAP-cAMP is a positive regulator that enhances transcription when glucose is low."
+            },
+            {
+                "step": "MCAT",
+                "section": "Bio/Biochem",
+                "text": "A protein destined for secretion is being translated by ribosomes. The signal sequence is recognized by the signal recognition particle (SRP).",
+                "lead": "Where does translation resume after the ribosome-SRP complex reaches its destination?",
+                "options": ["Free in the cytoplasm", "On the rough endoplasmic reticulum", "In the Golgi apparatus", "On the inner mitochondrial membrane"],
+                "correct": 1,
+                "objective": "Secretory proteins are translated on ribosomes attached to the rough ER."
+            },
+            {
+                "step": "MCAT",
+                "section": "Bio/Biochem",
+                "text": "During DNA replication, the leading strand is synthesized continuously while the lagging strand is synthesized in Okazaki fragments.",
+                "lead": "Which enzyme is responsible for joining Okazaki fragments together?",
+                "options": ["DNA polymerase III", "DNA primase", "DNA ligase", "Helicase"],
+                "correct": 2,
+                "objective": "DNA ligase joins Okazaki fragments by forming phosphodiester bonds."
+            },
+            {
+                "step": "MCAT",
+                "section": "Bio/Biochem",
+                "text": "A cell is placed in a hypotonic solution. Water begins to move across the plasma membrane.",
+                "lead": "What will happen to the cell if it lacks a rigid cell wall?",
+                "options": ["The cell will shrink due to water loss", "The cell will swell and potentially lyse", "The cell will remain unchanged", "The cell will undergo apoptosis"],
+                "correct": 1,
+                "objective": "In hypotonic solution, water enters the cell by osmosis, causing swelling and potential lysis."
+            },
+            {
+                "step": "MCAT",
+                "section": "Bio/Biochem",
+                "text": "The electron transport chain consists of protein complexes that transfer electrons and pump protons across the inner mitochondrial membrane.",
+                "lead": "Which complex directly reduces molecular oxygen to water?",
+                "options": ["Complex I (NADH dehydrogenase)", "Complex II (Succinate dehydrogenase)", "Complex III (Cytochrome bc1)", "Complex IV (Cytochrome c oxidase)"],
+                "correct": 3,
+                "objective": "Complex IV (cytochrome c oxidase) is the terminal electron acceptor that reduces O2 to H2O."
+            },
+            {
+                "step": "MCAT",
+                "section": "Bio/Biochem",
+                "text": "A hormone binds to a G-protein coupled receptor on the cell surface. The α subunit of the G-protein exchanges GDP for GTP and activates adenylyl cyclase.",
+                "lead": "What is the immediate product of adenylyl cyclase activation?",
+                "options": ["IP3 and DAG", "cAMP", "cGMP", "Calcium ions"],
+                "correct": 1,
+                "objective": "Adenylyl cyclase converts ATP to cAMP, the second messenger."
+            },
+            {
+                "step": "MCAT",
+                "section": "Bio/Biochem",
+                "text": "Hemoglobin exhibits cooperative binding of oxygen. The binding of one oxygen molecule increases the affinity of the remaining subunits for oxygen.",
+                "lead": "This cooperative behavior results in what type of oxygen-hemoglobin dissociation curve?",
+                "options": ["Linear", "Hyperbolic", "Sigmoidal", "Exponential"],
+                "correct": 2,
+                "objective": "Cooperative binding produces a sigmoidal (S-shaped) dissociation curve."
+            }
+        ];
 
         // Load JSON Data
         async function loadData() {
@@ -104,26 +330,52 @@
                 const res = await fetch('questions.json');
                 allQuestions = await res.json();
             } catch (e) {
-                document.getElementById('landing-screen').innerHTML = "<h1>Error</h1><p>Could not load questions.json. Ensure it is in the same folder.</p>";
+                console.log("Could not load questions.json, using embedded MCAT questions only.");
             }
         }
         loadData();
 
         function startGame(step) {
-            examQuestions = allQuestions.filter(q => q.step === step);
+            // Reset strategy tracking
+            strategyData = {
+                'STEM_FIRST': { correct: 0, total: 0, totalTime: 0 },
+                'HIGHLIGHTER': { correct: 0, total: 0, totalTime: 0 },
+                'SPEED_SCAN': { correct: 0, total: 0, totalTime: 0 },
+                'OPTIONS_FIRST': { correct: 0, total: 0, totalTime: 0 },
+                'LAST_SENTENCE': { correct: 0, total: 0, totalTime: 0 }
+            };
+            userAnswers = [];
+
+            if (step === 'MCAT') {
+                isMCATMode = true;
+                examQuestions = [...mcatQuestions];
+                // Shuffle questions
+                examQuestions.sort(() => Math.random() - 0.5);
+                // Take 20 questions (or all if less)
+                examQuestions = examQuestions.slice(0, 20);
+            } else {
+                isMCATMode = false;
+                examQuestions = allQuestions.filter(q => q.step === step);
+            }
             
             if(examQuestions.length === 0) {
                 alert("No questions found for " + step + ". Check your JSON file.");
                 return;
             }
 
-            // Shuffle Strategy order slightly or just rotate? Let's rotate.
             document.getElementById('landing-screen').style.display = 'none';
             document.getElementById('header').style.display = 'flex';
             document.getElementById('game-screen').style.display = 'flex';
             document.getElementById('footer').style.display = 'flex';
-            document.getElementById('exam-label').innerText = step;
+            document.getElementById('exam-label').innerText = step === 'MCAT' ? 'Gaby MCAT Trainer' : step;
+            
+            if (isMCATMode) {
+                document.getElementById('header').classList.add('mcat-mode');
+            } else {
+                document.getElementById('header').classList.remove('mcat-mode');
+            }
 
+            timerSeconds = 0;
             startTimer();
             loadQuestion(0);
         }
@@ -144,7 +396,11 @@
             }
 
             currentIdx = idx;
+            questionStartTime = timerSeconds;
             const q = examQuestions[idx];
+            
+            // Update question counter
+            document.getElementById('question-counter').innerText = `Q${idx + 1}/${examQuestions.length}`;
             
             // Cycle through the 4 strategies
             currentStrategy = STRATEGIES[idx % STRATEGIES.length];
@@ -152,33 +408,42 @@
 
             const card = document.getElementById('question-card');
             card.innerHTML = ''; 
-            highlightCount = 0; // Reset highlighter
-
-            // ---------------------------------------------------------
-            // RENDER LOGIC BASED ON STRATEGY
-            // ---------------------------------------------------------
+            highlightCount = 0;
 
             let vignetteHTML = '';
-            let leadInHTML = `<div class="lead-in" id="lead-in-text">${q.lead}</div>`;
+            let leadInHTML = `<div class="lead-in ${isMCATMode ? 'mcat-mode' : ''}" id="lead-in-text">${q.lead}</div>`;
             let optionsHTML = '';
+
+            // Section indicator for MCAT
+            let sectionBadge = '';
+            if (isMCATMode && q.section) {
+                sectionBadge = `<div style="background: ${q.section === 'Chem/Phys' ? '#e3f2fd' : '#e8f5e9'}; 
+                    color: ${q.section === 'Chem/Phys' ? '#1565c0' : '#2e7d32'}; 
+                    padding: 4px 12px; border-radius: 15px; font-size: 0.85em; 
+                    display: inline-block; margin-bottom: 15px; font-weight: bold;">
+                    ${q.section === 'Chem/Phys' ? '⚗️' : '🧬'} ${q.section}
+                </div>`;
+            }
 
             // 1. PREPARE VIGNETTE TEXT
             if (currentStrategy === 'HIGHLIGHTER') {
                 const words = q.text.split(' ');
-                vignetteHTML = `<div id="vignette-text" class="vignette">` + 
+                vignetteHTML = sectionBadge + `<div id="vignette-text" class="vignette">` + 
                     words.map((w, i) => `<span class="highlightable-word" id="word-${i}" onclick="highlightWord(${i})">${w} </span>`).join('') + 
                     `</div>`;
             } else {
-                vignetteHTML = `<div id="vignette-text" class="vignette">${q.text}</div>`;
+                vignetteHTML = sectionBadge + `<div id="vignette-text" class="vignette">${q.text}</div>`;
             }
 
             // 2. PREPARE OPTIONS
             let optionsClass = (currentStrategy === 'HIGHLIGHTER') ? 'options-locked' : '';
             optionsHTML = `<div id="options-container" class="${optionsClass}">`;
             q.options.forEach((opt, i) => {
-                optionsHTML += `<div class="option" onclick="selectOption(${i}, this)">
-                                    <span>${opt.split(' (')[0]}</span>
-                                    <span style="color:#888; font-size:0.9em;">${opt.match(/\(.*\)/) || ''}</span>
+                const optText = opt.split(' (')[0];
+                const percentage = opt.match(/\(.*\)/) || '';
+                optionsHTML += `<div class="option" id="option-${i}" onclick="selectOption(${i}, this)">
+                                    <span>${optText}</span>
+                                    <span style="color:#888; font-size:0.9em;">${percentage}</span>
                                 </div>`;
             });
             optionsHTML += `</div>`;
@@ -186,7 +451,6 @@
             // 3. APPLY STRATEGY-SPECIFIC LAYOUTS
 
             if (currentStrategy === 'OPTIONS_FIRST') {
-                // Blur Vignette & Lead-in, Reveal Button active
                 card.innerHTML = `
                     <button id="reveal-btn" class="reveal-btn" onclick="revealCase()">👀 Show Case</button>
                     <div id="blur-wrapper" class="blur-content">
@@ -194,24 +458,23 @@
                         ${leadInHTML}
                     </div>
                     <div style="margin-top:20px; border-top:2px dashed #ccc; padding-top:10px;">
-                        <p style="color:#666; font-size:0.9em;"><strong>Strategy:</strong> Read these options first to prime your brain!</p>
+                        <p style="color:#666; font-size:0.9em;"><strong>🫣 Strategy:</strong> Read these options first to prime your brain!</p>
                         ${optionsHTML}
                     </div>
                 `;
 
             } else if (currentStrategy === 'STEM_FIRST') {
-                // Blur Options initially? Or just standard? 
-                // Let's make Stem First = Standard reading.
-                // Or "Cover the options" strategy? 
-                // Let's do: Blur Options until Vignette is clicked?
-                // Actually, let's keep it simple: Standard view but with a prompt.
-                card.innerHTML = vignetteHTML + leadInHTML + optionsHTML;
+                card.innerHTML = `
+                    <p style="color:#666; font-size:0.9em; margin-bottom:15px;"><strong>🛡️ Strategy:</strong> Standard approach - read carefully from start to finish.</p>
+                    ${vignetteHTML}
+                    ${leadInHTML}
+                    ${optionsHTML}
+                `;
 
             } else if (currentStrategy === 'SPEED_SCAN') {
-                // Add a visual countdown bar
                 card.innerHTML = `
                     <div style="background:#ffcccc; color:#a00; padding:10px; margin-bottom:15px; border-radius:4px; font-weight:bold;">
-                        ⚡ SPEED MODE: Answer quickly!
+                        ⚡ SPEED MODE: Trust your instincts! Answer within 60 seconds.
                     </div>
                     ${vignetteHTML}
                     ${leadInHTML}
@@ -219,14 +482,43 @@
                 `;
 
             } else { // HIGHLIGHTER
-                card.innerHTML = vignetteHTML + leadInHTML + optionsHTML + 
-                    `<div id="unlock-msg" style="color:#d9534f; margin-top:10px; font-weight:bold;">
+                card.innerHTML = `
+                    <p style="color:#856404; font-size:0.9em; margin-bottom:15px;"><strong>🖍️ Strategy:</strong> Highlight 3 key terms before answering!</p>
+                    ${vignetteHTML}
+                    ${leadInHTML}
+                    ${optionsHTML}
+                    <div id="unlock-msg" style="color:#d9534f; margin-top:10px; font-weight:bold;">
                         🔒 Highlight 3 key words to unlock options.
                     </div>`;
             }
-        }
 
-        // --- STRATEGY HELPER FUNCTIONS ---
+            // Handle LAST_SENTENCE strategy separately since it needs special layout
+            if (currentStrategy === 'LAST_SENTENCE') {
+                // Get last sentence of the passage
+                const sentences = q.text.match(/[^.!?]+[.!?]+/g) || [q.text];
+                const lastSentence = sentences[sentences.length - 1].trim();
+                const restOfPassage = sentences.slice(0, -1).join(' ').trim();
+                
+                card.innerHTML = `
+                    <p style="color:#7b341e; font-size:0.9em; margin-bottom:15px;"><strong>📖 Strategy:</strong> Read the last sentence + answers first, then reveal full passage!</p>
+                    ${sectionBadge}
+                    <div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 15px; margin-bottom: 15px; border-radius: 4px;">
+                        <strong style="color: #92400e;">Last Sentence:</strong><br>
+                        <span style="font-size: 1.1em; color: #78350f;">"${lastSentence}"</span>
+                    </div>
+                    ${leadInHTML}
+                    ${optionsHTML}
+                    <button id="reveal-passage-btn" class="reveal-btn" style="position:relative; top:auto; left:auto; transform:none; margin-top:15px;" onclick="revealFullPassage()">👀 Show Full Passage</button>
+                    <div id="full-passage-wrapper" class="blur-content" style="margin-top:15px; padding:15px; background:#f8f9fa; border-radius:6px;">
+                        <strong>Full Passage:</strong><br>
+                        ${restOfPassage ? restOfPassage + ' ' : ''}<span style="background:#fef3c7;">${lastSentence}</span>
+                    </div>
+                `;
+            }
+
+            document.getElementById('feedback-msg').innerText = '';
+            document.getElementById('next-btn').innerText = 'Submit Answer';
+        }
 
         function updateStrategyHeader(strat) {
             const badge = document.getElementById('strategy-display');
@@ -234,7 +526,7 @@
                 badge.innerText = "🛡️ Standard Mode";
                 badge.style.background = "#e2e6ea"; badge.style.color = "#333";
             } else if (strat === 'HIGHLIGHTER') {
-                badge.innerText = "🖍️ Active Reader (Highlight)";
+                badge.innerText = "🖍️ Active Reader";
                 badge.style.background = "#fff3cd"; badge.style.color = "#856404";
             } else if (strat === 'SPEED_SCAN') {
                 badge.innerText = "⚡ Speed Scan";
@@ -242,12 +534,20 @@
             } else if (strat === 'OPTIONS_FIRST') {
                 badge.innerText = "🫣 Options First";
                 badge.style.background = "#cce5ff"; badge.style.color = "#004085";
+            } else if (strat === 'LAST_SENTENCE') {
+                badge.innerText = "📖 Last Sentence First";
+                badge.style.background = "#fef3c7"; badge.style.color = "#92400e";
             }
         }
 
         function revealCase() {
             document.getElementById('blur-wrapper').classList.remove('blur-content');
             document.getElementById('reveal-btn').style.display = 'none';
+        }
+
+        function revealFullPassage() {
+            document.getElementById('full-passage-wrapper').classList.remove('blur-content');
+            document.getElementById('reveal-passage-btn').style.display = 'none';
         }
 
         function highlightWord(id) {
@@ -258,7 +558,7 @@
                 highlightCount++;
                 if (highlightCount >= 3) {
                     document.getElementById('options-container').classList.remove('options-locked');
-                    document.getElementById('unlock-msg').innerText = "🔓 Unlocked!";
+                    document.getElementById('unlock-msg').innerText = "🔓 Options Unlocked! Select your answer.";
                     document.getElementById('unlock-msg').style.color = "#28a745";
                 }
             }
@@ -273,24 +573,164 @@
         }
 
         function nextQuestion() {
-            if (userAnswers[currentIdx] === undefined) {
-                alert("Please select an answer.");
-                return;
+            const nextBtn = document.getElementById('next-btn');
+            
+            if (nextBtn.innerText === 'Submit Answer') {
+                if (userAnswers[currentIdx] === undefined) {
+                    alert("Please select an answer.");
+                    return;
+                }
+                
+                // Show correct/incorrect feedback
+                const q = examQuestions[currentIdx];
+                const isCorrect = userAnswers[currentIdx] === q.correct;
+                const questionTime = timerSeconds - questionStartTime;
+                
+                // Track strategy performance
+                strategyData[currentStrategy].total++;
+                strategyData[currentStrategy].totalTime += questionTime;
+                if (isCorrect) {
+                    strategyData[currentStrategy].correct++;
+                }
+                
+                // Visual feedback
+                document.querySelectorAll('.option').forEach((o, i) => {
+                    if (i === q.correct) {
+                        o.classList.add('correct');
+                    } else if (i === userAnswers[currentIdx] && !isCorrect) {
+                        o.classList.add('incorrect');
+                    }
+                    o.style.pointerEvents = 'none';
+                });
+                
+                document.getElementById('feedback-msg').innerHTML = isCorrect 
+                    ? `<span style="color:#28a745;">✓ Correct!</span> ${q.objective}`
+                    : `<span style="color:#dc3545;">✗ Incorrect.</span> ${q.objective}`;
+                
+                nextBtn.innerText = currentIdx < examQuestions.length - 1 ? 'Next Question →' : 'See Results 📊';
+            } else {
+                loadQuestion(currentIdx + 1);
             }
-            loadQuestion(currentIdx + 1);
         }
 
         function finishExam() {
             clearInterval(timerInterval);
             document.getElementById('header').style.display = 'none';
             document.getElementById('footer').style.display = 'none';
-            document.getElementById('game-screen').innerHTML = `
-                <div class="card" style="text-align:center;">
-                    <h1 style="color:var(--nbme-blue)">Training Block Complete!</h1>
-                    <p style="font-size:1.2em">You completed ${examQuestions.length} questions.</p>
-                    <p style="color:#666">Total Time: ${document.getElementById('timer').innerText}</p>
-                    <button class="exam-btn" onclick="location.reload()">Start New Block</button>
-                </div>`;
+            
+            // Calculate statistics
+            let totalCorrect = 0;
+            let totalQuestions = 0;
+            let strategyResults = [];
+            
+            for (const [strategy, data] of Object.entries(strategyData)) {
+                if (data.total > 0) {
+                    const accuracy = Math.round((data.correct / data.total) * 100);
+                    const avgTime = Math.round(data.totalTime / data.total);
+                    strategyResults.push({
+                        name: strategy,
+                        accuracy: accuracy,
+                        avgTime: avgTime,
+                        correct: data.correct,
+                        total: data.total
+                    });
+                    totalCorrect += data.correct;
+                    totalQuestions += data.total;
+                }
+            }
+            
+            // Sort by accuracy (then by speed if tied)
+            strategyResults.sort((a, b) => {
+                if (b.accuracy !== a.accuracy) return b.accuracy - a.accuracy;
+                return a.avgTime - b.avgTime;
+            });
+            
+            const bestStrategy = strategyResults[0];
+            const worstStrategy = strategyResults[strategyResults.length - 1];
+            
+            const strategyNames = {
+                'STEM_FIRST': '🛡️ Standard Mode',
+                'HIGHLIGHTER': '🖍️ Active Reader (Highlight)',
+                'SPEED_SCAN': '⚡ Speed Scan',
+                'OPTIONS_FIRST': '🫣 Options First',
+                'LAST_SENTENCE': '📖 Last Sentence First'
+            };
+            
+            const strategyDescriptions = {
+                'STEM_FIRST': 'Reading carefully from beginning to end',
+                'HIGHLIGHTER': 'Highlighting key terms before answering',
+                'SPEED_SCAN': 'Quick reading with gut-instinct answers',
+                'OPTIONS_FIRST': 'Reading answer choices before the passage',
+                'LAST_SENTENCE': 'Reading the last sentence and answers first, then the full passage'
+            };
+            
+            let resultsHTML = `
+                <div class="card" style="max-width: 700px; margin: 0 auto;">
+                    <h1 style="color:${isMCATMode ? 'var(--mcat-purple)' : 'var(--nbme-blue)'}; text-align:center;">
+                        ${isMCATMode ? 'Gaby\'s Strategy Analysis' : 'Training Block Complete!'}
+                    </h1>
+                    
+                    <div style="text-align:center; margin: 20px 0; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <div style="font-size: 2.5em; font-weight: bold; color: ${totalCorrect/totalQuestions >= 0.7 ? '#28a745' : totalCorrect/totalQuestions >= 0.5 ? '#ffc107' : '#dc3545'};">
+                            ${totalCorrect}/${totalQuestions}
+                        </div>
+                        <div style="color: #666;">Overall Score (${Math.round(totalCorrect/totalQuestions*100)}%)</div>
+                        <div style="color: #888; margin-top: 5px;">Total Time: ${document.getElementById('timer').innerText}</div>
+                    </div>
+
+                    <h2 style="color: #333; border-bottom: 2px solid #eee; padding-bottom: 10px;">📊 Strategy Performance</h2>
+                    
+                    <div class="results-section">
+            `;
+            
+            strategyResults.forEach((result, idx) => {
+                const isBest = idx === 0;
+                const isWorst = idx === strategyResults.length - 1 && strategyResults.length > 1;
+                resultsHTML += `
+                    <div class="strategy-result ${isBest ? 'best' : ''} ${isWorst ? 'worst' : ''}">
+                        <div>
+                            <div class="strategy-name">${strategyNames[result.name]}</div>
+                            <div style="color: #666; font-size: 0.9em;">${result.correct}/${result.total} correct • Avg ${result.avgTime}s/question</div>
+                            <div class="progress-bar" style="width: 150px;">
+                                <div class="progress-fill" style="width: ${result.accuracy}%; background: ${isBest ? '#28a745' : isWorst ? '#dc3545' : '#007bff'};"></div>
+                            </div>
+                        </div>
+                        <div class="strategy-stats">
+                            <div class="accuracy" style="color: ${isBest ? '#28a745' : isWorst ? '#dc3545' : '#333'};">${result.accuracy}%</div>
+                            <div class="time-stat">${isBest ? '⭐ Best' : isWorst ? '📉 Needs Work' : ''}</div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            resultsHTML += `
+                    </div>
+
+                    <div class="recommendation">
+                        <h3>💡 Gaby's Personalized Recommendation</h3>
+                        <p><strong>Your best strategy:</strong> ${strategyNames[bestStrategy.name]}</p>
+                        <p style="opacity: 0.9;">${strategyDescriptions[bestStrategy.name]} worked best for you with ${bestStrategy.accuracy}% accuracy.</p>
+                        
+                        ${worstStrategy.name !== bestStrategy.name ? `
+                        <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.3);">
+                            <strong>Consider avoiding:</strong> ${strategyNames[worstStrategy.name]} (${worstStrategy.accuracy}% accuracy)
+                        </p>
+                        ` : ''}
+                        
+                        <p style="margin-top: 15px; font-size: 0.95em; opacity: 0.8;">
+                            Keep practicing with your strongest strategy on test day!
+                        </p>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 30px;">
+                        <button class="exam-btn ${isMCATMode ? 'gaby-btn' : ''}" onclick="location.reload()" style="display: inline-block;">
+                            🔄 Try Again
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('game-screen').innerHTML = resultsHTML;
         }
     </script>
 </body>
