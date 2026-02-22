@@ -3,114 +3,626 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exam Strategy Trainer</title>
+    <title>Exam Strategy Trainer | USMLE300</title>
     <style>
         :root { 
-            --nbme-blue: #003366; 
-            --uworld-blue: #007bff; 
-            --highlight-yellow: #fff3cd; 
+            --nbme-blue: #003366;
+            --nbme-blue-light: #004080;
+            --nbme-teal: #006080;
+            --cream: #FAF9F6;
+            --highlight-yellow: #fff3cd;
             --locked-gray: #e9ecef;
-            --blur-strength: 8px;
             --mcat-purple: #6b46c1;
+            --success: #28a745;
+            --danger: #dc3545;
         }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f8f9fa; margin: 0; height: 100vh; display: flex; flex-direction: column; }
         
-        /* --- HEADER --- */
-        #header { background: var(--nbme-blue); color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
-        #header.mcat-mode { background: var(--mcat-purple); }
-        .strategy-badge { padding: 6px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
-
-        /* --- LANDING SCREEN --- */
-        #landing-screen { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; }
-        .exam-btn { margin: 10px; padding: 20px 40px; font-size: 1.2em; border: 2px solid var(--nbme-blue); background: white; color: var(--nbme-blue); border-radius: 8px; cursor: pointer; transition: 0.2s; width: 300px; font-weight: bold; }
-        .exam-btn:hover { background: var(--nbme-blue); color: white; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,51,102,0.3); }
-        .exam-btn.gaby-btn { border-color: var(--mcat-purple); color: var(--mcat-purple); margin-top: 30px; }
-        .exam-btn.gaby-btn:hover { background: var(--mcat-purple); color: white; box-shadow: 0 4px 10px rgba(107,70,193,0.3); }
-        .gaby-label { color: var(--mcat-purple); font-size: 0.9em; margin-top: 20px; font-weight: bold; }
-
-        /* --- QUESTION AREA --- */
-        #game-screen { display: none; flex: 1; padding: 20px; justify-content: center; overflow-y: auto; }
-        .card { background: white; max-width: 900px; width: 100%; padding: 40px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); position: relative; transition: 0.3s; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        /* STRATEGY STYLES */
-        .blur-content { filter: blur(var(--blur-strength)); user-select: none; pointer-events: none; transition: filter 0.4s ease; opacity: 0.5; }
-        .reveal-btn { position: absolute; top: 150px; left: 50%; transform: translateX(-50%); z-index: 10; padding: 12px 24px; background: #28a745; color: white; border: none; border-radius: 30px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(40,167,69,0.4); animation: pulse 2s infinite; }
-        
-        @keyframes pulse { 0% { transform: translateX(-50%) scale(1); } 50% { transform: translateX(-50%) scale(1.05); } 100% { transform: translateX(-50%) scale(1); } }
+        body { 
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; 
+            background: #f5f5f5; 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column;
+            font-size: 15px;
+            line-height: 1.6;
+        }
 
-        /* HIGHLIGHTER */
-        .highlightable-word { cursor: pointer; padding: 2px 1px; border-radius: 3px; transition: background 0.1s; }
+        #landing-screen { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            height: 100%; 
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--cream) 0%, #f0eeeb 100%);
+        }
+        
+        .landing-logo {
+            font-family: Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #722F37;
+            margin-bottom: 0.5rem;
+        }
+        
+        .landing-title {
+            font-family: Georgia, serif;
+            font-size: 2rem;
+            color: var(--nbme-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .landing-subtitle {
+            color: #666;
+            margin-bottom: 2.5rem;
+            max-width: 550px;
+            font-size: 1rem;
+        }
+        
+        .exam-btn { 
+            margin: 8px; 
+            padding: 16px 40px; 
+            font-size: 1rem; 
+            border: 2px solid var(--nbme-blue); 
+            background: white; 
+            color: var(--nbme-blue); 
+            border-radius: 6px; 
+            cursor: pointer; 
+            transition: all 0.2s; 
+            width: 280px; 
+            font-weight: 600;
+        }
+        
+        .exam-btn:hover { 
+            background: var(--nbme-blue); 
+            color: white; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(0,51,102,0.25);
+        }
+        
+        .exam-btn.gaby-btn { 
+            border-color: var(--mcat-purple); 
+            color: var(--mcat-purple); 
+            margin-top: 1.5rem;
+        }
+        
+        .exam-btn.gaby-btn:hover { 
+            background: var(--mcat-purple); 
+            color: white; 
+            box-shadow: 0 4px 12px rgba(107,70,193,0.25);
+        }
+        
+        .gaby-note {
+            color: #888;
+            font-size: 0.85rem;
+            max-width: 380px;
+            margin-top: 0.5rem;
+        }
+
+        #nbme-header {
+            display: none;
+            background: var(--nbme-blue);
+            color: white;
+            padding: 8px 20px;
+            flex-shrink: 0;
+        }
+        
+        .nbme-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .nbme-item-info {
+            font-size: 0.9rem;
+        }
+        
+        .nbme-item-info strong {
+            font-size: 1rem;
+        }
+        
+        .nbme-nav-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .nbme-nav-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.2s;
+        }
+        
+        .nbme-nav-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .nbme-nav-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .nbme-tools {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .nbme-tool {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.7rem;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        
+        .nbme-tool:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .nbme-tool-icon {
+            font-size: 1.2rem;
+        }
+        
+        .nbme-header-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 8px;
+        }
+        
+        .strategy-badge {
+            padding: 5px 14px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .nbme-timer {
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.95rem;
+            background: rgba(255,255,255,0.15);
+            padding: 4px 12px;
+            border-radius: 4px;
+        }
+
+        #game-screen {
+            display: none;
+            flex: 1;
+            overflow: hidden;
+        }
+        
+        .nbme-layout {
+            display: flex;
+            height: 100%;
+        }
+        
+        .nbme-line-numbers {
+            width: 40px;
+            background: #e8e8e8;
+            border-right: 1px solid #ccc;
+            padding: 20px 0;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.8rem;
+            color: #666;
+            text-align: center;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+        
+        .line-num {
+            padding: 2px 8px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .nbme-content {
+            flex: 1;
+            background: white;
+            padding: 30px 40px;
+            overflow-y: auto;
+        }
+        
+        .strategy-instruction {
+            padding: 12px 16px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .strategy-instruction.standard { background: #e9ecef; color: #495057; }
+        .strategy-instruction.highlighter { background: #fff3cd; color: #856404; }
+        .strategy-instruction.speed { background: #f8d7da; color: #721c24; }
+        .strategy-instruction.options-first { background: #cce5ff; color: #004085; }
+        .strategy-instruction.last-sentence { background: #fef3c7; color: #92400e; }
+        
+        .section-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .section-badge.chem { background: #e3f2fd; color: #1565c0; }
+        .section-badge.bio { background: #e8f5e9; color: #2e7d32; }
+
+        .question-vignette {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 25px;
+        }
+        
+        .question-vignette.blur-content {
+            filter: blur(8px);
+            user-select: none;
+            pointer-events: none;
+            opacity: 0.6;
+            transition: all 0.4s ease;
+        }
+        
+        .highlightable-word {
+            cursor: pointer;
+            padding: 2px 1px;
+            border-radius: 3px;
+            transition: background 0.1s;
+        }
+        
         .highlightable-word:hover { background: #e2e6ea; }
-        .highlighted { background-color: yellow !important; font-weight: bold; }
-        .options-locked { opacity: 0.4; pointer-events: none; filter: grayscale(1); transition: 0.3s; }
-
-        /* TEXT STYLES */
-        .vignette { line-height: 1.8; font-size: 1.15em; margin-bottom: 30px; color: #333; }
-        .lead-in { font-weight: 700; font-size: 1.2em; margin-bottom: 20px; color: var(--nbme-blue); }
-        .lead-in.mcat-mode { color: var(--mcat-purple); }
+        .highlighted { background-color: yellow !important; font-weight: 600; }
         
-        /* OPTIONS */
-        .option { padding: 15px; border: 1px solid #dee2e6; margin-bottom: 10px; border-radius: 6px; cursor: pointer; display: flex; justify-content: space-between; transition: 0.2s; }
-        .option:hover { background: #f1f3f5; border-color: var(--uworld-blue); }
-        .option.selected { background: #e7f3ff; border-color: var(--uworld-blue); border-width: 2px; }
-        .option.correct { background: #d4edda; border-color: #28a745; }
-        .option.incorrect { background: #f8d7da; border-color: #dc3545; }
+        .last-sentence-highlight {
+            background: #fef3c7;
+            padding: 10px 12px;
+            border-radius: 4px;
+            border-left: 3px solid #f59e0b;
+            margin-top: 10px;
+        }
+        
+        .question-lead {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--nbme-blue);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .question-lead.mcat-mode { color: var(--mcat-purple); }
+        
+        .reveal-btn {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 8px rgba(40,167,69,0.3);
+            transition: all 0.2s;
+        }
+        
+        .reveal-btn:hover { background: #218838; transform: translateY(-1px); }
 
-        /* FOOTER */
-        #footer { background: white; padding: 15px 30px; border-top: 1px solid #dee2e6; display: none; justify-content: space-between; align-items: center; }
-        .btn { padding: 10px 25px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 1em; }
-        .btn-primary { background: var(--uworld-blue); color: white; }
+        .options-container {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: white;
+            padding: 15px;
+            max-width: 500px;
+        }
+        
+        .options-container.locked {
+            opacity: 0.4;
+            pointer-events: none;
+            filter: grayscale(1);
+        }
+        
+        .option {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        
+        .option:last-child { margin-bottom: 0; }
+        .option:hover { background: #f8f9fa; }
+        
+        .option-radio {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #666;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s;
+        }
+        
+        .option.selected .option-radio {
+            border-color: var(--nbme-blue);
+            background: var(--nbme-blue);
+        }
+        
+        .option.selected .option-radio::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+        }
+        
+        .option.correct { background: #d4edda; }
+        .option.correct .option-radio { border-color: var(--success); background: var(--success); }
+        .option.incorrect { background: #f8d7da; }
+        .option.incorrect .option-radio { border-color: var(--danger); background: var(--danger); }
+        
+        .option-label { font-weight: 600; color: #333; margin-right: 4px; }
+        .option-text { color: #333; font-size: 0.95rem; }
+        
+        .unlock-message { margin-top: 12px; font-weight: 600; font-size: 0.9rem; }
+        .unlock-message.locked { color: var(--danger); }
+        .unlock-message.unlocked { color: var(--success); }
 
-        /* RESULTS SCREEN */
-        .results-section { margin: 20px 0; padding: 20px; background: #f8f9fa; border-radius: 8px; }
-        .strategy-result { display: flex; justify-content: space-between; align-items: center; padding: 15px; margin: 10px 0; background: white; border-radius: 6px; border-left: 4px solid #dee2e6; }
-        .strategy-result.best { border-left-color: #28a745; background: #d4edda; }
-        .strategy-result.worst { border-left-color: #dc3545; background: #f8d7da; }
-        .strategy-name { font-weight: bold; font-size: 1.1em; }
-        .strategy-stats { text-align: right; }
-        .accuracy { font-size: 1.3em; font-weight: bold; }
-        .time-stat { color: #666; font-size: 0.9em; }
-        .recommendation { padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 8px; margin-top: 20px; }
-        .recommendation h3 { margin-top: 0; }
-        .progress-bar { height: 8px; background: #e9ecef; border-radius: 4px; overflow: hidden; margin-top: 5px; }
-        .progress-fill { height: 100%; background: var(--uworld-blue); transition: width 0.3s; }
+        #nbme-footer {
+            display: none;
+            background: white;
+            border-top: 2px solid #ccc;
+            padding: 12px 25px;
+            flex-shrink: 0;
+        }
+        
+        .nbme-footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nbme-footer-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .nbme-block-info { font-size: 0.85rem; color: #666; }
+        .nbme-block-info strong { color: #333; }
+        
+        .feedback-message {
+            font-style: italic;
+            color: #666;
+            font-size: 0.95rem;
+            max-width: 500px;
+        }
+        
+        .feedback-message .correct { color: var(--success); font-weight: 600; }
+        .feedback-message .incorrect { color: var(--danger); font-weight: 600; }
+        
+        .nbme-proceed-btn {
+            background: var(--nbme-teal);
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+        
+        .nbme-proceed-btn:hover { background: #005070; }
+
+        .results-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .results-header { text-align: center; margin-bottom: 30px; }
+        
+        .results-header h1 {
+            font-family: Georgia, serif;
+            color: var(--nbme-blue);
+            font-size: 1.75rem;
+            margin-bottom: 10px;
+        }
+        
+        .results-header h1.mcat { color: var(--mcat-purple); }
+        
+        .results-score-box {
+            text-align: center;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .results-score { font-size: 3rem; font-weight: 700; }
+        .results-score.good { color: var(--success); }
+        .results-score.medium { color: #ffc107; }
+        .results-score.poor { color: var(--danger); }
+        .results-percentage { color: #666; font-size: 1rem; margin-top: 5px; }
+        
+        .results-section { margin-bottom: 25px; }
+        
+        .results-section h2 {
+            font-family: Georgia, serif;
+            font-size: 1.25rem;
+            color: #333;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .strategy-result {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 6px;
+            border-left: 4px solid #dee2e6;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        
+        .strategy-result.best { border-left-color: var(--success); background: #d4edda; }
+        .strategy-result.worst { border-left-color: var(--danger); background: #f8d7da; }
+        .strategy-name { font-weight: 600; font-size: 1rem; }
+        .strategy-details { color: #666; font-size: 0.85rem; margin-top: 4px; }
+        .strategy-accuracy { font-size: 1.5rem; font-weight: 700; }
+        .strategy-label { font-size: 0.8rem; color: #666; }
+        
+        .progress-bar {
+            height: 6px;
+            background: #e9ecef;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 8px;
+            width: 120px;
+        }
+        
+        .progress-fill { height: 100%; transition: width 0.3s; }
+        
+        .recommendation-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 25px;
+        }
+        
+        .recommendation-box h3 { margin-bottom: 15px; font-size: 1.1rem; }
+        .recommendation-box p { margin-bottom: 10px; line-height: 1.6; }
+        .recommendation-box .divider { border-top: 1px solid rgba(255,255,255,0.3); margin: 15px 0; padding-top: 15px; }
+        
+        .retry-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 30px;
+            background: white;
+            color: var(--nbme-blue);
+            border: 2px solid var(--nbme-blue);
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .retry-btn:hover { background: var(--nbme-blue); color: white; }
+        .retry-btn.mcat { border-color: var(--mcat-purple); color: var(--mcat-purple); }
+        .retry-btn.mcat:hover { background: var(--mcat-purple); color: white; }
+
+        @media (max-width: 768px) {
+            .nbme-line-numbers { display: none; }
+            .nbme-content { padding: 20px; }
+            .nbme-header-top { flex-wrap: wrap; gap: 10px; }
+            .nbme-tools { display: none; }
+            .nbme-footer-content { flex-direction: column; gap: 15px; text-align: center; }
+            .nbme-footer-left { flex-direction: column; }
+            .options-container { max-width: 100%; }
+        }
     </style>
 </head>
 <body>
 
     <div id="landing-screen">
-        <h1 style="color: var(--nbme-blue); margin-bottom: 10px;">Exam Strategy Trainer</h1>
-        <p style="color: #666; margin-bottom: 40px; max-width: 600px;">
-            Select your exam level. You will be tested on 20 questions using 4 active-learning strategies to improve your test-taking speed and accuracy.
+        <div class="landing-logo">USMLE300</div>
+        <h1 class="landing-title">Exam Strategy Trainer</h1>
+        <p class="landing-subtitle">
+            Test 20 questions using 5 different reading strategies. Discover which approach works best for YOUR brain.
         </p>
         
         <button class="exam-btn" onclick="startGame('Step 1')">Step 1 (Mechanism)</button>
         <button class="exam-btn" onclick="startGame('Step 2 CK')">Step 2 CK (Diagnosis)</button>
         <button class="exam-btn" onclick="startGame('Step 3')">Step 3 (Management)</button>
         
-        <button class="exam-btn gaby-btn" onclick="startGame('MCAT')" style="margin-top: 30px;">Gaby Trainer</button>
-        <p style="color: #888; font-size: 0.85em; max-width: 400px; margin-top: 10px;">
-            Chem/Phys & Bio/Biochem questions with strategy analysis
-        </p>
+        <button class="exam-btn gaby-btn" onclick="startGame('MCAT')">Gaby Trainer</button>
+        <p class="gaby-note">Chem/Phys and Bio/Biochem questions with strategy analysis</p>
     </div>
 
-    <div id="header" style="display:none;">
-        <div style="display: flex; align-items: center;">
-            <strong id="exam-label" style="opacity:0.9; margin-right: 20px; font-size: 1.1em;">Step 1</strong>
-            <span id="timer" style="font-family: monospace; background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 4px;">00:00</span>
-            <span id="question-counter" style="margin-left: 15px; opacity: 0.8;"></span>
+    <div id="nbme-header">
+        <div class="nbme-header-top">
+            <div class="nbme-item-info">
+                <strong>Item: <span id="item-current">1</span> of <span id="item-total">20</span></strong>
+                <span style="margin-left: 15px; opacity: 0.8;" id="exam-label-display">Step 1</span>
+            </div>
+            
+            <div class="nbme-nav-buttons">
+                <button class="nbme-nav-btn disabled" id="prev-btn" onclick="goToPrevious()">
+                    <span>◀</span> Previous
+                </button>
+                <button class="nbme-nav-btn" id="next-nav-btn" onclick="goToNext()">
+                    Next <span>▶</span>
+                </button>
+            </div>
+            
+            <div class="nbme-tools">
+                <div class="nbme-tool"><span class="nbme-tool-icon">📋</span><span>Notes</span></div>
+                <div class="nbme-tool"><span class="nbme-tool-icon">🧮</span><span>Calculator</span></div>
+                <div class="nbme-tool"><span class="nbme-tool-icon">🔤</span><span>Text Zoom</span></div>
+            </div>
         </div>
-        <div id="strategy-display" class="strategy-badge">Strategy: Standard</div>
+        
+        <div class="nbme-header-bottom">
+            <div id="strategy-display" class="strategy-badge">🛡️ Standard Mode</div>
+            <div class="nbme-timer" id="timer">00:00</div>
+        </div>
     </div>
 
     <div id="game-screen">
-        <div class="card" id="question-card">
-            </div>
+        <div class="nbme-layout">
+            <div class="nbme-line-numbers" id="line-numbers"></div>
+            <div class="nbme-content" id="question-content"></div>
+        </div>
     </div>
 
-    <div id="footer">
-        <div id="feedback-msg" style="color: #666; font-style: italic;"></div>
-        <button id="next-btn" class="btn btn-primary" onclick="nextQuestion()">Next Question</button>
+    <div id="nbme-footer">
+        <div class="nbme-footer-content">
+            <div class="nbme-footer-left">
+                <div class="nbme-block-info"><strong>Block Time Remaining:</strong> untimed</div>
+                <div id="feedback-msg" class="feedback-message"></div>
+            </div>
+            <button id="proceed-btn" class="nbme-proceed-btn" onclick="nextQuestion()">Proceed to Next Item</button>
+        </div>
     </div>
 
     <script>
@@ -124,7 +636,6 @@
         let questionStartTime = 0;
         let isMCATMode = false;
 
-        // Strategy tracking for analysis
         let strategyData = {
             'STEM_FIRST': { correct: 0, total: 0, totalTime: 0 },
             'HIGHLIGHTER': { correct: 0, total: 0, totalTime: 0 },
@@ -133,198 +644,34 @@
             'LAST_SENTENCE': { correct: 0, total: 0, totalTime: 0 }
         };
 
-        // The 5 Strategies
         const STRATEGIES = ['STEM_FIRST', 'HIGHLIGHTER', 'SPEED_SCAN', 'OPTIONS_FIRST', 'LAST_SENTENCE'];
         let currentStrategy = '';
         let highlightCount = 0;
+        let hasSubmitted = false;
 
-        // MCAT Questions (Chem/Phys and Bio/Biochem)
         mcatQuestions = [
-            // Chemical and Physical Foundations
-            {
-                "step": "MCAT",
-                "section": "Chem/Phys",
-                "text": "A researcher is studying enzyme kinetics and observes that adding a competitive inhibitor to an enzyme-catalyzed reaction increases the apparent Km but does not change Vmax. The inhibitor binds to the active site of the enzyme.",
-                "lead": "If the concentration of substrate is increased significantly, what will happen to the rate of the reaction?",
-                "options": ["The rate will remain inhibited regardless of substrate concentration", "The rate will approach Vmax as substrate outcompetes the inhibitor", "The rate will decrease further due to substrate inhibition", "The rate will oscillate between inhibited and uninhibited states"],
-                "correct": 1,
-                "objective": "Competitive inhibitors can be overcome by increasing substrate concentration."
-            },
-            {
-                "step": "MCAT",
-                "section": "Chem/Phys",
-                "text": "A buffer solution contains 0.1 M acetic acid (pKa = 4.76) and 0.1 M sodium acetate. The solution has a pH of 4.76.",
-                "lead": "What will be the approximate pH if 0.02 mol of HCl is added to 1 L of this buffer?",
-                "options": ["4.58", "4.76", "4.94", "3.76"],
-                "correct": 0,
-                "objective": "Henderson-Hasselbalch equation: pH = pKa + log([A-]/[HA]). After adding HCl, ratio becomes 0.08/0.12."
-            },
-            {
-                "step": "MCAT",
-                "section": "Chem/Phys",
-                "text": "An electrochemical cell is constructed using a zinc electrode (E° = -0.76 V) and a copper electrode (E° = +0.34 V). The cell operates under standard conditions.",
-                "lead": "What is the standard cell potential (E°cell) for this galvanic cell?",
-                "options": ["-0.42 V", "+0.42 V", "+1.10 V", "-1.10 V"],
-                "correct": 2,
-                "objective": "E°cell = E°cathode - E°anode = 0.34 - (-0.76) = 1.10 V"
-            },
-            {
-                "step": "MCAT",
-                "section": "Chem/Phys",
-                "text": "A gas undergoes an isothermal expansion from 2 L to 6 L at 300 K. The gas behaves ideally and the process is reversible.",
-                "lead": "Which statement about the entropy change of the system is correct?",
-                "options": ["ΔS = 0 because temperature is constant", "ΔS > 0 because the gas expands and disorder increases", "ΔS < 0 because work is done by the system", "ΔS cannot be determined without knowing the pressure"],
-                "correct": 1,
-                "objective": "For isothermal expansion, ΔS = nR ln(V2/V1) > 0."
-            },
-            {
-                "step": "MCAT",
-                "section": "Chem/Phys",
-                "text": "A solution of NaCl in water has a freezing point of -1.86°C. The molal freezing point depression constant (Kf) for water is 1.86°C/m.",
-                "lead": "What is the molality of the NaCl solution, accounting for dissociation?",
-                "options": ["0.5 m", "1.0 m", "2.0 m", "0.25 m"],
-                "correct": 0,
-                "objective": "ΔTf = i × Kf × m. For NaCl, i = 2. So 1.86 = 2 × 1.86 × m, m = 0.5."
-            },
-            {
-                "step": "MCAT",
-                "section": "Chem/Phys",
-                "text": "Light with a wavelength of 500 nm passes through a single slit of width 0.1 mm. A diffraction pattern is observed on a screen 2 m away.",
-                "lead": "What determines the angular position of the first minimum in the diffraction pattern?",
-                "options": ["sin θ = λ/a, where a is slit width", "sin θ = 2λ/a", "sin θ = λ/2a", "The minimum depends only on screen distance"],
-                "correct": 0,
-                "objective": "Single slit diffraction: first minimum at sin θ = λ/a."
-            },
-            {
-                "step": "MCAT",
-                "section": "Chem/Phys",
-                "text": "A radioactive isotope has a half-life of 8 days. A sample initially contains 64 g of the isotope.",
-                "lead": "How much of the isotope will remain after 24 days?",
-                "options": ["32 g", "16 g", "8 g", "4 g"],
-                "correct": 2,
-                "objective": "After 3 half-lives (24/8 = 3): 64 → 32 → 16 → 8 g."
-            },
-            {
-                "step": "MCAT",
-                "section": "Chem/Phys",
-                "text": "A patient receives an IV solution that is 0.9% NaCl (w/v). Normal human blood has an osmolarity of approximately 300 mOsm/L.",
-                "lead": "Why is 0.9% NaCl considered isotonic with blood?",
-                "options": ["It has the same mass concentration as blood proteins", "Its osmolarity approximately matches blood osmolarity when accounting for NaCl dissociation", "It has the same viscosity as blood", "It contains the same electrolytes as blood plasma"],
-                "correct": 1,
-                "objective": "0.9% NaCl ≈ 154 mM NaCl × 2 (dissociation) ≈ 308 mOsm/L, matching blood."
-            },
-            {
-                "step": "MCAT",
-                "section": "Chem/Phys",
-                "text": "A block slides down a frictionless inclined plane that makes an angle of 30° with the horizontal. The block has a mass of 2 kg.",
-                "lead": "What is the magnitude of the normal force acting on the block?",
-                "options": ["20 N", "17.3 N", "10 N", "5 N"],
-                "correct": 1,
-                "objective": "Normal force = mg cos θ = 2 × 10 × cos 30° = 20 × 0.866 ≈ 17.3 N."
-            },
-            {
-                "step": "MCAT",
-                "section": "Chem/Phys",
-                "text": "An MRI machine uses a magnetic field of 1.5 T. A proton (charge = 1.6 × 10⁻¹⁹ C) moves perpendicular to this field with a velocity of 3 × 10⁶ m/s.",
-                "lead": "What is the magnitude of the magnetic force on the proton?",
-                "options": ["7.2 × 10⁻¹³ N", "4.5 × 10⁻¹³ N", "2.4 × 10⁻¹³ N", "7.2 × 10⁻¹² N"],
-                "correct": 0,
-                "objective": "F = qvB = (1.6 × 10⁻¹⁹)(3 × 10⁶)(1.5) = 7.2 × 10⁻¹³ N."
-            },
-            // Biological and Biochemical Foundations
-            {
-                "step": "MCAT",
-                "section": "Bio/Biochem",
-                "text": "During the citric acid cycle, isocitrate dehydrogenase converts isocitrate to α-ketoglutarate. This reaction is regulated by the energy status of the cell.",
-                "lead": "Which molecule acts as a positive allosteric regulator of isocitrate dehydrogenase?",
-                "options": ["ATP", "NADH", "ADP", "Citrate"],
-                "correct": 2,
-                "objective": "ADP signals low energy status and activates isocitrate dehydrogenase to increase ATP production."
-            },
-            {
-                "step": "MCAT",
-                "section": "Bio/Biochem",
-                "text": "A researcher isolates a mutant bacterial strain that cannot perform oxidative phosphorylation. The bacteria can still grow when glucose is provided.",
-                "lead": "What is the maximum net ATP yield per glucose molecule for these bacteria?",
-                "options": ["2 ATP", "4 ATP", "36 ATP", "0 ATP"],
-                "correct": 0,
-                "objective": "Without oxidative phosphorylation, only glycolysis works, yielding 2 net ATP per glucose."
-            },
-            {
-                "step": "MCAT",
-                "section": "Bio/Biochem",
-                "text": "A patient has a deficiency in the enzyme that converts phenylalanine to tyrosine. Without treatment, toxic metabolites accumulate.",
-                "lead": "Which amino acid becomes essential for this patient?",
-                "options": ["Phenylalanine", "Tryptophan", "Tyrosine", "Methionine"],
-                "correct": 2,
-                "objective": "In PKU, tyrosine cannot be synthesized from phenylalanine, making it essential."
-            },
-            {
-                "step": "MCAT",
-                "section": "Bio/Biochem",
-                "text": "The lac operon in E. coli is regulated by both the lac repressor and CAP-cAMP complex. When glucose is absent and lactose is present, transcription is maximally induced.",
-                "lead": "What is the role of the CAP-cAMP complex in this regulation?",
-                "options": ["It binds to the operator and blocks RNA polymerase", "It binds upstream and enhances RNA polymerase binding to the promoter", "It degrades the lac repressor protein", "It directly activates the lacZ gene product"],
-                "correct": 1,
-                "objective": "CAP-cAMP is a positive regulator that enhances transcription when glucose is low."
-            },
-            {
-                "step": "MCAT",
-                "section": "Bio/Biochem",
-                "text": "A protein destined for secretion is being translated by ribosomes. The signal sequence is recognized by the signal recognition particle (SRP).",
-                "lead": "Where does translation resume after the ribosome-SRP complex reaches its destination?",
-                "options": ["Free in the cytoplasm", "On the rough endoplasmic reticulum", "In the Golgi apparatus", "On the inner mitochondrial membrane"],
-                "correct": 1,
-                "objective": "Secretory proteins are translated on ribosomes attached to the rough ER."
-            },
-            {
-                "step": "MCAT",
-                "section": "Bio/Biochem",
-                "text": "During DNA replication, the leading strand is synthesized continuously while the lagging strand is synthesized in Okazaki fragments.",
-                "lead": "Which enzyme is responsible for joining Okazaki fragments together?",
-                "options": ["DNA polymerase III", "DNA primase", "DNA ligase", "Helicase"],
-                "correct": 2,
-                "objective": "DNA ligase joins Okazaki fragments by forming phosphodiester bonds."
-            },
-            {
-                "step": "MCAT",
-                "section": "Bio/Biochem",
-                "text": "A cell is placed in a hypotonic solution. Water begins to move across the plasma membrane.",
-                "lead": "What will happen to the cell if it lacks a rigid cell wall?",
-                "options": ["The cell will shrink due to water loss", "The cell will swell and potentially lyse", "The cell will remain unchanged", "The cell will undergo apoptosis"],
-                "correct": 1,
-                "objective": "In hypotonic solution, water enters the cell by osmosis, causing swelling and potential lysis."
-            },
-            {
-                "step": "MCAT",
-                "section": "Bio/Biochem",
-                "text": "The electron transport chain consists of protein complexes that transfer electrons and pump protons across the inner mitochondrial membrane.",
-                "lead": "Which complex directly reduces molecular oxygen to water?",
-                "options": ["Complex I (NADH dehydrogenase)", "Complex II (Succinate dehydrogenase)", "Complex III (Cytochrome bc1)", "Complex IV (Cytochrome c oxidase)"],
-                "correct": 3,
-                "objective": "Complex IV (cytochrome c oxidase) is the terminal electron acceptor that reduces O2 to H2O."
-            },
-            {
-                "step": "MCAT",
-                "section": "Bio/Biochem",
-                "text": "A hormone binds to a G-protein coupled receptor on the cell surface. The α subunit of the G-protein exchanges GDP for GTP and activates adenylyl cyclase.",
-                "lead": "What is the immediate product of adenylyl cyclase activation?",
-                "options": ["IP3 and DAG", "cAMP", "cGMP", "Calcium ions"],
-                "correct": 1,
-                "objective": "Adenylyl cyclase converts ATP to cAMP, the second messenger."
-            },
-            {
-                "step": "MCAT",
-                "section": "Bio/Biochem",
-                "text": "Hemoglobin exhibits cooperative binding of oxygen. The binding of one oxygen molecule increases the affinity of the remaining subunits for oxygen.",
-                "lead": "This cooperative behavior results in what type of oxygen-hemoglobin dissociation curve?",
-                "options": ["Linear", "Hyperbolic", "Sigmoidal", "Exponential"],
-                "correct": 2,
-                "objective": "Cooperative binding produces a sigmoidal (S-shaped) dissociation curve."
-            }
+            {"step":"MCAT","section":"Chem/Phys","text":"A researcher is studying enzyme kinetics and observes that adding a competitive inhibitor to an enzyme-catalyzed reaction increases the apparent Km but does not change Vmax. The inhibitor binds to the active site of the enzyme.","lead":"If the concentration of substrate is increased significantly, what will happen to the rate of the reaction?","options":["The rate will remain inhibited regardless of substrate concentration","The rate will approach Vmax as substrate outcompetes the inhibitor","The rate will decrease further due to substrate inhibition","The rate will oscillate between inhibited and uninhibited states"],"correct":1,"objective":"Competitive inhibitors can be overcome by increasing substrate concentration."},
+            {"step":"MCAT","section":"Chem/Phys","text":"A buffer solution contains 0.1 M acetic acid (pKa = 4.76) and 0.1 M sodium acetate. The solution has a pH of 4.76.","lead":"What will be the approximate pH if 0.02 mol of HCl is added to 1 L of this buffer?","options":["4.58","4.76","4.94","3.76"],"correct":0,"objective":"Henderson-Hasselbalch equation: pH = pKa + log([A-]/[HA]). After adding HCl, ratio becomes 0.08/0.12."},
+            {"step":"MCAT","section":"Chem/Phys","text":"An electrochemical cell is constructed using a zinc electrode (E° = -0.76 V) and a copper electrode (E° = +0.34 V). The cell operates under standard conditions.","lead":"What is the standard cell potential (E°cell) for this galvanic cell?","options":["-0.42 V","+0.42 V","+1.10 V","-1.10 V"],"correct":2,"objective":"E°cell = E°cathode - E°anode = 0.34 - (-0.76) = 1.10 V"},
+            {"step":"MCAT","section":"Chem/Phys","text":"A gas undergoes an isothermal expansion from 2 L to 6 L at 300 K. The gas behaves ideally and the process is reversible.","lead":"Which statement about the entropy change of the system is correct?","options":["Entropy change = 0 because temperature is constant","Entropy change is positive because the gas expands and disorder increases","Entropy change is negative because work is done by the system","Entropy change cannot be determined without knowing the pressure"],"correct":1,"objective":"For isothermal expansion, entropy change = nR ln(V2/V1) > 0."},
+            {"step":"MCAT","section":"Chem/Phys","text":"A solution of NaCl in water has a freezing point of -1.86°C. The molal freezing point depression constant (Kf) for water is 1.86°C/m.","lead":"What is the molality of the NaCl solution, accounting for dissociation?","options":["0.5 m","1.0 m","2.0 m","0.25 m"],"correct":0,"objective":"Freezing point depression = i × Kf × m. For NaCl, i = 2. So 1.86 = 2 × 1.86 × m, m = 0.5."},
+            {"step":"MCAT","section":"Chem/Phys","text":"Light with a wavelength of 500 nm passes through a single slit of width 0.1 mm. A diffraction pattern is observed on a screen 2 m away.","lead":"What determines the angular position of the first minimum in the diffraction pattern?","options":["sin θ = λ/a, where a is slit width","sin θ = 2λ/a","sin θ = λ/2a","The minimum depends only on screen distance"],"correct":0,"objective":"Single slit diffraction: first minimum at sin θ = λ/a."},
+            {"step":"MCAT","section":"Chem/Phys","text":"A radioactive isotope has a half-life of 8 days. A sample initially contains 64 g of the isotope.","lead":"How much of the isotope will remain after 24 days?","options":["32 g","16 g","8 g","4 g"],"correct":2,"objective":"After 3 half-lives (24/8 = 3): 64 to 32 to 16 to 8 g."},
+            {"step":"MCAT","section":"Chem/Phys","text":"A patient receives an IV solution that is 0.9% NaCl (w/v). Normal human blood has an osmolarity of approximately 300 mOsm/L.","lead":"Why is 0.9% NaCl considered isotonic with blood?","options":["It has the same mass concentration as blood proteins","Its osmolarity approximately matches blood osmolarity when accounting for NaCl dissociation","It has the same viscosity as blood","It contains the same electrolytes as blood plasma"],"correct":1,"objective":"0.9% NaCl is approximately 154 mM NaCl × 2 (dissociation) which is approximately 308 mOsm/L, matching blood."},
+            {"step":"MCAT","section":"Chem/Phys","text":"A block slides down a frictionless inclined plane that makes an angle of 30° with the horizontal. The block has a mass of 2 kg.","lead":"What is the magnitude of the normal force acting on the block?","options":["20 N","17.3 N","10 N","5 N"],"correct":1,"objective":"Normal force = mg cos θ = 2 × 10 × cos 30° = 20 × 0.866 which is approximately 17.3 N."},
+            {"step":"MCAT","section":"Chem/Phys","text":"An MRI machine uses a magnetic field of 1.5 T. A proton (charge = 1.6 × 10⁻¹⁹ C) moves perpendicular to this field with a velocity of 3 × 10⁶ m/s.","lead":"What is the magnitude of the magnetic force on the proton?","options":["7.2 × 10⁻¹³ N","4.5 × 10⁻¹³ N","2.4 × 10⁻¹³ N","7.2 × 10⁻¹² N"],"correct":0,"objective":"F = qvB = (1.6 × 10⁻¹⁹)(3 × 10⁶)(1.5) = 7.2 × 10⁻¹³ N."},
+            {"step":"MCAT","section":"Bio/Biochem","text":"During the citric acid cycle, isocitrate dehydrogenase converts isocitrate to α-ketoglutarate. This reaction is regulated by the energy status of the cell.","lead":"Which molecule acts as a positive allosteric regulator of isocitrate dehydrogenase?","options":["ATP","NADH","ADP","Citrate"],"correct":2,"objective":"ADP signals low energy status and activates isocitrate dehydrogenase to increase ATP production."},
+            {"step":"MCAT","section":"Bio/Biochem","text":"A researcher isolates a mutant bacterial strain that cannot perform oxidative phosphorylation. The bacteria can still grow when glucose is provided.","lead":"What is the maximum net ATP yield per glucose molecule for these bacteria?","options":["2 ATP","4 ATP","36 ATP","0 ATP"],"correct":0,"objective":"Without oxidative phosphorylation, only glycolysis works, yielding 2 net ATP per glucose."},
+            {"step":"MCAT","section":"Bio/Biochem","text":"A patient has a deficiency in the enzyme that converts phenylalanine to tyrosine. Without treatment, toxic metabolites accumulate.","lead":"Which amino acid becomes essential for this patient?","options":["Phenylalanine","Tryptophan","Tyrosine","Methionine"],"correct":2,"objective":"In PKU, tyrosine cannot be synthesized from phenylalanine, making it essential."},
+            {"step":"MCAT","section":"Bio/Biochem","text":"The lac operon in E. coli is regulated by both the lac repressor and CAP-cAMP complex. When glucose is absent and lactose is present, transcription is maximally induced.","lead":"What is the role of the CAP-cAMP complex in this regulation?","options":["It binds to the operator and blocks RNA polymerase","It binds upstream and enhances RNA polymerase binding to the promoter","It degrades the lac repressor protein","It directly activates the lacZ gene product"],"correct":1,"objective":"CAP-cAMP is a positive regulator that enhances transcription when glucose is low."},
+            {"step":"MCAT","section":"Bio/Biochem","text":"A protein destined for secretion is being translated by ribosomes. The signal sequence is recognized by the signal recognition particle (SRP).","lead":"Where does translation resume after the ribosome-SRP complex reaches its destination?","options":["Free in the cytoplasm","On the rough endoplasmic reticulum","In the Golgi apparatus","On the inner mitochondrial membrane"],"correct":1,"objective":"Secretory proteins are translated on ribosomes attached to the rough ER."},
+            {"step":"MCAT","section":"Bio/Biochem","text":"During DNA replication, the leading strand is synthesized continuously while the lagging strand is synthesized in Okazaki fragments.","lead":"Which enzyme is responsible for joining Okazaki fragments together?","options":["DNA polymerase III","DNA primase","DNA ligase","Helicase"],"correct":2,"objective":"DNA ligase joins Okazaki fragments by forming phosphodiester bonds."},
+            {"step":"MCAT","section":"Bio/Biochem","text":"A cell is placed in a hypotonic solution. Water begins to move across the plasma membrane.","lead":"What will happen to the cell if it lacks a rigid cell wall?","options":["The cell will shrink due to water loss","The cell will swell and potentially lyse","The cell will remain unchanged","The cell will undergo apoptosis"],"correct":1,"objective":"In hypotonic solution, water enters the cell by osmosis, causing swelling and potential lysis."},
+            {"step":"MCAT","section":"Bio/Biochem","text":"The electron transport chain consists of protein complexes that transfer electrons and pump protons across the inner mitochondrial membrane.","lead":"Which complex directly reduces molecular oxygen to water?","options":["Complex I (NADH dehydrogenase)","Complex II (Succinate dehydrogenase)","Complex III (Cytochrome bc1)","Complex IV (Cytochrome c oxidase)"],"correct":3,"objective":"Complex IV (cytochrome c oxidase) is the terminal electron acceptor that reduces O2 to H2O."},
+            {"step":"MCAT","section":"Bio/Biochem","text":"A hormone binds to a G-protein coupled receptor on the cell surface. The α subunit of the G-protein exchanges GDP for GTP and activates adenylyl cyclase.","lead":"What is the immediate product of adenylyl cyclase activation?","options":["IP3 and DAG","cAMP","cGMP","Calcium ions"],"correct":1,"objective":"Adenylyl cyclase converts ATP to cAMP, the second messenger."},
+            {"step":"MCAT","section":"Bio/Biochem","text":"Hemoglobin exhibits cooperative binding of oxygen. The binding of one oxygen molecule increases the affinity of the remaining subunits for oxygen.","lead":"This cooperative behavior results in what type of oxygen-hemoglobin dissociation curve?","options":["Linear","Hyperbolic","Sigmoidal","Exponential"],"correct":2,"objective":"Cooperative binding produces a sigmoidal (S-shaped) dissociation curve."}
         ];
 
-        // Load JSON Data
         async function loadData() {
             try {
                 const res = await fetch('questions.json');
@@ -336,7 +683,6 @@
         loadData();
 
         function startGame(step) {
-            // Reset strategy tracking
             strategyData = {
                 'STEM_FIRST': { correct: 0, total: 0, totalTime: 0 },
                 'HIGHLIGHTER': { correct: 0, total: 0, totalTime: 0 },
@@ -349,34 +695,33 @@
             if (step === 'MCAT') {
                 isMCATMode = true;
                 examQuestions = [...mcatQuestions];
-                // Shuffle questions
                 examQuestions.sort(() => Math.random() - 0.5);
-                // Take 20 questions (or all if less)
                 examQuestions = examQuestions.slice(0, 20);
             } else {
                 isMCATMode = false;
                 examQuestions = allQuestions.filter(q => q.step === step);
+                examQuestions.sort(() => Math.random() - 0.5);
+                examQuestions = examQuestions.slice(0, 20);
             }
             
-            if(examQuestions.length === 0) {
+            if (examQuestions.length === 0) {
                 alert("No questions found for " + step + ". Check your JSON file.");
                 return;
             }
 
             document.getElementById('landing-screen').style.display = 'none';
-            document.getElementById('header').style.display = 'flex';
+            document.getElementById('nbme-header').style.display = 'block';
             document.getElementById('game-screen').style.display = 'flex';
-            document.getElementById('footer').style.display = 'flex';
-            document.getElementById('exam-label').innerText = step === 'MCAT' ? 'Gaby MCAT Trainer' : step;
+            document.getElementById('nbme-footer').style.display = 'block';
             
-            if (isMCATMode) {
-                document.getElementById('header').classList.add('mcat-mode');
-            } else {
-                document.getElementById('header').classList.remove('mcat-mode');
-            }
+            document.getElementById('exam-label-display').innerText = step === 'MCAT' ? 'Gaby MCAT Trainer' : step;
+            document.getElementById('item-total').innerText = examQuestions.length;
+            
+            document.getElementById('nbme-header').style.background = isMCATMode ? 'var(--mcat-purple)' : 'var(--nbme-blue)';
 
             timerSeconds = 0;
             startTimer();
+            generateLineNumbers();
             loadQuestion(0);
         }
 
@@ -385,8 +730,19 @@
                 timerSeconds++;
                 const m = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
                 const s = (timerSeconds % 60).toString().padStart(2, '0');
-                document.getElementById('timer').innerText = `${m}:${s}`;
+                document.getElementById('timer').innerText = m + ':' + s;
             }, 1000);
+        }
+
+        function generateLineNumbers() {
+            const container = document.getElementById('line-numbers');
+            container.innerHTML = '';
+            for (let i = 1; i <= 40; i++) {
+                const line = document.createElement('div');
+                line.className = 'line-num';
+                line.textContent = i;
+                container.appendChild(line);
+            }
         }
 
         function loadQuestion(idx) {
@@ -397,213 +753,180 @@
 
             currentIdx = idx;
             questionStartTime = timerSeconds;
+            hasSubmitted = false;
             const q = examQuestions[idx];
             
-            // Update question counter
-            document.getElementById('question-counter').innerText = `Q${idx + 1}/${examQuestions.length}`;
+            document.getElementById('item-current').innerText = idx + 1;
+            document.getElementById('prev-btn').classList.toggle('disabled', idx === 0);
             
-            // Cycle through the 4 strategies
             currentStrategy = STRATEGIES[idx % STRATEGIES.length];
-            updateStrategyHeader(currentStrategy);
+            updateStrategyBadge(currentStrategy);
 
-            const card = document.getElementById('question-card');
-            card.innerHTML = ''; 
+            const content = document.getElementById('question-content');
+            content.innerHTML = '';
             highlightCount = 0;
 
-            let vignetteHTML = '';
-            let leadInHTML = `<div class="lead-in ${isMCATMode ? 'mcat-mode' : ''}" id="lead-in-text">${q.lead}</div>`;
-            let optionsHTML = '';
-
-            // Section indicator for MCAT
-            let sectionBadge = '';
+            let html = '';
+            html += getStrategyInstruction(currentStrategy);
+            
             if (isMCATMode && q.section) {
-                sectionBadge = `<div style="background: ${q.section === 'Chem/Phys' ? '#e3f2fd' : '#e8f5e9'}; 
-                    color: ${q.section === 'Chem/Phys' ? '#1565c0' : '#2e7d32'}; 
-                    padding: 4px 12px; border-radius: 15px; font-size: 0.85em; 
-                    display: inline-block; margin-bottom: 15px; font-weight: bold;">
-                    ${q.section === 'Chem/Phys' ? '⚗️' : '🧬'} ${q.section}
-                </div>`;
+                const sectionClass = q.section === 'Chem/Phys' ? 'chem' : 'bio';
+                const sectionEmoji = q.section === 'Chem/Phys' ? '⚗️' : '🧬';
+                html += '<div class="section-badge ' + sectionClass + '">' + sectionEmoji + ' ' + q.section + '</div>';
             }
-
-            // 1. PREPARE VIGNETTE TEXT
-            if (currentStrategy === 'HIGHLIGHTER') {
-                const words = q.text.split(' ');
-                vignetteHTML = sectionBadge + `<div id="vignette-text" class="vignette">` + 
-                    words.map((w, i) => `<span class="highlightable-word" id="word-${i}" onclick="highlightWord(${i})">${w} </span>`).join('') + 
-                    `</div>`;
-            } else {
-                vignetteHTML = sectionBadge + `<div id="vignette-text" class="vignette">${q.text}</div>`;
-            }
-
-            // 2. PREPARE OPTIONS
-            let optionsClass = (currentStrategy === 'HIGHLIGHTER') ? 'options-locked' : '';
-            optionsHTML = `<div id="options-container" class="${optionsClass}">`;
-            q.options.forEach((opt, i) => {
-                const optText = opt.split(' (')[0];
-                const percentage = opt.match(/\(.*\)/) || '';
-                optionsHTML += `<div class="option" id="option-${i}" onclick="selectOption(${i}, this)">
-                                    <span>${optText}</span>
-                                    <span style="color:#888; font-size:0.9em;">${percentage}</span>
-                                </div>`;
-            });
-            optionsHTML += `</div>`;
-
-            // 3. APPLY STRATEGY-SPECIFIC LAYOUTS
 
             if (currentStrategy === 'OPTIONS_FIRST') {
-                card.innerHTML = `
-                    <button id="reveal-btn" class="reveal-btn" onclick="revealCase()">👀 Show Case</button>
-                    <div id="blur-wrapper" class="blur-content">
-                        ${vignetteHTML}
-                        ${leadInHTML}
-                    </div>
-                    <div style="margin-top:20px; border-top:2px dashed #ccc; padding-top:10px;">
-                        <p style="color:#666; font-size:0.9em;"><strong>🫣 Strategy:</strong> Read these options first to prime your brain!</p>
-                        ${optionsHTML}
-                    </div>
-                `;
-
-            } else if (currentStrategy === 'STEM_FIRST') {
-                card.innerHTML = `
-                    <p style="color:#666; font-size:0.9em; margin-bottom:15px;"><strong>🛡️ Strategy:</strong> Standard approach - read carefully from start to finish.</p>
-                    ${vignetteHTML}
-                    ${leadInHTML}
-                    ${optionsHTML}
-                `;
-
-            } else if (currentStrategy === 'SPEED_SCAN') {
-                card.innerHTML = `
-                    <div style="background:#ffcccc; color:#a00; padding:10px; margin-bottom:15px; border-radius:4px; font-weight:bold;">
-                        ⚡ SPEED MODE: Trust your instincts! Answer within 60 seconds.
-                    </div>
-                    ${vignetteHTML}
-                    ${leadInHTML}
-                    ${optionsHTML}
-                `;
-
-            } else { // HIGHLIGHTER
-                card.innerHTML = `
-                    <p style="color:#856404; font-size:0.9em; margin-bottom:15px;"><strong>🖍️ Strategy:</strong> Highlight 3 key terms before answering!</p>
-                    ${vignetteHTML}
-                    ${leadInHTML}
-                    ${optionsHTML}
-                    <div id="unlock-msg" style="color:#d9534f; margin-top:10px; font-weight:bold;">
-                        🔒 Highlight 3 key words to unlock options.
-                    </div>`;
-            }
-
-            // Handle LAST_SENTENCE strategy separately since it needs special layout
-            if (currentStrategy === 'LAST_SENTENCE') {
-                // Get last sentence of the passage
+                html += '<button class="reveal-btn" id="reveal-btn" onclick="revealCase()">👀 Show Full Case</button>';
+                html += '<div id="vignette-wrapper" class="question-vignette blur-content">' + q.text + '</div>';
+                html += '<div class="question-lead ' + (isMCATMode ? 'mcat-mode' : '') + '" id="lead-text" style="filter: blur(8px); opacity: 0.6;">' + q.lead + '</div>';
+                html += '<p style="color: #666; font-size: 0.9rem; margin-bottom: 15px;"><strong>Strategy:</strong> Read these options first to prime your brain, then reveal the case.</p>';
+                html += buildOptions(q, false);
+            } else if (currentStrategy === 'HIGHLIGHTER') {
+                const words = q.text.split(' ');
+                let highlightableText = '';
+                for (let i = 0; i < words.length; i++) {
+                    highlightableText += '<span class="highlightable-word" id="word-' + i + '" onclick="highlightWord(' + i + ')">' + words[i] + ' </span>';
+                }
+                html += '<div class="question-vignette" id="vignette-text">' + highlightableText + '</div>';
+                html += '<div class="question-lead ' + (isMCATMode ? 'mcat-mode' : '') + '">' + q.lead + '</div>';
+                html += buildOptions(q, true);
+                html += '<div id="unlock-msg" class="unlock-message locked">🔒 Highlight 3 key words to unlock the options.</div>';
+            } else if (currentStrategy === 'LAST_SENTENCE') {
                 const sentences = q.text.match(/[^.!?]+[.!?]+/g) || [q.text];
                 const lastSentence = sentences[sentences.length - 1].trim();
                 const earlierText = sentences.slice(0, -1).join(' ').trim();
-                
-                card.innerHTML = `
-                    <p style="color:#7b341e; font-size:0.9em; margin-bottom:15px;"><strong>📖 Strategy:</strong> Read the last sentence + answers first, then reveal full passage!</p>
-                    ${sectionBadge}
-                    <div id="passage-wrapper">
-                        <div id="earlier-text" class="blur-content vignette" style="margin-bottom:0;">${earlierText}</div>
-                        <div class="vignette" style="background: #fef3c7; padding: 10px; border-radius: 4px; margin-top: 5px;">${lastSentence}</div>
-                    </div>
-                    ${leadInHTML}
-                    <button id="reveal-passage-btn" class="reveal-btn" style="position:relative; top:auto; left:auto; transform:none; margin-bottom:15px;" onclick="revealFullPassage()">👀 Reveal Full Passage</button>
-                    ${optionsHTML}
-                `;
+                html += '<div id="earlier-text" class="question-vignette blur-content">' + earlierText + '</div>';
+                html += '<div class="last-sentence-highlight">' + lastSentence + '</div>';
+                html += '<div class="question-lead ' + (isMCATMode ? 'mcat-mode' : '') + '">' + q.lead + '</div>';
+                html += '<button class="reveal-btn" id="reveal-passage-btn" onclick="revealFullPassage()">👀 Reveal Full Passage</button>';
+                html += buildOptions(q, false);
+            } else {
+                html += '<div class="question-vignette">' + q.text + '</div>';
+                html += '<div class="question-lead ' + (isMCATMode ? 'mcat-mode' : '') + '">' + q.lead + '</div>';
+                html += buildOptions(q, false);
             }
 
-            document.getElementById('feedback-msg').innerText = '';
-            document.getElementById('next-btn').innerText = 'Submit Answer';
+            content.innerHTML = html;
+            document.getElementById('feedback-msg').innerHTML = '';
+            document.getElementById('proceed-btn').innerText = 'Submit Answer';
         }
 
-        function updateStrategyHeader(strat) {
-            const badge = document.getElementById('strategy-display');
-            if (strat === 'STEM_FIRST') {
-                badge.innerText = "🛡️ Standard Mode";
-                badge.style.background = "#e2e6ea"; badge.style.color = "#333";
-            } else if (strat === 'HIGHLIGHTER') {
-                badge.innerText = "🖍️ Active Reader";
-                badge.style.background = "#fff3cd"; badge.style.color = "#856404";
-            } else if (strat === 'SPEED_SCAN') {
-                badge.innerText = "⚡ Speed Scan";
-                badge.style.background = "#d4edda"; badge.style.color = "#155724";
-            } else if (strat === 'OPTIONS_FIRST') {
-                badge.innerText = "🫣 Options First";
-                badge.style.background = "#cce5ff"; badge.style.color = "#004085";
-            } else if (strat === 'LAST_SENTENCE') {
-                badge.innerText = "📖 Last Sentence First";
-                badge.style.background = "#fef3c7"; badge.style.color = "#92400e";
+        function getStrategyInstruction(strategy) {
+            const instructions = {
+                'STEM_FIRST': '<div class="strategy-instruction standard">🛡️ <strong>Standard Mode:</strong> Read the case carefully from start to finish, then answer.</div>',
+                'HIGHLIGHTER': '<div class="strategy-instruction highlighter">🖍️ <strong>Active Reader:</strong> Highlight 3 key terms before you can unlock the answer choices.</div>',
+                'SPEED_SCAN': '<div class="strategy-instruction speed">⚡ <strong>Speed Scan:</strong> Read quickly and trust your gut! Answer within 60 seconds.</div>',
+                'OPTIONS_FIRST': '<div class="strategy-instruction options-first">🫣 <strong>Options First:</strong> Read the answer choices first to prime your brain, then reveal the case.</div>',
+                'LAST_SENTENCE': '<div class="strategy-instruction last-sentence">📖 <strong>Last Sentence First:</strong> Read the key sentence and answers first, then reveal the full passage.</div>'
+            };
+            return instructions[strategy] || '';
+        }
+
+        function buildOptions(q, locked) {
+            const lockedClass = locked ? 'locked' : '';
+            let html = '<div class="options-container ' + lockedClass + '" id="options-container">';
+            const labels = ['A', 'B', 'C', 'D', 'E', 'F'];
+            for (let i = 0; i < q.options.length; i++) {
+                html += '<div class="option" id="option-' + i + '" onclick="selectOption(' + i + ', this)">';
+                html += '<div class="option-radio"></div>';
+                html += '<div><span class="option-label">' + labels[i] + '.</span> <span class="option-text">' + q.options[i] + '</span></div>';
+                html += '</div>';
             }
+            html += '</div>';
+            return html;
+        }
+
+        function updateStrategyBadge(strategy) {
+            const badge = document.getElementById('strategy-display');
+            const configs = {
+                'STEM_FIRST': { text: '🛡️ Standard Mode', bg: '#e9ecef', color: '#495057' },
+                'HIGHLIGHTER': { text: '🖍️ Active Reader', bg: '#fff3cd', color: '#856404' },
+                'SPEED_SCAN': { text: '⚡ Speed Scan', bg: '#d4edda', color: '#155724' },
+                'OPTIONS_FIRST': { text: '🫣 Options First', bg: '#cce5ff', color: '#004085' },
+                'LAST_SENTENCE': { text: '📖 Last Sentence', bg: '#fef3c7', color: '#92400e' }
+            };
+            const config = configs[strategy];
+            badge.innerText = config.text;
+            badge.style.background = config.bg;
+            badge.style.color = config.color;
         }
 
         function revealCase() {
-            document.getElementById('blur-wrapper').classList.remove('blur-content');
+            document.getElementById('vignette-wrapper').classList.remove('blur-content');
+            document.getElementById('vignette-wrapper').style.filter = 'none';
+            document.getElementById('vignette-wrapper').style.opacity = '1';
+            document.getElementById('lead-text').style.filter = 'none';
+            document.getElementById('lead-text').style.opacity = '1';
             document.getElementById('reveal-btn').style.display = 'none';
         }
 
         function revealFullPassage() {
             document.getElementById('earlier-text').classList.remove('blur-content');
+            document.getElementById('earlier-text').style.filter = 'none';
+            document.getElementById('earlier-text').style.opacity = '1';
             document.getElementById('reveal-passage-btn').style.display = 'none';
         }
 
         function highlightWord(id) {
             if (currentStrategy !== 'HIGHLIGHTER') return;
-            const el = document.getElementById(`word-${id}`);
+            const el = document.getElementById('word-' + id);
             if (!el.classList.contains('highlighted')) {
                 el.classList.add('highlighted');
                 highlightCount++;
                 if (highlightCount >= 3) {
-                    document.getElementById('options-container').classList.remove('options-locked');
-                    document.getElementById('unlock-msg').innerText = "🔓 Options Unlocked! Select your answer.";
-                    document.getElementById('unlock-msg').style.color = "#28a745";
+                    document.getElementById('options-container').classList.remove('locked');
+                    document.getElementById('unlock-msg').innerText = '🔓 Options unlocked! Select your answer.';
+                    document.getElementById('unlock-msg').classList.remove('locked');
+                    document.getElementById('unlock-msg').classList.add('unlocked');
                 }
             }
         }
 
         function selectOption(optIdx, el) {
+            if (hasSubmitted) return;
             if (currentStrategy === 'HIGHLIGHTER' && highlightCount < 3) return;
-            
             userAnswers[currentIdx] = optIdx;
-            document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+            document.querySelectorAll('.option').forEach(function(o) { o.classList.remove('selected'); });
             el.classList.add('selected');
         }
 
+        function goToPrevious() {
+            if (currentIdx > 0) loadQuestion(currentIdx - 1);
+        }
+
+        function goToNext() {
+            nextQuestion();
+        }
+
         function nextQuestion() {
-            const nextBtn = document.getElementById('next-btn');
+            const btn = document.getElementById('proceed-btn');
             
-            if (nextBtn.innerText === 'Submit Answer') {
+            if (btn.innerText === 'Submit Answer') {
                 if (userAnswers[currentIdx] === undefined) {
                     alert("Please select an answer.");
                     return;
                 }
                 
-                // Show correct/incorrect feedback
+                hasSubmitted = true;
                 const q = examQuestions[currentIdx];
                 const isCorrect = userAnswers[currentIdx] === q.correct;
                 const questionTime = timerSeconds - questionStartTime;
                 
-                // Track strategy performance
                 strategyData[currentStrategy].total++;
                 strategyData[currentStrategy].totalTime += questionTime;
-                if (isCorrect) {
-                    strategyData[currentStrategy].correct++;
-                }
+                if (isCorrect) strategyData[currentStrategy].correct++;
                 
-                // Visual feedback
-                document.querySelectorAll('.option').forEach((o, i) => {
-                    if (i === q.correct) {
-                        o.classList.add('correct');
-                    } else if (i === userAnswers[currentIdx] && !isCorrect) {
-                        o.classList.add('incorrect');
-                    }
+                document.querySelectorAll('.option').forEach(function(o, i) {
+                    if (i === q.correct) o.classList.add('correct');
+                    else if (i === userAnswers[currentIdx] && !isCorrect) o.classList.add('incorrect');
                     o.style.pointerEvents = 'none';
                 });
                 
                 document.getElementById('feedback-msg').innerHTML = isCorrect 
-                    ? `<span style="color:#28a745;">✓ Correct!</span> ${q.objective}`
-                    : `<span style="color:#dc3545;">✗ Incorrect.</span> ${q.objective}`;
+                    ? '<span class="correct">✓ Correct!</span> ' + q.objective
+                    : '<span class="incorrect">✗ Incorrect.</span> ' + q.objective;
                 
-                nextBtn.innerText = currentIdx < examQuestions.length - 1 ? 'Next Question →' : 'See Results 📊';
+                btn.innerText = currentIdx < examQuestions.length - 1 ? 'Proceed to Next Item' : 'See Results 📊';
             } else {
                 loadQuestion(currentIdx + 1);
             }
@@ -611,38 +934,28 @@
 
         function finishExam() {
             clearInterval(timerInterval);
-            document.getElementById('header').style.display = 'none';
-            document.getElementById('footer').style.display = 'none';
+            document.getElementById('nbme-header').style.display = 'none';
+            document.getElementById('nbme-footer').style.display = 'none';
             
-            // Calculate statistics
-            let totalCorrect = 0;
-            let totalQuestions = 0;
+            let totalCorrect = 0, totalQuestions = 0;
             let strategyResults = [];
             
-            for (const [strategy, data] of Object.entries(strategyData)) {
+            for (const strategy in strategyData) {
+                const data = strategyData[strategy];
                 if (data.total > 0) {
                     const accuracy = Math.round((data.correct / data.total) * 100);
                     const avgTime = Math.round(data.totalTime / data.total);
-                    strategyResults.push({
-                        name: strategy,
-                        accuracy: accuracy,
-                        avgTime: avgTime,
-                        correct: data.correct,
-                        total: data.total
-                    });
+                    strategyResults.push({ name: strategy, accuracy: accuracy, avgTime: avgTime, correct: data.correct, total: data.total });
                     totalCorrect += data.correct;
                     totalQuestions += data.total;
                 }
             }
             
-            // Sort by accuracy (then by speed if tied)
-            strategyResults.sort((a, b) => {
-                if (b.accuracy !== a.accuracy) return b.accuracy - a.accuracy;
-                return a.avgTime - b.avgTime;
-            });
+            strategyResults.sort(function(a, b) { return b.accuracy !== a.accuracy ? b.accuracy - a.accuracy : a.avgTime - b.avgTime; });
             
             const bestStrategy = strategyResults[0];
             const worstStrategy = strategyResults[strategyResults.length - 1];
+            const overallPercent = Math.round(totalCorrect / totalQuestions * 100);
             
             const strategyNames = {
                 'STEM_FIRST': '🛡️ Standard Mode',
@@ -660,73 +973,42 @@
                 'LAST_SENTENCE': 'Reading the last sentence and answers first, then the full passage'
             };
             
-            let resultsHTML = `
-                <div class="card" style="max-width: 700px; margin: 0 auto;">
-                    <h1 style="color:${isMCATMode ? 'var(--mcat-purple)' : 'var(--nbme-blue)'}; text-align:center;">
-                        ${isMCATMode ? 'Gaby\'s Strategy Analysis' : 'Training Block Complete!'}
-                    </h1>
-                    
-                    <div style="text-align:center; margin: 20px 0; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                        <div style="font-size: 2.5em; font-weight: bold; color: ${totalCorrect/totalQuestions >= 0.7 ? '#28a745' : totalCorrect/totalQuestions >= 0.5 ? '#ffc107' : '#dc3545'};">
-                            ${totalCorrect}/${totalQuestions}
-                        </div>
-                        <div style="color: #666;">Overall Score (${Math.round(totalCorrect/totalQuestions*100)}%)</div>
-                        <div style="color: #888; margin-top: 5px;">Total Time: ${document.getElementById('timer').innerText}</div>
-                    </div>
-
-                    <h2 style="color: #333; border-bottom: 2px solid #eee; padding-bottom: 10px;">📊 Strategy Performance</h2>
-                    
-                    <div class="results-section">
-            `;
+            let scoreClass = overallPercent >= 70 ? 'good' : overallPercent >= 50 ? 'medium' : 'poor';
             
-            strategyResults.forEach((result, idx) => {
+            let resultsHTML = '<div class="results-container"><div class="results-header"><h1 class="' + (isMCATMode ? 'mcat' : '') + '">' + (isMCATMode ? "Gaby's Strategy Analysis" : 'Training Block Complete!') + '</h1></div>';
+            resultsHTML += '<div class="results-score-box"><div class="results-score ' + scoreClass + '">' + totalCorrect + '/' + totalQuestions + '</div>';
+            resultsHTML += '<div class="results-percentage">Overall Score (' + overallPercent + '%) | Total Time: ' + document.getElementById('timer').innerText + '</div></div>';
+            resultsHTML += '<div class="results-section"><h2>📊 Strategy Performance</h2>';
+            
+            for (let idx = 0; idx < strategyResults.length; idx++) {
+                const result = strategyResults[idx];
                 const isBest = idx === 0;
                 const isWorst = idx === strategyResults.length - 1 && strategyResults.length > 1;
-                resultsHTML += `
-                    <div class="strategy-result ${isBest ? 'best' : ''} ${isWorst ? 'worst' : ''}">
-                        <div>
-                            <div class="strategy-name">${strategyNames[result.name]}</div>
-                            <div style="color: #666; font-size: 0.9em;">${result.correct}/${result.total} correct • Avg ${result.avgTime}s/question</div>
-                            <div class="progress-bar" style="width: 150px;">
-                                <div class="progress-fill" style="width: ${result.accuracy}%; background: ${isBest ? '#28a745' : isWorst ? '#dc3545' : '#007bff'};"></div>
-                            </div>
-                        </div>
-                        <div class="strategy-stats">
-                            <div class="accuracy" style="color: ${isBest ? '#28a745' : isWorst ? '#dc3545' : '#333'};">${result.accuracy}%</div>
-                            <div class="time-stat">${isBest ? '⭐ Best' : isWorst ? '📉 Needs Work' : ''}</div>
-                        </div>
-                    </div>
-                `;
-            });
+                const barColor = isBest ? 'var(--success)' : isWorst ? 'var(--danger)' : '#007bff';
+                
+                resultsHTML += '<div class="strategy-result ' + (isBest ? 'best' : '') + ' ' + (isWorst ? 'worst' : '') + '">';
+                resultsHTML += '<div><div class="strategy-name">' + strategyNames[result.name] + '</div>';
+                resultsHTML += '<div class="strategy-details">' + result.correct + '/' + result.total + ' correct | Avg ' + result.avgTime + 's/question</div>';
+                resultsHTML += '<div class="progress-bar"><div class="progress-fill" style="width: ' + result.accuracy + '%; background: ' + barColor + ';"></div></div></div>';
+                resultsHTML += '<div style="text-align: right;"><div class="strategy-accuracy" style="color: ' + (isBest ? 'var(--success)' : isWorst ? 'var(--danger)' : '#333') + ';">' + result.accuracy + '%</div>';
+                resultsHTML += '<div class="strategy-label">' + (isBest ? '⭐ Best' : isWorst ? '📉 Needs Work' : '') + '</div></div></div>';
+            }
             
-            resultsHTML += `
-                    </div>
-
-                    <div class="recommendation">
-                        <h3>💡 Gaby's Personalized Recommendation</h3>
-                        <p><strong>Your best strategy:</strong> ${strategyNames[bestStrategy.name]}</p>
-                        <p style="opacity: 0.9;">${strategyDescriptions[bestStrategy.name]} worked best for you with ${bestStrategy.accuracy}% accuracy.</p>
-                        
-                        ${worstStrategy.name !== bestStrategy.name ? `
-                        <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.3);">
-                            <strong>Consider avoiding:</strong> ${strategyNames[worstStrategy.name]} (${worstStrategy.accuracy}% accuracy)
-                        </p>
-                        ` : ''}
-                        
-                        <p style="margin-top: 15px; font-size: 0.95em; opacity: 0.8;">
-                            Keep practicing with your strongest strategy on test day!
-                        </p>
-                    </div>
-                    
-                    <div style="text-align: center; margin-top: 30px;">
-                        <button class="exam-btn ${isMCATMode ? 'gaby-btn' : ''}" onclick="location.reload()" style="display: inline-block;">
-                            🔄 Try Again
-                        </button>
-                    </div>
-                </div>
-            `;
+            resultsHTML += '</div><div class="recommendation-box"><h3>💡 Personalized Recommendation</h3>';
+            resultsHTML += '<p><strong>Your best strategy:</strong> ' + strategyNames[bestStrategy.name] + '</p>';
+            resultsHTML += '<p>' + strategyDescriptions[bestStrategy.name] + ' worked best for you with ' + bestStrategy.accuracy + '% accuracy.</p>';
+            
+            if (worstStrategy.name !== bestStrategy.name) {
+                resultsHTML += '<div class="divider"><strong>Consider avoiding:</strong> ' + strategyNames[worstStrategy.name] + ' (' + worstStrategy.accuracy + '% accuracy)</div>';
+            }
+            
+            resultsHTML += '<p style="font-size: 0.9rem; opacity: 0.9; margin-top: 10px;">Practice with your strongest strategy on exam day!</p></div>';
+            resultsHTML += '<div style="text-align: center;"><button class="retry-btn ' + (isMCATMode ? 'mcat' : '') + '" onclick="location.reload()">🔄 Try Again</button>';
+            resultsHTML += '<a href="index.html" class="retry-btn" style="margin-left: 10px;">← Back to USMLE300</a></div></div>';
             
             document.getElementById('game-screen').innerHTML = resultsHTML;
+            document.getElementById('game-screen').style.background = 'var(--cream)';
+            document.getElementById('game-screen').style.overflow = 'auto';
         }
     </script>
 </body>
