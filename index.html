@@ -1,396 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="theme-color" content="#722F37">
-  <title>USMLE300 | Small-Group USMLE Bootcamps</title>
-  <meta name="description" content="Interactive USMLE Step 1 & Step 2 CK prep. Small groups of 3-5 students. 97% pass rate.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="images/logo.png" type="image/png">
-  <link rel="apple-touch-icon" href="images/logo.png">
-  <style>
-    :root{--burgundy:#722F37;--burgundy-dark:#5a252c;--cream:#FAF9F6;--cream-dark:#F0EEEB;--charcoal:#2D2D2D;--charcoal-light:#4A4A4A;--success:#2E7D4A;--gold:#C9A227}
-    *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-    html{scroll-behavior:smooth}
-    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--charcoal);line-height:1.6;overflow-x:hidden}
-    body.menu-open{overflow:hidden}
-    h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;line-height:1.2}
-    
-    header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(250,249,246,0.98);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(114,47,55,0.1)}
-    header.scrolled{box-shadow:0 4px 20px rgba(0,0,0,0.08)}
-    .header-inner{max-width:1200px;margin:0 auto;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center}
-    .logo{display:flex;align-items:center;gap:0.5rem;text-decoration:none;z-index:1001}
-    .logo img{height:40px}
-    .logo-text{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:700;color:var(--burgundy)}
-    
-    nav.desktop-nav{display:flex;gap:2rem;align-items:center}
-    nav a{text-decoration:none;color:var(--charcoal);font-weight:500;font-size:0.95rem}
-    nav a:hover{color:var(--burgundy)}
-    
-    .cta-button{background:var(--burgundy);color:white;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;border:2px solid var(--burgundy);display:inline-block;text-align:center}
-    .cta-button:hover{background:var(--burgundy-dark);border-color:var(--burgundy-dark)}
-    .cta-button.secondary{background:transparent;color:var(--burgundy)}
-    .cta-button.secondary:hover{background:var(--burgundy);color:white}
-    
-    .mobile-menu-btn{display:none;flex-direction:column;width:44px;height:44px;background:none;border:none;cursor:pointer;z-index:1001;padding:10px;justify-content:center;align-items:center}
-    .mobile-menu-btn span{display:block;width:24px;height:2px;background:var(--burgundy);margin:3px 0;transition:all 0.3s}
-    .mobile-menu-btn.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-    .mobile-menu-btn.active span:nth-child(2){opacity:0}
-    .mobile-menu-btn.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-    
-    .mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--cream);z-index:999;padding:100px 2rem 2rem;flex-direction:column;opacity:0;visibility:hidden;transition:all 0.3s}
-    .mobile-nav.active{opacity:1;visibility:visible}
-    .mobile-nav a{display:block;padding:1rem 0;font-size:1.25rem;font-weight:600;color:var(--charcoal);text-decoration:none;border-bottom:1px solid var(--cream-dark)}
-    .mobile-nav .cta-button{margin-top:2rem;width:100%;padding:1rem}
-    
-    .hero{min-height:100vh;min-height:100dvh;display:flex;align-items:center;padding:100px 1.5rem 60px;background:linear-gradient(135deg,var(--cream) 0%,var(--cream-dark) 100%)}
-    .hero-inner{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-    .hero-content{animation:fadeInUp 0.8s ease-out}
-    @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-    .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(114,47,55,0.1);color:var(--burgundy);padding:0.5rem 1rem;border-radius:50px;font-size:0.8rem;font-weight:600;margin-bottom:1.25rem}
-    .hero-badge::before{content:'●';color:var(--success);animation:pulse 2s infinite}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
-    .hero h1{font-size:clamp(1.85rem,5vw,3.25rem);color:var(--charcoal);margin-bottom:1.25rem}
-    .hero h1 span{color:var(--burgundy)}
-    .hero-subtitle{font-size:1.05rem;color:var(--charcoal-light);margin-bottom:1.75rem}
-    .hero-ctas{display:flex;gap:0.75rem;margin-bottom:2.5rem;flex-wrap:wrap}
-    .hero-stats{display:flex;gap:2rem;flex-wrap:wrap}
-    .stat-number{font-family:'Fraunces',serif;font-size:1.75rem;font-weight:700;color:var(--burgundy)}
-    .stat-label{font-size:0.8rem;color:var(--charcoal-light)}
-    .hero-visual{animation:fadeInUp 0.8s ease-out 0.2s both}
-    .hero-card{background:white;border-radius:16px;padding:1.5rem;box-shadow:0 20px 60px rgba(0,0,0,0.1);position:relative}
-    .hero-card::before{content:'';position:absolute;top:-10px;left:-10px;right:10px;bottom:10px;background:var(--burgundy);border-radius:16px;z-index:-1;opacity:0.1}
-    .session-preview{border:2px solid var(--cream-dark);border-radius:12px;overflow:hidden}
-    .session-header{background:var(--burgundy);color:white;padding:0.875rem 1.25rem;display:flex;justify-content:space-between;align-items:center}
-    .session-title{font-weight:600;font-size:0.95rem}
-    .session-live{background:var(--success);padding:0.2rem 0.6rem;border-radius:50px;font-size:0.7rem;font-weight:600}
-    .session-body{padding:1.25rem}
-    .session-topic{font-family:'Fraunces',serif;font-size:1.25rem;color:var(--charcoal);margin-bottom:0.75rem}
-    .session-meta{display:flex;gap:1rem;margin-bottom:1.25rem;font-size:0.85rem;color:var(--charcoal-light);flex-wrap:wrap}
-    .participants{display:flex;align-items:center}
-    .participant{width:32px;height:32px;border-radius:50%;background:var(--burgundy);color:white;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:600;margin-left:-8px;border:2px solid white}
-    .participant:first-child{margin-left:0}
-    .participant.more{background:var(--cream-dark);color:var(--charcoal)}
-    .participants-label{margin-left:0.6rem;font-size:0.8rem;color:var(--charcoal-light)}
-    
-    .guarantee-banner{background:var(--burgundy);color:white;padding:1rem 1.5rem;text-align:center}
-    .guarantee-banner p{max-width:800px;margin:0 auto;font-size:0.95rem}
-    .guarantee-banner strong{color:var(--gold)}
-    
-    section{padding:70px 1.5rem}
-    .section-inner{max-width:1200px;margin:0 auto}
-    .section-header{text-align:center;margin-bottom:3rem}
-    .section-label{color:var(--burgundy);font-weight:600;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem}
-    .section-title{font-size:clamp(1.75rem,4vw,2.5rem);color:var(--charcoal);margin-bottom:0.75rem}
-    .section-subtitle{font-size:1rem;color:var(--charcoal-light);max-width:600px;margin:0 auto}
-    
-    .why-different{background:white}
-    .comparison-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
-    .comparison-card{padding:2rem;border-radius:16px;position:relative}
-    .comparison-card.others{background:var(--cream-dark);border:2px dashed rgba(114,47,55,0.2)}
-    .comparison-card.us{background:linear-gradient(135deg,var(--burgundy) 0%,var(--burgundy-dark) 100%);color:white}
-    .comparison-card.us::before{content:'USMLE300';position:absolute;top:-12px;left:1.5rem;background:var(--gold);color:var(--charcoal);padding:0.25rem 0.875rem;border-radius:50px;font-size:0.7rem;font-weight:700}
-    .comparison-title{font-family:'Fraunces',serif;font-size:1.25rem;margin-bottom:1.25rem}
-    .comparison-list{list-style:none}
-    .comparison-list li{padding:0.6rem 0;display:flex;align-items:flex-start;gap:0.6rem;border-bottom:1px solid rgba(0,0,0,0.05);font-size:0.95rem}
-    .comparison-card.us .comparison-list li{border-bottom-color:rgba(255,255,255,0.1)}
-    .comparison-list li:last-child{border-bottom:none}
-    .comparison-list .icon{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem}
-    .comparison-card.others .icon{background:rgba(114,47,55,0.1)}
-    .comparison-card.us .icon{background:rgba(255,255,255,0.2)}
-    
-    .topics{background:var(--cream)}
-    .topics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
-    .topic-card{background:white;padding:1.25rem 1rem;border-radius:12px;text-align:center;border:2px solid transparent;transition:all 0.3s;cursor:pointer}
-    .topic-card:hover{border-color:var(--burgundy);transform:translateY(-2px)}
-    .topic-card.featured{border-color:var(--gold);background:linear-gradient(135deg,#fffdf5 0%,#fff 100%)}
-    .topic-card.featured .topic-badge{display:inline-block;background:var(--gold);color:var(--charcoal);font-size:0.65rem;font-weight:700;padding:0.2rem 0.5rem;border-radius:50px;margin-bottom:0.5rem}
-    .topic-badge{display:none}
-    .topic-icon{width:44px;height:44px;background:rgba(114,47,55,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 0.75rem;font-size:1.25rem}
-    .topic-name{font-weight:600;color:var(--charcoal);font-size:0.9rem}
-    .topic-duration{font-size:0.75rem;color:var(--charcoal-light)}
-    
-    .topic-modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:2000;opacity:0;visibility:hidden;transition:all 0.3s;padding:1rem}
-    .topic-modal-overlay.active{opacity:1;visibility:visible}
-    .topic-modal{background:white;border-radius:16px;padding:2rem;max-width:500px;width:100%;max-height:90vh;overflow-y:auto;transform:translateY(20px);transition:transform 0.3s;position:relative}
-    .topic-modal-overlay.active .topic-modal{transform:translateY(0)}
-    .topic-modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--charcoal-light);width:44px;height:44px}
-    .topic-modal-icon{width:60px;height:60px;background:rgba(114,47,55,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.75rem;margin-bottom:1rem}
-    .topic-modal h3{font-size:1.5rem;margin-bottom:0.5rem}
-    .topic-modal-duration{color:var(--charcoal-light);font-size:0.9rem;margin-bottom:1.25rem}
-    .topic-modal-section{margin-bottom:1.25rem}
-    .topic-modal-section h4{font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--burgundy);margin-bottom:0.5rem}
-    .topic-modal-list{list-style:none}
-    .topic-modal-list li{padding:0.4rem 0;padding-left:1.25rem;position:relative;font-size:0.95rem;color:var(--charcoal-light)}
-    .topic-modal-list li::before{content:'•';position:absolute;left:0;color:var(--burgundy)}
-    .topic-modal .cta-button{width:100%;margin-top:1rem}
-    
-    .how-it-works{background:white}
-    .method-note{text-align:center;max-width:700px;margin:0 auto 2.5rem;padding:1.25rem;background:var(--cream);border-radius:12px;font-size:0.95rem;color:var(--charcoal-light)}
-    .method-note strong{color:var(--burgundy)}
-    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
-    .step{text-align:center;position:relative}
-    .step:not(:last-child)::after{content:'→';position:absolute;right:-1rem;top:1.5rem;color:var(--burgundy);font-size:1.25rem;opacity:0.3}
-    .step-number{width:48px;height:48px;background:var(--burgundy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:1.15rem;font-weight:700;margin:0 auto 1rem}
-    .step-title{font-family:'Fraunces',serif;font-size:1.05rem;color:var(--charcoal);margin-bottom:0.4rem}
-    .step-desc{font-size:0.85rem;color:var(--charcoal-light)}
-    
-    .pricing{background:linear-gradient(135deg,var(--burgundy) 0%,var(--burgundy-dark) 100%);color:white}
-    .pricing .section-label{color:rgba(255,255,255,0.7)}
-    .pricing .section-title,.pricing .section-subtitle{color:white}
-    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:start}
-    .pricing-card{background:white;border-radius:16px;padding:2rem 1.5rem;text-align:center;color:var(--charcoal);position:relative}
-    .pricing-card.featured{transform:scale(1.03);box-shadow:0 20px 60px rgba(0,0,0,0.3)}
-    .pricing-card.featured::before{content:'MOST POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--charcoal);padding:0.25rem 0.875rem;border-radius:50px;font-size:0.65rem;font-weight:700;white-space:nowrap}
-    .pricing-name{font-family:'Fraunces',serif;font-size:1.15rem;margin-bottom:0.35rem}
-    .pricing-desc{font-size:0.85rem;color:var(--charcoal-light);margin-bottom:1.25rem}
-    .pricing-price{font-family:'Fraunces',serif;font-size:2.5rem;font-weight:700;color:var(--burgundy);margin-bottom:0.35rem}
-    .pricing-price span{font-size:0.9rem;font-weight:400;color:var(--charcoal-light);text-decoration:line-through}
-    .pricing-per{font-size:0.8rem;color:var(--charcoal-light);margin-bottom:1.5rem}
-    .pricing-features{list-style:none;text-align:left;margin-bottom:1.5rem}
-    .pricing-features li{padding:0.4rem 0;display:flex;align-items:center;gap:0.6rem;font-size:0.9rem}
-    .pricing-features li::before{content:'✓';color:var(--success);font-weight:700}
-    .pricing-card .cta-button{width:100%;padding:0.875rem 1.5rem}
-    
-    .founder{background:var(--cream)}
-    .founder-content{display:grid;grid-template-columns:280px 1fr;gap:3rem;align-items:center}
-    .founder-image{position:relative}
-    .founder-image img{width:100%;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.1)}
-    .founder-image::before{content:'';position:absolute;top:-12px;left:-12px;right:12px;bottom:12px;background:var(--burgundy);border-radius:16px;z-index:-1;opacity:0.1}
-    .score-badge{position:absolute;bottom:-15px;right:-15px;background:var(--burgundy);color:white;padding:0.875rem 1.25rem;border-radius:12px;text-align:center;box-shadow:0 10px 30px rgba(114,47,55,0.3)}
-    .score-badge .score{font-family:'Fraunces',serif;font-size:1.75rem;font-weight:700}
-    .score-badge .label{font-size:0.7rem;opacity:0.8}
-    .founder-info h3{font-size:1.75rem;color:var(--charcoal);margin-bottom:0.75rem}
-    .founder-title{color:var(--burgundy);font-weight:600;margin-bottom:1.25rem}
-    .founder-bio{color:var(--charcoal-light);margin-bottom:1.5rem;font-size:1rem;line-height:1.7}
-    .founder-philosophy{background:white;border-left:4px solid var(--burgundy);padding:1rem 1.25rem;border-radius:0 8px 8px 0;margin-bottom:1.5rem}
-    .founder-philosophy p{margin:0;color:var(--charcoal);font-size:0.95rem}
-    
-    .faq{background:white}
-    .faq-grid{max-width:800px;margin:0 auto}
-    .faq-item{border-bottom:1px solid var(--cream-dark)}
-    .faq-question{width:100%;padding:1.25rem 0;display:flex;justify-content:space-between;align-items:center;background:none;border:none;cursor:pointer;text-align:left;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:600;color:var(--charcoal);gap:1rem}
-    .faq-question:hover{color:var(--burgundy)}
-    .faq-question .icon{font-size:1.5rem;color:var(--burgundy);transition:transform 0.3s;flex-shrink:0}
-    .faq-item.active .faq-question .icon{transform:rotate(45deg)}
-    .faq-answer{max-height:0;overflow:hidden;transition:max-height 0.3s}
-    .faq-item.active .faq-answer{max-height:300px;padding-bottom:1.25rem}
-    .faq-answer p{color:var(--charcoal-light);line-height:1.7;font-size:0.95rem}
-    
-    .cta-section{background:var(--cream-dark);text-align:center}
-    .cta-box{background:white;border-radius:20px;padding:3rem 2rem;box-shadow:0 20px 60px rgba(0,0,0,0.05);max-width:700px;margin:0 auto}
-    .cta-box h2{font-size:2rem;color:var(--charcoal);margin-bottom:0.75rem}
-    .cta-box p{font-size:1rem;color:var(--charcoal-light);margin-bottom:1.5rem}
-    .cta-box .cta-button{font-size:1rem;padding:1rem 2rem}
-    
-    footer{background:var(--charcoal);color:white;padding:3rem 1.5rem 1.5rem}
-    .footer-inner{max-width:1200px;margin:0 auto}
-    .footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.1);flex-wrap:wrap;gap:2rem}
-    .footer-brand .logo-text{color:white;margin-bottom:0.4rem}
-    .footer-brand p{color:rgba(255,255,255,0.6);font-size:0.9rem}
-    .footer-links{display:flex;gap:3rem;flex-wrap:wrap}
-    .footer-column h4{font-size:0.8rem;font-weight:600;margin-bottom:0.75rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em}
-    .footer-column a{display:block;color:rgba(255,255,255,0.8);text-decoration:none;padding:0.3rem 0;font-size:0.9rem}
-    .footer-column a:hover{color:white}
-    .footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:0.85rem;color:rgba(255,255,255,0.5);flex-wrap:wrap;gap:1rem}
-    
-    .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:2001;opacity:0;visibility:hidden;transition:all 0.3s;padding:1rem}
-    .modal-overlay.active{opacity:1;visibility:visible}
-    .modal{background:white;border-radius:16px;padding:2rem;max-width:450px;width:100%;max-height:90vh;overflow-y:auto;transform:translateY(20px);transition:transform 0.3s;position:relative}
-    .modal-overlay.active .modal{transform:translateY(0)}
-    .modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--charcoal-light);width:44px;height:44px}
-    .modal h3{font-size:1.35rem;margin-bottom:0.75rem;padding-right:2rem}
-    .modal p{color:var(--charcoal-light);margin-bottom:1.25rem;font-size:0.95rem}
-    .contact-methods{display:flex;flex-direction:column;gap:0.75rem}
-    .contact-method{display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--cream);border-radius:10px;text-decoration:none;color:var(--charcoal);min-height:60px}
-    .contact-method:hover{background:var(--cream-dark)}
-    .contact-method .icon{width:40px;height:40px;background:var(--burgundy);color:white;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-    .contact-method strong{display:block;font-size:0.95rem}
-    .contact-method span{font-size:0.85rem;color:var(--charcoal-light)}
-    
-    @media(max-width:1024px){
-      .hero-inner{grid-template-columns:1fr;text-align:center}
-      .hero-content{order:1}.hero-visual{order:0;max-width:450px;margin:0 auto}
-      .hero-subtitle{margin:0 auto 1.75rem}
-      .hero-ctas{justify-content:center}
-      .hero-stats{justify-content:center}
-      .comparison-grid{grid-template-columns:1fr}
-      .topics-grid{grid-template-columns:repeat(3,1fr)}
-      .steps{grid-template-columns:repeat(2,1fr)}
-      .step:not(:last-child)::after{display:none}
-      .pricing-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto}
-      .pricing-card.featured{transform:none;order:-1}
-      .founder-content{grid-template-columns:1fr;text-align:center}
-      .founder-image{max-width:220px;margin:0 auto}
-      .founder-philosophy{text-align:left}
-    }
-    @media(max-width:768px){
-      nav.desktop-nav{display:none}
-      .mobile-menu-btn{display:flex}
-      .mobile-nav{display:flex}
-      .hero{padding:90px 1.25rem 50px}
-      .hero-ctas{flex-direction:column;align-items:center}
-      .hero-ctas .cta-button{width:100%;max-width:280px}
-      section{padding:50px 1.25rem}
-      .topics-grid{grid-template-columns:repeat(2,1fr);gap:0.75rem}
-      .steps{grid-template-columns:1fr;gap:1.5rem}
-      .comparison-card{padding:1.5rem}
-      .footer-top{flex-direction:column}
-      .footer-bottom{flex-direction:column;text-align:center}
-      .cta-box{padding:2rem 1.5rem}
-      .cta-box h2{font-size:1.5rem}
-    }
-    @media(max-width:480px){
-      .header-inner{padding:0.875rem 1rem}
-      .logo img{height:35px}
-      .logo-text{font-size:1.1rem}
-      .hero{padding:85px 1rem 40px}
-      .hero-stats{flex-direction:column;gap:1rem;align-items:center}
-      .stat{text-align:center}
-      section{padding:40px 1rem}
-      .topics-grid{grid-template-columns:1fr 1fr}
-      .pricing-card{padding:1.75rem 1.25rem}
-      .pricing-price{font-size:2.25rem}
-      .modal{padding:1.5rem}
-      .topic-modal{padding:1.5rem}
-    }
-    /* Add this at the end of your existing <style> section */
-@media(max-width:768px){
-  .hero-ctas .cta-button {
-    width: 100%; /* Makes buttons full-width on mobile */
-    margin-bottom: 0.5rem; /* Adds space between stacked buttons */
-  }
-}
-  </style>
-</head>
-<body>
-  <header>
-    <div class="header-inner">
-      <a href="#" class="logo">
-        <img src="images/logo.png" alt="USMLE300">
-        <span class="logo-text">USMLE300</span>
-      </a>
-      <nav class="desktop-nav">
-        <a href="#how-it-works">How It Works</a>
-        <a href="#topics">Topics</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact" class="cta-button">Book Free Consult</a>
-      </nav>
-      <button class="mobile-menu-btn" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <nav class="mobile-nav">
-    <a href="#how-it-works">How It Works</a>
-    <a href="#topics">Topics</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#founder">About</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact" class="cta-button">Book Free Consult</a>
-  </nav>
-
-  <section class="hero" id="home">
-    <div class="hero-inner">
-      <div class="hero-content">
-        <div class="hero-badge">Now Enrolling for Step 1 & Step 2 CK</div>
-        <h1><span>97% Pass Rate.</span> Small Groups. Real Accountability.</h1>
-        <p class="hero-subtitle">Live bootcamps with 3-5 students who actually show up prepared. Structured sessions, weekly homework, and instructors who scored 265+.</p>
-        <div class="hero-ctas">
-          <a href="diagnostic.html" class="cta-button" style="background: var(--gold); border-color: var(--gold); color: var(--charcoal); position: relative; overflow: hidden;">
-            <span style="position: relative; z-index: 1;">Analyze My Exam Strategy</span>
-          </a>
-          <a href="#pricing" class="cta-button secondary">View Bootcamps</a>
-        </div>
-        <div class="hero-stats">
-          <div class="stat"><div class="stat-number">97%</div><div class="stat-label">Pass Rate</div></div>
-          <div class="stat"><div class="stat-number">265+</div><div class="stat-label">All Instructor Scores</div></div>
-          <div class="stat"><div class="stat-number">3-5</div><div class="stat-label">Students Per Session</div></div>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-card">
-          <div class="session-preview">
-            <div class="session-header">
-              <span class="session-title">Live Session</span>
-              <span class="session-live">● LIVE</span>
-            </div>
-            <div class="session-body">
-              <div class="session-topic">Cardiology Bootcamp</div>
-              <div class="session-meta"><span>🕐 90 min</span><span>📅 Today, 8pm ET</span></div>
-              <div class="participants">
-                <div class="participant">JK</div>
-                <div class="participant">MR</div>
-                <div class="participant">AS</div>
-                <div class="participant">LP</div>
-                <div class="participant more">+1</div>
-                <span class="participants-label">5 students enrolled</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="guarantee-banner">
-    <p><strong>Our Promise:</strong> Complete the full series, do the homework, show up to every session. If you don't pass, we work with you for free until you do.</p>
-  </div>
-
-  <section class="why-different" id="why">
-    <div class="section-inner">
-      <div class="section-header">
-        <div class="section-label">Why USMLE300</div>
-        <h2 class="section-title">Skills Beat Resources</h2>
-        <p class="section-subtitle">Everyone's looking for that secret resource. The truth? You probably already know enough. What separates scores is exam technique and consistency.</p>
-      </div>
-      <div class="comparison-grid">
-        <div class="comparison-card others">
-          <h3 class="comparison-title">The Resource Chase</h3>
-          <ul class="comparison-list">
-            <li><span class="icon">📺</span> Pre-recorded videos you won't finish</li>
-            <li><span class="icon">👤</span> Studying alone, losing steam</li>
-            <li><span class="icon">📚</span> Searching for some "secret" guide</li>
-            <li><span class="icon">💰</span> $500+ for stuff you could find free</li>
-            <li><span class="icon">❓</span> No feedback on your approach</li>
-            <li><span class="icon">📉</span> Falling behind with no one noticing</li>
-          </ul>
-        </div>
-        <div class="comparison-card us">
-          <h3 class="comparison-title">The USMLE300 Way</h3>
-          <ul class="comparison-list">
-            <li><span class="icon">🎯</span> Focus on exam strategy and question approach</li>
-            <li><span class="icon">👥</span> Small groups of 3-5 for actual discussion</li>
-            <li><span class="icon">📝</span> Build frameworks for key concepts</li>
-            <li><span class="icon">✅</span> Homework assigned and reviewed</li>
-            <li><span class="icon">🧠</span> Train question-taking, not just content</li>
-            <li><span class="icon">📈</span> Volume builds stamina. Peers keep you honest.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="topics" id="topics">
-    <div class="section-inner">
-      <div class="section-header">
-        <div class="section-label">21 Bootcamps</div>
-        <h2 class="section-title">Every High-Yield Topic</h2>
-        <p class="section-subtitle">Click any topic to see what's covered. 90-120 minutes each.</p>
-      </div>
-      <div class="topics-grid">
-        <div class="topic-card featured" data-topic="exam-strategy"><div class="topic-badge">KEY</div><div class="topic-icon">🎯</div><div class="topic-name">Exam Strategy</div><div class="topic-duration">120 min</div></div>
-        <div class="topic-card" data-topic="cardiology"><div class="topic-icon">❤️</div><div class="topic-name">Cardiology</div><div class="topic-duration">90 min</div></div>
-        <div class="topic-card" data-topic="pulmonology"><div class="topic-icon">🫁</div><div class="topic-name">Pulmonology</div><div class="topic-duration">90 min</div></div>
-        <div class="topic-card" data-topic="neurology"><div class="topic-icon">🧠</div><div class="topic-name">Neurology</div><div class="topic-duration">120 min</div></div>
-        <div class="topic-card" data-topic="hemeonc"><div class="topic-icon">🩸</div><div class="topic-name">Heme/Onc</div><div class="topic-duration">90 min</div></div>
-        <div class="topic-card" data-topic="pharmacology"><div class="topic-icon">💊</div><div class="topic-name">Pharmacology</div><div class="topic-duration">120 min</div></div>
+<div class="topic-card" data-topic="pharmacology"><div class="topic-icon">💊</div><div class="topic-name">Pharmacology</div><div class="topic-duration">120 min</div></div>
         <div class="topic-card" data-topic="microbiology"><div class="topic-icon">🦠</div><div class="topic-name">Microbiology</div><div class="topic-duration">90 min</div></div>
         <div class="topic-card" data-topic="pathology"><div class="topic-icon">🔬</div><div class="topic-name">Pathology</div><div class="topic-duration">120 min</div></div>
         <div class="topic-card" data-topic="biochemistry"><div class="topic-icon">🧬</div><div class="topic-name">Biochemistry</div><div class="topic-duration">90 min</div></div>
@@ -410,29 +18,11 @@
     </div>
   </section>
 
-  <section class="how-it-works" id="how-it-works">
-    <div class="section-inner">
-      <div class="section-header">
-        <div class="section-label">The Structure</div>
-        <h2 class="section-title">How Each Session Works</h2>
-        <p class="section-subtitle">Built on evidence-based learning: pretesting, spaced retrieval, active recall. Sounds fancy, but it just means the structure actually helps you remember stuff.</p>
-      </div>
-      <div class="method-note">
-        <strong>Why pretest?</strong> Research shows testing yourself before learning boosts retention by 20-40%, even when you get answers wrong. We built sessions around this.</div>
-      <div class="steps">
-        <div class="step"><div class="step-number">1</div><h3 class="step-title">Pretest</h3><p class="step-desc">5 quick questions.</p></div>
-        <div class="step"><div class="step-number">2</div><h3 class="step-title">Homework Review</h3><p class="step-desc">What tripped you up? Surface gaps early.</p></div>
-        <div class="step"><div class="step-number">3</div><h3 class="step-title">Content Blocks</h3><p class="step-desc">High-yield concepts in 15-min chunks with quizzes between.</p></div>
-        <div class="step"><div class="step-number">4</div><h3 class="step-title">Group Practice</h3><p class="step-desc">Questions together. Discuss reasoning out loud.</p></div>
-      </div>
-    </div>
-  </section>
-
   <section class="pricing" id="pricing">
     <div class="section-inner">
       <div class="section-header">
         <div class="section-label">Pricing</div>
-        <h2 class="section-title">Simple, No BS</h2>
+        <h2 class="section-title">Transparent Pricing</h2>
         <p class="section-subtitle">Pay per topic or save with bundles.</p>
       </div>
       <div class="pricing-grid">
@@ -442,10 +32,10 @@
           <div class="pricing-price">$29</div>
           <div class="pricing-per">per bootcamp</div>
           <ul class="pricing-features">
-            <li>One 90-120 min live session</li>
-            <li>Small group (3-5 students)</li>
+            <li>One 90 to 120 min live session</li>
+            <li>Small group (3 to 5 students)</li>
             <li>Homework and accountability</li>
-            <li>High-yield notes</li>
+            <li>Framework notes included</li>
           </ul>
           <a href="#contact" class="cta-button secondary">Get Started</a>
         </div>
@@ -457,7 +47,7 @@
           <ul class="pricing-features">
             <li>All 21 bootcamps</li>
             <li>Exam Strategy session included</li>
-            <li>Small group (3-5 students)</li>
+            <li>Small group (3 to 5 students)</li>
             <li>Full homework program</li>
             <li>Pass guarantee</li>
           </ul>
@@ -470,9 +60,9 @@
           <div class="pricing-per">$24.90 per topic</div>
           <ul class="pricing-features">
             <li>Any 10 bootcamps</li>
-            <li>Small group (3-5 students)</li>
+            <li>Small group (3 to 5 students)</li>
             <li>Homework and accountability</li>
-            <li>High-yield notes</li>
+            <li>Framework notes included</li>
           </ul>
           <a href="#contact" class="cta-button secondary">Get Started</a>
         </div>
@@ -482,23 +72,21 @@
 
   <section class="founder" id="founder">
     <div class="section-inner">
-      <div class="section-header">
-        <div class="section-label">About</div>
-        <h2 class="section-title">The Founder</h2>
-      </div>
       <div class="founder-content">
         <div class="founder-image">
-          <img src="images/instructor.jpg" alt="USMLE300 Founder">
-          <div class="score-badge"><div class="score">267</div><div class="label">Step 2 CK</div></div>
+          <img src="images/founder.jpg" alt="Founder">
+          <div class="score-badge">
+            <div class="score">265+</div>
+            <div class="label">Step Score</div>
+          </div>
         </div>
         <div class="founder-info">
-          <h3>Built what I wish existed</h3>
-          <p class="founder-title">Step 2 CK: 267 | All instructors 265+</p>
-          <p class="founder-bio">There's already plenty of great write-ups from people with higher scores than mine. I'm not here to reinvent content. What I got interested in during my dedicated period was exam strategy, optimizing the approach to questions, figuring out what actually moves the needle.</p>
+          <h3>Built by Someone Who Has Been There</h3>
+          <p class="founder-title">Founder & Lead Instructor</p>
+          <p class="founder-bio">After scoring 265+ on Step 1 and Step 2 CK, I spent years tutoring students one on one. I saw the same pattern: students drowning in resources but lacking a framework to organize it all. They did not need more content. They needed structure, accountability, and someone to practice with.</p>
           <div class="founder-philosophy">
-            <p>Resources are overrated. Most people already have the knowledge. What separates higher scores is exam-taking skill and a consistent approach. Volume builds stamina. On test day, you'll see stuff you've never seen. If you've trained to assess quickly, flag, and move on, those curveballs won't sink you.</p>
+            <p>"The students who succeed are not the ones with the most resources. They are the ones who show up consistently, practice questions actively, and have someone catching their blind spots."</p>
           </div>
-          <p class="founder-bio">My strength isn't knowing content cold. It's dissecting the exam itself. I've spent time comparing different question approaches across hundreds of questions to see what works under pressure. That's what we teach here.</p>
         </div>
       </div>
     </div>
@@ -508,25 +96,43 @@
     <div class="section-inner">
       <div class="section-header">
         <div class="section-label">FAQ</div>
-        <h2 class="section-title">Questions</h2>
+        <h2 class="section-title">Common Questions</h2>
       </div>
       <div class="faq-grid">
-        <div class="faq-item"><button class="faq-question"><span>How do sessions work?</span><span class="icon">+</span></button><div class="faq-answer"><p>Zoom, 3-5 students. You get a link after booking. 90-120 minutes: pretest, homework review, content blocks with quizzes, group practice.</p></div></div>
-        <div class="faq-item"><button class="faq-question"><span>What if I can't make a session?</span><span class="icon">+</span></button><div class="faq-answer"><p>Reschedule up to 24 hours before, no charge. Multiple time slots for each topic.</p></div></div>
-        <div class="faq-item"><button class="faq-question"><span>What's in Exam Strategy?</span><span class="icon">+</span></button><div class="faq-answer"><p>Question approach (we've tested multiple methods), timing, handling questions you've never seen, common traps, test day mental game. Free with full bundle.</p></div></div>
-        <div class="faq-item"><button class="faq-question"><span>Step 1 or Step 2?</span><span class="icon">+</span></button><div class="faq-answer"><p>Both. Topics are high-yield for both. You indicate which exam when booking and get grouped accordingly.</p></div></div>
-        <div class="faq-item"><button class="faq-question"><span>How does the pass guarantee work?</span><span class="icon">+</span></button><div class="faq-answer"><p>Complete all bootcamps, attend every session, do all homework. If you don't pass, we keep working with you at no extra cost.</p></div></div>
-        <div class="faq-item"><button class="faq-question"><span>Refund policy?</span><span class="icon">+</span></button><div class="faq-answer"><p>Full refund before your first session. After that, no refunds but you can transfer to a friend.</p></div></div>
+        <div class="faq-item">
+          <button class="faq-question">What makes this different from watching videos? <span class="icon">+</span></button>
+          <div class="faq-answer"><p>Videos are passive. You watch, nod along, and forget 80% within a week. Our sessions are live and interactive. You answer questions, explain your reasoning, and get real-time feedback. Plus, you are accountable to a small group who notices if you did not do the homework.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">What if I have already failed before? <span class="icon">+</span></button>
+          <div class="faq-answer"><p>A lot of our students are re-takers. The difference is usually not content knowledge. It is question approach and stamina. We focus heavily on exam strategy and building frameworks you can actually use under pressure. You probably know more than you think. You just need a better system for accessing it.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">How does the pass guarantee work? <span class="icon">+</span></button>
+          <div class="faq-answer"><p>If you complete the full bundle (all 21 sessions), do all the assigned homework, and attend every session, and you still do not pass, we will continue working with you for free until you do. No hidden conditions. We bet on students who show up.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">What is the time commitment? <span class="icon">+</span></button>
+          <div class="faq-answer"><p>Each bootcamp is 90 to 120 minutes live, plus about 30 to 60 minutes of homework between sessions. Most students do 2 to 3 bootcamps per week during dedicated study. The structure is flexible. You pick which sessions to join based on your schedule.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">What if I already have UWorld and First Aid? <span class="icon">+</span></button>
+          <div class="faq-answer"><p>Great. Use them! We are not replacing those resources. We are giving you the framework to use them effectively. Most students have great resources but no system. Our bootcamps give you the skeleton. Your resources fill in the details.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">What is the free strategy diagnostic? <span class="icon">+</span></button>
+          <div class="faq-answer"><p>It is a 20-question tool that tests you using 5 different question-taking strategies (speed reading, highlighting, options-first, etc.) and tells you which one works best for your brain. Completely free, no signup required. Most students discover they have been using the wrong approach.</p></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="cta-section" id="contact">
+  <section class="cta-section">
     <div class="section-inner">
       <div class="cta-box">
-        <h2>Ready?</h2>
-        <p>Free 15-minute call. We'll look at your timeline, find weak spots, and tell you if this is actually the right fit.</p>
-        <a href="https://calendly.com/usmle300" class="cta-button" target="_blank">Book Free Call</a>
+        <h2>Ready to Actually Prepare?</h2>
+        <p>Book a free 15-minute consultation. No sales pitch, just a quick chat to see if our approach fits your situation.</p>
+        <a href="#contact" class="cta-button">Book Free Consult</a>
       </div>
     </div>
   </section>
@@ -534,25 +140,64 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-top">
-        <div class="footer-brand"><div class="logo-text">USMLE300</div><p>Small-group bootcamps. 97% pass rate.</p></div>
+        <div class="footer-brand">
+          <div class="logo-text">USMLE300</div>
+          <p>Small-group USMLE prep that actually works.</p>
+        </div>
         <div class="footer-links">
-          <div class="footer-column"><h4>Product</h4><a href="#how-it-works">How It Works</a><a href="#topics">Topics</a><a href="#pricing">Pricing</a></div>
-          <div class="footer-column"><h4>Support</h4><a href="#faq">FAQ</a><a href="mailto:support@usmle300.com">Contact</a></div>
+          <div class="footer-column">
+            <h4>Product</h4>
+            <a href="#topics">Topics</a>
+            <a href="#pricing">Pricing</a>
+            <a href="diagnostic.html">Free Strategy Tool</a>
+          </div>
+          <div class="footer-column">
+            <h4>Company</h4>
+            <a href="#founder">About</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact</a>
+          </div>
         </div>
       </div>
-      <div class="footer-bottom"><p>© 2025 USMLE300. All rights reserved.</p></div>
+      <div class="footer-bottom">
+        <span>© 2025 USMLE300. All rights reserved.</span>
+        <span>Built for students, by students who passed.</span>
+      </div>
     </div>
   </footer>
 
   <div class="modal-overlay" id="contactModal">
     <div class="modal">
       <button class="modal-close">×</button>
-      <h3>Get in Touch</h3>
-      <p>Book a bootcamp or ask questions.</p>
-      <div class="contact-methods">
-        <a href="mailto:support@usmle300.com" class="contact-method"><div class="icon">✉️</div><div><strong>Email</strong><span>support@usmle300.com</span></div></a>
-        <a href="https://calendly.com/usmle300" target="_blank" class="contact-method"><div class="icon">📅</div><div><strong>Book a Call</strong><span>Free 15-min session</span></div></a>
-      </div>
+      <h3>Book Your Free Consult</h3>
+      <p>15 minutes to discuss your study plan. No pressure, no sales pitch.</p>
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" name="name" required>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label>Which exam are you preparing for?</label>
+          <select name="exam">
+            <option>Step 1</option>
+            <option>Step 2 CK</option>
+            <option>Both</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>When is your exam? (approximate)</label>
+          <input type="text" name="exam_date" placeholder="e.g., March 2025">
+        </div>
+        <div class="form-group">
+          <label>Anything else we should know?</label>
+          <textarea name="message" rows="3"></textarea>
+        </div>
+        <button type="submit" class="cta-button">Send Request</button>
+      </form>
     </div>
   </div>
 
@@ -563,7 +208,7 @@
       <h3 id="topicModalTitle">Cardiology</h3>
       <div class="topic-modal-duration" id="topicModalDuration">90 minutes</div>
       <div class="topic-modal-section">
-        <h4>What's Covered</h4>
+        <h4>What You Will Learn</h4>
         <ul class="topic-modal-list" id="topicModalContent"></ul>
       </div>
       <a href="#contact" class="cta-button topic-book-btn">Book This Bootcamp</a>
@@ -572,27 +217,27 @@
 
   <script>
     const topicData={
-      'exam-strategy':{icon:'🎯',title:'Exam Strategy',duration:'120 minutes',content:['Question approach frameworks (tested across 500+ questions)','Reading the stem: when to skim vs. read carefully','Answer elimination techniques','Time management and pacing','Handling questions you\'ve never seen','Common trap patterns and how to avoid them','Flagging strategy','Test day mental game','Building exam stamina']},
-      'cardiology':{icon:'❤️',title:'Cardiology',duration:'90 minutes',content:['Heart failure (systolic vs diastolic, management)','Valvular diseases (AR, AS, MR, MS, murmur characteristics)','Arrhythmias (AFib, AFlutter, VT, heart blocks)','Acute coronary syndrome workup','Hypertension management guidelines','Cardiomyopathies (HCM, dilated, restrictive)','Pericardial diseases','Congenital heart defects (high-yield for Step 1)','ECG interpretation pearls']},
-      'pulmonology':{icon:'🫁',title:'Pulmonology',duration:'90 minutes',content:['Obstructive vs restrictive patterns (PFTs)','Asthma vs COPD management','Pneumonia (CAP, HAP, aspiration)','Pulmonary embolism workup','Interstitial lung diseases','Lung cancer staging and treatment','Pleural effusions (transudative vs exudative)','ARDS and ventilator management','TB diagnosis and treatment']},
-      'neurology':{icon:'🧠',title:'Neurology',duration:'120 minutes',content:['Stroke (ischemic vs hemorrhagic, management windows)','Seizure types and anti-epileptics','Headache differentials (migraine, cluster, tension)','Multiple sclerosis','Parkinson\'s disease','Dementia workup','Peripheral neuropathies','Myasthenia gravis vs Lambert-Eaton','Spinal cord lesions (localization)','Meningitis/encephalitis']},
-      'hemeonc':{icon:'🩸',title:'Heme/Onc',duration:'90 minutes',content:['Anemias (iron deficiency, B12, folate, hemolytic)','Coagulation disorders (DIC, TTP, HUS, ITP)','Leukemias (ALL, AML, CLL, CML)','Lymphomas (Hodgkin vs non-Hodgkin)','Multiple myeloma','Bleeding disorders','Anticoagulation management','Transfusion reactions','Tumor lysis syndrome']},
-      'pharmacology':{icon:'💊',title:'Pharmacology',duration:'120 minutes',content:['Autonomic pharmacology','Cardiovascular drugs','Antimicrobials (mechanisms and coverage)','CNS drugs','Endocrine pharmacology','Anti-inflammatories','Chemotherapy agents (mechanisms, toxicities)','Drug interactions','Toxicology and antidotes','Pharmacokinetics principles']},
-      'microbiology':{icon:'🦠',title:'Microbiology',duration:'90 minutes',content:['Gram positive organisms','Gram negative organisms','Atypical bacteria','Viral pathogens','Fungal infections','Parasites','HIV/AIDS','Opportunistic infections','Antibiotic resistance','Vaccines']},
-      'pathology':{icon:'🔬',title:'Pathology',duration:'120 minutes',content:['Cell injury and death','Inflammation (acute vs chronic)','Hemodynamic disorders','Neoplasia principles','Genetic disorders','Immunopathology','Environmental pathology','Nutritional pathology','Lab value interpretation']},
-      'biochemistry':{icon:'🧬',title:'Biochemistry',duration:'90 minutes',content:['Glycolysis and gluconeogenesis','TCA cycle and oxidative phosphorylation','Amino acid metabolism','Lipid metabolism','Purine and pyrimidine metabolism','Glycogen storage diseases','Lysosomal storage diseases','Vitamins and cofactors','DNA/RNA/protein synthesis']},
-      'immunology':{icon:'🛡️',title:'Immunology',duration:'90 minutes',content:['Innate vs adaptive immunity','T cell and B cell development','Immunoglobulins','Complement system','Hypersensitivity reactions (Types I-IV)','Autoimmune diseases','Immunodeficiencies','Transplant rejection','Tumor immunology']},
-      'gi':{icon:'🫀',title:'GI / Hepatology',duration:'90 minutes',content:['GERD and PUD','IBD (Crohn\'s vs UC)','GI bleeding workup','Liver cirrhosis and complications','Hepatitis (viral, autoimmune, alcoholic)','Pancreatitis','Biliary disease','GI malignancies','Malabsorption syndromes']},
-      'renal':{icon:'💧',title:'Nephrology/GU',duration:'90 minutes',content:['Acute kidney injury','Chronic kidney disease','Glomerulonephritides','Acid-base disorders','Electrolyte abnormalities','Nephrolithiasis','UTIs','Renal tubular acidoses','Dialysis indications']},
-      'endocrine':{icon:'⚡',title:'Endocrinology',duration:'90 minutes',content:['Diabetes management','Thyroid disorders (hyper/hypothyroid)','Adrenal disorders (Cushing\'s, Addison\'s)','Pituitary disorders','Calcium disorders','PCOS','Metabolic syndrome','Pheochromocytoma','MEN syndromes']},
-      'msk':{icon:'🦴',title:'MSK / Rheum',duration:'90 minutes',content:['Rheumatoid arthritis','Osteoarthritis','Gout and pseudogout','Lupus (SLE)','Scleroderma','Vasculitides','Spondyloarthropathies','Bone tumors','Fracture management','Back pain differentials']},
-      'derm':{icon:'🧴',title:'Dermatology',duration:'60 minutes',content:['Skin cancer (melanoma, BCC, SCC)','Psoriasis','Eczema/dermatitis','Bacterial skin infections','Viral exanthems','Fungal infections','Drug eruptions','Bullous diseases','Acne']},
-      'pediatrics':{icon:'👶',title:'Pediatrics',duration:'90 minutes',content:['Well-child visits and milestones','Vaccinations','Common pediatric infections','Congenital heart defects','Pediatric emergencies','Growth and development','Child abuse recognition','Genetic syndromes','Neonatal conditions']},
-      'psychiatry':{icon:'🧠',title:'Psychiatry',duration:'90 minutes',content:['Depression and bipolar disorder','Anxiety disorders','Psychotic disorders','Personality disorders','Substance use disorders','Eating disorders','Child psychiatry','Psychopharmacology','Suicide risk assessment','Capacity and competency']},
-      'ophthalmology':{icon:'👁️',title:'Ophthalmology',duration:'60 minutes',content:['Red eye differentials','Glaucoma','Macular degeneration','Diabetic retinopathy','Cataracts','Retinal detachment','Optic neuritis','Pupil abnormalities']},
-      'ent':{icon:'👂',title:'ENT',duration:'60 minutes',content:['Otitis media and externa','Sinusitis','Pharyngitis','Hearing loss','Vertigo','Epistaxis','Head and neck cancers','Salivary gland disorders']},
-      'biostats':{icon:'📊',title:'Biostatistics',duration:'90 minutes',content:['Sensitivity and specificity','PPV and NPV','Study designs','Bias types','Statistical tests','Confidence intervals','Number needed to treat','Relative risk vs odds ratio','Survival analysis','Evidence-based medicine']},
-      'ethics':{icon:'⚖️',title:'Ethics / Legal',duration:'60 minutes',content:['Informed consent','Capacity assessment','Advance directives','Confidentiality and exceptions','End-of-life decisions','Medical errors disclosure','Minors and consent','Reporting requirements','Research ethics','Physician impairment']}
+      'exam-strategy':{icon:'🎯',title:'Exam Strategy',duration:'120 minutes',content:['Question approach frameworks tested across 500+ questions','When to skim vs read carefully based on question type','Answer elimination techniques that actually work','Time management: 90 seconds per question pacing','Handling questions on topics you have never seen','Common trap patterns and how to recognize them','Flagging strategy and when to change answers','Test day mental game and managing anxiety']},
+      'cardiology':{icon:'❤️',title:'Cardiology',duration:'90 minutes',content:['Shock hemodynamics: CO/SVR patterns (distributive vs cardiogenic vs obstructive)','Tamponade vs constrictive pericarditis: y descent blunted vs prominent','Post-MI complications by timeline: 24h arrhythmia, 3-7d rupture, 2wk Dressler','Murmur localization: left sternal border (HCM systolic, AR diastolic)','HCM vs MVP: both decrease with squatting, differentiate by crescendo-decrescendo','JVP waveforms: cannon a waves in complete heart block, prominent v wave in TR','ECG changes in electrolyte disorders: peaked T (hyperK), prolonged QT (hypoMg/Ca)','Wide pulse pressure differential: AR in adults, PDA in kids']},
+      'pulmonology':{icon:'🫁',title:'Pulmonology',duration:'90 minutes',content:['Obstructive vs restrictive PFT patterns and when FEV1/FVC ratio fails you','Lights criteria and when to suspect TB (lymphocyte predominant, low glucose)','Pulmonary embolism workup: Wells score, D-dimer utility, when to skip to CT','ARDS Berlin criteria and ventilator management principles','Lung cancer staging that matters: T3 vs T4, when surgery is off the table','Pneumonia empiric coverage: CAP vs HAP vs aspiration','Asthma vs COPD exacerbation management differences','Pleural effusion analysis: transudate vs exudate and the exceptions']},
+      'neurology':{icon:'🧠',title:'Neurology',duration:'120 minutes',content:['Stroke: NIHSS cutoffs, tPA window, thrombectomy criteria','Seizure classification and first-line agents by seizure type','Headache red flags: thunderclap, positional, papilledema','Myasthenia vs Lambert-Eaton: ptosis vs proximal weakness, antibody targets','Spinal cord lesion localization: Brown-Sequard, anterior cord, central cord','Dementia workup: reversible causes to always rule out','Peripheral neuropathy patterns: length-dependent vs mononeuritis multiplex','CSF analysis: bacterial vs viral vs TB vs fungal patterns']},
+      'hemeonc':{icon:'🩸',title:'Heme/Onc',duration:'90 minutes',content:['Anemia workup by MCV: then reticulocyte count, then smear findings','Coagulation cascades: PT vs PTT, mixing studies interpretation','Thrombotic microangiopathies: TTP vs HUS vs DIC differentiation','Leukemia classification: ALL vs AML vs CLL vs CML by age and markers','Tumor lysis syndrome: prevention, monitoring, and treatment','Transfusion reactions: timing helps identify the type','Anticoagulation reversal: vitamin K vs FFP vs PCC vs idarucizumab','Bleeding disorders: hemophilia vs vWD vs platelet dysfunction']},
+      'pharmacology':{icon:'💊',title:'Pharmacology',duration:'120 minutes',content:['Autonomic pharmacology: receptor selectivity and clinical effects','Antiarrhythmics by class: when to use and when absolutely not to','Antimicrobial coverage charts: empiric therapy by site and resistance patterns','Drug-induced QT prolongation: the common culprits','Serotonin syndrome vs NMS vs anticholinergic toxicity differentiation','Antidote matching: which toxin gets which reversal agent','Renal dosing: drugs that need adjustment vs contraindicated','Drug interactions that show up on exams: warfarin, statins, seizure meds']},
+      'microbiology':{icon:'🦠',title:'Microbiology',duration:'90 minutes',content:['Gram positive cocci: staph vs strep vs enterococcus by clinical scenario','Gram negative rods: when to suspect Pseudomonas vs Klebsiella vs E. coli','Atypical organisms: Legionella, Mycoplasma, Chlamydia presentations','Opportunistic infections by CD4 count thresholds','Viral exanthems: rash timing and distribution patterns','Fungal infections: endemic mycoses by geography','Parasites: transmission routes and diagnostic findings','Antibiotic resistance mechanisms and when to suspect MRSA/ESBL/VRE']},
+      'pathology':{icon:'🔬',title:'Pathology',duration:'120 minutes',content:['Cell injury patterns: coagulative vs liquefactive vs caseous necrosis','Inflammation timeline: acute (neutrophils) vs chronic (lymphocytes/macrophages)','Amyloidosis: AA vs AL, organ involvement patterns','Neoplasia principles: benign vs malignant features, grading vs staging','Paraneoplastic syndromes: which tumor causes which syndrome','Genetic tumor syndromes: Li-Fraumeni, Lynch, MEN syndromes','Granulomatous diseases: caseating vs non-caseating differential','Lab value patterns: which disease causes which abnormality']},
+      'biochemistry':{icon:'🧬',title:'Biochemistry',duration:'90 minutes',content:['Glycolysis regulation: rate-limiting enzymes and their regulators','TCA cycle: which steps produce NADH/FADH2/GTP','Glycogen storage diseases: which enzyme, which organ, which presentation','Lysosomal storage diseases: cherry red macula, hepatosplenomegaly patterns','Amino acid metabolism disorders: PKU, maple syrup, homocystinuria','Vitamin deficiencies: B12 vs folate, water vs fat soluble presentations','Lipid metabolism: familial hyperlipidemias by phenotype','Purine/pyrimidine metabolism: gout, SCID, orotic aciduria']},
+      'immunology':{icon:'🛡️',title:'Immunology',duration:'90 minutes',content:['Hypersensitivity reactions: Type I through IV with clinical examples','Complement pathways: which deficiency causes which infection pattern','Autoantibody associations: ANA patterns, specific antibodies by disease','Immunodeficiency presentations: which infections suggest which defect','Transplant rejection: hyperacute vs acute vs chronic, timeline and mechanism','Cytokine functions: IL-1 through IL-17 key players','T cell vs B cell deficiencies: clinical differentiation','Vaccination principles: live vs killed, contraindications']},
+      'gi':{icon:'🫀',title:'GI / Hepatology',duration:'90 minutes',content:['GI bleeding: upper vs lower, variceal vs non-variceal management','IBD: Crohn vs UC, extraintestinal manifestations, when surgery is indicated','Liver cirrhosis complications: ascites, SBP, hepatorenal, encephalopathy','Hepatitis serologies: acute vs chronic vs immune vs vaccinated','Pancreatitis: Ranson criteria, BISAP, when to get CT','Biliary disease: Charcot triad, Reynold pentad, imaging choice','Malabsorption: celiac vs tropical sprue vs Whipple vs bacterial overgrowth','GI malignancies: Lynch syndrome screening, staging that matters']},
+      'renal':{icon:'💧',title:'Nephrology/GU',duration:'90 minutes',content:['AKI: prerenal vs intrinsic vs postrenal, FENa interpretation','Glomerulonephritis: nephritic vs nephrotic, serology patterns','Acid-base: anion gap calculation, Winter formula, respiratory compensation','Electrolyte emergencies: hyperkalemia ECG changes and treatment order','Renal tubular acidosis: Type 1 vs 2 vs 4, urine pH patterns','Nephrolithiasis: stone type by imaging and urine findings','Dialysis indications: AEIOU mnemonic and when to emergently dialyze','Polycystic kidney disease: ADPKD vs ARPKD, extrarenal manifestations']},
+      'endocrine':{icon:'⚡',title:'Endocrinology',duration:'90 minutes',content:['Diabetes management: insulin regimens, oral agents by mechanism and side effects','Thyroid: TSH/T4 patterns in primary vs secondary vs sick euthyroid','Adrenal: Cushing vs Addison, dexamethasone suppression interpretation','Pituitary: which hormone deficiency causes which presentation','Calcium disorders: PTH-dependent vs PTH-independent hypercalcemia','Pheochromocytoma: rule of 10s, preoperative management','MEN syndromes: 1 vs 2A vs 2B tumor associations','PCOS vs congenital adrenal hyperplasia differentiation']},
+      'msk':{icon:'🦴',title:'MSK / Rheum',duration:'90 minutes',content:['Arthritis patterns: inflammatory vs non-inflammatory, monoarticular vs polyarticular','RA vs OA vs gout vs pseudogout: joint distribution and crystal analysis','Lupus criteria: which manifestations count, drug-induced lupus differences','Scleroderma: limited vs diffuse, CREST syndrome','Vasculitis: large vs medium vs small vessel, ANCA associations','Spondyloarthropathies: AS vs reactive vs psoriatic vs IBD-associated','Myopathies: dermatomyositis vs polymyositis, malignancy association','Septic arthritis: when to tap, synovial fluid analysis']},
+      'derm':{icon:'🧴',title:'Dermatology',duration:'60 minutes',content:['Skin cancer: melanoma ABCDE, BCC vs SCC features','Psoriasis vs eczema: distribution, triggers, nail findings','Drug eruptions: SJS/TEN timeline, DRESS syndrome','Bullous diseases: pemphigus vs pemphigoid, antibody targets','Bacterial skin infections: impetigo vs cellulitis vs necrotizing fasciitis','Viral exanthems: measles vs rubella vs roseola vs erythema infectiosum','Fungal infections: dermatophytes vs candida, KOH prep findings','Hypersensitivity skin reactions: urticaria vs angioedema management']},
+      'pediatrics':{icon:'👶',title:'Pediatrics',duration:'90 minutes',content:['Developmental milestones: gross motor, fine motor, language, social by age','Vaccination schedule: which vaccines at which visits, contraindications','Congenital heart defects: cyanotic vs acyanotic, duct-dependent lesions','Pediatric emergencies: intussusception, pyloric stenosis, malrotation','Failure to thrive: organic vs non-organic, workup approach','Child abuse: fracture patterns, retinal hemorrhages, reporting requirements','Common pediatric infections: bronchiolitis, croup, epiglottitis differentiation','Genetic syndromes: Down, Turner, Klinefelter, Fragile X presentations']},
+      'psychiatry':{icon:'🧠',title:'Psychiatry',duration:'90 minutes',content:['Depression vs bipolar: treatment implications, antidepressant-induced mania','Psychosis: schizophrenia timeline, brief psychotic vs schizophreniform','Anxiety disorders: GAD vs panic vs phobias, first-line treatments','Personality disorders: cluster A vs B vs C, classic presentations','Substance use: intoxication vs withdrawal patterns, treatment protocols','Eating disorders: anorexia vs bulimia, refeeding syndrome','Suicide risk assessment: protective factors, when to hospitalize','Capacity vs competency: who decides, when to override']},
+      'ophthalmology':{icon:'👁️',title:'Ophthalmology',duration:'60 minutes',content:['Red eye differential: conjunctivitis vs uveitis vs acute glaucoma vs keratitis','Glaucoma: open vs closed angle, acute management','Retinal pathology: detachment, macular degeneration, diabetic retinopathy stages','Optic neuritis vs papilledema: visual field defects, pupil findings','Pupil abnormalities: Horner vs CN3 palsy, relative afferent pupillary defect','Eye trauma: hyphema, globe rupture, chemical burn management','Pediatric eye conditions: leukocoria differential, amblyopia management','Visual field defects: localize the lesion from the field cut pattern']},
+      'ent':{icon:'👂',title:'ENT',duration:'60 minutes',content:['Otitis media vs externa: presentation, organisms, management','Hearing loss: conductive vs sensorineural, Weber and Rinne interpretation','Vertigo: peripheral vs central, BPPV vs Meniere vs vestibular neuritis','Sinusitis: acute vs chronic, when imaging and antibiotics are indicated','Pharyngitis: Centor criteria, when to test and treat','Neck masses: location-based differential, branchial cleft vs thyroglossal','Head and neck cancer: risk factors, presentation, staging','Epistaxis: anterior vs posterior, management approach']},
+      'biostats':{icon:'📊',title:'Biostatistics',duration:'90 minutes',content:['Sensitivity vs specificity: when each matters, SnNout and SpPin rules','PPV/NPV: how prevalence affects them, calculation shortcuts','Study designs: RCT vs cohort vs case-control, which answers which question','Bias types: selection, recall, lead-time, length-time','Statistical tests: which test for which data type','Confidence intervals: interpretation, relationship to p-values','Number needed to treat/harm: calculation and clinical meaning','Survival analysis: Kaplan-Meier curves, hazard ratios']},
+      'ethics':{icon:'⚖️',title:'Ethics / Legal',duration:'60 minutes',content:['Informed consent: required elements, exceptions, who can consent','Capacity assessment: four components, who determines it','Advance directives: living will vs healthcare proxy, limitations','Confidentiality: when you must break it, mandatory reporting','End of life: withdrawing vs withholding, physician-assisted death','Minors: emancipated minor, mature minor doctrine, STI treatment','Medical errors: disclosure requirements, apology laws','Research ethics: IRB role, vulnerable populations, equipoise']}
     };
     
     window.addEventListener('scroll',()=>{document.querySelector('header').classList.toggle('scrolled',window.scrollY>50)});
@@ -632,7 +277,7 @@
     });
     topicModal.addEventListener('click',e=>{if(e.target===topicModal||e.target.classList.contains('topic-modal-close')){topicModal.classList.remove('active');document.body.classList.remove('menu-open')}});
     
-    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){const h=this.getAttribute('href');if(h!=='#contact'&&h!=='#'){e.preventDefault();topicModal.classList.remove('active');contactModal.classList.remove('active');document.body.classList.remove('menu-open');const t=document.querySelector(h);if(t)t.scrollIntoView({behavior:'smooth'})}}));
+    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){const h=this.getAttribute('href');if(h.startsWith('#')&&h.length>1){e.preventDefault();const t=document.querySelector(h);if(t){t.scrollIntoView({behavior:'smooth'});menuBtn.classList.remove('active');mobileNav.classList.remove('active');document.body.classList.remove('menu-open')}}}));
   </script>
 </body>
 </html>
