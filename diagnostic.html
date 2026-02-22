@@ -497,22 +497,18 @@
                 // Get last sentence of the passage
                 const sentences = q.text.match(/[^.!?]+[.!?]+/g) || [q.text];
                 const lastSentence = sentences[sentences.length - 1].trim();
-                const restOfPassage = sentences.slice(0, -1).join(' ').trim();
+                const earlierText = sentences.slice(0, -1).join(' ').trim();
                 
                 card.innerHTML = `
                     <p style="color:#7b341e; font-size:0.9em; margin-bottom:15px;"><strong>📖 Strategy:</strong> Read the last sentence + answers first, then reveal full passage!</p>
                     ${sectionBadge}
-                    <div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 15px; margin-bottom: 15px; border-radius: 4px;">
-                        <strong style="color: #92400e;">Last Sentence:</strong><br>
-                        <span style="font-size: 1.1em; color: #78350f;">"${lastSentence}"</span>
+                    <div id="passage-wrapper">
+                        <div id="earlier-text" class="blur-content vignette" style="margin-bottom:0;">${earlierText}</div>
+                        <div class="vignette" style="background: #fef3c7; padding: 10px; border-radius: 4px; margin-top: 5px;">${lastSentence}</div>
                     </div>
                     ${leadInHTML}
+                    <button id="reveal-passage-btn" class="reveal-btn" style="position:relative; top:auto; left:auto; transform:none; margin-bottom:15px;" onclick="revealFullPassage()">👀 Reveal Full Passage</button>
                     ${optionsHTML}
-                    <button id="reveal-passage-btn" class="reveal-btn" style="position:relative; top:auto; left:auto; transform:none; margin-top:15px;" onclick="revealFullPassage()">👀 Show Full Passage</button>
-                    <div id="full-passage-wrapper" class="blur-content" style="margin-top:15px; padding:15px; background:#f8f9fa; border-radius:6px;">
-                        <strong>Full Passage:</strong><br>
-                        ${restOfPassage ? restOfPassage + ' ' : ''}<span style="background:#fef3c7;">${lastSentence}</span>
-                    </div>
                 `;
             }
 
@@ -546,7 +542,7 @@
         }
 
         function revealFullPassage() {
-            document.getElementById('full-passage-wrapper').classList.remove('blur-content');
+            document.getElementById('earlier-text').classList.remove('blur-content');
             document.getElementById('reveal-passage-btn').style.display = 'none';
         }
 
