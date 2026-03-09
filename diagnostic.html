@@ -3,25 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exam Strategy Trainer | USMLE300</title>
+    <title>Exam Strategy Diagnostic | USMLE300</title>
+    <meta name="description" content="Free USMLE strategy diagnostic. Test 5 question-taking strategies and find which one works best for your brain.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root { 
-            --nbme-blue: #003366;
-            --nbme-blue-light: #004080;
-            --nbme-teal: #006080;
+            --nbme-blue: #1a2744;
+            --nbme-blue-mid: #253558;
+            --nbme-teal: #2a7d8c;
+            --nbme-teal-hover: #1f5f6b;
             --cream: #FAF9F6;
+            --cream-dark: #F0EEEB;
             --highlight-yellow: #fff3cd;
-            --locked-gray: #e9ecef;
-            --mcat-purple: #6b46c1;
-            --success: #28a745;
-            --danger: #dc3545;
+            --burgundy: #722F37;
+            --burgundy-dark: #5a252c;
+            --gold: #C9A227;
+            --charcoal: #2D2D2D;
+            --success: #2E7D4A;
+            --danger: #c0392b;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-300: #dee2e6;
+            --gray-500: #6c757d;
+            --gray-700: #495057;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body { 
-            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; 
-            background: #f5f5f5; 
+            font-family: 'DM Sans', 'Segoe UI', sans-serif; 
+            background: #e8eaed; 
             height: 100vh; 
             display: flex; 
             flex-direction: column;
@@ -29,6 +42,7 @@
             line-height: 1.6;
         }
 
+        /* ============ LANDING ============ */
         #landing-screen { 
             display: flex; 
             flex-direction: column; 
@@ -37,175 +51,170 @@
             height: 100%; 
             text-align: center;
             padding: 2rem;
-            background: linear-gradient(135deg, var(--cream) 0%, #f0eeeb 100%);
+            background: linear-gradient(160deg, var(--cream) 0%, var(--cream-dark) 100%);
         }
         
         .landing-logo {
-            font-family: Georgia, serif;
-            font-size: 1.5rem;
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.35rem;
             font-weight: 700;
-            color: #722F37;
-            margin-bottom: 0.5rem;
+            color: var(--burgundy);
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.01em;
         }
         
         .landing-title {
-            font-family: Georgia, serif;
-            font-size: 2rem;
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: clamp(1.6rem, 4vw, 2.25rem);
             color: var(--nbme-blue);
             margin-bottom: 0.5rem;
+            font-weight: 700;
         }
         
         .landing-subtitle {
-            color: #666;
+            color: var(--gray-500);
             margin-bottom: 2.5rem;
-            max-width: 550px;
+            max-width: 520px;
             font-size: 1rem;
+            line-height: 1.6;
         }
         
+        .exam-buttons { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+        
         .exam-btn { 
-            margin: 8px; 
-            padding: 16px 40px; 
+            padding: 15px 40px; 
             font-size: 1rem; 
             border: 2px solid var(--nbme-blue); 
             background: white; 
             color: var(--nbme-blue); 
-            border-radius: 6px; 
+            border-radius: 8px; 
             cursor: pointer; 
             transition: all 0.2s; 
             width: 280px; 
             font-weight: 600;
+            font-family: inherit;
         }
         
         .exam-btn:hover { 
             background: var(--nbme-blue); 
             color: white; 
             transform: translateY(-2px); 
-            box-shadow: 0 4px 12px rgba(0,51,102,0.25);
-        }
-        
-        .exam-btn.gaby-btn { 
-            border-color: var(--mcat-purple); 
-            color: var(--mcat-purple); 
-            margin-top: 1.5rem;
-        }
-        
-        .exam-btn.gaby-btn:hover { 
-            background: var(--mcat-purple); 
-            color: white; 
-            box-shadow: 0 4px 12px rgba(107,70,193,0.25);
-        }
-        
-        .gaby-note {
-            color: #888;
-            font-size: 0.85rem;
-            max-width: 380px;
-            margin-top: 0.5rem;
+            box-shadow: 0 6px 16px rgba(26,39,68,0.2);
         }
 
+        /* ============ NBME HEADER ============ */
         #nbme-header {
             display: none;
             background: var(--nbme-blue);
             color: white;
-            padding: 8px 20px;
             flex-shrink: 0;
+            border-bottom: 3px solid var(--nbme-teal);
         }
         
-        .nbme-header-top {
+        .nbme-header-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-bottom: 8px;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding: 8px 20px;
+        }
+        
+        .nbme-header-row.top {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         
         .nbme-item-info {
             font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
         
         .nbme-item-info strong {
             font-size: 1rem;
         }
         
+        .nbme-exam-label {
+            opacity: 0.7;
+            font-size: 0.85rem;
+        }
+        
         .nbme-nav-buttons {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             align-items: center;
         }
         
         .nbme-nav-btn {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
             color: white;
-            padding: 6px 16px;
-            border-radius: 4px;
+            padding: 5px 14px;
+            border-radius: 3px;
             cursor: pointer;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            font-family: inherit;
             display: flex;
             align-items: center;
-            gap: 6px;
-            transition: background 0.2s;
+            gap: 5px;
+            transition: background 0.15s;
         }
         
-        .nbme-nav-btn:hover {
-            background: rgba(255,255,255,0.2);
-        }
-        
-        .nbme-nav-btn.disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
+        .nbme-nav-btn:hover { background: rgba(255,255,255,0.15); }
+        .nbme-nav-btn.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
         
         .nbme-tools {
             display: flex;
-            gap: 15px;
+            gap: 4px;
             align-items: center;
         }
         
-        .nbme-tool {
+        .nbme-tool-btn {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 2px;
-            color: rgba(255,255,255,0.8);
-            font-size: 0.7rem;
+            gap: 1px;
+            color: rgba(255,255,255,0.75);
+            font-size: 0.65rem;
             cursor: pointer;
-            padding: 4px 8px;
-            border-radius: 4px;
-            transition: background 0.2s;
+            padding: 4px 10px;
+            border-radius: 3px;
+            transition: all 0.15s;
+            background: none;
+            border: 1px solid transparent;
+            font-family: inherit;
         }
         
-        .nbme-tool:hover {
-            background: rgba(255,255,255,0.1);
+        .nbme-tool-btn:hover { 
+            background: rgba(255,255,255,0.08); 
+            color: white;
+            border-color: rgba(255,255,255,0.15);
+        }
+        .nbme-tool-btn.active {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.3);
+            color: white;
         }
         
-        .nbme-tool-icon {
-            font-size: 1.2rem;
-        }
-        
-        .nbme-header-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 8px;
-        }
+        .nbme-tool-icon { font-size: 1.1rem; }
         
         .strategy-badge {
-            padding: 5px 14px;
-            border-radius: 4px;
+            padding: 4px 12px;
+            border-radius: 3px;
             font-weight: 600;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-size: 0.8rem;
+            letter-spacing: 0.3px;
         }
         
         .nbme-timer {
             font-family: 'Consolas', 'Courier New', monospace;
-            font-size: 0.95rem;
-            background: rgba(255,255,255,0.15);
-            padding: 4px 12px;
-            border-radius: 4px;
+            font-size: 0.9rem;
+            background: rgba(0,0,0,0.3);
+            padding: 4px 14px;
+            border-radius: 3px;
+            letter-spacing: 1px;
         }
 
+        /* ============ GAME SCREEN ============ */
         #game-screen {
             display: none;
             flex: 1;
@@ -218,12 +227,12 @@
         }
         
         .nbme-line-numbers {
-            width: 40px;
-            background: #e8e8e8;
-            border-right: 1px solid #ccc;
+            width: 36px;
+            background: #d5d8dc;
+            border-right: 1px solid #b0b3b8;
             padding: 20px 0;
             font-family: 'Consolas', 'Courier New', monospace;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #666;
             text-align: center;
             overflow-y: auto;
@@ -231,8 +240,8 @@
         }
         
         .line-num {
-            padding: 2px 8px;
-            height: 24px;
+            padding: 1px 6px;
+            height: 22px;
             display: flex;
             align-items: center;
             justify-content: flex-end;
@@ -241,112 +250,99 @@
         .nbme-content {
             flex: 1;
             background: white;
-            padding: 30px 40px;
+            padding: 28px 40px;
             overflow-y: auto;
+            max-width: 900px;
         }
         
         .strategy-instruction {
-            padding: 12px 16px;
+            padding: 10px 14px;
             border-radius: 4px;
-            margin-bottom: 20px;
-            font-size: 0.9rem;
+            margin-bottom: 18px;
+            font-size: 0.88rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            border-left: 4px solid;
         }
         
-        .strategy-instruction.standard { background: #e9ecef; color: #495057; }
-        .strategy-instruction.highlighter { background: #fff3cd; color: #856404; }
-        .strategy-instruction.speed { background: #f8d7da; color: #721c24; }
-        .strategy-instruction.options-first { background: #cce5ff; color: #004085; }
-        .strategy-instruction.last-sentence { background: #fef3c7; color: #92400e; }
-        
-        .section-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        .section-badge.chem { background: #e3f2fd; color: #1565c0; }
-        .section-badge.bio { background: #e8f5e9; color: #2e7d32; }
+        .strategy-instruction.standard { background: #f1f3f5; color: var(--gray-700); border-color: #adb5bd; }
+        .strategy-instruction.highlighter { background: #fff8e1; color: #6d4c00; border-color: #f9a825; }
+        .strategy-instruction.speed { background: #fde8e8; color: #8b1a1a; border-color: var(--danger); }
+        .strategy-instruction.options-first { background: #e3f2fd; color: #0d47a1; border-color: #1976d2; }
+        .strategy-instruction.last-sentence { background: #fef3c7; color: #78350f; border-color: #d97706; }
 
         .question-vignette {
             font-size: 1rem;
-            line-height: 1.8;
+            line-height: 1.85;
             color: #333;
-            margin-bottom: 25px;
+            margin-bottom: 22px;
         }
         
         .question-vignette.blur-content {
             filter: blur(8px);
             user-select: none;
             pointer-events: none;
-            opacity: 0.6;
+            opacity: 0.5;
             transition: all 0.4s ease;
         }
         
         .highlightable-word {
             cursor: pointer;
-            padding: 2px 1px;
-            border-radius: 3px;
+            padding: 1px 2px;
+            border-radius: 2px;
             transition: background 0.1s;
         }
-        
-        .highlightable-word:hover { background: #e2e6ea; }
-        .highlighted { background-color: yellow !important; font-weight: 600; }
+        .highlightable-word:hover { background: #e8eaed; }
+        .highlighted { background-color: #fff176 !important; font-weight: 600; }
         
         .last-sentence-highlight {
-            background: #fef3c7;
-            padding: 10px 12px;
+            background: #fef9e7;
+            padding: 10px 14px;
             border-radius: 4px;
             border-left: 3px solid #f59e0b;
-            margin-top: 10px;
+            margin: 10px 0 15px;
+            font-weight: 500;
         }
         
         .question-lead {
             font-weight: 700;
-            font-size: 1.05rem;
+            font-size: 1.02rem;
             color: var(--nbme-blue);
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             line-height: 1.5;
         }
         
-        .question-lead.mcat-mode { color: var(--mcat-purple); }
-        
         .reveal-btn {
-            background: var(--success);
+            background: var(--nbme-teal);
             color: white;
             border: none;
-            padding: 10px 24px;
-            border-radius: 6px;
+            padding: 9px 20px;
+            border-radius: 4px;
             font-weight: 600;
             cursor: pointer;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
+            margin-bottom: 18px;
+            font-size: 0.9rem;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 2px 8px rgba(40,167,69,0.3);
-            transition: all 0.2s;
+            gap: 6px;
+            font-family: inherit;
+            transition: all 0.15s;
         }
-        
-        .reveal-btn:hover { background: #218838; transform: translateY(-1px); }
+        .reveal-btn:hover { background: var(--nbme-teal-hover); }
 
         .options-container {
-            border: 1px solid #ccc;
+            border: 1px solid var(--gray-300);
             border-radius: 4px;
             background: white;
-            padding: 15px;
-            max-width: 500px;
+            padding: 12px;
+            max-width: 520px;
         }
         
         .options-container.locked {
-            opacity: 0.4;
+            opacity: 0.35;
             pointer-events: none;
-            filter: grayscale(1);
+            filter: grayscale(0.8);
         }
         
         .option {
@@ -354,58 +350,52 @@
             align-items: flex-start;
             gap: 10px;
             padding: 10px 12px;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             border-radius: 4px;
             cursor: pointer;
-            transition: background 0.15s;
+            transition: background 0.1s;
+            border: 1px solid transparent;
         }
-        
         .option:last-child { margin-bottom: 0; }
-        .option:hover { background: #f8f9fa; }
+        .option:hover { background: var(--gray-100); }
         
         .option-radio {
             width: 18px;
             height: 18px;
-            border: 2px solid #666;
+            border: 2px solid #888;
             border-radius: 50%;
             flex-shrink: 0;
             margin-top: 2px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.15s;
+            transition: all 0.1s;
         }
         
-        .option.selected .option-radio {
-            border-color: var(--nbme-blue);
-            background: var(--nbme-blue);
-        }
+        .option.selected { background: #e8f0fe; border-color: #c2d7f5; }
+        .option.selected .option-radio { border-color: var(--nbme-blue); background: var(--nbme-blue); }
+        .option.selected .option-radio::after { content: ''; width: 7px; height: 7px; background: white; border-radius: 50%; }
         
-        .option.selected .option-radio::after {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: white;
-            border-radius: 50%;
-        }
-        
-        .option.correct { background: #d4edda; }
+        .option.correct { background: #d4edda; border-color: #a3d9b1; }
         .option.correct .option-radio { border-color: var(--success); background: var(--success); }
-        .option.incorrect { background: #f8d7da; }
+        .option.correct .option-radio::after { content: ''; width: 7px; height: 7px; background: white; border-radius: 50%; }
+        .option.incorrect { background: #f8d7da; border-color: #f1aeb5; }
         .option.incorrect .option-radio { border-color: var(--danger); background: var(--danger); }
+        .option.incorrect .option-radio::after { content: ''; width: 7px; height: 7px; background: white; border-radius: 50%; }
         
-        .option-label { font-weight: 600; color: #333; margin-right: 4px; }
+        .option-label { font-weight: 700; color: #333; margin-right: 4px; }
         .option-text { color: #333; font-size: 0.95rem; }
         
-        .unlock-message { margin-top: 12px; font-weight: 600; font-size: 0.9rem; }
+        .unlock-message { margin-top: 10px; font-weight: 600; font-size: 0.88rem; }
         .unlock-message.locked { color: var(--danger); }
         .unlock-message.unlocked { color: var(--success); }
 
+        /* ============ NBME FOOTER ============ */
         #nbme-footer {
             display: none;
-            background: white;
-            border-top: 2px solid #ccc;
-            padding: 12px 25px;
+            background: #f5f5f5;
+            border-top: 2px solid #c8c8c8;
+            padding: 10px 20px;
             flex-shrink: 0;
         }
         
@@ -421,144 +411,433 @@
             gap: 20px;
         }
         
-        .nbme-block-info { font-size: 0.85rem; color: #666; }
+        .nbme-block-info { font-size: 0.82rem; color: var(--gray-500); }
         .nbme-block-info strong { color: #333; }
         
         .feedback-message {
-            font-style: italic;
-            color: #666;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             max-width: 500px;
         }
-        
-        .feedback-message .correct { color: var(--success); font-weight: 600; }
-        .feedback-message .incorrect { color: var(--danger); font-weight: 600; }
+        .feedback-message .correct { color: var(--success); font-weight: 700; }
+        .feedback-message .incorrect { color: var(--danger); font-weight: 700; }
         
         .nbme-proceed-btn {
             background: var(--nbme-teal);
             color: white;
             border: none;
-            padding: 10px 24px;
+            padding: 9px 22px;
             border-radius: 4px;
             font-weight: 600;
             cursor: pointer;
-            font-size: 0.95rem;
-            transition: background 0.2s;
+            font-size: 0.9rem;
+            font-family: inherit;
+            transition: background 0.15s;
         }
-        
-        .nbme-proceed-btn:hover { background: #005070; }
+        .nbme-proceed-btn:hover { background: var(--nbme-teal-hover); }
 
-        .results-container {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        
-        .results-header { text-align: center; margin-bottom: 30px; }
-        
-        .results-header h1 {
-            font-family: Georgia, serif;
-            color: var(--nbme-blue);
-            font-size: 1.75rem;
-            margin-bottom: 10px;
-        }
-        
-        .results-header h1.mcat { color: var(--mcat-purple); }
-        
-        .results-score-box {
-            text-align: center;
-            padding: 25px;
-            background: #f8f9fa;
+        /* ============ CALCULATOR OVERLAY ============ */
+        .tool-overlay {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border: 2px solid var(--nbme-blue);
             border-radius: 8px;
-            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            z-index: 5000;
+            overflow: hidden;
         }
+        .tool-overlay.active { display: block; }
         
-        .results-score { font-size: 3rem; font-weight: 700; }
-        .results-score.good { color: var(--success); }
-        .results-score.medium { color: #ffc107; }
-        .results-score.poor { color: var(--danger); }
-        .results-percentage { color: #666; font-size: 1rem; margin-top: 5px; }
-        
-        .results-section { margin-bottom: 25px; }
-        
-        .results-section h2 {
-            font-family: Georgia, serif;
-            font-size: 1.25rem;
-            color: #333;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-        }
-        
-        .strategy-result {
+        .tool-header {
+            background: var(--nbme-blue);
+            color: white;
+            padding: 8px 14px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px;
-            margin-bottom: 10px;
-            background: white;
-            border-radius: 6px;
-            border-left: 4px solid #dee2e6;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-        }
-        
-        .strategy-result.best { border-left-color: var(--success); background: #d4edda; }
-        .strategy-result.worst { border-left-color: var(--danger); background: #f8d7da; }
-        .strategy-name { font-weight: 600; font-size: 1rem; }
-        .strategy-details { color: #666; font-size: 0.85rem; margin-top: 4px; }
-        .strategy-accuracy { font-size: 1.5rem; font-weight: 700; }
-        .strategy-label { font-size: 0.8rem; color: #666; }
-        
-        .progress-bar {
-            height: 6px;
-            background: #e9ecef;
-            border-radius: 3px;
-            overflow: hidden;
-            margin-top: 8px;
-            width: 120px;
-        }
-        
-        .progress-fill { height: 100%; transition: width 0.3s; }
-        
-        .recommendation-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 25px;
-            border-radius: 8px;
-            margin-top: 25px;
-        }
-        
-        .recommendation-box h3 { margin-bottom: 15px; font-size: 1.1rem; }
-        .recommendation-box p { margin-bottom: 10px; line-height: 1.6; }
-        .recommendation-box .divider { border-top: 1px solid rgba(255,255,255,0.3); margin: 15px 0; padding-top: 15px; }
-        
-        .retry-btn {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 12px 30px;
-            background: white;
-            color: var(--nbme-blue);
-            border: 2px solid var(--nbme-blue);
-            border-radius: 6px;
+            font-size: 0.85rem;
             font-weight: 600;
+            cursor: move;
+        }
+        .tool-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
             cursor: pointer;
-            font-size: 1rem;
-            text-decoration: none;
+            padding: 0 4px;
+        }
+        
+        /* Calculator */
+        .calc-body { padding: 10px; width: 240px; }
+        .calc-display {
+            background: #1a1a2e;
+            color: #4ade80;
+            font-family: 'Consolas', monospace;
+            font-size: 1.4rem;
+            text-align: right;
+            padding: 10px 12px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            min-height: 44px;
+            word-break: break-all;
+        }
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4px;
+        }
+        .calc-btn {
+            padding: 10px;
+            font-size: 0.95rem;
+            border: 1px solid var(--gray-300);
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            background: var(--gray-100);
+            transition: background 0.1s;
+        }
+        .calc-btn:hover { background: var(--gray-200); }
+        .calc-btn.op { background: #e3f2fd; color: #1565c0; }
+        .calc-btn.op:hover { background: #bbdefb; }
+        .calc-btn.eq { background: var(--nbme-teal); color: white; }
+        .calc-btn.eq:hover { background: var(--nbme-teal-hover); }
+        .calc-btn.clear { background: #fde8e8; color: var(--danger); }
+        .calc-btn.clear:hover { background: #f8d7da; }
+        
+        /* Lab Values */
+        .lab-body { padding: 14px; width: 380px; max-height: 450px; overflow-y: auto; }
+        .lab-section { margin-bottom: 12px; }
+        .lab-section-title {
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--nbme-teal);
+            border-bottom: 1px solid var(--gray-200);
+            padding-bottom: 4px;
+            margin-bottom: 6px;
+        }
+        .lab-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 3px 0;
+            font-size: 0.82rem;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .lab-name { color: #333; }
+        .lab-value { color: var(--gray-500); font-family: 'Consolas', monospace; font-size: 0.8rem; }
+
+        /* ============ RESULTS ============ */
+        .results-wrap {
+            min-height: 100vh;
+            background: linear-gradient(160deg, #0f172a 0%, #1e293b 40%, #1a2744 100%);
+            padding: 40px 20px;
+            overflow-y: auto;
+        }
+        
+        .results-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .results-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.4);
+        }
+        
+        .results-card-top {
+            background: linear-gradient(135deg, var(--burgundy) 0%, var(--burgundy-dark) 100%);
+            padding: 32px 28px 24px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .results-card-top::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 24px;
+            background: white;
+            border-radius: 24px 24px 0 0;
+        }
+        
+        .results-logo {
+            font-family: 'Fraunces', serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            opacity: 0.8;
+            margin-bottom: 4px;
+        }
+        
+        .results-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .results-score-circle {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            border: 4px solid rgba(255,255,255,0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+        }
+        
+        .results-score-num {
+            font-family: 'Fraunces', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        
+        .results-score-label {
+            font-size: 0.75rem;
+            opacity: 0.75;
+            margin-top: 2px;
+        }
+        
+        .results-time {
+            font-size: 0.82rem;
+            opacity: 0.7;
+        }
+        
+        .results-card-body {
+            padding: 8px 28px 28px;
+        }
+        
+        .results-section-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .strategy-row {
+            display: flex;
+            align-items: center;
+            padding: 12px 14px;
+            margin-bottom: 8px;
+            border-radius: 10px;
+            background: var(--gray-100);
+            border: 2px solid transparent;
+            gap: 12px;
             transition: all 0.2s;
         }
         
-        .retry-btn:hover { background: var(--nbme-blue); color: white; }
-        .retry-btn.mcat { border-color: var(--mcat-purple); color: var(--mcat-purple); }
-        .retry-btn.mcat:hover { background: var(--mcat-purple); color: white; }
+        .strategy-row.best {
+            background: #ecfdf5;
+            border-color: var(--success);
+        }
+        
+        .strategy-row.worst {
+            background: #fef2f2;
+            border-color: #fca5a5;
+        }
+        
+        .strategy-rank {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--gray-700);
+            flex-shrink: 0;
+        }
+        
+        .strategy-row.best .strategy-rank {
+            background: var(--success);
+            color: white;
+        }
+        
+        .strategy-row.worst .strategy-rank {
+            background: #fca5a5;
+            color: #7f1d1d;
+        }
+        
+        .strategy-info { flex: 1; min-width: 0; }
+        
+        .strategy-name {
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--charcoal);
+        }
+        
+        .strategy-meta {
+            font-size: 0.78rem;
+            color: var(--gray-500);
+            margin-top: 2px;
+        }
+        
+        .strategy-bar-wrap {
+            height: 6px;
+            background: var(--gray-200);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 6px;
+        }
+        
+        .strategy-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.6s ease;
+        }
+        
+        .strategy-pct {
+            font-family: 'Fraunces', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .strategy-row.best .strategy-pct { color: var(--success); }
+        .strategy-row.worst .strategy-pct { color: var(--danger); }
+        
+        .recommendation-card {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #faf5ff 0%, #f0e7ff 100%);
+            border: 1px solid #ddd6fe;
+        }
+        
+        .recommendation-card h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1rem;
+            color: #5b21b6;
+            margin-bottom: 8px;
+        }
+        
+        .recommendation-card p {
+            font-size: 0.9rem;
+            color: #4c1d95;
+            line-height: 1.6;
+            margin-bottom: 6px;
+        }
+        
+        .recommendation-card .avoid-note {
+            font-size: 0.82rem;
+            color: #7c3aed;
+            border-top: 1px solid #ddd6fe;
+            margin-top: 10px;
+            padding-top: 10px;
+        }
+        
+        .results-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .results-btn {
+            flex: 1;
+            min-width: 140px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-family: inherit;
+            transition: all 0.2s;
+            border: none;
+        }
+        
+        .results-btn.primary {
+            background: var(--burgundy);
+            color: white;
+        }
+        .results-btn.primary:hover { background: var(--burgundy-dark); transform: translateY(-1px); }
+        
+        .results-btn.secondary {
+            background: white;
+            color: var(--charcoal);
+            border: 2px solid var(--gray-300);
+        }
+        .results-btn.secondary:hover { border-color: var(--charcoal); }
+        
+        .results-btn.share {
+            background: #1da1f2;
+            color: white;
+        }
+        .results-btn.share:hover { background: #0c85d0; transform: translateY(-1px); }
+        
+        .results-watermark {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+        }
+        
+        .results-watermark a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+        }
 
+        .share-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: var(--charcoal);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        .share-toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ============ RESPONSIVE ============ */
         @media (max-width: 768px) {
             .nbme-line-numbers { display: none; }
-            .nbme-content { padding: 20px; }
-            .nbme-header-top { flex-wrap: wrap; gap: 10px; }
+            .nbme-content { padding: 20px 16px; }
+            .nbme-header-row { padding: 6px 12px; flex-wrap: wrap; gap: 6px; }
             .nbme-tools { display: none; }
-            .nbme-footer-content { flex-direction: column; gap: 15px; text-align: center; }
-            .nbme-footer-left { flex-direction: column; }
+            .nbme-footer-content { flex-direction: column; gap: 12px; text-align: center; }
+            .nbme-footer-left { flex-direction: column; gap: 6px; }
             .options-container { max-width: 100%; }
+            .results-card-body { padding: 8px 20px 24px; }
+            .results-card-top { padding: 24px 20px 20px; }
+            .lab-body { width: 320px; }
+            .tool-overlay { width: 90vw !important; }
+            .calc-body, .lab-body { width: 100% !important; }
         }
     </style>
 </head>
@@ -566,45 +845,137 @@
 
     <div id="landing-screen">
         <div class="landing-logo">USMLE300</div>
-        <h1 class="landing-title">Exam Strategy Trainer</h1>
+        <h1 class="landing-title">Exam Strategy Diagnostic</h1>
         <p class="landing-subtitle">
-            Test 20 questions using 5 different reading strategies. Discover which approach works best for YOUR brain.
+            Answer 20 questions using 5 different reading strategies. Discover which approach gets YOU the most correct answers.
         </p>
-        
-        <button class="exam-btn" onclick="startGame('Step 1')">Step 1 (Mechanism)</button>
-        <button class="exam-btn" onclick="startGame('Step 2 CK')">Step 2 CK (Diagnosis)</button>
-        <button class="exam-btn" onclick="startGame('Step 3')">Step 3 (Management)</button>
-        
-        <button class="exam-btn gaby-btn" onclick="startGame('MCAT')">Gaby Trainer</button>
-        <p class="gaby-note">Chem/Phys and Bio/Biochem questions with strategy analysis</p>
+        <div class="exam-buttons">
+            <button class="exam-btn" onclick="startGame('Step 1')">Step 1 — Mechanisms</button>
+            <button class="exam-btn" onclick="startGame('Step 2 CK')">Step 2 CK — Diagnosis</button>
+            <button class="exam-btn" onclick="startGame('Step 3')">Step 3 — Management</button>
+        </div>
     </div>
 
     <div id="nbme-header">
-        <div class="nbme-header-top">
+        <div class="nbme-header-row top">
             <div class="nbme-item-info">
-                <strong>Item: <span id="item-current">1</span> of <span id="item-total">20</span></strong>
-                <span style="margin-left: 15px; opacity: 0.8;" id="exam-label-display">Step 1</span>
+                <strong>Item <span id="item-current">1</span> of <span id="item-total">20</span></strong>
+                <span class="nbme-exam-label" id="exam-label-display">Step 1</span>
             </div>
-            
             <div class="nbme-nav-buttons">
-                <button class="nbme-nav-btn disabled" id="prev-btn" onclick="goToPrevious()">
-                    <span>◀</span> Previous
-                </button>
-                <button class="nbme-nav-btn" id="next-nav-btn" onclick="goToNext()">
-                    Next <span>▶</span>
-                </button>
+                <button class="nbme-nav-btn disabled" id="prev-btn" onclick="goToPrevious()"><span>◀</span> Previous</button>
+                <button class="nbme-nav-btn" id="next-nav-btn" onclick="goToNext()">Next <span>▶</span></button>
             </div>
-            
             <div class="nbme-tools">
-                <div class="nbme-tool"><span class="nbme-tool-icon">📋</span><span>Notes</span></div>
-                <div class="nbme-tool"><span class="nbme-tool-icon">🧮</span><span>Calculator</span></div>
-                <div class="nbme-tool"><span class="nbme-tool-icon">🔤</span><span>Text Zoom</span></div>
+                <button class="nbme-tool-btn" id="tool-notes" onclick="toggleNotes()"><span class="nbme-tool-icon">📝</span><span>Notes</span></button>
+                <button class="nbme-tool-btn" id="tool-calc" onclick="toggleCalc()"><span class="nbme-tool-icon">🧮</span><span>Calculator</span></button>
+                <button class="nbme-tool-btn" id="tool-lab" onclick="toggleLab()"><span class="nbme-tool-icon">📋</span><span>Lab Values</span></button>
+                <button class="nbme-tool-btn" onclick="toggleZoom()"><span class="nbme-tool-icon">🔤</span><span>Zoom</span></button>
             </div>
         </div>
-        
-        <div class="nbme-header-bottom">
+        <div class="nbme-header-row">
             <div id="strategy-display" class="strategy-badge">🛡️ Standard Mode</div>
             <div class="nbme-timer" id="timer">00:00</div>
+        </div>
+    </div>
+
+    <!-- Calculator Overlay -->
+    <div class="tool-overlay" id="calc-overlay">
+        <div class="tool-header"><span>Calculator</span><button class="tool-close" onclick="toggleCalc()">×</button></div>
+        <div class="calc-body">
+            <div class="calc-display" id="calc-display">0</div>
+            <div class="calc-grid">
+                <button class="calc-btn clear" onclick="calcClear()">C</button>
+                <button class="calc-btn op" onclick="calcInput('(')">(</button>
+                <button class="calc-btn op" onclick="calcInput(')')">)</button>
+                <button class="calc-btn op" onclick="calcInput('/')">÷</button>
+                <button class="calc-btn" onclick="calcInput('7')">7</button>
+                <button class="calc-btn" onclick="calcInput('8')">8</button>
+                <button class="calc-btn" onclick="calcInput('9')">9</button>
+                <button class="calc-btn op" onclick="calcInput('*')">×</button>
+                <button class="calc-btn" onclick="calcInput('4')">4</button>
+                <button class="calc-btn" onclick="calcInput('5')">5</button>
+                <button class="calc-btn" onclick="calcInput('6')">6</button>
+                <button class="calc-btn op" onclick="calcInput('-')">−</button>
+                <button class="calc-btn" onclick="calcInput('1')">1</button>
+                <button class="calc-btn" onclick="calcInput('2')">2</button>
+                <button class="calc-btn" onclick="calcInput('3')">3</button>
+                <button class="calc-btn op" onclick="calcInput('+')">+</button>
+                <button class="calc-btn" onclick="calcInput('0')">0</button>
+                <button class="calc-btn" onclick="calcInput('.')">.</button>
+                <button class="calc-btn op" onclick="calcBackspace()">⌫</button>
+                <button class="calc-btn eq" onclick="calcEval()">=</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lab Values Overlay -->
+    <div class="tool-overlay" id="lab-overlay">
+        <div class="tool-header"><span>Laboratory Reference Values</span><button class="tool-close" onclick="toggleLab()">×</button></div>
+        <div class="lab-body">
+            <div class="lab-section">
+                <div class="lab-section-title">Serum Chemistry</div>
+                <div class="lab-row"><span class="lab-name">Sodium</span><span class="lab-value">136–145 mEq/L</span></div>
+                <div class="lab-row"><span class="lab-name">Potassium</span><span class="lab-value">3.5–5.0 mEq/L</span></div>
+                <div class="lab-row"><span class="lab-name">Chloride</span><span class="lab-value">98–106 mEq/L</span></div>
+                <div class="lab-row"><span class="lab-name">Bicarbonate</span><span class="lab-value">22–28 mEq/L</span></div>
+                <div class="lab-row"><span class="lab-name">BUN</span><span class="lab-value">7–20 mg/dL</span></div>
+                <div class="lab-row"><span class="lab-name">Creatinine</span><span class="lab-value">0.7–1.3 mg/dL</span></div>
+                <div class="lab-row"><span class="lab-name">Glucose (fasting)</span><span class="lab-value">70–100 mg/dL</span></div>
+                <div class="lab-row"><span class="lab-name">Calcium</span><span class="lab-value">8.5–10.5 mg/dL</span></div>
+                <div class="lab-row"><span class="lab-name">Phosphorus</span><span class="lab-value">2.5–4.5 mg/dL</span></div>
+                <div class="lab-row"><span class="lab-name">Magnesium</span><span class="lab-value">1.5–2.5 mg/dL</span></div>
+                <div class="lab-row"><span class="lab-name">Uric acid</span><span class="lab-value">3.0–8.0 mg/dL</span></div>
+            </div>
+            <div class="lab-section">
+                <div class="lab-section-title">Hepatic Panel</div>
+                <div class="lab-row"><span class="lab-name">AST</span><span class="lab-value">10–40 U/L</span></div>
+                <div class="lab-row"><span class="lab-name">ALT</span><span class="lab-value">7–56 U/L</span></div>
+                <div class="lab-row"><span class="lab-name">Alk Phos</span><span class="lab-value">44–147 U/L</span></div>
+                <div class="lab-row"><span class="lab-name">Total bilirubin</span><span class="lab-value">0.1–1.2 mg/dL</span></div>
+                <div class="lab-row"><span class="lab-name">Direct bilirubin</span><span class="lab-value">0.0–0.3 mg/dL</span></div>
+                <div class="lab-row"><span class="lab-name">Albumin</span><span class="lab-value">3.5–5.0 g/dL</span></div>
+                <div class="lab-row"><span class="lab-name">Total protein</span><span class="lab-value">6.0–8.0 g/dL</span></div>
+            </div>
+            <div class="lab-section">
+                <div class="lab-section-title">Hematology</div>
+                <div class="lab-row"><span class="lab-name">WBC</span><span class="lab-value">4,500–11,000/µL</span></div>
+                <div class="lab-row"><span class="lab-name">Hemoglobin (M/F)</span><span class="lab-value">13.5–17.5 / 12.0–16.0</span></div>
+                <div class="lab-row"><span class="lab-name">Hematocrit (M/F)</span><span class="lab-value">38–50% / 36–44%</span></div>
+                <div class="lab-row"><span class="lab-name">Platelets</span><span class="lab-value">150,000–400,000/µL</span></div>
+                <div class="lab-row"><span class="lab-name">MCV</span><span class="lab-value">80–100 fL</span></div>
+                <div class="lab-row"><span class="lab-name">Reticulocyte count</span><span class="lab-value">0.5–1.5%</span></div>
+                <div class="lab-row"><span class="lab-name">ESR (M/F)</span><span class="lab-value">0–15 / 0–20 mm/hr</span></div>
+            </div>
+            <div class="lab-section">
+                <div class="lab-section-title">Coagulation</div>
+                <div class="lab-row"><span class="lab-name">PT</span><span class="lab-value">11–13.5 sec</span></div>
+                <div class="lab-row"><span class="lab-name">INR</span><span class="lab-value">0.8–1.2</span></div>
+                <div class="lab-row"><span class="lab-name">PTT</span><span class="lab-value">25–35 sec</span></div>
+                <div class="lab-row"><span class="lab-name">Fibrinogen</span><span class="lab-value">200–400 mg/dL</span></div>
+                <div class="lab-row"><span class="lab-name">D-dimer</span><span class="lab-value">&lt;0.5 µg/mL</span></div>
+            </div>
+            <div class="lab-section">
+                <div class="lab-section-title">Lipid Panel</div>
+                <div class="lab-row"><span class="lab-name">Total cholesterol</span><span class="lab-value">&lt;200 mg/dL</span></div>
+                <div class="lab-row"><span class="lab-name">LDL</span><span class="lab-value">&lt;100 mg/dL</span></div>
+                <div class="lab-row"><span class="lab-name">HDL</span><span class="lab-value">&gt;40 mg/dL</span></div>
+                <div class="lab-row"><span class="lab-name">Triglycerides</span><span class="lab-value">&lt;150 mg/dL</span></div>
+            </div>
+            <div class="lab-section">
+                <div class="lab-section-title">Endocrine</div>
+                <div class="lab-row"><span class="lab-name">TSH</span><span class="lab-value">0.5–5.0 mIU/L</span></div>
+                <div class="lab-row"><span class="lab-name">Free T4</span><span class="lab-value">0.7–1.9 ng/dL</span></div>
+                <div class="lab-row"><span class="lab-name">HbA1c</span><span class="lab-value">&lt;5.7%</span></div>
+                <div class="lab-row"><span class="lab-name">Cortisol (AM)</span><span class="lab-value">5–25 µg/dL</span></div>
+            </div>
+            <div class="lab-section">
+                <div class="lab-section-title">CSF</div>
+                <div class="lab-row"><span class="lab-name">Pressure</span><span class="lab-value">6–18 cm H₂O</span></div>
+                <div class="lab-row"><span class="lab-name">WBC</span><span class="lab-value">0–5/µL</span></div>
+                <div class="lab-row"><span class="lab-name">Protein</span><span class="lab-value">15–45 mg/dL</span></div>
+                <div class="lab-row"><span class="lab-name">Glucose</span><span class="lab-value">40–70 mg/dL</span></div>
+            </div>
         </div>
     </div>
 
@@ -618,23 +989,25 @@
     <div id="nbme-footer">
         <div class="nbme-footer-content">
             <div class="nbme-footer-left">
-                <div class="nbme-block-info"><strong>Block Time Remaining:</strong> untimed</div>
+                <div class="nbme-block-info"><strong>Block 1</strong> · Strategy Diagnostic</div>
                 <div id="feedback-msg" class="feedback-message"></div>
             </div>
-            <button id="proceed-btn" class="nbme-proceed-btn" onclick="nextQuestion()">Proceed to Next Item</button>
+            <button id="proceed-btn" class="nbme-proceed-btn" onclick="nextQuestion()">Submit Answer</button>
         </div>
     </div>
 
+    <div class="share-toast" id="share-toast">✓ Results copied to clipboard!</div>
+
     <script>
         let allQuestions = [];
-        let mcatQuestions = [];
         let examQuestions = [];
         let currentIdx = 0;
         let userAnswers = [];
         let timerSeconds = 0;
         let timerInterval;
         let questionStartTime = 0;
-        let isMCATMode = false;
+        let currentExamStep = '';
+        let zoomLevel = 1;
 
         let strategyData = {
             'STEM_FIRST': { correct: 0, total: 0, totalTime: 0 },
@@ -649,40 +1022,69 @@
         let highlightCount = 0;
         let hasSubmitted = false;
 
-        mcatQuestions = [
-            {"step":"MCAT","section":"Chem/Phys","text":"A researcher is studying enzyme kinetics and observes that adding a competitive inhibitor to an enzyme-catalyzed reaction increases the apparent Km but does not change Vmax. The inhibitor binds to the active site of the enzyme.","lead":"If the concentration of substrate is increased significantly, what will happen to the rate of the reaction?","options":["The rate will remain inhibited regardless of substrate concentration","The rate will approach Vmax as substrate outcompetes the inhibitor","The rate will decrease further due to substrate inhibition","The rate will oscillate between inhibited and uninhibited states"],"correct":1,"objective":"Competitive inhibitors can be overcome by increasing substrate concentration."},
-            {"step":"MCAT","section":"Chem/Phys","text":"A buffer solution contains 0.1 M acetic acid (pKa = 4.76) and 0.1 M sodium acetate. The solution has a pH of 4.76.","lead":"What will be the approximate pH if 0.02 mol of HCl is added to 1 L of this buffer?","options":["4.58","4.76","4.94","3.76"],"correct":0,"objective":"Henderson-Hasselbalch equation: pH = pKa + log([A-]/[HA]). After adding HCl, ratio becomes 0.08/0.12."},
-            {"step":"MCAT","section":"Chem/Phys","text":"An electrochemical cell is constructed using a zinc electrode (E° = -0.76 V) and a copper electrode (E° = +0.34 V). The cell operates under standard conditions.","lead":"What is the standard cell potential (E°cell) for this galvanic cell?","options":["-0.42 V","+0.42 V","+1.10 V","-1.10 V"],"correct":2,"objective":"E°cell = E°cathode - E°anode = 0.34 - (-0.76) = 1.10 V"},
-            {"step":"MCAT","section":"Chem/Phys","text":"A gas undergoes an isothermal expansion from 2 L to 6 L at 300 K. The gas behaves ideally and the process is reversible.","lead":"Which statement about the entropy change of the system is correct?","options":["Entropy change = 0 because temperature is constant","Entropy change is positive because the gas expands and disorder increases","Entropy change is negative because work is done by the system","Entropy change cannot be determined without knowing the pressure"],"correct":1,"objective":"For isothermal expansion, entropy change = nR ln(V2/V1) > 0."},
-            {"step":"MCAT","section":"Chem/Phys","text":"A solution of NaCl in water has a freezing point of -1.86°C. The molal freezing point depression constant (Kf) for water is 1.86°C/m.","lead":"What is the molality of the NaCl solution, accounting for dissociation?","options":["0.5 m","1.0 m","2.0 m","0.25 m"],"correct":0,"objective":"Freezing point depression = i × Kf × m. For NaCl, i = 2. So 1.86 = 2 × 1.86 × m, m = 0.5."},
-            {"step":"MCAT","section":"Chem/Phys","text":"Light with a wavelength of 500 nm passes through a single slit of width 0.1 mm. A diffraction pattern is observed on a screen 2 m away.","lead":"What determines the angular position of the first minimum in the diffraction pattern?","options":["sin θ = λ/a, where a is slit width","sin θ = 2λ/a","sin θ = λ/2a","The minimum depends only on screen distance"],"correct":0,"objective":"Single slit diffraction: first minimum at sin θ = λ/a."},
-            {"step":"MCAT","section":"Chem/Phys","text":"A radioactive isotope has a half-life of 8 days. A sample initially contains 64 g of the isotope.","lead":"How much of the isotope will remain after 24 days?","options":["32 g","16 g","8 g","4 g"],"correct":2,"objective":"After 3 half-lives (24/8 = 3): 64 to 32 to 16 to 8 g."},
-            {"step":"MCAT","section":"Chem/Phys","text":"A patient receives an IV solution that is 0.9% NaCl (w/v). Normal human blood has an osmolarity of approximately 300 mOsm/L.","lead":"Why is 0.9% NaCl considered isotonic with blood?","options":["It has the same mass concentration as blood proteins","Its osmolarity approximately matches blood osmolarity when accounting for NaCl dissociation","It has the same viscosity as blood","It contains the same electrolytes as blood plasma"],"correct":1,"objective":"0.9% NaCl is approximately 154 mM NaCl × 2 (dissociation) which is approximately 308 mOsm/L, matching blood."},
-            {"step":"MCAT","section":"Chem/Phys","text":"A block slides down a frictionless inclined plane that makes an angle of 30° with the horizontal. The block has a mass of 2 kg.","lead":"What is the magnitude of the normal force acting on the block?","options":["20 N","17.3 N","10 N","5 N"],"correct":1,"objective":"Normal force = mg cos θ = 2 × 10 × cos 30° = 20 × 0.866 which is approximately 17.3 N."},
-            {"step":"MCAT","section":"Chem/Phys","text":"An MRI machine uses a magnetic field of 1.5 T. A proton (charge = 1.6 × 10⁻¹⁹ C) moves perpendicular to this field with a velocity of 3 × 10⁶ m/s.","lead":"What is the magnitude of the magnetic force on the proton?","options":["7.2 × 10⁻¹³ N","4.5 × 10⁻¹³ N","2.4 × 10⁻¹³ N","7.2 × 10⁻¹² N"],"correct":0,"objective":"F = qvB = (1.6 × 10⁻¹⁹)(3 × 10⁶)(1.5) = 7.2 × 10⁻¹³ N."},
-            {"step":"MCAT","section":"Bio/Biochem","text":"During the citric acid cycle, isocitrate dehydrogenase converts isocitrate to α-ketoglutarate. This reaction is regulated by the energy status of the cell.","lead":"Which molecule acts as a positive allosteric regulator of isocitrate dehydrogenase?","options":["ATP","NADH","ADP","Citrate"],"correct":2,"objective":"ADP signals low energy status and activates isocitrate dehydrogenase to increase ATP production."},
-            {"step":"MCAT","section":"Bio/Biochem","text":"A researcher isolates a mutant bacterial strain that cannot perform oxidative phosphorylation. The bacteria can still grow when glucose is provided.","lead":"What is the maximum net ATP yield per glucose molecule for these bacteria?","options":["2 ATP","4 ATP","36 ATP","0 ATP"],"correct":0,"objective":"Without oxidative phosphorylation, only glycolysis works, yielding 2 net ATP per glucose."},
-            {"step":"MCAT","section":"Bio/Biochem","text":"A patient has a deficiency in the enzyme that converts phenylalanine to tyrosine. Without treatment, toxic metabolites accumulate.","lead":"Which amino acid becomes essential for this patient?","options":["Phenylalanine","Tryptophan","Tyrosine","Methionine"],"correct":2,"objective":"In PKU, tyrosine cannot be synthesized from phenylalanine, making it essential."},
-            {"step":"MCAT","section":"Bio/Biochem","text":"The lac operon in E. coli is regulated by both the lac repressor and CAP-cAMP complex. When glucose is absent and lactose is present, transcription is maximally induced.","lead":"What is the role of the CAP-cAMP complex in this regulation?","options":["It binds to the operator and blocks RNA polymerase","It binds upstream and enhances RNA polymerase binding to the promoter","It degrades the lac repressor protein","It directly activates the lacZ gene product"],"correct":1,"objective":"CAP-cAMP is a positive regulator that enhances transcription when glucose is low."},
-            {"step":"MCAT","section":"Bio/Biochem","text":"A protein destined for secretion is being translated by ribosomes. The signal sequence is recognized by the signal recognition particle (SRP).","lead":"Where does translation resume after the ribosome-SRP complex reaches its destination?","options":["Free in the cytoplasm","On the rough endoplasmic reticulum","In the Golgi apparatus","On the inner mitochondrial membrane"],"correct":1,"objective":"Secretory proteins are translated on ribosomes attached to the rough ER."},
-            {"step":"MCAT","section":"Bio/Biochem","text":"During DNA replication, the leading strand is synthesized continuously while the lagging strand is synthesized in Okazaki fragments.","lead":"Which enzyme is responsible for joining Okazaki fragments together?","options":["DNA polymerase III","DNA primase","DNA ligase","Helicase"],"correct":2,"objective":"DNA ligase joins Okazaki fragments by forming phosphodiester bonds."},
-            {"step":"MCAT","section":"Bio/Biochem","text":"A cell is placed in a hypotonic solution. Water begins to move across the plasma membrane.","lead":"What will happen to the cell if it lacks a rigid cell wall?","options":["The cell will shrink due to water loss","The cell will swell and potentially lyse","The cell will remain unchanged","The cell will undergo apoptosis"],"correct":1,"objective":"In hypotonic solution, water enters the cell by osmosis, causing swelling and potential lysis."},
-            {"step":"MCAT","section":"Bio/Biochem","text":"The electron transport chain consists of protein complexes that transfer electrons and pump protons across the inner mitochondrial membrane.","lead":"Which complex directly reduces molecular oxygen to water?","options":["Complex I (NADH dehydrogenase)","Complex II (Succinate dehydrogenase)","Complex III (Cytochrome bc1)","Complex IV (Cytochrome c oxidase)"],"correct":3,"objective":"Complex IV (cytochrome c oxidase) is the terminal electron acceptor that reduces O2 to H2O."},
-            {"step":"MCAT","section":"Bio/Biochem","text":"A hormone binds to a G-protein coupled receptor on the cell surface. The α subunit of the G-protein exchanges GDP for GTP and activates adenylyl cyclase.","lead":"What is the immediate product of adenylyl cyclase activation?","options":["IP3 and DAG","cAMP","cGMP","Calcium ions"],"correct":1,"objective":"Adenylyl cyclase converts ATP to cAMP, the second messenger."},
-            {"step":"MCAT","section":"Bio/Biochem","text":"Hemoglobin exhibits cooperative binding of oxygen. The binding of one oxygen molecule increases the affinity of the remaining subunits for oxygen.","lead":"This cooperative behavior results in what type of oxygen-hemoglobin dissociation curve?","options":["Linear","Hyperbolic","Sigmoidal","Exponential"],"correct":2,"objective":"Cooperative binding produces a sigmoidal (S-shaped) dissociation curve."}
-        ];
+        // Calculator state
+        let calcExpr = '';
+
+        function calcInput(val) {
+            if (calcExpr === '0' && val !== '.') calcExpr = '';
+            calcExpr += val;
+            document.getElementById('calc-display').textContent = calcExpr || '0';
+        }
+        function calcClear() {
+            calcExpr = '';
+            document.getElementById('calc-display').textContent = '0';
+        }
+        function calcBackspace() {
+            calcExpr = calcExpr.slice(0, -1);
+            document.getElementById('calc-display').textContent = calcExpr || '0';
+        }
+        function calcEval() {
+            try {
+                const result = Function('"use strict"; return (' + calcExpr + ')')();
+                const rounded = Math.round(result * 10000) / 10000;
+                calcExpr = String(rounded);
+                document.getElementById('calc-display').textContent = calcExpr;
+            } catch (e) {
+                document.getElementById('calc-display').textContent = 'Error';
+                calcExpr = '';
+            }
+        }
+
+        function toggleCalc() {
+            const el = document.getElementById('calc-overlay');
+            el.classList.toggle('active');
+            document.getElementById('tool-calc').classList.toggle('active', el.classList.contains('active'));
+            document.getElementById('lab-overlay').classList.remove('active');
+            document.getElementById('tool-lab').classList.remove('active');
+        }
+        function toggleLab() {
+            const el = document.getElementById('lab-overlay');
+            el.classList.toggle('active');
+            document.getElementById('tool-lab').classList.toggle('active', el.classList.contains('active'));
+            document.getElementById('calc-overlay').classList.remove('active');
+            document.getElementById('tool-calc').classList.remove('active');
+        }
+        function toggleNotes() {
+            // Simple notes - just toggle focus to a prompt
+            const note = prompt('Scratch Notes (not saved):');
+        }
+        function toggleZoom() {
+            zoomLevel = zoomLevel === 1 ? 1.15 : zoomLevel === 1.15 ? 1.3 : 1;
+            document.getElementById('question-content').style.fontSize = zoomLevel + 'rem';
+        }
 
         async function loadData() {
             try {
                 const res = await fetch('questions.json');
                 allQuestions = await res.json();
             } catch (e) {
-                console.log("Could not load questions.json, using embedded MCAT questions only.");
+                console.log('Could not load questions.json');
             }
         }
         loadData();
 
         function startGame(step) {
+            currentExamStep = step;
             strategyData = {
                 'STEM_FIRST': { correct: 0, total: 0, totalTime: 0 },
                 'HIGHLIGHTER': { correct: 0, total: 0, totalTime: 0 },
@@ -692,20 +1094,12 @@
             };
             userAnswers = [];
 
-            if (step === 'MCAT') {
-                isMCATMode = true;
-                examQuestions = [...mcatQuestions];
-                examQuestions.sort(() => Math.random() - 0.5);
-                examQuestions = examQuestions.slice(0, 20);
-            } else {
-                isMCATMode = false;
-                examQuestions = allQuestions.filter(q => q.step === step);
-                examQuestions.sort(() => Math.random() - 0.5);
-                examQuestions = examQuestions.slice(0, 20);
-            }
-            
+            examQuestions = allQuestions.filter(function(q) { return q.step === step; });
+            examQuestions.sort(function() { return Math.random() - 0.5; });
+            examQuestions = examQuestions.slice(0, 20);
+
             if (examQuestions.length === 0) {
-                alert("No questions found for " + step + ". Check your JSON file.");
+                alert('No questions found for ' + step + '. Check your questions.json file.');
                 return;
             }
 
@@ -713,11 +1107,8 @@
             document.getElementById('nbme-header').style.display = 'block';
             document.getElementById('game-screen').style.display = 'flex';
             document.getElementById('nbme-footer').style.display = 'block';
-            
-            document.getElementById('exam-label-display').innerText = step === 'MCAT' ? 'Gaby MCAT Trainer' : step;
+            document.getElementById('exam-label-display').innerText = step;
             document.getElementById('item-total').innerText = examQuestions.length;
-            
-            document.getElementById('nbme-header').style.background = isMCATMode ? 'var(--mcat-purple)' : 'var(--nbme-blue)';
 
             timerSeconds = 0;
             startTimer();
@@ -726,19 +1117,19 @@
         }
 
         function startTimer() {
-            timerInterval = setInterval(() => {
+            timerInterval = setInterval(function() {
                 timerSeconds++;
-                const m = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
-                const s = (timerSeconds % 60).toString().padStart(2, '0');
+                var m = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+                var s = (timerSeconds % 60).toString().padStart(2, '0');
                 document.getElementById('timer').innerText = m + ':' + s;
             }, 1000);
         }
 
         function generateLineNumbers() {
-            const container = document.getElementById('line-numbers');
+            var container = document.getElementById('line-numbers');
             container.innerHTML = '';
-            for (let i = 1; i <= 40; i++) {
-                const line = document.createElement('div');
+            for (var i = 1; i <= 40; i++) {
+                var line = document.createElement('div');
                 line.className = 'line-num';
                 line.textContent = i;
                 container.appendChild(line);
@@ -754,55 +1145,49 @@
             currentIdx = idx;
             questionStartTime = timerSeconds;
             hasSubmitted = false;
-            const q = examQuestions[idx];
-            
+            var q = examQuestions[idx];
+
             document.getElementById('item-current').innerText = idx + 1;
             document.getElementById('prev-btn').classList.toggle('disabled', idx === 0);
-            
+
             currentStrategy = STRATEGIES[idx % STRATEGIES.length];
             updateStrategyBadge(currentStrategy);
 
-            const content = document.getElementById('question-content');
+            var content = document.getElementById('question-content');
             content.innerHTML = '';
             highlightCount = 0;
 
-            let html = '';
+            var html = '';
             html += getStrategyInstruction(currentStrategy);
-            
-            if (isMCATMode && q.section) {
-                const sectionClass = q.section === 'Chem/Phys' ? 'chem' : 'bio';
-                const sectionEmoji = q.section === 'Chem/Phys' ? '⚗️' : '🧬';
-                html += '<div class="section-badge ' + sectionClass + '">' + sectionEmoji + ' ' + q.section + '</div>';
-            }
 
             if (currentStrategy === 'OPTIONS_FIRST') {
-                html += '<button class="reveal-btn" id="reveal-btn" onclick="revealCase()">👀 Show Full Case</button>';
+                html += '<button class="reveal-btn" id="reveal-btn" onclick="revealCase()">👀 Reveal Full Case</button>';
                 html += '<div id="vignette-wrapper" class="question-vignette blur-content">' + q.text + '</div>';
-                html += '<div class="question-lead ' + (isMCATMode ? 'mcat-mode' : '') + '" id="lead-text" style="filter: blur(8px); opacity: 0.6;">' + q.lead + '</div>';
-                html += '<p style="color: #666; font-size: 0.9rem; margin-bottom: 15px;"><strong>Strategy:</strong> Read these options first to prime your brain, then reveal the case.</p>';
+                html += '<div class="question-lead" id="lead-text" style="filter: blur(8px); opacity: 0.5;">' + q.lead + '</div>';
+                html += '<p style="color: #888; font-size: 0.85rem; margin-bottom: 14px;"><em>Read the options below first, then click "Reveal Full Case."</em></p>';
                 html += buildOptions(q, false);
             } else if (currentStrategy === 'HIGHLIGHTER') {
-                const words = q.text.split(' ');
-                let highlightableText = '';
-                for (let i = 0; i < words.length; i++) {
-                    highlightableText += '<span class="highlightable-word" id="word-' + i + '" onclick="highlightWord(' + i + ')">' + words[i] + ' </span>';
+                var words = q.text.split(' ');
+                var htext = '';
+                for (var i = 0; i < words.length; i++) {
+                    htext += '<span class="highlightable-word" id="word-' + i + '" onclick="highlightWord(' + i + ')">' + words[i] + ' </span>';
                 }
-                html += '<div class="question-vignette" id="vignette-text">' + highlightableText + '</div>';
-                html += '<div class="question-lead ' + (isMCATMode ? 'mcat-mode' : '') + '">' + q.lead + '</div>';
+                html += '<div class="question-vignette" id="vignette-text">' + htext + '</div>';
+                html += '<div class="question-lead">' + q.lead + '</div>';
                 html += buildOptions(q, true);
-                html += '<div id="unlock-msg" class="unlock-message locked">🔒 Highlight 3 key words to unlock the options.</div>';
+                html += '<div id="unlock-msg" class="unlock-message locked">🔒 Highlight at least 3 key words to unlock options.</div>';
             } else if (currentStrategy === 'LAST_SENTENCE') {
-                const sentences = q.text.match(/[^.!?]+[.!?]+/g) || [q.text];
-                const lastSentence = sentences[sentences.length - 1].trim();
-                const earlierText = sentences.slice(0, -1).join(' ').trim();
+                var sentences = q.text.match(/[^.!?]+[.!?]+/g) || [q.text];
+                var lastSentence = sentences[sentences.length - 1].trim();
+                var earlierText = sentences.slice(0, -1).join(' ').trim();
                 html += '<div id="earlier-text" class="question-vignette blur-content">' + earlierText + '</div>';
                 html += '<div class="last-sentence-highlight">' + lastSentence + '</div>';
-                html += '<div class="question-lead ' + (isMCATMode ? 'mcat-mode' : '') + '">' + q.lead + '</div>';
+                html += '<div class="question-lead">' + q.lead + '</div>';
                 html += '<button class="reveal-btn" id="reveal-passage-btn" onclick="revealFullPassage()">👀 Reveal Full Passage</button>';
                 html += buildOptions(q, false);
             } else {
                 html += '<div class="question-vignette">' + q.text + '</div>';
-                html += '<div class="question-lead ' + (isMCATMode ? 'mcat-mode' : '') + '">' + q.lead + '</div>';
+                html += '<div class="question-lead">' + q.lead + '</div>';
                 html += buildOptions(q, false);
             }
 
@@ -811,22 +1196,37 @@
             document.getElementById('proceed-btn').innerText = 'Submit Answer';
         }
 
-        function getStrategyInstruction(strategy) {
-            const instructions = {
-                'STEM_FIRST': '<div class="strategy-instruction standard">🛡️ <strong>Standard Mode:</strong> Read the case carefully from start to finish, then answer.</div>',
-                'HIGHLIGHTER': '<div class="strategy-instruction highlighter">🖍️ <strong>Active Reader:</strong> Highlight 3 key terms before you can unlock the answer choices.</div>',
-                'SPEED_SCAN': '<div class="strategy-instruction speed">⚡ <strong>Speed Scan:</strong> Read quickly and trust your gut! Answer within 60 seconds.</div>',
-                'OPTIONS_FIRST': '<div class="strategy-instruction options-first">🫣 <strong>Options First:</strong> Read the answer choices first to prime your brain, then reveal the case.</div>',
-                'LAST_SENTENCE': '<div class="strategy-instruction last-sentence">📖 <strong>Last Sentence First:</strong> Read the key sentence and answers first, then reveal the full passage.</div>'
+        function updateStrategyBadge(strategy) {
+            var badge = document.getElementById('strategy-display');
+            var configs = {
+                'STEM_FIRST': { text: '🛡️ Standard', bg: '#e9ecef', color: '#495057' },
+                'HIGHLIGHTER': { text: '🖍️ Highlight', bg: '#fff3cd', color: '#856404' },
+                'SPEED_SCAN': { text: '⚡ Speed Scan', bg: '#fde8e8', color: '#8b1a1a' },
+                'OPTIONS_FIRST': { text: '🫣 Options First', bg: '#e3f2fd', color: '#0d47a1' },
+                'LAST_SENTENCE': { text: '📖 Last Sentence', bg: '#fef3c7', color: '#78350f' }
             };
-            return instructions[strategy] || '';
+            var c = configs[strategy];
+            badge.innerText = c.text;
+            badge.style.background = c.bg;
+            badge.style.color = c.color;
+        }
+
+        function getStrategyInstruction(strategy) {
+            var map = {
+                'STEM_FIRST': '<div class="strategy-instruction standard">🛡️ <strong>Standard Read:</strong> Read the full case from start to finish, then answer.</div>',
+                'HIGHLIGHTER': '<div class="strategy-instruction highlighter">🖍️ <strong>Active Highlight:</strong> Click to highlight 3+ key terms before options unlock.</div>',
+                'SPEED_SCAN': '<div class="strategy-instruction speed">⚡ <strong>Speed Scan:</strong> Quick read — trust your instinct. Try to answer in under 60 seconds.</div>',
+                'OPTIONS_FIRST': '<div class="strategy-instruction options-first">🫣 <strong>Options First:</strong> Read the answer choices before the case to prime your thinking.</div>',
+                'LAST_SENTENCE': '<div class="strategy-instruction last-sentence">📖 <strong>Last Sentence First:</strong> Read the key finding and question first, then reveal the passage.</div>'
+            };
+            return map[strategy] || '';
         }
 
         function buildOptions(q, locked) {
-            const lockedClass = locked ? 'locked' : '';
-            let html = '<div class="options-container ' + lockedClass + '" id="options-container">';
-            const labels = ['A', 'B', 'C', 'D', 'E', 'F'];
-            for (let i = 0; i < q.options.length; i++) {
+            var cls = locked ? 'locked' : '';
+            var html = '<div class="options-container ' + cls + '" id="options-container">';
+            var labels = ['A', 'B', 'C', 'D', 'E', 'F'];
+            for (var i = 0; i < q.options.length; i++) {
                 html += '<div class="option" id="option-' + i + '" onclick="selectOption(' + i + ', this)">';
                 html += '<div class="option-radio"></div>';
                 html += '<div><span class="option-label">' + labels[i] + '.</span> <span class="option-text">' + q.options[i] + '</span></div>';
@@ -834,21 +1234,6 @@
             }
             html += '</div>';
             return html;
-        }
-
-        function updateStrategyBadge(strategy) {
-            const badge = document.getElementById('strategy-display');
-            const configs = {
-                'STEM_FIRST': { text: '🛡️ Standard Mode', bg: '#e9ecef', color: '#495057' },
-                'HIGHLIGHTER': { text: '🖍️ Active Reader', bg: '#fff3cd', color: '#856404' },
-                'SPEED_SCAN': { text: '⚡ Speed Scan', bg: '#d4edda', color: '#155724' },
-                'OPTIONS_FIRST': { text: '🫣 Options First', bg: '#cce5ff', color: '#004085' },
-                'LAST_SENTENCE': { text: '📖 Last Sentence', bg: '#fef3c7', color: '#92400e' }
-            };
-            const config = configs[strategy];
-            badge.innerText = config.text;
-            badge.style.background = config.bg;
-            badge.style.color = config.color;
         }
 
         function revealCase() {
@@ -869,7 +1254,7 @@
 
         function highlightWord(id) {
             if (currentStrategy !== 'HIGHLIGHTER') return;
-            const el = document.getElementById('word-' + id);
+            var el = document.getElementById('word-' + id);
             if (!el.classList.contains('highlighted')) {
                 el.classList.add('highlighted');
                 highlightCount++;
@@ -890,43 +1275,38 @@
             el.classList.add('selected');
         }
 
-        function goToPrevious() {
-            if (currentIdx > 0) loadQuestion(currentIdx - 1);
-        }
-
-        function goToNext() {
-            nextQuestion();
-        }
+        function goToPrevious() { if (currentIdx > 0) loadQuestion(currentIdx - 1); }
+        function goToNext() { nextQuestion(); }
 
         function nextQuestion() {
-            const btn = document.getElementById('proceed-btn');
-            
+            var btn = document.getElementById('proceed-btn');
+
             if (btn.innerText === 'Submit Answer') {
                 if (userAnswers[currentIdx] === undefined) {
-                    alert("Please select an answer.");
+                    alert('Please select an answer.');
                     return;
                 }
-                
+
                 hasSubmitted = true;
-                const q = examQuestions[currentIdx];
-                const isCorrect = userAnswers[currentIdx] === q.correct;
-                const questionTime = timerSeconds - questionStartTime;
-                
+                var q = examQuestions[currentIdx];
+                var isCorrect = userAnswers[currentIdx] === q.correct;
+                var questionTime = timerSeconds - questionStartTime;
+
                 strategyData[currentStrategy].total++;
                 strategyData[currentStrategy].totalTime += questionTime;
                 if (isCorrect) strategyData[currentStrategy].correct++;
-                
+
                 document.querySelectorAll('.option').forEach(function(o, i) {
                     if (i === q.correct) o.classList.add('correct');
                     else if (i === userAnswers[currentIdx] && !isCorrect) o.classList.add('incorrect');
                     o.style.pointerEvents = 'none';
                 });
-                
-                document.getElementById('feedback-msg').innerHTML = isCorrect 
+
+                document.getElementById('feedback-msg').innerHTML = isCorrect
                     ? '<span class="correct">✓ Correct!</span> ' + q.objective
                     : '<span class="incorrect">✗ Incorrect.</span> ' + q.objective;
-                
-                btn.innerText = currentIdx < examQuestions.length - 1 ? 'Proceed to Next Item' : 'See Results 📊';
+
+                btn.innerText = currentIdx < examQuestions.length - 1 ? 'Next Item →' : 'See My Results 📊';
             } else {
                 loadQuestion(currentIdx + 1);
             }
@@ -936,79 +1316,143 @@
             clearInterval(timerInterval);
             document.getElementById('nbme-header').style.display = 'none';
             document.getElementById('nbme-footer').style.display = 'none';
-            
-            let totalCorrect = 0, totalQuestions = 0;
-            let strategyResults = [];
-            
-            for (const strategy in strategyData) {
-                const data = strategyData[strategy];
-                if (data.total > 0) {
-                    const accuracy = Math.round((data.correct / data.total) * 100);
-                    const avgTime = Math.round(data.totalTime / data.total);
-                    strategyResults.push({ name: strategy, accuracy: accuracy, avgTime: avgTime, correct: data.correct, total: data.total });
-                    totalCorrect += data.correct;
-                    totalQuestions += data.total;
+            document.getElementById('calc-overlay').classList.remove('active');
+            document.getElementById('lab-overlay').classList.remove('active');
+
+            var totalCorrect = 0, totalQuestions = 0;
+            var strategyResults = [];
+
+            for (var s in strategyData) {
+                var d = strategyData[s];
+                if (d.total > 0) {
+                    var acc = Math.round((d.correct / d.total) * 100);
+                    var avg = Math.round(d.totalTime / d.total);
+                    strategyResults.push({ name: s, accuracy: acc, avgTime: avg, correct: d.correct, total: d.total });
+                    totalCorrect += d.correct;
+                    totalQuestions += d.total;
                 }
             }
-            
+
             strategyResults.sort(function(a, b) { return b.accuracy !== a.accuracy ? b.accuracy - a.accuracy : a.avgTime - b.avgTime; });
-            
-            const bestStrategy = strategyResults[0];
-            const worstStrategy = strategyResults[strategyResults.length - 1];
-            const overallPercent = Math.round(totalCorrect / totalQuestions * 100);
-            
-            const strategyNames = {
-                'STEM_FIRST': '🛡️ Standard Mode',
-                'HIGHLIGHTER': '🖍️ Active Reader (Highlight)',
+
+            var best = strategyResults[0];
+            var worst = strategyResults[strategyResults.length - 1];
+            var overallPct = Math.round(totalCorrect / totalQuestions * 100);
+            var totalTime = document.getElementById('timer').innerText;
+
+            var names = {
+                'STEM_FIRST': '🛡️ Standard Read',
+                'HIGHLIGHTER': '🖍️ Active Highlight',
                 'SPEED_SCAN': '⚡ Speed Scan',
                 'OPTIONS_FIRST': '🫣 Options First',
                 'LAST_SENTENCE': '📖 Last Sentence First'
             };
-            
-            const strategyDescriptions = {
-                'STEM_FIRST': 'Reading carefully from beginning to end',
-                'HIGHLIGHTER': 'Highlighting key terms before answering',
-                'SPEED_SCAN': 'Quick reading with gut-instinct answers',
-                'OPTIONS_FIRST': 'Reading answer choices before the passage',
-                'LAST_SENTENCE': 'Reading the last sentence and answers first, then the full passage'
+
+            var descs = {
+                'STEM_FIRST': 'Reading the full case carefully from top to bottom before answering.',
+                'HIGHLIGHTER': 'Actively highlighting key terms while reading to anchor your reasoning.',
+                'SPEED_SCAN': 'Quick reading with gut-instinct pattern recognition.',
+                'OPTIONS_FIRST': 'Scanning answer choices first to prime your brain before reading the case.',
+                'LAST_SENTENCE': 'Reading the key finding and question stem first, then the full passage.'
             };
-            
-            let scoreClass = overallPercent >= 70 ? 'good' : overallPercent >= 50 ? 'medium' : 'poor';
-            
-            let resultsHTML = '<div class="results-container"><div class="results-header"><h1 class="' + (isMCATMode ? 'mcat' : '') + '">' + (isMCATMode ? "Gaby's Strategy Analysis" : 'Training Block Complete!') + '</h1></div>';
-            resultsHTML += '<div class="results-score-box"><div class="results-score ' + scoreClass + '">' + totalCorrect + '/' + totalQuestions + '</div>';
-            resultsHTML += '<div class="results-percentage">Overall Score (' + overallPercent + '%) | Total Time: ' + document.getElementById('timer').innerText + '</div></div>';
-            resultsHTML += '<div class="results-section"><h2>📊 Strategy Performance</h2>';
-            
-            for (let idx = 0; idx < strategyResults.length; idx++) {
-                const result = strategyResults[idx];
-                const isBest = idx === 0;
-                const isWorst = idx === strategyResults.length - 1 && strategyResults.length > 1;
-                const barColor = isBest ? 'var(--success)' : isWorst ? 'var(--danger)' : '#007bff';
-                
-                resultsHTML += '<div class="strategy-result ' + (isBest ? 'best' : '') + ' ' + (isWorst ? 'worst' : '') + '">';
-                resultsHTML += '<div><div class="strategy-name">' + strategyNames[result.name] + '</div>';
-                resultsHTML += '<div class="strategy-details">' + result.correct + '/' + result.total + ' correct | Avg ' + result.avgTime + 's/question</div>';
-                resultsHTML += '<div class="progress-bar"><div class="progress-fill" style="width: ' + result.accuracy + '%; background: ' + barColor + ';"></div></div></div>';
-                resultsHTML += '<div style="text-align: right;"><div class="strategy-accuracy" style="color: ' + (isBest ? 'var(--success)' : isWorst ? 'var(--danger)' : '#333') + ';">' + result.accuracy + '%</div>';
-                resultsHTML += '<div class="strategy-label">' + (isBest ? '⭐ Best' : isWorst ? '📉 Needs Work' : '') + '</div></div></div>';
+
+            var html = '<div class="results-wrap"><div class="results-container"><div class="results-card">';
+
+            // Top section
+            html += '<div class="results-card-top">';
+            html += '<div class="results-logo">USMLE300</div>';
+            html += '<div class="results-title">Your Strategy Profile</div>';
+            html += '<div class="results-score-circle">';
+            html += '<div class="results-score-num">' + totalCorrect + '/' + totalQuestions + '</div>';
+            html += '<div class="results-score-label">' + overallPct + '% · ' + totalTime + '</div>';
+            html += '</div>';
+            html += '<div class="results-time">' + currentExamStep + ' Strategy Diagnostic</div>';
+            html += '</div>';
+
+            // Body
+            html += '<div class="results-card-body">';
+            html += '<div class="results-section-title">📊 Strategy Ranking</div>';
+
+            for (var idx = 0; idx < strategyResults.length; idx++) {
+                var r = strategyResults[idx];
+                var isBest = idx === 0;
+                var isWorst = idx === strategyResults.length - 1 && strategyResults.length > 1;
+                var rowClass = isBest ? 'best' : isWorst ? 'worst' : '';
+                var barColor = isBest ? 'var(--success)' : isWorst ? 'var(--danger)' : '#6366f1';
+
+                html += '<div class="strategy-row ' + rowClass + '">';
+                html += '<div class="strategy-rank">' + (idx + 1) + '</div>';
+                html += '<div class="strategy-info">';
+                html += '<div class="strategy-name">' + names[r.name] + '</div>';
+                html += '<div class="strategy-meta">' + r.correct + '/' + r.total + ' correct · avg ' + r.avgTime + 's/question</div>';
+                html += '<div class="strategy-bar-wrap"><div class="strategy-bar-fill" style="width:' + r.accuracy + '%;background:' + barColor + ';"></div></div>';
+                html += '</div>';
+                html += '<div class="strategy-pct">' + r.accuracy + '%</div>';
+                html += '</div>';
             }
-            
-            resultsHTML += '</div><div class="recommendation-box"><h3>💡 Personalized Recommendation</h3>';
-            resultsHTML += '<p><strong>Your best strategy:</strong> ' + strategyNames[bestStrategy.name] + '</p>';
-            resultsHTML += '<p>' + strategyDescriptions[bestStrategy.name] + ' worked best for you with ' + bestStrategy.accuracy + '% accuracy.</p>';
-            
-            if (worstStrategy.name !== bestStrategy.name) {
-                resultsHTML += '<div class="divider"><strong>Consider avoiding:</strong> ' + strategyNames[worstStrategy.name] + ' (' + worstStrategy.accuracy + '% accuracy)</div>';
+
+            // Recommendation
+            html += '<div class="recommendation-card">';
+            html += '<h3>💡 Your Best Strategy</h3>';
+            html += '<p><strong>' + names[best.name] + '</strong> — ' + descs[best.name] + '</p>';
+            html += '<p>You scored <strong>' + best.accuracy + '%</strong> accuracy with an average of <strong>' + best.avgTime + 's</strong> per question using this approach.</p>';
+            if (worst.name !== best.name) {
+                html += '<div class="avoid-note"><strong>Consider avoiding:</strong> ' + names[worst.name] + ' (' + worst.accuracy + '% accuracy). Stick with what works for your brain on exam day.</div>';
             }
-            
-            resultsHTML += '<p style="font-size: 0.9rem; opacity: 0.9; margin-top: 10px;">Practice with your strongest strategy on exam day!</p></div>';
-            resultsHTML += '<div style="text-align: center;"><button class="retry-btn ' + (isMCATMode ? 'mcat' : '') + '" onclick="location.reload()">🔄 Try Again</button>';
-            resultsHTML += '<a href="index.html" class="retry-btn" style="margin-left: 10px;">← Back to USMLE300</a></div></div>';
-            
-            document.getElementById('game-screen').innerHTML = resultsHTML;
-            document.getElementById('game-screen').style.background = 'var(--cream)';
-            document.getElementById('game-screen').style.overflow = 'auto';
+            html += '</div>';
+
+            // Shareable text for clipboard
+            var shareText = '🧠 My USMLE Strategy Profile (USMLE300)\n\n';
+            shareText += '📊 ' + currentExamStep + ' · ' + totalCorrect + '/' + totalQuestions + ' (' + overallPct + '%)\n\n';
+            for (var j = 0; j < strategyResults.length; j++) {
+                var sr = strategyResults[j];
+                var prefix = j === 0 ? '🥇' : j === 1 ? '🥈' : j === 2 ? '🥉' : '  ';
+                shareText += prefix + ' ' + names[sr.name] + ': ' + sr.accuracy + '%\n';
+            }
+            shareText += '\n🏆 Best: ' + names[best.name] + '\n';
+            shareText += '\nFind YOUR best strategy → usmle300.com/diagnostic.html';
+
+            // Twitter share
+            var tweetText = encodeURIComponent('Just found my best USMLE exam strategy with @usmle300 🧠\n\n🏆 ' + names[best.name] + ' — ' + best.accuracy + '% accuracy\n📊 ' + totalCorrect + '/' + totalQuestions + ' overall\n\nFind yours → usmle300.com/diagnostic.html');
+
+            // Buttons
+            html += '<div class="results-actions">';
+            html += '<button class="results-btn secondary" onclick="location.reload()">🔄 Try Again</button>';
+            html += '<button class="results-btn share" onclick="shareTweet(\'' + tweetText + '\')">𝕏 Share</button>';
+            html += '<button class="results-btn primary" onclick="copyResults()">📋 Copy Results</button>';
+            html += '</div>';
+
+            html += '</div></div>';
+            html += '<div class="results-watermark"><a href="index.html">usmle300.com</a> · Free Strategy Diagnostic</div>';
+            html += '</div></div>';
+
+            // Store share text globally
+            window._shareText = shareText;
+
+            var gameScreen = document.getElementById('game-screen');
+            gameScreen.innerHTML = html;
+            gameScreen.style.overflow = 'auto';
+            gameScreen.style.background = 'transparent';
+        }
+
+        function copyResults() {
+            navigator.clipboard.writeText(window._shareText).then(function() {
+                var toast = document.getElementById('share-toast');
+                if (!toast) {
+                    // Re-add toast since game-screen innerHTML was replaced
+                    toast = document.createElement('div');
+                    toast.className = 'share-toast';
+                    toast.id = 'share-toast';
+                    toast.textContent = '✓ Results copied to clipboard!';
+                    document.body.appendChild(toast);
+                }
+                toast.classList.add('show');
+                setTimeout(function() { toast.classList.remove('show'); }, 2500);
+            });
+        }
+
+        function shareTweet(text) {
+            window.open('https://twitter.com/intent/tweet?text=' + text, '_blank');
         }
     </script>
 </body>
