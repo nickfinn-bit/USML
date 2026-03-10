@@ -762,121 +762,9 @@
 // ─── PUZZLE DATA ───
 // In production, this would be fetched daily from an API.
 // Each puzzle is a clinical vignette broken into progressive clues.
-const PUZZLES = [
-    {
-        id: 1,
-        step: "Step 1",
-        clues: [
-            { type: "Chief Complaint", text: "A 24-year-old man presents for evaluation of <span class='highlight'>recurrent infections</span>." },
-            { type: "History", text: "He has had multiple <span class='highlight'>pulmonary infections</span> since childhood and was recently treated for a groin abscess." },
-            { type: "Microbiology", text: "Culture of the abscess grows <span class='highlight'>Staphylococcus aureus</span>. He has a history of infections with catalase-positive organisms." },
-            { type: "Lab Finding", text: "A <span class='highlight'>nitroblue tetrazolium (NBT) test</span> is performed. His neutrophils fail to produce blue pigment." },
-            { type: "Pathophysiology", text: "His neutrophils can phagocytose bacteria normally but cannot generate the <span class='highlight'>respiratory burst</span> needed for intracellular killing." },
-            { type: "Final Clue", text: "The enzyme responsible for generating superoxide in the <span class='highlight'>NADPH oxidase complex</span> is absent." }
-        ],
-        options: ["Myeloperoxidase deficiency", "NADPH oxidase deficiency (CGD)", "Leukocyte adhesion deficiency", "Chediak-Higashi syndrome"],
-        correctIndex: 1,
-        diagnosis: "Chronic Granulomatous Disease (CGD)",
-        explanation: "CGD is caused by NADPH oxidase deficiency, leading to inability to generate reactive oxygen species for bacterial killing. The NBT test (or dihydrorhodamine flow cytometry) is diagnostic — neutrophils cannot reduce NBT to blue formazan. Patients are susceptible to catalase-positive organisms (S. aureus, Aspergillus, Serratia) because catalase-negative organisms supply their own H₂O₂."
-    },
-    {
-        id: 2,
-        step: "Step 1",
-        clues: [
-            { type: "Chief Complaint", text: "A 55-year-old man is brought to the ED with acute <span class='highlight'>confusion</span>." },
-            { type: "Social History", text: "He has a long history of <span class='highlight'>chronic alcoholism</span> and poor nutritional intake." },
-            { type: "Physical Exam", text: "Examination reveals <span class='highlight'>ophthalmoplegia</span> (lateral gaze palsy), <span class='highlight'>nystagmus</span>, and severe <span class='highlight'>ataxia</span>." },
-            { type: "Clinical Course", text: "An IV of <span class='highlight'>dextrose (glucose)</span> is started without any vitamin supplementation. His confusion and ataxia <span class='highlight'>acutely worsen</span>." },
-            { type: "Pathophysiology", text: "Glucose metabolism depletes remaining stores of a critical <span class='highlight'>coenzyme for pyruvate dehydrogenase</span> and alpha-ketoglutarate dehydrogenase." },
-            { type: "Final Clue", text: "The deficient vitamin is <span class='highlight'>water-soluble</span>, acts as a coenzyme in the form of <span class='highlight'>thiamine pyrophosphate (TPP)</span>." }
-        ],
-        options: ["Vitamin B12 (cobalamin) deficiency", "Vitamin B1 (thiamine) deficiency", "Vitamin B3 (niacin) deficiency", "Folate deficiency"],
-        correctIndex: 1,
-        diagnosis: "Wernicke Encephalopathy (Thiamine/B1 Deficiency)",
-        explanation: "Wernicke encephalopathy presents with the classic triad: confusion, ophthalmoplegia, and ataxia. In alcoholic or malnourished patients, always give thiamine BEFORE glucose — glucose metabolism consumes thiamine as a cofactor (TPP), and giving glucose first can precipitate or worsen Wernicke encephalopathy by depleting the last remaining thiamine stores."
-    },
-    {
-        id: 3,
-        step: "Step 1",
-        clues: [
-            { type: "Chief Complaint", text: "A 32-year-old woman presents with <span class='highlight'>double vision</span> and drooping eyelids that <span class='highlight'>worsen throughout the day</span>." },
-            { type: "Review of Systems", text: "She reports increased <span class='highlight'>fatigue with repetitive activities</span> — her jaw tires while chewing and her voice becomes nasal by evening." },
-            { type: "Imaging", text: "Chest CT reveals an <span class='highlight'>anterior mediastinal mass</span> consistent with a thymoma." },
-            { type: "Diagnostic Test", text: "Administration of <span class='highlight'>edrophonium</span> (a short-acting acetylcholinesterase inhibitor) produces rapid, temporary improvement in her ptosis." },
-            { type: "Pathophysiology", text: "Autoantibodies cause <span class='highlight'>complement-mediated destruction</span> of receptors at the neuromuscular junction, reducing the number of functional receptors." },
-            { type: "Final Clue", text: "The antibodies specifically target the <span class='highlight'>postsynaptic nicotinic acetylcholine receptors</span>." }
-        ],
-        options: ["Lambert-Eaton syndrome", "Myasthenia Gravis", "Botulism", "Organophosphate toxicity"],
-        correctIndex: 1,
-        diagnosis: "Myasthenia Gravis",
-        explanation: "Myasthenia gravis is caused by autoantibodies against postsynaptic nicotinic acetylcholine receptors at the neuromuscular junction. Key features: fatigable weakness (worse with use, better with rest), ptosis, diplopia, association with thymoma. Edrophonium (Tensilon) test is positive. Distinguish from Lambert-Eaton (presynaptic calcium channels, improves with use, associated with small cell lung cancer)."
-    },
-    {
-        id: 4,
-        step: "Step 1",
-        clues: [
-            { type: "Chief Complaint", text: "A 19-year-old man is brought to the ED after a <span class='highlight'>motorcycle accident</span> with chest trauma." },
-            { type: "Vitals", text: "BP <span class='highlight'>80/50 mmHg</span>, HR <span class='highlight'>130/min</span>. He is in obvious distress." },
-            { type: "Physical Exam", text: "He has <span class='highlight'>distended neck veins</span> (JVD) and <span class='highlight'>muffled heart sounds</span> on auscultation." },
-            { type: "ECG", text: "12-lead ECG shows <span class='highlight'>low-voltage QRS complexes</span> and electrical alternans." },
-            { type: "Hemodynamics", text: "Right heart catheterization shows <span class='highlight'>equalization of diastolic pressures</span> across all four chambers." },
-            { type: "Final Clue", text: "This is <span class='highlight'>Beck's triad</span>: hypotension + JVD + muffled heart sounds. The pericardial space is filled with fluid compressing the heart." }
-        ],
-        options: ["Tension pneumothorax", "Cardiac tamponade", "Massive pulmonary embolism", "Aortic dissection"],
-        correctIndex: 1,
-        diagnosis: "Cardiac Tamponade",
-        explanation: "Cardiac tamponade causes equalization of diastolic pressures across all four chambers due to fluid compressing the heart within the pericardial sac. Beck's triad: hypotension, distended neck veins (JVD), muffled heart sounds. ECG shows low-voltage QRS and electrical alternans. Treatment: emergent pericardiocentesis. Pulsus paradoxus (>10 mmHg drop in systolic BP during inspiration) is also characteristic."
-    },
-    {
-        id: 5,
-        step: "Step 1",
-        clues: [
-            { type: "Chief Complaint", text: "A 45-year-old woman presents with <span class='highlight'>episodic headaches and palpitations</span>." },
-            { type: "Vitals", text: "BP is <span class='highlight'>210/120 mmHg</span> with <span class='highlight'>profuse diaphoresis</span>." },
-            { type: "History", text: "Episodes are paroxysmal, lasting 15–20 minutes, and accompanied by <span class='highlight'>anxiety, tremor, and pallor</span>." },
-            { type: "Lab / Imaging", text: "CT scan shows a <span class='highlight'>4-cm adrenal mass</span>. Urine metanephrines are <span class='highlight'>markedly elevated</span>." },
-            { type: "Genetics", text: "She is found to have a <span class='highlight'>RET proto-oncogene mutation</span>, raising concern for MEN 2A syndrome." },
-            { type: "Final Clue", text: "Before surgical resection, <span class='highlight'>alpha-blockade must be given BEFORE beta-blockade</span> to prevent hypertensive crisis from unopposed alpha stimulation." }
-        ],
-        options: ["Conn syndrome (aldosteronoma)", "Pheochromocytoma", "Cushing syndrome", "Renal artery stenosis"],
-        correctIndex: 1,
-        diagnosis: "Pheochromocytoma",
-        explanation: "Pheochromocytoma is a catecholamine-secreting tumor of the adrenal medulla (chromaffin cells). Classic triad: episodic headaches, diaphoresis, and palpitations with hypertension. Diagnose with elevated urine metanephrines/VMA. Rule of 10s: 10% bilateral, 10% extra-adrenal, 10% malignant, 10% familial. Critical pre-op management: phenoxybenzamine (irreversible alpha-blocker) first, then beta-blocker — never beta-block first."
-    },
-    {
-        id: 6,
-        step: "Step 2 CK",
-        clues: [
-            { type: "Chief Complaint", text: "A 28-year-old woman presents with <span class='highlight'>fatigue and weight gain</span> over the past 6 months." },
-            { type: "Review of Systems", text: "She endorses <span class='highlight'>constipation, cold intolerance</span>, dry skin, and hair thinning." },
-            { type: "Physical Exam", text: "The thyroid is <span class='highlight'>painless and symmetrically enlarged</span>. Deep tendon reflexes show delayed relaxation phase." },
-            { type: "Labs", text: "TSH is <span class='highlight'>elevated</span>, free T4 is <span class='highlight'>low</span>. Anti-TPO antibodies are strongly positive." },
-            { type: "Pathology", text: "Biopsy shows <span class='highlight'>lymphocytic infiltration with germinal centers</span> and Hürthle cell metaplasia." },
-            { type: "Final Clue", text: "This is the <span class='highlight'>most common cause of hypothyroidism in iodine-sufficient areas</span>. It is an autoimmune destruction of thyroid tissue." }
-        ],
-        options: ["Graves disease", "Hashimoto thyroiditis", "Subacute (de Quervain) thyroiditis", "Riedel thyroiditis"],
-        correctIndex: 1,
-        diagnosis: "Hashimoto Thyroiditis",
-        explanation: "Hashimoto thyroiditis is the most common cause of hypothyroidism in iodine-sufficient regions. It's an autoimmune condition with anti-TPO and anti-thyroglobulin antibodies causing lymphocytic infiltration and destruction of thyroid follicles. Biopsy: lymphocytic infiltrate with germinal centers and Hürthle (oxyphilic) cells. Painless, non-tender goiter. Increased risk of thyroid lymphoma (marginal zone B-cell)."
-    },
-    {
-        id: 7,
-        step: "Step 1",
-        clues: [
-            { type: "Chief Complaint", text: "A 35-year-old African American man presents with <span class='highlight'>persistent cough and hemoptysis</span>." },
-            { type: "Imaging", text: "Chest X-ray shows bilateral <span class='highlight'>hilar lymphadenopathy</span> and diffuse interstitial infiltrates." },
-            { type: "Skin Finding", text: "He has violaceous, non-tender <span class='highlight'>skin nodules</span> on his shins. Biopsy shows <span class='highlight'>non-caseating granulomas</span>." },
-            { type: "Labs", text: "Serum <span class='highlight'>calcium is elevated</span>. Serum ACE level is also elevated." },
-            { type: "Pathophysiology", text: "The hypercalcemia is caused by <span class='highlight'>1-alpha-hydroxylase activity in activated macrophages</span> within the granulomas, producing excess active vitamin D." },
-            { type: "Final Clue", text: "This condition causes <span class='highlight'>non-caseating granulomas in multiple organ systems</span> and classically affects young African American women (though it affects men too). Treatment is corticosteroids." }
-        ],
-        options: ["Tuberculosis", "Sarcoidosis", "Berylliosis", "Histoplasmosis"],
-        correctIndex: 1,
-        diagnosis: "Sarcoidosis",
-        explanation: "Sarcoidosis causes non-caseating granulomas in multiple organ systems. Classic presentation: bilateral hilar lymphadenopathy, erythema nodosum, elevated ACE, hypercalcemia (from 1-alpha-hydroxylase in macrophages converting 25-OH vitamin D to 1,25-(OH)₂ vitamin D). Unlike TB, granulomas are NON-caseating. Bell palsy is the most common cranial nerve finding. Treatment: corticosteroids."
-    }
-];
+let PUZZLES = []; // Will be loaded from JSON
 
+    
 // ─── GAME STATE ───
 let state = {
     puzzleIndex: 0,
@@ -893,14 +781,26 @@ let state = {
 // Determine today's puzzle based on date
 function getTodayPuzzle() {
     const now = new Date();
-    const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
-    return PUZZLES[dayOfYear % PUZZLES.length];
+    const start = new Date(2026, 0, 1); // Your launch date
+    const dayIndex = Math.floor((now - start) / 86400000);
+    return PUZZLES[Math.abs(dayIndex) % PUZZLES.length];
 }
 
-let puzzle = getTodayPuzzle();
+// Load questions, then start
+let puzzle;
 
-// ─── INIT ───
-document.getElementById('streakCount').textContent = state.streak;
+fetch('/data/dxrounds.json')
+    .then(res => res.json())
+    .then(data => {
+        PUZZLES = data;
+        puzzle = getTodayPuzzle();
+        // Re-init anything that depends on puzzle being loaded
+        document.getElementById('streakCount').textContent = state.streak;
+    })
+    .catch(err => {
+        console.error('Failed to load questions:', err);
+    });
+
 
 function startGame() {
     document.getElementById('tutorialOverlay').classList.add('hidden');
