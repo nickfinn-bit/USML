@@ -1,0 +1,372 @@
+[
+  {
+    "clues": [
+      {
+        "text": "A 28-year-old woman presents with fatigue and joint pain for 3 months.",
+        "type": "History"
+      },
+      {
+        "text": "She reports a facial rash that worsens with sun exposure.",
+        "type": "History"
+      },
+      {
+        "text": "Exam reveals an erythematous, butterfly-shaped rash across the cheeks and nasal bridge.",
+        "type": "Physical Exam"
+      },
+      {
+        "text": "Labs: ANA positive (1:640), anti-dsDNA positive, low C3 and C4.",
+        "type": "Labs"
+      },
+      {
+        "text": "Urinalysis shows proteinuria and RBC casts.",
+        "type": "Labs"
+      },
+      {
+        "text": "Renal biopsy: wire-loop thickening of capillary walls with subendothelial immune complex deposits.",
+        "type": "Pathology"
+      }
+    ],
+    "options": [
+      "Rheumatoid Arthritis",
+      "Systemic Lupus Erythematosus",
+      "Dermatomyositis",
+      "Scleroderma"
+    ],
+    "correctIndex": 1,
+    "diagnosis": "Systemic Lupus Erythematosus (SLE) \u2014 Class IV Lupus Nephritis",
+    "explanation": "SLE is an autoimmune disease with multisystem involvement. The malar (butterfly) rash is a classic finding. Anti-dsDNA antibodies are highly specific and correlate with disease activity, especially nephritis. Low complement (C3/C4) indicates consumption by immune complexes. RBC casts indicate glomerulonephritis. Wire-loop lesions on biopsy with subendothelial deposits are characteristic of diffuse proliferative (Class IV) lupus nephritis \u2014 the most common and severe form."
+  },
+  {
+    "clues": [
+      {
+        "text": "A 62-year-old man with a 40-pack-year smoking history presents with a persistent cough for 2 months.",
+        "type": "History"
+      },
+      {
+        "text": "He reports an unintentional 15-lb weight loss and occasional hemoptysis.",
+        "type": "History"
+      },
+      {
+        "text": "He has new-onset digital clubbing and a dull percussion note at the right lung base.",
+        "type": "Physical Exam"
+      },
+      {
+        "text": "Serum calcium is 12.8 mg/dL. PTH is suppressed. PTHrP is elevated.",
+        "type": "Labs"
+      },
+      {
+        "text": "Chest CT shows a 4-cm central hilar mass with mediastinal lymphadenopathy.",
+        "type": "Imaging"
+      },
+      {
+        "text": "Biopsy reveals nests of polygonal cells with intercellular bridges and keratin pearls.",
+        "type": "Pathology"
+      }
+    ],
+    "options": [
+      "Small Cell Lung Carcinoma",
+      "Adenocarcinoma of the Lung",
+      "Squamous Cell Carcinoma of the Lung",
+      "Large Cell Carcinoma"
+    ],
+    "correctIndex": 2,
+    "diagnosis": "Squamous Cell Carcinoma of the Lung",
+    "explanation": "Squamous cell carcinoma is a centrally located lung cancer strongly associated with smoking. Key histologic features include keratin pearls and intercellular bridges. It is the lung cancer most associated with hypercalcemia due to PTHrP secretion (a paraneoplastic syndrome). Digital clubbing and hemoptysis are common presentations. Central hilar location helps distinguish it from adenocarcinoma, which is typically peripheral."
+  },
+  {
+    "clues": [
+      {
+        "text": "A 35-year-old man presents with episodic severe headaches, palpitations, and excessive sweating.",
+        "type": "History"
+      },
+      {
+        "text": "Episodes last 15\u201320 minutes and occur several times per week. He feels anxious during attacks.",
+        "type": "History"
+      },
+      {
+        "text": "BP during an episode is 220/130 mmHg. Between episodes, BP is 145/90.",
+        "type": "Physical Exam"
+      },
+      {
+        "text": "24-hour urine shows markedly elevated catecholamines and metanephrines.",
+        "type": "Labs"
+      },
+      {
+        "text": "CT abdomen reveals a 3.5-cm well-circumscribed right adrenal mass with avid contrast enhancement.",
+        "type": "Imaging"
+      },
+      {
+        "text": "Genetic testing reveals a RET proto-oncogene mutation.",
+        "type": "Genetics"
+      }
+    ],
+    "options": [
+      "Adrenal adenoma (Conn syndrome)",
+      "Pheochromocytoma",
+      "Cushing syndrome",
+      "Carcinoid tumor"
+    ],
+    "correctIndex": 1,
+    "diagnosis": "Pheochromocytoma (as part of MEN 2)",
+    "explanation": "Pheochromocytoma is a catecholamine-secreting tumor of chromaffin cells, classically presenting with the triad of episodic headache, diaphoresis, and palpitations with paroxysmal hypertension. Elevated urinary metanephrines are the most sensitive screening test. The RET proto-oncogene mutation indicates MEN 2A or 2B. In MEN 2A, pheochromocytoma occurs alongside medullary thyroid carcinoma and parathyroid hyperplasia. Alpha-blockade (phenoxybenzamine) must be started before beta-blockers or surgery."
+  },
+  {
+    "clues": [
+      {
+        "text": "A 19-year-old college freshman presents with fever, sore throat, and fatigue for 10 days.",
+        "type": "History"
+      },
+      {
+        "text": "He was prescribed amoxicillin by an urgent care clinic 3 days ago and now has a diffuse maculopapular rash.",
+        "type": "History"
+      },
+      {
+        "text": "Exam: tender posterior cervical lymphadenopathy, pharyngeal erythema with exudates, and splenomegaly.",
+        "type": "Physical Exam"
+      },
+      {
+        "text": "CBC: lymphocyte-predominant leukocytosis. Peripheral smear shows atypical lymphocytes (reactive T cells).",
+        "type": "Labs"
+      },
+      {
+        "text": "Heterophile antibody (Monospot) test is positive.",
+        "type": "Labs"
+      },
+      {
+        "text": "Abdominal ultrasound confirms splenomegaly (15 cm). He is advised to avoid contact sports.",
+        "type": "Imaging"
+      }
+    ],
+    "options": [
+      "Streptococcal pharyngitis",
+      "Acute HIV infection",
+      "Infectious Mononucleosis",
+      "Cytomegalovirus infection"
+    ],
+    "correctIndex": 2,
+    "diagnosis": "Infectious Mononucleosis (EBV)",
+    "explanation": "EBV-driven infectious mono classically presents in young adults with fever, pharyngitis, and lymphadenopathy \u2014 particularly posterior cervical nodes. Atypical lymphocytes (activated CD8+ T cells) on smear are characteristic. A maculopapular rash after amoxicillin/ampicillin is a classic association (not a true penicillin allergy). Positive heterophile antibodies (Monospot) confirm the diagnosis. Splenomegaly occurs in ~50% of cases, and patients must avoid contact sports due to splenic rupture risk."
+  },
+  {
+    "clues": [
+      {
+        "text": "A 55-year-old woman presents with progressive shortness of breath and a dry cough over 6 months.",
+        "type": "History"
+      },
+      {
+        "text": "She has no smoking history. She previously worked in a textile factory for 20 years.",
+        "type": "History"
+      },
+      {
+        "text": "Exam reveals fine bibasilar inspiratory crackles ('Velcro rales') and digital clubbing.",
+        "type": "Physical Exam"
+      },
+      {
+        "text": "PFTs: FVC 58% predicted, FEV1/FVC ratio 0.85. DLCO is markedly reduced.",
+        "type": "Labs"
+      },
+      {
+        "text": "HRCT chest shows bilateral peripheral reticular opacities, traction bronchiectasis, and honeycombing predominantly at the bases.",
+        "type": "Imaging"
+      },
+      {
+        "text": "Surgical lung biopsy shows patchy interstitial fibrosis with fibroblast foci alternating with normal lung \u2014 a pattern of 'temporal heterogeneity.'",
+        "type": "Pathology"
+      }
+    ],
+    "options": [
+      "Sarcoidosis",
+      "Idiopathic Pulmonary Fibrosis",
+      "Hypersensitivity Pneumonitis",
+      "Asbestosis"
+    ],
+    "correctIndex": 1,
+    "diagnosis": "Idiopathic Pulmonary Fibrosis (IPF)",
+    "explanation": "IPF is a chronic, progressive fibrotic lung disease of unknown cause, most common in older adults. It presents with a restrictive pattern on PFTs (decreased FVC, normal or elevated FEV1/FVC ratio) and reduced DLCO. HRCT showing usual interstitial pneumonia (UIP) pattern \u2014 peripheral/basal honeycombing, traction bronchiectasis, and reticular opacities \u2014 is often sufficient for diagnosis. The biopsy hallmark is 'temporal heterogeneity': areas of established fibrosis adjacent to normal lung and active fibroblast foci. Treatment includes pirfenidone or nintedanib, but prognosis remains poor (median survival 3\u20135 years)."
+  },
+  {
+    "clues": [
+      {
+        "text": "A 7-year-old boy presents with cola-colored urine noticed by his mother this morning.",
+        "type": "History"
+      },
+      {
+        "text": "Two weeks ago he was treated for impetigo on his left leg with oral antibiotics.",
+        "type": "History"
+      },
+      {
+        "text": "Exam: periorbital edema, BP 148/94 mmHg for age. No rash or joint swelling.",
+        "type": "Physical Exam"
+      },
+      {
+        "text": "Labs: BUN 38, Cr 1.4, low C3, normal C4. ASO titer is elevated.",
+        "type": "Labs"
+      },
+      {
+        "text": "Urinalysis: RBCs, RBC casts, mild proteinuria. 24-hr urine protein is 1.2 g (subnephrotic).",
+        "type": "Labs"
+      },
+      {
+        "text": "Renal biopsy (if performed): 'lumpy-bumpy' subepithelial immune complex deposits on electron microscopy. IF shows granular 'starry sky' IgG and C3.",
+        "type": "Pathology"
+      }
+    ],
+    "options": [
+      "IgA Nephropathy",
+      "Post-Streptococcal Glomerulonephritis",
+      "Minimal Change Disease",
+      "Membranoproliferative GN"
+    ],
+    "correctIndex": 1,
+    "diagnosis": "Post-Streptococcal Glomerulonephritis (PSGN)",
+    "explanation": "PSGN is a nephritic syndrome that occurs 1\u20133 weeks after a Group A Strep skin infection (impetigo) or 2\u20134 weeks after pharyngitis. It presents with hematuria (cola-colored urine from RBC casts), hypertension, edema, and subnephrotic proteinuria. Key labs include low C3 (due to complement consumption via the alternative pathway), elevated ASO titer, and elevated anti-DNase B. Biopsy shows subepithelial 'humps' on EM and granular IF. Most children recover fully; treatment is supportive."
+  },
+  {
+    "clues": [
+      {
+        "text": "A 45-year-old woman presents with 4 months of difficulty swallowing both solids and liquids equally.",
+        "type": "History"
+      },
+      {
+        "text": "She also reports regurgitation of undigested food and a 10-lb weight loss. She has Raynaud phenomenon.",
+        "type": "History"
+      },
+      {
+        "text": "Barium swallow shows a dilated esophagus with a smooth, tapered narrowing at the gastroesophageal junction ('bird's beak' sign).",
+        "type": "Imaging"
+      },
+      {
+        "text": "Esophageal manometry: absent peristalsis in the esophageal body with failure of LES relaxation.",
+        "type": "Labs"
+      },
+      {
+        "text": "Upper endoscopy rules out pseudoachalasia from malignancy. GEJ appears normal.",
+        "type": "Imaging"
+      },
+      {
+        "text": "Myenteric (Auerbach) plexus biopsy would show absence of ganglion cells and chronic inflammatory infiltrate.",
+        "type": "Pathology"
+      }
+    ],
+    "options": [
+      "Esophageal stricture",
+      "Diffuse esophageal spasm",
+      "Achalasia",
+      "Scleroderma esophagus"
+    ],
+    "correctIndex": 2,
+    "diagnosis": "Achalasia",
+    "explanation": "Achalasia results from degeneration of the myenteric (Auerbach) plexus, causing failure of LES relaxation and absent esophageal peristalsis. It presents with progressive dysphagia to both solids and liquids simultaneously (a key distinguishing feature from mechanical obstruction). The 'bird's beak' sign on barium swallow is classic. Manometry is the gold standard for diagnosis. Treatment options include pneumatic dilation, Heller myotomy, or peroral endoscopic myotomy (POEM). In South America, Chagas disease (T. cruzi) is an important cause."
+  },
+  {
+    "clues": [
+      {
+        "text": "A 30-year-old man presents with sudden onset of severe colicky right flank pain radiating to the groin.",
+        "type": "History"
+      },
+      {
+        "text": "He has nausea and cannot find a comfortable position. No fever. He drinks minimal water and has a high-protein diet.",
+        "type": "History"
+      },
+      {
+        "text": "Exam: significant costovertebral angle tenderness on the right. Abdomen is soft and non-tender.",
+        "type": "Physical Exam"
+      },
+      {
+        "text": "Urinalysis: pH 5.0, 50+ RBCs/hpf, no WBCs, no bacteria. Envelope-shaped crystals seen on microscopy.",
+        "type": "Labs"
+      },
+      {
+        "text": "Non-contrast CT abdomen/pelvis shows a 7-mm hyperdense stone at the right ureterovesical junction with mild proximal hydroureter.",
+        "type": "Imaging"
+      },
+      {
+        "text": "Stone analysis after passage reveals calcium oxalate monohydrate composition.",
+        "type": "Pathology"
+      }
+    ],
+    "options": [
+      "Uric acid nephrolithiasis",
+      "Calcium oxalate nephrolithiasis",
+      "Struvite stone",
+      "Cystine stone"
+    ],
+    "correctIndex": 1,
+    "diagnosis": "Calcium Oxalate Nephrolithiasis",
+    "explanation": "Calcium oxalate stones are the most common type of kidney stone (~75%). They are radiopaque on CT and classically show envelope-shaped (bipyramidal) crystals on urinalysis. Risk factors include low fluid intake, hypercalciuria, hyperoxaluria, and hypocitraturia. Acidic urine (pH <5.5) favors calcium oxalate and uric acid stones. Non-contrast CT is the gold standard for diagnosis. Stones <10 mm may pass spontaneously with supportive care (hydration, NSAIDs, tamsulosin). Prevention includes increased fluid intake and dietary modifications."
+  },
+  {
+    "clues": [
+      {
+        "text": "A 68-year-old man presents with progressive fatigue, bone pain in his lower back, and recurrent pneumonia over 6 months.",
+        "type": "History"
+      },
+      {
+        "text": "He also reports foamy urine. Past medical history is notable for unexplained anemia.",
+        "type": "History"
+      },
+      {
+        "text": "Exam: pallor, tenderness over lumbar vertebrae. No hepatosplenomegaly or lymphadenopathy.",
+        "type": "Physical Exam"
+      },
+      {
+        "text": "Labs: Hb 8.2, Cr 2.1, Ca\u00b2\u207a 12.4, total protein 11.2 with albumin 3.5 (elevated globulin gap). ESR 110 mm/hr.",
+        "type": "Labs"
+      },
+      {
+        "text": "Skeletal survey shows multiple lytic 'punched-out' lesions in skull and spine. No blastic lesions.",
+        "type": "Imaging"
+      },
+      {
+        "text": "Bone marrow biopsy: 40% plasma cells. Serum protein electrophoresis shows a monoclonal M-spike in the gamma region.",
+        "type": "Pathology"
+      }
+    ],
+    "options": [
+      "Metastatic prostate cancer",
+      "Multiple Myeloma",
+      "Waldenstr\u00f6m macroglobulinemia",
+      "Primary hyperparathyroidism"
+    ],
+    "correctIndex": 1,
+    "diagnosis": "Multiple Myeloma",
+    "explanation": "Multiple myeloma is a malignant proliferation of plasma cells producing a monoclonal immunoglobulin (M protein). The classic presentation is remembered by CRAB: hyperCalcemia, Renal insufficiency, Anemia, and Bone lesions. Punched-out lytic lesions (not blastic) are characteristic \u2014 bone scans may be falsely negative because lesions are purely lytic. Diagnosis requires \u226510% clonal plasma cells on marrow biopsy or a biopsy-proven plasmacytoma plus evidence of end-organ damage. The elevated globulin gap (total protein minus albumin) is a clue to monoclonal gammopathy."
+  },
+  {
+    "clues": [
+      {
+        "text": "A 25-year-old woman presents with palpitations, heat intolerance, unintentional weight loss despite increased appetite, and tremors for 2 months.",
+        "type": "History"
+      },
+      {
+        "text": "She also notes her eyes feel 'gritty' and appear more prominent. Her mother has hypothyroidism.",
+        "type": "History"
+      },
+      {
+        "text": "Exam: diffusely enlarged, non-tender thyroid gland. Proptosis and lid lag bilaterally. Fine resting tremor. Pretibial myxedema.",
+        "type": "Physical Exam"
+      },
+      {
+        "text": "Labs: TSH <0.01 (very low), free T4 elevated, free T3 elevated. TSH receptor antibodies (TRAb/TSI) are strongly positive.",
+        "type": "Labs"
+      },
+      {
+        "text": "Radioactive iodine uptake scan shows diffusely increased uptake throughout the gland.",
+        "type": "Imaging"
+      },
+      {
+        "text": "If biopsied: diffuse hyperplasia of follicular cells with scalloped colloid and lymphocytic infiltration.",
+        "type": "Pathology"
+      }
+    ],
+    "options": [
+      "Toxic multinodular goiter",
+      "Graves disease",
+      "Subacute thyroiditis",
+      "Toxic adenoma"
+    ],
+    "correctIndex": 1,
+    "diagnosis": "Graves Disease",
+    "explanation": "Graves disease is the most common cause of hyperthyroidism in young adults. It is caused by TSI (thyroid-stimulating immunoglobulins) that activate TSH receptors, producing diffuse thyroid hyperplasia and excess hormone secretion. Unique features distinguishing it from other causes include ophthalmopathy (proptosis, lid lag \u2014 caused by TSI cross-reacting with orbital fibroblasts), pretibial myxedema, and thyroid acropachy. RAIU shows diffusely increased uptake (unlike thyroiditis which shows decreased uptake). Treatment options include methimazole (first-line), radioactive iodine ablation, or surgery."
+  }
+]
