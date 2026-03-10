@@ -1,0 +1,1920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0a0e1a">
+<title>CODE BLUE — Daily USMLE Challenge by USMLE300</title>
+<meta name="description" content="Can you crack 5 high-yield USMLE cases before your patients crash? The daily viral med school challenge.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #080c18;
+  --bg2: #0f1628;
+  --bg3: #141c30;
+  --green: #00e87a;
+  --green-glow: rgba(0,232,122,0.15);
+  --red: #ff3355;
+  --red-glow: rgba(255,51,85,0.15);
+  --gold: #ffd040;
+  --gold-glow: rgba(255,208,64,0.15);
+  --burgundy: #9b3a44;
+  --blue: #4aaeff;
+  --text: #e8edf8;
+  --muted: #5a6a8a;
+  --border: rgba(100,140,200,0.12);
+  --card: rgba(15,22,40,0.95);
+  --font-mono: 'Space Mono', monospace;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { font-size: 16px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* === ANIMATED BACKGROUND === */
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(74,174,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74,174,255,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-scan {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  right: 0;
+  height: 200%;
+  background: linear-gradient(transparent 0%, rgba(0,232,122,0.015) 50%, transparent 100%);
+  animation: scan 8s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes scan {
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(50%); }
+}
+
+/* === HEART RATE LINE === */
+.vitals-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.vitals-line {
+  height: 100%;
+  width: 200%;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    transparent 20%,
+    var(--green) 22%,
+    var(--green) 22.5%,
+    transparent 22.5%,
+    transparent 24%,
+    var(--green) 24%,
+    var(--green) 26%,
+    transparent 26%,
+    transparent 27%,
+    var(--green) 27%,
+    var(--green) 27.3%,
+    transparent 27.3%,
+    transparent 50%,
+    transparent 70%,
+    var(--green) 72%,
+    var(--green) 72.5%,
+    transparent 72.5%,
+    transparent 74%,
+    var(--green) 74%,
+    var(--green) 76%,
+    transparent 76%,
+    transparent 77%,
+    var(--green) 77%,
+    var(--green) 77.3%,
+    transparent 77.3%,
+    transparent 100%
+  );
+  animation: ecg-scroll 2s linear infinite;
+}
+
+@keyframes ecg-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* === MAIN LAYOUT === */
+#app {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem 2rem;
+}
+
+/* === HEADER === */
+header {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0 1rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--burgundy), #c44f5a);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.header-brand {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.header-brand .title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 0.05em;
+  color: var(--text);
+}
+
+.header-brand .subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--green);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.streak-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255,208,64,0.1);
+  border: 1px solid rgba(255,208,64,0.3);
+  border-radius: 20px;
+  padding: 0.3rem 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--gold);
+}
+
+.how-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.how-btn:hover { border-color: var(--blue); color: var(--blue); }
+
+/* === SCREENS === */
+.screen {
+  width: 100%;
+  max-width: 720px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1.5rem;
+}
+
+.screen.active { display: flex; }
+
+/* === SPLASH SCREEN === */
+.splash-vitals {
+  width: 100%;
+  height: 80px;
+  position: relative;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.ecg-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.ecg-path {
+  fill: none;
+  stroke: var(--green);
+  stroke-width: 2;
+  filter: drop-shadow(0 0 6px var(--green));
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw-ecg 2s ease forwards 0.5s;
+}
+
+@keyframes draw-ecg {
+  to { stroke-dashoffset: 0; }
+}
+
+.splash-hero {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  animation: fadeUp 0.6s ease forwards 0.3s;
+  opacity: 0;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(20px); }
+}
+
+.splash-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0,232,122,0.1);
+  border: 1px solid rgba(0,232,122,0.3);
+  border-radius: 20px;
+  padding: 0.35rem 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--green);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.splash-tag::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.splash-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 12vw, 5.5rem);
+  letter-spacing: 0.02em;
+  line-height: 0.9;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #ffffff 0%, #a0b4d0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.splash-title span {
+  background: linear-gradient(135deg, var(--red), #ff6680);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.splash-desc {
+  font-size: 1rem;
+  color: var(--muted);
+  max-width: 480px;
+  margin: 0 auto 0.5rem;
+  line-height: 1.6;
+}
+
+.splash-desc strong {
+  color: var(--text);
+}
+
+/* Daily Info Bar */
+.daily-info {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.6s ease forwards 0.5s;
+  opacity: 0;
+}
+
+.info-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.9rem;
+  text-align: center;
+}
+
+.info-card .val {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--text);
+  line-height: 1;
+}
+
+.info-card .lbl {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 0.25rem;
+}
+
+.info-card.green-card { border-color: rgba(0,232,122,0.3); }
+.info-card.green-card .val { color: var(--green); }
+.info-card.gold-card { border-color: rgba(255,208,64,0.3); }
+.info-card.gold-card .val { color: var(--gold); }
+
+/* Step Filter */
+.step-filter {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.6s ease forwards 0.7s;
+  opacity: 0;
+}
+
+.step-btn {
+  flex: 1;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.7rem 0.5rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.step-btn:hover, .step-btn.active {
+  border-color: var(--green);
+  color: var(--green);
+  background: rgba(0,232,122,0.08);
+}
+
+/* Play Button */
+.play-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--green), #00c464);
+  border: none;
+  border-radius: 14px;
+  padding: 1.1rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+  color: #080c18;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 1rem;
+  animation: fadeUp 0.6s ease forwards 0.9s;
+  opacity: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.play-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.play-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,232,122,0.4); }
+.play-btn:hover::after { opacity: 1; }
+.play-btn:active { transform: translateY(0); }
+
+.play-btn-sub {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: rgba(8,12,24,0.7);
+  font-weight: 400;
+  font-family: var(--font-body);
+  display: block;
+  margin-top: 0.2rem;
+  text-transform: uppercase;
+}
+
+/* === HOW TO PLAY MODAL === */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8,12,24,0.85);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal-overlay.active { display: flex; }
+
+.modal {
+  background: var(--bg2);
+  border: 1px solid rgba(74,174,255,0.2);
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 440px;
+  width: 100%;
+  position: relative;
+}
+
+.modal h2 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rule-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.rule-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.rule-text {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.rule-text strong { color: var(--text); }
+
+/* === GAME SCREEN === */
+.game-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  gap: 1rem;
+}
+
+.progress-dots {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.dot {
+  width: 28px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  transition: all 0.3s;
+}
+
+.dot.current { background: var(--blue); border-color: var(--blue); box-shadow: 0 0 8px var(--blue); }
+.dot.correct { background: var(--green); border-color: var(--green); }
+.dot.wrong { background: var(--red); border-color: var(--red); }
+
+.timer-ring {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+}
+
+.timer-ring svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.timer-bg { fill: none; stroke: var(--bg3); stroke-width: 3; }
+.timer-progress {
+  fill: none;
+  stroke: var(--green);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 126;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s linear, stroke 0.3s;
+  filter: drop-shadow(0 0 4px var(--green));
+}
+
+.timer-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.lives {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.life {
+  font-size: 1rem;
+  filter: none;
+  transition: all 0.3s;
+}
+
+.life.lost {
+  opacity: 0.2;
+  filter: grayscale(1);
+}
+
+/* Score pill */
+.score-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 0.3rem 0.8rem;
+}
+
+.score-pill .pts {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.score-pill .pts-lbl {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+/* Combo */
+.combo-flash {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  font-family: var(--font-display);
+  font-size: 4rem;
+  color: var(--gold);
+  text-shadow: 0 0 40px var(--gold);
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0;
+  transition: all 0.1s;
+}
+
+.combo-flash.show {
+  animation: combo-pop 0.8s ease forwards;
+}
+
+@keyframes combo-pop {
+  0% { transform: translate(-50%,-50%) scale(0); opacity: 0; }
+  20% { transform: translate(-50%,-50%) scale(1.3); opacity: 1; }
+  60% { transform: translate(-50%,-50%) scale(1); opacity: 1; }
+  100% { transform: translate(-50%,-50%) scale(0.8); opacity: 0; }
+}
+
+/* Question Card */
+.question-card {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.question-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue), transparent);
+  opacity: 0.6;
+}
+
+.question-card.correct-flash {
+  border-color: var(--green);
+  box-shadow: 0 0 30px rgba(0,232,122,0.2);
+  animation: correct-pulse 0.5s ease;
+}
+
+.question-card.wrong-flash {
+  border-color: var(--red);
+  box-shadow: 0 0 30px rgba(255,51,85,0.2);
+  animation: wrong-shake 0.5s ease;
+}
+
+@keyframes correct-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.01); }
+}
+
+@keyframes wrong-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+.q-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.9rem;
+}
+
+.q-step-badge {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--blue);
+  background: rgba(74,174,255,0.12);
+  border: 1px solid rgba(74,174,255,0.25);
+  border-radius: 4px;
+  padding: 0.25rem 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.q-num {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--muted);
+}
+
+.q-text {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: rgba(232,237,248,0.85);
+  margin-bottom: 1rem;
+}
+
+.q-lead {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+/* Options */
+.options-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.option-btn {
+  width: 100%;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  transition: all 0.15s;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.option-btn:hover:not(:disabled) {
+  border-color: var(--blue);
+  background: rgba(74,174,255,0.07);
+  transform: translateX(3px);
+}
+
+.option-btn:disabled { cursor: default; }
+
+.option-btn.selected-correct {
+  border-color: var(--green);
+  background: rgba(0,232,122,0.1);
+  color: var(--green);
+}
+
+.option-btn.selected-wrong {
+  border-color: var(--red);
+  background: rgba(255,51,85,0.1);
+  color: var(--red);
+}
+
+.option-btn.reveal-correct {
+  border-color: var(--green);
+  background: rgba(0,232,122,0.07);
+  color: var(--green);
+  opacity: 0.7;
+}
+
+.option-letter {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+
+.option-btn.selected-correct .option-letter { background: var(--green); border-color: var(--green); color: #080c18; }
+.option-btn.selected-wrong .option-letter { background: var(--red); border-color: var(--red); color: white; }
+.option-btn.reveal-correct .option-letter { background: var(--green); border-color: var(--green); color: #080c18; }
+
+/* Explanation */
+.explanation-box {
+  width: 100%;
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1rem;
+  display: none;
+  animation: fadeUp 0.3s ease;
+}
+
+.explanation-box.correct-exp {
+  background: rgba(0,232,122,0.08);
+  border: 1px solid rgba(0,232,122,0.3);
+}
+
+.explanation-box.wrong-exp {
+  background: rgba(255,51,85,0.08);
+  border: 1px solid rgba(255,51,85,0.25);
+}
+
+.exp-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.exp-header.c { color: var(--green); }
+.exp-header.w { color: var(--red); }
+
+.exp-text {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: rgba(232,237,248,0.8);
+}
+
+/* Next button */
+.next-btn {
+  width: 100%;
+  background: var(--bg3);
+  border: 1px solid var(--blue);
+  border-radius: 12px;
+  padding: 0.9rem;
+  color: var(--blue);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: none;
+}
+
+.next-btn:hover {
+  background: rgba(74,174,255,0.1);
+  box-shadow: 0 4px 20px rgba(74,174,255,0.2);
+}
+
+/* === RESULTS SCREEN === */
+.results-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.results-rank {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.results-rank.intern { color: var(--muted); }
+.results-rank.resident { color: var(--blue); }
+.results-rank.fellow { color: var(--gold); }
+.results-rank.attending { color: var(--green); }
+.results-rank.chief { 
+  background: linear-gradient(135deg, var(--gold), var(--green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.results-score-display {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+
+.results-score-display strong {
+  color: var(--text);
+  font-size: 1rem;
+}
+
+/* Share Card */
+.share-card {
+  width: 100%;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  font-family: var(--font-mono);
+}
+
+.share-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.share-emojis {
+  font-size: 1.8rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.share-stats-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.share-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.share-stat .val {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+
+.share-stat .lbl {
+  font-size: 0.55rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.share-divider {
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 1rem;
+}
+
+.share-branding {
+  font-size: 0.65rem;
+  color: var(--muted);
+}
+
+.share-branding strong { color: var(--green); }
+
+/* Action Buttons */
+.action-row {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.share-btn {
+  flex: 1;
+  background: linear-gradient(135deg, var(--green), #00c464);
+  border: none;
+  border-radius: 12px;
+  padding: 0.9rem;
+  color: #080c18;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.share-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,232,122,0.4); }
+
+.try-btn {
+  flex: 1;
+  background: none;
+  border: 1px solid var(--burgundy);
+  border-radius: 12px;
+  padding: 0.9rem;
+  color: #c44f5a;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.try-btn:hover { background: rgba(155,58,68,0.1); }
+
+.bootcamp-cta {
+  width: 100%;
+  background: var(--bg3);
+  border: 1px solid rgba(201,162,39,0.3);
+  border-radius: 16px;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  margin-bottom: 0.75rem;
+}
+
+.bootcamp-cta:hover {
+  border-color: var(--gold);
+  background: rgba(255,208,64,0.05);
+  transform: translateY(-1px);
+}
+
+.bootcamp-icon {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--burgundy), #c44f5a);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.bootcamp-text .heading {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.2rem;
+}
+
+.bootcamp-text .sub {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.bootcamp-arrow {
+  margin-left: auto;
+  color: var(--gold);
+  font-size: 1.2rem;
+}
+
+/* Score breakdown */
+.score-breakdown {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+
+.breakdown-row:last-child { border-bottom: none; }
+
+.breakdown-label { color: var(--muted); }
+.breakdown-val { font-family: var(--font-mono); color: var(--text); }
+.breakdown-val.green { color: var(--green); }
+.breakdown-val.gold { color: var(--gold); }
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--bg2);
+  border: 1px solid var(--green);
+  border-radius: 10px;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--green);
+  z-index: 9999;
+  transition: transform 0.3s ease;
+  white-space: nowrap;
+}
+
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* Flatline animation for death */
+.flatline-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,51,85,0.05);
+  z-index: 500;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.flatline-overlay.active {
+  animation: flatline-flash 0.6s ease;
+}
+
+@keyframes flatline-flash {
+  0% { opacity: 0; }
+  20% { opacity: 1; background: rgba(255,51,85,0.15); }
+  100% { opacity: 0; }
+}
+
+/* Pulse effect for correct */
+.pulse-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,232,122,0.04);
+  z-index: 500;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.pulse-overlay.active {
+  animation: pulse-flash 0.4s ease;
+}
+
+@keyframes pulse-flash {
+  0% { opacity: 0; }
+  30% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Time-up urgent styling */
+.timer-urgent .timer-progress { stroke: var(--red); filter: drop-shadow(0 0 6px var(--red)); }
+.timer-urgent .timer-text { color: var(--red); }
+
+/* Responsive */
+@media (max-width: 480px) {
+  .daily-info { grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem; }
+  .info-card .val { font-size: 1.4rem; }
+  .action-row { flex-direction: column; }
+  .q-text { font-size: 0.85rem; }
+}
+
+/* Shimmer loading */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.loading-shimmer {
+  background: linear-gradient(90deg, var(--bg3) 25%, var(--bg2) 50%, var(--bg3) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+  height: 20px;
+  margin-bottom: 0.5rem;
+}
+
+/* Countdown timer start */
+.countdown-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8,12,24,0.9);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.countdown-overlay.active {
+  pointer-events: all;
+}
+
+.countdown-num {
+  font-family: var(--font-display);
+  font-size: 8rem;
+  color: var(--green);
+  text-shadow: 0 0 60px var(--green);
+  animation: count-pop 1s ease forwards;
+}
+
+@keyframes count-pop {
+  0% { transform: scale(2); opacity: 0; }
+  30% { transform: scale(1); opacity: 1; }
+  70% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.5); opacity: 0; }
+}
+
+/* Step badge colors */
+.badge-step1 { color: var(--blue); background: rgba(74,174,255,0.12); border-color: rgba(74,174,255,0.25); }
+.badge-step2 { color: var(--gold); background: rgba(255,208,64,0.12); border-color: rgba(255,208,64,0.25); }
+.badge-step3 { color: #d070ff; background: rgba(208,112,255,0.12); border-color: rgba(208,112,255,0.25); }
+
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-scan"></div>
+
+<div class="vitals-bar">
+  <div class="vitals-line" id="vitalsLine"></div>
+</div>
+
+<div class="flatline-overlay" id="flatlineOverlay"></div>
+<div class="pulse-overlay" id="pulseOverlay"></div>
+<div class="combo-flash" id="comboFlash"></div>
+
+<!-- HOW TO PLAY MODAL -->
+<div class="modal-overlay" id="howModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h2>HOW TO PLAY</h2>
+    <div class="rule-row">
+      <div class="rule-icon" style="background:rgba(0,232,122,0.15)">🧠</div>
+      <p class="rule-text"><strong>5 high-yield USMLE cases</strong> per day. Same cases for everyone — compare scores with classmates.</p>
+    </div>
+    <div class="rule-row">
+      <div class="rule-icon" style="background:rgba(74,174,255,0.15)">⏱️</div>
+      <p class="rule-text"><strong>60 seconds per question.</strong> Faster answers = more bonus points. Don't let the clock flatline.</p>
+    </div>
+    <div class="rule-row">
+      <div class="rule-icon" style="background:rgba(255,51,85,0.15)">❤️</div>
+      <p class="rule-text"><strong>3 lives.</strong> Each wrong answer costs a life. Lose all 3 and your shift ends early.</p>
+    </div>
+    <div class="rule-row">
+      <div class="rule-icon" style="background:rgba(255,208,64,0.15)">🔥</div>
+      <p class="rule-text"><strong>Combo multiplier.</strong> Consecutive correct answers build your streak multiplier for bonus points.</p>
+    </div>
+    <div class="rule-row">
+      <div class="rule-icon" style="background:rgba(155,58,68,0.2)">📊</div>
+      <p class="rule-text"><strong>Share your results</strong> as an emoji grid — just like Wordle. Challenge your study group.</p>
+    </div>
+    <div style="height:1px;background:var(--border);margin:1rem 0"></div>
+    <p style="font-size:0.8rem;color:var(--muted);text-align:center">New cases every day. Build your streak. Become an Attending. 🏥</p>
+  </div>
+</div>
+
+<div id="app">
+  <header>
+    <div class="header-left">
+      <div class="logo-icon">🧠</div>
+      <div class="header-brand">
+        <span class="title">CODE BLUE</span>
+        <span class="subtitle">by USMLE300</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="streak-badge" id="headerStreak">🔥 <span id="streakNum">0</span></div>
+      <button class="how-btn" onclick="openModal()">?</button>
+    </div>
+  </header>
+
+  <!-- SPLASH SCREEN -->
+  <div class="screen active" id="splashScreen">
+    <div class="splash-vitals">
+      <svg class="ecg-svg" viewBox="0 0 720 80" xmlns="http://www.w3.org/2000/svg">
+        <path class="ecg-path" d="M0,40 L80,40 L100,40 L110,15 L120,65 L130,20 L140,40 L160,40 L200,40 L220,40 L230,10 L240,70 L250,15 L260,40 L280,40 L320,40 L340,40 L350,12 L360,68 L370,18 L380,40 L400,40 L440,40 L460,40 L470,14 L480,66 L490,17 L500,40 L520,40 L560,40 L580,40 L590,11 L600,69 L610,16 L620,40 L640,40 L720,40"/>
+      </svg>
+    </div>
+
+    <div class="splash-hero">
+      <div class="splash-tag">Daily USMLE Challenge · New Cases Every Day</div>
+      <div class="splash-title">CODE<br><span>BLUE</span></div>
+      <p class="splash-desc">5 high-yield cases. 60 seconds each. <strong>Can you save them all?</strong><br>The daily med school game everyone's talking about.</p>
+    </div>
+
+    <div class="daily-info">
+      <div class="info-card green-card">
+        <div class="val" id="dailyNum">—</div>
+        <div class="lbl">Day #</div>
+      </div>
+      <div class="info-card">
+        <div class="val">5</div>
+        <div class="lbl">Cases</div>
+      </div>
+      <div class="info-card gold-card">
+        <div class="val" id="bestScore">—</div>
+        <div class="lbl">Best Score</div>
+      </div>
+    </div>
+
+    <div class="step-filter">
+      <button class="step-btn active" data-step="all" onclick="setStep(this)">All Steps</button>
+      <button class="step-btn" data-step="Step 1" onclick="setStep(this)">Step 1</button>
+      <button class="step-btn" data-step="Step 2 CK" onclick="setStep(this)">Step 2 CK</button>
+      <button class="step-btn" data-step="Step 3" onclick="setStep(this)">Step 3</button>
+    </div>
+
+    <button class="play-btn" onclick="startGame()">
+      RESPOND TO CODE BLUE
+      <span class="play-btn-sub">5 cases · timed · shareable results</span>
+    </button>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div class="screen" id="gameScreen">
+    <div class="game-header">
+      <div class="progress-dots" id="progressDots"></div>
+      <div class="score-pill">
+        <div>
+          <div class="pts" id="currentScore">0</div>
+          <div class="pts-lbl">pts</div>
+        </div>
+      </div>
+      <div class="lives" id="livesDisplay"></div>
+      <div class="timer-ring" id="timerRing">
+        <svg viewBox="0 0 44 44">
+          <circle class="timer-bg" cx="22" cy="22" r="20"/>
+          <circle class="timer-progress" id="timerCircle" cx="22" cy="22" r="20"/>
+        </svg>
+        <div class="timer-text" id="timerText">60</div>
+      </div>
+    </div>
+
+    <div class="question-card" id="questionCard">
+      <div class="q-meta">
+        <span class="q-step-badge" id="qStepBadge">Step 1</span>
+        <span class="q-num" id="qNum">Case 1 of 5</span>
+      </div>
+      <p class="q-text" id="qText"></p>
+      <p class="q-lead" id="qLead"></p>
+    </div>
+
+    <div class="options-grid" id="optionsGrid"></div>
+
+    <div class="explanation-box" id="explanationBox">
+      <div class="exp-header" id="expHeader"></div>
+      <p class="exp-text" id="expText"></p>
+    </div>
+
+    <button class="next-btn" id="nextBtn" onclick="nextQuestion()">NEXT CASE →</button>
+  </div>
+
+  <!-- RESULTS SCREEN -->
+  <div class="screen" id="resultsScreen">
+    <div class="results-header">
+      <div class="results-rank" id="resultsRank">ATTENDING</div>
+      <p class="results-score-display">You scored <strong id="finalScore">0</strong> points · <span id="finalCorrect">0</span>/5 correct</p>
+    </div>
+
+    <div class="share-card" id="shareCard">
+      <div class="share-title">
+        <span>CODE BLUE #<span id="shareDay">1</span></span>
+        <span id="shareDateStr"></span>
+      </div>
+      <div class="share-emojis" id="shareEmojis"></div>
+      <div class="share-stats-row">
+        <div class="share-stat">
+          <span class="val" id="shareScore">0</span>
+          <span class="lbl">Score</span>
+        </div>
+        <div class="share-stat">
+          <span class="val" id="shareStreak">0🔥</span>
+          <span class="lbl">Streak</span>
+        </div>
+        <div class="share-stat">
+          <span class="val" id="shareSpeed">—</span>
+          <span class="lbl">Avg Speed</span>
+        </div>
+      </div>
+      <div class="share-divider"></div>
+      <div class="share-branding">Play at <strong>usmle300.com/codeblue</strong> — Daily USMLE Challenge</div>
+    </div>
+
+    <div class="score-breakdown" id="scoreBreakdown"></div>
+
+    <div class="action-row">
+      <button class="share-btn" onclick="shareResults()">📋 COPY & SHARE</button>
+      <button class="try-btn" onclick="playAgain()">↺ PLAY AGAIN</button>
+    </div>
+
+    <a class="bootcamp-cta" href="https://usmle300.com" target="_blank">
+      <div class="bootcamp-icon">🎯</div>
+      <div class="bootcamp-text">
+        <div class="heading">Ready for the real thing?</div>
+        <div class="sub">Join USMLE300 small-group bootcamps · 97% pass rate</div>
+      </div>
+      <div class="bootcamp-arrow">→</div>
+    </a>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// =====================================
+// DATA
+// =====================================
+const QUESTIONS = [{"step":"Step 1","text":"A 24-year-old man with a history of recurrent pulmonary infections and a groin abscess presents for evaluation. Culture of the abscess grows Staphylococcus aureus. A nitroblue tetrazolium test reveals a lack of blue pigment formation in his neutrophils.","lead":"This patient is most likely deficient in which of the following enzymes?","options":["Glutathione peroxidase","Myeloperoxidase","NADPH oxidase","Superoxide dismutase"],"correct":2,"objective":"Chronic Granulomatous Disease is caused by NADPH oxidase deficiency, leading to inability to generate reactive oxygen species for bacterial killing."},{"step":"Step 1","text":"A 55-year-old man with chronic alcoholism presents with confusion, ophthalmoplegia, and ataxia. He is given intravenous glucose without prior vitamin supplementation, and his symptoms acutely worsen.","lead":"Deficiency of which of the following vitamins most likely caused this patient's deterioration?","options":["Vitamin B6 (pyridoxine)","Vitamin B1 (thiamine)","Vitamin B12 (cobalamin)","Vitamin B3 (niacin)"],"correct":1,"objective":"Wernicke encephalopathy is caused by thiamine (B1) deficiency. Giving glucose before thiamine depletes remaining thiamine stores and worsens symptoms."},{"step":"Step 1","text":"A 32-year-old woman presents with diplopia and ptosis that worsens throughout the day. Chest CT reveals an anterior mediastinal mass. Her symptoms improve after administration of edrophonium.","lead":"Antibodies in this patient are most likely directed against which of the following?","options":["Presynaptic calcium channels","Postsynaptic acetylcholine receptors","Presynaptic acetylcholine release sites","Muscle-specific kinase only"],"correct":1,"objective":"Myasthenia gravis is caused by autoantibodies against postsynaptic acetylcholine receptors at the neuromuscular junction, often associated with thymoma."},{"step":"Step 1","text":"A 67-year-old man with a 40-pack-year smoking history presents with a centrally located lung mass on chest CT. Biopsy shows nests of cells with intercellular bridges and keratin pearls.","lead":"Which of the following is the most likely diagnosis?","options":["Adenocarcinoma","Small cell carcinoma","Squamous cell carcinoma","Large cell carcinoma"],"correct":2,"objective":"Squamous cell carcinoma of the lung is centrally located, associated with smoking, and shows keratin pearls and intercellular bridges on histology."},{"step":"Step 1","text":"A 19-year-old man is brought to the emergency department after a motorcycle accident. His blood pressure is 80/50 mmHg, heart rate is 130/min, and he has distended neck veins and muffled heart sounds. ECG shows low-voltage QRS complexes.","lead":"Which of the following hemodynamic findings is most likely present in this patient?","options":["Increased cardiac output","Equalization of diastolic pressures","Decreased central venous pressure","Increased pulse pressure"],"correct":1,"objective":"Cardiac tamponade causes equalization of diastolic pressures across all four chambers. Beck triad: hypotension, distended neck veins, muffled heart sounds."},{"step":"Step 1","text":"A 4-year-old boy is brought in for evaluation of progressive clumsiness and frequent falls. Physical examination shows calf pseudohypertrophy and a positive Gowers sign. Muscle biopsy reveals absence of dystrophin staining.","lead":"Which of the following best describes the inheritance pattern of this condition?","options":["Autosomal dominant","Autosomal recessive","X-linked recessive","Mitochondrial"],"correct":2,"objective":"Duchenne muscular dystrophy is X-linked recessive, caused by frameshift mutations in the dystrophin gene on chromosome Xp21."},{"step":"Step 1","text":"A 45-year-old woman presents with episodic headaches, palpitations, and diaphoresis. Her blood pressure is 210/120 mmHg. CT scan shows a 4-cm adrenal mass. Urine metanephrines are markedly elevated.","lead":"Before surgical resection, which of the following medications should be administered first?","options":["Propranolol","Phenoxybenzamine","Metyrosine","Hydralazine"],"correct":1,"objective":"Pheochromocytoma requires alpha-blockade (phenoxybenzamine) before beta-blockade to prevent unopposed alpha stimulation and hypertensive crisis."},{"step":"Step 1","text":"A 28-year-old woman presents with fatigue, weight gain, constipation, and cold intolerance. Labs show elevated TSH and low free T4. She has a painless, symmetrically enlarged thyroid.","lead":"Biopsy of this patient's thyroid would most likely show which of the following?","options":["Papillary architecture with psammoma bodies","Lymphocytic infiltration with germinal centers","Parafollicular cell hyperplasia","Granulomatous inflammation with giant cells"],"correct":1,"objective":"Hashimoto thyroiditis is the most common cause of hypothyroidism in iodine-sufficient areas and shows lymphocytic infiltration with germinal centers and Hurthle cells."},{"step":"Step 1","text":"A 35-year-old man presents with a persistent cough and hemoptysis. Chest X-ray shows hilar lymphadenopathy and bilateral infiltrates. Biopsy of a skin lesion shows non-caseating granulomas. Serum calcium is elevated.","lead":"Which of the following is the most likely mechanism of this patient's hypercalcemia?","options":["Increased PTH secretion from parathyroid adenoma","1-alpha-hydroxylase activity in macrophages","Osteolytic bone metastases","Increased PTHrP production by tumor"],"correct":1,"objective":"Sarcoidosis causes hypercalcemia through 1-alpha-hydroxylase activity in activated macrophages within granulomas, converting 25-OH vitamin D to active 1,25-(OH)2 vitamin D."},{"step":"Step 1","text":"A 22-year-old woman presents with recurrent deep vein thromboses. She has a family history of venous thromboembolism. Laboratory testing shows resistance to activated protein C.","lead":"Which of the following is the most likely underlying genetic mutation?","options":["Prothrombin G20210A mutation","Factor V Leiden mutation","Antithrombin III deficiency","Protein S deficiency"],"correct":1,"objective":"Factor V Leiden is the most common inherited thrombophilia and causes activated protein C resistance. The mutant Factor V cannot be inactivated normally by protein C."},{"step":"Step 1","text":"A 65-year-old man presents with a resting tremor, cogwheel rigidity, and bradykinesia. His symptoms started unilaterally and have gradually progressed. He has a shuffling gait with decreased arm swing.","lead":"Loss of dopaminergic neurons in which of the following brain regions is most responsible for this patient's motor symptoms?","options":["Caudate nucleus","Substantia nigra pars compacta","Subthalamic nucleus","Globus pallidus externa"],"correct":1,"objective":"Parkinson disease results from loss of dopaminergic neurons in the substantia nigra pars compacta, leading to decreased dopamine in the nigrostriatal pathway."},{"step":"Step 1","text":"A 10-year-old boy presents with periorbital edema and dark-colored urine 2 weeks after a sore throat. Blood pressure is 150/95 mmHg. Urinalysis shows RBC casts and mild proteinuria. Serum complement C3 is low.","lead":"Which of the following is the most likely diagnosis?","options":["IgA nephropathy","Post-streptococcal glomerulonephritis","Minimal change disease","Membranoproliferative glomerulonephritis"],"correct":1,"objective":"Post-streptococcal glomerulonephritis presents 1-3 weeks after Group A strep pharyngitis with nephritic syndrome (hematuria, RBC casts, hypertension) and low C3 complement."},{"step":"Step 1","text":"A newborn is found to have ambiguous genitalia. Serum potassium is 6.2 mEq/L, sodium is 128 mEq/L, and 17-hydroxyprogesterone is markedly elevated.","lead":"Deficiency of which of the following enzymes is most likely responsible?","options":["11-beta-hydroxylase","17-alpha-hydroxylase","21-hydroxylase","Aromatase"],"correct":2,"objective":"21-hydroxylase deficiency is the most common cause of congenital adrenal hyperplasia. It causes salt-wasting (hyponatremia, hyperkalemia) and virilization from androgen excess."},{"step":"Step 1","text":"A 52-year-old woman with a history of rheumatic heart disease presents with sudden onset of right-sided weakness and expressive aphasia. ECG shows an irregularly irregular rhythm with no discernible P waves.","lead":"Which of the following is the most likely mechanism of this patient's neurological symptoms?","options":["Hypertensive intracerebral hemorrhage","Cardioembolism from left atrial thrombus","Atherosclerotic plaque rupture in the carotid","Lacunar infarct from lipohyalinosis"],"correct":1,"objective":"Atrial fibrillation (irregularly irregular rhythm, no P waves) promotes stasis and thrombus formation in the left atrial appendage, leading to cardioembolic stroke."},{"step":"Step 1","text":"A 7-year-old boy presents with easy bruising and prolonged bleeding after dental procedures. Lab studies show a prolonged PTT but normal PT and normal platelet count. His bleeding time is also prolonged.","lead":"Which of the following is the most likely diagnosis?","options":["Hemophilia A","Von Willebrand disease","Bernard-Soulier syndrome","Glanzmann thrombasthenia"],"correct":1,"objective":"Von Willebrand disease shows prolonged PTT (vWF carries Factor VIII) AND prolonged bleeding time (vWF mediates platelet adhesion). Hemophilia A has prolonged PTT but normal bleeding time."},{"step":"Step 1","text":"A 40-year-old woman presents with periorbital and pedal edema and foamy urine. Urinalysis shows 4+ protein with oval fat bodies. Serum albumin is 2.1 g/dL. Renal biopsy shows normal light microscopy with effacement of podocyte foot processes on electron microscopy.","lead":"Which of the following is the most likely diagnosis?","options":["Membranous nephropathy","Minimal change disease","Focal segmental glomerulosclerosis","IgA nephropathy"],"correct":1,"objective":"Minimal change disease shows normal light microscopy with foot process effacement on EM. It is the most common cause of nephrotic syndrome in children and also occurs in adults."},{"step":"Step 1","text":"A 38-year-old woman presents with a neck mass that moves with swallowing. Fine needle aspiration shows cells with clear nuclei described as having an 'Orphan Annie eye' appearance, nuclear grooves, and psammoma bodies.","lead":"Which of the following is the most likely diagnosis?","options":["Follicular thyroid carcinoma","Papillary thyroid carcinoma","Medullary thyroid carcinoma","Anaplastic thyroid carcinoma"],"correct":1,"objective":"Papillary thyroid carcinoma is the most common thyroid malignancy, characterized by Orphan Annie eye nuclei, nuclear grooves, and psammoma bodies. Spreads via lymphatics."},{"step":"Step 1","text":"A medical student is studying the effect of a new drug on blood pressure in 200 patients. She wants to compare the mean systolic blood pressure before and after treatment in the same group of patients.","lead":"Which of the following statistical tests is most appropriate for this analysis?","options":["Chi-squared test","Paired t-test","ANOVA","Independent two-sample t-test"],"correct":1,"objective":"A paired t-test compares means of two related measurements from the same subjects (before and after). An independent t-test would be for two separate groups."},{"step":"Step 1","text":"A 3-month-old infant presents with failure to thrive, hepatomegaly, and fasting hypoglycemia. Labs show elevated lactate, uric acid, and triglycerides. A liver biopsy shows marked glycogen accumulation in hepatocytes.","lead":"Deficiency of which of the following enzymes is most likely responsible?","options":["Acid maltase (alpha-glucosidase)","Glucose-6-phosphatase","Debranching enzyme","Muscle glycogen phosphorylase"],"correct":1,"objective":"Von Gierke disease (GSD type I) is caused by glucose-6-phosphatase deficiency, leading to severe fasting hypoglycemia with hepatomegaly, lactic acidosis, hyperuricemia, and hyperlipidemia."},{"step":"Step 1","text":"A 25-year-old man presents with sudden onset of severe testicular pain. On exam, the left testicle is high-riding with an absent cremasteric reflex. Doppler ultrasound shows decreased blood flow to the left testicle.","lead":"Which of the following is the most appropriate next step in management?","options":["Antibiotics for suspected epididymitis","Manual detorsion and observation","Emergent surgical exploration","Scrotal elevation and ice application"],"correct":2,"objective":"Testicular torsion is a surgical emergency requiring emergent exploration and detorsion within 6 hours to prevent testicular infarction. Absent cremasteric reflex is highly suggestive."},{"step":"Step 1","text":"A 60-year-old man with chronic kidney disease has a serum calcium of 7.8 mg/dL and phosphorus of 6.5 mg/dL. His intact PTH is markedly elevated at 450 pg/mL.","lead":"Which of the following best explains the elevated PTH in this patient?","options":["Primary hyperparathyroidism from adenoma","Decreased renal 1-alpha-hydroxylase activity","Ectopic PTH production by tumor","Increased intestinal calcium absorption"],"correct":1,"objective":"In CKD, reduced 1-alpha-hydroxylase activity in the kidney decreases active vitamin D, causing hypocalcemia and compensatory secondary hyperparathyroidism."},{"step":"Step 2 CK","text":"A 58-year-old man presents with acute onset of the 'worst headache of his life' followed by brief loss of consciousness. CT scan of the head shows hyperdensity in the basal cisterns and sylvian fissures.","lead":"Which of the following is the most appropriate next step in management?","options":["Lumbar puncture","CT angiography of the head","MRI of the brain with diffusion weighting","Administration of IV alteplase"],"correct":1,"objective":"Subarachnoid hemorrhage (thunderclap headache with blood in basal cisterns on CT) requires CT angiography to identify the source, usually a berry aneurysm, for surgical planning."},{"step":"Step 2 CK","text":"A 34-year-old woman presents with 6 weeks of bloody diarrhea, tenesmus, and crampy abdominal pain. Colonoscopy shows continuous inflammation starting at the rectum and extending to the splenic flexure with pseudopolyps. Biopsy shows crypt abscesses limited to the mucosa.","lead":"Which of the following is the most appropriate initial treatment?","options":["Methotrexate","Mesalamine","Infliximab","Oral budesonide"],"correct":1,"objective":"Moderate ulcerative colitis (continuous from rectum, mucosal involvement, pseudopolyps) is initially treated with 5-ASA agents like mesalamine. Biologics are reserved for refractory cases."},{"step":"Step 2 CK","text":"A 50-year-old man presents with sudden onset of severe, tearing chest pain radiating to the back. He has poorly controlled hypertension. Blood pressure is 200/110 in the right arm and 160/90 in the left arm. Chest X-ray shows a widened mediastinum.","lead":"Which of the following is the most appropriate next diagnostic step?","options":["Troponin levels and serial ECGs","CT angiography of the chest","Transthoracic echocardiography","Cardiac catheterization"],"correct":1,"objective":"Aortic dissection (tearing pain radiating to back, BP differential between arms, widened mediastinum) is diagnosed with CT angiography for classification and surgical planning."},{"step":"Step 2 CK","text":"A 28-year-old woman at 34 weeks gestation presents with severe headache, visual changes, and right upper quadrant pain. BP is 170/110 mmHg. Labs show platelets 85,000, AST 320, LDH 680, and schistocytes on peripheral smear.","lead":"Which of the following is the most appropriate next step in management?","options":["Magnesium sulfate and expectant management until 37 weeks","Magnesium sulfate, betamethasone, and plan for delivery","Platelet transfusion and continued observation","Plasma exchange therapy"],"correct":1,"objective":"HELLP syndrome (Hemolysis, Elevated Liver enzymes, Low Platelets) with severe features requires delivery. Magnesium prevents seizures and betamethasone promotes fetal lung maturity at 34 weeks."},{"step":"Step 2 CK","text":"A 65-year-old man with type 2 diabetes and hypertension has an HbA1c of 8.5% on metformin 2000 mg daily. His BMI is 34, eGFR is 45 mL/min, and he has heart failure with reduced ejection fraction (EF 35%).","lead":"Which of the following medications should be added to his regimen?","options":["Glipizide","Empagliflozin","Pioglitazone","Insulin glargine"],"correct":1,"objective":"SGLT2 inhibitors (empagliflozin) provide cardiovascular and renal benefits in patients with HFrEF and CKD. Pioglitazone is contraindicated in heart failure due to fluid retention."},{"step":"Step 2 CK","text":"A 42-year-old man presents with progressive fatigue, joint pain in his hands, and new-onset diabetes mellitus. His skin has a bronze discoloration. Serum ferritin is 1,800 ng/mL and transferrin saturation is 75%.","lead":"Which of the following is the most appropriate next step in diagnosis?","options":["Liver biopsy with iron staining","HFE gene testing","MRI of the liver with iron quantification","Serum ceruloplasmin level"],"correct":1,"objective":"Hereditary hemochromatosis (bronze diabetes, arthropathy, elevated ferritin and transferrin saturation) is confirmed with HFE gene testing for C282Y and H63D mutations."},{"step":"Step 2 CK","text":"A 23-year-old woman presents with 2 weeks of fatigue, sore throat, and cervical lymphadenopathy. She developed a diffuse maculopapular rash after starting amoxicillin 3 days ago. Peripheral blood smear shows atypical lymphocytes.","lead":"Which of the following is the most likely diagnosis?","options":["Streptococcal pharyngitis with drug allergy","Infectious mononucleosis","Acute HIV infection","Acute lymphoblastic leukemia"],"correct":1,"objective":"EBV infectious mononucleosis classically presents with pharyngitis, lymphadenopathy, atypical lymphocytes, and a maculopapular rash triggered by amoxicillin or ampicillin."},{"step":"Step 2 CK","text":"A 68-year-old man presents with painless jaundice, dark urine, clay-colored stools, and a 15-pound weight loss. Physical exam reveals a non-tender, palpable gallbladder. CT shows a mass in the head of the pancreas.","lead":"Which of the following is the most appropriate next step in evaluation?","options":["ERCP with stent placement","Endoscopic ultrasound with fine needle aspiration","Immediate surgical consultation for Whipple procedure","Serum CA 19-9 level"],"correct":1,"objective":"Pancreatic head mass with painless jaundice and Courvoisier sign requires tissue diagnosis. EUS-FNA is the preferred method for sampling pancreatic masses with high accuracy."},{"step":"Step 2 CK","text":"A 40-year-old woman presents with palpitations, heat intolerance, weight loss, and tremor. She has lid lag, diffuse thyroid enlargement, and pretibial myxedema. TSH is undetectable and free T4 is elevated.","lead":"Which of the following additional findings is most specific to this patient's underlying condition?","options":["Elevated radioactive iodine uptake","Thyroid peroxidase antibodies","Exophthalmos","Thyroid bruit on auscultation"],"correct":2,"objective":"Exophthalmos (Graves ophthalmopathy) and pretibial myxedema are specific to Graves disease. Other causes of hyperthyroidism do not produce these extrathyroidal manifestations."},{"step":"Step 2 CK","text":"A 19-year-old college student presents with fever, severe headache, neck stiffness, and photophobia developing over 12 hours. A petechial rash is noted on the trunk. LP shows elevated WBC with neutrophil predominance, elevated protein, and low glucose.","lead":"Which of the following is the most likely causative organism?","options":["Streptococcus pneumoniae","Neisseria meningitidis","Listeria monocytogenes","Herpes simplex virus"],"correct":1,"objective":"Neisseria meningitidis is the leading cause of bacterial meningitis in adolescents and young adults, classically presenting with petechial or purpuric rash and rapid clinical deterioration."},{"step":"Step 2 CK","text":"A 30-year-old man presents with 3 months of morning stiffness lasting over 1 hour, lower back pain, and difficulty bending forward. Symptoms improve with exercise. Pelvic X-ray shows bilateral sacroiliitis. HLA-B27 is positive.","lead":"Which of the following is the most appropriate initial pharmacotherapy?","options":["Methotrexate","NSAIDs","Prednisone","Adalimumab"],"correct":1,"objective":"Ankylosing spondylitis (inflammatory back pain improving with activity, sacroiliitis, HLA-B27 positive) is initially treated with NSAIDs. TNF inhibitors are second-line for refractory disease."},{"step":"Step 2 CK","text":"A 75-year-old woman presents with acute onset of right-sided weakness and slurred speech beginning 90 minutes ago. CT head is negative for hemorrhage. Blood pressure is 185/100 mmHg and glucose is 110 mg/dL.","lead":"Which of the following is the most appropriate next step in management?","options":["Aspirin 325 mg orally","IV alteplase","Emergent mechanical thrombectomy","Lower blood pressure to below 140/90 before treatment"],"correct":1,"objective":"Acute ischemic stroke within the 4.5-hour tPA window (no hemorrhage on CT) should receive IV alteplase. BP up to 185/110 is permissible before thrombolysis."},{"step":"Step 2 CK","text":"A 48-year-old man presents with crushing substernal chest pain for 2 hours. ECG shows ST elevation in leads II, III, and aVF with reciprocal changes in I and aVL. The nearest PCI-capable facility is 30 minutes away by ambulance.","lead":"Which of the following is the most appropriate next step in management?","options":["Administer fibrinolytic therapy immediately","Transfer for primary percutaneous coronary intervention","Obtain cardiac troponin levels before deciding","Start nitroglycerin infusion and observe"],"correct":1,"objective":"For STEMI, primary PCI is preferred when door-to-balloon time can be achieved within 120 minutes including transfer. A 30-minute transfer is well within this window."},{"step":"Step 3","text":"A 58-year-old man with alcohol use disorder is admitted with hematemesis. BP is 88/55 mmHg and HR is 120/min. Two large-bore IVs are placed and fluid resuscitation is initiated. After initial stabilization, he continues to have bloody emesis.","lead":"Which of the following is the most appropriate next step in management?","options":["Emergent surgery for gastrectomy","IV proton pump inhibitor bolus and drip","Emergent upper endoscopy","Transjugular intrahepatic portosystemic shunt"],"correct":2,"objective":"Upper GI bleeding with hemodynamic instability requires emergent upper endoscopy after resuscitation for both diagnosis and therapeutic intervention (banding, sclerotherapy, clips)."},{"step":"Step 3","text":"A 45-year-old woman with type 2 diabetes and hypertension presents for follow-up. Her blood pressure is 148/92 mmHg on no antihypertensives. Current medications include metformin only. Urine microalbumin-to-creatinine ratio is 45 mg/g.","lead":"Which of the following antihypertensive agents is most appropriate as first-line therapy?","options":["Amlodipine","Lisinopril","Metoprolol","Hydrochlorothiazide"],"correct":1,"objective":"ACE inhibitors (lisinopril) are first-line for diabetic patients with microalbuminuria because they reduce intraglomerular pressure and slow progression of diabetic nephropathy."},{"step":"Step 3","text":"A 70-year-old man with metastatic colon cancer is admitted with bowel obstruction. He has been told his cancer is not curable. He tells the team he does not want surgery and would prefer comfort measures only.","lead":"Which of the following is the most appropriate next step?","options":["Consult psychiatry to evaluate for depression before accepting his decision","Assess his decision-making capacity and respect his wishes if intact","Proceed with surgery as it is the standard of care","Contact his family to make the decision on his behalf"],"correct":1,"objective":"A patient with intact decision-making capacity has the right to refuse any treatment, including life-sustaining care. Capacity assessment involves understanding, appreciation, reasoning, and choice."},{"step":"Step 3","text":"A 35-year-old woman presents with 4 weeks of depressed mood, anhedonia, insomnia, poor concentration, fatigue, and feelings of worthlessness. She denies suicidal ideation and has no prior psychiatric history.","lead":"Which of the following is the most appropriate initial treatment?","options":["Cognitive behavioral therapy alone","SSRI antidepressant alone","Combined SSRI plus cognitive behavioral therapy","Electroconvulsive therapy"],"correct":2,"objective":"Moderate major depressive disorder is optimally treated with combination therapy (SSRI plus CBT). Combined treatment is more effective than either monotherapy for moderate-severe depression."},{"step":"Step 3","text":"A 62-year-old man with a 30-pack-year smoking history presents for routine health maintenance. He has no symptoms and his exam is unremarkable. He currently smokes 1 pack per day.","lead":"Which of the following screening tests is most appropriate to recommend?","options":["Chest X-ray annually","Low-dose CT scan of the chest annually","Sputum cytology every 2 years","No lung cancer screening is indicated"],"correct":1,"objective":"USPSTF recommends annual low-dose CT for adults aged 50-80 with a 20+ pack-year history who currently smoke or quit within the past 15 years."},{"step":"Step 3","text":"A 78-year-old woman hospitalized for pneumonia becomes acutely confused, agitated, and unable to recognize her family on hospital day 3. She was fully oriented on admission. She has visual hallucinations and her symptoms fluctuate throughout the day.","lead":"Which of the following is the most appropriate initial management?","options":["Start haloperidol standing dose for agitation","Identify and treat the underlying cause","Start donepezil for presumed new-onset dementia","Apply physical restraints for safety"],"correct":1,"objective":"Delirium (acute onset, fluctuating course, inattention, altered consciousness) requires identification and treatment of the underlying cause. Antipsychotics are reserved for severe, dangerous agitation."},{"step":"Step 3","text":"A 52-year-old woman undergoes elective cholecystectomy. On postoperative day 1, she has a temperature of 38.6 C. Chest X-ray shows mild bibasilar atelectasis. She is using incentive spirometry. The wound appears clean.","lead":"Which of the following is the most likely cause of her fever?","options":["Surgical site infection","Urinary tract infection","Atelectasis","Deep vein thrombosis"],"correct":2,"objective":"Postoperative fever on day 1 is most commonly from atelectasis (Wind). The mnemonic Wind, Water, Wound, Walking, Wonder drugs maps to the typical timeline of post-op fever causes."},{"step":"Step 3","text":"A 40-year-old man presents with recurrent episodes of severe right flank pain radiating to the groin. CT shows a 3-mm stone in the right ureter. He has had 3 calcium oxalate stones in the past year. Twenty-four-hour urine shows hypercalciuria.","lead":"Which of the following is the most appropriate long-term preventive therapy?","options":["Potassium citrate","Hydrochlorothiazide","Allopurinol","Acetazolamide"],"correct":1,"objective":"Thiazide diuretics (HCTZ) reduce urinary calcium excretion by enhancing calcium reabsorption in the distal tubule, preventing recurrent calcium stones in patients with hypercalciuria."},{"step":"Step 3","text":"A 68-year-old man with chronic atrial fibrillation, hypertension, diabetes, and a prior stroke is currently on aspirin 81 mg daily. His CHA2DS2-VASc score is 5.","lead":"Which of the following changes to his antithrombotic therapy is most appropriate?","options":["Continue aspirin alone","Add clopidogrel to aspirin","Switch to a direct oral anticoagulant such as apixaban","Switch to warfarin with a target INR of 2-3"],"correct":2,"objective":"DOACs (apixaban, rivaroxaban) are preferred over warfarin for stroke prevention in non-valvular atrial fibrillation. A CHA2DS2-VASc score of 2 or greater warrants anticoagulation, not aspirin alone."},{"step":"Step 3","text":"A 50-year-old man presents with sudden severe epigastric pain. He has a rigid, board-like abdomen with diffuse rebound tenderness and guarding. An upright chest X-ray shows free air under the diaphragm.","lead":"Which of the following is the most appropriate next step?","options":["CT scan of the abdomen with oral contrast","Upper GI endoscopy","Emergent exploratory laparotomy","IV proton pump inhibitor and observation"],"correct":2,"objective":"Pneumoperitoneum (free air under diaphragm) with peritonitis signs (rigid abdomen, rebound, guarding) indicates a perforated viscus requiring emergent surgical exploration."}];
+
+// =====================================
+// STATE
+// =====================================
+let gameQuestions = [];
+let currentQ = 0;
+let score = 0;
+let lives = 3;
+let combo = 0;
+let timerInterval = null;
+let timeLeft = 60;
+let answered = false;
+let results = [];
+let totalTime = 0;
+let selectedStep = 'all';
+const QUESTIONS_PER_GAME = 5;
+const TIME_PER_Q = 60;
+
+// Daily seeded random
+function seededRandom(seed) {
+  let s = seed;
+  return function() {
+    s = (s * 1664525 + 1013904223) & 0xffffffff;
+    return (s >>> 0) / 0xffffffff;
+  };
+}
+
+function getDayNumber() {
+  const epoch = new Date('2024-01-01');
+  const now = new Date();
+  return Math.floor((now - epoch) / (1000 * 60 * 60 * 24));
+}
+
+function getDailyQuestions(step) {
+  const dayNum = getDayNumber();
+  const seed = dayNum * 31337 + (step === 'all' ? 0 : step.charCodeAt(4) || 99);
+  const rng = seededRandom(seed);
+  
+  let pool = step === 'all' ? [...QUESTIONS] : QUESTIONS.filter(q => q.step === step);
+  if (pool.length < QUESTIONS_PER_GAME) pool = [...QUESTIONS]; // fallback
+  
+  // Fisher-Yates shuffle with seeded rng
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  
+  return pool.slice(0, QUESTIONS_PER_GAME);
+}
+
+// =====================================
+// LOCAL STORAGE
+// =====================================
+function getStorage(key) {
+  try { return JSON.parse(localStorage.getItem(key)); } catch(e) { return null; }
+}
+
+function setStorage(key, val) {
+  try { localStorage.setItem(key, JSON.stringify(val)); } catch(e) {}
+}
+
+function loadStats() {
+  const streak = getStorage('cb_streak') || 0;
+  const lastDay = getStorage('cb_lastDay') || -1;
+  const bestScore = getStorage('cb_bestScore') || 0;
+  const dayNum = getDayNumber();
+  
+  // Check if streak is still active
+  let activeStreak = streak;
+  if (lastDay < dayNum - 1) activeStreak = 0;
+  
+  document.getElementById('streakNum').textContent = activeStreak;
+  document.getElementById('bestScore').textContent = bestScore || '—';
+  document.getElementById('dailyNum').textContent = '#' + dayNum;
+}
+
+function saveResult(score, correct) {
+  const dayNum = getDayNumber();
+  const lastDay = getStorage('cb_lastDay') || -1;
+  let streak = getStorage('cb_streak') || 0;
+  
+  if (lastDay === dayNum - 1) streak++;
+  else if (lastDay !== dayNum) streak = 1;
+  
+  const bestScore = Math.max(getStorage('cb_bestScore') || 0, score);
+  
+  setStorage('cb_streak', streak);
+  setStorage('cb_lastDay', dayNum);
+  setStorage('cb_bestScore', bestScore);
+  
+  document.getElementById('streakNum').textContent = streak;
+  document.getElementById('shareStreak').textContent = streak + '🔥';
+  
+  return streak;
+}
+
+// =====================================
+// UI HELPERS
+// =====================================
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+function openModal() { document.getElementById('howModal').classList.add('active'); }
+function closeModal() { document.getElementById('howModal').classList.remove('active'); }
+document.getElementById('howModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+function setStep(btn) {
+  document.querySelectorAll('.step-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  selectedStep = btn.dataset.step;
+}
+
+// =====================================
+// GAME LOGIC
+// =====================================
+function startGame() {
+  gameQuestions = getDailyQuestions(selectedStep);
+  currentQ = 0;
+  score = 0;
+  lives = 3;
+  combo = 0;
+  results = [];
+  totalTime = 0;
+  
+  showScreen('gameScreen');
+  buildProgressDots();
+  updateLives();
+  loadQuestion();
+}
+
+function buildProgressDots() {
+  const dots = document.getElementById('progressDots');
+  dots.innerHTML = '';
+  for (let i = 0; i < QUESTIONS_PER_GAME; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' current' : '');
+    d.id = 'dot' + i;
+    dots.appendChild(d);
+  }
+}
+
+function updateDot(idx, status) {
+  const d = document.getElementById('dot' + idx);
+  if (!d) return;
+  d.className = 'dot ' + status;
+}
+
+function updateLives() {
+  const lvDiv = document.getElementById('livesDisplay');
+  lvDiv.innerHTML = '';
+  for (let i = 0; i < 3; i++) {
+    const sp = document.createElement('span');
+    sp.className = 'life' + (i >= lives ? ' lost' : '');
+    sp.textContent = '❤️';
+    lvDiv.appendChild(sp);
+  }
+}
+
+function loadQuestion() {
+  if (currentQ >= QUESTIONS_PER_GAME) {
+    showResults();
+    return;
+  }
+  
+  answered = false;
+  timeLeft = TIME_PER_Q;
+  
+  const q = gameQuestions[currentQ];
+  
+  // Badge
+  const badge = document.getElementById('qStepBadge');
+  badge.textContent = q.step;
+  badge.className = 'q-step-badge';
+  if (q.step === 'Step 1') badge.classList.add('badge-step1');
+  else if (q.step === 'Step 2 CK') badge.classList.add('badge-step2');
+  else badge.classList.add('badge-step3');
+  
+  document.getElementById('qNum').textContent = `Case ${currentQ + 1} of ${QUESTIONS_PER_GAME}`;
+  document.getElementById('qText').textContent = q.text;
+  document.getElementById('qLead').textContent = q.lead;
+  
+  // Reset card
+  const card = document.getElementById('questionCard');
+  card.className = 'question-card';
+  
+  // Options
+  const grid = document.getElementById('optionsGrid');
+  grid.innerHTML = '';
+  const letters = ['A','B','C','D'];
+  q.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.innerHTML = `<span class="option-letter">${letters[i]}</span><span>${opt}</span>`;
+    btn.onclick = () => selectAnswer(i);
+    grid.appendChild(btn);
+  });
+  
+  // Hide explanation and next
+  document.getElementById('explanationBox').style.display = 'none';
+  document.getElementById('nextBtn').style.display = 'none';
+  
+  // Timer
+  startTimer();
+  
+  // Score
+  document.getElementById('currentScore').textContent = score;
+}
+
+function startTimer() {
+  clearInterval(timerInterval);
+  updateTimerUI();
+  
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    updateTimerUI();
+    
+    if (timeLeft <= 10) {
+      document.getElementById('timerRing').classList.add('timer-urgent');
+    }
+    
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      timeExpired();
+    }
+  }, 1000);
+}
+
+function updateTimerUI() {
+  const circumference = 126;
+  const offset = circumference * (1 - timeLeft / TIME_PER_Q);
+  document.getElementById('timerCircle').style.strokeDashoffset = offset;
+  document.getElementById('timerText').textContent = timeLeft;
+  
+  const color = timeLeft > 20 ? 'var(--green)' : timeLeft > 10 ? 'var(--gold)' : 'var(--red)';
+  document.getElementById('timerCircle').style.stroke = color;
+  document.getElementById('timerText').style.color = timeLeft > 10 ? '' : 'var(--red)';
+}
+
+function timeExpired() {
+  if (answered) return;
+  answered = true;
+  totalTime += TIME_PER_Q;
+  
+  lives--;
+  combo = 0;
+  updateLives();
+  
+  const q = gameQuestions[currentQ];
+  const btns = document.querySelectorAll('.option-btn');
+  btns.forEach(b => b.disabled = true);
+  btns[q.correct].classList.add('reveal-correct');
+  
+  updateDot(currentQ, 'wrong');
+  results.push({ correct: false, timeUsed: TIME_PER_Q, emoji: '💀' });
+  
+  showExplanation(false, q.objective);
+  document.getElementById('questionCard').classList.add('wrong-flash');
+  
+  triggerFlatline();
+  
+  if (lives <= 0) {
+    setTimeout(() => showResults(), 1800);
+  } else {
+    document.getElementById('nextBtn').style.display = 'block';
+  }
+}
+
+function selectAnswer(idx) {
+  if (answered) return;
+  answered = true;
+  clearInterval(timerInterval);
+  
+  document.getElementById('timerRing').classList.remove('timer-urgent');
+  
+  const timeUsed = TIME_PER_Q - timeLeft;
+  totalTime += timeUsed;
+  
+  const q = gameQuestions[currentQ];
+  const btns = document.querySelectorAll('.option-btn');
+  btns.forEach(b => b.disabled = true);
+  
+  const isCorrect = idx === q.correct;
+  
+  if (isCorrect) {
+    btns[idx].classList.add('selected-correct');
+    
+    // Score: base 100 + speed bonus (up to 50) + combo bonus
+    combo++;
+    const speedBonus = Math.floor((timeLeft / TIME_PER_Q) * 50);
+    const comboBonus = Math.min(combo - 1, 4) * 25;
+    const pts = 100 + speedBonus + comboBonus;
+    score += pts;
+    
+    updateDot(currentQ, 'correct');
+    results.push({ correct: true, timeUsed, pts, emoji: '🟢', speedBonus, comboBonus });
+    
+    showExplanation(true, q.objective);
+    document.getElementById('questionCard').classList.add('correct-flash');
+    triggerPulse();
+    
+    if (combo >= 2) showCombo(combo);
+    
+  } else {
+    btns[idx].classList.add('selected-wrong');
+    btns[q.correct].classList.add('reveal-correct');
+    
+    lives--;
+    combo = 0;
+    updateLives();
+    
+    updateDot(currentQ, 'wrong');
+    results.push({ correct: false, timeUsed, emoji: '🔴' });
+    
+    showExplanation(false, q.objective);
+    document.getElementById('questionCard').classList.add('wrong-flash');
+    triggerFlatline();
+    
+    if (lives <= 0) {
+      setTimeout(() => showResults(), 1800);
+      return;
+    }
+  }
+  
+  document.getElementById('currentScore').textContent = score;
+  document.getElementById('nextBtn').style.display = 'block';
+  document.getElementById('nextBtn').textContent = 
+    currentQ < QUESTIONS_PER_GAME - 1 ? 'NEXT CASE →' : 'SEE RESULTS →';
+}
+
+function showExplanation(correct, text) {
+  const box = document.getElementById('explanationBox');
+  const header = document.getElementById('expHeader');
+  const expText = document.getElementById('expText');
+  
+  box.className = 'explanation-box ' + (correct ? 'correct-exp' : 'wrong-exp');
+  header.className = 'exp-header ' + (correct ? 'c' : 'w');
+  header.innerHTML = correct ? '✓ CORRECT — KEY CONCEPT' : '✗ INCORRECT — KEY CONCEPT';
+  expText.textContent = text;
+  box.style.display = 'block';
+}
+
+function showCombo(count) {
+  const labels = {2:'DOUBLE!', 3:'TRIPLE!', 4:'QUAD!', 5:'UNSTOPPABLE!'};
+  const el = document.getElementById('comboFlash');
+  el.textContent = labels[count] || count + 'X COMBO!';
+  el.classList.remove('show');
+  void el.offsetWidth;
+  el.classList.add('show');
+}
+
+function triggerFlatline() {
+  const el = document.getElementById('flatlineOverlay');
+  el.classList.remove('active');
+  void el.offsetWidth;
+  el.classList.add('active');
+}
+
+function triggerPulse() {
+  const el = document.getElementById('pulseOverlay');
+  el.classList.remove('active');
+  void el.offsetWidth;
+  el.classList.add('active');
+}
+
+function nextQuestion() {
+  currentQ++;
+  document.getElementById('questionCard').className = 'question-card';
+  document.getElementById('timerRing').classList.remove('timer-urgent');
+  
+  if (currentQ >= QUESTIONS_PER_GAME) {
+    showResults();
+  } else {
+    updateDot(currentQ, 'current');
+    loadQuestion();
+  }
+}
+
+// =====================================
+// RESULTS
+// =====================================
+function showResults() {
+  clearInterval(timerInterval);
+  
+  const correct = results.filter(r => r.correct).length;
+  const dayNum = getDayNumber();
+  const streak = saveResult(score, correct);
+  
+  // Rank
+  let rank, rankClass;
+  if (correct === 5 && score >= 650) { rank = 'CHIEF OF MEDICINE'; rankClass = 'chief'; }
+  else if (correct >= 4) { rank = 'ATTENDING'; rankClass = 'attending'; }
+  else if (correct >= 3) { rank = 'FELLOW'; rankClass = 'fellow'; }
+  else if (correct >= 2) { rank = 'RESIDENT'; rankClass = 'resident'; }
+  else { rank = 'INTERN'; rankClass = 'intern'; }
+  
+  document.getElementById('resultsRank').textContent = rank;
+  document.getElementById('resultsRank').className = 'results-rank ' + rankClass;
+  document.getElementById('finalScore').textContent = score;
+  document.getElementById('finalCorrect').textContent = correct;
+  
+  // Share card
+  document.getElementById('shareDay').textContent = dayNum;
+  const now = new Date();
+  document.getElementById('shareDateStr').textContent = now.toLocaleDateString('en-US', {month:'short', day:'numeric'});
+  document.getElementById('shareEmojis').textContent = results.map(r => r.emoji).join(' ');
+  document.getElementById('shareScore').textContent = score;
+  document.getElementById('shareStreak').textContent = streak + '🔥';
+  
+  const avgTime = results.length > 0 ? Math.round(totalTime / results.length) : 0;
+  document.getElementById('shareSpeed').textContent = avgTime + 's';
+  
+  // Breakdown
+  const breakdown = document.getElementById('scoreBreakdown');
+  breakdown.innerHTML = `
+    <div class="breakdown-row">
+      <span class="breakdown-label">Base score (${correct}/5 correct)</span>
+      <span class="breakdown-val green">${correct * 100} pts</span>
+    </div>
+    <div class="breakdown-row">
+      <span class="breakdown-label">Speed bonuses</span>
+      <span class="breakdown-val gold">${results.reduce((a,r) => a + (r.speedBonus||0), 0)} pts</span>
+    </div>
+    <div class="breakdown-row">
+      <span class="breakdown-label">Combo bonuses</span>
+      <span class="breakdown-val gold">${results.reduce((a,r) => a + (r.comboBonus||0), 0)} pts</span>
+    </div>
+    <div class="breakdown-row" style="font-weight:700">
+      <span class="breakdown-label" style="color:var(--text)">Total</span>
+      <span class="breakdown-val" style="color:var(--text);font-size:1.1rem">${score} pts</span>
+    </div>
+  `;
+  
+  showScreen('resultsScreen');
+}
+
+function shareResults() {
+  const correct = results.filter(r => r.correct).length;
+  const dayNum = getDayNumber();
+  const emojis = results.map(r => r.emoji).join('');
+  const stepLabel = selectedStep === 'all' ? 'All Steps' : selectedStep;
+  
+  const text = `CODE BLUE #${dayNum} — ${stepLabel}\n` +
+    `${emojis}\n` +
+    `${correct}/5 cases · ${score} pts\n` +
+    `🏥 Play at usmle300.com/codeblue\n` +
+    `#USMLE #MedSchool #CodeBlue #USMLE300`;
+  
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(() => showToast('✓ Copied! Share with your study group'));
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast('✓ Copied! Share with your study group');
+  }
+}
+
+function playAgain() {
+  score = 0; lives = 3; combo = 0; results = [];
+  currentQ = 0; totalTime = 0;
+  showScreen('splashScreen');
+}
+
+// =====================================
+// KEYBOARD SHORTCUTS
+// =====================================
+document.addEventListener('keydown', (e) => {
+  if (['1','2','3','4','a','b','c','d'].includes(e.key.toLowerCase())) {
+    const map = {'1':0,'a':0,'2':1,'b':1,'3':2,'c':2,'4':3,'d':3};
+    const idx = map[e.key.toLowerCase()];
+    if (idx !== undefined && document.getElementById('gameScreen').classList.contains('active')) {
+      const btns = document.querySelectorAll('.option-btn:not(:disabled)');
+      if (btns[idx]) btns[idx].click();
+    }
+  }
+  
+  if (e.key === 'Enter' || e.key === ' ') {
+    const nextBtn = document.getElementById('nextBtn');
+    if (nextBtn.style.display !== 'none') nextBtn.click();
+    e.preventDefault();
+  }
+});
+
+// =====================================
+// INIT
+// =====================================
+loadStats();
+</script>
+</body>
+</html>
