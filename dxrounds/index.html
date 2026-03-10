@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#0f0f13">
+    <title>DxRounds | Daily USMLE Challenge by USMLE300</title>
+    <meta name="description" content="One patient. Six clues. How fast can you diagnose? A free daily USMLE game from USMLE300.">
+    <meta property="og:title" content="DxRounds — Daily USMLE Diagnosis Game">
+    <meta property="og:description" content="I diagnosed today's patient in just 3 clues. Can you beat my score?">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@400;600;800;900&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f13;
+            --surface: #1a1a22;
+            --surface-2: #24242f;
+            --surface-3: #2e2e3a;
+            --burgundy: #722F37;
+            --burgundy-glow: rgba(114, 47, 55, 0.4);
+            --accent: #e84057;
+            --accent-glow: rgba(232, 64, 87, 0.3);
+            --gold: #f0c040;
+            --gold-dim: #a08020;
+            --teal: #3de8c5;
+            --teal-glow: rgba(61, 232, 197, 0.2);
+            --text: #e8e6f0;
+            --text-dim: #8a889a;
+            --text-faint: #55536a;
+            --correct: #2ecc71;
+            --wrong: #e74c3c;
+            --radius: 12px;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+        html { height:100%; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        /* ─── SCANLINE & NOISE OVERLAY ─── */
+        body::before {
+            content: '';
+            position: fixed; inset:0; z-index: 9999;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0,0,0,0.03) 2px,
+                rgba(0,0,0,0.03) 4px
+            );
+        }
+
+        /* ─── HEADER ─── */
+        .game-header {
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            background: rgba(15,15,19,0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: sticky; top:0; z-index: 100;
+        }
+        .header-brand {
+            display: flex; align-items: center; gap: 10px;
+            text-decoration: none;
+        }
+        .header-brand img { height: 28px; filter: brightness(1.2); }
+        .header-title {
+            font-family: 'Anybody', sans-serif;
+            font-weight: 900;
+            font-size: 1.1rem;
+            letter-spacing: 0.04em;
+            background: linear-gradient(135deg, var(--accent), #ff6b81);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .header-actions { display: flex; gap: 8px; align-items: center; }
+        .icon-btn {
+            width: 36px; height: 36px;
+            border-radius: 8px;
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.06);
+            color: var(--text-dim);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+        .icon-btn:hover { background: var(--surface-2); color: var(--text); }
+        .streak-badge {
+            display: flex; align-items: center; gap: 5px;
+            background: linear-gradient(135deg, rgba(240,192,64,0.15), rgba(240,192,64,0.05));
+            border: 1px solid rgba(240,192,64,0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        .streak-badge .fire { font-size: 1rem; }
+
+        /* ─── MAIN CONTAINER ─── */
+        .game-container {
+            flex: 1;
+            max-width: 640px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px 16px 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* ─── ROUND TRACKER ─── */
+        .round-tracker {
+            display: flex; gap: 6px; justify-content: center;
+            padding: 8px 0;
+        }
+        .round-pip {
+            width: 42px; height: 6px;
+            border-radius: 3px;
+            background: var(--surface-2);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+        .round-pip.active {
+            background: var(--accent);
+            box-shadow: 0 0 12px var(--accent-glow);
+        }
+        .round-pip.correct {
+            background: var(--correct);
+            box-shadow: 0 0 12px rgba(46,204,113,0.3);
+        }
+        .round-pip.wrong {
+            background: var(--wrong);
+            box-shadow: 0 0 12px rgba(231,76,60,0.3);
+        }
+        .round-pip.skipped {
+            background: var(--text-faint);
+        }
+
+        /* ─── CLUE CARD ─── */
+        .clue-card {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: var(--radius);
+            overflow: hidden;
+            animation: cardReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes cardReveal {
+            from { opacity:0; transform: translateY(12px) scale(0.98); }
+            to { opacity:1; transform: translateY(0) scale(1); }
+        }
+        .clue-header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 14px 18px;
+            background: rgba(255,255,255,0.02);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .clue-round-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+        }
+        .clue-type-badge {
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+            background: rgba(61,232,197,0.1);
+            color: var(--teal);
+            border: 1px solid rgba(61,232,197,0.15);
+        }
+        .clue-body {
+            padding: 20px 18px;
+        }
+        .clue-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text);
+        }
+        .clue-text .highlight {
+            background: rgba(240,192,64,0.15);
+            color: var(--gold);
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        /* ─── PREVIOUS CLUES (collapsed) ─── */
+        .prev-clues { display: flex; flex-direction: column; gap: 6px; }
+        .prev-clue {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex; gap: 10px; align-items: flex-start;
+        }
+        .prev-clue:hover { background: var(--surface-2); }
+        .prev-clue-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--text-faint);
+            background: var(--surface-2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .prev-clue-text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .prev-clue.expanded .prev-clue-text {
+            white-space: normal;
+        }
+
+        /* ─── ANSWER OPTIONS ─── */
+        .answer-section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .answer-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-faint);
+            padding: 0 4px;
+        }
+        .answer-btn {
+            display: flex; align-items: center; gap: 12px;
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius);
+            padding: 14px 16px;
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+            text-align: left;
+        }
+        .answer-btn:hover:not(:disabled) {
+            background: var(--surface-2);
+            border-color: rgba(255,255,255,0.12);
+            transform: translateX(4px);
+        }
+        .answer-btn:active:not(:disabled) { transform: translateX(2px); }
+        .answer-letter {
+            width: 28px; height: 28px;
+            border-radius: 6px;
+            background: var(--surface-2);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-dim);
+            flex-shrink: 0;
+        }
+        .answer-btn.correct-answer {
+            background: rgba(46,204,113,0.1);
+            border-color: rgba(46,204,113,0.3);
+            animation: correctPulse 0.6s ease;
+        }
+        .answer-btn.correct-answer .answer-letter {
+            background: var(--correct);
+            color: white;
+        }
+        .answer-btn.wrong-answer {
+            background: rgba(231,76,60,0.1);
+            border-color: rgba(231,76,60,0.3);
+            animation: wrongShake 0.5s ease;
+        }
+        .answer-btn.wrong-answer .answer-letter {
+            background: var(--wrong);
+            color: white;
+        }
+        .answer-btn:disabled { cursor: default; opacity: 0.5; }
+        @keyframes correctPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        @keyframes wrongShake {
+            0%,100% { transform: translateX(0); }
+            20% { transform: translateX(-6px); }
+            40% { transform: translateX(6px); }
+            60% { transform: translateX(-4px); }
+            80% { transform: translateX(4px); }
+        }
+
+        /* ─── SKIP / NEXT CLUE BUTTON ─── */
+        .action-row {
+            display: flex; gap: 10px; justify-content: center;
+        }
+        .skip-btn {
+            padding: 10px 24px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: transparent;
+            color: var(--text-dim);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .skip-btn:hover {
+            background: var(--surface);
+            color: var(--text);
+        }
+
+        /* ─── RESULTS SCREEN ─── */
+        .results-overlay {
+            position: fixed; inset:0;
+            background: rgba(15,15,19,0.92);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            z-index: 200;
+            display: flex; align-items: center; justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.4s ease;
+        }
+        @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+        .results-card {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 32px 28px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes slideUp {
+            from { transform: translateY(40px); opacity:0; }
+            to { transform: translateY(0); opacity:1; }
+        }
+        .results-emoji-grid {
+            font-size: 1.8rem;
+            letter-spacing: 6px;
+            margin: 8px 0 20px;
+            line-height: 1.4;
+        }
+        .results-score-ring {
+            width: 120px; height: 120px;
+            margin: 0 auto 16px;
+            position: relative;
+        }
+        .results-score-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+        .results-score-ring circle {
+            fill: none; stroke-width: 6; stroke-linecap: round;
+        }
+        .results-score-ring .bg { stroke: var(--surface-2); }
+        .results-score-ring .fg { stroke: var(--accent); stroke-dasharray: 339; stroke-dashoffset: 339; transition: stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s; }
+        .results-score-ring .score-text {
+            position: absolute; inset:0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            font-family: 'Anybody', sans-serif;
+            font-weight: 900;
+            font-size: 2rem;
+            color: var(--text);
+        }
+        .results-score-ring .score-text small {
+            font-size: 0.7rem; font-weight: 500; color: var(--text-dim);
+            font-family: 'DM Sans', sans-serif;
+        }
+        .results-heading {
+            font-family: 'Anybody', sans-serif;
+            font-weight: 800;
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+        }
+        .results-sub {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .results-diagnosis {
+            background: var(--surface-2);
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .results-diagnosis-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.15em;
+            color: var(--teal);
+            margin-bottom: 6px;
+        }
+        .results-diagnosis-text {
+            font-size: 0.88rem;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        /* ─── SHARE BUTTON ─── */
+        .share-btn {
+            width: 100%;
+            padding: 14px;
+            border-radius: var(--radius);
+            border: none;
+            background: linear-gradient(135deg, var(--accent), #ff6b81);
+            color: white;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            margin-bottom: 10px;
+        }
+        .share-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--accent-glow); }
+        .share-btn:active { transform: translateY(0); }
+        .secondary-btn {
+            width: 100%;
+            padding: 12px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255,255,255,0.1);
+            background: transparent;
+            color: var(--text-dim);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .secondary-btn:hover { background: var(--surface-2); color: var(--text); }
+
+        /* ─── TUTORIAL OVERLAY ─── */
+        .tutorial-overlay {
+            position: fixed; inset:0;
+            background: rgba(15,15,19,0.95);
+            backdrop-filter: blur(30px);
+            z-index: 300;
+            display: flex; align-items: center; justify-content: center;
+            padding: 20px;
+        }
+        .tutorial-card {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 32px 28px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .tutorial-icon {
+            font-size: 3rem;
+            margin-bottom: 12px;
+        }
+        .tutorial-title {
+            font-family: 'Anybody', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+        .tutorial-desc {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+        .tutorial-steps {
+            text-align: left;
+            margin-bottom: 24px;
+        }
+        .tutorial-step {
+            display: flex; gap: 14px; align-items: flex-start;
+            padding: 10px 0;
+        }
+        .tutorial-step + .tutorial-step { border-top: 1px solid rgba(255,255,255,0.04); }
+        .tutorial-step-num {
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            background: var(--surface-2);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+        .tutorial-step-text {
+            font-size: 0.85rem;
+            color: var(--text);
+            line-height: 1.5;
+        }
+        .tutorial-step-text strong { color: var(--gold); }
+        .play-btn {
+            width: 100%;
+            padding: 16px;
+            border-radius: var(--radius);
+            border: none;
+            background: linear-gradient(135deg, var(--accent), #ff6b81);
+            color: white;
+            font-family: 'Anybody', sans-serif;
+            font-weight: 800;
+            font-size: 1.05rem;
+            letter-spacing: 0.03em;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .play-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--accent-glow); }
+
+        /* ─── TOAST ─── */
+        .toast {
+            position: fixed;
+            top: 80px; left: 50%; transform: translateX(-50%);
+            background: var(--surface-2);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text);
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 400;
+            animation: toastIn 0.3s ease, toastOut 0.3s ease 1.7s forwards;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+        @keyframes toastIn { from { opacity:0; transform: translateX(-50%) translateY(-10px); } to { opacity:1; transform: translateX(-50%) translateY(0); } }
+        @keyframes toastOut { from { opacity:1; } to { opacity:0; } }
+
+        /* ─── CTA BANNER ─── */
+        .cta-banner {
+            background: linear-gradient(135deg, var(--burgundy), #8a3542);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-top: 8px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .cta-banner-title {
+            font-family: 'Anybody', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        .cta-banner-text {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 12px;
+        }
+        .cta-banner-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 10px 24px;
+            border-radius: 8px;
+            border: none;
+            background: white;
+            color: var(--burgundy);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .cta-banner-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+
+        /* ─── LEADERBOARD TEASER ─── */
+        .leaderboard-teaser {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: var(--radius);
+            padding: 18px;
+        }
+        .leaderboard-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 12px;
+        }
+        .leaderboard-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+        }
+        .leaderboard-school {
+            font-size: 0.75rem;
+            color: var(--text-faint);
+        }
+        .leaderboard-row {
+            display: flex; align-items: center; gap: 12px;
+            padding: 8px 0;
+        }
+        .leaderboard-row + .leaderboard-row { border-top: 1px solid rgba(255,255,255,0.03); }
+        .lb-rank {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-faint);
+            width: 20px; text-align: center;
+        }
+        .lb-avatar {
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            background: var(--surface-2);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.85rem;
+        }
+        .lb-name {
+            flex: 1;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .lb-score {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--teal);
+        }
+        .lb-rank-1 { color: var(--gold); }
+
+        /* ─── COUNTDOWN ─── */
+        .countdown {
+            text-align: center;
+            padding: 16px;
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: var(--radius);
+        }
+        .countdown-label {
+            font-size: 0.75rem;
+            color: var(--text-faint);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .countdown-time {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        /* ─── HIDDEN ─── */
+        .hidden { display: none !important; }
+
+        /* ─── MOBILE ─── */
+        @media (max-width: 480px) {
+            .game-container { padding: 14px 12px 100px; }
+            .clue-body { padding: 16px 14px; }
+            .answer-btn { padding: 12px 14px; }
+        }
+
+        /* ─── CONFETTI ─── */
+        .confetti-piece {
+            position: fixed;
+            width: 8px; height: 8px;
+            z-index: 500;
+            animation: confettiFall 2.5s ease-in forwards;
+            pointer-events: none;
+        }
+        @keyframes confettiFall {
+            0% { opacity: 1; transform: translateY(0) rotate(0deg); }
+            100% { opacity: 0; transform: translateY(100vh) rotate(720deg); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<div class="game-header">
+    <a href="https://usmle300.com" class="header-brand" target="_blank">
+        <span class="header-title">DxROUNDS</span>
+    </a>
+    <div class="header-actions">
+        <div class="streak-badge">
+            <span class="fire">🔥</span>
+            <span id="streakCount">0</span>
+        </div>
+        <button class="icon-btn" onclick="showTutorial()" title="How to play">?</button>
+    </div>
+</div>
+
+<!-- ═══ GAME CONTAINER ═══ -->
+<div class="game-container" id="gameContainer">
+    <!-- Round tracker -->
+    <div class="round-tracker" id="roundTracker"></div>
+
+    <!-- Previous clues area -->
+    <div class="prev-clues" id="prevClues"></div>
+
+    <!-- Current clue card -->
+    <div id="currentClueArea"></div>
+
+    <!-- Answer options -->
+    <div class="answer-section" id="answerSection">
+        <div class="answer-label">Select your diagnosis</div>
+        <div id="answerOptions"></div>
+    </div>
+
+    <!-- Skip / reveal next clue -->
+    <div class="action-row" id="actionRow">
+        <button class="skip-btn" id="nextClueBtn" onclick="revealNextClue()">
+            Next Clue →
+        </button>
+    </div>
+</div>
+
+<!-- ═══ TUTORIAL OVERLAY ═══ -->
+<div class="tutorial-overlay" id="tutorialOverlay">
+    <div class="tutorial-card">
+        <div class="tutorial-icon">🩺</div>
+        <div class="tutorial-title">DxRounds</div>
+        <div class="tutorial-desc">One patient. Six clues. How fast can you diagnose?</div>
+        <div class="tutorial-steps">
+            <div class="tutorial-step">
+                <div class="tutorial-step-num">1</div>
+                <div class="tutorial-step-text">Read each clinical clue as it's revealed — <strong>history, exam, labs, and more</strong>.</div>
+            </div>
+            <div class="tutorial-step">
+                <div class="tutorial-step-num">2</div>
+                <div class="tutorial-step-text">Lock in a diagnosis whenever you're ready. <strong>Fewer clues = higher score.</strong></div>
+            </div>
+            <div class="tutorial-step">
+                <div class="tutorial-step-num">3</div>
+                <div class="tutorial-step-text">Share your emoji grid and <strong>compete on your med school's leaderboard</strong>.</div>
+            </div>
+        </div>
+        <button class="play-btn" onclick="startGame()">Start Rounds</button>
+    </div>
+</div>
+
+<script>
+// ─── PUZZLE DATA ───
+// In production, this would be fetched daily from an API.
+// Each puzzle is a clinical vignette broken into progressive clues.
+const PUZZLES = [
+    {
+        id: 1,
+        step: "Step 1",
+        clues: [
+            { type: "Chief Complaint", text: "A 24-year-old man presents for evaluation of <span class='highlight'>recurrent infections</span>." },
+            { type: "History", text: "He has had multiple <span class='highlight'>pulmonary infections</span> since childhood and was recently treated for a groin abscess." },
+            { type: "Microbiology", text: "Culture of the abscess grows <span class='highlight'>Staphylococcus aureus</span>. He has a history of infections with catalase-positive organisms." },
+            { type: "Lab Finding", text: "A <span class='highlight'>nitroblue tetrazolium (NBT) test</span> is performed. His neutrophils fail to produce blue pigment." },
+            { type: "Pathophysiology", text: "His neutrophils can phagocytose bacteria normally but cannot generate the <span class='highlight'>respiratory burst</span> needed for intracellular killing." },
+            { type: "Final Clue", text: "The enzyme responsible for generating superoxide in the <span class='highlight'>NADPH oxidase complex</span> is absent." }
+        ],
+        options: ["Myeloperoxidase deficiency", "NADPH oxidase deficiency (CGD)", "Leukocyte adhesion deficiency", "Chediak-Higashi syndrome"],
+        correctIndex: 1,
+        diagnosis: "Chronic Granulomatous Disease (CGD)",
+        explanation: "CGD is caused by NADPH oxidase deficiency, leading to inability to generate reactive oxygen species for bacterial killing. The NBT test (or dihydrorhodamine flow cytometry) is diagnostic — neutrophils cannot reduce NBT to blue formazan. Patients are susceptible to catalase-positive organisms (S. aureus, Aspergillus, Serratia) because catalase-negative organisms supply their own H₂O₂."
+    },
+    {
+        id: 2,
+        step: "Step 1",
+        clues: [
+            { type: "Chief Complaint", text: "A 55-year-old man is brought to the ED with acute <span class='highlight'>confusion</span>." },
+            { type: "Social History", text: "He has a long history of <span class='highlight'>chronic alcoholism</span> and poor nutritional intake." },
+            { type: "Physical Exam", text: "Examination reveals <span class='highlight'>ophthalmoplegia</span> (lateral gaze palsy), <span class='highlight'>nystagmus</span>, and severe <span class='highlight'>ataxia</span>." },
+            { type: "Clinical Course", text: "An IV of <span class='highlight'>dextrose (glucose)</span> is started without any vitamin supplementation. His confusion and ataxia <span class='highlight'>acutely worsen</span>." },
+            { type: "Pathophysiology", text: "Glucose metabolism depletes remaining stores of a critical <span class='highlight'>coenzyme for pyruvate dehydrogenase</span> and alpha-ketoglutarate dehydrogenase." },
+            { type: "Final Clue", text: "The deficient vitamin is <span class='highlight'>water-soluble</span>, acts as a coenzyme in the form of <span class='highlight'>thiamine pyrophosphate (TPP)</span>." }
+        ],
+        options: ["Vitamin B12 (cobalamin) deficiency", "Vitamin B1 (thiamine) deficiency", "Vitamin B3 (niacin) deficiency", "Folate deficiency"],
+        correctIndex: 1,
+        diagnosis: "Wernicke Encephalopathy (Thiamine/B1 Deficiency)",
+        explanation: "Wernicke encephalopathy presents with the classic triad: confusion, ophthalmoplegia, and ataxia. In alcoholic or malnourished patients, always give thiamine BEFORE glucose — glucose metabolism consumes thiamine as a cofactor (TPP), and giving glucose first can precipitate or worsen Wernicke encephalopathy by depleting the last remaining thiamine stores."
+    },
+    {
+        id: 3,
+        step: "Step 1",
+        clues: [
+            { type: "Chief Complaint", text: "A 32-year-old woman presents with <span class='highlight'>double vision</span> and drooping eyelids that <span class='highlight'>worsen throughout the day</span>." },
+            { type: "Review of Systems", text: "She reports increased <span class='highlight'>fatigue with repetitive activities</span> — her jaw tires while chewing and her voice becomes nasal by evening." },
+            { type: "Imaging", text: "Chest CT reveals an <span class='highlight'>anterior mediastinal mass</span> consistent with a thymoma." },
+            { type: "Diagnostic Test", text: "Administration of <span class='highlight'>edrophonium</span> (a short-acting acetylcholinesterase inhibitor) produces rapid, temporary improvement in her ptosis." },
+            { type: "Pathophysiology", text: "Autoantibodies cause <span class='highlight'>complement-mediated destruction</span> of receptors at the neuromuscular junction, reducing the number of functional receptors." },
+            { type: "Final Clue", text: "The antibodies specifically target the <span class='highlight'>postsynaptic nicotinic acetylcholine receptors</span>." }
+        ],
+        options: ["Lambert-Eaton syndrome", "Myasthenia Gravis", "Botulism", "Organophosphate toxicity"],
+        correctIndex: 1,
+        diagnosis: "Myasthenia Gravis",
+        explanation: "Myasthenia gravis is caused by autoantibodies against postsynaptic nicotinic acetylcholine receptors at the neuromuscular junction. Key features: fatigable weakness (worse with use, better with rest), ptosis, diplopia, association with thymoma. Edrophonium (Tensilon) test is positive. Distinguish from Lambert-Eaton (presynaptic calcium channels, improves with use, associated with small cell lung cancer)."
+    },
+    {
+        id: 4,
+        step: "Step 1",
+        clues: [
+            { type: "Chief Complaint", text: "A 19-year-old man is brought to the ED after a <span class='highlight'>motorcycle accident</span> with chest trauma." },
+            { type: "Vitals", text: "BP <span class='highlight'>80/50 mmHg</span>, HR <span class='highlight'>130/min</span>. He is in obvious distress." },
+            { type: "Physical Exam", text: "He has <span class='highlight'>distended neck veins</span> (JVD) and <span class='highlight'>muffled heart sounds</span> on auscultation." },
+            { type: "ECG", text: "12-lead ECG shows <span class='highlight'>low-voltage QRS complexes</span> and electrical alternans." },
+            { type: "Hemodynamics", text: "Right heart catheterization shows <span class='highlight'>equalization of diastolic pressures</span> across all four chambers." },
+            { type: "Final Clue", text: "This is <span class='highlight'>Beck's triad</span>: hypotension + JVD + muffled heart sounds. The pericardial space is filled with fluid compressing the heart." }
+        ],
+        options: ["Tension pneumothorax", "Cardiac tamponade", "Massive pulmonary embolism", "Aortic dissection"],
+        correctIndex: 1,
+        diagnosis: "Cardiac Tamponade",
+        explanation: "Cardiac tamponade causes equalization of diastolic pressures across all four chambers due to fluid compressing the heart within the pericardial sac. Beck's triad: hypotension, distended neck veins (JVD), muffled heart sounds. ECG shows low-voltage QRS and electrical alternans. Treatment: emergent pericardiocentesis. Pulsus paradoxus (>10 mmHg drop in systolic BP during inspiration) is also characteristic."
+    },
+    {
+        id: 5,
+        step: "Step 1",
+        clues: [
+            { type: "Chief Complaint", text: "A 45-year-old woman presents with <span class='highlight'>episodic headaches and palpitations</span>." },
+            { type: "Vitals", text: "BP is <span class='highlight'>210/120 mmHg</span> with <span class='highlight'>profuse diaphoresis</span>." },
+            { type: "History", text: "Episodes are paroxysmal, lasting 15–20 minutes, and accompanied by <span class='highlight'>anxiety, tremor, and pallor</span>." },
+            { type: "Lab / Imaging", text: "CT scan shows a <span class='highlight'>4-cm adrenal mass</span>. Urine metanephrines are <span class='highlight'>markedly elevated</span>." },
+            { type: "Genetics", text: "She is found to have a <span class='highlight'>RET proto-oncogene mutation</span>, raising concern for MEN 2A syndrome." },
+            { type: "Final Clue", text: "Before surgical resection, <span class='highlight'>alpha-blockade must be given BEFORE beta-blockade</span> to prevent hypertensive crisis from unopposed alpha stimulation." }
+        ],
+        options: ["Conn syndrome (aldosteronoma)", "Pheochromocytoma", "Cushing syndrome", "Renal artery stenosis"],
+        correctIndex: 1,
+        diagnosis: "Pheochromocytoma",
+        explanation: "Pheochromocytoma is a catecholamine-secreting tumor of the adrenal medulla (chromaffin cells). Classic triad: episodic headaches, diaphoresis, and palpitations with hypertension. Diagnose with elevated urine metanephrines/VMA. Rule of 10s: 10% bilateral, 10% extra-adrenal, 10% malignant, 10% familial. Critical pre-op management: phenoxybenzamine (irreversible alpha-blocker) first, then beta-blocker — never beta-block first."
+    },
+    {
+        id: 6,
+        step: "Step 2 CK",
+        clues: [
+            { type: "Chief Complaint", text: "A 28-year-old woman presents with <span class='highlight'>fatigue and weight gain</span> over the past 6 months." },
+            { type: "Review of Systems", text: "She endorses <span class='highlight'>constipation, cold intolerance</span>, dry skin, and hair thinning." },
+            { type: "Physical Exam", text: "The thyroid is <span class='highlight'>painless and symmetrically enlarged</span>. Deep tendon reflexes show delayed relaxation phase." },
+            { type: "Labs", text: "TSH is <span class='highlight'>elevated</span>, free T4 is <span class='highlight'>low</span>. Anti-TPO antibodies are strongly positive." },
+            { type: "Pathology", text: "Biopsy shows <span class='highlight'>lymphocytic infiltration with germinal centers</span> and Hürthle cell metaplasia." },
+            { type: "Final Clue", text: "This is the <span class='highlight'>most common cause of hypothyroidism in iodine-sufficient areas</span>. It is an autoimmune destruction of thyroid tissue." }
+        ],
+        options: ["Graves disease", "Hashimoto thyroiditis", "Subacute (de Quervain) thyroiditis", "Riedel thyroiditis"],
+        correctIndex: 1,
+        diagnosis: "Hashimoto Thyroiditis",
+        explanation: "Hashimoto thyroiditis is the most common cause of hypothyroidism in iodine-sufficient regions. It's an autoimmune condition with anti-TPO and anti-thyroglobulin antibodies causing lymphocytic infiltration and destruction of thyroid follicles. Biopsy: lymphocytic infiltrate with germinal centers and Hürthle (oxyphilic) cells. Painless, non-tender goiter. Increased risk of thyroid lymphoma (marginal zone B-cell)."
+    },
+    {
+        id: 7,
+        step: "Step 1",
+        clues: [
+            { type: "Chief Complaint", text: "A 35-year-old African American man presents with <span class='highlight'>persistent cough and hemoptysis</span>." },
+            { type: "Imaging", text: "Chest X-ray shows bilateral <span class='highlight'>hilar lymphadenopathy</span> and diffuse interstitial infiltrates." },
+            { type: "Skin Finding", text: "He has violaceous, non-tender <span class='highlight'>skin nodules</span> on his shins. Biopsy shows <span class='highlight'>non-caseating granulomas</span>." },
+            { type: "Labs", text: "Serum <span class='highlight'>calcium is elevated</span>. Serum ACE level is also elevated." },
+            { type: "Pathophysiology", text: "The hypercalcemia is caused by <span class='highlight'>1-alpha-hydroxylase activity in activated macrophages</span> within the granulomas, producing excess active vitamin D." },
+            { type: "Final Clue", text: "This condition causes <span class='highlight'>non-caseating granulomas in multiple organ systems</span> and classically affects young African American women (though it affects men too). Treatment is corticosteroids." }
+        ],
+        options: ["Tuberculosis", "Sarcoidosis", "Berylliosis", "Histoplasmosis"],
+        correctIndex: 1,
+        diagnosis: "Sarcoidosis",
+        explanation: "Sarcoidosis causes non-caseating granulomas in multiple organ systems. Classic presentation: bilateral hilar lymphadenopathy, erythema nodosum, elevated ACE, hypercalcemia (from 1-alpha-hydroxylase in macrophages converting 25-OH vitamin D to 1,25-(OH)₂ vitamin D). Unlike TB, granulomas are NON-caseating. Bell palsy is the most common cranial nerve finding. Treatment: corticosteroids."
+    }
+];
+
+// ─── GAME STATE ───
+let state = {
+    puzzleIndex: 0,
+    currentClue: 0,
+    maxClues: 6,
+    answered: false,
+    score: 0,
+    results: [], // 'correct', 'wrong', 'skipped' per clue reveal
+    streak: parseInt(localStorage.getItem('dxr_streak') || '0'),
+    gamesPlayed: parseInt(localStorage.getItem('dxr_played') || '0'),
+    todayPlayed: false
+};
+
+// Determine today's puzzle based on date
+function getTodayPuzzle() {
+    const now = new Date();
+    const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
+    return PUZZLES[dayOfYear % PUZZLES.length];
+}
+
+let puzzle = getTodayPuzzle();
+
+// ─── INIT ───
+document.getElementById('streakCount').textContent = state.streak;
+
+function startGame() {
+    document.getElementById('tutorialOverlay').classList.add('hidden');
+    renderRoundTracker();
+    revealNextClue();
+    renderAnswerOptions();
+}
+
+function showTutorial() {
+    document.getElementById('tutorialOverlay').classList.remove('hidden');
+}
+
+// ─── ROUND TRACKER ───
+function renderRoundTracker() {
+    const tracker = document.getElementById('roundTracker');
+    tracker.innerHTML = '';
+    for (let i = 0; i < state.maxClues; i++) {
+        const pip = document.createElement('div');
+        pip.className = 'round-pip';
+        if (i < state.currentClue) pip.classList.add('skipped');
+        if (i === state.currentClue) pip.classList.add('active');
+        tracker.appendChild(pip);
+    }
+}
+
+// ─── REVEAL NEXT CLUE ───
+function revealNextClue() {
+    if (state.currentClue >= state.maxClues || state.answered) return;
+
+    const clue = puzzle.clues[state.currentClue];
+
+    // Move current clue to previous
+    const prevArea = document.getElementById('prevClues');
+    const currentArea = document.getElementById('currentClueArea');
+
+    if (state.currentClue > 0) {
+        const prevClue = puzzle.clues[state.currentClue - 1];
+        const prevEl = document.createElement('div');
+        prevEl.className = 'prev-clue';
+        prevEl.innerHTML = `
+            <span class="prev-clue-number">${state.currentClue}</span>
+            <span class="prev-clue-text">${stripHTML(prevClue.text)}</span>
+        `;
+        prevEl.onclick = function() { this.classList.toggle('expanded'); };
+        prevArea.appendChild(prevEl);
+    }
+
+    // Render new current clue
+    currentArea.innerHTML = `
+        <div class="clue-card">
+            <div class="clue-header">
+                <span class="clue-round-label">Clue ${state.currentClue + 1} of ${state.maxClues}</span>
+                <span class="clue-type-badge">${clue.type}</span>
+            </div>
+            <div class="clue-body">
+                <div class="clue-text">${clue.text}</div>
+            </div>
+        </div>
+    `;
+
+    state.currentClue++;
+    renderRoundTracker();
+
+    // Update skip button
+    const nextBtn = document.getElementById('nextClueBtn');
+    if (state.currentClue >= state.maxClues) {
+        nextBtn.textContent = 'No more clues — make your call!';
+        nextBtn.disabled = true;
+        nextBtn.style.opacity = '0.4';
+    } else {
+        nextBtn.textContent = `Next Clue (${state.maxClues - state.currentClue} left) →`;
+    }
+}
+
+// ─── ANSWER OPTIONS ───
+function renderAnswerOptions() {
+    const container = document.getElementById('answerOptions');
+    container.innerHTML = '';
+    const letters = ['A', 'B', 'C', 'D'];
+    puzzle.options.forEach((opt, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'answer-btn';
+        btn.innerHTML = `
+            <span class="answer-letter">${letters[i]}</span>
+            <span>${opt}</span>
+        `;
+        btn.onclick = () => submitAnswer(i, btn);
+        container.appendChild(btn);
+    });
+}
+
+// ─── SUBMIT ANSWER ───
+function submitAnswer(index, btnEl) {
+    if (state.answered) return;
+    state.answered = true;
+
+    const isCorrect = index === puzzle.correctIndex;
+    state.score = isCorrect ? (state.maxClues - state.currentClue + 1) : 0;
+
+    // Build results array
+    for (let i = 0; i < state.currentClue - 1; i++) {
+        state.results.push('skipped');
+    }
+    state.results.push(isCorrect ? 'correct' : 'wrong');
+    while (state.results.length < state.maxClues) {
+        state.results.push('unused');
+    }
+
+    // Update streak
+    if (isCorrect) {
+        state.streak++;
+    } else {
+        state.streak = 0;
+    }
+    localStorage.setItem('dxr_streak', state.streak.toString());
+    state.gamesPlayed++;
+    localStorage.setItem('dxr_played', state.gamesPlayed.toString());
+
+    // Visual feedback
+    const allBtns = document.querySelectorAll('.answer-btn');
+    allBtns.forEach((b, i) => {
+        b.disabled = true;
+        if (i === puzzle.correctIndex) b.classList.add('correct-answer');
+        if (i === index && !isCorrect) b.classList.add('wrong-answer');
+    });
+
+    // Update round tracker
+    const pips = document.querySelectorAll('.round-pip');
+    pips.forEach((p, i) => {
+        p.classList.remove('active');
+        if (i < state.currentClue - 1) p.classList.add('skipped');
+        if (i === state.currentClue - 1) p.classList.add(isCorrect ? 'correct' : 'wrong');
+    });
+
+    // Hide action row
+    document.getElementById('actionRow').classList.add('hidden');
+
+    // Show results after delay
+    setTimeout(() => showResults(isCorrect), 1200);
+
+    if (isCorrect) spawnConfetti();
+}
+
+// ─── RESULTS SCREEN ───
+function showResults(isCorrect) {
+    const emojiGrid = buildEmojiGrid();
+    const scorePercent = (state.score / state.maxClues) * 100;
+    const heading = isCorrect
+        ? (state.currentClue <= 2 ? "Attending-level read." : state.currentClue <= 4 ? "Solid differential." : "Got there eventually!")
+        : "Not this time.";
+    const sub = isCorrect
+        ? `You nailed it in ${state.currentClue} clue${state.currentClue > 1 ? 's' : ''}. ${state.currentClue <= 2 ? 'That\'s elite pattern recognition.' : 'Review the explanation below.'}`
+        : "Here's the breakdown so you nail it on test day.";
+
+    const overlay = document.createElement('div');
+    overlay.className = 'results-overlay';
+    overlay.innerHTML = `
+        <div class="results-card">
+            <div class="results-score-ring">
+                <svg viewBox="0 0 120 120">
+                    <circle class="bg" cx="60" cy="60" r="54"/>
+                    <circle class="fg" id="scoreFg" cx="60" cy="60" r="54"/>
+                </svg>
+                <div class="score-text">
+                    <span>${isCorrect ? state.score : 0}</span>
+                    <small>/ ${state.maxClues}</small>
+                </div>
+            </div>
+            <div class="results-heading">${heading}</div>
+            <div class="results-sub">${sub}</div>
+            <div class="results-emoji-grid">${emojiGrid}</div>
+            <div class="results-diagnosis">
+                <div class="results-diagnosis-label">📋 Diagnosis & High-Yield Review</div>
+                <div class="results-diagnosis-text">
+                    <strong style="color: var(--teal)">${puzzle.diagnosis}</strong><br><br>
+                    ${puzzle.explanation}
+                </div>
+            </div>
+            <button class="share-btn" onclick="shareResults()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+                Share Your Score
+            </button>
+            <button class="secondary-btn" onclick="window.location.reload()">Play Again (Practice Mode)</button>
+            <div class="cta-banner" style="margin-top: 16px">
+                <div class="cta-banner-title">Want more reps like this?</div>
+                <div class="cta-banner-text">USMLE300 bootcamps drill these exact high-yield patterns in small groups of 3–5.</div>
+                <a href="https://usmle300.com" target="_blank" class="cta-banner-btn">See Bootcamp Options →</a>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(overlay);
+
+    // Animate score ring
+    requestAnimationFrame(() => {
+        const fg = document.getElementById('scoreFg');
+        const circumference = 2 * Math.PI * 54; // ~339
+        fg.style.strokeDashoffset = circumference - (circumference * scorePercent / 100);
+    });
+}
+
+// ─── EMOJI GRID ───
+function buildEmojiGrid() {
+    const map = {
+        'correct': '🟢',
+        'wrong': '🔴',
+        'skipped': '⬛',
+        'unused': '⬜'
+    };
+    return state.results.map(r => map[r]).join('');
+}
+
+// ─── SHARE ───
+function shareResults() {
+    const emojiGrid = buildEmojiGrid();
+    const text = `DxRounds #${puzzle.id}\n${state.score}/${state.maxClues} — ${state.currentClue} clue${state.currentClue > 1 ? 's' : ''}\n\n${emojiGrid}\n\nPlay free → usmle300.com/dxrounds`;
+
+    if (navigator.share) {
+        navigator.share({ text }).catch(() => copyToClipboard(text));
+    } else {
+        copyToClipboard(text);
+    }
+}
+
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        showToast('Copied to clipboard!');
+    }).catch(() => {
+        showToast('Couldn\'t copy — try manually.');
+    });
+}
+
+function showToast(msg) {
+    const existing = document.querySelector('.toast');
+    if (existing) existing.remove();
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = msg;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 2200);
+}
+
+// ─── CONFETTI ───
+function spawnConfetti() {
+    const colors = ['#e84057', '#f0c040', '#3de8c5', '#722F37', '#ff6b81', '#ffffff'];
+    for (let i = 0; i < 40; i++) {
+        const el = document.createElement('div');
+        el.className = 'confetti-piece';
+        el.style.left = Math.random() * 100 + 'vw';
+        el.style.top = '-10px';
+        el.style.background = colors[Math.floor(Math.random() * colors.length)];
+        el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+        el.style.width = (4 + Math.random() * 8) + 'px';
+        el.style.height = (4 + Math.random() * 8) + 'px';
+        el.style.animationDuration = (1.5 + Math.random() * 2) + 's';
+        el.style.animationDelay = (Math.random() * 0.8) + 's';
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 4000);
+    }
+}
+
+// ─── HELPERS ───
+function stripHTML(html) {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || '';
+}
+</script>
+</body>
+</html>
