@@ -1,0 +1,574 @@
+[
+  {
+    "step": "Step 1",
+    "text": "A 24-year-old man with a history of recurrent pulmonary infections and a groin abscess presents for evaluation. Culture of the abscess grows Staphylococcus aureus. A nitroblue tetrazolium test reveals a lack of blue pigment formation in his neutrophils.",
+    "lead": "This patient is most likely deficient in which of the following enzymes?",
+    "options": [
+      "Glutathione peroxidase",
+      "Myeloperoxidase",
+      "NADPH oxidase",
+      "Superoxide dismutase"
+    ],
+    "correct": 2,
+    "objective": "Chronic Granulomatous Disease is caused by NADPH oxidase deficiency, leading to inability to generate reactive oxygen species for bacterial killing."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 55-year-old man with chronic alcoholism presents with confusion, ophthalmoplegia, and ataxia. He is given intravenous glucose without prior vitamin supplementation, and his symptoms acutely worsen.",
+    "lead": "Deficiency of which of the following vitamins most likely caused this patient's deterioration?",
+    "options": [
+      "Vitamin B6 (pyridoxine)",
+      "Vitamin B1 (thiamine)",
+      "Vitamin B12 (cobalamin)",
+      "Vitamin B3 (niacin)"
+    ],
+    "correct": 1,
+    "objective": "Wernicke encephalopathy is caused by thiamine (B1) deficiency. Giving glucose before thiamine depletes remaining thiamine stores and worsens symptoms."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 32-year-old woman presents with diplopia and ptosis that worsens throughout the day. Chest CT reveals an anterior mediastinal mass. Her symptoms improve after administration of edrophonium.",
+    "lead": "Antibodies in this patient are most likely directed against which of the following?",
+    "options": [
+      "Presynaptic calcium channels",
+      "Postsynaptic acetylcholine receptors",
+      "Presynaptic acetylcholine release sites",
+      "Muscle-specific kinase only"
+    ],
+    "correct": 1,
+    "objective": "Myasthenia gravis is caused by autoantibodies against postsynaptic acetylcholine receptors at the neuromuscular junction, often associated with thymoma."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 67-year-old man with a 40-pack-year smoking history presents with a centrally located lung mass on chest CT. Biopsy shows nests of cells with intercellular bridges and keratin pearls.",
+    "lead": "Which of the following is the most likely diagnosis?",
+    "options": [
+      "Adenocarcinoma",
+      "Small cell carcinoma",
+      "Squamous cell carcinoma",
+      "Large cell carcinoma"
+    ],
+    "correct": 2,
+    "objective": "Squamous cell carcinoma of the lung is centrally located, associated with smoking, and shows keratin pearls and intercellular bridges on histology."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 19-year-old man is brought to the emergency department after a motorcycle accident. His blood pressure is 80/50 mmHg, heart rate is 130/min, and he has distended neck veins and muffled heart sounds. ECG shows low-voltage QRS complexes.",
+    "lead": "Which of the following hemodynamic findings is most likely present in this patient?",
+    "options": [
+      "Increased cardiac output",
+      "Equalization of diastolic pressures",
+      "Decreased central venous pressure",
+      "Increased pulse pressure"
+    ],
+    "correct": 1,
+    "objective": "Cardiac tamponade causes equalization of diastolic pressures across all four chambers. Beck triad: hypotension, distended neck veins, muffled heart sounds."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 4-year-old boy is brought in for evaluation of progressive clumsiness and frequent falls. Physical examination shows calf pseudohypertrophy and a positive Gowers sign. Muscle biopsy reveals absence of dystrophin staining.",
+    "lead": "Which of the following best describes the inheritance pattern of this condition?",
+    "options": [
+      "Autosomal dominant",
+      "Autosomal recessive",
+      "X-linked recessive",
+      "Mitochondrial"
+    ],
+    "correct": 2,
+    "objective": "Duchenne muscular dystrophy is X-linked recessive, caused by frameshift mutations in the dystrophin gene on chromosome Xp21."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 45-year-old woman presents with episodic headaches, palpitations, and diaphoresis. Her blood pressure is 210/120 mmHg. CT scan shows a 4-cm adrenal mass. Urine metanephrines are markedly elevated.",
+    "lead": "Before surgical resection, which of the following medications should be administered first?",
+    "options": [
+      "Propranolol",
+      "Phenoxybenzamine",
+      "Metyrosine",
+      "Hydralazine"
+    ],
+    "correct": 1,
+    "objective": "Pheochromocytoma requires alpha-blockade (phenoxybenzamine) before beta-blockade to prevent unopposed alpha stimulation and hypertensive crisis."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 28-year-old woman presents with fatigue, weight gain, constipation, and cold intolerance. Labs show elevated TSH and low free T4. She has a painless, symmetrically enlarged thyroid.",
+    "lead": "Biopsy of this patient's thyroid would most likely show which of the following?",
+    "options": [
+      "Papillary architecture with psammoma bodies",
+      "Lymphocytic infiltration with germinal centers",
+      "Parafollicular cell hyperplasia",
+      "Granulomatous inflammation with giant cells"
+    ],
+    "correct": 1,
+    "objective": "Hashimoto thyroiditis is the most common cause of hypothyroidism in iodine-sufficient areas and shows lymphocytic infiltration with germinal centers and Hurthle cells."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 35-year-old man presents with a persistent cough and hemoptysis. Chest X-ray shows hilar lymphadenopathy and bilateral infiltrates. Biopsy of a skin lesion shows non-caseating granulomas. Serum calcium is elevated.",
+    "lead": "Which of the following is the most likely mechanism of this patient's hypercalcemia?",
+    "options": [
+      "Increased PTH secretion from parathyroid adenoma",
+      "1-alpha-hydroxylase activity in macrophages",
+      "Osteolytic bone metastases",
+      "Increased PTHrP production by tumor"
+    ],
+    "correct": 1,
+    "objective": "Sarcoidosis causes hypercalcemia through 1-alpha-hydroxylase activity in activated macrophages within granulomas, converting 25-OH vitamin D to active 1,25-(OH)2 vitamin D."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 22-year-old woman presents with recurrent deep vein thromboses. She has a family history of venous thromboembolism. Laboratory testing shows resistance to activated protein C.",
+    "lead": "Which of the following is the most likely underlying genetic mutation?",
+    "options": [
+      "Prothrombin G20210A mutation",
+      "Factor V Leiden mutation",
+      "Antithrombin III deficiency",
+      "Protein S deficiency"
+    ],
+    "correct": 1,
+    "objective": "Factor V Leiden is the most common inherited thrombophilia and causes activated protein C resistance. The mutant Factor V cannot be inactivated normally by protein C."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 65-year-old man presents with a resting tremor, cogwheel rigidity, and bradykinesia. His symptoms started unilaterally and have gradually progressed. He has a shuffling gait with decreased arm swing.",
+    "lead": "Loss of dopaminergic neurons in which of the following brain regions is most responsible for this patient's motor symptoms?",
+    "options": [
+      "Caudate nucleus",
+      "Substantia nigra pars compacta",
+      "Subthalamic nucleus",
+      "Globus pallidus externa"
+    ],
+    "correct": 1,
+    "objective": "Parkinson disease results from loss of dopaminergic neurons in the substantia nigra pars compacta, leading to decreased dopamine in the nigrostriatal pathway."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 10-year-old boy presents with periorbital edema and dark-colored urine 2 weeks after a sore throat. Blood pressure is 150/95 mmHg. Urinalysis shows RBC casts and mild proteinuria. Serum complement C3 is low.",
+    "lead": "Which of the following is the most likely diagnosis?",
+    "options": [
+      "IgA nephropathy",
+      "Post-streptococcal glomerulonephritis",
+      "Minimal change disease",
+      "Membranoproliferative glomerulonephritis"
+    ],
+    "correct": 1,
+    "objective": "Post-streptococcal glomerulonephritis presents 1-3 weeks after Group A strep pharyngitis with nephritic syndrome (hematuria, RBC casts, hypertension) and low C3 complement."
+  },
+  {
+    "step": "Step 1",
+    "text": "A newborn is found to have ambiguous genitalia. Serum potassium is 6.2 mEq/L, sodium is 128 mEq/L, and 17-hydroxyprogesterone is markedly elevated.",
+    "lead": "Deficiency of which of the following enzymes is most likely responsible?",
+    "options": [
+      "11-beta-hydroxylase",
+      "17-alpha-hydroxylase",
+      "21-hydroxylase",
+      "Aromatase"
+    ],
+    "correct": 2,
+    "objective": "21-hydroxylase deficiency is the most common cause of congenital adrenal hyperplasia. It causes salt-wasting (hyponatremia, hyperkalemia) and virilization from androgen excess."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 52-year-old woman with a history of rheumatic heart disease presents with sudden onset of right-sided weakness and expressive aphasia. ECG shows an irregularly irregular rhythm with no discernible P waves.",
+    "lead": "Which of the following is the most likely mechanism of this patient's neurological symptoms?",
+    "options": [
+      "Hypertensive intracerebral hemorrhage",
+      "Cardioembolism from left atrial thrombus",
+      "Atherosclerotic plaque rupture in the carotid",
+      "Lacunar infarct from lipohyalinosis"
+    ],
+    "correct": 1,
+    "objective": "Atrial fibrillation (irregularly irregular rhythm, no P waves) promotes stasis and thrombus formation in the left atrial appendage, leading to cardioembolic stroke."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 7-year-old boy presents with easy bruising and prolonged bleeding after dental procedures. Lab studies show a prolonged PTT but normal PT and normal platelet count. His bleeding time is also prolonged.",
+    "lead": "Which of the following is the most likely diagnosis?",
+    "options": [
+      "Hemophilia A",
+      "Von Willebrand disease",
+      "Bernard-Soulier syndrome",
+      "Glanzmann thrombasthenia"
+    ],
+    "correct": 1,
+    "objective": "Von Willebrand disease shows prolonged PTT (vWF carries Factor VIII) AND prolonged bleeding time (vWF mediates platelet adhesion). Hemophilia A has prolonged PTT but normal bleeding time."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 40-year-old woman presents with periorbital and pedal edema and foamy urine. Urinalysis shows 4+ protein with oval fat bodies. Serum albumin is 2.1 g/dL. Renal biopsy shows normal light microscopy with effacement of podocyte foot processes on electron microscopy.",
+    "lead": "Which of the following is the most likely diagnosis?",
+    "options": [
+      "Membranous nephropathy",
+      "Minimal change disease",
+      "Focal segmental glomerulosclerosis",
+      "IgA nephropathy"
+    ],
+    "correct": 1,
+    "objective": "Minimal change disease shows normal light microscopy with foot process effacement on EM. It is the most common cause of nephrotic syndrome in children and also occurs in adults."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 38-year-old woman presents with a neck mass that moves with swallowing. Fine needle aspiration shows cells with clear nuclei described as having an 'Orphan Annie eye' appearance, nuclear grooves, and psammoma bodies.",
+    "lead": "Which of the following is the most likely diagnosis?",
+    "options": [
+      "Follicular thyroid carcinoma",
+      "Papillary thyroid carcinoma",
+      "Medullary thyroid carcinoma",
+      "Anaplastic thyroid carcinoma"
+    ],
+    "correct": 1,
+    "objective": "Papillary thyroid carcinoma is the most common thyroid malignancy, characterized by Orphan Annie eye nuclei, nuclear grooves, and psammoma bodies. Spreads via lymphatics."
+  },
+  {
+    "step": "Step 1",
+    "text": "A medical student is studying the effect of a new drug on blood pressure in 200 patients. She wants to compare the mean systolic blood pressure before and after treatment in the same group of patients.",
+    "lead": "Which of the following statistical tests is most appropriate for this analysis?",
+    "options": [
+      "Chi-squared test",
+      "Paired t-test",
+      "ANOVA",
+      "Independent two-sample t-test"
+    ],
+    "correct": 1,
+    "objective": "A paired t-test compares means of two related measurements from the same subjects (before and after). An independent t-test would be for two separate groups."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 3-month-old infant presents with failure to thrive, hepatomegaly, and fasting hypoglycemia. Labs show elevated lactate, uric acid, and triglycerides. A liver biopsy shows marked glycogen accumulation in hepatocytes.",
+    "lead": "Deficiency of which of the following enzymes is most likely responsible?",
+    "options": [
+      "Acid maltase (alpha-glucosidase)",
+      "Glucose-6-phosphatase",
+      "Debranching enzyme",
+      "Muscle glycogen phosphorylase"
+    ],
+    "correct": 1,
+    "objective": "Von Gierke disease (GSD type I) is caused by glucose-6-phosphatase deficiency, leading to severe fasting hypoglycemia with hepatomegaly, lactic acidosis, hyperuricemia, and hyperlipidemia."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 25-year-old man presents with sudden onset of severe testicular pain. On exam, the left testicle is high-riding with an absent cremasteric reflex. Doppler ultrasound shows decreased blood flow to the left testicle.",
+    "lead": "Which of the following is the most appropriate next step in management?",
+    "options": [
+      "Antibiotics for suspected epididymitis",
+      "Manual detorsion and observation",
+      "Emergent surgical exploration",
+      "Scrotal elevation and ice application"
+    ],
+    "correct": 2,
+    "objective": "Testicular torsion is a surgical emergency requiring emergent exploration and detorsion within 6 hours to prevent testicular infarction. Absent cremasteric reflex is highly suggestive."
+  },
+  {
+    "step": "Step 1",
+    "text": "A 60-year-old man with chronic kidney disease has a serum calcium of 7.8 mg/dL and phosphorus of 6.5 mg/dL. His intact PTH is markedly elevated at 450 pg/mL.",
+    "lead": "Which of the following best explains the elevated PTH in this patient?",
+    "options": [
+      "Primary hyperparathyroidism from adenoma",
+      "Decreased renal 1-alpha-hydroxylase activity",
+      "Ectopic PTH production by tumor",
+      "Increased intestinal calcium absorption"
+    ],
+    "correct": 1,
+    "objective": "In CKD, reduced 1-alpha-hydroxylase activity in the kidney decreases active vitamin D, causing hypocalcemia and compensatory secondary hyperparathyroidism."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 58-year-old man presents with acute onset of the 'worst headache of his life' followed by brief loss of consciousness. CT scan of the head shows hyperdensity in the basal cisterns and sylvian fissures.",
+    "lead": "Which of the following is the most appropriate next step in management?",
+    "options": [
+      "Lumbar puncture",
+      "CT angiography of the head",
+      "MRI of the brain with diffusion weighting",
+      "Administration of IV alteplase"
+    ],
+    "correct": 1,
+    "objective": "Subarachnoid hemorrhage (thunderclap headache with blood in basal cisterns on CT) requires CT angiography to identify the source, usually a berry aneurysm, for surgical planning."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 34-year-old woman presents with 6 weeks of bloody diarrhea, tenesmus, and crampy abdominal pain. Colonoscopy shows continuous inflammation starting at the rectum and extending to the splenic flexure with pseudopolyps. Biopsy shows crypt abscesses limited to the mucosa.",
+    "lead": "Which of the following is the most appropriate initial treatment?",
+    "options": [
+      "Methotrexate",
+      "Mesalamine",
+      "Infliximab",
+      "Oral budesonide"
+    ],
+    "correct": 1,
+    "objective": "Moderate ulcerative colitis (continuous from rectum, mucosal involvement, pseudopolyps) is initially treated with 5-ASA agents like mesalamine. Biologics are reserved for refractory cases."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 50-year-old man presents with sudden onset of severe, tearing chest pain radiating to the back. He has poorly controlled hypertension. Blood pressure is 200/110 in the right arm and 160/90 in the left arm. Chest X-ray shows a widened mediastinum.",
+    "lead": "Which of the following is the most appropriate next diagnostic step?",
+    "options": [
+      "Troponin levels and serial ECGs",
+      "CT angiography of the chest",
+      "Transthoracic echocardiography",
+      "Cardiac catheterization"
+    ],
+    "correct": 1,
+    "objective": "Aortic dissection (tearing pain radiating to back, BP differential between arms, widened mediastinum) is diagnosed with CT angiography for classification and surgical planning."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 28-year-old woman at 34 weeks gestation presents with severe headache, visual changes, and right upper quadrant pain. BP is 170/110 mmHg. Labs show platelets 85,000, AST 320, LDH 680, and schistocytes on peripheral smear.",
+    "lead": "Which of the following is the most appropriate next step in management?",
+    "options": [
+      "Magnesium sulfate and expectant management until 37 weeks",
+      "Magnesium sulfate, betamethasone, and plan for delivery",
+      "Platelet transfusion and continued observation",
+      "Plasma exchange therapy"
+    ],
+    "correct": 1,
+    "objective": "HELLP syndrome (Hemolysis, Elevated Liver enzymes, Low Platelets) with severe features requires delivery. Magnesium prevents seizures and betamethasone promotes fetal lung maturity at 34 weeks."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 65-year-old man with type 2 diabetes and hypertension has an HbA1c of 8.5% on metformin 2000 mg daily. His BMI is 34, eGFR is 45 mL/min, and he has heart failure with reduced ejection fraction (EF 35%).",
+    "lead": "Which of the following medications should be added to his regimen?",
+    "options": [
+      "Glipizide",
+      "Empagliflozin",
+      "Pioglitazone",
+      "Insulin glargine"
+    ],
+    "correct": 1,
+    "objective": "SGLT2 inhibitors (empagliflozin) provide cardiovascular and renal benefits in patients with HFrEF and CKD. Pioglitazone is contraindicated in heart failure due to fluid retention."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 42-year-old man presents with progressive fatigue, joint pain in his hands, and new-onset diabetes mellitus. His skin has a bronze discoloration. Serum ferritin is 1,800 ng/mL and transferrin saturation is 75%.",
+    "lead": "Which of the following is the most appropriate next step in diagnosis?",
+    "options": [
+      "Liver biopsy with iron staining",
+      "HFE gene testing",
+      "MRI of the liver with iron quantification",
+      "Serum ceruloplasmin level"
+    ],
+    "correct": 1,
+    "objective": "Hereditary hemochromatosis (bronze diabetes, arthropathy, elevated ferritin and transferrin saturation) is confirmed with HFE gene testing for C282Y and H63D mutations."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 23-year-old woman presents with 2 weeks of fatigue, sore throat, and cervical lymphadenopathy. She developed a diffuse maculopapular rash after starting amoxicillin 3 days ago. Peripheral blood smear shows atypical lymphocytes.",
+    "lead": "Which of the following is the most likely diagnosis?",
+    "options": [
+      "Streptococcal pharyngitis with drug allergy",
+      "Infectious mononucleosis",
+      "Acute HIV infection",
+      "Acute lymphoblastic leukemia"
+    ],
+    "correct": 1,
+    "objective": "EBV infectious mononucleosis classically presents with pharyngitis, lymphadenopathy, atypical lymphocytes, and a maculopapular rash triggered by amoxicillin or ampicillin."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 68-year-old man presents with painless jaundice, dark urine, clay-colored stools, and a 15-pound weight loss. Physical exam reveals a non-tender, palpable gallbladder. CT shows a mass in the head of the pancreas.",
+    "lead": "Which of the following is the most appropriate next step in evaluation?",
+    "options": [
+      "ERCP with stent placement",
+      "Endoscopic ultrasound with fine needle aspiration",
+      "Immediate surgical consultation for Whipple procedure",
+      "Serum CA 19-9 level"
+    ],
+    "correct": 1,
+    "objective": "Pancreatic head mass with painless jaundice and Courvoisier sign requires tissue diagnosis. EUS-FNA is the preferred method for sampling pancreatic masses with high accuracy."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 40-year-old woman presents with palpitations, heat intolerance, weight loss, and tremor. She has lid lag, diffuse thyroid enlargement, and pretibial myxedema. TSH is undetectable and free T4 is elevated.",
+    "lead": "Which of the following additional findings is most specific to this patient's underlying condition?",
+    "options": [
+      "Elevated radioactive iodine uptake",
+      "Thyroid peroxidase antibodies",
+      "Exophthalmos",
+      "Thyroid bruit on auscultation"
+    ],
+    "correct": 2,
+    "objective": "Exophthalmos (Graves ophthalmopathy) and pretibial myxedema are specific to Graves disease. Other causes of hyperthyroidism do not produce these extrathyroidal manifestations."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 19-year-old college student presents with fever, severe headache, neck stiffness, and photophobia developing over 12 hours. A petechial rash is noted on the trunk. LP shows elevated WBC with neutrophil predominance, elevated protein, and low glucose.",
+    "lead": "Which of the following is the most likely causative organism?",
+    "options": [
+      "Streptococcus pneumoniae",
+      "Neisseria meningitidis",
+      "Listeria monocytogenes",
+      "Herpes simplex virus"
+    ],
+    "correct": 1,
+    "objective": "Neisseria meningitidis is the leading cause of bacterial meningitis in adolescents and young adults, classically presenting with petechial or purpuric rash and rapid clinical deterioration."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 30-year-old man presents with 3 months of morning stiffness lasting over 1 hour, lower back pain, and difficulty bending forward. Symptoms improve with exercise. Pelvic X-ray shows bilateral sacroiliitis. HLA-B27 is positive.",
+    "lead": "Which of the following is the most appropriate initial pharmacotherapy?",
+    "options": [
+      "Methotrexate",
+      "NSAIDs",
+      "Prednisone",
+      "Adalimumab"
+    ],
+    "correct": 1,
+    "objective": "Ankylosing spondylitis (inflammatory back pain improving with activity, sacroiliitis, HLA-B27 positive) is initially treated with NSAIDs. TNF inhibitors are second-line for refractory disease."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 75-year-old woman presents with acute onset of right-sided weakness and slurred speech beginning 90 minutes ago. CT head is negative for hemorrhage. Blood pressure is 185/100 mmHg and glucose is 110 mg/dL.",
+    "lead": "Which of the following is the most appropriate next step in management?",
+    "options": [
+      "Aspirin 325 mg orally",
+      "IV alteplase",
+      "Emergent mechanical thrombectomy",
+      "Lower blood pressure to below 140/90 before treatment"
+    ],
+    "correct": 1,
+    "objective": "Acute ischemic stroke within the 4.5-hour tPA window (no hemorrhage on CT) should receive IV alteplase. BP up to 185/110 is permissible before thrombolysis."
+  },
+  {
+    "step": "Step 2 CK",
+    "text": "A 48-year-old man presents with crushing substernal chest pain for 2 hours. ECG shows ST elevation in leads II, III, and aVF with reciprocal changes in I and aVL. The nearest PCI-capable facility is 30 minutes away by ambulance.",
+    "lead": "Which of the following is the most appropriate next step in management?",
+    "options": [
+      "Administer fibrinolytic therapy immediately",
+      "Transfer for primary percutaneous coronary intervention",
+      "Obtain cardiac troponin levels before deciding",
+      "Start nitroglycerin infusion and observe"
+    ],
+    "correct": 1,
+    "objective": "For STEMI, primary PCI is preferred when door-to-balloon time can be achieved within 120 minutes including transfer. A 30-minute transfer is well within this window."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 58-year-old man with alcohol use disorder is admitted with hematemesis. BP is 88/55 mmHg and HR is 120/min. Two large-bore IVs are placed and fluid resuscitation is initiated. After initial stabilization, he continues to have bloody emesis.",
+    "lead": "Which of the following is the most appropriate next step in management?",
+    "options": [
+      "Emergent surgery for gastrectomy",
+      "IV proton pump inhibitor bolus and drip",
+      "Emergent upper endoscopy",
+      "Transjugular intrahepatic portosystemic shunt"
+    ],
+    "correct": 2,
+    "objective": "Upper GI bleeding with hemodynamic instability requires emergent upper endoscopy after resuscitation for both diagnosis and therapeutic intervention (banding, sclerotherapy, clips)."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 45-year-old woman with type 2 diabetes and hypertension presents for follow-up. Her blood pressure is 148/92 mmHg on no antihypertensives. Current medications include metformin only. Urine microalbumin-to-creatinine ratio is 45 mg/g.",
+    "lead": "Which of the following antihypertensive agents is most appropriate as first-line therapy?",
+    "options": [
+      "Amlodipine",
+      "Lisinopril",
+      "Metoprolol",
+      "Hydrochlorothiazide"
+    ],
+    "correct": 1,
+    "objective": "ACE inhibitors (lisinopril) are first-line for diabetic patients with microalbuminuria because they reduce intraglomerular pressure and slow progression of diabetic nephropathy."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 70-year-old man with metastatic colon cancer is admitted with bowel obstruction. He has been told his cancer is not curable. He tells the team he does not want surgery and would prefer comfort measures only.",
+    "lead": "Which of the following is the most appropriate next step?",
+    "options": [
+      "Consult psychiatry to evaluate for depression before accepting his decision",
+      "Assess his decision-making capacity and respect his wishes if intact",
+      "Proceed with surgery as it is the standard of care",
+      "Contact his family to make the decision on his behalf"
+    ],
+    "correct": 1,
+    "objective": "A patient with intact decision-making capacity has the right to refuse any treatment, including life-sustaining care. Capacity assessment involves understanding, appreciation, reasoning, and choice."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 35-year-old woman presents with 4 weeks of depressed mood, anhedonia, insomnia, poor concentration, fatigue, and feelings of worthlessness. She denies suicidal ideation and has no prior psychiatric history.",
+    "lead": "Which of the following is the most appropriate initial treatment?",
+    "options": [
+      "Cognitive behavioral therapy alone",
+      "SSRI antidepressant alone",
+      "Combined SSRI plus cognitive behavioral therapy",
+      "Electroconvulsive therapy"
+    ],
+    "correct": 2,
+    "objective": "Moderate major depressive disorder is optimally treated with combination therapy (SSRI plus CBT). Combined treatment is more effective than either monotherapy for moderate-severe depression."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 62-year-old man with a 30-pack-year smoking history presents for routine health maintenance. He has no symptoms and his exam is unremarkable. He currently smokes 1 pack per day.",
+    "lead": "Which of the following screening tests is most appropriate to recommend?",
+    "options": [
+      "Chest X-ray annually",
+      "Low-dose CT scan of the chest annually",
+      "Sputum cytology every 2 years",
+      "No lung cancer screening is indicated"
+    ],
+    "correct": 1,
+    "objective": "USPSTF recommends annual low-dose CT for adults aged 50-80 with a 20+ pack-year history who currently smoke or quit within the past 15 years."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 78-year-old woman hospitalized for pneumonia becomes acutely confused, agitated, and unable to recognize her family on hospital day 3. She was fully oriented on admission. She has visual hallucinations and her symptoms fluctuate throughout the day.",
+    "lead": "Which of the following is the most appropriate initial management?",
+    "options": [
+      "Start haloperidol standing dose for agitation",
+      "Identify and treat the underlying cause",
+      "Start donepezil for presumed new-onset dementia",
+      "Apply physical restraints for safety"
+    ],
+    "correct": 1,
+    "objective": "Delirium (acute onset, fluctuating course, inattention, altered consciousness) requires identification and treatment of the underlying cause. Antipsychotics are reserved for severe, dangerous agitation."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 52-year-old woman undergoes elective cholecystectomy. On postoperative day 1, she has a temperature of 38.6 C. Chest X-ray shows mild bibasilar atelectasis. She is using incentive spirometry. The wound appears clean.",
+    "lead": "Which of the following is the most likely cause of her fever?",
+    "options": [
+      "Surgical site infection",
+      "Urinary tract infection",
+      "Atelectasis",
+      "Deep vein thrombosis"
+    ],
+    "correct": 2,
+    "objective": "Postoperative fever on day 1 is most commonly from atelectasis (Wind). The mnemonic Wind, Water, Wound, Walking, Wonder drugs maps to the typical timeline of post-op fever causes."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 40-year-old man presents with recurrent episodes of severe right flank pain radiating to the groin. CT shows a 3-mm stone in the right ureter. He has had 3 calcium oxalate stones in the past year. Twenty-four-hour urine shows hypercalciuria.",
+    "lead": "Which of the following is the most appropriate long-term preventive therapy?",
+    "options": [
+      "Potassium citrate",
+      "Hydrochlorothiazide",
+      "Allopurinol",
+      "Acetazolamide"
+    ],
+    "correct": 1,
+    "objective": "Thiazide diuretics (HCTZ) reduce urinary calcium excretion by enhancing calcium reabsorption in the distal tubule, preventing recurrent calcium stones in patients with hypercalciuria."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 68-year-old man with chronic atrial fibrillation, hypertension, diabetes, and a prior stroke is currently on aspirin 81 mg daily. His CHA2DS2-VASc score is 5.",
+    "lead": "Which of the following changes to his antithrombotic therapy is most appropriate?",
+    "options": [
+      "Continue aspirin alone",
+      "Add clopidogrel to aspirin",
+      "Switch to a direct oral anticoagulant such as apixaban",
+      "Switch to warfarin with a target INR of 2-3"
+    ],
+    "correct": 2,
+    "objective": "DOACs (apixaban, rivaroxaban) are preferred over warfarin for stroke prevention in non-valvular atrial fibrillation. A CHA2DS2-VASc score of 2 or greater warrants anticoagulation, not aspirin alone."
+  },
+  {
+    "step": "Step 3",
+    "text": "A 50-year-old man presents with sudden severe epigastric pain. He has a rigid, board-like abdomen with diffuse rebound tenderness and guarding. An upright chest X-ray shows free air under the diaphragm.",
+    "lead": "Which of the following is the most appropriate next step?",
+    "options": [
+      "CT scan of the abdomen with oral contrast",
+      "Upper GI endoscopy",
+      "Emergent exploratory laparotomy",
+      "IV proton pump inhibitor and observation"
+    ],
+    "correct": 2,
+    "objective": "Pneumoperitoneum (free air under diaphragm) with peritonitis signs (rigid abdomen, rebound, guarding) indicates a perforated viscus requiring emergent surgical exploration."
+  }
+]
