@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#faf8f2">
+    <title>PathoLinks | Daily USMLE Connections by USMLE300</title>
+    <meta name="description" content="Find 4 hidden groups of 4 medical concepts. A daily USMLE puzzle from USMLE300.">
+    <meta property="og:title" content="PathoLinks — Daily USMLE Connections">
+    <meta property="og:description" content="I solved today's PathoLinks with no mistakes. Can you?">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #faf8f2;
+            --bg-warm: #f5f0e6;
+            --surface: #ffffff;
+            --border: #e6e0d4;
+            --border-dark: #d4cfc3;
+            --text: #1a1815;
+            --text-mid: #5c574d;
+            --text-light: #9c9588;
+            --burgundy: #722F37;
+            --burgundy-light: rgba(114,47,55,0.08);
+            --burgundy-mid: rgba(114,47,55,0.15);
+
+            /* Group colors — warm editorial palette */
+            --g1: #c17d2f; --g1-bg: #fdf3e4; --g1-border: #e8c98a;
+            --g2: #2e7d5f; --g2-bg: #e8f5ef; --g2-border: #8cc5ac;
+            --g3: #5b4fa8; --g3-bg: #eeedf8; --g3-border: #a9a0d4;
+            --g4: #b84040; --g4-bg: #fdeaea; --g4-border: #dfa0a0;
+
+            --radius: 10px;
+            --radius-lg: 14px;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+        html { height:100%; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100%;
+            display: flex; flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* ═══ HEADER ═══ */
+        .header {
+            padding: 14px 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid var(--border);
+            background: var(--bg);
+            position: sticky; top:0; z-index:100;
+        }
+        .header-brand {
+            display: flex; align-items: center; gap: 10px;
+            text-decoration: none;
+        }
+        .header-logo {
+            font-family: 'Fraunces', serif;
+            font-weight: 900; font-size: 1.2rem;
+            color: var(--burgundy);
+            letter-spacing: -0.02em;
+        }
+        .header-logo span {
+            display: inline-block;
+            background: var(--burgundy);
+            color: white;
+            padding: 1px 7px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            vertical-align: middle;
+            margin-left: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 0.05em;
+        }
+        .header-actions { display:flex; gap:8px; align-items:center; }
+        .h-btn {
+            width:36px; height:36px;
+            border-radius:8px;
+            background:transparent;
+            border:1px solid var(--border);
+            color:var(--text-mid);
+            display:flex; align-items:center; justify-content:center;
+            cursor:pointer; font-size:1rem;
+            transition:all 0.15s;
+        }
+        .h-btn:hover { background:var(--bg-warm); border-color:var(--border-dark); }
+        .streak-pill {
+            display:flex; align-items:center; gap:4px;
+            padding:5px 12px;
+            border-radius:20px;
+            background:var(--burgundy-light);
+            border:1px solid var(--burgundy-mid);
+            font-family:'JetBrains Mono',monospace;
+            font-size:0.78rem; font-weight:700;
+            color:var(--burgundy);
+        }
+
+        /* ═══ MAIN ═══ */
+        .main {
+            flex:1;
+            max-width:520px;
+            width:100%;
+            margin:0 auto;
+            padding:20px 16px 100px;
+        }
+
+        /* ═══ PUZZLE TITLE ═══ */
+        .puzzle-header {
+            text-align:center;
+            margin-bottom:20px;
+        }
+        .puzzle-number {
+            font-family:'JetBrains Mono',monospace;
+            font-size:0.65rem; font-weight:700;
+            text-transform:uppercase; letter-spacing:0.18em;
+            color:var(--text-light);
+            margin-bottom:4px;
+        }
+        .puzzle-instruction {
+            font-family:'Fraunces',serif;
+            font-size:1.1rem; font-weight:700;
+            color:var(--text);
+        }
+
+        /* ═══ SOLVED GROUPS ═══ */
+        .solved-groups { display:flex; flex-direction:column; gap:8px; margin-bottom:8px; }
+        .solved-group {
+            border-radius:var(--radius);
+            padding:14px 16px;
+            text-align:center;
+            animation: groupReveal 0.5s cubic-bezier(0.16,1,0.3,1);
+        }
+        @keyframes groupReveal {
+            from { opacity:0; transform:scaleY(0.6); }
+            to { opacity:1; transform:scaleY(1); }
+        }
+        .solved-group.g1 { background:var(--g1-bg); border:1px solid var(--g1-border); }
+        .solved-group.g2 { background:var(--g2-bg); border:1px solid var(--g2-border); }
+        .solved-group.g3 { background:var(--g3-bg); border:1px solid var(--g3-border); }
+        .solved-group.g4 { background:var(--g4-bg); border:1px solid var(--g4-border); }
+        .solved-group-name {
+            font-family:'Fraunces',serif;
+            font-weight:800; font-size:0.82rem;
+            text-transform:uppercase; letter-spacing:0.06em;
+            margin-bottom:4px;
+        }
+        .solved-group.g1 .solved-group-name { color:var(--g1); }
+        .solved-group.g2 .solved-group-name { color:var(--g2); }
+        .solved-group.g3 .solved-group-name { color:var(--g3); }
+        .solved-group.g4 .solved-group-name { color:var(--g4); }
+        .solved-group-items {
+            font-size:0.8rem; font-weight:600;
+            color:var(--text-mid);
+        }
+
+        /* ═══ TILE GRID ═══ */
+        .tile-grid {
+            display:grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap:7px;
+            margin-bottom:16px;
+        }
+        .tile {
+            aspect-ratio: 1.4;
+            border-radius:var(--radius);
+            border:2px solid var(--border);
+            background:var(--surface);
+            display:flex; align-items:center; justify-content:center;
+            text-align:center;
+            padding:6px 4px;
+            font-size:0.72rem;
+            font-weight:700;
+            color:var(--text);
+            cursor:pointer;
+            transition:all 0.15s;
+            user-select:none;
+            -webkit-user-select:none;
+            line-height:1.25;
+        }
+        .tile:hover:not(.selected):not(.locked) {
+            border-color:var(--border-dark);
+            background:var(--bg-warm);
+        }
+        .tile:active:not(.locked) { transform:scale(0.95); }
+        .tile.selected {
+            background:var(--burgundy);
+            border-color:var(--burgundy);
+            color:white;
+            box-shadow:0 2px 12px rgba(114,47,55,0.2);
+        }
+        .tile.locked {
+            cursor:default;
+            opacity:0;
+            pointer-events:none;
+            transition:opacity 0.3s, transform 0.3s;
+            transform:scale(0.8);
+        }
+        .tile.wrong-shake {
+            animation: tileShake 0.5s ease;
+        }
+        @keyframes tileShake {
+            0%,100%{transform:translateX(0)}
+            20%{transform:translateX(-4px)}
+            40%{transform:translateX(4px)}
+            60%{transform:translateX(-3px)}
+            80%{transform:translateX(3px)}
+        }
+
+        @media(max-width:400px) {
+            .tile { font-size:0.65rem; padding:4px 3px; }
+        }
+
+        /* ═══ LIVES ═══ */
+        .lives-row {
+            display:flex; justify-content:center; align-items:center; gap:8px;
+            margin-bottom:16px;
+        }
+        .lives-label {
+            font-size:0.78rem; font-weight:600; color:var(--text-light);
+        }
+        .lives-dots { display:flex; gap:4px; }
+        .life-dot {
+            width:14px; height:14px;
+            border-radius:50%;
+            background:var(--burgundy);
+            transition:all 0.3s;
+        }
+        .life-dot.lost {
+            background:var(--border);
+            transform:scale(0.7);
+        }
+
+        /* ═══ ACTION BUTTONS ═══ */
+        .actions {
+            display:flex; gap:8px; justify-content:center;
+        }
+        .action-btn {
+            padding:12px 28px;
+            border-radius:50px;
+            font-family:'DM Sans',sans-serif;
+            font-weight:700; font-size:0.85rem;
+            cursor:pointer; transition:all 0.15s;
+        }
+        .shuffle-btn {
+            background:transparent;
+            border:1.5px solid var(--border-dark);
+            color:var(--text-mid);
+        }
+        .shuffle-btn:hover { background:var(--bg-warm); }
+        .deselect-btn {
+            background:transparent;
+            border:1.5px solid var(--border-dark);
+            color:var(--text-mid);
+        }
+        .deselect-btn:hover { background:var(--bg-warm); }
+        .submit-btn {
+            background:var(--burgundy);
+            border:1.5px solid var(--burgundy);
+            color:white;
+        }
+        .submit-btn:hover { background:#5a252c; }
+        .submit-btn:disabled {
+            background:var(--border);
+            border-color:var(--border);
+            color:var(--text-light);
+            cursor:default;
+        }
+
+        /* ═══ TOAST ═══ */
+        .toast {
+            position:fixed;
+            top:72px; left:50%; transform:translateX(-50%);
+            background:var(--text);
+            color:var(--bg);
+            padding:10px 22px;
+            border-radius:8px;
+            font-size:0.85rem; font-weight:700;
+            z-index:400;
+            animation: toastIn 0.3s ease, toastOut 0.3s ease 1.5s forwards;
+            box-shadow:0 6px 24px rgba(0,0,0,0.15);
+        }
+        @keyframes toastIn { from{opacity:0;transform:translateX(-50%) translateY(-8px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
+        @keyframes toastOut { from{opacity:1} to{opacity:0} }
+
+        /* ═══ RESULTS OVERLAY ═══ */
+        .results-overlay {
+            position:fixed; inset:0;
+            background:rgba(250,248,242,0.92);
+            backdrop-filter:blur(20px);
+            -webkit-backdrop-filter:blur(20px);
+            z-index:200;
+            display:flex; align-items:center; justify-content:center;
+            padding:20px;
+            animation:fadeIn 0.4s ease;
+        }
+        @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+        .results-card {
+            background:var(--surface);
+            border:1px solid var(--border);
+            border-radius:20px;
+            padding:32px 28px;
+            max-width:420px; width:100%;
+            text-align:center;
+            box-shadow:0 20px 60px rgba(0,0,0,0.08);
+            animation: slideUp 0.5s cubic-bezier(0.16,1,0.3,1);
+        }
+        @keyframes slideUp {
+            from{transform:translateY(30px);opacity:0}
+            to{transform:translateY(0);opacity:1}
+        }
+        .results-emoji { font-size:3rem; margin-bottom:8px; }
+        .results-heading {
+            font-family:'Fraunces',serif;
+            font-weight:900; font-size:1.4rem;
+            margin-bottom:4px;
+        }
+        .results-sub {
+            color:var(--text-mid); font-size:0.88rem;
+            margin-bottom:20px; line-height:1.6;
+        }
+        .results-grid-display {
+            background:var(--bg-warm);
+            border-radius:var(--radius);
+            padding:16px;
+            margin-bottom:20px;
+            font-size:1.5rem;
+            letter-spacing:4px;
+            line-height:1.8;
+        }
+        .results-groups {
+            text-align:left;
+            margin-bottom:20px;
+        }
+        .results-group-row {
+            padding:10px 0;
+        }
+        .results-group-row + .results-group-row {
+            border-top:1px solid var(--border);
+        }
+        .results-group-label {
+            font-family:'Fraunces',serif;
+            font-weight:800; font-size:0.75rem;
+            text-transform:uppercase; letter-spacing:0.08em;
+            margin-bottom:3px;
+        }
+        .results-group-label.c1 { color:var(--g1); }
+        .results-group-label.c2 { color:var(--g2); }
+        .results-group-label.c3 { color:var(--g3); }
+        .results-group-label.c4 { color:var(--g4); }
+        .results-group-items-text {
+            font-size:0.8rem; color:var(--text-mid); font-weight:500;
+        }
+
+        .share-btn-pl {
+            width:100%; padding:14px;
+            border-radius:50px; border:none;
+            background:var(--burgundy);
+            color:white;
+            font-family:'DM Sans',sans-serif;
+            font-weight:700; font-size:0.9rem;
+            cursor:pointer; transition:all 0.15s;
+            margin-bottom:10px;
+        }
+        .share-btn-pl:hover { background:#5a252c; }
+        .secondary-btn-pl {
+            width:100%; padding:12px;
+            border-radius:50px;
+            border:1px solid var(--border-dark);
+            background:transparent;
+            color:var(--text-mid);
+            font-family:'DM Sans',sans-serif;
+            font-weight:600; font-size:0.82rem;
+            cursor:pointer;
+            margin-bottom:10px;
+        }
+        .secondary-btn-pl:hover { background:var(--bg-warm); }
+
+        .cta-pl {
+            background:linear-gradient(135deg, var(--burgundy), #8a3542);
+            border-radius:var(--radius-lg);
+            padding:20px;
+            text-align:center;
+            color:white;
+        }
+        .cta-pl-title {
+            font-family:'Fraunces',serif;
+            font-weight:800; font-size:1rem;
+            margin-bottom:4px;
+        }
+        .cta-pl-text { font-size:0.8rem; opacity:0.8; margin-bottom:12px; }
+        .cta-pl-btn {
+            display:inline-flex; align-items:center; gap:6px;
+            padding:10px 24px; border-radius:8px; border:none;
+            background:white; color:var(--burgundy);
+            font-family:'DM Sans',sans-serif;
+            font-weight:700; font-size:0.85rem;
+            cursor:pointer; text-decoration:none;
+        }
+
+        /* ═══ TUTORIAL ═══ */
+        .tutorial-overlay {
+            position:fixed; inset:0;
+            background:rgba(250,248,242,0.95);
+            backdrop-filter:blur(20px);
+            z-index:300;
+            display:flex; align-items:center; justify-content:center;
+            padding:20px;
+        }
+        .tutorial-card {
+            background:var(--surface);
+            border:1px solid var(--border);
+            border-radius:20px;
+            padding:32px 28px;
+            max-width:400px; width:100%;
+            text-align:center;
+            box-shadow:0 20px 60px rgba(0,0,0,0.08);
+            animation:slideUp 0.5s cubic-bezier(0.16,1,0.3,1);
+        }
+        .tut-icon { font-size:2.5rem; margin-bottom:8px; }
+        .tut-title {
+            font-family:'Fraunces',serif;
+            font-weight:900; font-size:1.5rem;
+            margin-bottom:4px; color:var(--burgundy);
+        }
+        .tut-desc {
+            color:var(--text-mid); font-size:0.9rem;
+            margin-bottom:20px; line-height:1.6;
+        }
+        .tut-rules {
+            text-align:left; margin-bottom:24px;
+        }
+        .tut-rule {
+            display:flex; gap:12px; align-items:flex-start;
+            padding:8px 0;
+        }
+        .tut-rule + .tut-rule { border-top:1px solid var(--border); }
+        .tut-rule-icon { font-size:1.2rem; flex-shrink:0; margin-top:2px; }
+        .tut-rule-text { font-size:0.85rem; color:var(--text); line-height:1.5; }
+        .tut-rule-text strong { color:var(--burgundy); }
+        .tut-play-btn {
+            width:100%; padding:16px;
+            border-radius:50px; border:none;
+            background:var(--burgundy);
+            color:white;
+            font-family:'Fraunces',serif;
+            font-weight:800; font-size:1.05rem;
+            cursor:pointer;
+        }
+        .tut-play-btn:hover { background:#5a252c; }
+
+        .hidden { display:none!important; }
+    </style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<div class="header">
+    <a href="https://usmle300.com" class="header-brand" target="_blank">
+        <div class="header-logo">PathoLinks <span>USMLE</span></div>
+    </a>
+    <div class="header-actions">
+        <div class="streak-pill">🔥 <span id="streakCount">0</span></div>
+        <button class="h-btn" onclick="showTutorial()">?</button>
+    </div>
+</div>
+
+<!-- ═══ MAIN ═══ -->
+<div class="main" id="mainArea">
+    <div class="puzzle-header">
+        <div class="puzzle-number" id="puzzleNumber">PathoLinks #1</div>
+        <div class="puzzle-instruction">Find 4 groups of 4 connected medical concepts</div>
+    </div>
+
+    <div class="solved-groups" id="solvedGroups"></div>
+    <div class="tile-grid" id="tileGrid"></div>
+    <div class="lives-row">
+        <span class="lives-label">Mistakes remaining:</span>
+        <div class="lives-dots" id="livesDots"></div>
+    </div>
+    <div class="actions">
+        <button class="action-btn shuffle-btn" onclick="shuffleTiles()">Shuffle</button>
+        <button class="action-btn deselect-btn" onclick="deselectAll()">Deselect</button>
+        <button class="action-btn submit-btn" id="submitBtn" onclick="submitGuess()" disabled>Submit</button>
+    </div>
+</div>
+
+<!-- ═══ TUTORIAL ═══ -->
+<div class="tutorial-overlay" id="tutorialOverlay">
+    <div class="tutorial-card">
+        <div class="tut-icon">🔗</div>
+        <div class="tut-title">PathoLinks</div>
+        <div class="tut-desc">Find 4 groups of 4 medical concepts that share a hidden connection.</div>
+        <div class="tut-rules">
+            <div class="tut-rule">
+                <div class="tut-rule-icon">🎯</div>
+                <div class="tut-rule-text">Select <strong>4 terms</strong> you think belong together, then tap Submit.</div>
+            </div>
+            <div class="tut-rule">
+                <div class="tut-rule-icon">⚠️</div>
+                <div class="tut-rule-text">Some terms could fit multiple groups — find the <strong>most precise</strong> connection.</div>
+            </div>
+            <div class="tut-rule">
+                <div class="tut-rule-icon">❤️</div>
+                <div class="tut-rule-text">You get <strong>4 mistakes</strong>. After that, the puzzle is over.</div>
+            </div>
+            <div class="tut-rule">
+                <div class="tut-rule-icon">🟡🟢🟣🔴</div>
+                <div class="tut-rule-text">Groups are color-coded by difficulty. <strong>Gold is easiest, red is hardest.</strong></div>
+            </div>
+        </div>
+        <button class="tut-play-btn" onclick="startGame()">Play PathoLinks</button>
+    </div>
+</div>
+
+<script>
+// ═══ PUZZLE DATABASE ═══
+// Each puzzle has 4 groups of 4 terms. Terms are designed with cross-group ambiguity.
+const PUZZLES = [
+    {
+        id: 1,
+        groups: [
+            {
+                name: "Causes of Nephrotic Syndrome",
+                color: 1,
+                items: ["Minimal Change Disease", "Membranous Nephropathy", "Diabetic Nephropathy", "Focal Segmental GS"]
+            },
+            {
+                name: "Side Effects of Lithium",
+                color: 2,
+                items: ["Nephrogenic DI", "Hypothyroidism", "Ebstein Anomaly", "Tremor"]
+            },
+            {
+                name: "Components of Beck's Triad",
+                color: 3,
+                items: ["Hypotension", "Muffled Heart Sounds", "JVD", "Pulsus Paradoxus"]
+            },
+            {
+                name: "Findings in Wernicke Encephalopathy",
+                color: 4,
+                items: ["Confusion", "Ophthalmoplegia", "Ataxia", "Confabulation"]
+            }
+        ]
+    },
+    {
+        id: 2,
+        groups: [
+            {
+                name: "Autosomal Dominant Diseases",
+                color: 1,
+                items: ["Marfan Syndrome", "Huntington Disease", "ADPKD", "Familial Hypercholesterolemia"]
+            },
+            {
+                name: "Causes of Metabolic Acidosis (↑ Anion Gap)",
+                color: 2,
+                items: ["Methanol", "Uremia", "DKA", "Lactic Acidosis"]
+            },
+            {
+                name: "Features of Cushing Syndrome",
+                color: 3,
+                items: ["Moon Facies", "Buffalo Hump", "Striae", "Hyperglycemia"]
+            },
+            {
+                name: "Extraintestinal Manifestations of IBD",
+                color: 4,
+                items: ["Uveitis", "Erythema Nodosum", "Pyoderma Gangrenosum", "Sacroiliitis"]
+            }
+        ]
+    },
+    {
+        id: 3,
+        groups: [
+            {
+                name: "Causes of Pancreatitis (GET SMASHHED)",
+                color: 1,
+                items: ["Gallstones", "Ethanol", "Hypertriglyceridemia", "Scorpion Sting"]
+            },
+            {
+                name: "Treatments Requiring Monitoring for Agranulocytosis",
+                color: 2,
+                items: ["Clozapine", "Carbamazepine", "Methimazole", "Dapsone"]
+            },
+            {
+                name: "Findings in Turner Syndrome (45,X)",
+                color: 3,
+                items: ["Shield Chest", "Coarctation of Aorta", "Streak Gonads", "Lymphedema"]
+            },
+            {
+                name: "Features of Tetralogy of Fallot",
+                color: 4,
+                items: ["VSD", "Overriding Aorta", "RV Hypertrophy", "Pulmonary Stenosis"]
+            }
+        ]
+    },
+    {
+        id: 4,
+        groups: [
+            {
+                name: "Tumor Markers",
+                color: 1,
+                items: ["AFP", "CA-125", "PSA", "CEA"]
+            },
+            {
+                name: "Drugs That Cause SLE-like Syndrome",
+                color: 2,
+                items: ["Hydralazine", "Procainamide", "Isoniazid", "Minocycline"]
+            },
+            {
+                name: "Features of MEN 1 (3 P's)",
+                color: 3,
+                items: ["Pituitary Adenoma", "Parathyroid Hyperplasia", "Pancreatic Tumor", "Prolactinoma"]
+            },
+            {
+                name: "Virchow's Triad (Thrombosis Risk)",
+                color: 4,
+                items: ["Stasis", "Endothelial Injury", "Hypercoagulability", "Immobilization"]
+            }
+        ]
+    },
+    {
+        id: 5,
+        groups: [
+            {
+                name: "Classic Buzzwords for Pheochromocytoma",
+                color: 1,
+                items: ["Episodic Headache", "Diaphoresis", "Palpitations", "Elevated Metanephrines"]
+            },
+            {
+                name: "Organisms Causing Atypical Pneumonia",
+                color: 2,
+                items: ["Mycoplasma", "Chlamydophila", "Legionella", "Coxiella"]
+            },
+            {
+                name: "Criteria for Major Depressive Episode",
+                color: 3,
+                items: ["Anhedonia", "Insomnia", "Worthlessness", "Psychomotor Retardation"]
+            },
+            {
+                name: "Drugs That Prolong QT Interval",
+                color: 4,
+                items: ["Sotalol", "Haloperidol", "Erythromycin", "Ondansetron"]
+            }
+        ]
+    },
+    {
+        id: 6,
+        groups: [
+            {
+                name: "X-Linked Recessive Conditions",
+                color: 1,
+                items: ["Duchenne MD", "Hemophilia A", "G6PD Deficiency", "Fabry Disease"]
+            },
+            {
+                name: "Causes of Macrocytic Anemia",
+                color: 2,
+                items: ["B12 Deficiency", "Folate Deficiency", "Liver Disease", "Reticulocytosis"]
+            },
+            {
+                name: "Psammoma Body Associations",
+                color: 3,
+                items: ["Papillary Thyroid CA", "Meningioma", "Serous Cystadenocarcinoma", "Mesothelioma"]
+            },
+            {
+                name: "Triggers for Acute Intermittent Porphyria",
+                color: 4,
+                items: ["Alcohol", "Barbiturates", "Starvation", "Oral Contraceptives"]
+            }
+        ]
+    },
+    {
+        id: 7,
+        groups: [
+            {
+                name: "Causes of Secondary Hypertension",
+                color: 1,
+                items: ["Renal Artery Stenosis", "Pheochromocytoma", "Conn Syndrome", "Coarctation"]
+            },
+            {
+                name: "HLA Associations",
+                color: 2,
+                items: ["HLA-B27", "HLA-DR4", "HLA-DQ2", "HLA-DR2"]
+            },
+            {
+                name: "Features of Sarcoidosis",
+                color: 3,
+                items: ["Non-Caseating Granulomas", "Bilateral Hilar LAD", "Elevated ACE", "Hypercalcemia"]
+            },
+            {
+                name: "Classic Embryology Defects",
+                color: 4,
+                items: ["Meckel Diverticulum", "Thyroglossal Duct Cyst", "Branchial Cleft Cyst", "Patent Urachus"]
+            }
+        ]
+    }
+];
+
+// ═══ STATE ═══
+let puzzle = null;
+let tiles = [];
+let selected = [];
+let solved = [];
+let lives = 4;
+let mistakes = 0;
+let guessHistory = []; // array of { groupIndex or -1 for wrong }
+let gameOver = false;
+let streak = parseInt(localStorage.getItem('pl_streak') || '0');
+
+document.getElementById('streakCount').textContent = streak;
+
+// Pick today's puzzle
+function getTodayPuzzle() {
+    const now = new Date();
+    const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
+    return PUZZLES[dayOfYear % PUZZLES.length];
+}
+
+function startGame() {
+    document.getElementById('tutorialOverlay').classList.add('hidden');
+    puzzle = getTodayPuzzle();
+    document.getElementById('puzzleNumber').textContent = `PathoLinks #${puzzle.id}`;
+
+    // Build flat tile array
+    tiles = [];
+    puzzle.groups.forEach((g, gi) => {
+        g.items.forEach(item => {
+            tiles.push({ text: item, groupIndex: gi });
+        });
+    });
+    shuffleArray(tiles);
+    selected = [];
+    solved = [];
+    lives = 4;
+    mistakes = 0;
+    guessHistory = [];
+    gameOver = false;
+
+    renderTiles();
+    renderLives();
+    updateSubmitBtn();
+}
+
+function showTutorial() {
+    document.getElementById('tutorialOverlay').classList.remove('hidden');
+}
+
+// ═══ RENDER ═══
+function renderTiles() {
+    const grid = document.getElementById('tileGrid');
+    grid.innerHTML = '';
+    tiles.forEach((t, i) => {
+        if (solved.includes(t.groupIndex)) return; // skip solved
+        const el = document.createElement('div');
+        el.className = 'tile';
+        el.textContent = t.text;
+        el.dataset.index = i;
+        if (selected.includes(i)) el.classList.add('selected');
+        el.onclick = () => toggleTile(i);
+        grid.appendChild(el);
+    });
+}
+
+function renderLives() {
+    const dots = document.getElementById('livesDots');
+    dots.innerHTML = '';
+    for (let i = 0; i < 4; i++) {
+        const d = document.createElement('div');
+        d.className = 'life-dot';
+        if (i < mistakes) d.classList.add('lost');
+        dots.appendChild(d);
+    }
+}
+
+function renderSolvedGroups() {
+    const area = document.getElementById('solvedGroups');
+    area.innerHTML = '';
+    solved.forEach(gi => {
+        const g = puzzle.groups[gi];
+        const el = document.createElement('div');
+        el.className = `solved-group g${g.color}`;
+        el.innerHTML = `
+            <div class="solved-group-name">${g.name}</div>
+            <div class="solved-group-items">${g.items.join(' • ')}</div>
+        `;
+        area.appendChild(el);
+    });
+}
+
+// ═══ TILE INTERACTION ═══
+function toggleTile(index) {
+    if (gameOver) return;
+    if (solved.includes(tiles[index].groupIndex)) return;
+
+    if (selected.includes(index)) {
+        selected = selected.filter(i => i !== index);
+    } else {
+        if (selected.length >= 4) return;
+        selected.push(index);
+    }
+    renderTiles();
+    updateSubmitBtn();
+}
+
+function updateSubmitBtn() {
+    document.getElementById('submitBtn').disabled = selected.length !== 4;
+}
+
+function deselectAll() {
+    selected = [];
+    renderTiles();
+    updateSubmitBtn();
+}
+
+function shuffleTiles() {
+    // Only shuffle unsolved tiles
+    const unsolvedTiles = tiles.filter(t => !solved.includes(t.groupIndex));
+    shuffleArray(unsolvedTiles);
+    let ui = 0;
+    tiles = tiles.map(t => {
+        if (solved.includes(t.groupIndex)) return t;
+        return unsolvedTiles[ui++];
+    });
+    selected = [];
+    renderTiles();
+    updateSubmitBtn();
+}
+
+// ═══ SUBMIT GUESS ═══
+function submitGuess() {
+    if (selected.length !== 4 || gameOver) return;
+
+    const selectedGroups = selected.map(i => tiles[i].groupIndex);
+
+    // Check if all 4 are same group
+    const allSame = selectedGroups.every(g => g === selectedGroups[0]);
+
+    if (allSame) {
+        // CORRECT
+        const groupIndex = selectedGroups[0];
+        solved.push(groupIndex);
+        guessHistory.push({ correct: true, groupIndex });
+
+        // Animate tiles out
+        const tileEls = document.querySelectorAll('.tile.selected');
+        tileEls.forEach(el => el.classList.add('locked'));
+
+        setTimeout(() => {
+            selected = [];
+            renderSolvedGroups();
+            renderTiles();
+            updateSubmitBtn();
+
+            if (solved.length === 4) {
+                // Won!
+                gameOver = true;
+                streak++;
+                localStorage.setItem('pl_streak', streak.toString());
+                document.getElementById('streakCount').textContent = streak;
+                setTimeout(() => showResults(true), 600);
+            }
+        }, 400);
+    } else {
+        // WRONG — check if 3 of 4 are from same group (close miss)
+        const groupCounts = {};
+        selectedGroups.forEach(g => { groupCounts[g] = (groupCounts[g]||0)+1; });
+        const maxCount = Math.max(...Object.values(groupCounts));
+
+        if (maxCount === 3) {
+            showToast('So close! One away...');
+        }
+
+        mistakes++;
+        guessHistory.push({ correct: false });
+
+        // Shake animation
+        const tileEls = document.querySelectorAll('.tile.selected');
+        tileEls.forEach(el => {
+            el.classList.add('wrong-shake');
+            setTimeout(() => el.classList.remove('wrong-shake'), 600);
+        });
+
+        renderLives();
+
+        if (mistakes >= 4) {
+            // Game over — reveal all
+            gameOver = true;
+            streak = 0;
+            localStorage.setItem('pl_streak', '0');
+            document.getElementById('streakCount').textContent = '0';
+
+            // Reveal remaining groups
+            setTimeout(() => {
+                puzzle.groups.forEach((g, gi) => {
+                    if (!solved.includes(gi)) solved.push(gi);
+                });
+                selected = [];
+                renderSolvedGroups();
+                renderTiles();
+                setTimeout(() => showResults(false), 800);
+            }, 600);
+        } else {
+            selected = [];
+            renderTiles();
+            updateSubmitBtn();
+        }
+    }
+}
+
+// ═══ RESULTS ═══
+function showResults(won) {
+    const emojiMap = { 1: '🟡', 2: '🟢', 3: '🟣', 4: '🔴' };
+    // Build emoji grid from guess history (solved order)
+    let emojiGrid = '';
+    // For each solved group in order, add its color row
+    // Plus wrong guesses shown as ⬛
+    let gridLines = [];
+    let wrongCount = guessHistory.filter(g => !g.correct).length;
+
+    // Build the grid: each guess is one line
+    guessHistory.forEach(h => {
+        if (h.correct) {
+            const g = puzzle.groups[h.groupIndex];
+            gridLines.push(emojiMap[g.color].repeat(4));
+        } else {
+            gridLines.push('⬛⬛⬛⬛');
+        }
+    });
+    // Add remaining auto-revealed groups for losses
+    if (!won) {
+        puzzle.groups.forEach((g, gi) => {
+            const wasGuessed = guessHistory.some(h => h.correct && h.groupIndex === gi);
+            if (!wasGuessed) {
+                gridLines.push(emojiMap[g.color].repeat(4));
+            }
+        });
+    }
+
+    const heading = won
+        ? (mistakes === 0 ? 'Perfect solve!' : mistakes === 1 ? 'Sharp thinking.' : 'Got it done.')
+        : 'Better luck tomorrow.';
+    const sub = won
+        ? `You found all 4 groups${mistakes === 0 ? ' with zero mistakes' : ` with ${mistakes} mistake${mistakes>1?'s':''}`}.`
+        : `You found ${solved.length - (4 - guessHistory.filter(g=>g.correct).length)} group${solved.length>1?'s':''} before running out of lives.`;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'results-overlay';
+    overlay.innerHTML = `
+        <div class="results-card">
+            <div class="results-emoji">${won ? (mistakes===0?'🏆':'🎯') : '📚'}</div>
+            <div class="results-heading">${heading}</div>
+            <div class="results-sub">${sub}</div>
+            <div class="results-grid-display">${gridLines.join('<br>')}</div>
+            <div class="results-groups">
+                ${puzzle.groups.map((g, gi) => `
+                    <div class="results-group-row">
+                        <div class="results-group-label c${g.color}">${g.name}</div>
+                        <div class="results-group-items-text">${g.items.join(', ')}</div>
+                    </div>
+                `).join('')}
+            </div>
+            <button class="share-btn-pl" onclick="shareResults()">Share Your Grid</button>
+            <button class="secondary-btn-pl" onclick="window.location.reload()">Play Again (Practice)</button>
+            <div class="cta-pl">
+                <div class="cta-pl-title">Categorization is clinical reasoning.</div>
+                <div class="cta-pl-text">USMLE300 bootcamps train you to build precise differentials under pressure.</div>
+                <a href="https://usmle300.com" target="_blank" class="cta-pl-btn">Explore Bootcamps →</a>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(overlay);
+}
+
+function shareResults() {
+    const emojiMap = { 1: '🟡', 2: '🟢', 3: '🟣', 4: '🔴' };
+    let gridLines = [];
+    guessHistory.forEach(h => {
+        if (h.correct) {
+            gridLines.push(emojiMap[puzzle.groups[h.groupIndex].color].repeat(4));
+        } else {
+            gridLines.push('⬛⬛⬛⬛');
+        }
+    });
+    const text = `PathoLinks #${puzzle.id}\n${guessHistory.filter(g=>g.correct).length}/4 groups | ${mistakes} mistake${mistakes!==1?'s':''}\n\n${gridLines.join('\n')}\n\nPlay free → usmle300.com/patholinks`;
+    if (navigator.share) {
+        navigator.share({ text }).catch(() => copyText(text));
+    } else {
+        copyText(text);
+    }
+}
+
+function copyText(text) {
+    navigator.clipboard.writeText(text).then(() => showToast('Copied to clipboard!'));
+}
+
+function showToast(msg) {
+    const old = document.querySelector('.toast');
+    if (old) old.remove();
+    const t = document.createElement('div');
+    t.className = 'toast';
+    t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), 2000);
+}
+
+function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+}
+</script>
+</body>
+</html>
