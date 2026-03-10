@@ -529,7 +529,29 @@
 
 <script>
 // ═══ QUESTION BANK ═══
-const QUESTIONS = [
+let QUESTIONS = [];
+let confDataLoaded = false;
+
+fetch('/data/confidencebet.json')
+    .then(res => { if (!res.ok) throw new Error('Failed'); return res.json(); })
+    .then(data => {
+        QUESTIONS = data;
+        confDataLoaded = true;
+    })
+    .catch(err => {
+        console.error('Load error:', err);
+        QUESTIONS = [
+            {"step":"Step 1","text":"A 24-year-old man with recurrent pulmonary infections and a groin abscess. S. aureus on culture. NBT test: no blue pigment in neutrophils.","lead":"Most likely enzyme deficiency?","options":["Glutathione peroxidase","Myeloperoxidase","NADPH oxidase","Superoxide dismutase"],"correct":2,"objective":"CGD — NADPH oxidase deficiency."},
+            {"step":"Step 1","text":"A 55-year-old alcoholic: confusion, ophthalmoplegia, ataxia. IV glucose worsens symptoms.","lead":"Which vitamin deficiency?","options":["B6","B1 (thiamine)","B12","B3"],"correct":1,"objective":"Wernicke encephalopathy. Always thiamine BEFORE glucose."},
+            {"step":"Step 1","text":"A 32-year-old woman: diplopia and ptosis worsening throughout the day. Anterior mediastinal mass. Edrophonium improves.","lead":"Target of antibodies?","options":["Presynaptic Ca²⁺ channels","Postsynaptic AChR","Presynaptic ACh release","Muscle-specific kinase"],"correct":1,"objective":"Myasthenia gravis — anti-AChR antibodies."},
+            {"step":"Step 1","text":"A 67-year-old smoker with a central lung mass. Biopsy: intercellular bridges, keratin pearls.","lead":"Diagnosis?","options":["Adenocarcinoma","Small cell carcinoma","Squamous cell carcinoma","Large cell carcinoma"],"correct":2,"objective":"SCC — central, keratin pearls."},
+            {"step":"Step 2 CK","text":"A 58-year-old man: worst headache of his life. CT negative. LP: xanthochromia.","lead":"Best next step?","options":["MRI brain","CT angiography","Cerebral angiogram","Repeat CT in 24h"],"correct":1,"objective":"SAH — CT-negative, LP-positive → CTA."},
+            {"step":"Step 2 CK","text":"A 75-year-old woman: acute right-sided weakness, slurred speech, 2 hours ago. CT negative. NIHSS 14.","lead":"Best next step?","options":["Aspirin 325mg","IV alteplase","Heparin drip","MRI brain"],"correct":1,"objective":"Acute ischemic stroke in tPA window."},
+            {"step":"Step 3","text":"A 78-year-old hospitalized woman: acutely confused, agitated, visual hallucinations. Fluctuating course.","lead":"Best initial management?","options":["Haloperidol","Treat underlying cause","Physical restraints","Lorazepam"],"correct":1,"objective":"Delirium — find and treat the cause."},
+            {"step":"Step 3","text":"A 50-year-old man: sudden epigastric pain. Board-like abdomen. Free air on upright CXR.","lead":"Best next step?","options":["CT abdomen","Emergent laparotomy","Upper GI series","Abx and observe"],"correct":1,"objective":"Pneumoperitoneum = perforated viscus → emergent surgery."}
+        ];
+        confDataLoaded = true;
+    });
   {"step":"Step 1","text":"A 24-year-old man with recurrent pulmonary infections and a groin abscess. S. aureus on culture. NBT test: no blue pigment in neutrophils.","lead":"Most likely enzyme deficiency?","options":["Glutathione peroxidase","Myeloperoxidase","NADPH oxidase","Superoxide dismutase"],"correct":2,"objective":"CGD — NADPH oxidase deficiency. Can't generate respiratory burst. NBT test is diagnostic."},
   {"step":"Step 1","text":"A 55-year-old alcoholic: confusion, ophthalmoplegia, ataxia. IV glucose given without vitamin supplementation worsens symptoms.","lead":"Which vitamin deficiency?","options":["B6 (pyridoxine)","B1 (thiamine)","B12 (cobalamin)","B3 (niacin)"],"correct":1,"objective":"Wernicke encephalopathy. Always thiamine BEFORE glucose."},
   {"step":"Step 1","text":"A 32-year-old woman: diplopia and ptosis worsening throughout the day. Anterior mediastinal mass on CT. Improves with edrophonium.","lead":"Target of the antibodies?","options":["Presynaptic Ca²⁺ channels","Postsynaptic AChR","Presynaptic ACh release","Muscle-specific kinase"],"correct":1,"objective":"Myasthenia gravis — anti-AChR antibodies. Associated with thymoma."},
@@ -564,6 +586,7 @@ if (bestBank > 0) bd.innerHTML = `Personal best: <strong>${bestBank} pts</strong
 
 // ═══ START ═══
 function startGame() {
+    if (!confDataLoaded || QUESTIONS.length === 0) { alert("Questions are still loading. Please try again."); return; }
     // Shuffle questions
     let pool = [...QUESTIONS];
     for (let i = pool.length - 1; i > 0; i--) {
