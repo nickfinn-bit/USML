@@ -55,7 +55,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Blog Posts (add each new post here as you publish) -->
+  <!-- Blog Posts -->
   <url>
     <loc>https://www.usmle300.com/blog/usmle-score-calculator</loc>
     <changefreq>monthly</changefreq>
@@ -68,36 +68,6 @@
   </url>
   <url>
     <loc>https://www.usmle300.com/blog/usmle-question-strategy</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.usmle300.com/blog/pass-step-1-in-6-weeks</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.usmle300.com/blog/uworld-vs-amboss-2026</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.usmle300.com/blog/uworld-score-plateau</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.usmle300.com/blog/last-14-days-before-usmle</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.usmle300.com/blog/step-2-without-step-1-foundation</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.usmle300.com/blog/failed-step-1-how-i-passed</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -117,12 +87,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.usmle300.com/blog/matching-with-old-yog-img</loc>
+    <loc>https://www.usmle300.com/blog/last-14-days-before-usmle</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.usmle300.com/blog/img-failed-step-1-recovery</loc>
+    <loc>https://www.usmle300.com/blog/uworld-score-plateau</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
