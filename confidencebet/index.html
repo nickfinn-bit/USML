@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#0c0c14">
+    <title>Confidence Bet | USMLE Metacognition by USMLE300</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@400;600;800;900&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&family=Fraunces:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0c0c14;
+            --surface: #14141e;
+            --surface-2: #1e1e2c;
+            --surface-3: #28283a;
+            --border: rgba(255,255,255,0.06);
+            --gold: #f5c842;
+            --gold-dim: rgba(245,200,66,0.12);
+            --gold-glow: rgba(245,200,66,0.25);
+            --green: #00e676;
+            --green-dim: rgba(0,230,118,0.12);
+            --green-glow: rgba(0,230,118,0.25);
+            --red: #ff3d5a;
+            --red-dim: rgba(255,61,90,0.12);
+            --red-glow: rgba(255,61,90,0.25);
+            --purple: #a78bfa;
+            --purple-dim: rgba(167,139,250,0.12);
+            --burgundy: #722F37;
+            --text: #eae8f4;
+            --text-mid: #8a889a;
+            --text-faint: #55536a;
+            --radius: 14px;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+        html, body { height:100%; }
+        body {
+            font-family:'DM Sans',sans-serif;
+            background:var(--bg);
+            color:var(--text);
+            display:flex; flex-direction:column;
+            overflow-x:hidden;
+        }
+
+        .screen { display:none; flex-direction:column; min-height:100%; position:relative; z-index:1; }
+        .screen.active { display:flex; }
+
+        /* ═══ TITLE SCREEN ═══ */
+        .title-screen {
+            align-items:center; justify-content:center;
+            text-align:center; padding:24px;
+            background:radial-gradient(ellipse at 50% 20%, var(--gold-dim) 0%, transparent 50%);
+        }
+        .title-chip-stack { font-size:4rem; margin-bottom:8px; filter:drop-shadow(0 0 30px var(--gold-glow)); }
+        .title-name {
+            font-family:'Anybody',sans-serif;
+            font-weight:900; font-size:2.5rem;
+            letter-spacing:0.04em;
+            background:linear-gradient(135deg, var(--gold), #ffe082);
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            background-clip:text; line-height:1.1;
+        }
+        .title-tagline {
+            font-family:'Fraunces',serif;
+            font-style:italic; font-weight:400;
+            color:var(--text-mid); font-size:1rem;
+            margin:6px 0 28px; max-width:340px; line-height:1.6;
+        }
+        .title-how {
+            display:flex; gap:10px; margin-bottom:28px; flex-wrap:wrap; justify-content:center;
+        }
+        .how-card {
+            background:var(--surface);
+            border:1px solid var(--border);
+            border-radius:10px;
+            padding:12px 16px;
+            text-align:left; width:150px;
+        }
+        .how-card-icon { font-size:1.3rem; margin-bottom:4px; }
+        .how-card-text { font-size:0.75rem; color:var(--text-mid); line-height:1.4; }
+        .how-card-text strong { color:var(--gold); font-family:'JetBrains Mono',monospace; }
+        .how-card-text .red { color:var(--red); }
+
+        .start-bet-btn {
+            padding:18px 60px;
+            border-radius:14px; border:none;
+            background:linear-gradient(135deg, var(--gold), #ffe082);
+            color:#1a1a00;
+            font-family:'Anybody',sans-serif;
+            font-weight:900; font-size:1.15rem;
+            letter-spacing:0.04em;
+            cursor:pointer; transition:all 0.2s;
+        }
+        .start-bet-btn:hover { transform:translateY(-3px); box-shadow:0 10px 40px var(--gold-glow); }
+        .best-display {
+            margin-top:18px;
+            font-family:'JetBrains Mono',monospace;
+            font-size:0.78rem; color:var(--text-faint);
+        }
+        .best-display strong { color:var(--gold); }
+
+        /* ═══ GAME SCREEN ═══ */
+        .game-screen { padding:0; }
+
+        /* HUD */
+        .hud-bar {
+            display:flex; justify-content:space-between; align-items:center;
+            padding:12px 18px;
+            background:var(--surface);
+            border-bottom:1px solid var(--border);
+            flex-shrink:0;
+        }
+        .hud-bank {
+            display:flex; align-items:center; gap:8px;
+        }
+        .bank-icon { font-size:1.2rem; }
+        .bank-amount {
+            font-family:'JetBrains Mono',monospace;
+            font-weight:800; font-size:1.4rem;
+            color:var(--gold);
+            transition:all 0.3s;
+        }
+        .bank-amount.gained { animation:bankGain 0.6s ease; }
+        .bank-amount.lost { animation:bankLose 0.6s ease; }
+        @keyframes bankGain { 0%{transform:scale(1)} 30%{transform:scale(1.3);color:var(--green)} 100%{transform:scale(1);color:var(--gold)} }
+        @keyframes bankLose { 0%{transform:scale(1)} 30%{transform:scale(1.3);color:var(--red)} 100%{transform:scale(1);color:var(--gold)} }
+
+        .hud-progress {
+            font-family:'JetBrains Mono',monospace;
+            font-size:0.7rem; font-weight:700;
+            color:var(--text-faint);
+            text-transform:uppercase; letter-spacing:0.12em;
+        }
+        .hud-calibration {
+            display:flex; align-items:center; gap:6px;
+        }
+        .calibration-label {
+            font-size:0.65rem; color:var(--text-faint);
+            font-family:'JetBrains Mono',monospace;
+            font-weight:600;
+        }
+        .calibration-val {
+            font-family:'JetBrains Mono',monospace;
+            font-weight:800; font-size:0.9rem;
+        }
+        .calibration-val.good { color:var(--green); }
+        .calibration-val.mid { color:var(--gold); }
+        .calibration-val.bad { color:var(--red); }
+
+        /* Content area */
+        .game-content {
+            flex:1;
+            max-width:600px;
+            width:100%;
+            margin:0 auto;
+            padding:16px 16px 100px;
+            display:flex; flex-direction:column; gap:14px;
+        }
+
+        /* Question card */
+        .q-card {
+            background:var(--surface);
+            border:1px solid var(--border);
+            border-radius:var(--radius);
+            padding:20px 18px;
+            animation:cardIn 0.4s cubic-bezier(0.16,1,0.3,1);
+        }
+        @keyframes cardIn {
+            from{opacity:0;transform:translateY(12px) scale(0.97)}
+            to{opacity:1;transform:translateY(0) scale(1)}
+        }
+        .q-badge {
+            font-family:'JetBrains Mono',monospace;
+            font-size:0.6rem; font-weight:700;
+            text-transform:uppercase; letter-spacing:0.15em;
+            color:var(--purple); margin-bottom:10px;
+            display:flex; align-items:center; gap:8px;
+        }
+        .q-text {
+            font-size:0.92rem; line-height:1.75;
+            margin-bottom:8px;
+        }
+        .q-lead {
+            font-size:0.86rem; font-weight:600;
+            font-style:italic; color:var(--text-mid);
+            border-top:1px solid var(--border);
+            padding-top:10px;
+        }
+
+        /* Answer options */
+        .opts { display:flex; flex-direction:column; gap:8px; }
+        .opt-btn {
+            display:flex; align-items:center; gap:12px;
+            background:var(--surface);
+            border:2px solid var(--border);
+            border-radius:12px;
+            padding:14px 16px;
+            color:var(--text);
+            font-family:'DM Sans',sans-serif;
+            font-size:0.88rem; font-weight:600;
+            cursor:pointer; transition:all 0.15s;
+            width:100%; text-align:left;
+        }
+        .opt-btn:hover:not(:disabled):not(.locked) {
+            border-color:rgba(255,255,255,0.12);
+            background:var(--surface-2);
+        }
+        .opt-btn.chosen {
+            border-color:var(--purple);
+            background:var(--purple-dim);
+        }
+        .opt-btn.chosen .opt-letter { background:var(--purple); color:white; }
+        .opt-btn.correct-reveal {
+            border-color:var(--green); background:var(--green-dim);
+        }
+        .opt-btn.correct-reveal .opt-letter { background:var(--green); color:#0a0a0f; }
+        .opt-btn.wrong-reveal {
+            border-color:var(--red); background:var(--red-dim);
+        }
+        .opt-btn.wrong-reveal .opt-letter { background:var(--red); color:white; }
+        .opt-btn:disabled { cursor:default; opacity:0.5; }
+        .opt-btn.correct-reveal:disabled, .opt-btn.wrong-reveal:disabled, .opt-btn.chosen:disabled { opacity:1; }
+        .opt-letter {
+            width:26px; height:26px;
+            border-radius:6px;
+            background:var(--surface-2);
+            display:flex; align-items:center; justify-content:center;
+            font-family:'JetBrains Mono',monospace;
+            font-size:0.7rem; font-weight:700;
+            color:var(--text-faint); flex-shrink:0;
+        }
+
+        /* ═══ BETTING PHASE ═══ */
+        .bet-section {
+            background:var(--surface);
+            border:1px solid var(--border);
+            border-radius:var(--radius);
+            padding:20px 18px;
+            text-align:center;
+        }
+        .bet-prompt {
+            font-family:'Fraunces',serif;
+            font-weight:700; font-size:1.05rem;
+            margin-bottom:4px;
+        }
+        .bet-sub {
+            font-size:0.8rem; color:var(--text-mid);
+            margin-bottom:16px;
+        }
+        .bet-chips {
+            display:flex; gap:8px; justify-content:center;
+            flex-wrap:wrap; margin-bottom:16px;
+        }
+        .chip {
+            width:70px; height:70px;
+            border-radius:50%;
+            border:3px solid var(--border);
+            background:var(--surface-2);
+            display:flex; flex-direction:column;
+            align-items:center; justify-content:center;
+            cursor:pointer; transition:all 0.2s;
+            position:relative;
+        }
+        .chip:hover { border-color:var(--gold); transform:scale(1.08); }
+        .chip.selected {
+            border-color:var(--gold);
+            background:var(--gold-dim);
+            box-shadow:0 0 20px var(--gold-glow);
+            transform:scale(1.1);
+        }
+        .chip-amount {
+            font-family:'JetBrains Mono',monospace;
+            font-weight:800; font-size:1rem;
+            color:var(--gold);
+        }
+        .chip-label {
+            font-size:0.55rem; font-weight:700;
+            color:var(--text-faint);
+            text-transform:uppercase; letter-spacing:0.08em;
+        }
+        .chip-mult {
+            position:absolute; top:-6px; right:-6px;
+            background:var(--gold);
+            color:#1a1a00;
+            font-family:'JetBrains Mono',monospace;
+            font-size:0.55rem; font-weight:800;
+            padding:2px 6px; border-radius:10px;
+        }
+
+        .lock-btn {
+            padding:14px 40px;
+            border-radius:10px; border:none;
+            background:linear-gradient(135deg, var(--gold), #ffe082);
+            color:#1a1a00;
+            font-family:'Anybody',sans-serif;
+            font-weight:800; font-size:0.95rem;
+            cursor:pointer; transition:all 0.2s;
+        }
+        .lock-btn:hover { transform:translateY(-2px); box-shadow:0 8px 30px var(--gold-glow); }
+        .lock-btn:disabled {
+            background:var(--surface-3);
+            color:var(--text-faint);
+            cursor:default; transform:none; box-shadow:none;
+        }
+
+        /* ═══ RESULT FLASH ═══ */
+        .result-flash {
+            position:fixed; inset:0;
+            display:flex; align-items:center; justify-content:center;
+            z-index:50; pointer-events:none;
+        }
+        .result-flash-content {
+            font-family:'Anybody',sans-serif;
+            font-weight:900; font-size:3rem;
+            animation:flashPop 1.2s ease forwards;
+        }
+        .result-flash-content.win { color:var(--green); text-shadow:0 0 60px var(--green-glow); }
+        .result-flash-content.lose { color:var(--red); text-shadow:0 0 60px var(--red-glow); }
+        @keyframes flashPop {
+            0%{opacity:0;transform:scale(0.5)} 30%{opacity:1;transform:scale(1.2)} 60%{opacity:1;transform:scale(1)} 100%{opacity:0;transform:scale(1) translateY(-20px)}
+        }
+
+        /* ═══ EXPLANATION ═══ */
+        .explanation-card {
+            background:var(--surface);
+            border:1px solid var(--border);
+            border-radius:var(--radius);
+            padding:16px;
+        }
+        .exp-label {
+            font-family:'JetBrains Mono',monospace;
+            font-size:0.6rem; font-weight:700;
+            text-transform:uppercase; letter-spacing:0.15em;
+            color:var(--green); margin-bottom:6px;
+        }
+        .exp-text { font-size:0.85rem; line-height:1.6; color:var(--text-mid); }
+
+        .next-q-btn {
+            align-self:center;
+            padding:14px 40px;
+            border-radius:10px; border:none;
+            background:var(--purple);
+            color:white;
+            font-family:'DM Sans',sans-serif;
+            font-weight:700; font-size:0.9rem;
+            cursor:pointer; transition:all 0.2s;
+        }
+        .next-q-btn:hover { transform:translateY(-2px); }
+
+        /* ═══ FINAL RESULTS ═══ */
+        .results-screen {
+            align-items:center; justify-content:center;
+            text-align:center; padding:24px;
+            overflow-y:auto;
+            background:radial-gradient(ellipse at 50% 30%, var(--gold-dim) 0%, transparent 50%);
+        }
+        .res-inner { max-width:440px; width:100%; }
+        .res-emoji { font-size:3.5rem; margin-bottom:8px; }
+        .res-title {
+            font-family:'Anybody',sans-serif;
+            font-weight:900; font-size:1.8rem;
+            margin-bottom:4px;
+        }
+        .res-sub { color:var(--text-mid); font-size:0.9rem; margin-bottom:24px; }
+
+        .res-stats {
+            display:flex; gap:10px; justify-content:center; flex-wrap:wrap;
+            margin-bottom:24px;
+        }
+        .res-stat {
+            background:var(--surface);
+            border:1px solid var(--border);
+            border-radius:12px;
+            padding:14px 18px; min-width:90px;
+        }
+        .res-stat-val {
+            font-family:'JetBrains Mono',monospace;
+            font-weight:800; font-size:1.4rem;
+        }
+        .res-stat-val.gold { color:var(--gold); }
+        .res-stat-val.green { color:var(--green); }
+        .res-stat-val.red { color:var(--red); }
+        .res-stat-val.purple { color:var(--purple); }
+        .res-stat-label {
+            font-size:0.65rem; color:var(--text-faint);
+            text-transform:uppercase; letter-spacing:0.1em;
+            font-weight:600; margin-top:2px;
+        }
+
+        /* Calibration chart */
+        .calibration-chart {
+            background:var(--surface);
+            border:1px solid var(--border);
+            border-radius:var(--radius);
+            padding:18px;
+            margin-bottom:24px;
+            text-align:left;
+        }
+        .cal-title {
+            font-family:'JetBrains Mono',monospace;
+            font-size:0.65rem; font-weight:700;
+            text-transform:uppercase; letter-spacing:0.12em;
+            color:var(--text-faint); margin-bottom:12px;
+        }
+        .cal-row {
+            display:flex; align-items:center; gap:10px;
+            margin-bottom:8px;
+        }
+        .cal-label {
+            font-family:'JetBrains Mono',monospace;
+            font-size:0.72rem; font-weight:700;
+            color:var(--text-mid); width:40px; text-align:right;
+        }
+        .cal-bar-track {
+            flex:1; height:10px;
+            background:var(--surface-2);
+            border-radius:5px; overflow:hidden;
+            position:relative;
+        }
+        .cal-bar-fill {
+            height:100%; border-radius:5px;
+            transition:width 1s cubic-bezier(0.16,1,0.3,1);
+        }
+        .cal-bar-fill.gold-fill { background:var(--gold); }
+        .cal-bar-fill.green-fill { background:var(--green); }
+        .cal-bar-fill.red-fill { background:var(--red); }
+        .cal-bar-ideal {
+            position:absolute; top:0; bottom:0; width:2px;
+            background:rgba(255,255,255,0.3);
+        }
+        .cal-pct {
+            font-family:'JetBrains Mono',monospace;
+            font-size:0.72rem; font-weight:700;
+            width:36px; color:var(--text-mid);
+        }
+
+        .share-btn-cb {
+            width:100%; padding:16px;
+            border-radius:var(--radius); border:none;
+            background:linear-gradient(135deg, var(--gold), #ffe082);
+            color:#1a1a00;
+            font-family:'Anybody',sans-serif;
+            font-weight:800; font-size:1rem;
+            cursor:pointer; transition:all 0.2s;
+            margin-bottom:10px;
+        }
+        .share-btn-cb:hover { transform:translateY(-2px); box-shadow:0 8px 30px var(--gold-glow); }
+        .retry-btn-cb {
+            width:100%; padding:14px;
+            border-radius:var(--radius);
+            border:1px solid var(--border);
+            background:transparent;
+            color:var(--text-mid);
+            font-family:'DM Sans',sans-serif;
+            font-weight:700; font-size:0.9rem;
+            cursor:pointer; margin-bottom:10px;
+        }
+        .retry-btn-cb:hover { background:var(--surface); }
+
+        .cta-cb {
+            background:linear-gradient(135deg, var(--burgundy), #8a3542);
+            border-radius:var(--radius);
+            padding:20px; text-align:center; color:white;
+        }
+        .cta-cb-title { font-family:'Anybody',sans-serif; font-weight:800; font-size:1rem; margin-bottom:4px; }
+        .cta-cb-text { font-size:0.8rem; opacity:0.8; margin-bottom:12px; }
+        .cta-cb-btn {
+            display:inline-flex; align-items:center; gap:6px;
+            padding:10px 24px; border-radius:8px; border:none;
+            background:white; color:var(--burgundy);
+            font-family:'DM Sans',sans-serif;
+            font-weight:700; font-size:0.85rem;
+            cursor:pointer; text-decoration:none;
+        }
+
+        .hidden { display:none!important; }
+    </style>
+</head>
+<body>
+
+<!-- ═══ TITLE ═══ -->
+<div class="screen title-screen active" id="titleScreen">
+    <div class="title-chip-stack">🎰</div>
+    <div class="title-name">CONFIDENCE BET</div>
+    <div class="title-tagline">"Do you know what you know?"</div>
+    <div class="title-how">
+        <div class="how-card">
+            <div class="how-card-icon">📋</div>
+            <div class="how-card-text">Read a clinical vignette and choose your answer</div>
+        </div>
+        <div class="how-card">
+            <div class="how-card-icon">🎰</div>
+            <div class="how-card-text">Bet <strong>10–50 pts</strong> on how confident you are</div>
+        </div>
+        <div class="how-card">
+            <div class="how-card-icon">✅</div>
+            <div class="how-card-text">Correct + high bet = <strong>2× payout</strong></div>
+        </div>
+        <div class="how-card">
+            <div class="how-card-icon">💀</div>
+            <div class="how-card-text">Wrong + high bet = <strong class="red">−50 pts</strong></div>
+        </div>
+    </div>
+    <button class="start-bet-btn" onclick="startGame()">PLACE YOUR BETS</button>
+    <div class="best-display" id="bestDisplay"></div>
+</div>
+
+<!-- ═══ GAME ═══ -->
+<div class="screen game-screen" id="gameScreen">
+    <div class="hud-bar">
+        <div class="hud-bank">
+            <span class="bank-icon">💰</span>
+            <span class="bank-amount" id="bankDisplay">100</span>
+        </div>
+        <div class="hud-progress" id="progressDisplay">Q1 / 10</div>
+        <div class="hud-calibration">
+            <span class="calibration-label">CAL</span>
+            <span class="calibration-val mid" id="calDisplay">—</span>
+        </div>
+    </div>
+    <div class="game-content" id="gameContent"></div>
+</div>
+
+<!-- ═══ RESULTS ═══ -->
+<div class="screen results-screen" id="resultsScreen">
+    <div class="res-inner" id="resInner"></div>
+</div>
+
+<script>
+// ═══ QUESTION BANK ═══
+const QUESTIONS = [
+  {"step":"Step 1","text":"A 24-year-old man with recurrent pulmonary infections and a groin abscess. S. aureus on culture. NBT test: no blue pigment in neutrophils.","lead":"Most likely enzyme deficiency?","options":["Glutathione peroxidase","Myeloperoxidase","NADPH oxidase","Superoxide dismutase"],"correct":2,"objective":"CGD — NADPH oxidase deficiency. Can't generate respiratory burst. NBT test is diagnostic."},
+  {"step":"Step 1","text":"A 55-year-old alcoholic: confusion, ophthalmoplegia, ataxia. IV glucose given without vitamin supplementation worsens symptoms.","lead":"Which vitamin deficiency?","options":["B6 (pyridoxine)","B1 (thiamine)","B12 (cobalamin)","B3 (niacin)"],"correct":1,"objective":"Wernicke encephalopathy. Always thiamine BEFORE glucose."},
+  {"step":"Step 1","text":"A 32-year-old woman: diplopia and ptosis worsening throughout the day. Anterior mediastinal mass on CT. Improves with edrophonium.","lead":"Target of the antibodies?","options":["Presynaptic Ca²⁺ channels","Postsynaptic AChR","Presynaptic ACh release","Muscle-specific kinase"],"correct":1,"objective":"Myasthenia gravis — anti-AChR antibodies. Associated with thymoma."},
+  {"step":"Step 1","text":"A 67-year-old smoker with a central lung mass. Biopsy: intercellular bridges, keratin pearls.","lead":"Diagnosis?","options":["Adenocarcinoma","Small cell carcinoma","Squamous cell carcinoma","Large cell carcinoma"],"correct":2,"objective":"SCC of lung — central, keratin pearls, intercellular bridges."},
+  {"step":"Step 1","text":"A 19-year-old post-MVC. BP 80/50, HR 130, JVD, muffled heart sounds. Low-voltage QRS on ECG.","lead":"Expected hemodynamic finding?","options":["↑ Cardiac output","Equalization of diastolic pressures","↓ CVP","↑ Pulse pressure"],"correct":1,"objective":"Cardiac tamponade — Beck's triad + equalization of diastolic pressures."},
+  {"step":"Step 1","text":"A 4-year-old boy: calf pseudohypertrophy, Gowers sign, no dystrophin on biopsy.","lead":"Inheritance pattern?","options":["Autosomal dominant","Autosomal recessive","X-linked recessive","Mitochondrial"],"correct":2,"objective":"Duchenne MD — X-linked recessive. Dystrophin gene on Xp21."},
+  {"step":"Step 1","text":"A 22-year-old woman with recurrent DVTs. Family hx of VTE. Activated protein C resistance on testing.","lead":"Most likely genetic mutation?","options":["Prothrombin G20210A","Factor V Leiden","AT III deficiency","Protein S deficiency"],"correct":1,"objective":"Factor V Leiden — most common inherited thrombophilia."},
+  {"step":"Step 1","text":"A 65-year-old man: resting tremor, cogwheel rigidity, bradykinesia. Unilateral onset, progressive.","lead":"Which neurons are degenerating?","options":["Caudate nucleus","Subthalamic nucleus","Substantia nigra pars compacta","Nucleus basalis of Meynert"],"correct":2,"objective":"Parkinson disease — dopaminergic neurons in SNpc."},
+  {"step":"Step 2 CK","text":"A 58-year-old man: 'worst headache of his life.' CT negative. LP: xanthochromia.","lead":"Best next step?","options":["MRI brain","CT angiography of head","Cerebral angiogram","Repeat CT in 24h"],"correct":1,"objective":"SAH — CT-negative, LP-positive → CTA to find the aneurysm."},
+  {"step":"Step 2 CK","text":"A 50-year-old man: sudden tearing chest pain to back. BP 190/110 R arm, 150/90 L arm. Widened mediastinum.","lead":"Best initial diagnostic test?","options":["TTE","CT angiography of chest","Coronary angiography","D-dimer"],"correct":1,"objective":"Aortic dissection — CTA chest for diagnosis."},
+  {"step":"Step 2 CK","text":"A 75-year-old woman: acute right-sided weakness, slurred speech, onset 2 hours ago. CT negative. NIHSS 14.","lead":"Best next step?","options":["Aspirin 325mg","IV alteplase","Heparin drip","MRI brain"],"correct":1,"objective":"Acute ischemic stroke in window → IV tPA."},
+  {"step":"Step 2 CK","text":"A 28-year-old woman at 34 weeks: severe headache, BP 170/110, 3+ proteinuria, platelets 90K, ↑LFTs.","lead":"Management?","options":["Nifedipine alone","Labetalol and observe","MgSO₄ + betamethasone + delivery","Immediate C-section"],"correct":2,"objective":"Severe preeclampsia/HELLP. MgSO₄ + steroids for fetal lungs + deliver."},
+  {"step":"Step 2 CK","text":"A 48-year-old man: crushing chest pain × 2h. ST elevation in II, III, aVF. Cath lab 30 min away.","lead":"Best management?","options":["Thrombolytics now","Transfer for primary PCI","Heparin and observe","Stress test in 24h"],"correct":1,"objective":"STEMI — if PCI within 120 min of FMC, transfer for primary PCI."},
+  {"step":"Step 3","text":"A 6-month-old: irritability, vomiting, bulging fontanelle. X-rays show fractures at different healing stages.","lead":"Most appropriate next step?","options":["Vitamin D level","Report to CPS + skeletal survey","PT/PTT","Reassure parents"],"correct":1,"objective":"Non-accidental trauma — mandatory CPS reporting + skeletal survey."},
+  {"step":"Step 3","text":"A 78-year-old hospitalized woman: acutely confused, agitated, visual hallucinations. Fluctuating course.","lead":"Best initial management?","options":["Haloperidol","Treat underlying cause","Physical restraints","Lorazepam"],"correct":1,"objective":"Delirium — find and treat the cause. Avoid benzos in elderly."},
+  {"step":"Step 3","text":"A 50-year-old man: sudden epigastric pain. Board-like abdomen. Free air on upright CXR.","lead":"Best next step?","options":["CT abdomen","Emergent laparotomy","Upper GI series","Abx and observe"],"correct":1,"objective":"Pneumoperitoneum = perforated viscus → emergent surgical exploration."}
+];
+
+// ═══ STATE ═══
+const NUM_ROUNDS = 10;
+let bank = 100;
+let qIndex = 0;
+let questions = [];
+let phase = 'answer'; // 'answer' | 'bet' | 'reveal'
+let chosenAnswer = -1;
+let chosenBet = 0;
+let roundHistory = []; // { correct, bet, won, confidence }
+let bestBank = parseInt(localStorage.getItem('cb_best') || '0');
+
+const bd = document.getElementById('bestDisplay');
+if (bestBank > 0) bd.innerHTML = `Personal best: <strong>${bestBank} pts</strong>`;
+
+// ═══ START ═══
+function startGame() {
+    // Shuffle questions
+    let pool = [...QUESTIONS];
+    for (let i = pool.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+    questions = pool.slice(0, NUM_ROUNDS);
+    qIndex = 0; bank = 100; roundHistory = [];
+    chosenAnswer = -1; chosenBet = 0;
+
+    document.getElementById('titleScreen').classList.remove('active');
+    document.getElementById('gameScreen').classList.add('active');
+    updateHUD();
+    showQuestion();
+}
+
+function updateHUD() {
+    document.getElementById('bankDisplay').textContent = bank;
+    document.getElementById('progressDisplay').textContent = `Q${qIndex + 1} / ${NUM_ROUNDS}`;
+    updateCalibration();
+}
+
+function updateCalibration() {
+    const el = document.getElementById('calDisplay');
+    if (roundHistory.length < 2) { el.textContent = '—'; el.className = 'calibration-val mid'; return; }
+    // Calibration = how close your confidence matches your accuracy
+    const score = calcCalibrationScore();
+    el.textContent = score + '%';
+    el.className = 'calibration-val ' + (score >= 80 ? 'good' : score >= 50 ? 'mid' : 'bad');
+}
+
+function calcCalibrationScore() {
+    if (roundHistory.length === 0) return 0;
+    // Group by bet level, compare expected accuracy to actual
+    const buckets = {};
+    roundHistory.forEach(r => {
+        const key = r.bet;
+        if (!buckets[key]) buckets[key] = { total: 0, correct: 0, confidence: r.confidence };
+        buckets[key].total++;
+        if (r.correct) buckets[key].correct++;
+    });
+    let totalError = 0; let count = 0;
+    Object.values(buckets).forEach(b => {
+        const actual = b.correct / b.total;
+        const expected = b.confidence;
+        totalError += Math.abs(actual - expected);
+        count++;
+    });
+    return Math.round((1 - (totalError / Math.max(count, 1))) * 100);
+}
+
+// ═══ SHOW QUESTION ═══
+function showQuestion() {
+    const q = questions[qIndex];
+    phase = 'answer';
+    chosenAnswer = -1;
+    chosenBet = 0;
+
+    const letters = ['A','B','C','D'];
+    const content = document.getElementById('gameContent');
+    content.innerHTML = `
+        <div class="q-card">
+            <div class="q-badge">${q.step} • Question ${qIndex + 1}</div>
+            <div class="q-text">${q.text}</div>
+            <div class="q-lead">${q.lead}</div>
+        </div>
+        <div class="opts" id="optsList">
+            ${q.options.map((o, i) => `
+                <button class="opt-btn" data-idx="${i}" onclick="chooseAnswer(${i})">
+                    <span class="opt-letter">${letters[i]}</span>
+                    <span>${o}</span>
+                </button>
+            `).join('')}
+        </div>
+    `;
+}
+
+function chooseAnswer(index) {
+    if (phase !== 'answer') return;
+    chosenAnswer = index;
+
+    // Highlight selection
+    document.querySelectorAll('.opt-btn').forEach((b, i) => {
+        b.classList.toggle('chosen', i === index);
+    });
+
+    // Show bet section (or update if already shown)
+    if (!document.getElementById('betSection')) {
+        const betHTML = `
+            <div class="bet-section" id="betSection">
+                <div class="bet-prompt">How confident are you?</div>
+                <div class="bet-sub">Higher bets = bigger payouts (or bigger losses)</div>
+                <div class="bet-chips">
+                    <div class="chip" onclick="chooseBet(10, 0.3, this)" data-bet="10">
+                        <div class="chip-amount">10</div>
+                        <div class="chip-label">Unsure</div>
+                    </div>
+                    <div class="chip" onclick="chooseBet(20, 0.5, this)" data-bet="20">
+                        <div class="chip-amount">20</div>
+                        <div class="chip-label">Leaning</div>
+                    </div>
+                    <div class="chip" onclick="chooseBet(35, 0.75, this)" data-bet="35">
+                        <div class="chip-amount">35</div>
+                        <div class="chip-label">Confident</div>
+                        <div class="chip-mult">1.5×</div>
+                    </div>
+                    <div class="chip" onclick="chooseBet(50, 0.95, this)" data-bet="50">
+                        <div class="chip-amount">50</div>
+                        <div class="chip-label">Lock It</div>
+                        <div class="chip-mult">2×</div>
+                    </div>
+                </div>
+                <button class="lock-btn" id="lockBtn" onclick="lockBet()" disabled>Lock In Bet</button>
+            </div>
+        `;
+        document.getElementById('gameContent').insertAdjacentHTML('beforeend', betHTML);
+    }
+}
+
+let chosenConfidence = 0;
+function chooseBet(amount, confidence, el) {
+    if (phase !== 'answer') return;
+    chosenBet = Math.min(amount, bank); // Can't bet more than you have
+    chosenConfidence = confidence;
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    document.getElementById('lockBtn').disabled = false;
+}
+
+function lockBet() {
+    if (chosenAnswer === -1 || chosenBet === 0) return;
+    phase = 'reveal';
+
+    const q = questions[qIndex];
+    const isCorrect = chosenAnswer === q.correct;
+
+    // Calculate payout
+    let multiplier = 1;
+    if (chosenBet === 35) multiplier = 1.5;
+    if (chosenBet === 50) multiplier = 2;
+    const payout = isCorrect ? Math.round(chosenBet * multiplier) : -chosenBet;
+    bank += payout;
+    if (bank < 0) bank = 0;
+
+    roundHistory.push({
+        correct: isCorrect,
+        bet: chosenBet,
+        confidence: chosenConfidence,
+        payout: payout,
+        won: isCorrect
+    });
+
+    // Disable options & show correct/wrong
+    const allBtns = document.querySelectorAll('.opt-btn');
+    allBtns.forEach((b, i) => {
+        b.disabled = true;
+        b.classList.remove('chosen');
+        if (i === q.correct) b.classList.add('correct-reveal');
+        if (i === chosenAnswer && !isCorrect) b.classList.add('wrong-reveal');
+    });
+
+    // Disable bet section
+    document.querySelectorAll('.chip').forEach(c => { c.style.pointerEvents = 'none'; });
+    document.getElementById('lockBtn').style.display = 'none';
+
+    // Flash payout
+    showFlash(isCorrect, payout);
+
+    // Animate bank
+    const bankEl = document.getElementById('bankDisplay');
+    bankEl.textContent = bank;
+    bankEl.classList.add(isCorrect ? 'gained' : 'lost');
+    setTimeout(() => bankEl.classList.remove('gained', 'lost'), 700);
+
+    updateHUD();
+
+    // Show explanation + next button
+    setTimeout(() => {
+        const content = document.getElementById('gameContent');
+        // Update bet section to show result
+        const betSection = document.getElementById('betSection');
+        betSection.innerHTML = `
+            <div style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:1.5rem;color:${isCorrect?'var(--green)':'var(--red)'}">
+                ${isCorrect ? '+' : ''}${payout} pts
+            </div>
+            <div style="font-size:0.8rem;color:var(--text-mid);margin-top:4px">
+                ${isCorrect ? (multiplier>1 ? `${multiplier}× multiplier on your ${chosenBet} bet!` : 'Correct!') : `Lost your ${chosenBet} point bet.`}
+            </div>
+        `;
+
+        content.insertAdjacentHTML('beforeend', `
+            <div class="explanation-card">
+                <div class="exp-label">📋 High-Yield Review</div>
+                <div class="exp-text">${q.objective}</div>
+            </div>
+            <button class="next-q-btn" onclick="nextQuestion()">${qIndex < NUM_ROUNDS - 1 ? 'Next Question →' : 'See Final Results'}</button>
+        `);
+    }, 600);
+}
+
+function showFlash(isCorrect, payout) {
+    const el = document.createElement('div');
+    el.className = 'result-flash';
+    el.innerHTML = `<div class="result-flash-content ${isCorrect?'win':'lose'}">${isCorrect?'+':''}${payout}</div>`;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 1300);
+}
+
+function nextQuestion() {
+    qIndex++;
+    if (qIndex >= NUM_ROUNDS || (bank <= 0 && qIndex < NUM_ROUNDS)) {
+        showFinalResults();
+        return;
+    }
+    updateHUD();
+    showQuestion();
+}
+
+// ═══ FINAL RESULTS ═══
+function showFinalResults() {
+    document.getElementById('gameScreen').classList.remove('active');
+    const screen = document.getElementById('resultsScreen');
+    screen.classList.add('active');
+
+    const correctCount = roundHistory.filter(r => r.correct).length;
+    const accuracy = Math.round((correctCount / roundHistory.length) * 100);
+    const calScore = calcCalibrationScore();
+    const totalWagered = roundHistory.reduce((s,r) => s + r.bet, 0);
+    const netProfit = bank - 100;
+
+    if (bank > bestBank) {
+        bestBank = bank;
+        localStorage.setItem('cb_best', bank.toString());
+    }
+
+    const emoji = bank >= 250 ? '🏆' : bank >= 150 ? '🎰' : bank >= 100 ? '💪' : bank > 0 ? '📚' : '💀';
+    const title = bank >= 250 ? 'High Roller' : bank >= 150 ? 'Sharp Bettor' : bank >= 100 ? 'Broke Even' : bank > 0 ? 'Keep Grinding' : 'Busted';
+
+    // Calibration breakdown
+    const betLevels = [
+        { bet:10, label:'Unsure (10)', expected:30 },
+        { bet:20, label:'Leaning (20)', expected:50 },
+        { bet:35, label:'Confident (35)', expected:75 },
+        { bet:50, label:'Lock It (50)', expected:95 }
+    ];
+
+    let calHTML = '';
+    betLevels.forEach(lev => {
+        const rounds = roundHistory.filter(r => r.bet === lev.bet);
+        if (rounds.length === 0) return;
+        const actual = Math.round((rounds.filter(r=>r.correct).length / rounds.length) * 100);
+        const diff = Math.abs(actual - lev.expected);
+        const color = diff <= 15 ? 'green-fill' : diff <= 30 ? 'gold-fill' : 'red-fill';
+        calHTML += `
+            <div class="cal-row">
+                <div class="cal-label">${lev.label}</div>
+                <div class="cal-bar-track">
+                    <div class="cal-bar-fill ${color}" style="width:0" data-target="${actual}"></div>
+                    <div class="cal-bar-ideal" style="left:${lev.expected}%" title="Expected: ${lev.expected}%"></div>
+                </div>
+                <div class="cal-pct">${actual}%</div>
+            </div>
+        `;
+    });
+
+    document.getElementById('resInner').innerHTML = `
+        <div class="res-emoji">${emoji}</div>
+        <div class="res-title">${title}</div>
+        <div class="res-sub">You turned 100 pts into ${bank} pts across ${roundHistory.length} questions</div>
+        <div class="res-stats">
+            <div class="res-stat">
+                <div class="res-stat-val gold">${bank}</div>
+                <div class="res-stat-label">Final Bank</div>
+            </div>
+            <div class="res-stat">
+                <div class="res-stat-val green">${accuracy}%</div>
+                <div class="res-stat-label">Accuracy</div>
+            </div>
+            <div class="res-stat">
+                <div class="res-stat-val purple">${calScore}%</div>
+                <div class="res-stat-label">Calibration</div>
+            </div>
+            <div class="res-stat">
+                <div class="res-stat-val ${netProfit>=0?'green':'red'}">${netProfit>=0?'+':''}${netProfit}</div>
+                <div class="res-stat-label">Net P/L</div>
+            </div>
+        </div>
+        ${calHTML ? `
+            <div class="calibration-chart">
+                <div class="cal-title">🎯 Confidence Calibration (actual accuracy vs. expected)</div>
+                ${calHTML}
+                <div style="font-size:0.7rem;color:var(--text-faint);margin-top:8px;text-align:center">White line = ideal accuracy for that confidence level</div>
+            </div>
+        ` : ''}
+        <button class="share-btn-cb" onclick="shareCB()">Share Your Score 🎰</button>
+        <button class="retry-btn-cb" onclick="retryCB()">Play Again</button>
+        <div class="cta-cb">
+            <div class="cta-cb-title">Calibration wins exams.</div>
+            <div class="cta-cb-text">USMLE300 bootcamps teach you to trust your reasoning and bet on yourself on test day.</div>
+            <a href="https://usmle300.com" target="_blank" class="cta-cb-btn">Explore Bootcamps →</a>
+        </div>
+    `;
+
+    // Animate calibration bars
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            document.querySelectorAll('.cal-bar-fill[data-target]').forEach(bar => {
+                bar.style.width = bar.dataset.target + '%';
+            });
+        }, 200);
+    });
+}
+
+function shareCB() {
+    const correctCount = roundHistory.filter(r => r.correct).length;
+    const calScore = calcCalibrationScore();
+    const betEmojis = roundHistory.map(r => {
+        if (r.correct && r.bet >= 35) return '💰';
+        if (r.correct) return '✅';
+        if (!r.correct && r.bet >= 35) return '💀';
+        return '❌';
+    }).join('');
+
+    const text = `🎰 Confidence Bet by USMLE300\n\n💰 ${bank} pts | ${correctCount}/${roundHistory.length} correct\n🎯 Calibration: ${calScore}%\n\n${betEmojis}\n\nTest your metacognition → usmle300.com/confidencebet`;
+    if (navigator.share) {
+        navigator.share({text}).catch(() => navigator.clipboard.writeText(text).then(() => alert('Copied!')));
+    } else {
+        navigator.clipboard.writeText(text).then(() => alert('Copied to clipboard!'));
+    }
+}
+
+function retryCB() {
+    document.getElementById('resultsScreen').classList.remove('active');
+    document.getElementById('titleScreen').classList.add('active');
+    if (bestBank > 0) document.getElementById('bestDisplay').innerHTML = `Personal best: <strong>${bestBank} pts</strong>`;
+}
+</script>
+</body>
+</html>
