@@ -536,15 +536,14 @@ let streak = parseInt(localStorage.getItem('pl_streak') || '0');
 // Load puzzles on page load
 (async function init() {
     try {
-        const resp = await fetch('./patholinks.json');
+        const resp = await fetch('../data/patholinks.json');
         if (!resp.ok) throw new Error('Failed to load puzzle data');
         PUZZLES = await resp.json();
+        document.getElementById('streakCount').textContent = streak;
     } catch (e) {
         console.error('Error loading puzzles:', e);
-        document.getElementById('tileGrid').innerHTML = '<p style="color:red;text-align:center;grid-column:span 4;padding:20px;">Failed to load puzzle. Make sure patholinks.json is in the same folder as index.html.</p>';
-        return;
+        document.getElementById('tileGrid').innerHTML = '<p style="color:red;text-align:center;grid-column:span 4;padding:20px;">Failed to load puzzle data. Check the browser console for details.</p>';
     }
-    document.getElementById('streakCount').textContent = streak;
 })();
 
 // Pick today's puzzle
@@ -557,7 +556,7 @@ function getTodayPuzzle() {
 function startGame() {
     document.getElementById('tutorialOverlay').classList.add('hidden');
     if (!PUZZLES.length) {
-        showToast('Puzzles not loaded yet — please wait a moment.');
+        showToast('Still loading — please try again in a moment.');
         return;
     }
     puzzle = getTodayPuzzle();
@@ -851,6 +850,7 @@ function shuffleArray(arr) {
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
 }
+
 </script>
 </body>
 </html>
