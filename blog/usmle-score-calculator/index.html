@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#722F37">
+
+  <title>Free USMLE Score Calculator — NBME, UWSA & Step 1/Step 2 CK Predictor | USMLE300</title>
+  <meta name="description" content="Free USMLE score calculator. Convert NBME, UWSA, and Free 120 scores to predicted Step 1 and Step 2 CK scores. Instant results, no signup required.">
+  <link rel="canonical" href="https://www.usmle300.com/blog/usmle-score-calculator">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Free USMLE Score Calculator — NBME & UWSA Score Predictor">
+  <meta property="og:description" content="Convert NBME, UWSA, and Free 120 scores to predicted Step 1 and Step 2 CK scores instantly. No signup.">
+  <meta property="og:url" content="https://www.usmle300.com/blog/usmle-score-calculator">
+  <meta property="og:site_name" content="USMLE300">
+  <meta property="article:published_time" content="2026-03-10">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free USMLE Score Calculator — NBME & UWSA Predictor">
+  <meta name="twitter:description" content="Convert practice exam scores to predicted USMLE scores instantly.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Free USMLE Score Calculator — NBME, UWSA & Step 1/Step 2 CK Predictor",
+    "description": "Convert NBME, UWSA, and Free 120 scores to predicted USMLE Step 1 and Step 2 CK scores.",
+    "datePublished": "2026-03-10",
+    "dateModified": "2026-03-10",
+    "author": {"@type": "Organization", "name": "USMLE300", "url": "https://www.usmle300.com"},
+    "publisher": {"@type": "Organization", "name": "USMLE300", "logo": {"@type": "ImageObject", "url": "https://www.usmle300.com/images/logo.png"}},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.usmle300.com/blog/usmle-score-calculator"}
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.usmle300.com"},
+      {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.usmle300.com/blog"},
+      {"@type": "ListItem", "position": 3, "name": "USMLE Score Calculator", "item": "https://www.usmle300.com/blog/usmle-score-calculator"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How accurate are NBME practice exams at predicting USMLE scores?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NBME practice exams are the most reliable predictors of USMLE performance when taken within 1-4 weeks of your exam. They typically predict your actual score within ±5-8 points for about 70-75% of students. Taking multiple NBMEs and averaging the predictions gives even better accuracy."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does UWSA1 overpredict USMLE Step 1 scores?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. UWSA1 is known to overpredict Step 1 scores by approximately 10-15 points for most students. UWSA2 is significantly more accurate, typically predicting within ±5 points. This is why most study guides recommend using UWSA2 as your final readiness check."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What NBME score do I need to pass USMLE Step 1?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Step 1 passing score is 196. To feel confident about passing, you should aim for 210-215 or higher on NBME practice exams, which corresponds to roughly 60-65% correct. Scores of 220+ on NBMEs indicate a greater than 90% probability of passing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the passing score for USMLE Step 2 CK?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "As of July 2025, the Step 2 CK passing score increased to 218 (previously 214). On NBME practice exams, aim for 230+ to have a comfortable margin. For competitive residency applications, most programs look for scores of 240-250+."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I average my NBME scores to predict my real score?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Averaging multiple NBME scores taken over your dedicated study period gives a better prediction than any single exam. However, weight your more recent exams more heavily, as they reflect your current knowledge level. Our multi-exam predictor uses weighted averaging to give you the most accurate estimate."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="../../images/logo.png" type="image/png">
+
+  <style>
+    :root{--burgundy:#722F37;--burgundy-dark:#5a252c;--cream:#FAF9F6;--cream-dark:#F0EEEB;--charcoal:#2D2D2D;--charcoal-light:#4A4A4A;--success:#2E7D4A;--gold:#C9A227;--danger:#c0353f;--warn:#8b6320}
+    *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--charcoal);line-height:1.6;overflow-x:hidden}
+    body.menu-open{overflow:hidden}
+    h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:600;line-height:1.2}
+    a{color:inherit;text-decoration:none}
+
+    /* Header */
+    header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(250,249,246,0.98);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(114,47,55,0.1);transition:box-shadow .3s}
+    header.scrolled{box-shadow:0 4px 20px rgba(0,0,0,0.08)}
+    .header-inner{max-width:1200px;margin:0 auto;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center}
+    .logo{display:flex;align-items:center;gap:0.5rem;text-decoration:none;z-index:1001}
+    .logo img{height:40px;display:block}
+    .logo-text{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:700;color:var(--burgundy)}
+    nav.desktop-nav{display:flex;gap:2rem;align-items:center}
+    nav a{text-decoration:none;color:var(--charcoal);font-weight:500;font-size:0.95rem;transition:color .2s}
+    nav a:hover{color:var(--burgundy)}
+    nav a.active{color:var(--burgundy)}
+    .cta-button{background:var(--burgundy);color:white;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;border:2px solid var(--burgundy);display:inline-block;text-align:center;transition:all .2s}
+    .cta-button:hover{background:var(--burgundy-dark);border-color:var(--burgundy-dark)}
+    .mobile-menu-btn{display:none;flex-direction:column;width:44px;height:44px;background:none;border:none;cursor:pointer;z-index:1001;padding:10px;justify-content:center;align-items:center}
+    .mobile-menu-btn span{display:block;width:24px;height:2px;background:var(--burgundy);margin:3px 0;transition:all 0.3s}
+    .mobile-menu-btn.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+    .mobile-menu-btn.active span:nth-child(2){opacity:0}
+    .mobile-menu-btn.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+    .mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--cream);z-index:999;padding:100px 2rem 2rem;flex-direction:column;opacity:0;visibility:hidden;transition:all 0.3s}
+    .mobile-nav.active{opacity:1;visibility:visible}
+    .mobile-nav a{display:block;padding:1rem 0;font-size:1.25rem;font-weight:600;color:var(--charcoal);text-decoration:none;border-bottom:1px solid var(--cream-dark)}
+    .mobile-nav .cta-button{margin-top:2rem;width:100%;padding:1rem}
+
+    /* Hero */
+    .article-hero{padding:130px 1.5rem 48px;background:linear-gradient(135deg,var(--cream) 0%,var(--cream-dark) 100%)}
+    .article-hero-inner{max-width:760px;margin:0 auto}
+    .breadcrumb{font-size:0.82rem;color:var(--charcoal-light);margin-bottom:20px}
+    .breadcrumb a{color:var(--burgundy);font-weight:500}
+    .breadcrumb a:hover{text-decoration:underline}
+    .breadcrumb span{margin:0 0.4rem;opacity:0.4}
+    .article-category{display:inline-flex;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--burgundy);background:rgba(114,47,55,0.08);padding:5px 14px;border-radius:50px;margin-bottom:16px}
+    .article-hero h1{font-size:clamp(1.7rem,4.5vw,2.6rem);color:var(--charcoal);margin-bottom:14px;line-height:1.15}
+    .article-hero-sub{font-size:1.02rem;color:var(--charcoal-light);line-height:1.65;margin-bottom:20px;max-width:620px}
+    .article-meta{display:flex;align-items:center;gap:14px;font-size:0.82rem;color:var(--charcoal-light)}
+    .article-meta .dot{width:3px;height:3px;background:var(--charcoal-light);border-radius:50%;opacity:0.4}
+
+    /* Main content */
+    .article-wrapper{max-width:760px;margin:0 auto;padding:48px 1.5rem 80px}
+    .article-body h2{font-size:1.5rem;color:var(--charcoal);margin:48px 0 16px;padding-top:16px}
+    .article-body h3{font-size:1.15rem;color:var(--charcoal);margin:28px 0 10px}
+    .article-body p{font-size:1rem;color:var(--charcoal-light);line-height:1.75;margin-bottom:16px}
+    .article-body strong{color:var(--charcoal)}
+    .article-body a{color:var(--burgundy);text-decoration:underline;text-underline-offset:2px}
+    .article-body ul,.article-body ol{margin:0 0 18px 24px;color:var(--charcoal-light)}
+    .article-body li{margin-bottom:6px;line-height:1.65;font-size:0.95rem}
+    .article-body li strong{color:var(--charcoal)}
+
+    /* ═══════════════════════════════════
+       CALCULATOR
+       ═══════════════════════════════════ */
+    .calc{background:white;border-radius:16px;border:1px solid rgba(114,47,55,0.1);box-shadow:0 4px 24px rgba(0,0,0,0.06);overflow:hidden;margin:32px 0}
+
+    /* Step tabs */
+    .calc-tabs{display:flex;border-bottom:2px solid var(--cream-dark)}
+    .calc-tab{flex:1;padding:14px;text-align:center;font-weight:700;font-size:0.88rem;cursor:pointer;color:var(--charcoal-light);background:var(--cream);transition:all .2s;border:none;font-family:'DM Sans',sans-serif}
+    .calc-tab.active{color:var(--burgundy);background:white;box-shadow:inset 0 -3px 0 var(--burgundy)}
+    .calc-tab:hover:not(.active){background:var(--cream-dark)}
+
+    .calc-body{padding:28px}
+
+    /* Form selector */
+    .calc-form-row{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+    .calc-select{flex:1;min-width:180px;padding:12px 16px;border-radius:8px;border:1.5px solid rgba(114,47,55,0.15);background:white;font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--charcoal);cursor:pointer;outline:none;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234A4A4A' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+    .calc-select:focus{border-color:var(--burgundy)}
+
+    /* Input row */
+    .calc-input-row{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:end;margin-bottom:24px}
+    .calc-field label{display:block;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--charcoal-light);margin-bottom:6px}
+    .calc-field input{width:100%;padding:12px 16px;border-radius:8px;border:1.5px solid rgba(114,47,55,0.15);font-family:'DM Sans',sans-serif;font-size:1.1rem;font-weight:600;color:var(--charcoal);outline:none;text-align:center;transition:border-color .2s}
+    .calc-field input:focus{border-color:var(--burgundy)}
+    .calc-or{font-size:0.72rem;font-weight:700;color:var(--charcoal-light);text-transform:uppercase;padding-bottom:14px;text-align:center}
+
+    /* Calculate button */
+    .calc-btn{width:100%;padding:14px;background:var(--burgundy);color:white;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:700;cursor:pointer;transition:all .2s}
+    .calc-btn:hover{background:var(--burgundy-dark);transform:translateY(-1px)}
+    .calc-btn-secondary{background:transparent;color:var(--burgundy);border:1.5px solid rgba(114,47,55,0.25)}
+    .calc-btn-secondary:hover{background:rgba(114,47,55,0.04);transform:none}
+
+    /* Mode toggle */
+    .mode-toggle{display:flex;background:var(--cream);border-radius:8px;padding:3px;margin-bottom:24px;border:1px solid rgba(114,47,55,0.08)}
+    .mode-btn{flex:1;padding:10px;text-align:center;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;border:none;background:transparent;color:var(--charcoal-light);cursor:pointer;border-radius:6px;transition:all .2s}
+    .mode-btn.active{background:white;color:var(--burgundy);box-shadow:0 1px 4px rgba(0,0,0,0.08)}
+
+    /* Multi-exam entries */
+    .multi-section{display:none}
+    .multi-section.show{display:block}
+    .single-section{display:block}
+    .single-section.hide{display:none}
+    .exam-entries{margin-bottom:16px}
+    .exam-entry{display:flex;gap:10px;align-items:center;padding:12px 14px;background:var(--cream);border-radius:10px;margin-bottom:8px;animation:fadeIn .3s ease-out}
+    .exam-entry-info{flex:1;min-width:0}
+    .exam-entry-name{font-size:0.82rem;font-weight:600;color:var(--charcoal);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .exam-entry-score{font-size:0.75rem;color:var(--charcoal-light)}
+    .exam-entry-predicted{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:700;color:var(--burgundy);flex-shrink:0;min-width:40px;text-align:right}
+    .exam-entry-remove{width:28px;height:28px;border-radius:50%;border:none;background:rgba(192,53,63,0.08);color:var(--danger);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s;font-family:'DM Sans',sans-serif}
+    .exam-entry-remove:hover{background:rgba(192,53,63,0.15)}
+    .exam-entries-empty{text-align:center;padding:24px;color:var(--charcoal-light);font-size:0.88rem;background:var(--cream);border-radius:10px;border:2px dashed rgba(114,47,55,0.1);margin-bottom:16px}
+    .add-exam-form{background:var(--cream);border-radius:12px;padding:18px;margin-bottom:16px;border:1px solid rgba(114,47,55,0.06)}
+    .add-exam-form .calc-form-row{margin-bottom:12px}
+    .add-exam-form .calc-input-row{margin-bottom:14px}
+    .add-exam-row{display:flex;gap:10px}
+    .add-exam-row .calc-btn{flex:1}
+
+    /* Composite results */
+    .composite-summary{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+    .composite-card{text-align:center;padding:22px 14px;border-radius:12px;background:var(--cream)}
+    .composite-card.main{grid-column:1/-1;padding:28px;background:linear-gradient(135deg,rgba(114,47,55,0.04) 0%,rgba(114,47,55,0.08) 100%);border:1px solid rgba(114,47,55,0.1)}
+    .composite-card .result-value{font-family:'Fraunces',serif;font-size:2.4rem;font-weight:700;line-height:1}
+    .composite-card.main .result-label{font-size:0.78rem}
+    .trend-indicator{display:inline-flex;align-items:center;gap:4px;font-size:0.78rem;font-weight:600;margin-top:6px;padding:3px 10px;border-radius:50px}
+    .trend-up{color:var(--success);background:rgba(46,125,74,0.08)}
+    .trend-flat{color:var(--warn);background:rgba(201,162,39,0.08)}
+    .trend-down{color:var(--danger);background:rgba(192,53,63,0.08)}
+
+    /* Exam count badge */
+    .exam-count{font-size:0.72rem;font-weight:700;color:var(--charcoal-light);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px}
+
+    /* Results */
+    .calc-results{display:none;margin-top:28px;padding-top:28px;border-top:1px solid var(--cream-dark)}
+    .calc-results.show{display:block;animation:fadeIn .4s ease-out}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+    .result-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px}
+    .result-card{text-align:center;padding:20px 12px;border-radius:12px;background:var(--cream)}
+    .result-label{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--charcoal-light);margin-bottom:8px}
+    .result-value{font-family:'Fraunces',serif;font-size:2rem;font-weight:700;line-height:1}
+    .result-sub{font-size:0.75rem;color:var(--charcoal-light);margin-top:4px}
+    .result-value.score-pass{color:var(--success)}
+    .result-value.score-borderline{color:var(--warn)}
+    .result-value.score-fail{color:var(--danger)}
+
+    /* Pass bar */
+    .pass-bar-container{margin:20px 0;padding:20px;background:var(--cream);border-radius:12px}
+    .pass-bar-label{display:flex;justify-content:space-between;font-size:0.75rem;font-weight:600;color:var(--charcoal-light);margin-bottom:8px}
+    .pass-bar{height:10px;background:var(--cream-dark);border-radius:10px;overflow:hidden;position:relative}
+    .pass-bar-fill{height:100%;border-radius:10px;transition:width .8s cubic-bezier(0.22,1,0.36,1)}
+    .pass-bar-marker{position:absolute;top:-6px;width:2px;height:22px;background:var(--charcoal);border-radius:2px}
+    .pass-bar-marker-label{position:absolute;top:-22px;font-size:0.62rem;font-weight:700;color:var(--charcoal);white-space:nowrap;transform:translateX(-50%)}
+
+    /* Confidence range */
+    .confidence-range{text-align:center;padding:16px;background:rgba(114,47,55,0.04);border-radius:10px;margin-top:16px}
+    .confidence-range p{font-size:0.85rem;color:var(--charcoal-light);margin:0}
+    .confidence-range strong{color:var(--charcoal);font-size:1rem}
+
+    /* Interpretation */
+    .interpretation{margin-top:16px;padding:16px 20px;border-radius:10px;font-size:0.88rem;line-height:1.6}
+    .interpretation.pass{background:rgba(46,125,74,0.06);border-left:4px solid var(--success);color:var(--charcoal-light)}
+    .interpretation.borderline{background:rgba(201,162,39,0.08);border-left:4px solid var(--gold);color:var(--charcoal-light)}
+    .interpretation.risk{background:rgba(192,53,63,0.06);border-left:4px solid var(--danger);color:var(--charcoal-light)}
+
+    /* Disclaimer */
+    .calc-disclaimer{margin-top:20px;font-size:0.72rem;color:var(--charcoal-light);opacity:0.7;text-align:center;line-height:1.5}
+
+    /* Callout */
+    .callout{border-radius:12px;padding:22px 26px;margin:24px 0}
+    .callout-tip{background:rgba(46,125,74,0.06);border-left:4px solid var(--success)}
+    .callout-warn{background:rgba(201,162,39,0.08);border-left:4px solid var(--gold)}
+    .callout-key{background:rgba(114,47,55,0.05);border-left:4px solid var(--burgundy)}
+    .callout-label{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px}
+    .callout-tip .callout-label{color:var(--success)}
+    .callout-warn .callout-label{color:var(--warn)}
+    .callout-key .callout-label{color:var(--burgundy)}
+    .callout p{margin-bottom:6px;font-size:0.92rem}
+    .callout p:last-child{margin-bottom:0}
+
+    /* FAQ */
+    .faq-section{margin-top:48px;padding-top:28px;border-top:1px solid var(--cream-dark)}
+    .faq-item{background:white;border-radius:12px;padding:20px 24px;margin-bottom:12px;border:1px solid rgba(114,47,55,0.06)}
+    .faq-q{font-family:'Fraunces',serif;font-size:1.02rem;font-weight:600;color:var(--charcoal);margin-bottom:8px}
+    .faq-a{font-size:0.92rem;color:var(--charcoal-light);line-height:1.65}
+
+    /* CTA */
+    .article-cta{background:linear-gradient(135deg,var(--burgundy) 0%,var(--burgundy-dark) 100%);border-radius:16px;padding:40px;text-align:center;margin:48px 0 0}
+    .article-cta h3{font-size:1.35rem;color:white;margin-bottom:8px}
+    .article-cta p{color:rgba(255,255,255,0.7);font-size:0.92rem;margin-bottom:18px;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.6}
+    .article-cta .cta-button{background:var(--gold);color:var(--charcoal);border-color:var(--gold);font-size:0.92rem;padding:14px 28px}
+    .article-cta .cta-button:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.2)}
+
+    /* Footer */
+    footer{background:white;border-top:1px solid var(--cream-dark);padding:40px 1.5rem}
+    .footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+    .footer-left{font-size:0.82rem;color:var(--charcoal-light)}
+    .footer-left a{color:var(--burgundy);font-weight:500}
+    .footer-links{display:flex;gap:24px}
+    .footer-links a{font-size:0.82rem;color:var(--charcoal-light);transition:color .2s}
+    .footer-links a:hover{color:var(--burgundy)}
+
+    /* TOC */
+    .toc{background:white;border-radius:14px;padding:22px 26px;margin:0 0 36px;border:1px solid rgba(114,47,55,0.08);box-shadow:0 2px 12px rgba(0,0,0,0.04)}
+    .toc-title{font-family:'Fraunces',serif;font-size:0.95rem;font-weight:600;color:var(--charcoal);margin-bottom:10px}
+    .toc ol{margin:0;padding-left:20px}
+    .toc li{margin-bottom:5px;font-size:0.88rem}
+    .toc a{color:var(--charcoal-light);text-decoration:none;transition:color .2s}
+    .toc a:hover{color:var(--burgundy)}
+
+    /* Responsive */
+    @media(max-width:768px){
+      .desktop-nav{display:none!important}
+      .mobile-menu-btn{display:flex}
+      .article-hero{padding:110px 1.5rem 36px}
+      .article-wrapper{padding:32px 1.5rem 60px}
+      .calc-body{padding:20px}
+      .calc-input-row{grid-template-columns:1fr;gap:8px}
+      .calc-or{display:none}
+      .result-grid{grid-template-columns:1fr}
+      .composite-summary{grid-template-columns:1fr}
+      .exam-entry{flex-wrap:wrap}
+      .footer-inner{flex-direction:column;gap:16px;text-align:center}
+    }
+    @media(max-width:480px){
+      .calc-form-row{flex-direction:column}
+      .result-grid{gap:10px}
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header id="header">
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <img src="../../images/logo.png" alt="USMLE300">
+      <span class="logo-text">USMLE300</span>
+    </a>
+    <nav class="desktop-nav">
+      <a href="/#bootcamp-value">What We Cover</a>
+      <a href="/#topics">Topics</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/games.html">Games</a>
+      <a href="/blog" class="active">Blog</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/#contact" class="cta-button">Book Free Consult</a>
+    </nav>
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div class="mobile-nav">
+  <a href="/#bootcamp-value">What We Cover</a>
+  <a href="/#topics">Topics</a>
+  <a href="/#pricing">Pricing</a>
+  <a href="/games.html">Games</a>
+  <a href="/blog">Blog</a>
+  <a href="/#founder">About</a>
+  <a href="/#faq">FAQ</a>
+  <a href="/#contact" class="cta-button">Book Free Consult</a>
+</div>
+
+<!-- Hero -->
+<section class="article-hero">
+  <div class="article-hero-inner">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a><span>/</span><a href="/blog">Blog</a><span>/</span><strong>Score Calculator</strong>
+    </nav>
+    <div class="article-category">Free Tool</div>
+    <h1>Free USMLE Score Calculator: NBME, UWSA &amp; Free 120 Predictor</h1>
+    <p class="article-hero-sub">Convert your NBME, UWSA, or Free 120 scores into predicted USMLE Step 1 or Step 2 CK three-digit scores. Instant results, no signup, completely free.</p>
+    <div class="article-meta">
+      <span>USMLE300 Team</span>
+      <span class="dot"></span>
+      <span>March 10, 2026</span>
+      <span class="dot"></span>
+      <span>Calculator + Guide</span>
+    </div>
+  </div>
+</section>
+
+<!-- Article -->
+<article class="article-wrapper">
+
+  <!-- ═══ THE CALCULATOR ═══ -->
+  <div class="calc" id="calculator">
+    <div class="calc-tabs">
+      <button class="calc-tab active" data-step="step1">USMLE Step 1</button>
+      <button class="calc-tab" data-step="step2">USMLE Step 2 CK</button>
+    </div>
+
+    <div class="calc-body">
+      <!-- Mode toggle -->
+      <div class="mode-toggle">
+        <button class="mode-btn active" data-mode="single">Single Exam</button>
+        <button class="mode-btn" data-mode="multi">Multi-Exam Predictor</button>
+      </div>
+
+      <!-- ═══ SINGLE EXAM MODE ═══ -->
+      <div class="single-section" id="singleSection">
+        <div class="calc-form-row">
+          <select class="calc-select" id="examForm"></select>
+        </div>
+        <div class="calc-input-row">
+          <div class="calc-field">
+            <label for="pctInput">Percent Correct (%)</label>
+            <input type="number" id="pctInput" min="0" max="100" step="0.5" placeholder="75">
+          </div>
+          <div class="calc-or">or</div>
+          <div class="calc-field">
+            <label for="wrongInput">Questions Wrong</label>
+            <input type="number" id="wrongInput" min="0" max="200" step="1" placeholder="50">
+          </div>
+        </div>
+        <button class="calc-btn" id="calcBtn">Calculate Predicted Score</button>
+      </div>
+
+      <!-- ═══ MULTI-EXAM MODE ═══ -->
+      <div class="multi-section" id="multiSection">
+        <p class="exam-count" id="examCountLabel">0 exams added — add at least 2 for a composite prediction</p>
+        <div class="exam-entries" id="examEntries">
+          <div class="exam-entries-empty" id="entriesEmpty">No exams added yet. Use the form below to add your practice exam scores.</div>
+        </div>
+
+        <!-- Add exam form -->
+        <div class="add-exam-form">
+          <div class="calc-form-row">
+            <select class="calc-select" id="multiExamForm"></select>
+          </div>
+          <div class="calc-input-row" id="multiInputRow">
+            <div class="calc-field">
+              <label for="multiPctInput">Percent Correct (%)</label>
+              <input type="number" id="multiPctInput" min="0" max="100" step="0.5" placeholder="75">
+            </div>
+            <div class="calc-or" id="multiOr">or</div>
+            <div class="calc-field" id="multiWrongField">
+              <label for="multiWrongInput">Questions Wrong</label>
+              <input type="number" id="multiWrongInput" min="0" max="200" step="1" placeholder="50">
+            </div>
+          </div>
+          <div class="add-exam-row">
+            <button class="calc-btn" id="addExamBtn">+ Add Exam</button>
+          </div>
+        </div>
+
+        <button class="calc-btn" id="compositeBtn" style="margin-top:8px">Calculate Composite Prediction</button>
+      </div>
+
+      <!-- ═══ RESULTS (shared) ═══ -->
+      <div class="calc-results" id="calcResults">
+        <!-- Single exam results -->
+        <div id="singleResults">
+          <div class="result-grid">
+            <div class="result-card">
+              <div class="result-label">Predicted Score</div>
+              <div class="result-value" id="resScore">—</div>
+              <div class="result-sub" id="resScoreSub"></div>
+            </div>
+            <div class="result-card">
+              <div class="result-label">Pass Probability</div>
+              <div class="result-value" id="resPass">—</div>
+              <div class="result-sub" id="resPassSub"></div>
+            </div>
+            <div class="result-card">
+              <div class="result-label">Likely Range</div>
+              <div class="result-value" id="resRange" style="font-size:1.4rem">—</div>
+              <div class="result-sub" id="resRangeSub"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Composite results -->
+        <div id="compositeResults" style="display:none">
+          <div class="composite-summary">
+            <div class="composite-card main">
+              <div class="result-label">Weighted Composite Prediction</div>
+              <div class="result-value" id="compScore">—</div>
+              <div class="result-sub" id="compScoreSub"></div>
+              <div id="compTrend"></div>
+            </div>
+            <div class="composite-card">
+              <div class="result-label">Pass Probability</div>
+              <div class="result-value" id="compPass">—</div>
+              <div class="result-sub" id="compPassSub"></div>
+            </div>
+            <div class="composite-card">
+              <div class="result-label">Confidence Range</div>
+              <div class="result-value" id="compRange" style="font-size:1.4rem">—</div>
+              <div class="result-sub" id="compRangeSub"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shared visual elements -->
+        <div class="pass-bar-container">
+          <div class="pass-bar-label">
+            <span>150</span>
+            <span id="passLabel">Pass: 196</span>
+            <span>300</span>
+          </div>
+          <div class="pass-bar">
+            <div class="pass-bar-fill" id="passBarFill" style="width:0"></div>
+            <div class="pass-bar-marker" id="passMarker" style="left:0"></div>
+          </div>
+        </div>
+
+        <div class="confidence-range" id="confidenceBox"></div>
+        <div class="interpretation" id="interpBox"></div>
+        <p class="calc-disclaimer">All predictions are educational estimates based on community-reported regression formulas. Actual USMLE results may vary. Not affiliated with NBME or USMLE.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-title">In this guide</div>
+    <ol>
+      <li><a href="#how-it-works">How the calculator works</a></li>
+      <li><a href="#step1-formulas">Step 1 NBME conversion formulas</a></li>
+      <li><a href="#step2-formulas">Step 2 CK NBME conversion formulas</a></li>
+      <li><a href="#uwsa">UWSA1 vs UWSA2 accuracy</a></li>
+      <li><a href="#tips">How to use your predicted score</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </div>
+
+  <div class="article-body">
+
+    <h2 id="how-it-works">How the Calculator Works</h2>
+    <p>This calculator uses form-specific linear regression formulas derived from thousands of student-reported NBME scores and their corresponding actual USMLE results. Each NBME form has a unique difficulty level, so each form gets its own conversion equation.</p>
+    <p>The basic formula for every NBME is: <strong>Predicted Score = Intercept – (Slope × Number of Wrong Answers)</strong>. For example, NBME 25 uses 277.04 – (1.113 × wrong), meaning each wrong answer costs you roughly 1.1 points off a starting ceiling of 277.</p>
+    <p>For UWSA exams, the calculator applies a known adjustment factor because UWorld's self-assessments tend to overpredict. UWSA1 typically overpredicts by 10–15 points, while UWSA2 is more accurate with only a ~5-point overestimation for most students.</p>
+
+    <div class="callout callout-key">
+      <div class="callout-label">Important</div>
+      <p>No calculator can perfectly predict your real score. These are estimates based on population-level data. Your actual score depends on exam-day factors, content sampling, and how recently you took the practice exam. Use these predictions as one data point in your decision-making, not as a guarantee.</p>
+    </div>
+
+    <h2 id="step1-formulas">Step 1: NBME Score Conversion Formulas</h2>
+    <p>Step 1 is now pass/fail (passing score: 196), but knowing your predicted three-digit score still matters because it strongly predicts your Step 2 CK performance — which is the scored exam residency programs care about.</p>
+    <p>Here are the form-specific conversion formulas used in this calculator. All are based on 200-question CBSSA exams:</p>
+    <ul>
+      <li><strong>NBME 25 (CBSSA 25):</strong> 277.04 – 1.113 × wrong. Moderate difficulty, strong pathology and pharmacology emphasis.</li>
+      <li><strong>NBME 26 (CBSSA 26):</strong> 275.92 – 1.095 × wrong. Similar difficulty to 25, good baseline form.</li>
+      <li><strong>NBME 27 (CBSSA 27):</strong> 279.82 – 1.138 × wrong. Slightly higher ceiling, harder questions.</li>
+      <li><strong>NBME 28 (CBSSA 28):</strong> 277.18 – 1.105 × wrong. Moderate difficulty, balanced content.</li>
+      <li><strong>NBME 29 (CBSSA 29):</strong> 278.40 – 1.090 × wrong. Good late-dedicated form.</li>
+      <li><strong>NBME 30 (CBSSA 30):</strong> 280.50 – 1.150 × wrong. Considered the hardest form, highest points per question.</li>
+      <li><strong>NBME 31 (CBSSA 31):</strong> 279.00 – 1.120 × wrong. Newest form with updated content.</li>
+    </ul>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Pro Tip</div>
+      <p>Take your NBMEs under real test conditions: timed, no breaks mid-block, no looking things up. Casual testing inflates your score and gives you a false sense of readiness.</p>
+    </div>
+
+    <h2 id="step2-formulas">Step 2 CK: NBME Score Conversion Formulas</h2>
+    <p>Step 2 CK is the scored exam that residency programs weigh most heavily. The passing score increased to 218 as of July 2025 (previously 214). For competitive specialties, you want 250+.</p>
+    <p>CCSSA (Comprehensive Clinical Science Self-Assessment) form formulas:</p>
+    <ul>
+      <li><strong>NBME 9 (CCSSA 9):</strong> 298.45 – 1.09 × wrong. Good for early baseline.</li>
+      <li><strong>NBME 10 (CCSSA 10):</strong> 300.18 – 1.10 × wrong. Slightly higher ceiling.</li>
+      <li><strong>NBME 11 (CCSSA 11):</strong> 299.50 – 1.08 × wrong. One of the most predictive forms (r = 0.87).</li>
+      <li><strong>NBME 12 (CCSSA 12):</strong> 300.18 – 1.09 × wrong. Strong late-stage assessment.</li>
+      <li><strong>NBME 13 (CCSSA 13):</strong> 298.80 – 1.07 × wrong. Updated content, lower per-question penalty.</li>
+      <li><strong>NBME 14 (CCSSA 14):</strong> 299.20 – 1.08 × wrong. Solid final-weeks form.</li>
+      <li><strong>NBME 15 (CCSSA 15):</strong> 300.50 – 1.10 × wrong. Newest form, highest intercept.</li>
+    </ul>
+
+    <h2 id="uwsa">UWSA1 vs UWSA2: Which Is More Accurate?</h2>
+    <p>UWorld's self-assessments work differently — they give you a three-digit score directly, so you don't need to convert from percent correct. But those scores need adjustment:</p>
+    <ul>
+      <li><strong>UWSA1</strong> consistently overpredicts by 10–15 points for Step 1 and 8–12 points for Step 2 CK. It's useful for gauging progress but not for final readiness decisions.</li>
+      <li><strong>UWSA2</strong> is the most accurate single predictor available. It typically matches actual scores within ±5 points for both Step 1 and Step 2 CK. Take it 1–2 weeks before your exam.</li>
+      <li><strong>Free 120</strong> is less about the score and more about getting comfortable with the actual USMLE interface. Scoring 70%+ on the Free 120 is a reasonable signal that you're in good shape.</li>
+    </ul>
+
+    <div class="callout callout-warn">
+      <div class="callout-label">Common Mistake</div>
+      <p>Don't anchor on a single practice exam score. If your NBME 29 was 230 but your NBME 30 was 210, the answer isn't "I'm probably around 230." Average your recent exams, weight the newer ones more, and look at the trend over time.</p>
+    </div>
+
+    <h2 id="tips">How to Use Your Predicted Score</h2>
+
+    <h3>For Step 1 (pass/fail)</h3>
+    <p>If your predicted score is <strong>215+</strong> on at least two recent NBMEs, you're in strong shape to pass. If you're in the 196–210 range, consider pushing your test date by 2 weeks and focusing on your weakest systems. Below 196 on practice exams means you need more dedicated study time.</p>
+
+    <h3>For Step 2 CK (scored)</h3>
+    <p>Your target depends on your specialty. Generally: 230+ is safe to pass with a margin, 240–250 is competitive for most specialties, and 250+ puts you in a strong position for the most competitive programs. If your practice scores are flat, the issue is usually question review depth or burnout — not study volume. <a href="/#contact">Talk to a tutor</a> if you're stuck.</p>
+
+    <!-- FAQ -->
+    <div class="faq-section" id="faq">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">How accurate are NBME practice exams at predicting USMLE scores?</div>
+        <p class="faq-a">NBME exams taken within 1–4 weeks of the real test typically predict your actual score within ±5–8 points for about 70–75% of students. Taking multiple NBMEs and averaging the results gives even better accuracy. The further out from your exam date, the less predictive any single practice test will be.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Does UWSA1 overpredict USMLE scores?</div>
+        <p class="faq-a">Yes. UWSA1 typically overpredicts Step 1 scores by 10–15 points and Step 2 CK scores by 8–12 points. UWSA2 is significantly more accurate, usually within ±5 points. This is why most study guides recommend UWSA2 as your final readiness check.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What NBME score do I need to pass Step 1?</div>
+        <p class="faq-a">The passing score is 196. We recommend aiming for 210–215+ on practice NBMEs to have a comfortable safety margin. Scores of 220+ correspond to a greater than 90% pass probability. Taking two NBMEs above 210 within your last 2 weeks of study is a good signal of readiness.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What is the passing score for Step 2 CK?</div>
+        <p class="faq-a">As of July 2025, the Step 2 CK passing score is 218 (increased from 214). For a comfortable margin, aim for 230+ on practice exams. For competitive specialties like dermatology or orthopedics, programs generally look for 250+.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Should I average my NBME scores?</div>
+        <p class="faq-a">Yes, with a caveat: weight your more recent exams more heavily. A simple approach is to take the average of your last 2–3 practice exams. If you see a clear upward trend, your real score is likely closer to your most recent exam than to the average.</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="article-cta">
+      <h3>Score not where you want it?</h3>
+      <p>Our tutors help students break through score plateaus with targeted, 1-on-1 strategy. First call is free.</p>
+      <a href="/#contact" class="cta-button">Book Free Strategy Call &rarr;</a>
+    </div>
+
+  </div>
+</article>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">Built by <a href="/">USMLE300</a> &middot; 97% pass rate &middot; Small-group tutoring</div>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/games.html">Games</a>
+      <a href="/blog">Blog</a>
+      <a href="/#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ═══ DATA ═══
+  var formulas = {
+    step1: {
+      nbme: [
+        { id:'nbme25', name:'NBME 25', full:'NBME 25 (CBSSA 25)', intercept:277.04, slope:1.113, q:200, weight:1.0 },
+        { id:'nbme26', name:'NBME 26', full:'NBME 26 (CBSSA 26)', intercept:275.92, slope:1.095, q:200, weight:1.0 },
+        { id:'nbme27', name:'NBME 27', full:'NBME 27 (CBSSA 27)', intercept:279.82, slope:1.138, q:200, weight:1.05 },
+        { id:'nbme28', name:'NBME 28', full:'NBME 28 (CBSSA 28)', intercept:277.18, slope:1.105, q:200, weight:1.0 },
+        { id:'nbme29', name:'NBME 29', full:'NBME 29 (CBSSA 29)', intercept:278.40, slope:1.090, q:200, weight:1.05 },
+        { id:'nbme30', name:'NBME 30', full:'NBME 30 (CBSSA 30)', intercept:280.50, slope:1.150, q:200, weight:1.1 },
+        { id:'nbme31', name:'NBME 31', full:'NBME 31 (CBSSA 31)', intercept:279.00, slope:1.120, q:200, weight:1.1 }
+      ],
+      uwsa: [
+        { id:'uwsa1s1', name:'UWSA 1', full:'UWSA 1 (overpredicts ~12 pts)', adjust:-12, type:'uwsa', weight:0.8 },
+        { id:'uwsa2s1', name:'UWSA 2', full:'UWSA 2 (most accurate)', adjust:-5, type:'uwsa', weight:1.2 }
+      ],
+      free120: [
+        { id:'free120s1', name:'Free 120', full:'Free 120 (Step 1)', type:'free120', weight:0.6 }
+      ],
+      passScore: 196
+    },
+    step2: {
+      nbme: [
+        { id:'ccssa9',  name:'NBME 9',  full:'NBME 9 (CCSSA 9)',  intercept:298.45, slope:1.09, q:200, weight:0.9 },
+        { id:'ccssa10', name:'NBME 10', full:'NBME 10 (CCSSA 10)', intercept:300.18, slope:1.10, q:200, weight:0.95 },
+        { id:'ccssa11', name:'NBME 11', full:'NBME 11 (CCSSA 11)', intercept:299.50, slope:1.08, q:200, weight:1.1 },
+        { id:'ccssa12', name:'NBME 12', full:'NBME 12 (CCSSA 12)', intercept:300.18, slope:1.09, q:200, weight:1.0 },
+        { id:'ccssa13', name:'NBME 13', full:'NBME 13 (CCSSA 13)', intercept:298.80, slope:1.07, q:200, weight:1.1 },
+        { id:'ccssa14', name:'NBME 14', full:'NBME 14 (CCSSA 14)', intercept:299.20, slope:1.08, q:200, weight:1.05 },
+        { id:'ccssa15', name:'NBME 15', full:'NBME 15 (CCSSA 15)', intercept:300.50, slope:1.10, q:200, weight:1.15 }
+      ],
+      uwsa: [
+        { id:'uwsa1s2', name:'UWSA 1 CK', full:'UWSA 1 CK (overpredicts ~10 pts)', adjust:-10, type:'uwsa', weight:0.8 },
+        { id:'uwsa2s2', name:'UWSA 2 CK', full:'UWSA 2 CK (most accurate)', adjust:-4, type:'uwsa', weight:1.2 }
+      ],
+      free120: [
+        { id:'free120s2', name:'Free 120 CK', full:'Free 120 (Step 2 CK)', type:'free120', weight:0.6 }
+      ],
+      passScore: 218
+    }
+  };
+
+  var currentStep = 'step1';
+  var currentMode = 'single';
+  var addedExams = []; // {formId, name, predicted, weight}
+
+  // DOM refs
+  var examSelect = document.getElementById('examForm');
+  var pctInput = document.getElementById('pctInput');
+  var wrongInput = document.getElementById('wrongInput');
+  var calcBtn = document.getElementById('calcBtn');
+  var calcResults = document.getElementById('calcResults');
+  var multiExamForm = document.getElementById('multiExamForm');
+  var multiPctInput = document.getElementById('multiPctInput');
+  var multiWrongInput = document.getElementById('multiWrongInput');
+
+  // ═══ HELPERS ═══
+  function getAllForms() {
+    var d = formulas[currentStep];
+    return d.nbme.concat(d.uwsa).concat(d.free120);
+  }
+  function findForm(id) {
+    var all = getAllForms();
+    for (var i = 0; i < all.length; i++) if (all[i].id === id) return all[i];
+    return null;
+  }
+  function passProb(score, ps) { return Math.min(99.9, Math.max(0.1, 100 / (1 + Math.exp(-0.18 * (score - ps))))); }
+  function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+
+  function calcPredicted(form, pctVal, wrongVal) {
+    if (form.type === 'uwsa') {
+      var raw = parseFloat(pctVal);
+      if (isNaN(raw) || raw < 100 || raw > 300) return null;
+      return Math.round(raw + form.adjust);
+    } else if (form.type === 'free120') {
+      var pct = parseFloat(pctVal);
+      if (isNaN(pct) || pct < 0 || pct > 100) return null;
+      return Math.round(currentStep === 'step1' ? 130 + pct * 1.4 : 140 + pct * 1.5);
+    } else {
+      var wrong;
+      if (wrongVal !== '' && wrongVal !== undefined) {
+        wrong = parseInt(wrongVal);
+      } else if (pctVal !== '' && pctVal !== undefined) {
+        wrong = Math.round(form.q * (1 - parseFloat(pctVal) / 100));
+      } else return null;
+      if (isNaN(wrong) || wrong < 0 || wrong > form.q) return null;
+      return Math.round(form.intercept - form.slope * wrong);
+    }
+  }
+
+  // ═══ POPULATE SELECTS ═══
+  function buildOptions(selectEl) {
+    var d = formulas[currentStep];
+    selectEl.innerHTML = '';
+    [['NBME Practice Exams', d.nbme], ['UWorld Self-Assessments', d.uwsa], ['Free 120', d.free120]].forEach(function(g) {
+      var og = document.createElement('optgroup');
+      og.label = g[0];
+      g[1].forEach(function(f) {
+        var o = document.createElement('option');
+        o.value = f.id; o.textContent = f.full; og.appendChild(o);
+      });
+      selectEl.appendChild(og);
+    });
+  }
+
+  function updateInputLabels(selectEl, pctEl, wrongFieldEl, orEl) {
+    var form = findForm(selectEl.value);
+    if (!form) return;
+    var label = pctEl.parentElement.querySelector('label');
+    if (form.type === 'uwsa') {
+      label.textContent = 'Your UWSA Score (3-digit)';
+      pctEl.placeholder = '235'; pctEl.max = 300; pctEl.min = 100;
+      if (wrongFieldEl) wrongFieldEl.style.display = 'none';
+      if (orEl) orEl.style.display = 'none';
+    } else if (form.type === 'free120') {
+      label.textContent = 'Percent Correct (%)';
+      pctEl.placeholder = '75'; pctEl.max = 100; pctEl.min = 0;
+      if (wrongFieldEl) wrongFieldEl.style.display = 'none';
+      if (orEl) orEl.style.display = 'none';
+    } else {
+      label.textContent = 'Percent Correct (%)';
+      pctEl.placeholder = '75'; pctEl.max = 100; pctEl.min = 0;
+      if (wrongFieldEl) wrongFieldEl.style.display = '';
+      if (orEl) orEl.style.display = '';
+    }
+    pctEl.value = '';
+    if (wrongFieldEl) { var wi = wrongFieldEl.querySelector('input'); if (wi) wi.value = ''; }
+  }
+
+  function populateAll() {
+    buildOptions(examSelect);
+    buildOptions(multiExamForm);
+    updateInputLabels(examSelect, pctInput, wrongInput.parentElement, document.querySelector('.single-section .calc-or'));
+    updateInputLabels(multiExamForm, multiPctInput, document.getElementById('multiWrongField'), document.getElementById('multiOr'));
+    addedExams = [];
+    renderEntries();
+    calcResults.classList.remove('show');
+  }
+
+  // ═══ AUTO-SYNC ═══
+  var syncing = false;
+  function setupSync(selectEl, pctEl, wrongEl) {
+    pctEl.addEventListener('input', function() {
+      if (syncing) return; syncing = true;
+      var f = findForm(selectEl.value);
+      if (f && !f.type && pctEl.value !== '') {
+        var p = parseFloat(pctEl.value);
+        if (!isNaN(p)) wrongEl.value = Math.round(f.q * (1 - p / 100));
+      }
+      syncing = false;
+    });
+    wrongEl.addEventListener('input', function() {
+      if (syncing) return; syncing = true;
+      var f = findForm(selectEl.value);
+      if (f && !f.type && wrongEl.value !== '') {
+        var w = parseInt(wrongEl.value);
+        if (!isNaN(w)) pctEl.value = Math.round((1 - w / f.q) * 1000) / 10;
+      }
+      syncing = false;
+    });
+  }
+  setupSync(examSelect, pctInput, wrongInput);
+  setupSync(multiExamForm, multiPctInput, multiWrongInput);
+
+  examSelect.addEventListener('change', function() {
+    updateInputLabels(examSelect, pctInput, wrongInput.parentElement, document.querySelector('.single-section .calc-or'));
+  });
+  multiExamForm.addEventListener('change', function() {
+    updateInputLabels(multiExamForm, multiPctInput, document.getElementById('multiWrongField'), document.getElementById('multiOr'));
+  });
+
+  // ═══ MODE TOGGLE ═══
+  document.querySelectorAll('.mode-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.mode-btn').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      currentMode = btn.dataset.mode;
+      document.getElementById('singleSection').className = currentMode === 'single' ? 'single-section' : 'single-section hide';
+      document.getElementById('multiSection').className = currentMode === 'multi' ? 'multi-section show' : 'multi-section';
+      calcResults.classList.remove('show');
+    });
+  });
+
+  // ═══ MULTI-EXAM ENTRIES ═══
+  function renderEntries() {
+    var container = document.getElementById('examEntries');
+    var empty = document.getElementById('entriesEmpty');
+    var label = document.getElementById('examCountLabel');
+    if (addedExams.length === 0) {
+      container.innerHTML = '';
+      container.appendChild(empty);
+      empty.style.display = '';
+      label.textContent = '0 exams added — add at least 2 for a composite prediction';
+      return;
+    }
+    empty.style.display = 'none';
+    container.innerHTML = '';
+    addedExams.forEach(function(entry, i) {
+      var div = document.createElement('div');
+      div.className = 'exam-entry';
+      div.innerHTML = '<div class="exam-entry-info"><div class="exam-entry-name">' + entry.name + '</div><div class="exam-entry-score">' + entry.inputDesc + ' → predicted ' + entry.predicted + '</div></div><div class="exam-entry-predicted">' + entry.predicted + '</div><button class="exam-entry-remove" data-idx="' + i + '">×</button>';
+      container.appendChild(div);
+    });
+    // Add remove listeners
+    container.querySelectorAll('.exam-entry-remove').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        addedExams.splice(parseInt(btn.dataset.idx), 1);
+        renderEntries();
+        calcResults.classList.remove('show');
+      });
+    });
+    var n = addedExams.length;
+    label.textContent = n + ' exam' + (n !== 1 ? 's' : '') + ' added' + (n < 2 ? ' — add at least 2 for a composite prediction' : '');
+  }
+
+  document.getElementById('addExamBtn').addEventListener('click', function() {
+    var form = findForm(multiExamForm.value);
+    if (!form) return;
+    var predicted = calcPredicted(form, multiPctInput.value, multiWrongInput.value);
+    if (predicted === null) { alert('Enter a valid score.'); return; }
+    predicted = clamp(predicted, 150, 300);
+
+    var inputDesc;
+    if (form.type === 'uwsa') inputDesc = 'Score: ' + multiPctInput.value;
+    else if (form.type === 'free120') inputDesc = multiPctInput.value + '% correct';
+    else inputDesc = multiPctInput.value ? multiPctInput.value + '% correct' : multiWrongInput.value + ' wrong';
+
+    addedExams.push({ formId: form.id, name: form.name, predicted: predicted, weight: form.weight || 1, inputDesc: inputDesc });
+    renderEntries();
+    // Clear inputs
+    multiPctInput.value = '';
+    multiWrongInput.value = '';
+    calcResults.classList.remove('show');
+  });
+
+  // ═══ DISPLAY RESULTS ═══
+  function showResults(score, isComposite) {
+    score = clamp(score, 150, 300);
+    var passScore = formulas[currentStep].passScore;
+    var prob = Math.round(passProb(score, passScore) * 10) / 10;
+    var margin = isComposite ? Math.max(4, Math.round(7 - addedExams.length * 0.5)) : 7;
+    var low = clamp(score - margin, 150, 300);
+    var high = clamp(score + margin, 150, 300);
+    var status = prob >= 85 ? 'pass' : prob >= 50 ? 'borderline' : 'risk';
+
+    calcResults.classList.add('show');
+
+    // Toggle which result display shows
+    document.getElementById('singleResults').style.display = isComposite ? 'none' : '';
+    document.getElementById('compositeResults').style.display = isComposite ? '' : 'none';
+
+    if (isComposite) {
+      var compScoreEl = document.getElementById('compScore');
+      compScoreEl.textContent = score;
+      compScoreEl.className = 'result-value score-' + status;
+      document.getElementById('compScoreSub').textContent = 'Based on ' + addedExams.length + ' exams (weighted)';
+
+      // Trend
+      var trendEl = document.getElementById('compTrend');
+      if (addedExams.length >= 2) {
+        var first = addedExams[0].predicted;
+        var last = addedExams[addedExams.length - 1].predicted;
+        var diff = last - first;
+        if (diff > 3) trendEl.innerHTML = '<span class="trend-indicator trend-up">↑ Trending up (+' + diff + ' pts)</span>';
+        else if (diff < -3) trendEl.innerHTML = '<span class="trend-indicator trend-down">↓ Trending down (' + diff + ' pts)</span>';
+        else trendEl.innerHTML = '<span class="trend-indicator trend-flat">→ Stable</span>';
+      } else trendEl.innerHTML = '';
+
+      document.getElementById('compPass').textContent = prob + '%';
+      document.getElementById('compPass').className = 'result-value score-' + status;
+      document.getElementById('compPassSub').textContent = 'of passing';
+      document.getElementById('compRange').textContent = low + '–' + high;
+      document.getElementById('compRangeSub').textContent = '~70% confidence';
+    } else {
+      var scoreEl = document.getElementById('resScore');
+      scoreEl.textContent = score;
+      scoreEl.className = 'result-value score-' + status;
+
+      document.getElementById('resPass').textContent = prob + '%';
+      document.getElementById('resPass').className = 'result-value score-' + status;
+      document.getElementById('resPassSub').textContent = 'of passing';
+      document.getElementById('resRange').textContent = low + '–' + high;
+      document.getElementById('resRangeSub').textContent = '~70% confidence';
+    }
+
+    // Pass bar
+    document.getElementById('passLabel').textContent = 'Pass: ' + passScore;
+    var pct3 = (score - 150) / 150 * 100;
+    var pmPct = (passScore - 150) / 150 * 100;
+    var barColor = status === 'pass' ? 'var(--success)' : status === 'borderline' ? 'var(--gold)' : 'var(--danger)';
+    document.getElementById('passBarFill').style.width = clamp(pct3, 0, 100) + '%';
+    document.getElementById('passBarFill').style.background = barColor;
+    var marker = document.getElementById('passMarker');
+    marker.style.left = pmPct + '%';
+    marker.innerHTML = '<span class="pass-bar-marker-label">' + passScore + '</span>';
+
+    // Confidence text
+    var confText = isComposite
+      ? '<p>Your weighted composite prediction is <strong>' + score + '</strong>, with a likely range of <strong>' + low + '–' + high + '</strong>. Based on ' + addedExams.length + ' practice exams. More exams = tighter confidence interval.</p>'
+      : '<p>Your predicted score is <strong>' + score + '</strong>, with a likely range of <strong>' + low + '–' + high + '</strong>.</p>';
+    document.getElementById('confidenceBox').innerHTML = confText;
+
+    // Interpretation
+    var interpEl = document.getElementById('interpBox');
+    if (currentStep === 'step1') {
+      if (status === 'pass') { interpEl.className = 'interpretation pass'; interpEl.innerHTML = '<strong>Looking good.</strong> Your predicted score is comfortably above the passing threshold of 196. If you see this level consistently, you\'re likely ready. Focus on maintaining your trajectory and getting rest before exam day.'; }
+      else if (status === 'borderline') { interpEl.className = 'interpretation borderline'; interpEl.innerHTML = '<strong>Borderline zone.</strong> A score around ' + score + ' means passing is likely but not certain. Consider taking another NBME. If it trends up, you\'re on track. If flat or down, postponing 2 weeks may be the safer move.'; }
+      else { interpEl.className = 'interpretation risk'; interpEl.innerHTML = '<strong>More study time is needed.</strong> A predicted ' + score + ' puts you below the safe range. Most students here benefit from targeted content review and better question-review technique. <a href="/#contact" style="color:var(--burgundy)">A tutor can help identify exactly what to fix.</a>'; }
+    } else {
+      if (score >= 250) { interpEl.className = 'interpretation pass'; interpEl.innerHTML = '<strong>Excellent range.</strong> ' + score + ' is competitive for most specialties. Focus on maintaining this level and closing remaining gaps.'; }
+      else if (score >= 230) { interpEl.className = 'interpretation pass'; interpEl.innerHTML = '<strong>Solid position.</strong> ' + score + ' gives you a comfortable passing margin and is competitive for many specialties. To push higher, focus on your 2–3 weakest systems.'; }
+      else if (score >= 218) { interpEl.className = 'interpretation borderline'; interpEl.innerHTML = '<strong>Passing range, but slim margin.</strong> ' + score + ' is above the 218 threshold, but with little buffer. Focus on high-yield systems and thorough UWorld review.'; }
+      else { interpEl.className = 'interpretation risk'; interpEl.innerHTML = '<strong>Below the passing score of 218.</strong> Consider postponing and doing targeted review. <a href="/#contact" style="color:var(--burgundy)">A strategy call with a tutor can help build a plan.</a>'; }
+    }
+
+    calcResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // ═══ SINGLE CALC ═══
+  calcBtn.addEventListener('click', function() {
+    var form = findForm(examSelect.value);
+    if (!form) return;
+    var predicted = calcPredicted(form, pctInput.value, wrongInput.value);
+    if (predicted === null) { alert('Enter a valid score.'); return; }
+    document.getElementById('resScoreSub').textContent = form.name;
+    showResults(predicted, false);
+  });
+
+  // ═══ COMPOSITE CALC ═══
+  document.getElementById('compositeBtn').addEventListener('click', function() {
+    if (addedExams.length < 1) { alert('Add at least one exam to calculate.'); return; }
+    if (addedExams.length === 1) {
+      showResults(addedExams[0].predicted, true);
+      return;
+    }
+    // Weighted average with recency bonus: later entries get extra weight
+    var totalWeight = 0, weightedSum = 0;
+    addedExams.forEach(function(entry, i) {
+      // Recency multiplier: 1.0 for first, up to 1.5 for last
+      var recency = 1.0 + (i / (addedExams.length - 1)) * 0.5;
+      var w = entry.weight * recency;
+      weightedSum += entry.predicted * w;
+      totalWeight += w;
+    });
+    var composite = Math.round(weightedSum / totalWeight);
+    showResults(composite, true);
+  });
+
+  // ═══ STEP TABS ═══
+  document.querySelectorAll('.calc-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.calc-tab').forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      currentStep = tab.dataset.step;
+      populateAll();
+    });
+  });
+
+  // ═══ INIT ═══
+  populateAll();
+
+  // Header scroll
+  window.addEventListener('scroll', function() {
+    document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
+  });
+  // Mobile menu
+  var menuBtn = document.querySelector('.mobile-menu-btn'), mobileNav = document.querySelector('.mobile-nav');
+  menuBtn.addEventListener('click', function() { menuBtn.classList.toggle('active'); mobileNav.classList.toggle('active'); document.body.classList.toggle('menu-open'); });
+  document.querySelectorAll('.mobile-nav a').forEach(function(a) { a.addEventListener('click', function() { menuBtn.classList.remove('active'); mobileNav.classList.remove('active'); document.body.classList.remove('menu-open'); }); });
+})();
+</script>
+
+</body>
+</html>
