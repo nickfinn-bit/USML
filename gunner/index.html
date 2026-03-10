@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#07060b">
+    <title>Gunner | 1v1 USMLE Battle by USMLE300</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Bebas+Neue&family=Geist+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #07060b;
+            --bg-warm: #0b0a10;
+            --surface: rgba(255,255,255,0.03);
+            --surface-solid: #111018;
+            --surface-2: rgba(255,255,255,0.06);
+            --surface-3: rgba(255,255,255,0.09);
+            --border: rgba(255,255,255,0.06);
+            --border-subtle: rgba(255,255,255,0.03);
+            --glass: rgba(255,255,255,0.04);
+            --glass-border: rgba(255,255,255,0.08);
+
+            --you: #8b5cf6;
+            --you-mid: #7c3aed;
+            --you-dim: rgba(139,92,246,0.1);
+            --you-glow: rgba(139,92,246,0.25);
+
+            --opp: #06b6d4;
+            --opp-mid: #0891b2;
+            --opp-dim: rgba(6,182,212,0.1);
+            --opp-glow: rgba(6,182,212,0.25);
+
+            --correct: #22c55e;
+            --correct-dim: rgba(34,197,94,0.1);
+            --wrong: #ef4444;
+            --wrong-dim: rgba(239,68,68,0.1);
+
+            --gold: #f59e0b;
+            --gold-dim: rgba(245,158,11,0.08);
+
+            --text: #f0eef5;
+            --text-secondary: #9490a5;
+            --text-muted: #5c586d;
+            --text-faint: #3d3a4a;
+
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-xs: 6px;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+        html, body { height:100%; overflow:hidden; }
+
+        body {
+            font-family: 'Instrument Sans', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            display:flex; flex-direction:column;
+            position:relative;
+        }
+
+        /* ═══ AMBIENT BACKGROUND ═══ */
+        .ambient-bg {
+            position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden;
+        }
+        .ambient-orb {
+            position:absolute; border-radius:50%; filter:blur(120px); opacity:0.35;
+            animation: orbFloat 20s ease-in-out infinite;
+        }
+        .ambient-orb.orb-1 {
+            width:500px; height:500px; top:-15%; left:-10%;
+            background: radial-gradient(circle, var(--you) 0%, transparent 70%);
+            animation-delay: 0s;
+        }
+        .ambient-orb.orb-2 {
+            width:450px; height:450px; bottom:-10%; right:-10%;
+            background: radial-gradient(circle, var(--opp) 0%, transparent 70%);
+            animation-delay: -7s;
+        }
+        .ambient-orb.orb-3 {
+            width:300px; height:300px; top:40%; left:50%;
+            background: radial-gradient(circle, rgba(245,158,11,0.3) 0%, transparent 70%);
+            animation-delay: -13s; opacity:0.15;
+        }
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -20px) scale(1.05); }
+            66% { transform: translate(-20px, 15px) scale(0.95); }
+        }
+
+        /* Noise grain overlay */
+        .noise-overlay {
+            position:fixed; inset:0; z-index:1; pointer-events:none; opacity:0.025;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-repeat: repeat; background-size: 128px 128px;
+        }
+
+        /* ═══ SCREEN TRANSITIONS ═══ */
+        .screen {
+            display:none; flex-direction:column; min-height:100dvh; max-height:100dvh;
+            position:relative; z-index:2;
+        }
+        .screen.active {
+            display:flex;
+            animation: screenIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes screenIn {
+            from { opacity:0; transform:scale(0.98) translateY(8px); }
+            to { opacity:1; transform:scale(1) translateY(0); }
+        }
+
+        /* ═══ SHARED COMPONENTS ═══ */
+        .badge {
+            display:inline-flex; align-items:center; gap:4px;
+            padding:4px 10px; border-radius:100px;
+            font-family:'Geist Mono',monospace;
+            font-size:0.6rem; font-weight:700;
+            text-transform:uppercase; letter-spacing:0.12em;
+        }
+        .badge-you { background:var(--you-dim); color:var(--you); border:1px solid rgba(139,92,246,0.15); }
+        .badge-opp { background:var(--opp-dim); color:var(--opp); border:1px solid rgba(6,182,212,0.15); }
+        .badge-gold { background:var(--gold-dim); color:var(--gold); border:1px solid rgba(245,158,11,0.12); }
+        .badge-neutral { background:var(--surface-2); color:var(--text-secondary); border:1px solid var(--border); }
+
+        .glass-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* ═══ LOBBY ═══ */
+        .lobby {
+            align-items:center; justify-content:center;
+            text-align:center; padding:24px;
+            gap:8px;
+        }
+
+        .lobby-brand {
+            display:flex; flex-direction:column; align-items:center; gap:4px;
+            margin-bottom:16px;
+        }
+        .lobby-icon-wrap {
+            width:72px; height:72px;
+            border-radius:20px;
+            background: linear-gradient(145deg, var(--you), var(--opp));
+            display:flex; align-items:center; justify-content:center;
+            font-size:2rem;
+            box-shadow: 0 8px 40px var(--you-glow), 0 2px 8px rgba(0,0,0,0.3);
+            margin-bottom:8px;
+            position:relative;
+        }
+        .lobby-icon-wrap::after {
+            content:''; position:absolute; inset:-2px; border-radius:22px;
+            background: linear-gradient(145deg, var(--you), var(--opp));
+            z-index:-1; opacity:0.3; filter:blur(12px);
+        }
+
+        .lobby-title {
+            font-family:'Bebas Neue', sans-serif;
+            font-size:3.4rem; letter-spacing:0.08em;
+            line-height:1;
+            background: linear-gradient(180deg, #fff 30%, var(--text-secondary) 100%);
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            background-clip:text;
+        }
+        .lobby-tagline {
+            font-size:0.82rem; color:var(--text-muted);
+            line-height:1.5; max-width:320px;
+            font-weight:500;
+        }
+        .lobby-tagline strong { color:var(--text-secondary); font-weight:600; }
+
+        .lobby-form {
+            width:100%; max-width:380px;
+            padding:24px;
+        }
+
+        .field { margin-bottom:14px; text-align:left; }
+        .field-label {
+            font-family:'Geist Mono',monospace;
+            font-size:0.58rem; font-weight:700;
+            text-transform:uppercase; letter-spacing:0.16em;
+            color:var(--text-muted); margin-bottom:6px;
+            padding-left:2px;
+        }
+        .field-input, .field-select {
+            width:100%; padding:13px 16px;
+            border-radius:var(--radius-sm);
+            border:1.5px solid var(--border);
+            background:var(--surface);
+            color:var(--text);
+            font-family:'Instrument Sans',sans-serif;
+            font-size:0.88rem; font-weight:600;
+            outline:none; transition:all 0.2s ease;
+        }
+        .field-input:focus, .field-select:focus {
+            border-color: rgba(139,92,246,0.4);
+            box-shadow: 0 0 0 3px rgba(139,92,246,0.08);
+        }
+        .field-input::placeholder { color:var(--text-faint); font-weight:500; }
+        .field-select {
+            cursor:pointer; appearance:none;
+            background-image:url("data:image/svg+xml,%3Csvg width='12' height='7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m1 1 5 5 5-5' stroke='%235c586d' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat:no-repeat; background-position:right 16px center;
+        }
+
+        .btn-primary {
+            width:100%; padding:16px;
+            border-radius:var(--radius-sm); border:none;
+            background: linear-gradient(135deg, var(--you-mid), var(--you));
+            color:white;
+            font-family:'Instrument Sans',sans-serif;
+            font-weight:700; font-size:0.95rem;
+            cursor:pointer; transition:all 0.25s ease;
+            position:relative; overflow:hidden;
+            letter-spacing:0.01em;
+        }
+        .btn-primary::before {
+            content:''; position:absolute; inset:0;
+            background: linear-gradient(135deg, transparent, rgba(255,255,255,0.1));
+            opacity:0; transition:opacity 0.25s;
+        }
+        .btn-primary:hover { transform:translateY(-2px); box-shadow:0 12px 40px var(--you-glow); }
+        .btn-primary:hover::before { opacity:1; }
+        .btn-primary:active { transform:translateY(0) scale(0.98); }
+
+        .lobby-rating {
+            margin-top:14px;
+            font-family:'Geist Mono',monospace;
+            font-size:0.72rem; color:var(--text-muted);
+            display:flex; align-items:center; justify-content:center; gap:6px;
+        }
+        .lobby-rating strong { color:var(--gold); font-weight:800; }
+
+        .lobby-footer {
+            position:absolute; bottom:20px;
+            font-size:0.68rem; color:var(--text-faint);
+            font-weight:500;
+        }
+        .lobby-footer a { color:var(--text-muted); text-decoration:none; }
+        .lobby-footer a:hover { color:var(--text-secondary); }
+
+        /* ═══ MATCHMAKING ═══ */
+        .matchmaking {
+            align-items:center; justify-content:center;
+            text-align:center; padding:24px; gap:32px;
+        }
+
+        .match-arena {
+            display:flex; align-items:center; gap:28px;
+        }
+        .match-fighter { text-align:center; }
+        .match-avatar {
+            width:76px; height:76px; border-radius:50%;
+            display:flex; align-items:center; justify-content:center;
+            font-size:2rem; margin:0 auto 10px;
+            position:relative;
+            border:2px solid transparent;
+        }
+        .match-avatar.you-av {
+            background: var(--you-dim);
+            border-color: rgba(139,92,246,0.3);
+            box-shadow: 0 0 30px var(--you-dim);
+        }
+        .match-avatar.opp-av {
+            background: var(--opp-dim);
+            border-color: rgba(6,182,212,0.3);
+            box-shadow: 0 0 30px var(--opp-dim);
+        }
+        .match-avatar::after {
+            content:''; position:absolute; inset:-6px; border-radius:50%;
+            border:1px solid transparent; animation:ringPulse 2s ease infinite;
+        }
+        .match-avatar.you-av::after { border-color:rgba(139,92,246,0.15); }
+        .match-avatar.opp-av::after { border-color:rgba(6,182,212,0.15); }
+        @keyframes ringPulse {
+            0%,100%{ transform:scale(1); opacity:0.5; }
+            50%{ transform:scale(1.08); opacity:1; }
+        }
+        .match-fighter-name {
+            font-weight:700; font-size:0.88rem; margin-bottom:2px;
+        }
+        .match-fighter-school {
+            font-size:0.68rem; color:var(--text-faint); margin-bottom:4px;
+        }
+        .match-fighter-rating {
+            font-family:'Geist Mono',monospace;
+            font-size:0.7rem; font-weight:700; color:var(--gold);
+        }
+
+        .vs-divider {
+            display:flex; flex-direction:column; align-items:center; gap:4px;
+        }
+        .vs-text {
+            font-family:'Bebas Neue',sans-serif;
+            font-size:1.6rem; color:var(--text-faint);
+            letter-spacing:0.1em;
+        }
+        .vs-line {
+            width:1px; height:24px; background:var(--border);
+        }
+
+        .match-status-text {
+            font-size:0.82rem; color:var(--text-muted); font-weight:500;
+        }
+        .match-status-text .dot-pulse {
+            display:inline-flex; gap:3px; margin-left:4px; vertical-align:middle;
+        }
+        .match-status-text .dot-pulse span {
+            width:4px; height:4px; border-radius:50%;
+            background:var(--text-muted);
+            animation: dotPulse 1.4s ease infinite;
+        }
+        .match-status-text .dot-pulse span:nth-child(2) { animation-delay:0.2s; }
+        .match-status-text .dot-pulse span:nth-child(3) { animation-delay:0.4s; }
+        @keyframes dotPulse {
+            0%,100%{ opacity:0.2; transform:scale(0.8); }
+            50%{ opacity:1; transform:scale(1.2); }
+        }
+
+        /* ═══ BATTLE ═══ */
+        .battle { padding:0; }
+
+        .battle-top-bar {
+            display:flex; align-items:center; justify-content:space-between;
+            padding:12px 16px;
+            background: rgba(7,6,11,0.8);
+            backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+            border-bottom:1px solid var(--border-subtle);
+            flex-shrink:0; z-index:10;
+        }
+        .battle-player-pip {
+            display:flex; align-items:center; gap:8px;
+            flex:1;
+        }
+        .battle-player-pip.right { justify-content:flex-end; }
+        .pip-name {
+            font-weight:700; font-size:0.72rem;
+        }
+        .pip-name.you-c { color:var(--you); }
+        .pip-name.opp-c { color:var(--opp); }
+        .pip-dots { display:flex; gap:5px; }
+        .pip-dot {
+            width:20px; height:20px; border-radius:50%;
+            background: var(--surface-2);
+            border:2px solid var(--border);
+            transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+            display:flex; align-items:center; justify-content:center;
+            font-size:0.55rem; font-weight:800;
+        }
+        .pip-dot.won-you {
+            background:var(--you); border-color:var(--you);
+            box-shadow:0 0 10px var(--you-dim);
+        }
+        .pip-dot.won-opp {
+            background:var(--opp); border-color:var(--opp);
+            box-shadow:0 0 10px var(--opp-dim);
+        }
+        .pip-dot.current {
+            border-color:var(--gold);
+            box-shadow:0 0 8px var(--gold-dim);
+            animation:currentPip 2s ease infinite;
+        }
+        @keyframes currentPip {
+            0%,100%{ box-shadow:0 0 8px var(--gold-dim); }
+            50%{ box-shadow:0 0 16px rgba(245,158,11,0.2); }
+        }
+
+        .battle-round-tag {
+            font-family:'Geist Mono',monospace;
+            font-size:0.58rem; font-weight:700;
+            text-transform:uppercase; letter-spacing:0.14em;
+            color:var(--text-faint);
+            padding:0 10px; white-space:nowrap;
+        }
+
+        /* Timer bar */
+        .timer-track {
+            height:3px; background:var(--surface); flex-shrink:0;
+        }
+        .timer-fill {
+            height:100%; width:100%;
+            background:linear-gradient(90deg, var(--you), var(--opp));
+            transition:width 0.1s linear;
+            border-radius:0 2px 2px 0;
+        }
+        .timer-fill.warning { background:linear-gradient(90deg, var(--wrong), #f97316); }
+
+        /* Question area */
+        .battle-body {
+            flex:1; display:flex; flex-direction:column;
+            padding:14px 16px 16px;
+            overflow-y:auto;
+            -webkit-overflow-scrolling:touch;
+        }
+
+        .opp-indicator {
+            display:flex; align-items:center; gap:8px;
+            padding:8px 14px; border-radius:var(--radius-sm);
+            background:var(--opp-dim);
+            border:1px solid rgba(6,182,212,0.1);
+            font-size:0.75rem; color:var(--opp); font-weight:600;
+            margin-bottom:12px;
+            transition:all 0.3s ease;
+        }
+        .opp-indicator.locked-in {
+            background:rgba(6,182,212,0.06);
+            border-color:rgba(6,182,212,0.2);
+        }
+        .opp-indicator .typing-dots {
+            display:inline-flex; gap:2px;
+        }
+        .opp-indicator .typing-dots span {
+            width:3px; height:3px; border-radius:50%; background:var(--opp);
+            animation: dotPulse 1.2s ease infinite;
+        }
+        .opp-indicator .typing-dots span:nth-child(2){animation-delay:0.15s;}
+        .opp-indicator .typing-dots span:nth-child(3){animation-delay:0.3s;}
+
+        .question-card {
+            padding:20px 18px;
+            margin-bottom:14px;
+            animation:cardReveal 0.45s cubic-bezier(0.16,1,0.3,1);
+        }
+        @keyframes cardReveal {
+            from { opacity:0; transform:translateY(12px); }
+            to { opacity:1; transform:translateY(0); }
+        }
+        .q-step-badge {
+            display:inline-flex;
+            font-family:'Geist Mono',monospace;
+            font-size:0.55rem; font-weight:700;
+            text-transform:uppercase; letter-spacing:0.14em;
+            color:var(--you); margin-bottom:10px;
+            background:var(--you-dim); padding:4px 10px;
+            border-radius:100px; border:1px solid rgba(139,92,246,0.12);
+        }
+        .q-text {
+            font-size:0.88rem; line-height:1.75;
+            color:var(--text); font-weight:400;
+            margin-bottom:12px;
+        }
+        .q-lead {
+            font-size:0.84rem; font-weight:700;
+            color:var(--text-secondary);
+            padding-top:12px;
+            border-top:1px solid var(--border);
+        }
+
+        /* Answer options */
+        .options-grid {
+            display:flex; flex-direction:column; gap:8px;
+        }
+        .opt-btn {
+            display:flex; align-items:center; gap:14px;
+            width:100%;
+            padding:15px 16px;
+            border-radius:var(--radius-sm);
+            border:1.5px solid var(--border);
+            background:var(--surface);
+            color:var(--text);
+            font-family:'Instrument Sans',sans-serif;
+            font-size:0.86rem; font-weight:600;
+            cursor:pointer; transition:all 0.15s ease;
+            text-align:left;
+            animation:optIn 0.35s cubic-bezier(0.16,1,0.3,1) backwards;
+        }
+        .opt-btn:nth-child(1){animation-delay:0.05s;}
+        .opt-btn:nth-child(2){animation-delay:0.1s;}
+        .opt-btn:nth-child(3){animation-delay:0.15s;}
+        .opt-btn:nth-child(4){animation-delay:0.2s;}
+        @keyframes optIn {
+            from { opacity:0; transform:translateX(-8px); }
+            to { opacity:1; transform:translateX(0); }
+        }
+        .opt-btn:hover:not(:disabled) {
+            border-color:rgba(255,255,255,0.12);
+            background:var(--surface-2);
+            transform:translateX(4px);
+        }
+        .opt-btn:active:not(:disabled) { transform:scale(0.985); }
+
+        .opt-letter {
+            width:30px; height:30px; border-radius:8px;
+            background:var(--surface-2); border:1px solid var(--border);
+            display:flex; align-items:center; justify-content:center;
+            font-family:'Geist Mono',monospace;
+            font-size:0.68rem; font-weight:700;
+            color:var(--text-muted); flex-shrink:0;
+            transition:all 0.15s;
+        }
+        .opt-btn:hover:not(:disabled) .opt-letter {
+            border-color:rgba(255,255,255,0.15);
+            color:var(--text-secondary);
+        }
+        .opt-btn.correct-opt {
+            border-color:var(--correct); background:var(--correct-dim);
+        }
+        .opt-btn.correct-opt .opt-letter {
+            background:var(--correct); border-color:var(--correct); color:#0a0a0f;
+        }
+        .opt-btn.wrong-opt {
+            border-color:var(--wrong); background:var(--wrong-dim);
+        }
+        .opt-btn.wrong-opt .opt-letter {
+            background:var(--wrong); border-color:var(--wrong); color:white;
+        }
+        .opt-btn:disabled { cursor:default; opacity:0.45; }
+        .opt-btn.correct-opt:disabled, .opt-btn.wrong-opt:disabled { opacity:1; }
+
+        /* ═══ ROUND RESULT OVERLAY ═══ */
+        .round-overlay {
+            position:fixed; inset:0; z-index:200;
+            background:rgba(7,6,11,0.88);
+            backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);
+            display:flex; align-items:center; justify-content:center;
+            animation:overlayIn 0.3s ease;
+        }
+        @keyframes overlayIn { from{opacity:0} to{opacity:1} }
+
+        .round-result-panel {
+            max-width:360px; width:90%;
+            padding:32px 28px 28px;
+            text-align:center;
+            animation:panelSlide 0.45s cubic-bezier(0.16,1,0.3,1);
+        }
+        @keyframes panelSlide {
+            from { transform:translateY(20px) scale(0.96); opacity:0; }
+            to { transform:translateY(0) scale(1); opacity:1; }
+        }
+
+        .rr-emoji {
+            font-size:3rem; margin-bottom:8px;
+            animation:emojiPop 0.5s cubic-bezier(0.34,1.56,0.64,1) 0.2s backwards;
+        }
+        @keyframes emojiPop {
+            from { transform:scale(0); } to { transform:scale(1); }
+        }
+        .rr-title {
+            font-family:'Bebas Neue',sans-serif;
+            font-size:1.5rem; letter-spacing:0.06em;
+            margin-bottom:4px;
+        }
+        .rr-sub {
+            font-size:0.78rem; color:var(--text-muted);
+            margin-bottom:20px; line-height:1.5;
+        }
+
+        .rr-comparison {
+            display:flex; gap:10px; justify-content:center;
+            margin-bottom:24px;
+        }
+        .rr-stat-card {
+            background:var(--surface); border:1px solid var(--border);
+            border-radius:var(--radius-sm); padding:12px 20px;
+            min-width:110px;
+        }
+        .rr-stat-label {
+            font-size:0.58rem; font-weight:700;
+            text-transform:uppercase; letter-spacing:0.12em;
+            margin-bottom:4px;
+        }
+        .rr-stat-label.for-you { color:var(--you); }
+        .rr-stat-label.for-opp { color:var(--opp); }
+        .rr-stat-value {
+            font-family:'Geist Mono',monospace;
+            font-weight:800; font-size:1.3rem;
+            display:flex; align-items:center; justify-content:center; gap:6px;
+        }
+        .rr-check {
+            display:inline-flex; padding:2px 6px; border-radius:4px;
+            font-size:0.55rem; font-weight:700;
+        }
+        .rr-check.ok { background:var(--correct-dim); color:var(--correct); }
+        .rr-check.no { background:var(--wrong-dim); color:var(--wrong); }
+
+        .btn-next {
+            width:100%; padding:15px;
+            border-radius:var(--radius-sm); border:none;
+            background:linear-gradient(135deg, var(--you-mid), var(--you));
+            color:white;
+            font-family:'Instrument Sans',sans-serif;
+            font-weight:700; font-size:0.9rem;
+            cursor:pointer; transition:all 0.2s;
+        }
+        .btn-next:hover { transform:translateY(-1px); box-shadow:0 8px 30px var(--you-glow); }
+        .btn-next:active { transform:scale(0.98); }
+
+        /* ═══ FINAL RESULTS ═══ */
+        .final-results {
+            align-items:center; justify-content:flex-start;
+            text-align:center; padding:24px;
+            overflow-y:auto;
+            -webkit-overflow-scrolling:touch;
+        }
+        .final-inner { max-width:420px; width:100%; padding-top:20px; padding-bottom:40px; }
+
+        .final-crown { font-size:3.5rem; margin-bottom:6px; }
+        .final-verdict {
+            font-family:'Bebas Neue',sans-serif;
+            font-size:2.4rem; letter-spacing:0.08em;
+            line-height:1; margin-bottom:6px;
+        }
+        .final-verdict.win-v {
+            background:linear-gradient(135deg, var(--gold), #fbbf24);
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            background-clip:text;
+        }
+        .final-verdict.lose-v { color:var(--wrong); }
+        .final-verdict.draw-v { color:var(--text-secondary); }
+        .final-flavor {
+            font-size:0.85rem; color:var(--text-muted);
+            margin-bottom:24px; line-height:1.5;
+        }
+
+        /* Score face-off */
+        .final-faceoff {
+            padding:24px 20px;
+            margin-bottom:16px;
+        }
+        .faceoff-header {
+            display:flex; justify-content:space-between; align-items:center;
+            margin-bottom:20px;
+        }
+        .faceoff-side { text-align:center; }
+        .faceoff-name {
+            font-weight:700; font-size:0.8rem; margin-bottom:4px;
+        }
+        .faceoff-big-score {
+            font-family:'Bebas Neue',sans-serif;
+            font-size:3rem; line-height:1; letter-spacing:0.02em;
+        }
+        .faceoff-big-score.you-c { color:var(--you); }
+        .faceoff-big-score.opp-c { color:var(--opp); }
+        .faceoff-vs {
+            font-family:'Bebas Neue',sans-serif;
+            font-size:1rem; color:var(--text-faint);
+            letter-spacing:0.1em;
+        }
+
+        .faceoff-rounds {
+            display:flex; flex-direction:column; gap:0;
+        }
+        .faceoff-round-row {
+            display:grid; grid-template-columns: 1fr auto 1fr;
+            align-items:center; gap:8px;
+            padding:8px 0;
+            border-top:1px solid var(--border);
+        }
+        .frr-cell {
+            font-family:'Geist Mono',monospace;
+            font-size:0.72rem; font-weight:600;
+        }
+        .frr-cell.left { text-align:right; }
+        .frr-cell.right { text-align:left; }
+        .frr-center {
+            font-size:0.65rem; font-weight:800;
+            text-transform:uppercase; letter-spacing:0.08em;
+            padding:3px 8px; border-radius:4px;
+        }
+        .frr-center.w { background:var(--you-dim); color:var(--you); }
+        .frr-center.l { background:var(--opp-dim); color:var(--opp); }
+        .frr-center.d { background:var(--surface-2); color:var(--text-faint); }
+
+        .frr-check { font-size:0.65rem; margin-left:3px; }
+        .frr-correct { color:var(--correct); }
+        .frr-wrong { color:var(--wrong); }
+
+        /* Rating delta */
+        .rating-delta-card {
+            display:flex; align-items:center; justify-content:center; gap:10px;
+            padding:14px; border-radius:var(--radius-sm);
+            background:var(--gold-dim); border:1px solid rgba(245,158,11,0.1);
+            margin-bottom:20px;
+        }
+        .rating-delta-card .rd-label {
+            font-family:'Geist Mono',monospace;
+            font-size:0.75rem; font-weight:700; color:var(--text-secondary);
+        }
+        .rating-delta-card .rd-value {
+            font-family:'Geist Mono',monospace;
+            font-size:0.9rem; font-weight:800; color:var(--gold);
+        }
+        .rating-delta-card .rd-change {
+            font-family:'Geist Mono',monospace;
+            font-size:0.78rem; font-weight:800;
+        }
+        .rd-change.up { color:var(--correct); }
+        .rd-change.down { color:var(--wrong); }
+
+        /* Action buttons */
+        .final-actions {
+            display:flex; flex-direction:column; gap:10px;
+            margin-bottom:20px;
+        }
+        .btn-share {
+            width:100%; padding:16px;
+            border-radius:var(--radius-sm); border:none;
+            background:linear-gradient(135deg, var(--you), var(--opp));
+            color:white;
+            font-family:'Instrument Sans',sans-serif;
+            font-weight:700; font-size:0.92rem;
+            cursor:pointer; transition:all 0.25s;
+            position:relative; overflow:hidden;
+        }
+        .btn-share:hover { transform:translateY(-2px); box-shadow:0 12px 40px rgba(139,92,246,0.2); }
+        .btn-share:active { transform:scale(0.98); }
+
+        .btn-rematch {
+            width:100%; padding:14px;
+            border-radius:var(--radius-sm);
+            border:1.5px solid var(--border);
+            background:transparent;
+            color:var(--text-secondary);
+            font-family:'Instrument Sans',sans-serif;
+            font-weight:700; font-size:0.88rem;
+            cursor:pointer; transition:all 0.2s;
+        }
+        .btn-rematch:hover { background:var(--surface); color:var(--text); border-color:rgba(255,255,255,0.1); }
+
+        /* CTA */
+        .cta-banner {
+            border-radius:var(--radius);
+            padding:24px 20px;
+            background: linear-gradient(145deg, #722F37, #8a3542);
+            border:1px solid rgba(255,255,255,0.06);
+            text-align:center;
+            position:relative; overflow:hidden;
+        }
+        .cta-banner::before {
+            content:''; position:absolute; top:-30%; right:-20%;
+            width:200px; height:200px; border-radius:50%;
+            background:radial-gradient(circle, rgba(255,255,255,0.06), transparent 70%);
+        }
+        .cta-title {
+            font-family:'Bebas Neue',sans-serif;
+            font-size:1.3rem; letter-spacing:0.06em;
+            margin-bottom:6px; position:relative;
+        }
+        .cta-desc {
+            font-size:0.78rem; color:rgba(255,255,255,0.65);
+            margin-bottom:14px; line-height:1.5;
+            max-width:280px; margin-left:auto; margin-right:auto;
+            position:relative;
+        }
+        .cta-link {
+            display:inline-flex; align-items:center; gap:6px;
+            padding:10px 28px; border-radius:8px; border:none;
+            background:white; color:#722F37;
+            font-family:'Instrument Sans',sans-serif;
+            font-weight:700; font-size:0.82rem;
+            cursor:pointer; text-decoration:none; transition:all 0.2s;
+            position:relative;
+        }
+        .cta-link:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,0.3); }
+
+        .hidden { display:none!important; }
+
+        /* ═══ RESPONSIVE ═══ */
+        @media (max-width:400px) {
+            .lobby-title { font-size:2.8rem; }
+            .match-arena { gap:16px; }
+            .match-avatar { width:60px; height:60px; font-size:1.6rem; }
+            .rr-comparison { gap:8px; }
+            .rr-stat-card { min-width:90px; padding:10px 14px; }
+        }
+        @media (min-height:800px) {
+            .lobby { gap:12px; }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width:4px; }
+        ::-webkit-scrollbar-track { background:transparent; }
+        ::-webkit-scrollbar-thumb { background:var(--surface-3); border-radius:4px; }
+    </style>
+</head>
+<body>
+
+<!-- Ambient background -->
+<div class="ambient-bg">
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+</div>
+<div class="noise-overlay"></div>
+
+<!-- ═══ LOBBY ═══ -->
+<div class="screen lobby active" id="lobbyScreen">
+    <div class="lobby-brand">
+        <div class="lobby-icon-wrap">⚔️</div>
+        <div class="lobby-title">GUNNER</div>
+        <div class="lobby-tagline">
+            <strong>1v1 USMLE battles.</strong> Same 5 questions, fastest correct answer takes the round. Best of 5.
+        </div>
+    </div>
+
+    <div class="lobby-form glass-card">
+        <div class="field">
+            <div class="field-label">Display Name</div>
+            <input class="field-input" id="playerName" placeholder="e.g. StudyGremlin" maxlength="16" autocomplete="off" spellcheck="false">
+        </div>
+        <div class="field">
+            <div class="field-label">Medical School</div>
+            <select class="field-select" id="playerSchool">
+                <option value="Unaffiliated">Select your school...</option>
+                <option>Harvard Medical School</option>
+                <option>Johns Hopkins SOM</option>
+                <option>Stanford Medicine</option>
+                <option>UCSF School of Medicine</option>
+                <option>Perelman (UPenn)</option>
+                <option>Columbia VP&S</option>
+                <option>Duke SOM</option>
+                <option>Mount Sinai Icahn</option>
+                <option>UCLA Geffen SOM</option>
+                <option>NYU Grossman</option>
+                <option>Michigan Medical School</option>
+                <option>Emory SOM</option>
+                <option>Northwestern Feinberg</option>
+                <option>Baylor COM</option>
+                <option>Vanderbilt SOM</option>
+                <option>UChicago Pritzker</option>
+                <option>Caribbean / IMG</option>
+                <option>Other US MD</option>
+                <option>Other US DO</option>
+                <option>Other / Prefer Not to Say</option>
+            </select>
+        </div>
+        <div class="field" style="margin-bottom:18px;">
+            <div class="field-label">Step Focus</div>
+            <select class="field-select" id="stepFocus">
+                <option value="all">All Steps</option>
+                <option value="Step 1">Step 1</option>
+                <option value="Step 2 CK">Step 2 CK</option>
+            </select>
+        </div>
+        <button class="btn-primary" onclick="findMatch()">Find Opponent&ensp;⚔️</button>
+    </div>
+
+    <div class="lobby-rating" id="ratingDisplay"></div>
+    <div class="lobby-footer">by <a href="https://usmle300.com" target="_blank">USMLE300</a></div>
+</div>
+
+<!-- ═══ MATCHMAKING ═══ -->
+<div class="screen matchmaking" id="matchScreen">
+    <div class="match-arena" id="matchArena"></div>
+    <div class="match-status-text" id="matchStatus">
+        Searching for opponent<span class="dot-pulse"><span></span><span></span><span></span></span>
+    </div>
+</div>
+
+<!-- ═══ BATTLE ═══ -->
+<div class="screen battle" id="battleScreen">
+    <div class="battle-top-bar">
+        <div class="battle-player-pip">
+            <span class="pip-name you-c" id="battleYouName">You</span>
+            <div class="pip-dots" id="youDots"></div>
+        </div>
+        <div class="battle-round-tag" id="roundLabel">Round 1/5</div>
+        <div class="battle-player-pip right">
+            <div class="pip-dots" id="oppDots"></div>
+            <span class="pip-name opp-c" id="battleOppName">Opp</span>
+        </div>
+    </div>
+    <div class="timer-track"><div class="timer-fill" id="roundTimerFill" style="width:100%"></div></div>
+    <div class="battle-body" id="battleBody"></div>
+</div>
+
+<!-- ═══ FINAL ═══ -->
+<div class="screen final-results" id="finalScreen">
+    <div class="final-inner" id="finalInner"></div>
+</div>
+
+<script>
+// ═══ QUESTION BANK ═══
+const ALL_Q = [
+  {"step":"Step 1","text":"A 24-year-old man with recurrent pulmonary infections and a groin abscess. Culture grows S. aureus. NBT test shows no blue pigment in neutrophils.","lead":"Most likely enzyme deficiency?","options":["Glutathione peroxidase","Myeloperoxidase","NADPH oxidase","Superoxide dismutase"],"correct":2},
+  {"step":"Step 1","text":"A 55-year-old alcoholic man with confusion, ophthalmoplegia, and ataxia. IV glucose given without vitamin supplementation worsens symptoms.","lead":"Which vitamin deficiency?","options":["Vitamin B6","Vitamin B1 (thiamine)","Vitamin B12","Vitamin B3"],"correct":1},
+  {"step":"Step 1","text":"A 32-year-old woman with diplopia and ptosis worsening throughout the day. Chest CT: anterior mediastinal mass. Edrophonium improves symptoms.","lead":"Antibodies target?","options":["Presynaptic Ca²⁺ channels","Postsynaptic AChR","Presynaptic ACh release","Muscle-specific kinase"],"correct":1},
+  {"step":"Step 1","text":"A 67-year-old smoker with a central lung mass. Biopsy: intercellular bridges and keratin pearls.","lead":"Diagnosis?","options":["Adenocarcinoma","Small cell carcinoma","Squamous cell carcinoma","Large cell carcinoma"],"correct":2},
+  {"step":"Step 1","text":"A 19-year-old male, MVC. BP 80/50, HR 130, JVD, muffled heart sounds. ECG: low-voltage QRS.","lead":"Hemodynamic finding?","options":["↑ Cardiac output","Equalization of diastolic pressures","↓ CVP","↑ Pulse pressure"],"correct":1},
+  {"step":"Step 1","text":"A 4-year-old boy with progressive clumsiness, calf pseudohypertrophy, and positive Gowers sign. Biopsy: no dystrophin.","lead":"Inheritance pattern?","options":["Autosomal dominant","Autosomal recessive","X-linked recessive","Mitochondrial"],"correct":2},
+  {"step":"Step 1","text":"A 45-year-old woman: episodic headaches, palpitations, diaphoresis. BP 210/120. CT: 4-cm adrenal mass. Urine metanephrines elevated.","lead":"First medication before surgery?","options":["Propranolol","Phenoxybenzamine","Metyrosine","Hydralazine"],"correct":1},
+  {"step":"Step 1","text":"A 35-year-old man with cough, hemoptysis, hilar LAD, non-caseating granulomas on skin biopsy, elevated calcium.","lead":"Mechanism of hypercalcemia?","options":["↑ PTH from adenoma","1α-hydroxylase in macrophages","Osteolytic metastases","PTHrP production"],"correct":1},
+  {"step":"Step 1","text":"A 22-year-old woman with recurrent DVTs. Family hx of VTE. Resistance to activated protein C.","lead":"Genetic mutation?","options":["Prothrombin G20210A","Factor V Leiden","AT III deficiency","Protein S deficiency"],"correct":1},
+  {"step":"Step 1","text":"A 65-year-old man: resting tremor, cogwheel rigidity, bradykinesia. Unilateral onset, progressive over 2 years.","lead":"Neuron loss in which area?","options":["Caudate nucleus","Subthalamic nucleus","Substantia nigra pars compacta","Nucleus basalis of Meynert"],"correct":2},
+  {"step":"Step 1","text":"A 10-year-old boy: periorbital edema, dark urine, 2 weeks post-sore throat. ASO elevated, C3 low.","lead":"Diagnosis?","options":["IgA nephropathy","Post-streptococcal GN","Membranous nephropathy","Minimal change disease"],"correct":1},
+  {"step":"Step 1","text":"Newborn with ambiguous genitalia. K⁺ 6.2, Na⁺ 128, 17-OH progesterone markedly elevated.","lead":"Enzyme deficiency?","options":["11β-hydroxylase","17α-hydroxylase","21-hydroxylase","Aromatase"],"correct":2},
+  {"step":"Step 1","text":"A 40-year-old woman: edema, foamy urine, >4g proteinuria. Kidney biopsy: normal LM, foot process effacement on EM.","lead":"Diagnosis?","options":["FSGS","Minimal change disease","Membranous nephropathy","IgA nephropathy"],"correct":1},
+  {"step":"Step 1","text":"A 38-year-old woman: neck mass moving with swallowing. FNA: nuclear grooves, 'Orphan Annie' nuclei, psammoma bodies.","lead":"Diagnosis?","options":["Follicular thyroid CA","Papillary thyroid CA","Medullary thyroid CA","Anaplastic thyroid CA"],"correct":1},
+  {"step":"Step 1","text":"A 3-month-old: failure to thrive, hepatomegaly, fasting hypoglycemia. Liver biopsy: glycogen accumulation.","lead":"Enzyme deficiency?","options":["Acid maltase","Myophosphorylase","Glucose-6-phosphatase","Debranching enzyme"],"correct":2},
+  {"step":"Step 2 CK","text":"A 58-year-old man: 'worst headache of his life.' Non-contrast CT negative. LP shows xanthochromia.","lead":"Best next step?","options":["MRI brain","CT angiography of head","Cerebral angiogram","Repeat CT in 24h"],"correct":1},
+  {"step":"Step 2 CK","text":"A 34-year-old woman: 6 weeks of bloody diarrhea and tenesmus. Colonoscopy: continuous mucosal inflammation from rectum.","lead":"First-line treatment?","options":["Methotrexate","Mesalamine","Infliximab","Prednisone"],"correct":1},
+  {"step":"Step 2 CK","text":"A 50-year-old man: sudden tearing chest pain to back. BP 190/110 R arm, 150/90 L arm. CXR: widened mediastinum.","lead":"Best initial test?","options":["TTE","CT angiography of chest","Coronary angiography","D-dimer"],"correct":1},
+  {"step":"Step 2 CK","text":"A 28-year-old woman at 34 weeks: severe headache, visual changes, BP 170/110, 3+ proteinuria, platelets 90K, elevated LFTs.","lead":"Management?","options":["Nifedipine alone","Labetalol and observe","MgSO₄ + betamethasone + delivery","Immediate cesarean"],"correct":2},
+  {"step":"Step 2 CK","text":"A 23-year-old woman: 2 weeks fatigue, sore throat, cervical LAD. Smear: atypical lymphocytes. Heterophile Ab positive.","lead":"Diagnosis?","options":["Acute HIV","Infectious mononucleosis","CMV infection","Toxoplasmosis"],"correct":1},
+  {"step":"Step 2 CK","text":"A 75-year-old woman: acute right-sided weakness and slurred speech, 2 hours ago. CT negative for bleed. NIHSS 14.","lead":"Best next step?","options":["Aspirin 325mg","IV alteplase","Heparin drip","MRI brain"],"correct":1},
+  {"step":"Step 2 CK","text":"A 48-year-old man: crushing chest pain × 2h. ECG: ST elevation II, III, aVF. Nearest cath lab 30 min away.","lead":"Best management?","options":["Thrombolytics at current hospital","Transfer for primary PCI","Heparin and observe","Stress test in 24h"],"correct":1},
+  {"step":"Step 2 CK","text":"A 19-year-old college student: fever, headache, neck stiffness, petechial rash. CSF: neutrophils, low glucose.","lead":"Causative organism?","options":["S. pneumoniae","N. meningitidis","Listeria","H. influenzae"],"correct":1},
+  {"step":"Step 2 CK","text":"A 62-year-old diabetic man: painless foot ulcer over 1st metatarsal, absent pedal pulses. ABI 0.4.","lead":"Most important next step?","options":["Wound debridement","Vascular surgery consult","Amputation","Hyperbaric oxygen"],"correct":1},
+  {"step":"Step 2 CK","text":"A 42-year-old woman: progressive dyspnea, dry cough. HRCT: ground-glass opacities, honeycombing. PFTs: restrictive.","lead":"Diagnosis?","options":["COPD","Sarcoidosis","Idiopathic pulmonary fibrosis","Hypersensitivity pneumonitis"],"correct":2},
+  {"step":"Step 2 CK","text":"A 30-year-old man: sudden severe testicular pain, nausea. Testicle high-riding, absent cremasteric reflex.","lead":"Best next step?","options":["Doppler ultrasound","Urine culture","Emergent surgical exploration","CT abdomen/pelvis"],"correct":2},
+  {"step":"Step 2 CK","text":"A 55-year-old man: progressive dysphagia to solids then liquids, 15-lb weight loss. Barium: irregular stricture distal esophagus.","lead":"Strongest risk factor?","options":["H. pylori","Barrett esophagus","Achalasia","Zenker diverticulum"],"correct":1},
+  {"step":"Step 1","text":"A 7-year-old boy: recurrent infections, eczema, thrombocytopenia. Small platelets on smear.","lead":"Diagnosis?","options":["Wiskott-Aldrich syndrome","Bruton agammaglobulinemia","Chédiak-Higashi syndrome","Hyper-IgM syndrome"],"correct":0},
+  {"step":"Step 1","text":"A 50-year-old man with chronic hepatitis C develops purple palpable lesions on lower extremities, joint pain, low C4, positive rheumatoid factor.","lead":"Underlying mechanism?","options":["IgA vasculitis","Type III cryoglobulinemia","Polyarteritis nodosa","Anti-GBM disease"],"correct":1},
+  {"step":"Step 2 CK","text":"A 68-year-old man with new-onset ascites. Serum-ascites albumin gradient is 1.8 g/dL. Ascitic fluid PMN count is 310/mm³.","lead":"Best initial treatment?","options":["Furosemide","IV ceftriaxone","Paracentesis only","Albumin infusion"],"correct":1}
+];
+
+// ═══ FAKE OPPONENTS ═══
+const OPPONENTS = [
+    {name:"CardioNerd",school:"Johns Hopkins SOM",emoji:"🫀",rating:1520},
+    {name:"PathPanda",school:"Harvard Medical School",emoji:"🐼",rating:1480},
+    {name:"RenoRanger",school:"Stanford Medicine",emoji:"🤠",rating:1440},
+    {name:"SurgStar",school:"Duke SOM",emoji:"⭐",rating:1560},
+    {name:"NeuroNinja",school:"Columbia VP&S",emoji:"🥷",rating:1505},
+    {name:"PharmFox",school:"UCSF School of Medicine",emoji:"🦊",rating:1465},
+    {name:"AnatoMaestro",school:"NYU Grossman",emoji:"🎹",rating:1535},
+    {name:"MicroMaven",school:"Perelman (UPenn)",emoji:"🦠",rating:1490},
+    {name:"DermDiva",school:"UCLA Geffen SOM",emoji:"💅",rating:1475},
+    {name:"HemeHero",school:"Mount Sinai Icahn",emoji:"🦸",rating:1510},
+    {name:"ImmunoImp",school:"Northwestern Feinberg",emoji:"👿",rating:1455},
+    {name:"EndoElite",school:"Vanderbilt SOM",emoji:"🏆",rating:1545},
+    {name:"RadioRook",school:"Emory SOM",emoji:"♜",rating:1425},
+    {name:"PedsProdigy",school:"Michigan Medical School",emoji:"🧒",rating:1500},
+    {name:"GastroGuru",school:"Baylor COM",emoji:"🧘",rating:1485}
+];
+
+// ═══ STATE ═══
+let player = { name:'', school:'', rating:1200 };
+let opponent = {};
+let battleQuestions = [];
+let currentRound = 0;
+let youScore = 0, oppScore = 0;
+let roundResults = [];
+let playerAnswered = false;
+let roundStartTime = 0;
+let roundTimeLimit = 30;
+let roundTimeLeft = 30;
+let roundTimerInterval;
+
+// Load saved rating
+const saved = localStorage.getItem('gunner_rating');
+if (saved) player.rating = parseInt(saved);
+
+// Init
+const rd = document.getElementById('ratingDisplay');
+rd.innerHTML = `Gunner Rating: <strong>${player.rating}</strong>`;
+
+// ═══ FIND MATCH ═══
+function findMatch() {
+    const nameInput = document.getElementById('playerName').value.trim();
+    if (!nameInput) {
+        document.getElementById('playerName').focus();
+        document.getElementById('playerName').style.borderColor = 'var(--wrong)';
+        setTimeout(() => document.getElementById('playerName').style.borderColor = '', 1500);
+        return;
+    }
+    player.name = nameInput;
+    player.school = document.getElementById('playerSchool').value;
+
+    // Pick random opponent (different school if possible)
+    let pool = OPPONENTS.filter(o => o.school !== player.school);
+    if (!pool.length) pool = OPPONENTS;
+    opponent = {...pool[Math.floor(Math.random() * pool.length)]};
+    opponent.rating = player.rating + Math.floor(Math.random()*200) - 100;
+    if (opponent.rating < 800) opponent.rating = 800;
+
+    // Pick 5 questions
+    const focus = document.getElementById('stepFocus').value;
+    let qPool = focus === 'all' ? [...ALL_Q] : ALL_Q.filter(q => q.step === focus);
+    battleQuestions = [];
+    for (let i = 0; i < 5 && qPool.length; i++) {
+        const idx = Math.floor(Math.random() * qPool.length);
+        battleQuestions.push(qPool.splice(idx, 1)[0]);
+    }
+
+    currentRound = 0;
+    youScore = 0; oppScore = 0;
+    roundResults = [];
+
+    // Show matchmaking
+    document.getElementById('lobbyScreen').classList.remove('active');
+    const ms = document.getElementById('matchScreen');
+    ms.classList.add('active');
+
+    const arena = document.getElementById('matchArena');
+    arena.innerHTML = `
+        <div class="match-fighter">
+            <div class="match-avatar you-av">🩺</div>
+            <div class="match-fighter-name">${player.name}</div>
+            <div class="match-fighter-school">${player.school}</div>
+            <div class="match-fighter-rating">⭐ ${player.rating}</div>
+        </div>
+        <div class="vs-divider">
+            <div class="vs-line"></div>
+            <div class="vs-text">VS</div>
+            <div class="vs-line"></div>
+        </div>
+        <div class="match-fighter">
+            <div class="match-avatar opp-av" style="opacity:0;transition:all 0.6s cubic-bezier(0.16,1,0.3,1)" id="oppAvReveal">?</div>
+            <div class="match-fighter-name" id="oppNameReveal" style="opacity:0;transition:all 0.5s ease 0.1s">???</div>
+            <div class="match-fighter-school" id="oppSchoolReveal" style="opacity:0;transition:all 0.5s ease 0.15s"></div>
+            <div class="match-fighter-rating" id="oppRatingReveal" style="opacity:0;transition:all 0.5s ease 0.2s"></div>
+        </div>
+    `;
+
+    document.getElementById('matchStatus').innerHTML = 'Searching for opponent<span class="dot-pulse"><span></span><span></span><span></span></span>';
+
+    setTimeout(() => {
+        document.getElementById('matchStatus').innerHTML = '<strong style="color:var(--text)">Opponent found!</strong>';
+        const av = document.getElementById('oppAvReveal');
+        av.textContent = opponent.emoji;
+        av.style.opacity = '1';
+        document.getElementById('oppNameReveal').textContent = opponent.name;
+        document.getElementById('oppNameReveal').style.opacity = '1';
+        document.getElementById('oppSchoolReveal').textContent = opponent.school;
+        document.getElementById('oppSchoolReveal').style.opacity = '1';
+        document.getElementById('oppRatingReveal').textContent = '⭐ ' + opponent.rating;
+        document.getElementById('oppRatingReveal').style.opacity = '1';
+    }, 2000);
+
+    setTimeout(() => {
+        document.getElementById('matchStatus').innerHTML = 'Preparing battle<span class="dot-pulse"><span></span><span></span><span></span></span>';
+    }, 3200);
+
+    setTimeout(() => {
+        ms.classList.remove('active');
+        startBattle();
+    }, 4200);
+}
+
+// ═══ BATTLE ═══
+function startBattle() {
+    const bs = document.getElementById('battleScreen');
+    bs.classList.add('active');
+    document.getElementById('battleYouName').textContent = player.name;
+    document.getElementById('battleOppName').textContent = opponent.name;
+    renderDots();
+    startRound();
+}
+
+function renderDots() {
+    const yd = document.getElementById('youDots');
+    const od = document.getElementById('oppDots');
+    yd.innerHTML = ''; od.innerHTML = '';
+    for (let i = 0; i < 5; i++) {
+        const y = document.createElement('div');
+        y.className = 'pip-dot';
+        if (i < roundResults.length) {
+            if (roundResults[i].winner === 'you') y.classList.add('won-you');
+            else if (roundResults[i].winner === 'opp') y.classList.add('won-opp');
+        }
+        if (i === currentRound) y.classList.add('current');
+        yd.appendChild(y);
+
+        const o = document.createElement('div');
+        o.className = 'pip-dot';
+        if (i < roundResults.length) {
+            if (roundResults[i].winner === 'opp') o.classList.add('won-opp');
+            else if (roundResults[i].winner === 'you') o.classList.add('won-you');
+        }
+        if (i === currentRound) o.classList.add('current');
+        od.appendChild(o);
+    }
+}
+
+// ═══ ROUND ═══
+function startRound() {
+    if (currentRound >= 5) { endBattle(); return; }
+    const q = battleQuestions[currentRound];
+    playerAnswered = false;
+    roundStartTime = performance.now();
+    roundTimeLeft = roundTimeLimit;
+
+    document.getElementById('roundLabel').textContent = `Round ${currentRound + 1}/5`;
+    renderDots();
+
+    const oppSkill = 0.7 + Math.random() * 0.2;
+    const oppIsCorrect = Math.random() < oppSkill;
+    const oppTime = 3 + Math.random() * 14;
+    let oppLocked = false;
+
+    const letters = ['A','B','C','D'];
+    const body = document.getElementById('battleBody');
+
+    body.innerHTML = `
+        <div class="opp-indicator" id="oppStatus">
+            <span>${opponent.emoji}</span>
+            <span>${opponent.name} is thinking</span>
+            <span class="typing-dots"><span></span><span></span><span></span></span>
+        </div>
+        <div class="question-card glass-card">
+            <div class="q-step-badge">${q.step} · Round ${currentRound + 1}</div>
+            <div class="q-text">${q.text}</div>
+            <div class="q-lead">${q.lead}</div>
+        </div>
+        <div class="options-grid" id="optionsGrid">
+            ${q.options.map((o, i) => `
+                <button class="opt-btn" onclick="playerAnswer(${i}, this)">
+                    <span class="opt-letter">${letters[i]}</span>
+                    <span>${o}</span>
+                </button>
+            `).join('')}
+        </div>
+    `;
+
+    // Timer
+    const fill = document.getElementById('roundTimerFill');
+    fill.style.width = '100%';
+    fill.classList.remove('warning');
+    clearInterval(roundTimerInterval);
+    roundTimerInterval = setInterval(() => {
+        roundTimeLeft -= 0.1;
+        const pct = (roundTimeLeft / roundTimeLimit * 100);
+        fill.style.width = pct + '%';
+        if (pct < 25) fill.classList.add('warning');
+        if (roundTimeLeft <= 0) {
+            clearInterval(roundTimerInterval);
+            if (!playerAnswered) {
+                playerAnswered = true;
+                resolveRound(false, roundTimeLimit, oppIsCorrect, oppTime);
+            }
+        }
+    }, 100);
+
+    // Opponent locks
+    setTimeout(() => {
+        if (!oppLocked) {
+            oppLocked = true;
+            const st = document.getElementById('oppStatus');
+            if (st) {
+                st.classList.add('locked-in');
+                st.innerHTML = `<span>${opponent.emoji}</span><span>${opponent.name} locked in at ${oppTime.toFixed(1)}s</span>`;
+            }
+        }
+    }, oppTime * 1000);
+
+    window._roundOpp = { correct: oppIsCorrect, time: oppTime };
+}
+
+function playerAnswer(index, btn) {
+    if (playerAnswered) return;
+    playerAnswered = true;
+    clearInterval(roundTimerInterval);
+
+    const q = battleQuestions[currentRound];
+    const youCorrect = index === q.correct;
+    const youTime = (performance.now() - roundStartTime) / 1000;
+    const { correct: oppCorrect, time: oppTime } = window._roundOpp;
+
+    const allBtns = document.querySelectorAll('.opt-btn');
+    allBtns.forEach((b, i) => {
+        b.disabled = true;
+        if (i === q.correct) b.classList.add('correct-opt');
+        if (i === index && !youCorrect) b.classList.add('wrong-opt');
+    });
+
+    setTimeout(() => resolveRound(youCorrect, youTime, oppCorrect, oppTime), 900);
+}
+
+function resolveRound(youCorrect, youTime, oppCorrect, oppTime) {
+    let winner = 'draw';
+    if (youCorrect && !oppCorrect) winner = 'you';
+    else if (!youCorrect && oppCorrect) winner = 'opp';
+    else if (youCorrect && oppCorrect) winner = youTime < oppTime ? 'you' : 'opp';
+
+    if (winner === 'you') youScore++;
+    else if (winner === 'opp') oppScore++;
+
+    roundResults.push({ youTime, oppTime, youCorrect, oppCorrect, winner });
+
+    const icon = winner === 'you' ? '🏆' : winner === 'opp' ? '😤' : '🤝';
+    const title = winner === 'you' ? 'Round Won!' : winner === 'opp' ? `${opponent.name} takes it` : 'Draw';
+    const sub = winner === 'draw'
+        ? (youCorrect ? 'Same time — dead heat.' : 'Neither got it right.')
+        : (winner === 'you'
+            ? (oppCorrect ? `${(oppTime - youTime).toFixed(1)}s faster` : `${opponent.name} got it wrong`)
+            : (youCorrect ? `${opponent.name} was ${(youTime - oppTime).toFixed(1)}s faster` : 'You got it wrong'));
+
+    const overlay = document.createElement('div');
+    overlay.className = 'round-overlay';
+    overlay.innerHTML = `
+        <div class="round-result-panel glass-card">
+            <div class="rr-emoji">${icon}</div>
+            <div class="rr-title">${title}</div>
+            <div class="rr-sub">${sub}</div>
+            <div class="rr-comparison">
+                <div class="rr-stat-card">
+                    <div class="rr-stat-label for-you">You</div>
+                    <div class="rr-stat-value">${youTime.toFixed(1)}s <span class="rr-check ${youCorrect?'ok':'no'}">${youCorrect?'✓':'✗'}</span></div>
+                </div>
+                <div class="rr-stat-card">
+                    <div class="rr-stat-label for-opp">${opponent.name}</div>
+                    <div class="rr-stat-value">${oppTime.toFixed(1)}s <span class="rr-check ${oppCorrect?'ok':'no'}">${oppCorrect?'✓':'✗'}</span></div>
+                </div>
+            </div>
+            <button class="btn-next" onclick="nextRound(this)">${currentRound < 4 ? 'Next Round →' : 'See Results'}</button>
+        </div>
+    `;
+    document.body.appendChild(overlay);
+}
+
+function nextRound(btn) {
+    btn.closest('.round-overlay').remove();
+    currentRound++;
+    if (currentRound >= 5) endBattle();
+    else startRound();
+}
+
+// ═══ END ═══
+function endBattle() {
+    document.getElementById('battleScreen').classList.remove('active');
+    const screen = document.getElementById('finalScreen');
+    screen.classList.add('active');
+
+    const won = youScore > oppScore;
+    const draw = youScore === oppScore;
+    const emoji = won ? '👑' : draw ? '🤝' : '💀';
+    const verdict = won ? 'VICTORY' : draw ? 'DRAW' : 'DEFEATED';
+    const vClass = won ? 'win-v' : draw ? 'draw-v' : 'lose-v';
+    const flavor = won ? `You outgunned ${opponent.name} from ${opponent.school}.`
+                : draw ? `Dead even with ${opponent.name}. Run it back?`
+                : `${opponent.name} from ${opponent.school} got the best of you.`;
+
+    const expected = 1 / (1 + Math.pow(10, (opponent.rating - player.rating) / 400));
+    const actual = won ? 1 : draw ? 0.5 : 0;
+    const change = Math.round(40 * (actual - expected));
+    player.rating += change;
+    if (player.rating < 800) player.rating = 800;
+    localStorage.setItem('gunner_rating', player.rating.toString());
+
+    document.getElementById('finalInner').innerHTML = `
+        <div class="final-crown">${emoji}</div>
+        <div class="final-verdict ${vClass}">${verdict}</div>
+        <div class="final-flavor">${flavor}</div>
+
+        <div class="final-faceoff glass-card">
+            <div class="faceoff-header">
+                <div class="faceoff-side">
+                    <div class="faceoff-name" style="color:var(--you)">🩺 ${player.name}</div>
+                    <div class="faceoff-big-score you-c">${youScore}</div>
+                </div>
+                <div class="faceoff-vs">VS</div>
+                <div class="faceoff-side">
+                    <div class="faceoff-name" style="color:var(--opp)">${opponent.emoji} ${opponent.name}</div>
+                    <div class="faceoff-big-score opp-c">${oppScore}</div>
+                </div>
+            </div>
+            <div class="faceoff-rounds">
+                ${roundResults.map((r, i) => {
+                    const cClass = r.winner === 'you' ? 'w' : r.winner === 'opp' ? 'l' : 'd';
+                    const cLabel = r.winner === 'you' ? 'WIN' : r.winner === 'opp' ? 'LOSS' : 'DRAW';
+                    return `
+                    <div class="faceoff-round-row">
+                        <div class="frr-cell left">
+                            ${r.youTime.toFixed(1)}s
+                            <span class="frr-check ${r.youCorrect?'frr-correct':'frr-wrong'}">${r.youCorrect?'✓':'✗'}</span>
+                        </div>
+                        <div class="frr-center ${cClass}">R${i+1} · ${cLabel}</div>
+                        <div class="frr-cell right">
+                            <span class="frr-check ${r.oppCorrect?'frr-correct':'frr-wrong'}">${r.oppCorrect?'✓':'✗'}</span>
+                            ${r.oppTime.toFixed(1)}s
+                        </div>
+                    </div>`;
+                }).join('')}
+            </div>
+        </div>
+
+        <div class="rating-delta-card">
+            <span class="rd-label">Gunner Rating</span>
+            <span class="rd-value">${player.rating}</span>
+            <span class="rd-change ${change>=0?'up':'down'}">(${change>=0?'+':''}${change})</span>
+        </div>
+
+        <div class="final-actions">
+            <button class="btn-share" onclick="shareResult()">Share Battle Result ⚔️</button>
+            <button class="btn-rematch" onclick="rematch()">Find New Opponent</button>
+        </div>
+
+        <div class="cta-banner">
+            <div class="cta-title">Think faster. Know deeper.</div>
+            <div class="cta-desc">USMLE300 bootcamps train the second-order thinking that separates top scorers.</div>
+            <a href="https://usmle300.com" target="_blank" class="cta-link">See Bootcamps →</a>
+        </div>
+    `;
+}
+
+function shareResult() {
+    const won = youScore > oppScore;
+    const draw = youScore === oppScore;
+    const emoji = won ? '👑' : draw ? '🤝' : '💀';
+    const circles = roundResults.map(r =>
+        r.winner === 'you' ? '🟣' : r.winner === 'opp' ? '🔵' : '⚪'
+    ).join('');
+    const text = `${emoji} GUNNER by USMLE300\n\n${player.name} ${youScore} — ${oppScore} ${opponent.name}\n${circles}\nRating: ${player.rating}\n\nChallenge me → usmle300.com/gunner`;
+    if (navigator.share) {
+        navigator.share({ text }).catch(() => navigator.clipboard.writeText(text).then(() => alert('Copied!')));
+    } else {
+        navigator.clipboard.writeText(text).then(() => alert('Copied to clipboard!'));
+    }
+}
+
+function rematch() {
+    document.getElementById('finalScreen').classList.remove('active');
+    document.getElementById('lobbyScreen').classList.add('active');
+    document.getElementById('ratingDisplay').innerHTML = `Gunner Rating: <strong>${player.rating}</strong>`;
+}
+</script>
+</body>
+</html>
