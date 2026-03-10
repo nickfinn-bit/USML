@@ -875,58 +875,18 @@
 </div>
 
 <script>
-// ═══ QUESTION BANK ═══
-const ALL_Q = [
-  {"step":"Step 1","text":"A 24-year-old man with recurrent pulmonary infections and a groin abscess. Culture grows S. aureus. NBT test shows no blue pigment in neutrophils.","lead":"Most likely enzyme deficiency?","options":["Glutathione peroxidase","Myeloperoxidase","NADPH oxidase","Superoxide dismutase"],"correct":2},
-  {"step":"Step 1","text":"A 55-year-old alcoholic man with confusion, ophthalmoplegia, and ataxia. IV glucose given without vitamin supplementation worsens symptoms.","lead":"Which vitamin deficiency?","options":["Vitamin B6","Vitamin B1 (thiamine)","Vitamin B12","Vitamin B3"],"correct":1},
-  {"step":"Step 1","text":"A 32-year-old woman with diplopia and ptosis worsening throughout the day. Chest CT: anterior mediastinal mass. Edrophonium improves symptoms.","lead":"Antibodies target?","options":["Presynaptic Ca²⁺ channels","Postsynaptic AChR","Presynaptic ACh release","Muscle-specific kinase"],"correct":1},
-  {"step":"Step 1","text":"A 67-year-old smoker with a central lung mass. Biopsy: intercellular bridges and keratin pearls.","lead":"Diagnosis?","options":["Adenocarcinoma","Small cell carcinoma","Squamous cell carcinoma","Large cell carcinoma"],"correct":2},
-  {"step":"Step 1","text":"A 19-year-old male, MVC. BP 80/50, HR 130, JVD, muffled heart sounds. ECG: low-voltage QRS.","lead":"Hemodynamic finding?","options":["↑ Cardiac output","Equalization of diastolic pressures","↓ CVP","↑ Pulse pressure"],"correct":1},
-  {"step":"Step 1","text":"A 4-year-old boy with progressive clumsiness, calf pseudohypertrophy, and positive Gowers sign. Biopsy: no dystrophin.","lead":"Inheritance pattern?","options":["Autosomal dominant","Autosomal recessive","X-linked recessive","Mitochondrial"],"correct":2},
-  {"step":"Step 1","text":"A 45-year-old woman: episodic headaches, palpitations, diaphoresis. BP 210/120. CT: 4-cm adrenal mass. Urine metanephrines elevated.","lead":"First medication before surgery?","options":["Propranolol","Phenoxybenzamine","Metyrosine","Hydralazine"],"correct":1},
-  {"step":"Step 1","text":"A 35-year-old man with cough, hemoptysis, hilar LAD, non-caseating granulomas on skin biopsy, elevated calcium.","lead":"Mechanism of hypercalcemia?","options":["↑ PTH from adenoma","1α-hydroxylase in macrophages","Osteolytic metastases","PTHrP production"],"correct":1},
-  {"step":"Step 1","text":"A 22-year-old woman with recurrent DVTs. Family hx of VTE. Resistance to activated protein C.","lead":"Genetic mutation?","options":["Prothrombin G20210A","Factor V Leiden","AT III deficiency","Protein S deficiency"],"correct":1},
-  {"step":"Step 1","text":"A 65-year-old man: resting tremor, cogwheel rigidity, bradykinesia. Unilateral onset, progressive over 2 years.","lead":"Neuron loss in which area?","options":["Caudate nucleus","Subthalamic nucleus","Substantia nigra pars compacta","Nucleus basalis of Meynert"],"correct":2},
-  {"step":"Step 1","text":"A 10-year-old boy: periorbital edema, dark urine, 2 weeks post-sore throat. ASO elevated, C3 low.","lead":"Diagnosis?","options":["IgA nephropathy","Post-streptococcal GN","Membranous nephropathy","Minimal change disease"],"correct":1},
-  {"step":"Step 1","text":"Newborn with ambiguous genitalia. K⁺ 6.2, Na⁺ 128, 17-OH progesterone markedly elevated.","lead":"Enzyme deficiency?","options":["11β-hydroxylase","17α-hydroxylase","21-hydroxylase","Aromatase"],"correct":2},
-  {"step":"Step 1","text":"A 40-year-old woman: edema, foamy urine, >4g proteinuria. Kidney biopsy: normal LM, foot process effacement on EM.","lead":"Diagnosis?","options":["FSGS","Minimal change disease","Membranous nephropathy","IgA nephropathy"],"correct":1},
-  {"step":"Step 1","text":"A 38-year-old woman: neck mass moving with swallowing. FNA: nuclear grooves, 'Orphan Annie' nuclei, psammoma bodies.","lead":"Diagnosis?","options":["Follicular thyroid CA","Papillary thyroid CA","Medullary thyroid CA","Anaplastic thyroid CA"],"correct":1},
-  {"step":"Step 1","text":"A 3-month-old: failure to thrive, hepatomegaly, fasting hypoglycemia. Liver biopsy: glycogen accumulation.","lead":"Enzyme deficiency?","options":["Acid maltase","Myophosphorylase","Glucose-6-phosphatase","Debranching enzyme"],"correct":2},
-  {"step":"Step 2 CK","text":"A 58-year-old man: 'worst headache of his life.' Non-contrast CT negative. LP shows xanthochromia.","lead":"Best next step?","options":["MRI brain","CT angiography of head","Cerebral angiogram","Repeat CT in 24h"],"correct":1},
-  {"step":"Step 2 CK","text":"A 34-year-old woman: 6 weeks of bloody diarrhea and tenesmus. Colonoscopy: continuous mucosal inflammation from rectum.","lead":"First-line treatment?","options":["Methotrexate","Mesalamine","Infliximab","Prednisone"],"correct":1},
-  {"step":"Step 2 CK","text":"A 50-year-old man: sudden tearing chest pain to back. BP 190/110 R arm, 150/90 L arm. CXR: widened mediastinum.","lead":"Best initial test?","options":["TTE","CT angiography of chest","Coronary angiography","D-dimer"],"correct":1},
-  {"step":"Step 2 CK","text":"A 28-year-old woman at 34 weeks: severe headache, visual changes, BP 170/110, 3+ proteinuria, platelets 90K, elevated LFTs.","lead":"Management?","options":["Nifedipine alone","Labetalol and observe","MgSO₄ + betamethasone + delivery","Immediate cesarean"],"correct":2},
-  {"step":"Step 2 CK","text":"A 23-year-old woman: 2 weeks fatigue, sore throat, cervical LAD. Smear: atypical lymphocytes. Heterophile Ab positive.","lead":"Diagnosis?","options":["Acute HIV","Infectious mononucleosis","CMV infection","Toxoplasmosis"],"correct":1},
-  {"step":"Step 2 CK","text":"A 75-year-old woman: acute right-sided weakness and slurred speech, 2 hours ago. CT negative for bleed. NIHSS 14.","lead":"Best next step?","options":["Aspirin 325mg","IV alteplase","Heparin drip","MRI brain"],"correct":1},
-  {"step":"Step 2 CK","text":"A 48-year-old man: crushing chest pain × 2h. ECG: ST elevation II, III, aVF. Nearest cath lab 30 min away.","lead":"Best management?","options":["Thrombolytics at current hospital","Transfer for primary PCI","Heparin and observe","Stress test in 24h"],"correct":1},
-  {"step":"Step 2 CK","text":"A 19-year-old college student: fever, headache, neck stiffness, petechial rash. CSF: neutrophils, low glucose.","lead":"Causative organism?","options":["S. pneumoniae","N. meningitidis","Listeria","H. influenzae"],"correct":1},
-  {"step":"Step 2 CK","text":"A 62-year-old diabetic man: painless foot ulcer over 1st metatarsal, absent pedal pulses. ABI 0.4.","lead":"Most important next step?","options":["Wound debridement","Vascular surgery consult","Amputation","Hyperbaric oxygen"],"correct":1},
-  {"step":"Step 2 CK","text":"A 42-year-old woman: progressive dyspnea, dry cough. HRCT: ground-glass opacities, honeycombing. PFTs: restrictive.","lead":"Diagnosis?","options":["COPD","Sarcoidosis","Idiopathic pulmonary fibrosis","Hypersensitivity pneumonitis"],"correct":2},
-  {"step":"Step 2 CK","text":"A 30-year-old man: sudden severe testicular pain, nausea. Testicle high-riding, absent cremasteric reflex.","lead":"Best next step?","options":["Doppler ultrasound","Urine culture","Emergent surgical exploration","CT abdomen/pelvis"],"correct":2},
-  {"step":"Step 2 CK","text":"A 55-year-old man: progressive dysphagia to solids then liquids, 15-lb weight loss. Barium: irregular stricture distal esophagus.","lead":"Strongest risk factor?","options":["H. pylori","Barrett esophagus","Achalasia","Zenker diverticulum"],"correct":1},
-  {"step":"Step 1","text":"A 7-year-old boy: recurrent infections, eczema, thrombocytopenia. Small platelets on smear.","lead":"Diagnosis?","options":["Wiskott-Aldrich syndrome","Bruton agammaglobulinemia","Chédiak-Higashi syndrome","Hyper-IgM syndrome"],"correct":0},
-  {"step":"Step 1","text":"A 50-year-old man with chronic hepatitis C develops purple palpable lesions on lower extremities, joint pain, low C4, positive rheumatoid factor.","lead":"Underlying mechanism?","options":["IgA vasculitis","Type III cryoglobulinemia","Polyarteritis nodosa","Anti-GBM disease"],"correct":1},
-  {"step":"Step 2 CK","text":"A 68-year-old man with new-onset ascites. Serum-ascites albumin gradient is 1.8 g/dL. Ascitic fluid PMN count is 310/mm³.","lead":"Best initial treatment?","options":["Furosemide","IV ceftriaxone","Paracentesis only","Albumin infusion"],"correct":1}
-];
+// ═══ QUESTION BANK & OPPONENTS — loaded from external JSON ═══
+let ALL_Q = [];
+let OPPONENTS = [];
 
-// ═══ FAKE OPPONENTS ═══
-const OPPONENTS = [
-    {name:"CardioNerd",school:"Johns Hopkins SOM",emoji:"🫀",rating:1520},
-    {name:"PathPanda",school:"Harvard Medical School",emoji:"🐼",rating:1480},
-    {name:"RenoRanger",school:"Stanford Medicine",emoji:"🤠",rating:1440},
-    {name:"SurgStar",school:"Duke SOM",emoji:"⭐",rating:1560},
-    {name:"NeuroNinja",school:"Columbia VP&S",emoji:"🥷",rating:1505},
-    {name:"PharmFox",school:"UCSF School of Medicine",emoji:"🦊",rating:1465},
-    {name:"AnatoMaestro",school:"NYU Grossman",emoji:"🎹",rating:1535},
-    {name:"MicroMaven",school:"Perelman (UPenn)",emoji:"🦠",rating:1490},
-    {name:"DermDiva",school:"UCLA Geffen SOM",emoji:"💅",rating:1475},
-    {name:"HemeHero",school:"Mount Sinai Icahn",emoji:"🦸",rating:1510},
-    {name:"ImmunoImp",school:"Northwestern Feinberg",emoji:"👿",rating:1455},
-    {name:"EndoElite",school:"Vanderbilt SOM",emoji:"🏆",rating:1545},
-    {name:"RadioRook",school:"Emory SOM",emoji:"♜",rating:1425},
-    {name:"PedsProdigy",school:"Michigan Medical School",emoji:"🧒",rating:1500},
-    {name:"GastroGuru",school:"Baylor COM",emoji:"🧘",rating:1485}
-];
+fetch('../data/gunner.json')
+    .then(res => res.json())
+    .then(data => {
+        ALL_Q = data.questions;
+        OPPONENTS = data.opponents;
+    })
+    .catch(err => console.error('Failed to load gunner data:', err));
+
 
 // ═══ STATE ═══
 let player = { name:'', school:'', rating:1200 };
