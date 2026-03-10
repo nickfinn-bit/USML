@@ -1,380 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="theme-color" content="#722F37">
-
-  <!-- Primary SEO -->
-  <title>USMLE Blog — Study Strategies, High-Yield Topics & Score Guides | USMLE300</title>
-  <meta name="description" content="Expert USMLE Step 1 and Step 2 CK study guides, high-yield topic breakdowns, score improvement strategies, and exam day tips from tutors who scored 260+.">
-  <meta name="keywords" content="USMLE Step 1 study guide, USMLE Step 2 CK tips, USMLE study schedule, high-yield USMLE topics, USMLE pass rate, USMLE score improvement, medical board prep, USMLE tutoring">
-  <link rel="canonical" href="https://usmle300.com/blog">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="USMLE Blog — Study Strategies & High-Yield Topics | USMLE300">
-  <meta property="og:description" content="Expert USMLE Step 1 and Step 2 CK study guides, high-yield breakdowns, and score improvement strategies from tutors who scored 260+.">
-  <meta property="og:url" content="https://usmle300.com/blog">
-  <meta property="og:site_name" content="USMLE300">
-  <meta property="og:image" content="https://usmle300.com/images/blog-og.png">
-  <meta property="og:locale" content="en_US">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="USMLE Blog — Study Strategies & High-Yield Topics | USMLE300">
-  <meta name="twitter:description" content="Expert USMLE study guides from tutors who scored 260+.">
-  <meta name="twitter:image" content="https://usmle300.com/images/blog-og.png">
-
-  <!-- Schema.org JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "USMLE300 Blog",
-    "description": "Expert USMLE Step 1 and Step 2 CK study guides, high-yield topic breakdowns, and score improvement strategies.",
-    "url": "https://usmle300.com/blog",
-    "publisher": {
-      "@type": "Organization",
-      "name": "USMLE300",
-      "url": "https://usmle300.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://usmle300.com/images/logo.png"
-      }
-    },
-    "blogPost": [
-      {
-        "@type": "BlogPosting",
-        "headline": "Free USMLE Score Calculator: NBME, UWSA & Free 120 Predictor",
-        "description": "Convert NBME, UWSA, and Free 120 scores to predicted Step 1 and Step 2 CK scores. Single exam or multi-exam composite predictor.",
-        "datePublished": "2026-03-10",
-        "author": {"@type": "Organization", "name": "USMLE300"},
-        "url": "https://www.usmle300.com/blog/usmle-score-calculator"
-      }
-    ]
-  }
-  </script>
-
-  <!-- Breadcrumb Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://usmle300.com"},
-      {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://usmle300.com/blog"}
-    ]
-  }
-  </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="../images/logo.png" type="image/png">
-  <link rel="apple-touch-icon" href="../images/logo.png">
-
-  <style>
-    :root{--burgundy:#722F37;--burgundy-dark:#5a252c;--cream:#FAF9F6;--cream-dark:#F0EEEB;--charcoal:#2D2D2D;--charcoal-light:#4A4A4A;--success:#2E7D4A;--gold:#C9A227}
-    *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-    html{scroll-behavior:smooth}
-    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--charcoal);line-height:1.6;overflow-x:hidden}
-    body.menu-open{overflow:hidden}
-    h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:600;line-height:1.2}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-
-    /* ── Header ── */
-    header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(250,249,246,0.98);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(114,47,55,0.1);transition:box-shadow .3s}
-    header.scrolled{box-shadow:0 4px 20px rgba(0,0,0,0.08)}
-    .header-inner{max-width:1200px;margin:0 auto;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center}
-    .logo{display:flex;align-items:center;gap:0.5rem;text-decoration:none;z-index:1001}
-    .logo img{height:40px}
-    .logo-text{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:700;color:var(--burgundy)}
-    nav.desktop-nav{display:flex;gap:2rem;align-items:center}
-    nav a{text-decoration:none;color:var(--charcoal);font-weight:500;font-size:0.95rem;transition:color .2s}
-    nav a:hover{color:var(--burgundy)}
-    nav a.active{color:var(--burgundy)}
-    .cta-button{background:var(--burgundy);color:white;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;border:2px solid var(--burgundy);display:inline-block;text-align:center;transition:all .2s}
-    .cta-button:hover{background:var(--burgundy-dark);border-color:var(--burgundy-dark)}
-
-    .mobile-menu-btn{display:none;flex-direction:column;width:44px;height:44px;background:none;border:none;cursor:pointer;z-index:1001;padding:10px;justify-content:center;align-items:center}
-    .mobile-menu-btn span{display:block;width:24px;height:2px;background:var(--burgundy);margin:3px 0;transition:all 0.3s}
-    .mobile-menu-btn.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-    .mobile-menu-btn.active span:nth-child(2){opacity:0}
-    .mobile-menu-btn.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-    .mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--cream);z-index:999;padding:100px 2rem 2rem;flex-direction:column;opacity:0;visibility:hidden;transition:all 0.3s}
-    .mobile-nav.active{opacity:1;visibility:visible}
-    .mobile-nav a{display:block;padding:1rem 0;font-size:1.25rem;font-weight:600;color:var(--charcoal);text-decoration:none;border-bottom:1px solid var(--cream-dark)}
-    .mobile-nav .cta-button{margin-top:2rem;width:100%;padding:1rem}
-
-    /* ── Blog Hero ── */
-    .blog-hero{padding:140px 1.5rem 60px;background:linear-gradient(135deg,var(--cream) 0%,var(--cream-dark) 100%);position:relative;overflow:hidden}
-    .blog-hero::after{content:'';position:absolute;top:0;right:0;width:40%;height:100%;background:radial-gradient(ellipse at 80% 50%,rgba(114,47,55,0.04) 0%,transparent 70%);pointer-events:none}
-    .blog-hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
-    .breadcrumb{font-size:0.82rem;color:var(--charcoal-light);margin-bottom:1.25rem}
-    .breadcrumb a{color:var(--burgundy);font-weight:500}
-    .breadcrumb a:hover{text-decoration:underline}
-    .breadcrumb span{margin:0 0.4rem;opacity:0.4}
-    .blog-hero h1{font-size:clamp(2rem,5vw,3.25rem);color:var(--charcoal);margin-bottom:1rem;max-width:700px;animation:fadeUp .7s ease-out}
-    .blog-hero h1 em{color:var(--burgundy);font-style:normal}
-    .blog-hero-sub{font-size:1.05rem;color:var(--charcoal-light);max-width:560px;line-height:1.65;animation:fadeUp .7s ease-out .1s both}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-
-    /* ── Filter Bar ── */
-    .filter-bar{max-width:1200px;margin:0 auto;padding:0 1.5rem}
-    .filter-inner{display:flex;align-items:center;gap:10px;padding:24px 0;border-bottom:1px solid rgba(114,47,55,0.1);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-    .filter-inner::-webkit-scrollbar{display:none}
-    .filter-label{font-size:0.78rem;font-weight:600;color:var(--charcoal-light);text-transform:uppercase;letter-spacing:0.06em;white-space:nowrap;flex-shrink:0}
-    .filter-btn{padding:7px 16px;border-radius:50px;border:1.5px solid rgba(114,47,55,0.15);background:transparent;color:var(--charcoal-light);font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:500;cursor:pointer;white-space:nowrap;transition:all .2s;flex-shrink:0}
-    .filter-btn:hover{border-color:var(--burgundy);color:var(--burgundy)}
-    .filter-btn.active{background:var(--burgundy);color:white;border-color:var(--burgundy)}
-
-    /* ── Featured Post ── */
-    .featured-section{max-width:1200px;margin:0 auto;padding:48px 1.5rem 0}
-    .featured-label{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--burgundy);margin-bottom:16px;display:flex;align-items:center;gap:8px}
-    .featured-label::before{content:'';width:20px;height:2px;background:var(--burgundy)}
-    .featured-card{display:grid;grid-template-columns:1fr 1fr;gap:0;background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.06);transition:transform .25s,box-shadow .25s;border:1px solid rgba(114,47,55,0.06)}
-    .featured-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.1)}
-    .featured-thumb{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);min-height:320px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-    .featured-thumb::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
-    .featured-thumb-icon{font-size:4rem;opacity:0.9;position:relative;z-index:1}
-    .featured-body{padding:40px;display:flex;flex-direction:column;justify-content:center}
-    .featured-category{display:inline-flex;align-items:center;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--burgundy);background:rgba(114,47,55,0.08);padding:5px 12px;border-radius:50px;margin-bottom:14px;width:fit-content}
-    .featured-title{font-size:1.65rem;color:var(--charcoal);margin-bottom:10px;line-height:1.25}
-    .featured-excerpt{font-size:0.95rem;color:var(--charcoal-light);line-height:1.65;margin-bottom:18px}
-    .featured-meta{display:flex;align-items:center;gap:16px;font-size:0.8rem;color:var(--charcoal-light)}
-    .featured-meta .dot{width:3px;height:3px;background:var(--charcoal-light);border-radius:50%;opacity:0.5}
-    .read-link{color:var(--burgundy);font-weight:600;font-size:0.9rem;display:inline-flex;align-items:center;gap:6px;margin-top:auto;padding-top:8px;transition:gap .2s}
-    .read-link:hover{gap:10px}
-
-    /* ── Post Grid ── */
-    .posts-section{max-width:1200px;margin:0 auto;padding:48px 1.5rem 80px}
-    .posts-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px}
-    .posts-title{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--burgundy);display:flex;align-items:center;gap:8px}
-    .posts-title::before{content:'';width:20px;height:2px;background:var(--burgundy)}
-    .posts-count{font-size:0.78rem;color:var(--charcoal-light)}
-    .posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-
-    /* ── Post Card ── */
-    .post-card{background:white;border-radius:14px;overflow:hidden;border:1px solid rgba(114,47,55,0.06);transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
-    .post-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,0.08)}
-    .post-thumb{height:180px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-    .post-thumb.t-blue{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%)}
-    .post-thumb.t-wine{background:linear-gradient(135deg,#3d1c20 0%,#5a252c 100%)}
-    .post-thumb.t-teal{background:linear-gradient(135deg,#0d3b3b 0%,#1a5c5c 100%)}
-    .post-thumb.t-slate{background:linear-gradient(135deg,#1e293b 0%,#334155 100%)}
-    .post-thumb.t-olive{background:linear-gradient(135deg,#1a2e1a 0%,#2d4a2d 100%)}
-    .post-thumb.t-plum{background:linear-gradient(135deg,#2d1b3d 0%,#4a2d5e 100%)}
-    .post-thumb::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
-    .post-thumb-icon{font-size:2.5rem;position:relative;z-index:1;opacity:0.85}
-    .post-body{padding:22px 22px 18px;flex:1;display:flex;flex-direction:column}
-    .post-category{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--burgundy);margin-bottom:10px}
-    .post-title{font-family:'Fraunces',serif;font-size:1.12rem;font-weight:600;color:var(--charcoal);margin-bottom:8px;line-height:1.3}
-    .post-excerpt{font-size:0.85rem;color:var(--charcoal-light);line-height:1.6;margin-bottom:16px;flex:1}
-    .post-footer{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid var(--cream-dark)}
-    .post-date{font-size:0.75rem;color:var(--charcoal-light)}
-    .post-read{font-size:0.75rem;color:var(--charcoal-light)}
-    .post-arrow{color:var(--burgundy);font-weight:600;font-size:0.85rem;transition:letter-spacing .2s}
-    .post-card:hover .post-arrow{letter-spacing:0.04em}
-
-    /* ── Newsletter ── */
-    .newsletter{max-width:1200px;margin:0 auto;padding:0 1.5rem 80px}
-    .newsletter-card{background:linear-gradient(135deg,var(--burgundy) 0%,var(--burgundy-dark) 100%);border-radius:16px;padding:48px;display:flex;align-items:center;gap:48px;position:relative;overflow:hidden}
-    .newsletter-card::before{content:'';position:absolute;top:-40%;right:-10%;width:300px;height:300px;background:radial-gradient(circle,rgba(201,162,39,0.15) 0%,transparent 70%);pointer-events:none}
-    .newsletter-content{flex:1;position:relative;z-index:1}
-    .newsletter-content h2{font-size:1.65rem;color:white;margin-bottom:8px}
-    .newsletter-content p{color:rgba(255,255,255,0.7);font-size:0.95rem;line-height:1.6;max-width:440px}
-    .newsletter-form{display:flex;gap:10px;margin-top:20px;max-width:440px}
-    .newsletter-input{flex:1;padding:14px 18px;border-radius:8px;border:2px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.08);color:white;font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;transition:border-color .2s}
-    .newsletter-input::placeholder{color:rgba(255,255,255,0.4)}
-    .newsletter-input:focus{border-color:rgba(255,255,255,0.4)}
-    .newsletter-submit{padding:14px 24px;background:var(--gold);color:var(--charcoal);font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:700;border:none;border-radius:8px;cursor:pointer;white-space:nowrap;transition:transform .15s}
-    .newsletter-submit:hover{transform:translateY(-1px)}
-    .newsletter-privacy{font-size:0.72rem;color:rgba(255,255,255,0.4);margin-top:10px}
-
-    /* ── Sidebar CTA (for grid layout future) ── */
-    .sidebar-cta{background:white;border-radius:14px;border:2px solid rgba(114,47,55,0.1);padding:28px;text-align:center}
-    .sidebar-cta h3{font-size:1.1rem;margin-bottom:8px}
-    .sidebar-cta p{font-size:0.85rem;color:var(--charcoal-light);margin-bottom:16px;line-height:1.55}
-    .sidebar-cta .cta-button{width:100%;padding:14px}
-
-    /* ── Footer ── */
-    footer{background:white;border-top:1px solid var(--cream-dark);padding:40px 1.5rem}
-    .footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
-    .footer-left{font-size:0.82rem;color:var(--charcoal-light)}
-    .footer-left a{color:var(--burgundy);font-weight:500}
-    .footer-links{display:flex;gap:24px}
-    .footer-links a{font-size:0.82rem;color:var(--charcoal-light);transition:color .2s}
-    .footer-links a:hover{color:var(--burgundy)}
-
-    /* ── Responsive ── */
-    @media(max-width:1024px){
-      .posts-grid{grid-template-columns:repeat(2,1fr)}
-      .featured-card{grid-template-columns:1fr}
-      .featured-thumb{min-height:220px}
-    }
-    @media(max-width:768px){
-      .desktop-nav{display:none!important}
-      .mobile-menu-btn{display:flex}
-      .posts-grid{grid-template-columns:1fr}
-      .featured-body{padding:28px}
-      .featured-title{font-size:1.3rem}
-      .newsletter-card{flex-direction:column;padding:32px 24px;gap:24px}
-      .newsletter-form{flex-direction:column}
-      .footer-inner{flex-direction:column;gap:16px;text-align:center}
-      .blog-hero{padding:120px 1.5rem 40px}
-    }
-    @media(max-width:480px){
-      .filter-inner{gap:8px}
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#722F37">
+<title>USMLE Blog — Study Strategies, High-Yield Topics & Score Guides | USMLE300</title>
+<meta name="description" content="Expert USMLE Step 1 and Step 2 CK study guides, high-yield topic breakdowns, score improvement strategies, and exam day tips from tutors who scored 260+.">
+<link rel="canonical" href="https://www.usmle300.com/blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="USMLE Blog — Study Strategies & High-Yield Topics | USMLE300">
+<meta property="og:description" content="Expert USMLE Step 1 and Step 2 CK study guides from tutors who scored 260+.">
+<meta property="og:url" content="https://www.usmle300.com/blog">
+<meta property="og:site_name" content="USMLE300">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Blog","name":"USMLE300 Blog","url":"https://www.usmle300.com/blog","publisher":{"@type":"Organization","name":"USMLE300","url":"https://www.usmle300.com"}}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="../images/logo.png" type="image/png">
+<style>
+:root{--burgundy:#722F37;--burgundy-dark:#5a252c;--cream:#FAF9F6;--cream-dark:#F0EEEB;--charcoal:#2D2D2D;--charcoal-light:#4A4A4A;--success:#2E7D4A;--gold:#C9A227}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--charcoal);line-height:1.6;overflow-x:hidden}body.menu-open{overflow:hidden}h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;line-height:1.2}a{color:inherit;text-decoration:none}
+header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(250,249,246,0.98);backdrop-filter:blur(10px);border-bottom:1px solid rgba(114,47,55,0.1);transition:box-shadow .3s}header.scrolled{box-shadow:0 4px 20px rgba(0,0,0,0.08)}.header-inner{max-width:1200px;margin:0 auto;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center}.logo{display:flex;align-items:center;gap:0.5rem;text-decoration:none;z-index:1001}.logo img{height:40px;display:block}.logo-text{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:700;color:var(--burgundy)}nav.desktop-nav{display:flex;gap:2rem;align-items:center}nav a{text-decoration:none;color:var(--charcoal);font-weight:500;font-size:0.95rem;transition:color .2s}nav a:hover{color:var(--burgundy)}nav a.active{color:var(--burgundy)}.cta-button{background:var(--burgundy);color:white;padding:0.75rem 1.5rem;border-radius:8px;font-weight:600;font-size:0.9rem;border:2px solid var(--burgundy);display:inline-block;transition:all .2s}.cta-button:hover{background:var(--burgundy-dark);border-color:var(--burgundy-dark)}.mobile-menu-btn{display:none;flex-direction:column;width:44px;height:44px;background:none;border:none;cursor:pointer;z-index:1001;padding:10px;justify-content:center;align-items:center}.mobile-menu-btn span{display:block;width:24px;height:2px;background:var(--burgundy);margin:3px 0;transition:all .3s}.mobile-menu-btn.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.mobile-menu-btn.active span:nth-child(2){opacity:0}.mobile-menu-btn.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--cream);z-index:999;padding:100px 2rem 2rem;flex-direction:column;opacity:0;visibility:hidden;transition:all .3s}.mobile-nav.active{opacity:1;visibility:visible}.mobile-nav a{display:block;padding:1rem 0;font-size:1.25rem;font-weight:600;color:var(--charcoal);border-bottom:1px solid var(--cream-dark)}.mobile-nav .cta-button{margin-top:2rem;width:100%;padding:1rem}
+.blog-hero{padding:140px 1.5rem 60px;background:linear-gradient(135deg,var(--cream) 0%,var(--cream-dark) 100%)}.blog-hero-inner{max-width:1200px;margin:0 auto}.breadcrumb{font-size:.82rem;color:var(--charcoal-light);margin-bottom:1.25rem}.breadcrumb a{color:var(--burgundy);font-weight:500}.breadcrumb span{margin:0 .4rem;opacity:.4}.blog-hero h1{font-size:clamp(2rem,5vw,3.25rem);color:var(--charcoal);margin-bottom:1rem;max-width:700px}.blog-hero h1 em{color:var(--burgundy);font-style:normal}.blog-hero-sub{font-size:1.05rem;color:var(--charcoal-light);max-width:560px;line-height:1.65}
+.posts-section{max-width:1200px;margin:0 auto;padding:48px 1.5rem 80px}.posts-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px}.posts-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--burgundy);display:flex;align-items:center;gap:8px}.posts-title::before{content:'';width:20px;height:2px;background:var(--burgundy)}.posts-count{font-size:.78rem;color:var(--charcoal-light)}.posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.post-card{background:white;border-radius:14px;overflow:hidden;border:1px solid rgba(114,47,55,.06);transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}.post-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.08)}
+.post-thumb{height:164px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:16px 18px}
+.post-thumb .t-label{font-family:'Fraunces',serif;font-weight:700;font-size:.95rem;color:white;line-height:1.2;position:relative;z-index:2;max-width:88%;text-shadow:0 1px 6px rgba(0,0,0,.25)}
+.post-thumb .t-tag{position:absolute;top:12px;left:14px;font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.85);background:rgba(255,255,255,.12);backdrop-filter:blur(4px);padding:3px 9px;border-radius:4px;z-index:2}
+.post-thumb .t-geo{position:absolute;z-index:1}
+.t-geo.circle{width:100px;height:100px;border-radius:50%;border:2px solid rgba(255,255,255,.07);right:-15px;top:-15px}
+.t-geo.ring{width:70px;height:70px;border-radius:50%;border:1.5px solid rgba(255,255,255,.09);right:35px;top:25px}
+.t-geo.line1{width:180px;height:2px;background:rgba(255,255,255,.07);transform:rotate(-25deg);right:-30px;top:45px}
+.t-geo.line2{width:140px;height:2px;background:rgba(255,255,255,.05);transform:rotate(-25deg);right:-10px;top:65px}
+.t-geo.corner{width:36px;height:36px;border-right:1.5px solid rgba(255,255,255,.1);border-top:1.5px solid rgba(255,255,255,.1);right:14px;top:12px}
+.t-geo.dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.15);right:18px;bottom:50px}
+.bg-wine{background:linear-gradient(145deg,#5a252c,#8b3a42,#3d1c20)}.bg-navy{background:linear-gradient(145deg,#0f172a,#1e3a5f,#0c1220)}.bg-teal{background:linear-gradient(145deg,#064e3b,#0d9488,#042f2e)}.bg-plum{background:linear-gradient(145deg,#3b0764,#7c3aed,#1e1b4b)}.bg-amber{background:linear-gradient(145deg,#78350f,#b45309,#451a03)}.bg-slate{background:linear-gradient(145deg,#1e293b,#475569,#0f172a)}.bg-rose{background:linear-gradient(145deg,#4c0519,#be123c,#2d0011)}.bg-forest{background:linear-gradient(145deg,#14532d,#16a34a,#052e16)}.bg-steel{background:linear-gradient(145deg,#27272a,#52525b,#18181b)}
+.post-body{padding:18px 20px 16px;flex:1;display:flex;flex-direction:column}.post-category{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--burgundy);margin-bottom:7px}.post-title{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;color:var(--charcoal);margin-bottom:5px;line-height:1.3}.post-excerpt{font-size:.8rem;color:var(--charcoal-light);line-height:1.55;margin-bottom:12px;flex:1}.post-footer{display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid var(--cream-dark)}.post-date{font-size:.7rem;color:var(--charcoal-light)}.post-read{font-size:.7rem;color:var(--charcoal-light)}
+.newsletter{max-width:1200px;margin:0 auto;padding:0 1.5rem 80px}.nl-card{background:linear-gradient(135deg,var(--burgundy),var(--burgundy-dark));border-radius:16px;padding:44px;display:flex;align-items:center;gap:40px;position:relative;overflow:hidden}.nl-card::before{content:'';position:absolute;top:-40%;right:-10%;width:280px;height:280px;background:radial-gradient(circle,rgba(201,162,39,.15),transparent 70%);pointer-events:none}.nl-content{flex:1;position:relative;z-index:1}.nl-content h2{font-size:1.5rem;color:white;margin-bottom:6px}.nl-content p{color:rgba(255,255,255,.65);font-size:.92rem;line-height:1.6;max-width:420px}.nl-form{display:flex;gap:10px;margin-top:18px;max-width:420px}.nl-input{flex:1;padding:13px 16px;border-radius:8px;border:2px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);color:white;font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none}.nl-input::placeholder{color:rgba(255,255,255,.35)}.nl-input:focus{border-color:rgba(255,255,255,.35)}.nl-btn{padding:13px 22px;background:var(--gold);color:var(--charcoal);font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;border:none;border-radius:8px;cursor:pointer;white-space:nowrap}.nl-btn:hover{transform:translateY(-1px)}.nl-fine{font-size:.7rem;color:rgba(255,255,255,.35);margin-top:8px}
+footer{background:white;border-top:1px solid var(--cream-dark);padding:36px 1.5rem}.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}.footer-left{font-size:.8rem;color:var(--charcoal-light)}.footer-left a{color:var(--burgundy);font-weight:500}.footer-links{display:flex;gap:20px}.footer-links a{font-size:.8rem;color:var(--charcoal-light);transition:color .2s}.footer-links a:hover{color:var(--burgundy)}
+@media(max-width:1024px){.posts-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:768px){.desktop-nav{display:none!important}.mobile-menu-btn{display:flex}.posts-grid{grid-template-columns:1fr}.blog-hero{padding:120px 1.5rem 40px}.nl-card{flex-direction:column;padding:28px 22px;gap:20px}.nl-form{flex-direction:column}.footer-inner{flex-direction:column;gap:14px;text-align:center}}
+</style>
 </head>
 <body>
+<header id="header"><div class="header-inner"><a href="/" class="logo"><img src="../images/logo.png" alt="USMLE300"><span class="logo-text">USMLE300</span></a><nav class="desktop-nav"><a href="/#bootcamp-value">What We Cover</a><a href="/#topics">Topics</a><a href="/#pricing">Pricing</a><a href="/games.html">Games</a><a href="/blog" class="active">Blog</a><a href="/#faq">FAQ</a><a href="/#contact" class="cta-button">Book Free Consult</a></nav><button class="mobile-menu-btn" aria-label="Menu"><span></span><span></span><span></span></button></div></header>
+<div class="mobile-nav"><a href="/#bootcamp-value">What We Cover</a><a href="/#topics">Topics</a><a href="/#pricing">Pricing</a><a href="/games.html">Games</a><a href="/blog">Blog</a><a href="/#founder">About</a><a href="/#faq">FAQ</a><a href="/#contact" class="cta-button">Book Free Consult</a></div>
 
-<!-- Header -->
-<header id="header">
-  <div class="header-inner">
-    <a href="/" class="logo">
-      <img src="../images/logo.png" alt="USMLE300">
-      <span class="logo-text">USMLE300</span>
-    </a>
-    <nav class="desktop-nav">
-      <a href="/#bootcamp-value">What We Cover</a>
-      <a href="/#topics">Topics</a>
-      <a href="/#pricing">Pricing</a>
-      <a href="/games.html">Games</a>
-      <a href="/blog" class="active">Blog</a>
-      <a href="/#faq">FAQ</a>
-      <a href="/#contact" class="cta-button">Book Free Consult</a>
-    </nav>
-    <button class="mobile-menu-btn" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-<div class="mobile-nav">
-  <a href="/#bootcamp-value">What We Cover</a>
-  <a href="/#topics">Topics</a>
-  <a href="/#pricing">Pricing</a>
-  <a href="/games.html">Games</a>
-  <a href="/blog">Blog</a>
-  <a href="/#founder">About</a>
-  <a href="/#faq">FAQ</a>
-  <a href="/#contact" class="cta-button">Book Free Consult</a>
-</div>
+<section class="blog-hero"><div class="blog-hero-inner">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><strong>Blog</strong></nav>
+<h1>The <em>USMLE playbook</em>, written by tutors who've been there.</h1>
+<p class="blog-hero-sub">Study strategies, score fixes, and exam-day tactics that helped our students average 248 on Step 2 CK.</p>
+</div></section>
 
-<!-- Blog Hero -->
-<section class="blog-hero">
-  <div class="blog-hero-inner">
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Home</a><span>/</span><strong>Blog</strong>
-    </nav>
-    <h1>The <em>USMLE playbook</em>, written by tutors who've been there.</h1>
-    <p class="blog-hero-sub">Study strategies, high-yield topic breakdowns, and the exam-day tactics that helped our students average 248 on Step 1.</p>
-  </div>
-</section>
+<section class="posts-section" id="posts"><div class="posts-header"><div class="posts-title">All Articles</div><span class="posts-count">9 articles</span></div>
+<div class="posts-grid">
 
-<!-- Filter bar will be added back when more posts are published -->
+<a href="/blog/usmle-score-calculator" class="post-card"><div class="post-thumb bg-wine"><span class="t-tag">Free Tool</span><div class="t-geo circle"></div><div class="t-geo ring"></div><span class="t-label">NBME → 3-digit score in seconds</span></div><div class="post-body"><div class="post-category">Free Tool</div><h3 class="post-title">Free USMLE Score Calculator: NBME, UWSA &amp; Free 120</h3><p class="post-excerpt">Single exam converter + multi-exam composite predictor. All NBME forms for Step 1 and Step 2 CK.</p><div class="post-footer"><span class="post-date">Mar 10</span><span class="post-read">Calculator</span></div></div></a>
 
-<!-- Featured Post -->
-<section class="featured-section">
-  <div class="featured-label">Featured</div>
-  <a href="/blog/usmle-score-calculator" class="featured-card" data-category="study-strategy">
-    <div class="featured-thumb">
-      <div class="featured-thumb-icon">🧮</div>
-    </div>
-    <div class="featured-body">
-      <div class="featured-category">Free Tool</div>
-      <h2 class="featured-title">Free USMLE Score Calculator: NBME, UWSA &amp; Free 120 Predictor</h2>
-      <p class="featured-excerpt">Convert your NBME, UWSA, or Free 120 scores into predicted Step 1 and Step 2 CK three-digit scores. Instant results, no signup, completely free.</p>
-      <div class="featured-meta">
-        <span>Mar 10, 2026</span>
-        <span class="dot"></span>
-        <span>Calculator + Guide</span>
-        <span class="dot"></span>
-        <span>Step 1 &amp; Step 2 CK</span>
-      </div>
-      <span class="read-link">Use calculator &rarr;</span>
-    </div>
-  </a>
-</section>
+<a href="/blog/how-to-score-250-step-2-ck" class="post-card"><div class="post-thumb bg-navy"><span class="t-tag">Step 2 CK</span><div class="t-geo line1"></div><div class="t-geo line2"></div><div class="t-geo corner"></div><span class="t-label">250+ with UWorld and strategy alone</span></div><div class="post-body"><div class="post-category">Step 2 CK</div><h3 class="post-title">How to Score 250+ on Step 2 CK: A Strategy-First Guide</h3><p class="post-excerpt">A 270-scorer's breakdown of what actually moves scores. Resources are overrated — skills are king.</p><div class="post-footer"><span class="post-date">Mar 9</span><span class="post-read">14 min</span></div></div></a>
 
-<!-- All Posts -->
-<section class="posts-section">
-  <div class="posts-header">
-    <div class="posts-title">All Articles</div>
-    <span class="posts-count" id="postCount">1 article</span>
-  </div>
-  <div class="posts-grid" id="postsGrid">
+<a href="/blog/usmle-question-strategy" class="post-card"><div class="post-thumb bg-teal"><span class="t-tag">Exam Strategy</span><div class="t-geo circle"></div><div class="t-geo dot"></div><span class="t-label">The two-pass method that wins under pressure</span></div><div class="post-body"><div class="post-category">Exam Strategy</div><h3 class="post-title">The USMLE Question Strategy That Separates 230s from 260s</h3><p class="post-excerpt">Tested across dozens of timed blocks. Stop reading start-to-finish and start reading strategically.</p><div class="post-footer"><span class="post-date">Mar 7</span><span class="post-read">11 min</span></div></div></a>
 
-    <!-- Score Calculator (same as featured, shown in grid too) -->
-    <a href="/blog/usmle-score-calculator" class="post-card" data-category="study-strategy">
-      <div class="post-thumb t-wine"><div class="post-thumb-icon">🧮</div></div>
-      <div class="post-body">
-        <div class="post-category">Free Tool</div>
-        <h3 class="post-title">Free USMLE Score Calculator: NBME, UWSA &amp; Free 120 Predictor</h3>
-        <p class="post-excerpt">Convert your practice exam scores into predicted Step 1 and Step 2 CK three-digit scores. Single exam or multi-exam composite predictor.</p>
-        <div class="post-footer">
-          <span class="post-date">Mar 10, 2026</span>
-          <span class="post-read">Calculator + Guide</span>
-        </div>
-      </div>
-    </a>
+<a href="/blog/pass-step-1-in-6-weeks" class="post-card"><div class="post-thumb bg-plum"><span class="t-tag">Step 1</span><div class="t-geo line1"></div><div class="t-geo line2"></div><span class="t-label">42 days. One goal. Here's the plan.</span></div><div class="post-body"><div class="post-category">Step 1</div><h3 class="post-title">How to Pass USMLE Step 1 in 6 Weeks</h3><p class="post-excerpt">A ruthlessly focused 42-day plan for students with limited time. What to cut, what to keep, and when to test.</p><div class="post-footer"><span class="post-date">Mar 5</span><span class="post-read">15 min</span></div></div></a>
 
-  </div>
-</section>
+<a href="/blog/uworld-vs-amboss-2026" class="post-card"><div class="post-thumb bg-amber"><span class="t-tag">Resources</span><div class="t-geo corner"></div><div class="t-geo dot"></div><span class="t-label">The honest comparison no one asked for</span></div><div class="post-body"><div class="post-category">Resource Guide</div><h3 class="post-title">UWorld vs AMBOSS in 2026: Which Do You Actually Need?</h3><p class="post-excerpt">When to use each, when to skip one, and the topics where AMBOSS beats UWorld.</p><div class="post-footer"><span class="post-date">Mar 3</span><span class="post-read">10 min</span></div></div></a>
 
-<!-- Newsletter / CTA -->
-<section class="newsletter">
-  <div class="newsletter-card">
-    <div class="newsletter-content">
-      <h2>Get weekly USMLE tips in your inbox.</h2>
-      <p>One email per week with a high-yield topic breakdown, study tip, or strategy guide. No spam, unsubscribe anytime.</p>
-      <div class="newsletter-form">
-        <input type="email" class="newsletter-input" placeholder="you@med.school.edu" aria-label="Email address">
-        <button class="newsletter-submit">Subscribe</button>
-      </div>
-      <p class="newsletter-privacy">Join 2,000+ med students. We respect your inbox.</p>
-    </div>
-  </div>
-</section>
+<a href="/blog/uworld-score-plateau" class="post-card"><div class="post-thumb bg-slate"><span class="t-tag">Score Fix</span><div class="t-geo circle"></div><div class="t-geo line1"></div><span class="t-label">Stuck at 60%? Here's exactly why.</span></div><div class="post-body"><div class="post-category">Score Plateau</div><h3 class="post-title">Stuck at 60% on UWorld? How to Break Through Your Plateau</h3><p class="post-excerpt">The 5 most common reasons scores flatline and the review technique that fixes each one.</p><div class="post-footer"><span class="post-date">Mar 1</span><span class="post-read">12 min</span></div></div></a>
 
-<!-- Footer -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-left">Built by <a href="/">USMLE300</a> &middot; 97% pass rate &middot; Small-group tutoring</div>
-    <div class="footer-links">
-      <a href="/">Home</a>
-      <a href="/games.html">Games</a>
-      <a href="/blog">Blog</a>
-      <a href="/#contact">Contact</a>
-    </div>
-  </div>
-</footer>
+<a href="/blog/last-14-days-before-usmle" class="post-card"><div class="post-thumb bg-rose"><span class="t-tag">Exam Day</span><div class="t-geo ring"></div><div class="t-geo line2"></div><span class="t-label">Peak on test day — not the week before</span></div><div class="post-body"><div class="post-category">Exam Day</div><h3 class="post-title">The Last 14 Days Before Your USMLE: Day-by-Day Countdown</h3><p class="post-excerpt">When to take your last NBME, when to stop studying, and how to peak — not crash — on test day.</p><div class="post-footer"><span class="post-date">Feb 27</span><span class="post-read">13 min</span></div></div></a>
 
-<script>
-  // Sticky header
-  window.addEventListener('scroll',function(){
-    document.getElementById('header').classList.toggle('scrolled',window.scrollY>50);
-  });
+<a href="/blog/step-2-without-step-1-foundation" class="post-card"><div class="post-thumb bg-forest"><span class="t-tag">Step 2 CK</span><div class="t-geo corner"></div><div class="t-geo circle"></div><span class="t-label">The pass/fail gap — and how to close it</span></div><div class="post-body"><div class="post-category">Step 2 CK</div><h3 class="post-title">Step 2 CK Without a Strong Step 1 Foundation</h3><p class="post-excerpt">Step 1 went pass/fail. Now students are entering Step 2 with weaker foundations. Here's how to catch up.</p><div class="post-footer"><span class="post-date">Feb 24</span><span class="post-read">11 min</span></div></div></a>
 
-  // Mobile menu
-  var menuBtn=document.querySelector('.mobile-menu-btn'),mobileNav=document.querySelector('.mobile-nav');
-  menuBtn.addEventListener('click',function(){
-    menuBtn.classList.toggle('active');
-    mobileNav.classList.toggle('active');
-    document.body.classList.toggle('menu-open');
-  });
-  document.querySelectorAll('.mobile-nav a').forEach(function(a){
-    a.addEventListener('click',function(){
-      menuBtn.classList.remove('active');
-      mobileNav.classList.remove('active');
-      document.body.classList.remove('menu-open');
-    });
-  });
-</script>
+<a href="/blog/failed-step-1-how-i-passed" class="post-card"><div class="post-thumb bg-steel"><span class="t-tag">Real Talk</span><div class="t-geo line1"></div><div class="t-geo dot"></div><span class="t-label">A failure story with a passing ending</span></div><div class="post-body"><div class="post-category">Real Talk</div><h3 class="post-title">I Failed Step 1. Here's How I Changed Everything and Passed.</h3><p class="post-excerpt">What went wrong, what changed, and what to do if you're in the same position right now.</p><div class="post-footer"><span class="post-date">Feb 20</span><span class="post-read">10 min</span></div></div></a>
 
+</div></section>
+
+<section class="newsletter"><div class="nl-card"><div class="nl-content"><h2>Get weekly USMLE tips in your inbox.</h2><p>One email per week: a high-yield breakdown, study tip, or strategy guide. No spam.</p><div class="nl-form"><input type="email" class="nl-input" placeholder="you@med.school.edu" aria-label="Email"><button class="nl-btn">Subscribe</button></div><p class="nl-fine">Join 2,000+ med students. Unsubscribe anytime.</p></div></div></section>
+
+<footer><div class="footer-inner"><div class="footer-left">Built by <a href="/">USMLE300</a> &middot; 97% pass rate</div><div class="footer-links"><a href="/">Home</a><a href="/games.html">Games</a><a href="/blog">Blog</a><a href="/#contact">Contact</a></div></div></footer>
+<script>window.addEventListener('scroll',function(){document.getElementById('header').classList.toggle('scrolled',window.scrollY>50)});var m=document.querySelector('.mobile-menu-btn'),n=document.querySelector('.mobile-nav');m.addEventListener('click',function(){m.classList.toggle('active');n.classList.toggle('active');document.body.classList.toggle('menu-open')});document.querySelectorAll('.mobile-nav a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('active');n.classList.remove('active');document.body.classList.remove('menu-open')})});</script>
 </body>
 </html>
