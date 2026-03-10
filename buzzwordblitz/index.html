@@ -408,6 +408,7 @@ body {
   </div>
   <button class="start-btn" onclick="beginCountdown()">START</button>
   <div class="best-line" id="bestLine"></div>
+  <div class="best-line" id="totalCount" style="margin-top:4px;opacity:0.5">Loading buzzwords...</div>
 </div>
 
 <!-- ═══ COUNTDOWN ═══ -->
@@ -441,75 +442,34 @@ body {
 <div class="score-flash" id="scoreFlash"></div>
 
 <script>
-// ═══ BUZZWORD DATABASE ═══
-const BUZZWORDS = [
-  // PATHOGNOMONIC FINDINGS
-  {buzz:"Café-au-lait spots", answer:"Neurofibromatosis Type 1", cat:"Genetics", step:"step1", wrong:["Tuberous Sclerosis","McCune-Albright","Marfan Syndrome"]},
-  {buzz:"Strawberry tongue", answer:"Kawasaki Disease", cat:"Pediatrics", step:"step1", wrong:["Scarlet Fever","Toxic Shock Syndrome","Stevens-Johnson"]},
-  {buzz:"Cherry red spot on macula", answer:"Tay-Sachs Disease", cat:"Genetics", step:"step1", wrong:["Niemann-Pick","Gaucher Disease","Fabry Disease"]},
-  {buzz:"Keratin pearls", answer:"Squamous Cell Carcinoma", cat:"Pathology", step:"step1", wrong:["Adenocarcinoma","Basal Cell Carcinoma","Melanoma"]},
-  {buzz:"Owl-eye inclusions", answer:"CMV Infection", cat:"Microbiology", step:"step1", wrong:["EBV Mononucleosis","HSV Encephalitis","Adenovirus"]},
-  {buzz:"Reed-Sternberg cells", answer:"Hodgkin Lymphoma", cat:"Hematology", step:"step1", wrong:["Non-Hodgkin Lymphoma","CLL","Multiple Myeloma"]},
-  {buzz:"Auer rods", answer:"Acute Myeloid Leukemia", cat:"Hematology", step:"step1", wrong:["Acute Lymphoblastic Leukemia","CML","Hairy Cell Leukemia"]},
-  {buzz:"Birbeck granules", answer:"Langerhans Cell Histiocytosis", cat:"Pathology", step:"step1", wrong:["Sarcoidosis","Histoplasmosis","Mastocytosis"]},
-  {buzz:"Kayser-Fleischer rings", answer:"Wilson Disease", cat:"Hepatology", step:"step1", wrong:["Hemochromatosis","Primary Biliary Cholangitis","Alpha-1 Antitrypsin"]},
-  {buzz:"Negri bodies", answer:"Rabies", cat:"Microbiology", step:"step1", wrong:["Herpes Simplex","West Nile Virus","Polio"]},
-  {buzz:"Orphan Annie nuclei", answer:"Papillary Thyroid Carcinoma", cat:"Endocrine", step:"step1", wrong:["Follicular Thyroid CA","Medullary Thyroid CA","Anaplastic Thyroid CA"]},
-  {buzz:"Psammoma bodies", answer:"Papillary Thyroid Carcinoma", cat:"Pathology", step:"step1", wrong:["Meningioma","Serous Ovarian CA","Mesothelioma"]},
-  {buzz:"Koilocytes", answer:"HPV Infection", cat:"Microbiology", step:"step1", wrong:["HSV Infection","Molluscum Contagiosum","Syphilis"]},
-  {buzz:"Apple-green birefringence", answer:"Amyloidosis", cat:"Pathology", step:"step1", wrong:["Sarcoidosis","Multiple Myeloma","Gout"]},
-  {buzz:"Schistocytes on smear", answer:"TTP / HUS", cat:"Hematology", step:"step1", wrong:["Iron Deficiency Anemia","Sickle Cell Disease","Thalassemia"]},
-  {buzz:"Call-Exner bodies", answer:"Granulosa Cell Tumor", cat:"GYN", step:"step1", wrong:["Sertoli-Leydig Tumor","Dysgerminoma","Choriocarcinoma"]},
-  {buzz:"Curschmann spirals", answer:"Bronchial Asthma", cat:"Pulmonology", step:"step1", wrong:["COPD","Bronchiectasis","Cystic Fibrosis"]},
-  {buzz:"Ghon complex", answer:"Primary Tuberculosis", cat:"Pulmonology", step:"step1", wrong:["Sarcoidosis","Histoplasmosis","Lung Adenocarcinoma"]},
+// ═══ BUZZWORD DATABASE — loaded from external JSON ═══
+let BUZZWORDS = [];
+let dataLoaded = false;
 
-  // CLINICAL PRESENTATIONS
-  {buzz:"Painless jaundice", answer:"Pancreatic Head Cancer", cat:"GI", step:"step2", wrong:["Cholangiocarcinoma","Gallstones","Hepatitis"]},
-  {buzz:"Butterfly rash", answer:"Systemic Lupus Erythematosus", cat:"Rheumatology", step:"step1", wrong:["Rosacea","Dermatomyositis","Sarcoidosis"]},
-  {buzz:"Kussmaul breathing", answer:"Diabetic Ketoacidosis", cat:"Endocrine", step:"step1", wrong:["Metabolic Alkalosis","COPD Exacerbation","Pulmonary Embolism"]},
-  {buzz:"Janeway lesions", answer:"Infective Endocarditis", cat:"Cardiology", step:"step1", wrong:["Rheumatic Fever","Vasculitis","SLE"]},
-  {buzz:"Trousseau sign (hand)", answer:"Hypocalcemia", cat:"Endocrine", step:"step1", wrong:["Hyperkalemia","Hyponatremia","Hypomagnesemia"]},
-  {buzz:"Chvostek sign", answer:"Hypocalcemia", cat:"Endocrine", step:"step1", wrong:["Hyperkalemia","Tetanus","Hypomagnesemia"]},
-  {buzz:"Target cells", answer:"Thalassemia", cat:"Hematology", step:"step1", wrong:["Iron Deficiency","Sickle Cell Disease","G6PD Deficiency"]},
-  {buzz:"Erythema migrans (bull's eye)", answer:"Lyme Disease", cat:"Infectious Disease", step:"step2", wrong:["Rocky Mountain Spotted Fever","Cellulitis","Erythema Multiforme"]},
-  {buzz:"Lead pipe rigidity", answer:"Parkinson Disease", cat:"Neurology", step:"step1", wrong:["Huntington Disease","Multiple Sclerosis","ALS"]},
-  {buzz:"Heberden nodes", answer:"Osteoarthritis", cat:"Rheumatology", step:"step1", wrong:["Rheumatoid Arthritis","Gout","Psoriatic Arthritis"]},
-  {buzz:"Boot-shaped heart on CXR", answer:"Tetralogy of Fallot", cat:"Cardiology", step:"step1", wrong:["Transposition of Great Arteries","Coarctation of Aorta","ASD"]},
-  {buzz:"Egg-on-a-string (CXR)", answer:"Transposition of Great Arteries", cat:"Cardiology", step:"step1", wrong:["Tetralogy of Fallot","Truncus Arteriosus","Total Anomalous Pulm Return"]},
-  {buzz:"Steeple sign on X-ray", answer:"Croup", cat:"Pediatrics", step:"step2", wrong:["Epiglottitis","Foreign Body Aspiration","Bronchiolitis"]},
-  {buzz:"Thumbprint sign on X-ray", answer:"Epiglottitis", cat:"Pediatrics", step:"step2", wrong:["Croup","Peritonsillar Abscess","Retropharyngeal Abscess"]},
-  {buzz:"Positive Gowers sign", answer:"Duchenne Muscular Dystrophy", cat:"Neurology", step:"step1", wrong:["Becker MD","Myotonic Dystrophy","Polymyositis"]},
-  {buzz:"Sandpaper rash", answer:"Scarlet Fever", cat:"Pediatrics", step:"step1", wrong:["Measles","Rubella","Fifth Disease"]},
-  {buzz:"Descending paralysis", answer:"Botulism", cat:"Microbiology", step:"step1", wrong:["Guillain-Barré","Myasthenia Gravis","Tetanus"]},
-  {buzz:"Ascending paralysis", answer:"Guillain-Barré Syndrome", cat:"Neurology", step:"step1", wrong:["Botulism","Transverse Myelitis","Poliomyelitis"]},
-  {buzz:"Painless chancre", answer:"Primary Syphilis", cat:"Infectious Disease", step:"step1", wrong:["Chancroid","HSV","Lymphogranuloma Venereum"]},
-  {buzz:"Rat-bite fever pattern", answer:"Tertiary Syphilis", cat:"Infectious Disease", step:"step1", wrong:["Malaria","Brucellosis","Leptospirosis"]},
-  {buzz:"Rice-water stools", answer:"Cholera", cat:"Microbiology", step:"step1", wrong:["Shigella","Salmonella","E. coli O157:H7"]},
-  {buzz:"Currant jelly stools", answer:"Intussusception", cat:"Pediatrics", step:"step2", wrong:["Meckel Diverticulum","Necrotizing Enterocolitis","Volvulus"]},
-  {buzz:"Albuminocytologic dissociation", answer:"Guillain-Barré Syndrome", cat:"Neurology", step:"step1", wrong:["Multiple Sclerosis","Meningitis","Encephalitis"]},
-  {buzz:"WBC casts in urine", answer:"Pyelonephritis", cat:"Nephrology", step:"step1", wrong:["Cystitis","Glomerulonephritis","Nephrotic Syndrome"]},
-  {buzz:"RBC casts in urine", answer:"Glomerulonephritis", cat:"Nephrology", step:"step1", wrong:["Pyelonephritis","UTI","Nephrotic Syndrome"]},
-  {buzz:"Waxy casts in urine", answer:"Chronic Renal Failure", cat:"Nephrology", step:"step1", wrong:["Acute Tubular Necrosis","Nephrotic Syndrome","Pyelonephritis"]},
-  {buzz:"Muddy brown casts", answer:"Acute Tubular Necrosis", cat:"Nephrology", step:"step1", wrong:["Glomerulonephritis","Pyelonephritis","Prerenal AKI"]},
-  {buzz:"Crescent formation on biopsy", answer:"Rapidly Progressive GN", cat:"Nephrology", step:"step1", wrong:["Minimal Change Disease","IgA Nephropathy","Membranous Nephropathy"]},
-  {buzz:"Non-caseating granulomas", answer:"Sarcoidosis", cat:"Pulmonology", step:"step1", wrong:["Tuberculosis","Histoplasmosis","Crohn Disease"]},
-  {buzz:"Caseating granulomas", answer:"Tuberculosis", cat:"Pulmonology", step:"step1", wrong:["Sarcoidosis","Fungal Infection","Wegener Granulomatosis"]},
-  {buzz:"Tram-track appearance (biopsy)", answer:"Membranoproliferative GN", cat:"Nephrology", step:"step1", wrong:["Membranous Nephropathy","IgA Nephropathy","Minimal Change Disease"]},
-  {buzz:"Wireloop lesion on biopsy", answer:"Lupus Nephritis", cat:"Nephrology", step:"step1", wrong:["Diabetic Nephropathy","IgA Nephropathy","FSGS"]},
-  {buzz:"Kimmelstiel-Wilson nodules", answer:"Diabetic Nephropathy", cat:"Nephrology", step:"step1", wrong:["Lupus Nephritis","Amyloidosis","MPGN"]},
-
-  // PHARMACOLOGY ASSOCIATIONS
-  {buzz:"Blue-gray skin discoloration", answer:"Amiodarone Toxicity", cat:"Pharmacology", step:"step1", wrong:["Minocycline","Silver Poisoning","Chloroquine"]},
-  {buzz:"SLE-like syndrome (drug)", answer:"Hydralazine or Procainamide", cat:"Pharmacology", step:"step1", wrong:["Methotrexate","Rituximab","Infliximab"]},
-  {buzz:"Fanconi syndrome (drug)", answer:"Tenofovir", cat:"Pharmacology", step:"step1", wrong:["Cisplatin","Gentamicin","Amphotericin B"]},
-  {buzz:"Red man syndrome", answer:"Vancomycin", cat:"Pharmacology", step:"step1", wrong:["Rifampin","Doxorubicin","Metronidazole"]},
-  {buzz:"Gray baby syndrome", answer:"Chloramphenicol", cat:"Pharmacology", step:"step1", wrong:["Tetracycline","Sulfonamide","Metronidazole"]},
-  {buzz:"Disulfiram-like reaction", answer:"Metronidazole", cat:"Pharmacology", step:"step1", wrong:["Cephalosporins","Ketoconazole","Isoniazid"]},
-  {buzz:"Corneal deposits (drug)", answer:"Amiodarone", cat:"Pharmacology", step:"step1", wrong:["Chloroquine","Tamoxifen","Ethambutol"]},
-  {buzz:"Pulmonary fibrosis (drug)", answer:"Bleomycin", cat:"Pharmacology", step:"step1", wrong:["Amiodarone","Methotrexate","Nitrofurantoin"]},
-  {buzz:"Hemorrhagic cystitis (drug)", answer:"Cyclophosphamide", cat:"Pharmacology", step:"step1", wrong:["Methotrexate","Cisplatin","Ifosfamide"]},
-  {buzz:"Gingival hyperplasia (drug)", answer:"Phenytoin", cat:"Pharmacology", step:"step1", wrong:["Carbamazepine","Valproate","Cyclosporine"]},
-];
+fetch('/data/buzzwordblitz.json')
+    .then(res => {
+        if (!res.ok) throw new Error('Failed to load');
+        return res.json();
+    })
+    .then(data => {
+        BUZZWORDS = data;
+        dataLoaded = true;
+        document.getElementById('totalCount').textContent = data.length + ' buzzwords';
+    })
+    .catch(err => {
+        console.error('Load error:', err);
+        BUZZWORDS = [
+            {buzz:"Keratin pearls",answer:"Squamous Cell Carcinoma",cat:"Pathology",step:"step1",wrong:["Adenocarcinoma","Basal Cell Carcinoma","Melanoma"]},
+            {buzz:"Reed-Sternberg cells",answer:"Hodgkin Lymphoma",cat:"Hematology",step:"step1",wrong:["Non-Hodgkin Lymphoma","CLL","Multiple Myeloma"]},
+            {buzz:"Auer rods",answer:"Acute Myeloid Leukemia",cat:"Hematology",step:"step1",wrong:["ALL","CML","Hairy Cell Leukemia"]},
+            {buzz:"Kayser-Fleischer rings",answer:"Wilson Disease",cat:"Hepatology",step:"step1",wrong:["Hemochromatosis","Primary Biliary Cholangitis","Alpha-1 Antitrypsin"]},
+            {buzz:"Butterfly rash",answer:"Systemic Lupus Erythematosus",cat:"Rheumatology",step:"step1",wrong:["Rosacea","Dermatomyositis","Sarcoidosis"]},
+            {buzz:"Painless jaundice",answer:"Pancreatic Head Cancer",cat:"GI",step:"step2",wrong:["Cholangiocarcinoma","Gallstones","Hepatitis"]},
+            {buzz:"Boot-shaped heart on CXR",answer:"Tetralogy of Fallot",cat:"Cardiology",step:"step1",wrong:["Transposition","Coarctation","ASD"]},
+            {buzz:"Red man syndrome",answer:"Vancomycin",cat:"Pharmacology",step:"step1",wrong:["Rifampin","Doxorubicin","Metronidazole"]}
+        ];
+        dataLoaded = true;
+    });
 
 // ═══ STATE ═══
 let mode = 'all';
@@ -535,6 +495,10 @@ function setMode(m, el) {
 
 // ═══ COUNTDOWN ═══
 function beginCountdown() {
+  if (!dataLoaded || BUZZWORDS.length === 0) {
+    alert('Buzzwords are still loading. Please try again in a moment.');
+    return;
+  }
   const overlay = document.getElementById('countdownOverlay');
   const num = document.getElementById('countdownNum');
   overlay.classList.add('active');
