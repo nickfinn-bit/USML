@@ -1,1 +1,5843 @@
-
+[
+  {
+    "buzz": "Café-au-lait spots",
+    "answer": "Neurofibromatosis Type 1",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Tuberous Sclerosis",
+      "McCune-Albright",
+      "Marfan Syndrome"
+    ]
+  },
+  {
+    "buzz": "Ash leaf spots",
+    "answer": "Tuberous Sclerosis",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Neurofibromatosis",
+      "Vitiligo",
+      "Piebaldism"
+    ]
+  },
+  {
+    "buzz": "Shagreen patch",
+    "answer": "Tuberous Sclerosis",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Neurofibromatosis",
+      "Sturge-Weber",
+      "Von Hippel-Lindau"
+    ]
+  },
+  {
+    "buzz": "Port wine stain (face)",
+    "answer": "Sturge-Weber Syndrome",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Hemangioma",
+      "NF1",
+      "Tuberous Sclerosis"
+    ]
+  },
+  {
+    "buzz": "Cherry red spot on macula",
+    "answer": "Tay-Sachs Disease",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Niemann-Pick",
+      "Gaucher Disease",
+      "Fabry Disease"
+    ]
+  },
+  {
+    "buzz": "Strawberry tongue",
+    "answer": "Kawasaki Disease",
+    "cat": "Pediatrics",
+    "step": "step1",
+    "wrong": [
+      "Scarlet Fever",
+      "Toxic Shock Syndrome",
+      "Stevens-Johnson"
+    ]
+  },
+  {
+    "buzz": "Keratin pearls",
+    "answer": "Squamous Cell Carcinoma",
+    "cat": "Pathology",
+    "step": "step1",
+    "wrong": [
+      "Adenocarcinoma",
+      "Basal Cell Carcinoma",
+      "Melanoma"
+    ]
+  },
+  {
+    "buzz": "Owl-eye inclusions",
+    "answer": "CMV Infection",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "EBV Mononucleosis",
+      "HSV Encephalitis",
+      "Adenovirus"
+    ]
+  },
+  {
+    "buzz": "Reed-Sternberg cells",
+    "answer": "Hodgkin Lymphoma",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Non-Hodgkin Lymphoma",
+      "CLL",
+      "Multiple Myeloma"
+    ]
+  },
+  {
+    "buzz": "Auer rods",
+    "answer": "Acute Myeloid Leukemia",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "ALL",
+      "CML",
+      "Hairy Cell Leukemia"
+    ]
+  },
+  {
+    "buzz": "Birbeck granules",
+    "answer": "Langerhans Cell Histiocytosis",
+    "cat": "Pathology",
+    "step": "step1",
+    "wrong": [
+      "Sarcoidosis",
+      "Histoplasmosis",
+      "Mastocytosis"
+    ]
+  },
+  {
+    "buzz": "Kayser-Fleischer rings",
+    "answer": "Wilson Disease",
+    "cat": "Hepatology",
+    "step": "step1",
+    "wrong": [
+      "Hemochromatosis",
+      "Primary Biliary Cholangitis",
+      "Alpha-1 Antitrypsin"
+    ]
+  },
+  {
+    "buzz": "Negri bodies",
+    "answer": "Rabies",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "Herpes Simplex",
+      "West Nile Virus",
+      "Poliomyelitis"
+    ]
+  },
+  {
+    "buzz": "Orphan Annie nuclei",
+    "answer": "Papillary Thyroid Carcinoma",
+    "cat": "Endocrine",
+    "step": "step1",
+    "wrong": [
+      "Follicular Thyroid CA",
+      "Medullary Thyroid CA",
+      "Anaplastic Thyroid CA"
+    ]
+  },
+  {
+    "buzz": "Psammoma bodies",
+    "answer": "Meningioma",
+    "cat": "Pathology",
+    "step": "step1",
+    "wrong": [
+      "Papillary Thyroid CA",
+      "Serous Ovarian CA",
+      "Mesothelioma"
+    ]
+  },
+  {
+    "buzz": "Koilocytes",
+    "answer": "HPV Infection",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "HSV Infection",
+      "Molluscum Contagiosum",
+      "Syphilis"
+    ]
+  },
+  {
+    "buzz": "Apple-green birefringence",
+    "answer": "Amyloidosis",
+    "cat": "Pathology",
+    "step": "step1",
+    "wrong": [
+      "Sarcoidosis",
+      "Multiple Myeloma",
+      "Gout"
+    ]
+  },
+  {
+    "buzz": "Schistocytes on smear",
+    "answer": "TTP / HUS",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Iron Deficiency Anemia",
+      "Sickle Cell Disease",
+      "Thalassemia"
+    ]
+  },
+  {
+    "buzz": "Call-Exner bodies",
+    "answer": "Granulosa Cell Tumor",
+    "cat": "GYN",
+    "step": "step1",
+    "wrong": [
+      "Sertoli-Leydig Tumor",
+      "Dysgerminoma",
+      "Choriocarcinoma"
+    ]
+  },
+  {
+    "buzz": "Curschmann spirals",
+    "answer": "Bronchial Asthma",
+    "cat": "Pulmonology",
+    "step": "step1",
+    "wrong": [
+      "COPD",
+      "Bronchiectasis",
+      "Cystic Fibrosis"
+    ]
+  },
+  {
+    "buzz": "Ghon complex",
+    "answer": "Primary Tuberculosis",
+    "cat": "Pulmonology",
+    "step": "step1",
+    "wrong": [
+      "Sarcoidosis",
+      "Histoplasmosis",
+      "Lung Adenocarcinoma"
+    ]
+  },
+  {
+    "buzz": "Charcot-Leyden crystals",
+    "answer": "Bronchial Asthma",
+    "cat": "Pulmonology",
+    "step": "step1",
+    "wrong": [
+      "Eosinophilic Pneumonia",
+      "Allergic Bronchopulmonary Aspergillosis",
+      "COPD"
+    ]
+  },
+  {
+    "buzz": "Ferruginous bodies",
+    "answer": "Asbestosis",
+    "cat": "Pulmonology",
+    "step": "step1",
+    "wrong": [
+      "Silicosis",
+      "Mesothelioma",
+      "Coal Worker Pneumoconiosis"
+    ]
+  },
+  {
+    "buzz": "Hilar eggshell calcifications",
+    "answer": "Silicosis",
+    "cat": "Pulmonology",
+    "step": "step1",
+    "wrong": [
+      "Sarcoidosis",
+      "Tuberculosis",
+      "Berylliosis"
+    ]
+  },
+  {
+    "buzz": "Signet ring cells",
+    "answer": "Gastric Carcinoma (Diffuse)",
+    "cat": "GI",
+    "step": "step1",
+    "wrong": [
+      "Intestinal Gastric CA",
+      "Colon Adenocarcinoma",
+      "Krukenberg Tumor"
+    ]
+  },
+  {
+    "buzz": "Heinz bodies",
+    "answer": "G6PD Deficiency",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Sickle Cell Disease",
+      "Thalassemia",
+      "Hereditary Spherocytosis"
+    ]
+  },
+  {
+    "buzz": "Howell-Jolly bodies",
+    "answer": "Asplenia / Hyposplenia",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Iron Deficiency",
+      "Thalassemia",
+      "Lead Poisoning"
+    ]
+  },
+  {
+    "buzz": "Basophilic stippling",
+    "answer": "Lead Poisoning",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Iron Deficiency",
+      "Thalassemia",
+      "Sideroblastic Anemia"
+    ]
+  },
+  {
+    "buzz": "Ringed sideroblasts",
+    "answer": "Sideroblastic Anemia",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Iron Deficiency",
+      "Thalassemia",
+      "Lead Poisoning"
+    ]
+  },
+  {
+    "buzz": "Rouleaux formation",
+    "answer": "Multiple Myeloma",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Waldenstrom Macroglobulinemia",
+      "CLL",
+      "Hodgkin Lymphoma"
+    ]
+  },
+  {
+    "buzz": "Smudge cells",
+    "answer": "Chronic Lymphocytic Leukemia",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "ALL",
+      "Hairy Cell Leukemia",
+      "Follicular Lymphoma"
+    ]
+  },
+  {
+    "buzz": "Hairy cells (TRAP+)",
+    "answer": "Hairy Cell Leukemia",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "CLL",
+      "Marginal Zone Lymphoma",
+      "Mantle Cell Lymphoma"
+    ]
+  },
+  {
+    "buzz": "Teardrop cells",
+    "answer": "Myelofibrosis",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Thalassemia",
+      "Iron Deficiency",
+      "Myelodysplastic Syndrome"
+    ]
+  },
+  {
+    "buzz": "Bite cells",
+    "answer": "G6PD Deficiency",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Hereditary Spherocytosis",
+      "Sickle Cell Disease",
+      "Autoimmune Hemolytic Anemia"
+    ]
+  },
+  {
+    "buzz": "Spherocytes on smear",
+    "answer": "Hereditary Spherocytosis",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Autoimmune Hemolytic Anemia",
+      "G6PD Deficiency",
+      "Iron Deficiency"
+    ]
+  },
+  {
+    "buzz": "Sickle cells on smear",
+    "answer": "Sickle Cell Disease",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Thalassemia",
+      "G6PD Deficiency",
+      "Iron Deficiency"
+    ]
+  },
+  {
+    "buzz": "Target cells",
+    "answer": "Thalassemia",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Iron Deficiency",
+      "Sickle Cell Disease",
+      "G6PD Deficiency"
+    ]
+  },
+  {
+    "buzz": "Acanthocytes on smear",
+    "answer": "Abetalipoproteinemia",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Liver Disease",
+      "Sickle Cell",
+      "McLeod Syndrome"
+    ]
+  },
+  {
+    "buzz": "Hypersegmented neutrophils",
+    "answer": "Megaloblastic Anemia",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Iron Deficiency",
+      "Myelodysplastic Syndrome",
+      "Chronic Infection"
+    ]
+  },
+  {
+    "buzz": "Painless jaundice",
+    "answer": "Pancreatic Head Cancer",
+    "cat": "GI",
+    "step": "step2",
+    "wrong": [
+      "Cholangiocarcinoma",
+      "Gallstones",
+      "Hepatitis"
+    ]
+  },
+  {
+    "buzz": "Butterfly rash",
+    "answer": "Systemic Lupus Erythematosus",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "Rosacea",
+      "Dermatomyositis",
+      "Sarcoidosis"
+    ]
+  },
+  {
+    "buzz": "Kussmaul breathing",
+    "answer": "Diabetic Ketoacidosis",
+    "cat": "Endocrine",
+    "step": "step1",
+    "wrong": [
+      "Metabolic Alkalosis",
+      "COPD Exacerbation",
+      "Pulmonary Embolism"
+    ]
+  },
+  {
+    "buzz": "Janeway lesions",
+    "answer": "Infective Endocarditis",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "Rheumatic Fever",
+      "Vasculitis",
+      "SLE"
+    ]
+  },
+  {
+    "buzz": "Osler nodes",
+    "answer": "Infective Endocarditis",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "Rheumatic Fever",
+      "SLE",
+      "Vasculitis"
+    ]
+  },
+  {
+    "buzz": "Splinter hemorrhages",
+    "answer": "Infective Endocarditis",
+    "cat": "Cardiology",
+    "step": "step2",
+    "wrong": [
+      "Psoriasis",
+      "Trauma",
+      "Vasculitis"
+    ]
+  },
+  {
+    "buzz": "Trousseau sign (hand)",
+    "answer": "Hypocalcemia",
+    "cat": "Endocrine",
+    "step": "step1",
+    "wrong": [
+      "Hyperkalemia",
+      "Hyponatremia",
+      "Hypomagnesemia"
+    ]
+  },
+  {
+    "buzz": "Chvostek sign",
+    "answer": "Hypocalcemia",
+    "cat": "Endocrine",
+    "step": "step1",
+    "wrong": [
+      "Hyperkalemia",
+      "Tetanus",
+      "Hypomagnesemia"
+    ]
+  },
+  {
+    "buzz": "Erythema migrans",
+    "answer": "Lyme Disease",
+    "cat": "Infectious Disease",
+    "step": "step2",
+    "wrong": [
+      "Rocky Mountain Spotted Fever",
+      "Cellulitis",
+      "Erythema Multiforme"
+    ]
+  },
+  {
+    "buzz": "Lead pipe rigidity",
+    "answer": "Neuroleptic Malignant Syndrome",
+    "cat": "Psychiatry",
+    "step": "step1",
+    "wrong": [
+      "Parkinson Disease",
+      "Serotonin Syndrome",
+      "Malignant Hyperthermia"
+    ]
+  },
+  {
+    "buzz": "Cogwheel rigidity",
+    "answer": "Parkinson Disease",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Essential Tremor",
+      "Huntington Disease",
+      "Wilson Disease"
+    ]
+  },
+  {
+    "buzz": "Heberden nodes",
+    "answer": "Osteoarthritis",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "Rheumatoid Arthritis",
+      "Gout",
+      "Psoriatic Arthritis"
+    ]
+  },
+  {
+    "buzz": "Bouchard nodes",
+    "answer": "Osteoarthritis (PIP)",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "Rheumatoid Arthritis",
+      "Gout",
+      "Psoriatic Arthritis"
+    ]
+  },
+  {
+    "buzz": "Swan neck deformity",
+    "answer": "Rheumatoid Arthritis",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "Osteoarthritis",
+      "SLE",
+      "Psoriatic Arthritis"
+    ]
+  },
+  {
+    "buzz": "Boutonniere deformity",
+    "answer": "Rheumatoid Arthritis",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "Osteoarthritis",
+      "Psoriatic Arthritis",
+      "Gout"
+    ]
+  },
+  {
+    "buzz": "Ulnar deviation of fingers",
+    "answer": "Rheumatoid Arthritis",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "Osteoarthritis",
+      "SLE",
+      "Gout"
+    ]
+  },
+  {
+    "buzz": "Pencil-in-cup deformity",
+    "answer": "Psoriatic Arthritis",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "Rheumatoid Arthritis",
+      "Gout",
+      "Osteoarthritis"
+    ]
+  },
+  {
+    "buzz": "Bamboo spine on X-ray",
+    "answer": "Ankylosing Spondylitis",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "Rheumatoid Arthritis",
+      "Psoriatic Arthritis",
+      "Reactive Arthritis"
+    ]
+  },
+  {
+    "buzz": "Tophi",
+    "answer": "Chronic Gout",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "Rheumatoid Nodules",
+      "Pseudogout",
+      "Osteoarthritis"
+    ]
+  },
+  {
+    "buzz": "Negatively birefringent crystals",
+    "answer": "Gout",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "Pseudogout",
+      "Septic Arthritis",
+      "Osteoarthritis"
+    ]
+  },
+  {
+    "buzz": "Positively birefringent crystals",
+    "answer": "Pseudogout (CPPD)",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "Gout",
+      "Septic Arthritis",
+      "Calcium Oxalate"
+    ]
+  },
+  {
+    "buzz": "Boot-shaped heart on CXR",
+    "answer": "Tetralogy of Fallot",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "Transposition of Great Arteries",
+      "Coarctation of Aorta",
+      "ASD"
+    ]
+  },
+  {
+    "buzz": "Egg-on-a-string (CXR)",
+    "answer": "Transposition of Great Arteries",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "Tetralogy of Fallot",
+      "Truncus Arteriosus",
+      "TAPVR"
+    ]
+  },
+  {
+    "buzz": "Steeple sign on X-ray",
+    "answer": "Croup",
+    "cat": "Pediatrics",
+    "step": "step2",
+    "wrong": [
+      "Epiglottitis",
+      "Foreign Body Aspiration",
+      "Bronchiolitis"
+    ]
+  },
+  {
+    "buzz": "Thumbprint sign on X-ray",
+    "answer": "Epiglottitis",
+    "cat": "Pediatrics",
+    "step": "step2",
+    "wrong": [
+      "Croup",
+      "Peritonsillar Abscess",
+      "Retropharyngeal Abscess"
+    ]
+  },
+  {
+    "buzz": "Positive Gowers sign",
+    "answer": "Duchenne Muscular Dystrophy",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Becker MD",
+      "Myotonic Dystrophy",
+      "Polymyositis"
+    ]
+  },
+  {
+    "buzz": "Sandpaper rash",
+    "answer": "Scarlet Fever",
+    "cat": "Pediatrics",
+    "step": "step1",
+    "wrong": [
+      "Measles",
+      "Rubella",
+      "Fifth Disease"
+    ]
+  },
+  {
+    "buzz": "Slapped cheek rash",
+    "answer": "Fifth Disease (Parvovirus B19)",
+    "cat": "Pediatrics",
+    "step": "step1",
+    "wrong": [
+      "Rubella",
+      "Scarlet Fever",
+      "Measles"
+    ]
+  },
+  {
+    "buzz": "Koplik spots",
+    "answer": "Measles",
+    "cat": "Pediatrics",
+    "step": "step1",
+    "wrong": [
+      "Rubella",
+      "Roseola",
+      "Scarlet Fever"
+    ]
+  },
+  {
+    "buzz": "Blueberry muffin rash (neonate)",
+    "answer": "Congenital Rubella",
+    "cat": "Pediatrics",
+    "step": "step1",
+    "wrong": [
+      "Congenital CMV",
+      "Congenital Syphilis",
+      "TORCH"
+    ]
+  },
+  {
+    "buzz": "Descending paralysis",
+    "answer": "Botulism",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "Guillain-Barré",
+      "Myasthenia Gravis",
+      "Tetanus"
+    ]
+  },
+  {
+    "buzz": "Ascending paralysis",
+    "answer": "Guillain-Barré Syndrome",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Botulism",
+      "Transverse Myelitis",
+      "Poliomyelitis"
+    ]
+  },
+  {
+    "buzz": "Painless chancre",
+    "answer": "Primary Syphilis",
+    "cat": "Infectious Disease",
+    "step": "step1",
+    "wrong": [
+      "Chancroid",
+      "HSV",
+      "Lymphogranuloma Venereum"
+    ]
+  },
+  {
+    "buzz": "Condylomata lata",
+    "answer": "Secondary Syphilis",
+    "cat": "Infectious Disease",
+    "step": "step1",
+    "wrong": [
+      "Condylomata Acuminata",
+      "Molluscum",
+      "Primary Syphilis"
+    ]
+  },
+  {
+    "buzz": "Argyll Robertson pupil",
+    "answer": "Tertiary Syphilis (Neurosyphilis)",
+    "cat": "Infectious Disease",
+    "step": "step1",
+    "wrong": [
+      "Multiple Sclerosis",
+      "Horner Syndrome",
+      "Adie Pupil"
+    ]
+  },
+  {
+    "buzz": "Tabes dorsalis",
+    "answer": "Tertiary Syphilis",
+    "cat": "Infectious Disease",
+    "step": "step1",
+    "wrong": [
+      "Multiple Sclerosis",
+      "B12 Deficiency",
+      "Friedreich Ataxia"
+    ]
+  },
+  {
+    "buzz": "Rice-water stools",
+    "answer": "Cholera",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "Shigella",
+      "Salmonella",
+      "E. coli O157:H7"
+    ]
+  },
+  {
+    "buzz": "Currant jelly stools",
+    "answer": "Intussusception",
+    "cat": "Pediatrics",
+    "step": "step2",
+    "wrong": [
+      "Meckel Diverticulum",
+      "Necrotizing Enterocolitis",
+      "Volvulus"
+    ]
+  },
+  {
+    "buzz": "Currant jelly sputum",
+    "answer": "Klebsiella Pneumonia",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "S. pneumoniae",
+      "Pseudomonas",
+      "Tuberculosis"
+    ]
+  },
+  {
+    "buzz": "Albuminocytologic dissociation",
+    "answer": "Guillain-Barré Syndrome",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Multiple Sclerosis",
+      "Meningitis",
+      "Encephalitis"
+    ]
+  },
+  {
+    "buzz": "Oligoclonal bands in CSF",
+    "answer": "Multiple Sclerosis",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Guillain-Barré",
+      "Neurosyphilis",
+      "Encephalitis"
+    ]
+  },
+  {
+    "buzz": "WBC casts in urine",
+    "answer": "Pyelonephritis",
+    "cat": "Nephrology",
+    "step": "step1",
+    "wrong": [
+      "Cystitis",
+      "Glomerulonephritis",
+      "Nephrotic Syndrome"
+    ]
+  },
+  {
+    "buzz": "RBC casts in urine",
+    "answer": "Glomerulonephritis",
+    "cat": "Nephrology",
+    "step": "step1",
+    "wrong": [
+      "Pyelonephritis",
+      "UTI",
+      "Nephrotic Syndrome"
+    ]
+  },
+  {
+    "buzz": "Waxy casts in urine",
+    "answer": "Chronic Renal Failure",
+    "cat": "Nephrology",
+    "step": "step1",
+    "wrong": [
+      "Acute Tubular Necrosis",
+      "Nephrotic Syndrome",
+      "Pyelonephritis"
+    ]
+  },
+  {
+    "buzz": "Muddy brown casts",
+    "answer": "Acute Tubular Necrosis",
+    "cat": "Nephrology",
+    "step": "step1",
+    "wrong": [
+      "Glomerulonephritis",
+      "Pyelonephritis",
+      "Prerenal AKI"
+    ]
+  },
+  {
+    "buzz": "Fatty casts / oval fat bodies",
+    "answer": "Nephrotic Syndrome",
+    "cat": "Nephrology",
+    "step": "step1",
+    "wrong": [
+      "Nephritic Syndrome",
+      "Acute Tubular Necrosis",
+      "Pyelonephritis"
+    ]
+  },
+  {
+    "buzz": "Crescent formation on biopsy",
+    "answer": "Rapidly Progressive GN",
+    "cat": "Nephrology",
+    "step": "step1",
+    "wrong": [
+      "Minimal Change Disease",
+      "IgA Nephropathy",
+      "Membranous Nephropathy"
+    ]
+  },
+  {
+    "buzz": "Non-caseating granulomas",
+    "answer": "Sarcoidosis",
+    "cat": "Pulmonology",
+    "step": "step1",
+    "wrong": [
+      "Tuberculosis",
+      "Histoplasmosis",
+      "Crohn Disease"
+    ]
+  },
+  {
+    "buzz": "Caseating granulomas",
+    "answer": "Tuberculosis",
+    "cat": "Pulmonology",
+    "step": "step1",
+    "wrong": [
+      "Sarcoidosis",
+      "Fungal Infection",
+      "Granulomatosis with Polyangiitis"
+    ]
+  },
+  {
+    "buzz": "Tram-track appearance (biopsy)",
+    "answer": "Membranoproliferative GN",
+    "cat": "Nephrology",
+    "step": "step1",
+    "wrong": [
+      "Membranous Nephropathy",
+      "IgA Nephropathy",
+      "Minimal Change Disease"
+    ]
+  },
+  {
+    "buzz": "Wireloop lesion on biopsy",
+    "answer": "Lupus Nephritis",
+    "cat": "Nephrology",
+    "step": "step1",
+    "wrong": [
+      "Diabetic Nephropathy",
+      "IgA Nephropathy",
+      "FSGS"
+    ]
+  },
+  {
+    "buzz": "Kimmelstiel-Wilson nodules",
+    "answer": "Diabetic Nephropathy",
+    "cat": "Nephrology",
+    "step": "step1",
+    "wrong": [
+      "Lupus Nephritis",
+      "Amyloidosis",
+      "MPGN"
+    ]
+  },
+  {
+    "buzz": "Spike and dome on EM",
+    "answer": "Membranous Nephropathy",
+    "cat": "Nephrology",
+    "step": "step1",
+    "wrong": [
+      "Minimal Change Disease",
+      "FSGS",
+      "IgA Nephropathy"
+    ]
+  },
+  {
+    "buzz": "Foot process effacement on EM",
+    "answer": "Minimal Change Disease",
+    "cat": "Nephrology",
+    "step": "step1",
+    "wrong": [
+      "FSGS",
+      "Membranous Nephropathy",
+      "IgA Nephropathy"
+    ]
+  },
+  {
+    "buzz": "IgA deposits (mesangial)",
+    "answer": "IgA Nephropathy (Berger)",
+    "cat": "Nephrology",
+    "step": "step1",
+    "wrong": [
+      "Post-Streptococcal GN",
+      "Minimal Change Disease",
+      "Membranous Nephropathy"
+    ]
+  },
+  {
+    "buzz": "Subepithelial humps on EM",
+    "answer": "Post-Streptococcal GN",
+    "cat": "Nephrology",
+    "step": "step1",
+    "wrong": [
+      "IgA Nephropathy",
+      "Membranous Nephropathy",
+      "MPGN"
+    ]
+  },
+  {
+    "buzz": "Linear IgG on IF",
+    "answer": "Anti-GBM Disease (Goodpasture)",
+    "cat": "Nephrology",
+    "step": "step1",
+    "wrong": [
+      "Lupus Nephritis",
+      "IgA Nephropathy",
+      "Post-Streptococcal GN"
+    ]
+  },
+  {
+    "buzz": "Blue-gray skin discoloration",
+    "answer": "Amiodarone Toxicity",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Minocycline",
+      "Silver Poisoning",
+      "Chloroquine"
+    ]
+  },
+  {
+    "buzz": "SLE-like syndrome (drug)",
+    "answer": "Hydralazine / Procainamide",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Methotrexate",
+      "Rituximab",
+      "Infliximab"
+    ]
+  },
+  {
+    "buzz": "Fanconi syndrome (drug)",
+    "answer": "Tenofovir",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Cisplatin",
+      "Gentamicin",
+      "Amphotericin B"
+    ]
+  },
+  {
+    "buzz": "Red man syndrome",
+    "answer": "Vancomycin",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Rifampin",
+      "Doxorubicin",
+      "Metronidazole"
+    ]
+  },
+  {
+    "buzz": "Gray baby syndrome",
+    "answer": "Chloramphenicol",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Tetracycline",
+      "Sulfonamide",
+      "Metronidazole"
+    ]
+  },
+  {
+    "buzz": "Disulfiram-like reaction",
+    "answer": "Metronidazole",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Cephalosporins",
+      "Ketoconazole",
+      "Isoniazid"
+    ]
+  },
+  {
+    "buzz": "Corneal deposits (drug)",
+    "answer": "Amiodarone",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Chloroquine",
+      "Tamoxifen",
+      "Ethambutol"
+    ]
+  },
+  {
+    "buzz": "Pulmonary fibrosis (drug)",
+    "answer": "Bleomycin",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Amiodarone",
+      "Methotrexate",
+      "Nitrofurantoin"
+    ]
+  },
+  {
+    "buzz": "Hemorrhagic cystitis (drug)",
+    "answer": "Cyclophosphamide",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Methotrexate",
+      "Cisplatin",
+      "Ifosfamide"
+    ]
+  },
+  {
+    "buzz": "Gingival hyperplasia (drug)",
+    "answer": "Phenytoin",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Carbamazepine",
+      "Valproate",
+      "Cyclosporine"
+    ]
+  },
+  {
+    "buzz": "Orange body fluids",
+    "answer": "Rifampin",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Nitrofurantoin",
+      "Doxorubicin",
+      "Phenazopyridine"
+    ]
+  },
+  {
+    "buzz": "Tendon rupture (drug)",
+    "answer": "Fluoroquinolones",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Statins",
+      "Corticosteroids",
+      "Tetracyclines"
+    ]
+  },
+  {
+    "buzz": "Tooth discoloration (drug)",
+    "answer": "Tetracycline",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Fluoroquinolone",
+      "Amoxicillin",
+      "Doxycycline"
+    ]
+  },
+  {
+    "buzz": "Ototoxicity + Nephrotoxicity",
+    "answer": "Aminoglycosides",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Vancomycin",
+      "Loop Diuretics",
+      "Cisplatin"
+    ]
+  },
+  {
+    "buzz": "Aplastic anemia (drug)",
+    "answer": "Chloramphenicol",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Methotrexate",
+      "Carbamazepine",
+      "Phenytoin"
+    ]
+  },
+  {
+    "buzz": "Peripheral neuropathy (drug)",
+    "answer": "Isoniazid",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Ethambutol",
+      "Rifampin",
+      "Pyrazinamide"
+    ]
+  },
+  {
+    "buzz": "Optic neuritis (drug)",
+    "answer": "Ethambutol",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Isoniazid",
+      "Rifampin",
+      "Pyrazinamide"
+    ]
+  },
+  {
+    "buzz": "Hepatotoxicity (TB drug)",
+    "answer": "Isoniazid",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Ethambutol",
+      "Streptomycin",
+      "Rifampin"
+    ]
+  },
+  {
+    "buzz": "Drug-induced lupus (anti-histone Ab)",
+    "answer": "Procainamide",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Hydralazine",
+      "Isoniazid",
+      "Minocycline"
+    ]
+  },
+  {
+    "buzz": "Gynecomastia (drug)",
+    "answer": "Spironolactone",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Cimetidine",
+      "Ketoconazole",
+      "Digitalis"
+    ]
+  },
+  {
+    "buzz": "Cinchonism",
+    "answer": "Quinine / Quinidine",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Chloroquine",
+      "Mefloquine",
+      "Atovaquone"
+    ]
+  },
+  {
+    "buzz": "Malignant hyperthermia",
+    "answer": "Succinylcholine / Halothane",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "NMS",
+      "Serotonin Syndrome",
+      "Heat Stroke"
+    ]
+  },
+  {
+    "buzz": "Serotonin syndrome",
+    "answer": "SSRIs + MAOIs Combo",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "NMS",
+      "Malignant Hyperthermia",
+      "Anticholinergic Toxicity"
+    ]
+  },
+  {
+    "buzz": "Cheese reaction (hypertensive crisis)",
+    "answer": "MAOIs + Tyramine",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Serotonin Syndrome",
+      "Pheochromocytoma",
+      "Cocaine"
+    ]
+  },
+  {
+    "buzz": "Floppy baby (drug)",
+    "answer": "Benzodiazepines (neonatal)",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Magnesium Sulfate",
+      "Opioids",
+      "SSRIs"
+    ]
+  },
+  {
+    "buzz": "Bilateral hilar lymphadenopathy",
+    "answer": "Sarcoidosis",
+    "cat": "Pulmonology",
+    "step": "step1",
+    "wrong": [
+      "Lymphoma",
+      "Tuberculosis",
+      "Lung Cancer"
+    ]
+  },
+  {
+    "buzz": "Erythema nodosum",
+    "answer": "Sarcoidosis",
+    "cat": "Dermatology",
+    "step": "step1",
+    "wrong": [
+      "Crohn Disease",
+      "Ulcerative Colitis",
+      "Behcet Disease"
+    ]
+  },
+  {
+    "buzz": "Lupus pernio",
+    "answer": "Sarcoidosis",
+    "cat": "Dermatology",
+    "step": "step1",
+    "wrong": [
+      "SLE",
+      "Discoid Lupus",
+      "Granulomatosis with Polyangiitis"
+    ]
+  },
+  {
+    "buzz": "Palpable purpura",
+    "answer": "IgA Vasculitis (HSP)",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "TTP",
+      "DIC",
+      "Meningococcemia"
+    ]
+  },
+  {
+    "buzz": "Saddle nose deformity",
+    "answer": "Granulomatosis with Polyangiitis",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "Relapsing Polychondritis",
+      "Cocaine Abuse",
+      "Syphilis"
+    ]
+  },
+  {
+    "buzz": "Strawberry cervix",
+    "answer": "Trichomonas Vaginitis",
+    "cat": "GYN",
+    "step": "step2",
+    "wrong": [
+      "Candidiasis",
+      "Bacterial Vaginosis",
+      "Chlamydia"
+    ]
+  },
+  {
+    "buzz": "Clue cells",
+    "answer": "Bacterial Vaginosis",
+    "cat": "GYN",
+    "step": "step2",
+    "wrong": [
+      "Trichomonas",
+      "Candidiasis",
+      "Chlamydia"
+    ]
+  },
+  {
+    "buzz": "Cottage cheese discharge",
+    "answer": "Candida Vaginitis",
+    "cat": "GYN",
+    "step": "step2",
+    "wrong": [
+      "Bacterial Vaginosis",
+      "Trichomonas",
+      "Chlamydia"
+    ]
+  },
+  {
+    "buzz": "Chandelier sign",
+    "answer": "Pelvic Inflammatory Disease",
+    "cat": "GYN",
+    "step": "step2",
+    "wrong": [
+      "Ovarian Torsion",
+      "Appendicitis",
+      "Ectopic Pregnancy"
+    ]
+  },
+  {
+    "buzz": "Chocolate cyst",
+    "answer": "Endometriosis (Ovarian)",
+    "cat": "GYN",
+    "step": "step2",
+    "wrong": [
+      "Dermoid Cyst",
+      "Cystadenoma",
+      "Ovarian Cancer"
+    ]
+  },
+  {
+    "buzz": "Snowstorm on ultrasound",
+    "answer": "Hydatidiform Mole",
+    "cat": "OB",
+    "step": "step2",
+    "wrong": [
+      "Ectopic Pregnancy",
+      "Missed Abortion",
+      "Choriocarcinoma"
+    ]
+  },
+  {
+    "buzz": "Machine-like murmur",
+    "answer": "Patent Ductus Arteriosus",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "ASD",
+      "VSD",
+      "Aortic Stenosis"
+    ]
+  },
+  {
+    "buzz": "Wide fixed split S2",
+    "answer": "Atrial Septal Defect",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "VSD",
+      "PDA",
+      "Pulmonic Stenosis"
+    ]
+  },
+  {
+    "buzz": "Holosystolic murmur (left sternal)",
+    "answer": "VSD",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "ASD",
+      "Mitral Regurgitation",
+      "Tricuspid Regurgitation"
+    ]
+  },
+  {
+    "buzz": "Crescendo-decrescendo murmur",
+    "answer": "Aortic Stenosis",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "Aortic Regurgitation",
+      "Mitral Stenosis",
+      "HCM"
+    ]
+  },
+  {
+    "buzz": "Opening snap + diastolic rumble",
+    "answer": "Mitral Stenosis",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "Mitral Regurgitation",
+      "Aortic Stenosis",
+      "Tricuspid Stenosis"
+    ]
+  },
+  {
+    "buzz": "Blowing holosystolic murmur (apex)",
+    "answer": "Mitral Regurgitation",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "Aortic Regurgitation",
+      "VSD",
+      "Tricuspid Regurgitation"
+    ]
+  },
+  {
+    "buzz": "Pulsus paradoxus",
+    "answer": "Cardiac Tamponade",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "Constrictive Pericarditis",
+      "Tension Pneumothorax",
+      "PE"
+    ]
+  },
+  {
+    "buzz": "Electrical alternans on ECG",
+    "answer": "Cardiac Tamponade",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "Pericarditis",
+      "SVT",
+      "Hyperkalemia"
+    ]
+  },
+  {
+    "buzz": "Low-voltage QRS on ECG",
+    "answer": "Cardiac Tamponade / Pericardial Effusion",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "Hypothyroidism",
+      "COPD",
+      "Obesity"
+    ]
+  },
+  {
+    "buzz": "Diffuse ST elevation (concave up)",
+    "answer": "Acute Pericarditis",
+    "cat": "Cardiology",
+    "step": "step2",
+    "wrong": [
+      "STEMI",
+      "Brugada Syndrome",
+      "Early Repolarization"
+    ]
+  },
+  {
+    "buzz": "Kussmaul sign (JVP rises with inspiration)",
+    "answer": "Constrictive Pericarditis",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "Cardiac Tamponade",
+      "Right Heart Failure",
+      "PE"
+    ]
+  },
+  {
+    "buzz": "Torsades de pointes",
+    "answer": "Long QT Syndrome",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "V. Fibrillation",
+      "V. Tachycardia",
+      "Brugada Syndrome"
+    ]
+  },
+  {
+    "buzz": "Delta wave on ECG",
+    "answer": "Wolff-Parkinson-White",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "Bundle Branch Block",
+      "Brugada",
+      "Hyperkalemia"
+    ]
+  },
+  {
+    "buzz": "Cannon a waves",
+    "answer": "Complete Heart Block",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "Atrial Flutter",
+      "Atrial Fibrillation",
+      "Tricuspid Regurgitation"
+    ]
+  },
+  {
+    "buzz": "Peaked T waves",
+    "answer": "Hyperkalemia",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "Hypercalcemia",
+      "Acute MI",
+      "Hypothermia"
+    ]
+  },
+  {
+    "buzz": "U waves",
+    "answer": "Hypokalemia",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "Hyperkalemia",
+      "Hypocalcemia",
+      "Digitalis Effect"
+    ]
+  },
+  {
+    "buzz": "Shortened QT interval",
+    "answer": "Hypercalcemia",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "Hyperkalemia",
+      "Hypomagnesemia",
+      "Digitalis"
+    ]
+  },
+  {
+    "buzz": "Prolonged QT interval",
+    "answer": "Hypocalcemia",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "Hyperkalemia",
+      "Hypercalcemia",
+      "Brugada"
+    ]
+  },
+  {
+    "buzz": "Sawtooth P waves",
+    "answer": "Atrial Flutter",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "Atrial Fibrillation",
+      "SVT",
+      "Sinus Tachycardia"
+    ]
+  },
+  {
+    "buzz": "Irregularly irregular rhythm",
+    "answer": "Atrial Fibrillation",
+    "cat": "Cardiology",
+    "step": "step2",
+    "wrong": [
+      "Atrial Flutter",
+      "Multifocal Atrial Tachycardia",
+      "Sinus Arrhythmia"
+    ]
+  },
+  {
+    "buzz": "Arachnodactyly",
+    "answer": "Marfan Syndrome",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Ehlers-Danlos",
+      "Homocystinuria",
+      "Loeys-Dietz"
+    ]
+  },
+  {
+    "buzz": "Lens subluxation (upward)",
+    "answer": "Marfan Syndrome",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Homocystinuria",
+      "Ehlers-Danlos",
+      "Alport Syndrome"
+    ]
+  },
+  {
+    "buzz": "Lens subluxation (downward)",
+    "answer": "Homocystinuria",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Marfan Syndrome",
+      "Ehlers-Danlos",
+      "Sulfite Oxidase Deficiency"
+    ]
+  },
+  {
+    "buzz": "Hyperextensible skin",
+    "answer": "Ehlers-Danlos Syndrome",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Marfan Syndrome",
+      "Osteogenesis Imperfecta",
+      "Cutis Laxa"
+    ]
+  },
+  {
+    "buzz": "Blue sclera",
+    "answer": "Osteogenesis Imperfecta",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Ehlers-Danlos",
+      "Marfan Syndrome",
+      "Alkaptonuria"
+    ]
+  },
+  {
+    "buzz": "Lisch nodules",
+    "answer": "Neurofibromatosis Type 1",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Tuberous Sclerosis",
+      "Von Hippel-Lindau",
+      "Sturge-Weber"
+    ]
+  },
+  {
+    "buzz": "Bilateral acoustic neuromas",
+    "answer": "Neurofibromatosis Type 2",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "NF1",
+      "Schwannomatosis",
+      "Von Hippel-Lindau"
+    ]
+  },
+  {
+    "buzz": "Hemangioblastoma (cerebellar)",
+    "answer": "Von Hippel-Lindau",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "NF2",
+      "Tuberous Sclerosis",
+      "Li-Fraumeni"
+    ]
+  },
+  {
+    "buzz": "Cortical tubers",
+    "answer": "Tuberous Sclerosis",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "NF1",
+      "Sturge-Weber",
+      "Von Hippel-Lindau"
+    ]
+  },
+  {
+    "buzz": "Renal angiomyolipoma",
+    "answer": "Tuberous Sclerosis",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Von Hippel-Lindau",
+      "ADPKD",
+      "NF1"
+    ]
+  },
+  {
+    "buzz": "Subependymal giant cell astrocytoma",
+    "answer": "Tuberous Sclerosis",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "NF1",
+      "NF2",
+      "Von Hippel-Lindau"
+    ]
+  },
+  {
+    "buzz": "Tramline calcifications (skull XR)",
+    "answer": "Sturge-Weber Syndrome",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Tuberous Sclerosis",
+      "NF1",
+      "Toxoplasmosis"
+    ]
+  },
+  {
+    "buzz": "Cleft palate + micrognathia",
+    "answer": "Pierre Robin Sequence",
+    "cat": "Pediatrics",
+    "step": "step1",
+    "wrong": [
+      "DiGeorge Syndrome",
+      "Treacher Collins",
+      "Fetal Alcohol Syndrome"
+    ]
+  },
+  {
+    "buzz": "22q11.2 deletion",
+    "answer": "DiGeorge Syndrome",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Williams Syndrome",
+      "Cri du Chat",
+      "Down Syndrome"
+    ]
+  },
+  {
+    "buzz": "Elfin facies + supravalvular aortic stenosis",
+    "answer": "Williams Syndrome",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "DiGeorge",
+      "Noonan",
+      "Turner"
+    ]
+  },
+  {
+    "buzz": "Cat-like cry",
+    "answer": "Cri du Chat (5p deletion)",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Angelman Syndrome",
+      "Prader-Willi",
+      "Williams"
+    ]
+  },
+  {
+    "buzz": "Happy puppet (inappropriate laughter)",
+    "answer": "Angelman Syndrome",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Prader-Willi",
+      "Rett Syndrome",
+      "Fragile X"
+    ]
+  },
+  {
+    "buzz": "Hyperphagia + hypogonadism",
+    "answer": "Prader-Willi Syndrome",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Angelman",
+      "Klinefelter",
+      "Hypothyroidism"
+    ]
+  },
+  {
+    "buzz": "Macro-orchidism + large jaw",
+    "answer": "Fragile X Syndrome",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Klinefelter",
+      "Down Syndrome",
+      "Prader-Willi"
+    ]
+  },
+  {
+    "buzz": "Single palmar crease",
+    "answer": "Down Syndrome",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Edwards Syndrome",
+      "Patau Syndrome",
+      "Turner Syndrome"
+    ]
+  },
+  {
+    "buzz": "Rocker-bottom feet",
+    "answer": "Edwards Syndrome (Trisomy 18)",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Patau Syndrome",
+      "Down Syndrome",
+      "Turner Syndrome"
+    ]
+  },
+  {
+    "buzz": "Holoprosencephaly + cleft lip",
+    "answer": "Patau Syndrome (Trisomy 13)",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Edwards Syndrome",
+      "Down Syndrome",
+      "DiGeorge"
+    ]
+  },
+  {
+    "buzz": "Cystic hygroma + webbed neck",
+    "answer": "Turner Syndrome (45,X)",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Down Syndrome",
+      "Noonan Syndrome",
+      "Klinefelter"
+    ]
+  },
+  {
+    "buzz": "Tall stature + gynecomastia + small testes",
+    "answer": "Klinefelter Syndrome (47,XXY)",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Kallmann Syndrome",
+      "Fragile X",
+      "Marfan Syndrome"
+    ]
+  },
+  {
+    "buzz": "Absent smell + hypogonadism",
+    "answer": "Kallmann Syndrome",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Klinefelter",
+      "Prader-Willi",
+      "Hypothalamic Amenorrhea"
+    ]
+  },
+  {
+    "buzz": "Musty body odor",
+    "answer": "Phenylketonuria",
+    "cat": "Biochemistry",
+    "step": "step1",
+    "wrong": [
+      "Maple Syrup Urine Disease",
+      "Homocystinuria",
+      "Alkaptonuria"
+    ]
+  },
+  {
+    "buzz": "Maple syrup-smelling urine",
+    "answer": "Maple Syrup Urine Disease",
+    "cat": "Biochemistry",
+    "step": "step1",
+    "wrong": [
+      "PKU",
+      "Isovaleric Acidemia",
+      "Homocystinuria"
+    ]
+  },
+  {
+    "buzz": "Dark urine on standing",
+    "answer": "Alkaptonuria",
+    "cat": "Biochemistry",
+    "step": "step1",
+    "wrong": [
+      "Porphyria",
+      "Hemoglobinuria",
+      "PKU"
+    ]
+  },
+  {
+    "buzz": "Mousy / musty odor urine",
+    "answer": "Phenylketonuria",
+    "cat": "Biochemistry",
+    "step": "step1",
+    "wrong": [
+      "Maple Syrup Urine Disease",
+      "Isovaleric Acidemia",
+      "Alkaptonuria"
+    ]
+  },
+  {
+    "buzz": "Gargoyle facies + corneal clouding",
+    "answer": "Hurler Syndrome (MPS I)",
+    "cat": "Biochemistry",
+    "step": "step1",
+    "wrong": [
+      "Hunter Syndrome",
+      "Morquio Syndrome",
+      "Gaucher Disease"
+    ]
+  },
+  {
+    "buzz": "Gargoyle facies + no corneal clouding",
+    "answer": "Hunter Syndrome (MPS II)",
+    "cat": "Biochemistry",
+    "step": "step1",
+    "wrong": [
+      "Hurler Syndrome",
+      "Morquio Syndrome",
+      "Gaucher Disease"
+    ]
+  },
+  {
+    "buzz": "Crumpled tissue paper cells",
+    "answer": "Gaucher Disease",
+    "cat": "Biochemistry",
+    "step": "step1",
+    "wrong": [
+      "Niemann-Pick",
+      "Tay-Sachs",
+      "Fabry Disease"
+    ]
+  },
+  {
+    "buzz": "Foam cells / Sphingomyelinase deficiency",
+    "answer": "Niemann-Pick Disease",
+    "cat": "Biochemistry",
+    "step": "step1",
+    "wrong": [
+      "Gaucher Disease",
+      "Tay-Sachs",
+      "Fabry Disease"
+    ]
+  },
+  {
+    "buzz": "Peripheral neuropathy + angiokeratomas",
+    "answer": "Fabry Disease",
+    "cat": "Biochemistry",
+    "step": "step1",
+    "wrong": [
+      "Gaucher Disease",
+      "Niemann-Pick",
+      "Krabbe Disease"
+    ]
+  },
+  {
+    "buzz": "Globoid cells",
+    "answer": "Krabbe Disease",
+    "cat": "Biochemistry",
+    "step": "step1",
+    "wrong": [
+      "Metachromatic Leukodystrophy",
+      "Niemann-Pick",
+      "Gaucher"
+    ]
+  },
+  {
+    "buzz": "Central pontine myelinolysis",
+    "answer": "Rapid Correction of Hyponatremia",
+    "cat": "Nephrology",
+    "step": "step1",
+    "wrong": [
+      "Wernicke Encephalopathy",
+      "Multiple Sclerosis",
+      "Alcohol Withdrawal"
+    ]
+  },
+  {
+    "buzz": "Periosteal elevation (onion skinning)",
+    "answer": "Ewing Sarcoma",
+    "cat": "Orthopedics",
+    "step": "step1",
+    "wrong": [
+      "Osteosarcoma",
+      "Osteomyelitis",
+      "Osteoid Osteoma"
+    ]
+  },
+  {
+    "buzz": "Sunburst pattern on X-ray",
+    "answer": "Osteosarcoma",
+    "cat": "Orthopedics",
+    "step": "step1",
+    "wrong": [
+      "Ewing Sarcoma",
+      "Chondrosarcoma",
+      "Osteochondroma"
+    ]
+  },
+  {
+    "buzz": "Codman triangle on X-ray",
+    "answer": "Osteosarcoma",
+    "cat": "Orthopedics",
+    "step": "step1",
+    "wrong": [
+      "Ewing Sarcoma",
+      "Giant Cell Tumor",
+      "Osteomyelitis"
+    ]
+  },
+  {
+    "buzz": "Soap bubble appearance on X-ray",
+    "answer": "Giant Cell Tumor of Bone",
+    "cat": "Orthopedics",
+    "step": "step1",
+    "wrong": [
+      "Aneurysmal Bone Cyst",
+      "Osteosarcoma",
+      "Multiple Myeloma"
+    ]
+  },
+  {
+    "buzz": "Punched-out lytic lesions (skull)",
+    "answer": "Multiple Myeloma",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Metastatic Disease",
+      "Langerhans Cell Histiocytosis",
+      "Osteomyelitis"
+    ]
+  },
+  {
+    "buzz": "M spike on SPEP",
+    "answer": "Multiple Myeloma",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "MGUS",
+      "Waldenstrom",
+      "CLL"
+    ]
+  },
+  {
+    "buzz": "Bence Jones proteinuria",
+    "answer": "Multiple Myeloma",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Waldenstrom",
+      "Amyloidosis",
+      "Light Chain Deposition"
+    ]
+  },
+  {
+    "buzz": "Starry sky pattern (biopsy)",
+    "answer": "Burkitt Lymphoma",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Hodgkin Lymphoma",
+      "Follicular Lymphoma",
+      "DLBCL"
+    ]
+  },
+  {
+    "buzz": "t(14;18) translocation",
+    "answer": "Follicular Lymphoma",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Burkitt Lymphoma",
+      "Mantle Cell Lymphoma",
+      "DLBCL"
+    ]
+  },
+  {
+    "buzz": "t(8;14) translocation",
+    "answer": "Burkitt Lymphoma",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Follicular Lymphoma",
+      "CML",
+      "Mantle Cell"
+    ]
+  },
+  {
+    "buzz": "t(9;22) Philadelphia chromosome",
+    "answer": "CML",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "CLL",
+      "AML",
+      "ALL"
+    ]
+  },
+  {
+    "buzz": "t(11;14) translocation",
+    "answer": "Mantle Cell Lymphoma",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Follicular Lymphoma",
+      "Burkitt",
+      "DLBCL"
+    ]
+  },
+  {
+    "buzz": "t(15;17) translocation",
+    "answer": "Acute Promyelocytic Leukemia",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "AML",
+      "ALL",
+      "CML"
+    ]
+  },
+  {
+    "buzz": "Warm AIHA + IgG antibodies",
+    "answer": "Autoimmune Hemolytic Anemia (Warm)",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Cold Agglutinin",
+      "Paroxysmal Cold Hemoglobinuria",
+      "TTP"
+    ]
+  },
+  {
+    "buzz": "Cold agglutinins + IgM",
+    "answer": "Mycoplasma / CLL / Mononucleosis",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Warm AIHA",
+      "TTP",
+      "DIC"
+    ]
+  },
+  {
+    "buzz": "ADAMTS13 deficiency",
+    "answer": "TTP",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "HUS",
+      "DIC",
+      "ITP"
+    ]
+  },
+  {
+    "buzz": "Shiga toxin + renal failure",
+    "answer": "HUS",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "TTP",
+      "DIC",
+      "Sepsis"
+    ]
+  },
+  {
+    "buzz": "Increased bleeding time + normal PT/PTT",
+    "answer": "Platelet Disorder / vWD",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Hemophilia A",
+      "Hemophilia B",
+      "DIC"
+    ]
+  },
+  {
+    "buzz": "Prolonged PTT + normal PT",
+    "answer": "Hemophilia A or B",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "vWD",
+      "Vitamin K Deficiency",
+      "DIC"
+    ]
+  },
+  {
+    "buzz": "Prolonged PT + normal PTT",
+    "answer": "Factor VII Deficiency / Warfarin",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Hemophilia",
+      "vWD",
+      "Heparin"
+    ]
+  },
+  {
+    "buzz": "String sign on barium swallow",
+    "answer": "Crohn Disease",
+    "cat": "GI",
+    "step": "step1",
+    "wrong": [
+      "Ulcerative Colitis",
+      "Small Bowel Obstruction",
+      "Pyloric Stenosis"
+    ]
+  },
+  {
+    "buzz": "Lead pipe colon on barium",
+    "answer": "Ulcerative Colitis",
+    "cat": "GI",
+    "step": "step1",
+    "wrong": [
+      "Crohn Disease",
+      "Ischemic Colitis",
+      "C. difficile"
+    ]
+  },
+  {
+    "buzz": "Cobblestone mucosa",
+    "answer": "Crohn Disease",
+    "cat": "GI",
+    "step": "step1",
+    "wrong": [
+      "Ulcerative Colitis",
+      "Ischemic Colitis",
+      "Celiac Disease"
+    ]
+  },
+  {
+    "buzz": "Thumbprinting on abdominal XR",
+    "answer": "Ischemic Colitis",
+    "cat": "GI",
+    "step": "step2",
+    "wrong": [
+      "Toxic Megacolon",
+      "Volvulus",
+      "Obstruction"
+    ]
+  },
+  {
+    "buzz": "Bird beak sign on barium",
+    "answer": "Achalasia",
+    "cat": "GI",
+    "step": "step2",
+    "wrong": [
+      "Esophageal Cancer",
+      "Esophageal Web",
+      "Stricture"
+    ]
+  },
+  {
+    "buzz": "Corkscrew esophagus",
+    "answer": "Diffuse Esophageal Spasm",
+    "cat": "GI",
+    "step": "step2",
+    "wrong": [
+      "Achalasia",
+      "GERD",
+      "Esophageal Cancer"
+    ]
+  },
+  {
+    "buzz": "Caput medusae",
+    "answer": "Portal Hypertension",
+    "cat": "GI",
+    "step": "step2",
+    "wrong": [
+      "SVC Syndrome",
+      "Budd-Chiari",
+      "Inferior Vena Cava Obstruction"
+    ]
+  },
+  {
+    "buzz": "Spider angiomata",
+    "answer": "Liver Cirrhosis",
+    "cat": "GI",
+    "step": "step2",
+    "wrong": [
+      "Pregnancy",
+      "Hereditary Hemorrhagic Telangiectasia",
+      "SLE"
+    ]
+  },
+  {
+    "buzz": "Asterixis (liver flap)",
+    "answer": "Hepatic Encephalopathy",
+    "cat": "GI",
+    "step": "step2",
+    "wrong": [
+      "Uremic Encephalopathy",
+      "Wilson Disease",
+      "Parkinson"
+    ]
+  },
+  {
+    "buzz": "Nutmeg liver on autopsy",
+    "answer": "Right Heart Failure",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "Budd-Chiari",
+      "Cirrhosis",
+      "Hepatic Vein Thrombosis"
+    ]
+  },
+  {
+    "buzz": "Double bubble sign (XR)",
+    "answer": "Duodenal Atresia",
+    "cat": "Pediatrics",
+    "step": "step2",
+    "wrong": [
+      "Pyloric Stenosis",
+      "Malrotation",
+      "Jejunal Atresia"
+    ]
+  },
+  {
+    "buzz": "Olive-shaped mass + projectile vomiting",
+    "answer": "Pyloric Stenosis",
+    "cat": "Pediatrics",
+    "step": "step2",
+    "wrong": [
+      "Duodenal Atresia",
+      "Intussusception",
+      "Malrotation"
+    ]
+  },
+  {
+    "buzz": "Dance sign (empty RLQ)",
+    "answer": "Intussusception",
+    "cat": "Pediatrics",
+    "step": "step2",
+    "wrong": [
+      "Appendicitis",
+      "Volvulus",
+      "Meckel Diverticulum"
+    ]
+  },
+  {
+    "buzz": "Cafe-au-lait + precocious puberty + bone lesions",
+    "answer": "McCune-Albright Syndrome",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "NF1",
+      "Fibrous Dysplasia",
+      "Tuberous Sclerosis"
+    ]
+  },
+  {
+    "buzz": "Myxoma + spotty pigmentation",
+    "answer": "Carney Complex",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "NF1",
+      "Tuberous Sclerosis",
+      "MEN 1"
+    ]
+  },
+  {
+    "buzz": "Medullary thyroid CA + pheochromocytoma",
+    "answer": "MEN 2A",
+    "cat": "Endocrine",
+    "step": "step1",
+    "wrong": [
+      "MEN 1",
+      "MEN 2B",
+      "VHL"
+    ]
+  },
+  {
+    "buzz": "Mucosal neuromas + marfanoid habitus",
+    "answer": "MEN 2B",
+    "cat": "Endocrine",
+    "step": "step1",
+    "wrong": [
+      "MEN 2A",
+      "MEN 1",
+      "Marfan Syndrome"
+    ]
+  },
+  {
+    "buzz": "Pituitary + Pancreas + Parathyroid tumors",
+    "answer": "MEN 1 (Wermer)",
+    "cat": "Endocrine",
+    "step": "step1",
+    "wrong": [
+      "MEN 2A",
+      "MEN 2B",
+      "VHL"
+    ]
+  },
+  {
+    "buzz": "Episodic headache + sweating + palpitations",
+    "answer": "Pheochromocytoma",
+    "cat": "Endocrine",
+    "step": "step2",
+    "wrong": [
+      "Hyperthyroidism",
+      "Panic Disorder",
+      "Carcinoid"
+    ]
+  },
+  {
+    "buzz": "Buffalo hump + moon facies + striae",
+    "answer": "Cushing Syndrome",
+    "cat": "Endocrine",
+    "step": "step1",
+    "wrong": [
+      "Metabolic Syndrome",
+      "Hypothyroidism",
+      "PCOS"
+    ]
+  },
+  {
+    "buzz": "Bronze diabetes (skin + DM + cirrhosis)",
+    "answer": "Hemochromatosis",
+    "cat": "GI",
+    "step": "step1",
+    "wrong": [
+      "Wilson Disease",
+      "Alcoholic Liver Disease",
+      "Alpha-1 Antitrypsin"
+    ]
+  },
+  {
+    "buzz": "Exophthalmos + pretibial myxedema",
+    "answer": "Graves Disease",
+    "cat": "Endocrine",
+    "step": "step1",
+    "wrong": [
+      "Hashimoto",
+      "Toxic Adenoma",
+      "Subacute Thyroiditis"
+    ]
+  },
+  {
+    "buzz": "Thyroid storm",
+    "answer": "Graves Disease (Severe)",
+    "cat": "Endocrine",
+    "step": "step2",
+    "wrong": [
+      "Toxic Multinodular Goiter",
+      "Hashimoto",
+      "Thyroiditis"
+    ]
+  },
+  {
+    "buzz": "Peau d'orange (breast skin)",
+    "answer": "Inflammatory Breast Cancer",
+    "cat": "Oncology",
+    "step": "step2",
+    "wrong": [
+      "Mastitis",
+      "Paget Disease of Breast",
+      "Fibroadenoma"
+    ]
+  },
+  {
+    "buzz": "Paget disease of nipple",
+    "answer": "Ductal Carcinoma of Breast",
+    "cat": "Oncology",
+    "step": "step2",
+    "wrong": [
+      "Inflammatory Breast CA",
+      "Mastitis",
+      "Fibroadenoma"
+    ]
+  },
+  {
+    "buzz": "Virchow node (left supraclavicular)",
+    "answer": "Gastric Carcinoma",
+    "cat": "Oncology",
+    "step": "step2",
+    "wrong": [
+      "Lung Cancer",
+      "Esophageal Cancer",
+      "Pancreatic Cancer"
+    ]
+  },
+  {
+    "buzz": "Sister Mary Joseph nodule",
+    "answer": "Peritoneal Carcinomatosis",
+    "cat": "Oncology",
+    "step": "step2",
+    "wrong": [
+      "Umbilical Hernia",
+      "Melanoma",
+      "Desmoid Tumor"
+    ]
+  },
+  {
+    "buzz": "Krukenberg tumor",
+    "answer": "Gastric Cancer Metastasis to Ovary",
+    "cat": "Oncology",
+    "step": "step1",
+    "wrong": [
+      "Primary Ovarian CA",
+      "Endometrial Metastasis",
+      "Colon Metastasis"
+    ]
+  },
+  {
+    "buzz": "Leser-Trélat sign",
+    "answer": "GI Malignancy (Paraneoplastic)",
+    "cat": "Oncology",
+    "step": "step1",
+    "wrong": [
+      "Melanoma",
+      "Acanthosis Nigricans",
+      "Psoriasis"
+    ]
+  },
+  {
+    "buzz": "Acanthosis nigricans",
+    "answer": "Insulin Resistance / GI Malignancy",
+    "cat": "Endocrine",
+    "step": "step2",
+    "wrong": [
+      "Addison Disease",
+      "Psoriasis",
+      "Tinea Versicolor"
+    ]
+  },
+  {
+    "buzz": "Trousseau sign (migratory thrombophlebitis)",
+    "answer": "Pancreatic Cancer",
+    "cat": "Oncology",
+    "step": "step2",
+    "wrong": [
+      "DVT",
+      "Factor V Leiden",
+      "Antiphospholipid Syndrome"
+    ]
+  },
+  {
+    "buzz": "Dermatomyositis (heliotrope rash)",
+    "answer": "Underlying Malignancy",
+    "cat": "Rheumatology",
+    "step": "step2",
+    "wrong": [
+      "SLE",
+      "Polymyositis",
+      "Sarcoidosis"
+    ]
+  },
+  {
+    "buzz": "Lambert-Eaton myasthenic syndrome",
+    "answer": "Small Cell Lung Cancer",
+    "cat": "Oncology",
+    "step": "step1",
+    "wrong": [
+      "Myasthenia Gravis",
+      "Thymoma",
+      "Botulism"
+    ]
+  },
+  {
+    "buzz": "SIADH (paraneoplastic)",
+    "answer": "Small Cell Lung Cancer",
+    "cat": "Oncology",
+    "step": "step1",
+    "wrong": [
+      "Squamous Cell Lung CA",
+      "Renal Cell CA",
+      "CNS Tumor"
+    ]
+  },
+  {
+    "buzz": "Hypercalcemia (PTHrP, paraneoplastic)",
+    "answer": "Squamous Cell Lung Cancer",
+    "cat": "Oncology",
+    "step": "step1",
+    "wrong": [
+      "Small Cell Lung CA",
+      "Breast Cancer",
+      "Multiple Myeloma"
+    ]
+  },
+  {
+    "buzz": "Erythrocytosis (paraneoplastic)",
+    "answer": "Renal Cell Carcinoma",
+    "cat": "Oncology",
+    "step": "step1",
+    "wrong": [
+      "Hepatocellular CA",
+      "Hemangioblastoma",
+      "Polycythemia Vera"
+    ]
+  },
+  {
+    "buzz": "Cushing syndrome (ectopic ACTH)",
+    "answer": "Small Cell Lung Cancer",
+    "cat": "Oncology",
+    "step": "step1",
+    "wrong": [
+      "Pituitary Adenoma",
+      "Adrenal Adenoma",
+      "Carcinoid"
+    ]
+  },
+  {
+    "buzz": "Carcinoid syndrome (flushing + diarrhea)",
+    "answer": "Carcinoid Tumor (with hepatic mets)",
+    "cat": "GI",
+    "step": "step2",
+    "wrong": [
+      "Pheochromocytoma",
+      "VIPoma",
+      "Medullary Thyroid CA"
+    ]
+  },
+  {
+    "buzz": "Zollinger-Ellison (recurrent ulcers)",
+    "answer": "Gastrinoma",
+    "cat": "GI",
+    "step": "step2",
+    "wrong": [
+      "H. pylori",
+      "NSAID Ulcer",
+      "Stress Ulcer"
+    ]
+  },
+  {
+    "buzz": "VIPoma (watery diarrhea + hypokalemia)",
+    "answer": "Pancreatic VIPoma",
+    "cat": "GI",
+    "step": "step1",
+    "wrong": [
+      "Carcinoid",
+      "Gastrinoma",
+      "Insulinoma"
+    ]
+  },
+  {
+    "buzz": "Whipple triad (hypoglycemia)",
+    "answer": "Insulinoma",
+    "cat": "Endocrine",
+    "step": "step2",
+    "wrong": [
+      "Sulfonylurea Abuse",
+      "Reactive Hypoglycemia",
+      "Adrenal Insufficiency"
+    ]
+  },
+  {
+    "buzz": "Necrolytic migratory erythema",
+    "answer": "Glucagonoma",
+    "cat": "Endocrine",
+    "step": "step1",
+    "wrong": [
+      "Carcinoid",
+      "VIPoma",
+      "Somatostatinoma"
+    ]
+  },
+  {
+    "buzz": "Maltese cross on polarized microscopy",
+    "answer": "Lipid in Urine (Nephrotic)",
+    "cat": "Nephrology",
+    "step": "step1",
+    "wrong": [
+      "Calcium Oxalate",
+      "Uric Acid",
+      "Cystine"
+    ]
+  },
+  {
+    "buzz": "Coffin lid crystals in urine",
+    "answer": "Struvite Stones (Triple Phosphate)",
+    "cat": "Nephrology",
+    "step": "step1",
+    "wrong": [
+      "Calcium Oxalate",
+      "Uric Acid",
+      "Cystine"
+    ]
+  },
+  {
+    "buzz": "Envelope-shaped crystals",
+    "answer": "Calcium Oxalate Stones",
+    "cat": "Nephrology",
+    "step": "step1",
+    "wrong": [
+      "Struvite",
+      "Uric Acid",
+      "Cystine"
+    ]
+  },
+  {
+    "buzz": "Hexagonal crystals in urine",
+    "answer": "Cystine Stones",
+    "cat": "Nephrology",
+    "step": "step1",
+    "wrong": [
+      "Calcium Oxalate",
+      "Uric Acid",
+      "Struvite"
+    ]
+  },
+  {
+    "buzz": "Rhomboid crystals in urine",
+    "answer": "Uric Acid Stones",
+    "cat": "Nephrology",
+    "step": "step1",
+    "wrong": [
+      "Calcium Oxalate",
+      "Struvite",
+      "Cystine"
+    ]
+  },
+  {
+    "buzz": "Staghorn calculus",
+    "answer": "Struvite Stones (Proteus)",
+    "cat": "Nephrology",
+    "step": "step1",
+    "wrong": [
+      "Calcium Oxalate",
+      "Uric Acid",
+      "Cystine"
+    ]
+  },
+  {
+    "buzz": "Banana-shaped gametocytes",
+    "answer": "Plasmodium Falciparum",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "P. Vivax",
+      "P. Ovale",
+      "P. Malariae"
+    ]
+  },
+  {
+    "buzz": "Maltese cross (blood smear)",
+    "answer": "Babesia",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "Plasmodium",
+      "Trypanosoma",
+      "Leishmania"
+    ]
+  },
+  {
+    "buzz": "Spaghetti and meatballs (KOH)",
+    "answer": "Malassezia Furfur (Tinea Versicolor)",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "Candida",
+      "Dermatophytes",
+      "Aspergillus"
+    ]
+  },
+  {
+    "buzz": "Broad-based budding yeast",
+    "answer": "Blastomyces",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "Histoplasma",
+      "Coccidioides",
+      "Cryptococcus"
+    ]
+  },
+  {
+    "buzz": "Narrow-based budding + India ink",
+    "answer": "Cryptococcus",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "Blastomyces",
+      "Histoplasma",
+      "Candida"
+    ]
+  },
+  {
+    "buzz": "Spherules with endospores",
+    "answer": "Coccidioides",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "Blastomyces",
+      "Histoplasma",
+      "Paracoccidioides"
+    ]
+  },
+  {
+    "buzz": "Captain's wheel appearance",
+    "answer": "Paracoccidioides",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "Coccidioides",
+      "Blastomyces",
+      "Histoplasma"
+    ]
+  },
+  {
+    "buzz": "Septate hyphae (45° branching)",
+    "answer": "Aspergillus",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "Mucor",
+      "Candida",
+      "Fusarium"
+    ]
+  },
+  {
+    "buzz": "Non-septate hyphae (90° branching)",
+    "answer": "Mucor / Rhizopus",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "Aspergillus",
+      "Candida",
+      "Fusarium"
+    ]
+  },
+  {
+    "buzz": "Pseudohyphae",
+    "answer": "Candida",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "Aspergillus",
+      "Mucor",
+      "Dermatophytes"
+    ]
+  },
+  {
+    "buzz": "Germ tube positive",
+    "answer": "Candida Albicans",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "C. Glabrata",
+      "Aspergillus",
+      "Cryptococcus"
+    ]
+  },
+  {
+    "buzz": "Silver stain for organisms",
+    "answer": "Pneumocystis Jirovecii",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "Aspergillus",
+      "Legionella",
+      "Bartonella"
+    ]
+  },
+  {
+    "buzz": "Intracellular gram-negative diplococci",
+    "answer": "Neisseria Gonorrhoeae",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "N. Meningitidis",
+      "Moraxella",
+      "Haemophilus"
+    ]
+  },
+  {
+    "buzz": "Quellung reaction positive",
+    "answer": "Streptococcus Pneumoniae",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "H. Influenzae",
+      "N. Meningitidis",
+      "Klebsiella"
+    ]
+  },
+  {
+    "buzz": "Optochin sensitive",
+    "answer": "Streptococcus Pneumoniae",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "Viridans Streptococci",
+      "Group A Strep",
+      "Enterococcus"
+    ]
+  },
+  {
+    "buzz": "Bacitracin sensitive",
+    "answer": "Group A Streptococcus (S. Pyogenes)",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "Group B Strep",
+      "S. Pneumoniae",
+      "Enterococcus"
+    ]
+  },
+  {
+    "buzz": "CAMP test positive",
+    "answer": "Group B Streptococcus (S. Agalactiae)",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "Group A Strep",
+      "S. Pneumoniae",
+      "Enterococcus"
+    ]
+  },
+  {
+    "buzz": "Tumbling motility / actin rockets",
+    "answer": "Listeria Monocytogenes",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "E. coli",
+      "Salmonella",
+      "Shigella"
+    ]
+  },
+  {
+    "buzz": "Sulfur granules",
+    "answer": "Actinomyces Israelii",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "Nocardia",
+      "Mycobacterium",
+      "Aspergillus"
+    ]
+  },
+  {
+    "buzz": "Partially acid-fast filamentous rods",
+    "answer": "Nocardia",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "Actinomyces",
+      "Mycobacterium",
+      "Corynebacterium"
+    ]
+  },
+  {
+    "buzz": "Blue-bloater phenotype",
+    "answer": "Chronic Bronchitis",
+    "cat": "Pulmonology",
+    "step": "step2",
+    "wrong": [
+      "Emphysema",
+      "Asthma",
+      "Bronchiectasis"
+    ]
+  },
+  {
+    "buzz": "Pink-puffer phenotype",
+    "answer": "Emphysema",
+    "cat": "Pulmonology",
+    "step": "step2",
+    "wrong": [
+      "Chronic Bronchitis",
+      "Asthma",
+      "Pulmonary Fibrosis"
+    ]
+  },
+  {
+    "buzz": "Honeycomb lung on HRCT",
+    "answer": "Idiopathic Pulmonary Fibrosis",
+    "cat": "Pulmonology",
+    "step": "step2",
+    "wrong": [
+      "Sarcoidosis",
+      "Asbestosis",
+      "Hypersensitivity Pneumonitis"
+    ]
+  },
+  {
+    "buzz": "Clubbing of fingers",
+    "answer": "Pulmonary Fibrosis / Lung Cancer",
+    "cat": "Pulmonology",
+    "step": "step2",
+    "wrong": [
+      "COPD",
+      "Asthma",
+      "Bronchiectasis"
+    ]
+  },
+  {
+    "buzz": "Hampton hump on CXR",
+    "answer": "Pulmonary Embolism (Infarction)",
+    "cat": "Pulmonology",
+    "step": "step2",
+    "wrong": [
+      "Pneumonia",
+      "Lung Cancer",
+      "Pleural Effusion"
+    ]
+  },
+  {
+    "buzz": "Westermark sign on CXR",
+    "answer": "Pulmonary Embolism",
+    "cat": "Pulmonology",
+    "step": "step2",
+    "wrong": [
+      "Pneumothorax",
+      "Pneumonia",
+      "Atelectasis"
+    ]
+  },
+  {
+    "buzz": "Water bottle silhouette on CXR",
+    "answer": "Pericardial Effusion",
+    "cat": "Cardiology",
+    "step": "step2",
+    "wrong": [
+      "Cardiomegaly",
+      "Pleural Effusion",
+      "Mediastinal Mass"
+    ]
+  },
+  {
+    "buzz": "Air-fluid levels on abdominal XR",
+    "answer": "Small Bowel Obstruction",
+    "cat": "Surgery",
+    "step": "step2",
+    "wrong": [
+      "Ileus",
+      "Volvulus",
+      "Large Bowel Obstruction"
+    ]
+  },
+  {
+    "buzz": "Coffee bean sign on XR",
+    "answer": "Sigmoid Volvulus",
+    "cat": "Surgery",
+    "step": "step2",
+    "wrong": [
+      "Cecal Volvulus",
+      "Obstruction",
+      "Toxic Megacolon"
+    ]
+  },
+  {
+    "buzz": "Sail sign on CXR",
+    "answer": "Thymoma / Normal Thymus",
+    "cat": "Pediatrics",
+    "step": "step1",
+    "wrong": [
+      "Pericardial Effusion",
+      "Mediastinal Mass",
+      "Pneumothorax"
+    ]
+  },
+  {
+    "buzz": "Lucid interval after head trauma",
+    "answer": "Epidural Hematoma",
+    "cat": "Neurology",
+    "step": "step2",
+    "wrong": [
+      "Subdural Hematoma",
+      "Subarachnoid Hemorrhage",
+      "Concussion"
+    ]
+  },
+  {
+    "buzz": "Lens-shaped (biconvex) hematoma",
+    "answer": "Epidural Hematoma",
+    "cat": "Neurology",
+    "step": "step2",
+    "wrong": [
+      "Subdural Hematoma",
+      "Subarachnoid Hemorrhage",
+      "Intracerebral"
+    ]
+  },
+  {
+    "buzz": "Crescent-shaped hematoma on CT",
+    "answer": "Subdural Hematoma",
+    "cat": "Neurology",
+    "step": "step2",
+    "wrong": [
+      "Epidural Hematoma",
+      "Subarachnoid Hemorrhage",
+      "Intracerebral"
+    ]
+  },
+  {
+    "buzz": "Thunderclap headache",
+    "answer": "Subarachnoid Hemorrhage",
+    "cat": "Neurology",
+    "step": "step2",
+    "wrong": [
+      "Migraine",
+      "Tension Headache",
+      "Meningitis"
+    ]
+  },
+  {
+    "buzz": "Worst headache of my life",
+    "answer": "Subarachnoid Hemorrhage",
+    "cat": "Neurology",
+    "step": "step2",
+    "wrong": [
+      "Migraine",
+      "Cluster Headache",
+      "Meningitis"
+    ]
+  },
+  {
+    "buzz": "Lacunar infarct on MRI",
+    "answer": "Hypertensive Small Vessel Disease",
+    "cat": "Neurology",
+    "step": "step2",
+    "wrong": [
+      "Embolic Stroke",
+      "Watershed Infarct",
+      "Hemorrhagic Stroke"
+    ]
+  },
+  {
+    "buzz": "Charcot triad (RUQ pain + fever + jaundice)",
+    "answer": "Cholangitis",
+    "cat": "Surgery",
+    "step": "step2",
+    "wrong": [
+      "Cholecystitis",
+      "Hepatitis",
+      "Pancreatitis"
+    ]
+  },
+  {
+    "buzz": "Reynolds pentad",
+    "answer": "Severe Cholangitis",
+    "cat": "Surgery",
+    "step": "step2",
+    "wrong": [
+      "Cholecystitis",
+      "Pancreatitis",
+      "Hepatitis"
+    ]
+  },
+  {
+    "buzz": "Murphy sign",
+    "answer": "Acute Cholecystitis",
+    "cat": "Surgery",
+    "step": "step2",
+    "wrong": [
+      "Cholangitis",
+      "Appendicitis",
+      "Pancreatitis"
+    ]
+  },
+  {
+    "buzz": "Cullen sign (periumbilical bruising)",
+    "answer": "Hemorrhagic Pancreatitis",
+    "cat": "Surgery",
+    "step": "step2",
+    "wrong": [
+      "Ruptured AAA",
+      "Ectopic Pregnancy",
+      "Rectus Hematoma"
+    ]
+  },
+  {
+    "buzz": "Grey Turner sign (flank bruising)",
+    "answer": "Hemorrhagic Pancreatitis",
+    "cat": "Surgery",
+    "step": "step2",
+    "wrong": [
+      "Retroperitoneal Hemorrhage",
+      "Ruptured AAA",
+      "Renal Trauma"
+    ]
+  },
+  {
+    "buzz": "Raccoon eyes (periorbital ecchymosis)",
+    "answer": "Basilar Skull Fracture",
+    "cat": "Surgery",
+    "step": "step2",
+    "wrong": [
+      "Orbital Fracture",
+      "Child Abuse",
+      "Neuroblastoma"
+    ]
+  },
+  {
+    "buzz": "Battle sign (mastoid bruising)",
+    "answer": "Basilar Skull Fracture",
+    "cat": "Surgery",
+    "step": "step2",
+    "wrong": [
+      "Temporal Bone Fracture",
+      "Mastoiditis",
+      "Otitis Externa"
+    ]
+  },
+  {
+    "buzz": "Hemoptysis + renal failure",
+    "answer": "Goodpasture Syndrome",
+    "cat": "Nephrology",
+    "step": "step1",
+    "wrong": [
+      "Granulomatosis with Polyangiitis",
+      "SLE",
+      "Microscopic Polyangiitis"
+    ]
+  },
+  {
+    "buzz": "c-ANCA positive",
+    "answer": "Granulomatosis with Polyangiitis",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "Microscopic Polyangiitis",
+      "Eosinophilic GPA",
+      "PAN"
+    ]
+  },
+  {
+    "buzz": "p-ANCA positive",
+    "answer": "Microscopic Polyangiitis",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "GPA",
+      "Eosinophilic GPA",
+      "PAN"
+    ]
+  },
+  {
+    "buzz": "Anti-dsDNA antibodies",
+    "answer": "SLE (Active Disease)",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "Drug-Induced Lupus",
+      "Scleroderma",
+      "Dermatomyositis"
+    ]
+  },
+  {
+    "buzz": "Anti-Smith antibodies",
+    "answer": "SLE (Specific)",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "Scleroderma",
+      "Sjogren",
+      "Mixed Connective Tissue Disease"
+    ]
+  },
+  {
+    "buzz": "Anti-histone antibodies",
+    "answer": "Drug-Induced Lupus",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "SLE",
+      "Scleroderma",
+      "RA"
+    ]
+  },
+  {
+    "buzz": "Anti-centromere antibodies",
+    "answer": "Limited Scleroderma (CREST)",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "Diffuse Scleroderma",
+      "SLE",
+      "Sjogren"
+    ]
+  },
+  {
+    "buzz": "Anti-Scl-70 (topoisomerase I)",
+    "answer": "Diffuse Scleroderma",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "Limited Scleroderma",
+      "SLE",
+      "Dermatomyositis"
+    ]
+  },
+  {
+    "buzz": "Anti-SSA (Ro) antibodies",
+    "answer": "Sjogren Syndrome",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "SLE",
+      "Scleroderma",
+      "RA"
+    ]
+  },
+  {
+    "buzz": "Anti-SSB (La) antibodies",
+    "answer": "Sjogren Syndrome",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "SLE",
+      "RA",
+      "Scleroderma"
+    ]
+  },
+  {
+    "buzz": "Anti-Jo-1 antibodies",
+    "answer": "Polymyositis / Dermatomyositis",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "SLE",
+      "Scleroderma",
+      "Inclusion Body Myositis"
+    ]
+  },
+  {
+    "buzz": "Anti-U1 RNP antibodies",
+    "answer": "Mixed Connective Tissue Disease",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "SLE",
+      "Scleroderma",
+      "Sjogren"
+    ]
+  },
+  {
+    "buzz": "Anti-mitochondrial antibodies",
+    "answer": "Primary Biliary Cholangitis",
+    "cat": "GI",
+    "step": "step1",
+    "wrong": [
+      "Primary Sclerosing Cholangitis",
+      "Autoimmune Hepatitis",
+      "SLE"
+    ]
+  },
+  {
+    "buzz": "Anti-smooth muscle antibodies",
+    "answer": "Autoimmune Hepatitis Type 1",
+    "cat": "GI",
+    "step": "step1",
+    "wrong": [
+      "PBC",
+      "PSC",
+      "SLE"
+    ]
+  },
+  {
+    "buzz": "p-ANCA + colon involvement",
+    "answer": "Ulcerative Colitis",
+    "cat": "GI",
+    "step": "step1",
+    "wrong": [
+      "Crohn Disease",
+      "Microscopic Polyangiitis",
+      "Ischemic Colitis"
+    ]
+  },
+  {
+    "buzz": "Anti-tissue transglutaminase (tTG)",
+    "answer": "Celiac Disease",
+    "cat": "GI",
+    "step": "step1",
+    "wrong": [
+      "Crohn Disease",
+      "Tropical Sprue",
+      "Whipple Disease"
+    ]
+  },
+  {
+    "buzz": "Anti-endomysial antibodies",
+    "answer": "Celiac Disease",
+    "cat": "GI",
+    "step": "step1",
+    "wrong": [
+      "Whipple Disease",
+      "Tropical Sprue",
+      "IBD"
+    ]
+  },
+  {
+    "buzz": "PAS-positive macrophages",
+    "answer": "Whipple Disease",
+    "cat": "GI",
+    "step": "step1",
+    "wrong": [
+      "Celiac Disease",
+      "Mycobacterium Avium",
+      "Gaucher"
+    ]
+  },
+  {
+    "buzz": "Dermatitis herpetiformis",
+    "answer": "Celiac Disease",
+    "cat": "Dermatology",
+    "step": "step1",
+    "wrong": [
+      "Pemphigoid",
+      "Pemphigus",
+      "Dermatitis"
+    ]
+  },
+  {
+    "buzz": "Anti-desmoglein antibodies",
+    "answer": "Pemphigus Vulgaris",
+    "cat": "Dermatology",
+    "step": "step1",
+    "wrong": [
+      "Bullous Pemphigoid",
+      "Dermatitis Herpetiformis",
+      "SJS"
+    ]
+  },
+  {
+    "buzz": "Anti-hemidesmosomes (BP180/BP230)",
+    "answer": "Bullous Pemphigoid",
+    "cat": "Dermatology",
+    "step": "step1",
+    "wrong": [
+      "Pemphigus Vulgaris",
+      "Dermatitis Herpetiformis",
+      "Linear IgA"
+    ]
+  },
+  {
+    "buzz": "Nikolsky sign positive",
+    "answer": "Pemphigus Vulgaris",
+    "cat": "Dermatology",
+    "step": "step1",
+    "wrong": [
+      "Bullous Pemphigoid",
+      "SJS/TEN",
+      "Staphylococcal Scalded Skin"
+    ]
+  },
+  {
+    "buzz": "Auspitz sign",
+    "answer": "Psoriasis",
+    "cat": "Dermatology",
+    "step": "step1",
+    "wrong": [
+      "Eczema",
+      "Lichen Planus",
+      "Pityriasis Rosea"
+    ]
+  },
+  {
+    "buzz": "Wickham striae",
+    "answer": "Lichen Planus",
+    "cat": "Dermatology",
+    "step": "step1",
+    "wrong": [
+      "Psoriasis",
+      "Eczema",
+      "Tinea"
+    ]
+  },
+  {
+    "buzz": "Herald patch → Christmas tree distribution",
+    "answer": "Pityriasis Rosea",
+    "cat": "Dermatology",
+    "step": "step2",
+    "wrong": [
+      "Psoriasis",
+      "Tinea Corporis",
+      "Secondary Syphilis"
+    ]
+  },
+  {
+    "buzz": "Koebner phenomenon",
+    "answer": "Psoriasis",
+    "cat": "Dermatology",
+    "step": "step1",
+    "wrong": [
+      "Vitiligo",
+      "Lichen Planus",
+      "Eczema"
+    ]
+  },
+  {
+    "buzz": "Iris (target) lesion",
+    "answer": "Erythema Multiforme",
+    "cat": "Dermatology",
+    "step": "step2",
+    "wrong": [
+      "Urticaria",
+      "SJS",
+      "Drug Rash"
+    ]
+  },
+  {
+    "buzz": "Dewdrop on a rose petal",
+    "answer": "Varicella (Chickenpox)",
+    "cat": "Pediatrics",
+    "step": "step1",
+    "wrong": [
+      "Smallpox",
+      "Impetigo",
+      "HSV"
+    ]
+  },
+  {
+    "buzz": "Honey-crusted lesions",
+    "answer": "Impetigo",
+    "cat": "Dermatology",
+    "step": "step2",
+    "wrong": [
+      "Eczema",
+      "Contact Dermatitis",
+      "Scabies"
+    ]
+  },
+  {
+    "buzz": "Burrows between fingers",
+    "answer": "Scabies",
+    "cat": "Dermatology",
+    "step": "step2",
+    "wrong": [
+      "Contact Dermatitis",
+      "Eczema",
+      "Tinea"
+    ]
+  },
+  {
+    "buzz": "Painless erythematous plaques (face)",
+    "answer": "Discoid Lupus",
+    "cat": "Dermatology",
+    "step": "step1",
+    "wrong": [
+      "SLE",
+      "Rosacea",
+      "Sarcoidosis"
+    ]
+  },
+  {
+    "buzz": "Gottron papules",
+    "answer": "Dermatomyositis",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "SLE",
+      "Polymyositis",
+      "Psoriatic Arthritis"
+    ]
+  },
+  {
+    "buzz": "Heliotrope rash (eyelids)",
+    "answer": "Dermatomyositis",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "SLE",
+      "Sarcoidosis",
+      "Eczema"
+    ]
+  },
+  {
+    "buzz": "Shawl sign",
+    "answer": "Dermatomyositis",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "SLE",
+      "Scleroderma",
+      "Psoriasis"
+    ]
+  },
+  {
+    "buzz": "Raynaud phenomenon + sclerodactyly",
+    "answer": "Scleroderma (CREST)",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "SLE",
+      "Raynaud Disease",
+      "Mixed CT Disease"
+    ]
+  },
+  {
+    "buzz": "CREST syndrome",
+    "answer": "Limited Cutaneous Scleroderma",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "Diffuse Scleroderma",
+      "SLE",
+      "Mixed CT Disease"
+    ]
+  },
+  {
+    "buzz": "Xerostomia + xerophthalmia",
+    "answer": "Sjogren Syndrome",
+    "cat": "Rheumatology",
+    "step": "step1",
+    "wrong": [
+      "Sarcoidosis",
+      "SLE",
+      "Amyloidosis"
+    ]
+  },
+  {
+    "buzz": "Dysplastic nevi → melanoma risk",
+    "answer": "Familial Atypical Mole Melanoma",
+    "cat": "Dermatology",
+    "step": "step2",
+    "wrong": [
+      "Basal Cell Carcinoma",
+      "SCC",
+      "Merkel Cell"
+    ]
+  },
+  {
+    "buzz": "Pearly papule with telangiectasia",
+    "answer": "Basal Cell Carcinoma",
+    "cat": "Dermatology",
+    "step": "step2",
+    "wrong": [
+      "SCC",
+      "Melanoma",
+      "Keratoacanthoma"
+    ]
+  },
+  {
+    "buzz": "Palisading nuclei on histology",
+    "answer": "Basal Cell Carcinoma",
+    "cat": "Dermatology",
+    "step": "step1",
+    "wrong": [
+      "SCC",
+      "Melanoma",
+      "Merkel Cell"
+    ]
+  },
+  {
+    "buzz": "S-100 positive tumor",
+    "answer": "Melanoma / Schwannoma",
+    "cat": "Pathology",
+    "step": "step1",
+    "wrong": [
+      "Carcinoma",
+      "Lymphoma",
+      "Sarcoma"
+    ]
+  },
+  {
+    "buzz": "Verocay bodies",
+    "answer": "Schwannoma",
+    "cat": "Pathology",
+    "step": "step1",
+    "wrong": [
+      "Neurofibroma",
+      "Meningioma",
+      "Glioma"
+    ]
+  },
+  {
+    "buzz": "Pseudorosettes",
+    "answer": "Ependymoma",
+    "cat": "Pathology",
+    "step": "step1",
+    "wrong": [
+      "Medulloblastoma",
+      "Astrocytoma",
+      "Oligodendroglioma"
+    ]
+  },
+  {
+    "buzz": "Homer Wright rosettes",
+    "answer": "Medulloblastoma / Neuroblastoma",
+    "cat": "Pathology",
+    "step": "step1",
+    "wrong": [
+      "Ependymoma",
+      "Retinoblastoma",
+      "Glioblastoma"
+    ]
+  },
+  {
+    "buzz": "Fried egg cells",
+    "answer": "Oligodendroglioma",
+    "cat": "Pathology",
+    "step": "step1",
+    "wrong": [
+      "Astrocytoma",
+      "Ependymoma",
+      "Meningioma"
+    ]
+  },
+  {
+    "buzz": "Pseudopalisading necrosis",
+    "answer": "Glioblastoma Multiforme",
+    "cat": "Pathology",
+    "step": "step1",
+    "wrong": [
+      "Oligodendroglioma",
+      "Meningioma",
+      "Metastatic Disease"
+    ]
+  },
+  {
+    "buzz": "Whorled pattern + psammoma bodies (brain)",
+    "answer": "Meningioma",
+    "cat": "Pathology",
+    "step": "step1",
+    "wrong": [
+      "Schwannoma",
+      "Glioblastoma",
+      "Oligodendroglioma"
+    ]
+  },
+  {
+    "buzz": "Rosenthal fibers",
+    "answer": "Pilocytic Astrocytoma",
+    "cat": "Pathology",
+    "step": "step1",
+    "wrong": [
+      "GBM",
+      "Ependymoma",
+      "Medulloblastoma"
+    ]
+  },
+  {
+    "buzz": "Schiller-Duval bodies",
+    "answer": "Yolk Sac Tumor",
+    "cat": "Pathology",
+    "step": "step1",
+    "wrong": [
+      "Choriocarcinoma",
+      "Seminoma",
+      "Teratoma"
+    ]
+  },
+  {
+    "buzz": "Reinke crystals",
+    "answer": "Leydig Cell Tumor",
+    "cat": "Pathology",
+    "step": "step1",
+    "wrong": [
+      "Sertoli Cell Tumor",
+      "Seminoma",
+      "Ewing Sarcoma"
+    ]
+  },
+  {
+    "buzz": "Philadelphia chromosome (BCR-ABL)",
+    "answer": "CML",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "CLL",
+      "AML",
+      "ALL"
+    ]
+  },
+  {
+    "buzz": "JAK2 mutation",
+    "answer": "Polycythemia Vera",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "CML",
+      "Essential Thrombocythemia",
+      "Myelofibrosis"
+    ]
+  },
+  {
+    "buzz": "DIC with promyelocytes",
+    "answer": "Acute Promyelocytic Leukemia",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "AML",
+      "DIC from sepsis",
+      "TTP"
+    ]
+  },
+  {
+    "buzz": "Pelger-Huet anomaly",
+    "answer": "Myelodysplastic Syndrome",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "CML",
+      "AML",
+      "Chronic Infection"
+    ]
+  },
+  {
+    "buzz": "Dry tap on bone marrow aspirate",
+    "answer": "Myelofibrosis",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Aplastic Anemia",
+      "Hairy Cell Leukemia",
+      "Metastatic Cancer"
+    ]
+  },
+  {
+    "buzz": "Warm antibody (IgG) hemolytic anemia",
+    "answer": "CLL / SLE / Lymphoma",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Cold Agglutinin",
+      "PNH",
+      "G6PD"
+    ]
+  },
+  {
+    "buzz": "Paroxysmal nocturnal hemoglobinuria",
+    "answer": "PNH (GPI Anchor Deficiency)",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Autoimmune Hemolytic Anemia",
+      "G6PD",
+      "TTP"
+    ]
+  },
+  {
+    "buzz": "Tennis racket organelles (EM)",
+    "answer": "Langerhans Cell Histiocytosis",
+    "cat": "Pathology",
+    "step": "step1",
+    "wrong": [
+      "Sarcoidosis",
+      "Mastocytosis",
+      "Gaucher"
+    ]
+  },
+  {
+    "buzz": "Trail sign (acid-fast beaded rods)",
+    "answer": "Nocardia",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "TB",
+      "Actinomyces",
+      "Mycobacterium Avium"
+    ]
+  },
+  {
+    "buzz": "Thumb sign on lateral neck XR",
+    "answer": "Epiglottitis",
+    "cat": "Pediatrics",
+    "step": "step2",
+    "wrong": [
+      "Croup",
+      "Retropharyngeal Abscess",
+      "Foreign Body"
+    ]
+  },
+  {
+    "buzz": "Stack of coins on barium swallow",
+    "answer": "Esophageal Varices",
+    "cat": "GI",
+    "step": "step2",
+    "wrong": [
+      "Esophageal Web",
+      "Achalasia",
+      "Esophageal Cancer"
+    ]
+  },
+  {
+    "buzz": "Apple core lesion on barium",
+    "answer": "Colon Carcinoma",
+    "cat": "GI",
+    "step": "step2",
+    "wrong": [
+      "Diverticulitis",
+      "Crohn Disease",
+      "Lymphoma"
+    ]
+  },
+  {
+    "buzz": "Ground glass opacities on HRCT",
+    "answer": "Pneumocystis Pneumonia / COVID",
+    "cat": "Pulmonology",
+    "step": "step2",
+    "wrong": [
+      "Bacterial Pneumonia",
+      "Pulmonary Fibrosis",
+      "Sarcoidosis"
+    ]
+  },
+  {
+    "buzz": "Crazy paving pattern on CT",
+    "answer": "Pulmonary Alveolar Proteinosis",
+    "cat": "Pulmonology",
+    "step": "step1",
+    "wrong": [
+      "COVID Pneumonia",
+      "ARDS",
+      "Pulmonary Edema"
+    ]
+  },
+  {
+    "buzz": "Tree-in-bud pattern on CT",
+    "answer": "Endobronchial TB / Mycobacterial",
+    "cat": "Pulmonology",
+    "step": "step2",
+    "wrong": [
+      "Bronchiectasis",
+      "Aspergillosis",
+      "Lung Cancer"
+    ]
+  },
+  {
+    "buzz": "Pancoast tumor",
+    "answer": "Superior Sulcus Lung Tumor",
+    "cat": "Oncology",
+    "step": "step2",
+    "wrong": [
+      "Mesothelioma",
+      "Lymphoma",
+      "Thymoma"
+    ]
+  },
+  {
+    "buzz": "Horner syndrome + lung mass",
+    "answer": "Pancoast Tumor",
+    "cat": "Oncology",
+    "step": "step2",
+    "wrong": [
+      "Carotid Dissection",
+      "Brainstem Stroke",
+      "Syringomyelia"
+    ]
+  },
+  {
+    "buzz": "SVC syndrome",
+    "answer": "Lung Cancer / Lymphoma",
+    "cat": "Oncology",
+    "step": "step2",
+    "wrong": [
+      "PE",
+      "Aortic Dissection",
+      "Heart Failure"
+    ]
+  },
+  {
+    "buzz": "Chauffeur fracture",
+    "answer": "Radial Styloid Fracture",
+    "cat": "Orthopedics",
+    "step": "step2",
+    "wrong": [
+      "Colles Fracture",
+      "Smith Fracture",
+      "Scaphoid Fracture"
+    ]
+  },
+  {
+    "buzz": "Colles fracture",
+    "answer": "Distal Radius Fracture (Dorsal)",
+    "cat": "Orthopedics",
+    "step": "step2",
+    "wrong": [
+      "Smith Fracture",
+      "Scaphoid Fracture",
+      "Monteggia"
+    ]
+  },
+  {
+    "buzz": "Anatomical snuffbox tenderness",
+    "answer": "Scaphoid Fracture",
+    "cat": "Orthopedics",
+    "step": "step2",
+    "wrong": [
+      "Colles Fracture",
+      "Lunate Dislocation",
+      "Metacarpal Fracture"
+    ]
+  },
+  {
+    "buzz": "Dinner fork deformity",
+    "answer": "Colles Fracture",
+    "cat": "Orthopedics",
+    "step": "step2",
+    "wrong": [
+      "Smith Fracture",
+      "Barton Fracture",
+      "Galeazzi"
+    ]
+  },
+  {
+    "buzz": "Jefferson fracture",
+    "answer": "C1 Burst Fracture",
+    "cat": "Orthopedics",
+    "step": "step2",
+    "wrong": [
+      "Hangman Fracture",
+      "Odontoid Fracture",
+      "Clay-Shoveler"
+    ]
+  },
+  {
+    "buzz": "Hangman fracture",
+    "answer": "C2 Pars Fracture",
+    "cat": "Orthopedics",
+    "step": "step2",
+    "wrong": [
+      "Jefferson Fracture",
+      "Odontoid Fracture",
+      "Chance Fracture"
+    ]
+  },
+  {
+    "buzz": "Chance fracture",
+    "answer": "Lumbar Flexion-Distraction Injury",
+    "cat": "Orthopedics",
+    "step": "step2",
+    "wrong": [
+      "Burst Fracture",
+      "Compression Fracture",
+      "Spondylolisthesis"
+    ]
+  },
+  {
+    "buzz": "Waddling gait",
+    "answer": "Muscular Dystrophy / Hip Weakness",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Parkinson",
+      "Cerebellar Ataxia",
+      "Spastic Paraparesis"
+    ]
+  },
+  {
+    "buzz": "Festinating gait",
+    "answer": "Parkinson Disease",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Normal Pressure Hydrocephalus",
+      "Cerebellar Ataxia",
+      "Peripheral Neuropathy"
+    ]
+  },
+  {
+    "buzz": "Magnetic gait (feet stuck to floor)",
+    "answer": "Normal Pressure Hydrocephalus",
+    "cat": "Neurology",
+    "step": "step2",
+    "wrong": [
+      "Parkinson",
+      "Peripheral Neuropathy",
+      "Spinal Stenosis"
+    ]
+  },
+  {
+    "buzz": "Wet, wacky, wobbly triad",
+    "answer": "Normal Pressure Hydrocephalus",
+    "cat": "Neurology",
+    "step": "step2",
+    "wrong": [
+      "Vitamin B12 Deficiency",
+      "Wernicke",
+      "Syphilis"
+    ]
+  },
+  {
+    "buzz": "Steppage gait",
+    "answer": "Foot Drop / Peroneal Nerve Palsy",
+    "cat": "Neurology",
+    "step": "step2",
+    "wrong": [
+      "Parkinson",
+      "Cerebellar Ataxia",
+      "UMN Lesion"
+    ]
+  },
+  {
+    "buzz": "Intention tremor + scanning speech",
+    "answer": "Cerebellar Dysfunction",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Parkinson",
+      "Essential Tremor",
+      "Multiple Sclerosis"
+    ]
+  },
+  {
+    "buzz": "Resting tremor (pill-rolling)",
+    "answer": "Parkinson Disease",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Essential Tremor",
+      "Cerebellar Tremor",
+      "Wilson Disease"
+    ]
+  },
+  {
+    "buzz": "Wing-beating tremor",
+    "answer": "Wilson Disease",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Essential Tremor",
+      "Parkinson",
+      "Cerebellar"
+    ]
+  },
+  {
+    "buzz": "Internuclear ophthalmoplegia",
+    "answer": "Multiple Sclerosis",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Myasthenia Gravis",
+      "Stroke",
+      "Cranial Nerve Palsy"
+    ]
+  },
+  {
+    "buzz": "Lhermitte sign",
+    "answer": "Multiple Sclerosis",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Cervical Spondylosis",
+      "Syringomyelia",
+      "B12 Deficiency"
+    ]
+  },
+  {
+    "buzz": "Uhthoff phenomenon",
+    "answer": "Multiple Sclerosis",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Myasthenia Gravis",
+      "Neuromyelitis Optica",
+      "Transverse Myelitis"
+    ]
+  },
+  {
+    "buzz": "Dawson fingers on MRI",
+    "answer": "Multiple Sclerosis",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Neurosarcoidosis",
+      "CNS Lymphoma",
+      "ADEM"
+    ]
+  },
+  {
+    "buzz": "Periventricular white matter plaques",
+    "answer": "Multiple Sclerosis",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Leukoaraiosis",
+      "CNS Lymphoma",
+      "PML"
+    ]
+  },
+  {
+    "buzz": "JC virus + immunosuppression",
+    "answer": "Progressive Multifocal Leukoencephalopathy",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Toxoplasmosis",
+      "CNS Lymphoma",
+      "CMV Encephalitis"
+    ]
+  },
+  {
+    "buzz": "Ring-enhancing lesion + HIV",
+    "answer": "Toxoplasmosis",
+    "cat": "Infectious Disease",
+    "step": "step2",
+    "wrong": [
+      "CNS Lymphoma",
+      "Brain Abscess",
+      "GBM"
+    ]
+  },
+  {
+    "buzz": "Solitary ring-enhancing lesion + HIV",
+    "answer": "CNS Lymphoma",
+    "cat": "Oncology",
+    "step": "step2",
+    "wrong": [
+      "Toxoplasmosis",
+      "Brain Abscess",
+      "Metastatic Disease"
+    ]
+  },
+  {
+    "buzz": "Cotton wool spots on fundoscopy",
+    "answer": "Hypertensive Retinopathy / CMV",
+    "cat": "Ophthalmology",
+    "step": "step2",
+    "wrong": [
+      "Diabetic Retinopathy",
+      "Papilledema",
+      "Retinal Detachment"
+    ]
+  },
+  {
+    "buzz": "Cherry red spot + painless vision loss",
+    "answer": "Central Retinal Artery Occlusion",
+    "cat": "Ophthalmology",
+    "step": "step2",
+    "wrong": [
+      "Central Retinal Vein Occlusion",
+      "Tay-Sachs",
+      "Niemann-Pick"
+    ]
+  },
+  {
+    "buzz": "Blood and thunder fundus",
+    "answer": "Central Retinal Vein Occlusion",
+    "cat": "Ophthalmology",
+    "step": "step2",
+    "wrong": [
+      "Central Retinal Artery Occlusion",
+      "Diabetic Retinopathy",
+      "Papilledema"
+    ]
+  },
+  {
+    "buzz": "Marcus Gunn pupil (RAPD)",
+    "answer": "Optic Neuritis",
+    "cat": "Ophthalmology",
+    "step": "step2",
+    "wrong": [
+      "Horner Syndrome",
+      "CN III Palsy",
+      "Adie Pupil"
+    ]
+  },
+  {
+    "buzz": "Bitemporal hemianopia",
+    "answer": "Pituitary Adenoma (Chiasm Compression)",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Optic Neuritis",
+      "Stroke",
+      "Glaucoma"
+    ]
+  },
+  {
+    "buzz": "Homonymous hemianopia",
+    "answer": "Contralateral Occipital / Optic Radiation Lesion",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Pituitary Adenoma",
+      "Optic Neuritis",
+      "Glaucoma"
+    ]
+  },
+  {
+    "buzz": "Ptosis + miosis + anhidrosis",
+    "answer": "Horner Syndrome",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "CN III Palsy",
+      "Myasthenia Gravis",
+      "Cluster Headache"
+    ]
+  },
+  {
+    "buzz": "Ptosis + mydriasis + down and out eye",
+    "answer": "CN III Palsy",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Horner Syndrome",
+      "Myasthenia Gravis",
+      "CN IV Palsy"
+    ]
+  },
+  {
+    "buzz": "Brown-Séquard syndrome",
+    "answer": "Spinal Cord Hemisection",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Complete Cord Transection",
+      "Anterior Cord Syndrome",
+      "Syringomyelia"
+    ]
+  },
+  {
+    "buzz": "Cape-like pain and temperature loss",
+    "answer": "Syringomyelia",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Brown-Séquard",
+      "Anterior Cord",
+      "Posterior Cord"
+    ]
+  },
+  {
+    "buzz": "Loss of pain/temp + intact proprioception",
+    "answer": "Anterior Cord Syndrome",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Posterior Cord",
+      "Brown-Séquard",
+      "Central Cord"
+    ]
+  },
+  {
+    "buzz": "Loss of proprioception + intact pain",
+    "answer": "Posterior Cord Syndrome",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Anterior Cord",
+      "Brown-Séquard",
+      "Syringomyelia"
+    ]
+  },
+  {
+    "buzz": "Upper extremity > lower extremity weakness",
+    "answer": "Central Cord Syndrome",
+    "cat": "Neurology",
+    "step": "step2",
+    "wrong": [
+      "Anterior Cord",
+      "Brown-Séquard",
+      "Cauda Equina"
+    ]
+  },
+  {
+    "buzz": "Saddle anesthesia + urinary retention",
+    "answer": "Cauda Equina Syndrome",
+    "cat": "Neurology",
+    "step": "step2",
+    "wrong": [
+      "Conus Medullaris",
+      "Central Cord",
+      "Peripheral Neuropathy"
+    ]
+  },
+  {
+    "buzz": "Waxy flexibility",
+    "answer": "Catatonic Schizophrenia",
+    "cat": "Psychiatry",
+    "step": "step1",
+    "wrong": [
+      "Parkinson Disease",
+      "NMS",
+      "Major Depression"
+    ]
+  },
+  {
+    "buzz": "Loose associations",
+    "answer": "Schizophrenia",
+    "cat": "Psychiatry",
+    "step": "step1",
+    "wrong": [
+      "Mania",
+      "Delirium",
+      "Dementia"
+    ]
+  },
+  {
+    "buzz": "Clang associations",
+    "answer": "Mania",
+    "cat": "Psychiatry",
+    "step": "step1",
+    "wrong": [
+      "Schizophrenia",
+      "OCD",
+      "ADHD"
+    ]
+  },
+  {
+    "buzz": "Flight of ideas",
+    "answer": "Bipolar Mania",
+    "cat": "Psychiatry",
+    "step": "step1",
+    "wrong": [
+      "Schizophrenia",
+      "ADHD",
+      "Anxiety"
+    ]
+  },
+  {
+    "buzz": "La belle indifference",
+    "answer": "Conversion Disorder",
+    "cat": "Psychiatry",
+    "step": "step1",
+    "wrong": [
+      "Malingering",
+      "Factitious Disorder",
+      "Somatic Symptom"
+    ]
+  },
+  {
+    "buzz": "Ego-dystonic obsessions",
+    "answer": "OCD",
+    "cat": "Psychiatry",
+    "step": "step1",
+    "wrong": [
+      "OCPD",
+      "GAD",
+      "Schizophrenia"
+    ]
+  },
+  {
+    "buzz": "Splitting defense mechanism",
+    "answer": "Borderline Personality Disorder",
+    "cat": "Psychiatry",
+    "step": "step1",
+    "wrong": [
+      "Narcissistic PD",
+      "Antisocial PD",
+      "Histrionic PD"
+    ]
+  },
+  {
+    "buzz": "Magical thinking",
+    "answer": "Schizotypal Personality Disorder",
+    "cat": "Psychiatry",
+    "step": "step1",
+    "wrong": [
+      "Schizoid PD",
+      "Paranoid PD",
+      "Schizophrenia"
+    ]
+  },
+  {
+    "buzz": "Refeeding syndrome (hypophos)",
+    "answer": "Anorexia Nervosa (Treatment)",
+    "cat": "Psychiatry",
+    "step": "step2",
+    "wrong": [
+      "Bulimia",
+      "Binge Eating",
+      "Malnutrition"
+    ]
+  },
+  {
+    "buzz": "Lanugo hair",
+    "answer": "Anorexia Nervosa",
+    "cat": "Psychiatry",
+    "step": "step1",
+    "wrong": [
+      "Hypothyroidism",
+      "Cushing",
+      "PCOS"
+    ]
+  },
+  {
+    "buzz": "Russell sign (hand calluses)",
+    "answer": "Bulimia Nervosa",
+    "cat": "Psychiatry",
+    "step": "step1",
+    "wrong": [
+      "Anorexia",
+      "Self-Harm",
+      "Dermatitis"
+    ]
+  },
+  {
+    "buzz": "Confabulation",
+    "answer": "Korsakoff Syndrome",
+    "cat": "Psychiatry",
+    "step": "step1",
+    "wrong": [
+      "Delirium",
+      "Alzheimer",
+      "Wernicke"
+    ]
+  },
+  {
+    "buzz": "Flame hemorrhages on fundoscopy",
+    "answer": "Hypertensive Retinopathy",
+    "cat": "Ophthalmology",
+    "step": "step2",
+    "wrong": [
+      "Diabetic Retinopathy",
+      "CRVO",
+      "Papilledema"
+    ]
+  },
+  {
+    "buzz": "Microaneurysms on fundoscopy",
+    "answer": "Diabetic Retinopathy",
+    "cat": "Ophthalmology",
+    "step": "step2",
+    "wrong": [
+      "Hypertensive Retinopathy",
+      "CRVO",
+      "CRAO"
+    ]
+  },
+  {
+    "buzz": "Neovascularization of retina",
+    "answer": "Proliferative Diabetic Retinopathy",
+    "cat": "Ophthalmology",
+    "step": "step2",
+    "wrong": [
+      "CRVO",
+      "Age-Related Macular Degeneration",
+      "Retinitis"
+    ]
+  },
+  {
+    "buzz": "Papilledema on fundoscopy",
+    "answer": "Increased Intracranial Pressure",
+    "cat": "Ophthalmology",
+    "step": "step2",
+    "wrong": [
+      "Optic Neuritis",
+      "Glaucoma",
+      "Retinal Detachment"
+    ]
+  },
+  {
+    "buzz": "Cupping of optic disc",
+    "answer": "Glaucoma",
+    "cat": "Ophthalmology",
+    "step": "step2",
+    "wrong": [
+      "Papilledema",
+      "Optic Neuritis",
+      "Macular Degeneration"
+    ]
+  },
+  {
+    "buzz": "Leukocoria (white pupil)",
+    "answer": "Retinoblastoma",
+    "cat": "Ophthalmology",
+    "step": "step1",
+    "wrong": [
+      "Congenital Cataract",
+      "Toxocariasis",
+      "Coloboma"
+    ]
+  },
+  {
+    "buzz": "Kayser-Fleischer rings on slit lamp",
+    "answer": "Wilson Disease",
+    "cat": "Ophthalmology",
+    "step": "step1",
+    "wrong": [
+      "Hemochromatosis",
+      "Arcus Senilis",
+      "Band Keratopathy"
+    ]
+  },
+  {
+    "buzz": "Band keratopathy",
+    "answer": "Hypercalcemia",
+    "cat": "Ophthalmology",
+    "step": "step1",
+    "wrong": [
+      "Gout",
+      "Wilson Disease",
+      "Amyloidosis"
+    ]
+  },
+  {
+    "buzz": "Hydatidiform mole + high hCG",
+    "answer": "Complete Molar Pregnancy",
+    "cat": "OB",
+    "step": "step2",
+    "wrong": [
+      "Partial Mole",
+      "Choriocarcinoma",
+      "Ectopic"
+    ]
+  },
+  {
+    "buzz": "Grape-like vesicles (uterine)",
+    "answer": "Hydatidiform Mole",
+    "cat": "OB",
+    "step": "step2",
+    "wrong": [
+      "Endometrial Cancer",
+      "Gestational Trophoblastic",
+      "Leiomyoma"
+    ]
+  },
+  {
+    "buzz": "Painless vaginal bleeding (3rd trimester)",
+    "answer": "Placenta Previa",
+    "cat": "OB",
+    "step": "step2",
+    "wrong": [
+      "Placental Abruption",
+      "Uterine Rupture",
+      "Vasa Previa"
+    ]
+  },
+  {
+    "buzz": "Painful vaginal bleeding + board-like uterus",
+    "answer": "Placental Abruption",
+    "cat": "OB",
+    "step": "step2",
+    "wrong": [
+      "Placenta Previa",
+      "Uterine Rupture",
+      "Vasa Previa"
+    ]
+  },
+  {
+    "buzz": "Postpartum hemorrhage + boggy uterus",
+    "answer": "Uterine Atony",
+    "cat": "OB",
+    "step": "step2",
+    "wrong": [
+      "Retained Placenta",
+      "Laceration",
+      "DIC"
+    ]
+  },
+  {
+    "buzz": "Sheehan syndrome (postpartum)",
+    "answer": "Pituitary Infarction",
+    "cat": "OB",
+    "step": "step1",
+    "wrong": [
+      "Pituitary Adenoma",
+      "Hypothyroidism",
+      "Adrenal Insufficiency"
+    ]
+  },
+  {
+    "buzz": "HELLP syndrome",
+    "answer": "Severe Preeclampsia Variant",
+    "cat": "OB",
+    "step": "step2",
+    "wrong": [
+      "Acute Fatty Liver of Pregnancy",
+      "TTP",
+      "HUS"
+    ]
+  },
+  {
+    "buzz": "Shoulder dystocia → arm weakness",
+    "answer": "Erb-Duchenne Palsy (C5-C6)",
+    "cat": "OB",
+    "step": "step2",
+    "wrong": [
+      "Klumpke Palsy",
+      "Brachial Plexus Injury",
+      "Clavicle Fracture"
+    ]
+  },
+  {
+    "buzz": "Waiter tip position (neonate)",
+    "answer": "Erb Palsy (C5-C6)",
+    "cat": "Pediatrics",
+    "step": "step1",
+    "wrong": [
+      "Klumpke Palsy",
+      "Cerebral Palsy",
+      "Fracture"
+    ]
+  },
+  {
+    "buzz": "Claw hand (neonate)",
+    "answer": "Klumpke Palsy (C8-T1)",
+    "cat": "Pediatrics",
+    "step": "step1",
+    "wrong": [
+      "Erb Palsy",
+      "Ulnar Nerve Injury",
+      "Carpal Tunnel"
+    ]
+  },
+  {
+    "buzz": "Rovsing sign",
+    "answer": "Appendicitis",
+    "cat": "Surgery",
+    "step": "step2",
+    "wrong": [
+      "Cholecystitis",
+      "Diverticulitis",
+      "Ovarian Torsion"
+    ]
+  },
+  {
+    "buzz": "Psoas sign",
+    "answer": "Appendicitis (Retrocecal)",
+    "cat": "Surgery",
+    "step": "step2",
+    "wrong": [
+      "Psoas Abscess",
+      "Hip Pathology",
+      "Diverticulitis"
+    ]
+  },
+  {
+    "buzz": "Obturator sign",
+    "answer": "Appendicitis (Pelvic)",
+    "cat": "Surgery",
+    "step": "step2",
+    "wrong": [
+      "Ovarian Torsion",
+      "PID",
+      "Ectopic Pregnancy"
+    ]
+  },
+  {
+    "buzz": "McBurney point tenderness",
+    "answer": "Appendicitis",
+    "cat": "Surgery",
+    "step": "step2",
+    "wrong": [
+      "Cholecystitis",
+      "Meckel Diverticulum",
+      "Crohn"
+    ]
+  },
+  {
+    "buzz": "Sentinel loop on XR",
+    "answer": "Acute Pancreatitis",
+    "cat": "Surgery",
+    "step": "step2",
+    "wrong": [
+      "SBO",
+      "Ileus",
+      "Appendicitis"
+    ]
+  },
+  {
+    "buzz": "Pneumatosis intestinalis",
+    "answer": "Necrotizing Enterocolitis / Ischemia",
+    "cat": "Surgery",
+    "step": "step2",
+    "wrong": [
+      "SBO",
+      "Volvulus",
+      "Perforation"
+    ]
+  },
+  {
+    "buzz": "Virchow triad",
+    "answer": "Venous Thromboembolism",
+    "cat": "Surgery",
+    "step": "step1",
+    "wrong": [
+      "Arterial Thrombosis",
+      "DIC",
+      "TTP"
+    ]
+  },
+  {
+    "buzz": "Rose spots on abdomen",
+    "answer": "Typhoid Fever (Salmonella Typhi)",
+    "cat": "Infectious Disease",
+    "step": "step1",
+    "wrong": [
+      "Rickettsia",
+      "Meningococcemia",
+      "Secondary Syphilis"
+    ]
+  },
+  {
+    "buzz": "Eschar at bite site",
+    "answer": "Rickettsia / Tularemia",
+    "cat": "Infectious Disease",
+    "step": "step1",
+    "wrong": [
+      "Brown Recluse",
+      "Anthrax",
+      "Plague"
+    ]
+  },
+  {
+    "buzz": "Black eschar (face/arm)",
+    "answer": "Cutaneous Anthrax",
+    "cat": "Infectious Disease",
+    "step": "step1",
+    "wrong": [
+      "Brown Recluse",
+      "Ecthyma Gangrenosum",
+      "Necrotizing Fasciitis"
+    ]
+  },
+  {
+    "buzz": "Draining sinus tracts (jaw)",
+    "answer": "Actinomycosis",
+    "cat": "Infectious Disease",
+    "step": "step1",
+    "wrong": [
+      "Nocardiosis",
+      "TB",
+      "Osteomyelitis"
+    ]
+  },
+  {
+    "buzz": "Erythema chronicum migrans",
+    "answer": "Lyme Disease (Stage 1)",
+    "cat": "Infectious Disease",
+    "step": "step2",
+    "wrong": [
+      "Cellulitis",
+      "Tinea Corporis",
+      "Erythema Multiforme"
+    ]
+  },
+  {
+    "buzz": "Bell palsy + arthritis + heart block",
+    "answer": "Lyme Disease (Stage 2)",
+    "cat": "Infectious Disease",
+    "step": "step2",
+    "wrong": [
+      "Sarcoidosis",
+      "SLE",
+      "Syphilis"
+    ]
+  },
+  {
+    "buzz": "Jarisch-Herxheimer reaction",
+    "answer": "Syphilis Treatment",
+    "cat": "Infectious Disease",
+    "step": "step1",
+    "wrong": [
+      "Drug Allergy",
+      "Anaphylaxis",
+      "Serum Sickness"
+    ]
+  },
+  {
+    "buzz": "Erythema marginatum",
+    "answer": "Rheumatic Fever",
+    "cat": "Infectious Disease",
+    "step": "step1",
+    "wrong": [
+      "Erythema Multiforme",
+      "SLE",
+      "Lyme"
+    ]
+  },
+  {
+    "buzz": "Subcutaneous nodules + carditis",
+    "answer": "Rheumatic Fever",
+    "cat": "Infectious Disease",
+    "step": "step1",
+    "wrong": [
+      "Infective Endocarditis",
+      "SLE",
+      "Juvenile RA"
+    ]
+  },
+  {
+    "buzz": "Jones criteria positive",
+    "answer": "Rheumatic Fever",
+    "cat": "Infectious Disease",
+    "step": "step1",
+    "wrong": [
+      "Infective Endocarditis",
+      "Kawasaki",
+      "SLE"
+    ]
+  },
+  {
+    "buzz": "Cold intolerance + weight gain + constipation",
+    "answer": "Hypothyroidism",
+    "cat": "Endocrine",
+    "step": "step2",
+    "wrong": [
+      "Depression",
+      "Cushing",
+      "Addison"
+    ]
+  },
+  {
+    "buzz": "Heat intolerance + weight loss + tremor",
+    "answer": "Hyperthyroidism",
+    "cat": "Endocrine",
+    "step": "step2",
+    "wrong": [
+      "Pheochromocytoma",
+      "Anxiety",
+      "Stimulant Abuse"
+    ]
+  },
+  {
+    "buzz": "Hyperpigmentation + hypotension",
+    "answer": "Addison Disease",
+    "cat": "Endocrine",
+    "step": "step1",
+    "wrong": [
+      "Cushing",
+      "ACTH-producing Tumor",
+      "Hemochromatosis"
+    ]
+  },
+  {
+    "buzz": "Galactorrhea + amenorrhea",
+    "answer": "Prolactinoma",
+    "cat": "Endocrine",
+    "step": "step2",
+    "wrong": [
+      "Pregnancy",
+      "Hypothyroidism",
+      "Medications"
+    ]
+  },
+  {
+    "buzz": "Acromegaly (large hands/jaw)",
+    "answer": "GH-Secreting Pituitary Adenoma",
+    "cat": "Endocrine",
+    "step": "step1",
+    "wrong": [
+      "Gigantism",
+      "Marfan",
+      "Pachydermoperiostosis"
+    ]
+  },
+  {
+    "buzz": "Central obesity + easy bruising + striae",
+    "answer": "Cushing Syndrome",
+    "cat": "Endocrine",
+    "step": "step2",
+    "wrong": [
+      "Metabolic Syndrome",
+      "Hypothyroidism",
+      "PCOS"
+    ]
+  },
+  {
+    "buzz": "Polyuria + polydipsia + dilute urine",
+    "answer": "Diabetes Insipidus",
+    "cat": "Endocrine",
+    "step": "step1",
+    "wrong": [
+      "Diabetes Mellitus",
+      "Psychogenic Polydipsia",
+      "Hyperaldosteronism"
+    ]
+  },
+  {
+    "buzz": "Macroglossia + cardiomegaly (infant)",
+    "answer": "Pompe Disease (GSD II)",
+    "cat": "Biochemistry",
+    "step": "step1",
+    "wrong": [
+      "Von Gierke",
+      "Cori Disease",
+      "Hypothyroidism"
+    ]
+  },
+  {
+    "buzz": "Exercise intolerance + myoglobinuria",
+    "answer": "McArdle Disease (GSD V)",
+    "cat": "Biochemistry",
+    "step": "step1",
+    "wrong": [
+      "Pompe Disease",
+      "Von Gierke",
+      "Carnitine Deficiency"
+    ]
+  },
+  {
+    "buzz": "Fasting hypoglycemia + hepatomegaly (child)",
+    "answer": "Von Gierke Disease (GSD I)",
+    "cat": "Biochemistry",
+    "step": "step1",
+    "wrong": [
+      "Cori Disease",
+      "Pompe Disease",
+      "Galactosemia"
+    ]
+  },
+  {
+    "buzz": "Cataracts in infant + hepatomegaly",
+    "answer": "Galactosemia",
+    "cat": "Biochemistry",
+    "step": "step1",
+    "wrong": [
+      "Fructose Intolerance",
+      "Glycogen Storage Disease",
+      "Wilson"
+    ]
+  },
+  {
+    "buzz": "Xanthomas + premature atherosclerosis",
+    "answer": "Familial Hypercholesterolemia",
+    "cat": "Biochemistry",
+    "step": "step1",
+    "wrong": [
+      "Familial Hypertriglyceridemia",
+      "Metabolic Syndrome",
+      "Hypothyroidism"
+    ]
+  },
+  {
+    "buzz": "Corneal arcus in young adult",
+    "answer": "Familial Hypercholesterolemia",
+    "cat": "Biochemistry",
+    "step": "step1",
+    "wrong": [
+      "Wilson Disease",
+      "Normal Aging",
+      "Hypercalcemia"
+    ]
+  },
+  {
+    "buzz": "Pulsus parvus et tardus",
+    "answer": "Aortic Stenosis",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "Aortic Regurgitation",
+      "Mitral Stenosis",
+      "HCM"
+    ]
+  },
+  {
+    "buzz": "Water-hammer pulse (bounding)",
+    "answer": "Aortic Regurgitation",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "Aortic Stenosis",
+      "PDA",
+      "Thyrotoxicosis"
+    ]
+  },
+  {
+    "buzz": "Austin Flint murmur",
+    "answer": "Severe Aortic Regurgitation",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "Mitral Stenosis",
+      "Flow Murmur",
+      "HCM"
+    ]
+  },
+  {
+    "buzz": "Pulsus alternans",
+    "answer": "Severe LV Dysfunction",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "Cardiac Tamponade",
+      "Constrictive Pericarditis",
+      "Aortic Stenosis"
+    ]
+  },
+  {
+    "buzz": "Dressler syndrome (post-MI)",
+    "answer": "Post-MI Pericarditis (Autoimmune)",
+    "cat": "Cardiology",
+    "step": "step2",
+    "wrong": [
+      "Acute Pericarditis",
+      "Free Wall Rupture",
+      "Pulmonary Embolism"
+    ]
+  },
+  {
+    "buzz": "S3 gallop",
+    "answer": "Heart Failure (Volume Overload)",
+    "cat": "Cardiology",
+    "step": "step2",
+    "wrong": [
+      "Aortic Stenosis",
+      "Mitral Stenosis",
+      "Normal Variant"
+    ]
+  },
+  {
+    "buzz": "S4 gallop",
+    "answer": "Diastolic Dysfunction / LVH",
+    "cat": "Cardiology",
+    "step": "step2",
+    "wrong": [
+      "Heart Failure",
+      "Normal Variant",
+      "Aortic Regurgitation"
+    ]
+  },
+  {
+    "buzz": "Brugada pattern on ECG",
+    "answer": "Brugada Syndrome",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "STEMI",
+      "WPW",
+      "Hyperkalemia"
+    ]
+  },
+  {
+    "buzz": "Epsilon wave on ECG",
+    "answer": "Arrhythmogenic RV Cardiomyopathy",
+    "cat": "Cardiology",
+    "step": "step1",
+    "wrong": [
+      "Brugada",
+      "WPW",
+      "Bundle Branch Block"
+    ]
+  },
+  {
+    "buzz": "Charcot triad (MS): nystagmus + intention tremor + scanning speech",
+    "answer": "Multiple Sclerosis",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Cerebellar Stroke",
+      "Wernicke",
+      "Friedreich Ataxia"
+    ]
+  },
+  {
+    "buzz": "Optic neuritis + transverse myelitis",
+    "answer": "Neuromyelitis Optica (Devic)",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Multiple Sclerosis",
+      "ADEM",
+      "Sarcoidosis"
+    ]
+  },
+  {
+    "buzz": "Anti-aquaporin-4 antibodies",
+    "answer": "Neuromyelitis Optica",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Multiple Sclerosis",
+      "SLE",
+      "Sarcoidosis"
+    ]
+  },
+  {
+    "buzz": "Myoclonic jerks + dementia (rapid)",
+    "answer": "Creutzfeldt-Jakob Disease",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Alzheimer",
+      "Lewy Body Dementia",
+      "Huntington"
+    ]
+  },
+  {
+    "buzz": "Spongiform changes on brain biopsy",
+    "answer": "Prion Disease (CJD)",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Alzheimer",
+      "Lewy Body",
+      "Pick Disease"
+    ]
+  },
+  {
+    "buzz": "Neurofibrillary tangles + amyloid plaques",
+    "answer": "Alzheimer Disease",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Lewy Body Dementia",
+      "Pick Disease",
+      "CJD"
+    ]
+  },
+  {
+    "buzz": "Lewy bodies (alpha-synuclein)",
+    "answer": "Lewy Body Dementia / Parkinson",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Alzheimer",
+      "Pick Disease",
+      "CJD"
+    ]
+  },
+  {
+    "buzz": "Pick bodies (tau)",
+    "answer": "Frontotemporal Dementia (Pick Disease)",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Alzheimer",
+      "Lewy Body",
+      "CJD"
+    ]
+  },
+  {
+    "buzz": "Hirano bodies",
+    "answer": "Alzheimer Disease",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Pick Disease",
+      "Lewy Body",
+      "Parkinson"
+    ]
+  },
+  {
+    "buzz": "Caudate atrophy on MRI",
+    "answer": "Huntington Disease",
+    "cat": "Neurology",
+    "step": "step1",
+    "wrong": [
+      "Parkinson",
+      "Alzheimer",
+      "Wilson Disease"
+    ]
+  },
+  {
+    "buzz": "Trinucleotide CAG repeat",
+    "answer": "Huntington Disease",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Fragile X",
+      "Myotonic Dystrophy",
+      "Friedreich Ataxia"
+    ]
+  },
+  {
+    "buzz": "Trinucleotide CGG repeat",
+    "answer": "Fragile X Syndrome",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Huntington",
+      "Myotonic Dystrophy",
+      "Friedreich Ataxia"
+    ]
+  },
+  {
+    "buzz": "Trinucleotide GAA repeat",
+    "answer": "Friedreich Ataxia",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Huntington",
+      "Fragile X",
+      "Myotonic Dystrophy"
+    ]
+  },
+  {
+    "buzz": "Trinucleotide CTG repeat",
+    "answer": "Myotonic Dystrophy",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Huntington",
+      "Fragile X",
+      "Friedreich Ataxia"
+    ]
+  },
+  {
+    "buzz": "Anticipation (genetic)",
+    "answer": "Trinucleotide Repeat Disorders",
+    "cat": "Genetics",
+    "step": "step1",
+    "wrong": [
+      "Autosomal Dominant",
+      "X-Linked",
+      "Mitochondrial"
+    ]
+  },
+  {
+    "buzz": "Safety pin appearance (bipolar staining)",
+    "answer": "Yersinia Pestis (Plague)",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "Bacillus Anthracis",
+      "Clostridium",
+      "Francisella"
+    ]
+  },
+  {
+    "buzz": "Chinese letter pattern (gram stain)",
+    "answer": "Corynebacterium Diphtheriae",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "Listeria",
+      "Bacillus",
+      "Nocardia"
+    ]
+  },
+  {
+    "buzz": "Gray pseudomembrane (pharynx)",
+    "answer": "Diphtheria",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "Infectious Mononucleosis",
+      "Peritonsillar Abscess",
+      "Vincent Angina"
+    ]
+  },
+  {
+    "buzz": "Comma-shaped gram-negative rod",
+    "answer": "Vibrio Cholerae",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "Campylobacter",
+      "Helicobacter",
+      "Borrelia"
+    ]
+  },
+  {
+    "buzz": "Seagull wing (gram stain)",
+    "answer": "Campylobacter Jejuni",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "Vibrio",
+      "Helicobacter",
+      "Spirillum"
+    ]
+  },
+  {
+    "buzz": "Owl eye cells in tissue",
+    "answer": "CMV",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "RSV",
+      "Adenovirus",
+      "HSV"
+    ]
+  },
+  {
+    "buzz": "Cowdry type A inclusions",
+    "answer": "HSV / VZV",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "CMV",
+      "Adenovirus",
+      "Rabies"
+    ]
+  },
+  {
+    "buzz": "Tzanck smear positive (multinucleated giant cells)",
+    "answer": "HSV or VZV",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "CMV",
+      "Measles",
+      "Smallpox"
+    ]
+  },
+  {
+    "buzz": "Donovan bodies",
+    "answer": "Granuloma Inguinale (Klebsiella Granulomatis)",
+    "cat": "Microbiology",
+    "step": "step1",
+    "wrong": [
+      "Chancroid",
+      "Syphilis",
+      "LGV"
+    ]
+  },
+  {
+    "buzz": "Clue cells on wet mount",
+    "answer": "Gardnerella (Bacterial Vaginosis)",
+    "cat": "Microbiology",
+    "step": "step2",
+    "wrong": [
+      "Trichomonas",
+      "Candida",
+      "Gonorrhea"
+    ]
+  },
+  {
+    "buzz": "Positive whiff test (amine)",
+    "answer": "Bacterial Vaginosis",
+    "cat": "Microbiology",
+    "step": "step2",
+    "wrong": [
+      "Trichomonas",
+      "Candida",
+      "Cervicitis"
+    ]
+  },
+  {
+    "buzz": "DRESS syndrome (drug)",
+    "answer": "Allopurinol / Anticonvulsants",
+    "cat": "Pharmacology",
+    "step": "step2",
+    "wrong": [
+      "NSAIDs",
+      "Antibiotics",
+      "ACE Inhibitors"
+    ]
+  },
+  {
+    "buzz": "Stevens-Johnson syndrome",
+    "answer": "Sulfonamides / Anticonvulsants",
+    "cat": "Pharmacology",
+    "step": "step2",
+    "wrong": [
+      "Penicillin",
+      "Statins",
+      "ACE Inhibitors"
+    ]
+  },
+  {
+    "buzz": "Agranulocytosis (drug)",
+    "answer": "Clozapine / Carbimazole",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Lithium",
+      "Haloperidol",
+      "Risperidone"
+    ]
+  },
+  {
+    "buzz": "Tardive dyskinesia",
+    "answer": "Typical Antipsychotics (Long-Term)",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "SSRIs",
+      "Benzodiazepines",
+      "Lithium"
+    ]
+  },
+  {
+    "buzz": "Diabetes insipidus (drug)",
+    "answer": "Lithium",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Valproate",
+      "Carbamazepine",
+      "Lamotrigine"
+    ]
+  },
+  {
+    "buzz": "Ebstein anomaly (drug teratogen)",
+    "answer": "Lithium",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Valproate",
+      "Carbamazepine",
+      "SSRIs"
+    ]
+  },
+  {
+    "buzz": "Neural tube defects (drug teratogen)",
+    "answer": "Valproic Acid",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Lithium",
+      "Carbamazepine",
+      "Phenytoin"
+    ]
+  },
+  {
+    "buzz": "Phocomelia (drug teratogen)",
+    "answer": "Thalidomide",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Isotretinoin",
+      "Warfarin",
+      "Lithium"
+    ]
+  },
+  {
+    "buzz": "ACE inhibitor cough",
+    "answer": "Bradykinin Accumulation",
+    "cat": "Pharmacology",
+    "step": "step2",
+    "wrong": [
+      "Angioedema",
+      "Bronchospasm",
+      "Pneumonia"
+    ]
+  },
+  {
+    "buzz": "Purple glove syndrome",
+    "answer": "IV Phenytoin Extravasation",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Warfarin Necrosis",
+      "Heparin-Induced Thrombocytopenia",
+      "Vasculitis"
+    ]
+  },
+  {
+    "buzz": "Warfarin skin necrosis",
+    "answer": "Protein C / S Deficiency",
+    "cat": "Pharmacology",
+    "step": "step1",
+    "wrong": [
+      "Factor V Leiden",
+      "DIC",
+      "HIT"
+    ]
+  },
+  {
+    "buzz": "Heparin-induced thrombocytopenia",
+    "answer": "HIT Type II (Antibody-Mediated)",
+    "cat": "Pharmacology",
+    "step": "step2",
+    "wrong": [
+      "DIC",
+      "TTP",
+      "ITP"
+    ]
+  },
+  {
+    "buzz": "Olive sign on physical exam",
+    "answer": "Pyloric Stenosis",
+    "cat": "GI",
+    "step": "step2",
+    "wrong": [
+      "Intussusception",
+      "Appendicitis",
+      "Hernia"
+    ]
+  },
+  {
+    "buzz": "Succussion splash",
+    "answer": "Gastric Outlet Obstruction",
+    "cat": "GI",
+    "step": "step2",
+    "wrong": [
+      "Ascites",
+      "SBO",
+      "Ileus"
+    ]
+  },
+  {
+    "buzz": "Leather bottle stomach (linitis plastica)",
+    "answer": "Diffuse Gastric Carcinoma",
+    "cat": "GI",
+    "step": "step1",
+    "wrong": [
+      "Intestinal Gastric CA",
+      "Gastric Lymphoma",
+      "GIST"
+    ]
+  },
+  {
+    "buzz": "Virchow node + Krukenberg + Sister Mary Joseph",
+    "answer": "Metastatic Gastric Cancer",
+    "cat": "GI",
+    "step": "step2",
+    "wrong": [
+      "Ovarian CA",
+      "Colon CA",
+      "Pancreatic CA"
+    ]
+  },
+  {
+    "buzz": "Courvoisier sign (palpable gallbladder)",
+    "answer": "Pancreatic Head Cancer",
+    "cat": "GI",
+    "step": "step2",
+    "wrong": [
+      "Gallstones",
+      "Cholecystitis",
+      "Cholangiocarcinoma"
+    ]
+  },
+  {
+    "buzz": "Abdominal bruit + renal failure",
+    "answer": "Renal Artery Stenosis",
+    "cat": "Nephrology",
+    "step": "step2",
+    "wrong": [
+      "AAA",
+      "Aortic Coarctation",
+      "Fibromuscular Dysplasia"
+    ]
+  },
+  {
+    "buzz": "Bilateral renal cysts + berry aneurysms",
+    "answer": "ADPKD",
+    "cat": "Nephrology",
+    "step": "step1",
+    "wrong": [
+      "ARPKD",
+      "Medullary Sponge Kidney",
+      "Simple Cysts"
+    ]
+  },
+  {
+    "buzz": "Flank pain + hematuria + flank mass",
+    "answer": "Renal Cell Carcinoma",
+    "cat": "Nephrology",
+    "step": "step2",
+    "wrong": [
+      "Nephrolithiasis",
+      "Pyelonephritis",
+      "ADPKD"
+    ]
+  },
+  {
+    "buzz": "Painless hematuria (older adult)",
+    "answer": "Bladder Cancer",
+    "cat": "Oncology",
+    "step": "step2",
+    "wrong": [
+      "Renal Cell CA",
+      "Nephrolithiasis",
+      "Prostatitis"
+    ]
+  },
+  {
+    "buzz": "Elevated AFP (adult)",
+    "answer": "Hepatocellular Carcinoma / Yolk Sac",
+    "cat": "Oncology",
+    "step": "step2",
+    "wrong": [
+      "Cholangiocarcinoma",
+      "Colorectal CA",
+      "Pancreatic CA"
+    ]
+  },
+  {
+    "buzz": "Elevated CA-125",
+    "answer": "Ovarian Cancer",
+    "cat": "Oncology",
+    "step": "step2",
+    "wrong": [
+      "Endometrial CA",
+      "Cervical CA",
+      "Breast CA"
+    ]
+  },
+  {
+    "buzz": "Elevated CEA",
+    "answer": "Colorectal Cancer",
+    "cat": "Oncology",
+    "step": "step2",
+    "wrong": [
+      "Gastric CA",
+      "Pancreatic CA",
+      "Ovarian CA"
+    ]
+  },
+  {
+    "buzz": "Elevated CA 19-9",
+    "answer": "Pancreatic Cancer",
+    "cat": "Oncology",
+    "step": "step2",
+    "wrong": [
+      "Colorectal CA",
+      "Gastric CA",
+      "Cholangiocarcinoma"
+    ]
+  },
+  {
+    "buzz": "Elevated PSA",
+    "answer": "Prostate Cancer",
+    "cat": "Oncology",
+    "step": "step2",
+    "wrong": [
+      "BPH",
+      "Prostatitis",
+      "Bladder Cancer"
+    ]
+  },
+  {
+    "buzz": "Elevated beta-hCG (male)",
+    "answer": "Testicular Germ Cell Tumor",
+    "cat": "Oncology",
+    "step": "step2",
+    "wrong": [
+      "Seminoma",
+      "Liver Cancer",
+      "Choriocarcinoma"
+    ]
+  },
+  {
+    "buzz": "Alk phos elevation + bone pain",
+    "answer": "Paget Disease of Bone / Bone Mets",
+    "cat": "Orthopedics",
+    "step": "step2",
+    "wrong": [
+      "Osteoporosis",
+      "Multiple Myeloma",
+      "Hyperparathyroidism"
+    ]
+  },
+  {
+    "buzz": "Mosaic (jigsaw) bone pattern",
+    "answer": "Paget Disease of Bone",
+    "cat": "Orthopedics",
+    "step": "step1",
+    "wrong": [
+      "Osteopetrosis",
+      "Multiple Myeloma",
+      "Fibrous Dysplasia"
+    ]
+  },
+  {
+    "buzz": "Erlenmeyer flask deformity",
+    "answer": "Gaucher Disease",
+    "cat": "Biochemistry",
+    "step": "step1",
+    "wrong": [
+      "Osteopetrosis",
+      "Paget Disease",
+      "Rickets"
+    ]
+  },
+  {
+    "buzz": "Hair on end (crew cut) skull XR",
+    "answer": "Thalassemia Major",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Sickle Cell",
+      "Hereditary Spherocytosis",
+      "Iron Deficiency"
+    ]
+  },
+  {
+    "buzz": "Crew cut appearance on skull XR",
+    "answer": "Severe Chronic Hemolytic Anemia",
+    "cat": "Hematology",
+    "step": "step1",
+    "wrong": [
+      "Paget Disease",
+      "Multiple Myeloma",
+      "Metastatic Disease"
+    ]
+  }
+]
