@@ -9,7 +9,7 @@
 <link rel="canonical" href="https://www.usmle300.com/blog">
 <meta property="og:type" content="website">
 <meta property="og:title" content="USMLE Blog — Study Strategies & High-Yield Topics | USMLE300">
-<meta property="og:description" content="Expert USMLE Step 1 and Step 2 CK study guides from tutors who scored 260+.">
+<meta property="og:description" content="Expert USMLE study guides from tutors who scored 260+.">
 <meta property="og:url" content="https://www.usmle300.com/blog">
 <meta property="og:site_name" content="USMLE300">
 <script type="application/ld+json">
@@ -20,29 +20,214 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="../images/logo.png" type="image/png">
 <style>
-:root{--burgundy:#722F37;--burgundy-dark:#5a252c;--cream:#FAF9F6;--cream-dark:#F0EEEB;--charcoal:#2D2D2D;--charcoal-light:#4A4A4A;--success:#2E7D4A;--gold:#C9A227}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--charcoal);line-height:1.6;overflow-x:hidden}body.menu-open{overflow:hidden}h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;line-height:1.2}a{color:inherit;text-decoration:none}
-header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(250,249,246,0.98);backdrop-filter:blur(10px);border-bottom:1px solid rgba(114,47,55,0.1);transition:box-shadow .3s}header.scrolled{box-shadow:0 4px 20px rgba(0,0,0,0.08)}.header-inner{max-width:1200px;margin:0 auto;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center}.logo{display:flex;align-items:center;gap:0.5rem;text-decoration:none;z-index:1001}.logo img{height:40px;display:block}.logo-text{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:700;color:var(--burgundy)}nav.desktop-nav{display:flex;gap:2rem;align-items:center}nav a{text-decoration:none;color:var(--charcoal);font-weight:500;font-size:0.95rem;transition:color .2s}nav a:hover{color:var(--burgundy)}nav a.active{color:var(--burgundy)}.cta-button{background:var(--burgundy);color:white;padding:0.75rem 1.5rem;border-radius:8px;font-weight:600;font-size:0.9rem;border:2px solid var(--burgundy);display:inline-block;transition:all .2s}.cta-button:hover{background:var(--burgundy-dark);border-color:var(--burgundy-dark)}.mobile-menu-btn{display:none;flex-direction:column;width:44px;height:44px;background:none;border:none;cursor:pointer;z-index:1001;padding:10px;justify-content:center;align-items:center}.mobile-menu-btn span{display:block;width:24px;height:2px;background:var(--burgundy);margin:3px 0;transition:all .3s}.mobile-menu-btn.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.mobile-menu-btn.active span:nth-child(2){opacity:0}.mobile-menu-btn.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--cream);z-index:999;padding:100px 2rem 2rem;flex-direction:column;opacity:0;visibility:hidden;transition:all .3s}.mobile-nav.active{opacity:1;visibility:visible}.mobile-nav a{display:block;padding:1rem 0;font-size:1.25rem;font-weight:600;color:var(--charcoal);border-bottom:1px solid var(--cream-dark)}.mobile-nav .cta-button{margin-top:2rem;width:100%;padding:1rem}
-.blog-hero{padding:140px 1.5rem 60px;background:linear-gradient(135deg,var(--cream) 0%,var(--cream-dark) 100%)}.blog-hero-inner{max-width:1200px;margin:0 auto}.breadcrumb{font-size:.82rem;color:var(--charcoal-light);margin-bottom:1.25rem}.breadcrumb a{color:var(--burgundy);font-weight:500}.breadcrumb span{margin:0 .4rem;opacity:.4}.blog-hero h1{font-size:clamp(2rem,5vw,3.25rem);color:var(--charcoal);margin-bottom:1rem;max-width:700px}.blog-hero h1 em{color:var(--burgundy);font-style:normal}.blog-hero-sub{font-size:1.05rem;color:var(--charcoal-light);max-width:560px;line-height:1.65}
-.posts-section{max-width:1200px;margin:0 auto;padding:48px 1.5rem 80px}.posts-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px}.posts-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--burgundy);display:flex;align-items:center;gap:8px}.posts-title::before{content:'';width:20px;height:2px;background:var(--burgundy)}.posts-count{font-size:.78rem;color:var(--charcoal-light)}.posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.post-card{background:white;border-radius:14px;overflow:hidden;border:1px solid rgba(114,47,55,.06);transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}.post-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.08)}
-.post-thumb{height:164px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:16px 18px}
-.post-thumb .t-label{font-family:'Fraunces',serif;font-weight:700;font-size:.95rem;color:white;line-height:1.2;position:relative;z-index:2;max-width:88%;text-shadow:0 1px 6px rgba(0,0,0,.25)}
-.post-thumb .t-tag{position:absolute;top:12px;left:14px;font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.85);background:rgba(255,255,255,.12);backdrop-filter:blur(4px);padding:3px 9px;border-radius:4px;z-index:2}
-.post-thumb .t-geo{position:absolute;z-index:1}
-.t-geo.circle{width:100px;height:100px;border-radius:50%;border:2px solid rgba(255,255,255,.07);right:-15px;top:-15px}
-.t-geo.ring{width:70px;height:70px;border-radius:50%;border:1.5px solid rgba(255,255,255,.09);right:35px;top:25px}
-.t-geo.line1{width:180px;height:2px;background:rgba(255,255,255,.07);transform:rotate(-25deg);right:-30px;top:45px}
-.t-geo.line2{width:140px;height:2px;background:rgba(255,255,255,.05);transform:rotate(-25deg);right:-10px;top:65px}
-.t-geo.corner{width:36px;height:36px;border-right:1.5px solid rgba(255,255,255,.1);border-top:1.5px solid rgba(255,255,255,.1);right:14px;top:12px}
-.t-geo.dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.15);right:18px;bottom:50px}
-.bg-wine{background:linear-gradient(145deg,#5a252c,#8b3a42,#3d1c20)}.bg-navy{background:linear-gradient(145deg,#0f172a,#1e3a5f,#0c1220)}.bg-teal{background:linear-gradient(145deg,#064e3b,#0d9488,#042f2e)}.bg-plum{background:linear-gradient(145deg,#3b0764,#7c3aed,#1e1b4b)}.bg-amber{background:linear-gradient(145deg,#78350f,#b45309,#451a03)}.bg-slate{background:linear-gradient(145deg,#1e293b,#475569,#0f172a)}.bg-rose{background:linear-gradient(145deg,#4c0519,#be123c,#2d0011)}.bg-forest{background:linear-gradient(145deg,#14532d,#16a34a,#052e16)}.bg-steel{background:linear-gradient(145deg,#27272a,#52525b,#18181b)}
-.post-body{padding:18px 20px 16px;flex:1;display:flex;flex-direction:column}.post-category{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--burgundy);margin-bottom:7px}.post-title{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;color:var(--charcoal);margin-bottom:5px;line-height:1.3}.post-excerpt{font-size:.8rem;color:var(--charcoal-light);line-height:1.55;margin-bottom:12px;flex:1}.post-footer{display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid var(--cream-dark)}.post-date{font-size:.7rem;color:var(--charcoal-light)}.post-read{font-size:.7rem;color:var(--charcoal-light)}
-.newsletter{max-width:1200px;margin:0 auto;padding:0 1.5rem 80px}.nl-card{background:linear-gradient(135deg,var(--burgundy),var(--burgundy-dark));border-radius:16px;padding:44px;display:flex;align-items:center;gap:40px;position:relative;overflow:hidden}.nl-card::before{content:'';position:absolute;top:-40%;right:-10%;width:280px;height:280px;background:radial-gradient(circle,rgba(201,162,39,.15),transparent 70%);pointer-events:none}.nl-content{flex:1;position:relative;z-index:1}.nl-content h2{font-size:1.5rem;color:white;margin-bottom:6px}.nl-content p{color:rgba(255,255,255,.65);font-size:.92rem;line-height:1.6;max-width:420px}.nl-form{display:flex;gap:10px;margin-top:18px;max-width:420px}.nl-input{flex:1;padding:13px 16px;border-radius:8px;border:2px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);color:white;font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none}.nl-input::placeholder{color:rgba(255,255,255,.35)}.nl-input:focus{border-color:rgba(255,255,255,.35)}.nl-btn{padding:13px 22px;background:var(--gold);color:var(--charcoal);font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;border:none;border-radius:8px;cursor:pointer;white-space:nowrap}.nl-btn:hover{transform:translateY(-1px)}.nl-fine{font-size:.7rem;color:rgba(255,255,255,.35);margin-top:8px}
+:root{--burgundy:#722F37;--burgundy-dark:#5a252c;--cream:#FAF9F6;--cream-dark:#F0EEEB;--charcoal:#2D2D2D;--charcoal-light:#4A4A4A;--success:#2E7D4A;--gold:#C9A227}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--charcoal);line-height:1.6;overflow-x:hidden}body.menu-open{overflow:hidden}h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;line-height:1.2}a{color:inherit;text-decoration:none}
+
+/* Header */
+header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(250,249,246,0.98);backdrop-filter:blur(10px);border-bottom:1px solid rgba(114,47,55,0.1);transition:box-shadow .3s}header.scrolled{box-shadow:0 4px 20px rgba(0,0,0,0.08)}.header-inner{max-width:1200px;margin:0 auto;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center}.logo{display:flex;align-items:center;gap:.5rem;z-index:1001}.logo img{height:40px;display:block}.logo-text{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:700;color:var(--burgundy)}nav.desktop-nav{display:flex;gap:2rem;align-items:center}nav a{color:var(--charcoal);font-weight:500;font-size:.95rem;transition:color .2s}nav a:hover{color:var(--burgundy)}nav a.active{color:var(--burgundy)}.cta-button{background:var(--burgundy);color:white;padding:.75rem 1.5rem;border-radius:8px;font-weight:600;font-size:.9rem;border:2px solid var(--burgundy);display:inline-block;transition:all .2s}.cta-button:hover{background:var(--burgundy-dark);border-color:var(--burgundy-dark)}
+.mobile-menu-btn{display:none;flex-direction:column;width:44px;height:44px;background:none;border:none;cursor:pointer;z-index:1001;padding:10px;justify-content:center;align-items:center}.mobile-menu-btn span{display:block;width:24px;height:2px;background:var(--burgundy);margin:3px 0;transition:all .3s}.mobile-menu-btn.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.mobile-menu-btn.active span:nth-child(2){opacity:0}.mobile-menu-btn.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--cream);z-index:999;padding:100px 2rem 2rem;flex-direction:column;opacity:0;visibility:hidden;transition:all .3s}.mobile-nav.active{opacity:1;visibility:visible}.mobile-nav a{display:block;padding:1rem 0;font-size:1.25rem;font-weight:600;color:var(--charcoal);border-bottom:1px solid var(--cream-dark)}.mobile-nav .cta-button{margin-top:2rem;width:100%;padding:1rem}
+
+/* Hero */
+.blog-hero{padding:140px 1.5rem 56px;background:linear-gradient(135deg,var(--cream),var(--cream-dark))}.blog-hero-inner{max-width:1200px;margin:0 auto}.breadcrumb{font-size:.82rem;color:var(--charcoal-light);margin-bottom:1.25rem}.breadcrumb a{color:var(--burgundy);font-weight:500}.breadcrumb span{margin:0 .4rem;opacity:.4}.blog-hero h1{font-size:clamp(2rem,5vw,3.25rem);color:var(--charcoal);margin-bottom:1rem;max-width:700px}.blog-hero h1 em{color:var(--burgundy);font-style:normal}.blog-hero-sub{font-size:1.05rem;color:var(--charcoal-light);max-width:560px;line-height:1.65}
+
+/* Grid */
+.posts-section{max-width:1200px;margin:0 auto;padding:48px 1.5rem 80px}
+.posts-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:32px}
+.posts-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--burgundy);display:flex;align-items:center;gap:8px}
+.posts-title::before{content:'';width:20px;height:2px;background:var(--burgundy)}
+.posts-count{font-size:.78rem;color:var(--charcoal-light)}
+.posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+
+/* ── Redesigned Card ── */
+.post-card{
+  background:white;
+  border-radius:16px;
+  overflow:hidden;
+  transition:transform .3s cubic-bezier(.25,.46,.45,.94), box-shadow .3s cubic-bezier(.25,.46,.45,.94);
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  border:1px solid rgba(0,0,0,.04);
+}
+.post-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 48px rgba(0,0,0,.1), 0 4px 12px rgba(0,0,0,.04);
+}
+
+/* Color banner area at top */
+.post-banner{
+  position:relative;
+  padding:24px 28px 18px;
+  overflow:hidden;
+}
+.post-banner::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  opacity:.06;
+  background:
+    radial-gradient(ellipse at 80% 20%, currentColor 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 80%, currentColor 0%, transparent 60%);
+}
+.post-banner::after{
+  content:'';
+  position:absolute;
+  top:-30%;right:-20%;
+  width:120px;height:120px;
+  border-radius:50%;
+  background:currentColor;
+  opacity:.04;
+}
+
+/* Tag */
+.post-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  font-size:.62rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  padding:5px 10px;
+  border-radius:6px;
+  position:relative;
+  z-index:1;
+}
+.post-tag::before{
+  content:'';
+  width:5px;height:5px;
+  border-radius:50%;
+  background:currentColor;
+  flex-shrink:0;
+}
+
+
+
+/* Card body */
+.post-body{
+  padding:6px 28px 24px;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+.post-title{
+  font-family:'Fraunces',serif;
+  font-size:1.1rem;
+  font-weight:600;
+  color:var(--charcoal);
+  margin-bottom:10px;
+  line-height:1.35;
+  transition:color .2s;
+}
+.post-card:hover .post-title{
+  color:var(--burgundy);
+}
+.post-excerpt{
+  font-size:.84rem;
+  color:var(--charcoal-light);
+  line-height:1.65;
+  margin-bottom:16px;
+  flex:1;
+}
+
+/* Footer with read link */
+.post-footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-top:14px;
+  border-top:1px solid var(--cream-dark);
+}
+.post-date{
+  font-size:.72rem;
+  color:var(--charcoal-light);
+  font-weight:500;
+}
+.post-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:.76rem;
+  font-weight:700;
+  letter-spacing:.02em;
+  transition:gap .25s;
+}
+.post-card:hover .post-link{
+  gap:10px;
+}
+.post-link svg{
+  width:14px;
+  height:14px;
+  transition:transform .25s;
+}
+.post-card:hover .post-link svg{
+  transform:translateX(2px);
+}
+
+/* Color themes */
+.theme-wine{color:var(--burgundy)}
+.theme-wine .post-tag{color:var(--burgundy);background:rgba(114,47,55,.08)}
+.theme-navy{color:#1e3a5f}
+.theme-navy .post-tag{color:#1e3a5f;background:rgba(30,58,95,.08)}
+.theme-teal{color:#0d9488}
+.theme-teal .post-tag{color:#0d7377;background:rgba(13,148,136,.08)}
+.theme-plum{color:#7c3aed}
+.theme-plum .post-tag{color:#6d28d9;background:rgba(124,58,237,.08)}
+.theme-amber{color:#b45309}
+.theme-amber .post-tag{color:#92400e;background:rgba(180,83,9,.08)}
+.theme-slate{color:#475569}
+.theme-slate .post-tag{color:#334155;background:rgba(71,85,105,.08)}
+.theme-rose{color:#be123c}
+.theme-rose .post-tag{color:#9f1239;background:rgba(190,18,60,.08)}
+.theme-forest{color:#16a34a}
+.theme-forest .post-tag{color:#15803d;background:rgba(22,163,74,.08)}
+.theme-steel{color:#52525b}
+.theme-steel .post-tag{color:#3f3f46;background:rgba(82,82,91,.08)}
+
+/* Staggered entrance animation */
+@keyframes cardIn{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.post-card{
+  animation:cardIn .5s cubic-bezier(.25,.46,.45,.94) both;
+}
+.post-card:nth-child(1){animation-delay:.05s}
+.post-card:nth-child(2){animation-delay:.1s}
+.post-card:nth-child(3){animation-delay:.15s}
+.post-card:nth-child(4){animation-delay:.2s}
+.post-card:nth-child(5){animation-delay:.25s}
+.post-card:nth-child(6){animation-delay:.3s}
+.post-card:nth-child(7){animation-delay:.35s}
+.post-card:nth-child(8){animation-delay:.4s}
+.post-card:nth-child(9){animation-delay:.45s}
+
+/* Newsletter */
+.newsletter{max-width:1200px;margin:0 auto;padding:0 1.5rem 80px}
+.nl-card{background:linear-gradient(135deg,var(--burgundy),var(--burgundy-dark));border-radius:14px;padding:44px;display:flex;align-items:center;gap:40px;position:relative;overflow:hidden}
+.nl-card::before{content:'';position:absolute;top:-40%;right:-10%;width:280px;height:280px;background:radial-gradient(circle,rgba(201,162,39,.12),transparent 70%);pointer-events:none}
+.nl-content{flex:1;position:relative;z-index:1}.nl-content h2{font-size:1.5rem;color:white;margin-bottom:6px}.nl-content p{color:rgba(255,255,255,.65);font-size:.9rem;line-height:1.6;max-width:420px}
+.nl-form{display:flex;gap:10px;margin-top:16px;max-width:420px}.nl-input{flex:1;padding:12px 16px;border-radius:8px;border:2px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);color:white;font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none}.nl-input::placeholder{color:rgba(255,255,255,.35)}.nl-input:focus{border-color:rgba(255,255,255,.35)}.nl-btn{padding:12px 22px;background:var(--gold);color:var(--charcoal);font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;border:none;border-radius:8px;cursor:pointer;white-space:nowrap}.nl-btn:hover{transform:translateY(-1px)}.nl-fine{font-size:.68rem;color:rgba(255,255,255,.3);margin-top:8px}
+
+/* Footer */
 footer{background:white;border-top:1px solid var(--cream-dark);padding:36px 1.5rem}.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}.footer-left{font-size:.8rem;color:var(--charcoal-light)}.footer-left a{color:var(--burgundy);font-weight:500}.footer-links{display:flex;gap:20px}.footer-links a{font-size:.8rem;color:var(--charcoal-light);transition:color .2s}.footer-links a:hover{color:var(--burgundy)}
-@media(max-width:1024px){.posts-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:768px){.desktop-nav{display:none!important}.mobile-menu-btn{display:flex}.posts-grid{grid-template-columns:1fr}.blog-hero{padding:120px 1.5rem 40px}.nl-card{flex-direction:column;padding:28px 22px;gap:20px}.nl-form{flex-direction:column}.footer-inner{flex-direction:column;gap:14px;text-align:center}}
+
+@media(max-width:1024px){.posts-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){
+  .desktop-nav{display:none!important}
+  .mobile-menu-btn{display:flex}
+  .posts-grid{grid-template-columns:1fr}
+  .blog-hero{padding:120px 1.5rem 40px}
+  .nl-card{flex-direction:column;padding:28px 22px;gap:20px}
+  .nl-form{flex-direction:column}
+  .footer-inner{flex-direction:column;gap:14px;text-align:center}
+  .post-banner{padding:20px 22px 14px}
+  .post-body{padding:4px 22px 20px}
+}
 </style>
 </head>
 <body>
+
 <header id="header"><div class="header-inner"><a href="/" class="logo"><img src="../images/logo.png" alt="USMLE300"><span class="logo-text">USMLE300</span></a><nav class="desktop-nav"><a href="/#bootcamp-value">What We Cover</a><a href="/#topics">Topics</a><a href="/#pricing">Pricing</a><a href="/games.html">Games</a><a href="/blog" class="active">Blog</a><a href="/#faq">FAQ</a><a href="/#contact" class="cta-button">Book Free Consult</a></nav><button class="mobile-menu-btn" aria-label="Menu"><span></span><span></span><span></span></button></div></header>
 <div class="mobile-nav"><a href="/#bootcamp-value">What We Cover</a><a href="/#topics">Topics</a><a href="/#pricing">Pricing</a><a href="/games.html">Games</a><a href="/blog">Blog</a><a href="/#founder">About</a><a href="/#faq">FAQ</a><a href="/#contact" class="cta-button">Book Free Consult</a></div>
 
@@ -52,45 +237,157 @@ footer{background:white;border-top:1px solid var(--cream-dark);padding:36px 1.5r
 <p class="blog-hero-sub">Study strategies, score fixes, and exam-day tactics that helped our students average 248 on Step 2 CK.</p>
 </div></section>
 
-<section class="posts-section" id="posts"><div class="posts-header"><div class="posts-title">All Articles</div><span class="posts-count">15 articles</span></div>
+<section class="posts-section" id="posts">
+<div class="posts-header"><div class="posts-title">All Articles</div><span class="posts-count">9 articles</span></div>
 <div class="posts-grid">
 
-<a href="/blog/usmle-score-calculator" class="post-card"><div class="post-thumb bg-wine"><span class="t-tag">Free Tool</span><div class="t-geo circle"></div><div class="t-geo ring"></div><span class="t-label">NBME → 3-digit score in seconds</span></div><div class="post-body"><div class="post-category">Free Tool</div><h3 class="post-title">Free USMLE Score Calculator: NBME, UWSA &amp; Free 120</h3><p class="post-excerpt">Single exam converter + multi-exam composite predictor. All NBME forms for Step 1 and Step 2 CK.</p><div class="post-footer"><span class="post-date">Mar 10</span><span class="post-read">Calculator</span></div></div></a>
+<!-- 1. Score Calculator -->
+<a href="/blog/usmle-score-calculator" class="post-card theme-wine">
+  <div class="post-banner">
+    <span class="post-tag">Free Tool</span>
+  </div>
+  <div class="post-body">
+    <h3 class="post-title">Free USMLE Score Calculator: NBME, UWSA &amp; Free 120</h3>
+    <p class="post-excerpt">Single exam converter + multi-exam composite predictor. All current NBME forms for Step 1 and Step 2 CK.</p>
+    <div class="post-footer">
+      <span class="post-date">Mar 10, 2026</span>
+      <span class="post-link">Use tool <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    </div>
+  </div>
+</a>
 
-<a href="/blog/how-to-score-250-step-2-ck" class="post-card"><div class="post-thumb bg-navy"><span class="t-tag">Step 2 CK</span><div class="t-geo line1"></div><div class="t-geo line2"></div><div class="t-geo corner"></div><span class="t-label">250+ with UWorld and strategy alone</span></div><div class="post-body"><div class="post-category">Step 2 CK</div><h3 class="post-title">How to Score 250+ on Step 2 CK: A Strategy-First Guide</h3><p class="post-excerpt">A 270-scorer's breakdown of what actually moves scores. Resources are overrated — skills are king.</p><div class="post-footer"><span class="post-date">Mar 9</span><span class="post-read">14 min</span></div></div></a>
+<!-- 2. Score 250+ Step 2 CK -->
+<a href="/blog/how-to-score-250-step-2-ck" class="post-card theme-navy">
+  <div class="post-banner">
+    <span class="post-tag">Step 2 CK</span>
+  </div>
+  <div class="post-body">
+    <h3 class="post-title">How to Score 250+ on Step 2 CK: A Strategy-First Guide</h3>
+    <p class="post-excerpt">Resources are overrated &mdash; skills are king. A 270-scorer's breakdown of what actually moves scores.</p>
+    <div class="post-footer">
+      <span class="post-date">Mar 9, 2026</span>
+      <span class="post-link">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    </div>
+  </div>
+</a>
 
-<a href="/blog/usmle-question-strategy" class="post-card"><div class="post-thumb bg-teal"><span class="t-tag">Exam Strategy</span><div class="t-geo circle"></div><div class="t-geo dot"></div><span class="t-label">The two-pass method that wins under pressure</span></div><div class="post-body"><div class="post-category">Exam Strategy</div><h3 class="post-title">The USMLE Question Strategy That Separates 230s from 260s</h3><p class="post-excerpt">Tested across dozens of timed blocks. Stop reading start-to-finish and start reading strategically.</p><div class="post-footer"><span class="post-date">Mar 7</span><span class="post-read">11 min</span></div></div></a>
+<!-- 3. Question Strategy -->
+<a href="/blog/usmle-question-strategy" class="post-card theme-teal">
+  <div class="post-banner">
+    <span class="post-tag">Exam Strategy</span>
+  </div>
+  <div class="post-body">
+    <h3 class="post-title">The USMLE Question Strategy That Separates 230s from 260s</h3>
+    <p class="post-excerpt">The two-pass method tested across dozens of timed blocks. Stop reading start-to-finish.</p>
+    <div class="post-footer">
+      <span class="post-date">Mar 7, 2026</span>
+      <span class="post-link">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    </div>
+  </div>
+</a>
 
-<a href="/blog/pass-step-1-in-6-weeks" class="post-card"><div class="post-thumb bg-plum"><span class="t-tag">Step 1</span><div class="t-geo line1"></div><div class="t-geo line2"></div><span class="t-label">42 days. One goal. Here's the plan.</span></div><div class="post-body"><div class="post-category">Step 1</div><h3 class="post-title">How to Pass USMLE Step 1 in 6 Weeks</h3><p class="post-excerpt">A ruthlessly focused 42-day plan for students with limited time. What to cut, what to keep, and when to test.</p><div class="post-footer"><span class="post-date">Mar 5</span><span class="post-read">15 min</span></div></div></a>
+<!-- 4. IMG Match Timeline -->
+<a href="/blog/img-match-timeline-2026" class="post-card theme-plum">
+  <div class="post-banner">
+    <span class="post-tag">IMGs &amp; Match</span>
+  </div>
+  <div class="post-body">
+    <h3 class="post-title">The Complete IMG Timeline for the 2026&ndash;2027 Residency Match</h3>
+    <p class="post-excerpt">ERAS, ECFMG, OET, NRMP &mdash; every deadline in order, with strategic planning advice.</p>
+    <div class="post-footer">
+      <span class="post-date">Mar 12, 2026</span>
+      <span class="post-link">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    </div>
+  </div>
+</a>
 
-<a href="/blog/uworld-vs-amboss-2026" class="post-card"><div class="post-thumb bg-amber"><span class="t-tag">Resources</span><div class="t-geo corner"></div><div class="t-geo dot"></div><span class="t-label">The honest comparison no one asked for</span></div><div class="post-body"><div class="post-category">Resource Guide</div><h3 class="post-title">UWorld vs AMBOSS in 2026: Which Do You Actually Need?</h3><p class="post-excerpt">When to use each, when to skip one, and the topics where AMBOSS beats UWorld.</p><div class="post-footer"><span class="post-date">Mar 3</span><span class="post-read">10 min</span></div></div></a>
+<!-- 5. ECFMG Pathways -->
+<a href="/blog/ecfmg-pathways-2026" class="post-card theme-amber">
+  <div class="post-banner">
+    <span class="post-tag">IMGs &amp; Match</span>
+  </div>
+  <div class="post-body">
+    <h3 class="post-title">ECFMG Certification &amp; Pathways for the 2026 Match</h3>
+    <p class="post-excerpt">Which pathway to choose, OET deadlines, processing times, and how to avoid portal delays.</p>
+    <div class="post-footer">
+      <span class="post-date">Mar 11, 2026</span>
+      <span class="post-link">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    </div>
+  </div>
+</a>
 
-<a href="/blog/uworld-score-plateau" class="post-card"><div class="post-thumb bg-slate"><span class="t-tag">Score Fix</span><div class="t-geo circle"></div><div class="t-geo line1"></div><span class="t-label">Stuck at 60%? Here's exactly why.</span></div><div class="post-body"><div class="post-category">Score Plateau</div><h3 class="post-title">Stuck at 60% on UWorld? How to Break Through Your Plateau</h3><p class="post-excerpt">The 5 most common reasons scores flatline and the review technique that fixes each one.</p><div class="post-footer"><span class="post-date">Mar 1</span><span class="post-read">12 min</span></div></div></a>
+<!-- 6. J-1 vs H-1B -->
+<a href="/blog/j1-vs-h1b-visa-img-2026" class="post-card theme-slate">
+  <div class="post-banner">
+    <span class="post-tag">IMGs &amp; Visa</span>
+  </div>
+  <div class="post-body">
+    <h3 class="post-title">J-1 vs H-1B Visa for IMGs: What You Need to Know in 2026</h3>
+    <p class="post-excerpt">Step 3 requirements, program filters, and how to maximize your visa options.</p>
+    <div class="post-footer">
+      <span class="post-date">Mar 8, 2026</span>
+      <span class="post-link">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    </div>
+  </div>
+</a>
 
-<a href="/blog/last-14-days-before-usmle" class="post-card"><div class="post-thumb bg-rose"><span class="t-tag">Exam Day</span><div class="t-geo ring"></div><div class="t-geo line2"></div><span class="t-label">Peak on test day — not the week before</span></div><div class="post-body"><div class="post-category">Exam Day</div><h3 class="post-title">The Last 14 Days Before Your USMLE: Day-by-Day Countdown</h3><p class="post-excerpt">When to take your last NBME, when to stop studying, and how to peak — not crash — on test day.</p><div class="post-footer"><span class="post-date">Feb 27</span><span class="post-read">13 min</span></div></div></a>
+<!-- 7. Last 14 Days -->
+<a href="/blog/last-14-days-before-usmle" class="post-card theme-rose">
+  <div class="post-banner">
+    <span class="post-tag">Exam Day</span>
+  </div>
+  <div class="post-body">
+    <h3 class="post-title">The Last 14 Days Before Your USMLE: Day-by-Day Countdown</h3>
+    <p class="post-excerpt">When to take your last NBME, when to stop studying, and how to peak on test day.</p>
+    <div class="post-footer">
+      <span class="post-date">Feb 27, 2026</span>
+      <span class="post-link">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    </div>
+  </div>
+</a>
 
-<a href="/blog/step-2-without-step-1-foundation" class="post-card"><div class="post-thumb bg-forest"><span class="t-tag">Step 2 CK</span><div class="t-geo corner"></div><div class="t-geo circle"></div><span class="t-label">The pass/fail gap — and how to close it</span></div><div class="post-body"><div class="post-category">Step 2 CK</div><h3 class="post-title">Step 2 CK Without a Strong Step 1 Foundation</h3><p class="post-excerpt">Step 1 went pass/fail. Now students are entering Step 2 with weaker foundations. Here's how to catch up.</p><div class="post-footer"><span class="post-date">Feb 24</span><span class="post-read">11 min</span></div></div></a>
+<!-- 8. Score Plateau -->
+<a href="/blog/uworld-score-plateau" class="post-card theme-forest">
+  <div class="post-banner">
+    <span class="post-tag">Score Fix</span>
+  </div>
+  <div class="post-body">
+    <h3 class="post-title">Stuck at 60% on UWorld? How to Break Through Your Plateau</h3>
+    <p class="post-excerpt">The 5 most common reasons scores flatline and the review technique that fixes each one.</p>
+    <div class="post-footer">
+      <span class="post-date">Mar 1, 2026</span>
+      <span class="post-link">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    </div>
+  </div>
+</a>
 
-<a href="/blog/failed-step-1-how-i-passed" class="post-card"><div class="post-thumb bg-steel"><span class="t-tag">Real Talk</span><div class="t-geo line1"></div><div class="t-geo dot"></div><span class="t-label">A failure story with a passing ending</span></div><div class="post-body"><div class="post-category">Real Talk</div><h3 class="post-title">I Failed Step 1. Here's How I Changed Everything and Passed.</h3><p class="post-excerpt">What went wrong, what changed, and what to do if you're in the same position right now.</p><div class="post-footer"><span class="post-date">Feb 20</span><span class="post-read">10 min</span></div></div></a>
+<!-- 9. IMG Match Data -->
+<a href="/blog/img-match-rate-2026" class="post-card theme-steel">
+  <div class="post-banner">
+    <span class="post-tag">IMGs &amp; Data</span>
+  </div>
+  <div class="post-body">
+    <h3 class="post-title">IMG Match Data 2026: What the Numbers Actually Mean for You</h3>
+    <p class="post-excerpt">Match rates, specialty trends, and why the latest data is actually encouraging for IMGs.</p>
+    <div class="post-footer">
+      <span class="post-date">Feb 15, 2026</span>
+      <span class="post-link">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    </div>
+  </div>
+</a>
 
-
-<a href="/blog/img-match-timeline-2026" class="post-card"><div class="post-thumb bg-navy"><span class="t-tag">IMGs</span><div class="t-geo line1"></div><div class="t-geo corner"></div><span class="t-label">Every IMG deadline for the 2026 Match</span></div><div class="post-body"><div class="post-category">IMGs &amp; Match</div><h3 class="post-title">The Complete IMG Timeline for the 2026&ndash;2027 Match</h3><p class="post-excerpt">ERAS, ECFMG, OET, NRMP &mdash; every date you need, in order, with strategic advice.</p><div class="post-footer"><span class="post-date">Mar 12</span><span class="post-read">16 min</span></div></div></a>
-
-<a href="/blog/ecfmg-pathways-2026" class="post-card"><div class="post-thumb bg-plum"><span class="t-tag">IMGs</span><div class="t-geo circle"></div><div class="t-geo dot"></div><span class="t-label">Pathways 1&ndash;6 decoded</span></div><div class="post-body"><div class="post-category">IMGs &amp; Match</div><h3 class="post-title">ECFMG Certification &amp; Pathways for 2026</h3><p class="post-excerpt">Which pathway, OET deadlines, processing times, and how to avoid portal delays.</p><div class="post-footer"><span class="post-date">Mar 11</span><span class="post-read">14 min</span></div></div></a>
-
-<a href="/blog/j1-vs-h1b-visa-img-2026" class="post-card"><div class="post-thumb bg-amber"><span class="t-tag">IMGs</span><div class="t-geo corner"></div><div class="t-geo ring"></div><span class="t-label">J-1 vs H-1B &mdash; the real breakdown</span></div><div class="post-body"><div class="post-category">IMGs &amp; Visa</div><h3 class="post-title">J-1 vs H-1B Visa for IMGs in 2026</h3><p class="post-excerpt">Step 3 requirements, program filters, and how to maximize your visa options.</p><div class="post-footer"><span class="post-date">Mar 8</span><span class="post-read">12 min</span></div></div></a>
-
-<a href="/blog/matching-with-old-yog-img" class="post-card"><div class="post-thumb bg-slate"><span class="t-tag">IMGs</span><div class="t-geo line1"></div><div class="t-geo circle"></div><span class="t-label">Old YOG? Here's how to still match.</span></div><div class="post-body"><div class="post-category">IMGs &amp; Match</div><h3 class="post-title">Matching as an Older IMG: Overcome 5+ Year YOG</h3><p class="post-excerpt">USCE, research, Step 3, and the strategy that offsets an old graduation year.</p><div class="post-footer"><span class="post-date">Mar 4</span><span class="post-read">13 min</span></div></div></a>
-
-<a href="/blog/img-failed-step-1-recovery" class="post-card"><div class="post-thumb bg-steel"><span class="t-tag">IMGs</span><div class="t-geo line1"></div><div class="t-geo dot"></div><span class="t-label">Failed as an IMG? The recovery plan.</span></div><div class="post-body"><div class="post-category">IMGs &amp; Recovery</div><h3 class="post-title">Failed Step 1 as an IMG? What to Do Next</h3><p class="post-excerpt">Don't rush the retake. Here's the strategic recovery plan and realistic match prospects.</p><div class="post-footer"><span class="post-date">Feb 28</span><span class="post-read">12 min</span></div></div></a>
-
-<a href="/blog/img-match-rate-2026" class="post-card"><div class="post-thumb bg-forest"><span class="t-tag">IMGs</span><div class="t-geo ring"></div><div class="t-geo line2"></div><span class="t-label">The data says: you can still match.</span></div><div class="post-body"><div class="post-category">IMGs &amp; Data</div><h3 class="post-title">IMG Match Data 2026: What the Numbers Mean</h3><p class="post-excerpt">Match rates, specialty trends, and why the latest data is actually encouraging.</p><div class="post-footer"><span class="post-date">Feb 15</span><span class="post-read">11 min</span></div></div></a>
-
-</div></section>
+</div>
+</section>
 
 <section class="newsletter"><div class="nl-card"><div class="nl-content"><h2>Get weekly USMLE tips in your inbox.</h2><p>One email per week: a high-yield breakdown, study tip, or strategy guide. No spam.</p><div class="nl-form"><input type="email" class="nl-input" placeholder="you@med.school.edu" aria-label="Email"><button class="nl-btn">Subscribe</button></div><p class="nl-fine">Join 2,000+ med students. Unsubscribe anytime.</p></div></div></section>
 
 <footer><div class="footer-inner"><div class="footer-left">Built by <a href="/">USMLE300</a> &middot; 97% pass rate</div><div class="footer-links"><a href="/">Home</a><a href="/games.html">Games</a><a href="/blog">Blog</a><a href="/#contact">Contact</a></div></div></footer>
-<script>window.addEventListener('scroll',function(){document.getElementById('header').classList.toggle('scrolled',window.scrollY>50)});var m=document.querySelector('.mobile-menu-btn'),n=document.querySelector('.mobile-nav');m.addEventListener('click',function(){m.classList.toggle('active');n.classList.toggle('active');document.body.classList.toggle('menu-open')});document.querySelectorAll('.mobile-nav a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('active');n.classList.remove('active');document.body.classList.remove('menu-open')})});</script>
+
+<script>
+window.addEventListener('scroll',function(){document.getElementById('header').classList.toggle('scrolled',window.scrollY>50)});
+var m=document.querySelector('.mobile-menu-btn'),n=document.querySelector('.mobile-nav');
+m.addEventListener('click',function(){m.classList.toggle('active');n.classList.toggle('active');document.body.classList.toggle('menu-open')});
+document.querySelectorAll('.mobile-nav a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('active');n.classList.remove('active');document.body.classList.remove('menu-open')})});
+</script>
 </body>
 </html>
