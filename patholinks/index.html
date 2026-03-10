@@ -522,17 +522,6 @@
 // ═══ PUZZLE DATABASE — loaded from external JSON ═══
 let PUZZLES = [];
 
-(async function init() {
-    try {
-        const resp = await fetch('../data/patholinks.json');
-        if (!resp.ok) throw new Error('Failed to load puzzle data');
-        PUZZLES = await resp.json();
-    } catch (e) {
-        console.error('Error loading puzzles:', e);
-        return;
-    }
-
-
 // ═══ STATE ═══
 let puzzle = null;
 let tiles = [];
@@ -540,11 +529,23 @@ let selected = [];
 let solved = [];
 let lives = 4;
 let mistakes = 0;
-let guessHistory = []; // array of { groupIndex or -1 for wrong }
+let guessHistory = [];
 let gameOver = false;
 let streak = parseInt(localStorage.getItem('pl_streak') || '0');
 
-document.getElementById('streakCount').textContent = streak;
+// Load puzzles on page load
+(async function init() {
+    try {
+        const resp = await fetch('./patholinks.json');
+        if (!resp.ok) throw new Error('Failed to load puzzle data');
+        PUZZLES = await resp.json();
+    } catch (e) {
+        console.error('Error loading puzzles:', e);
+        document.getElementById('tileGrid').innerHTML = '<p style="color:red;text-align:center;grid-column:span 4;padding:20px;">Failed to load puzzle. Make sure patholinks.json is in the same folder as index.html.</p>';
+        return;
+    }
+    document.getElementById('streakCount').textContent = streak;
+})();
 
 // Pick today's puzzle
 function getTodayPuzzle() {
@@ -555,6 +556,10 @@ function getTodayPuzzle() {
 
 function startGame() {
     document.getElementById('tutorialOverlay').classList.add('hidden');
+    if (!PUZZLES.length) {
+        showToast('Puzzles not loaded yet — please wait a moment.');
+        return;
+    }
     puzzle = getTodayPuzzle();
     document.getElementById('puzzleNumber').textContent = `PathoLinks #${puzzle.id}`;
 
@@ -846,8 +851,6 @@ function shuffleArray(arr) {
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
 }
-
-})();
 </script>
 </body>
 </html>
