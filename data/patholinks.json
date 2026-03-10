@@ -1,0 +1,317 @@
+[
+  {
+    "id": 1,
+    "groups": [
+      {
+        "name": "Causes of Nephrotic Syndrome",
+        "color": 1,
+        "items": [
+          "Minimal Change Disease",
+          "Membranous Nephropathy",
+          "Diabetic Nephropathy",
+          "Focal Segmental GS"
+        ]
+      },
+      {
+        "name": "Side Effects of Lithium",
+        "color": 2,
+        "items": [
+          "Nephrogenic DI",
+          "Hypothyroidism",
+          "Ebstein Anomaly",
+          "Tremor"
+        ]
+      },
+      {
+        "name": "Components of Beck's Triad",
+        "color": 3,
+        "items": [
+          "Hypotension",
+          "Muffled Heart Sounds",
+          "JVD",
+          "Pulsus Paradoxus"
+        ]
+      },
+      {
+        "name": "Findings in Wernicke Encephalopathy",
+        "color": 4,
+        "items": [
+          "Confusion",
+          "Ophthalmoplegia",
+          "Ataxia",
+          "Confabulation"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "groups": [
+      {
+        "name": "Autosomal Dominant Diseases",
+        "color": 1,
+        "items": [
+          "Marfan Syndrome",
+          "Huntington Disease",
+          "ADPKD",
+          "Familial Hypercholesterolemia"
+        ]
+      },
+      {
+        "name": "Causes of Metabolic Acidosis (↑ Anion Gap)",
+        "color": 2,
+        "items": [
+          "Methanol",
+          "Uremia",
+          "DKA",
+          "Lactic Acidosis"
+        ]
+      },
+      {
+        "name": "Features of Cushing Syndrome",
+        "color": 3,
+        "items": [
+          "Moon Facies",
+          "Buffalo Hump",
+          "Striae",
+          "Hyperglycemia"
+        ]
+      },
+      {
+        "name": "Extraintestinal Manifestations of IBD",
+        "color": 4,
+        "items": [
+          "Uveitis",
+          "Erythema Nodosum",
+          "Pyoderma Gangrenosum",
+          "Sacroiliitis"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "groups": [
+      {
+        "name": "Causes of Pancreatitis (GET SMASHHED)",
+        "color": 1,
+        "items": [
+          "Gallstones",
+          "Ethanol",
+          "Hypertriglyceridemia",
+          "Scorpion Sting"
+        ]
+      },
+      {
+        "name": "Treatments Requiring Monitoring for Agranulocytosis",
+        "color": 2,
+        "items": [
+          "Clozapine",
+          "Carbamazepine",
+          "Methimazole",
+          "Dapsone"
+        ]
+      },
+      {
+        "name": "Findings in Turner Syndrome (45,X)",
+        "color": 3,
+        "items": [
+          "Shield Chest",
+          "Coarctation of Aorta",
+          "Streak Gonads",
+          "Lymphedema"
+        ]
+      },
+      {
+        "name": "Features of Tetralogy of Fallot",
+        "color": 4,
+        "items": [
+          "VSD",
+          "Overriding Aorta",
+          "RV Hypertrophy",
+          "Pulmonary Stenosis"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "groups": [
+      {
+        "name": "Tumor Markers",
+        "color": 1,
+        "items": [
+          "AFP",
+          "CA-125",
+          "PSA",
+          "CEA"
+        ]
+      },
+      {
+        "name": "Drugs That Cause SLE-like Syndrome",
+        "color": 2,
+        "items": [
+          "Hydralazine",
+          "Procainamide",
+          "Isoniazid",
+          "Minocycline"
+        ]
+      },
+      {
+        "name": "Features of MEN 1 (3 P's)",
+        "color": 3,
+        "items": [
+          "Pituitary Adenoma",
+          "Parathyroid Hyperplasia",
+          "Pancreatic Tumor",
+          "Prolactinoma"
+        ]
+      },
+      {
+        "name": "Virchow's Triad (Thrombosis Risk)",
+        "color": 4,
+        "items": [
+          "Stasis",
+          "Endothelial Injury",
+          "Hypercoagulability",
+          "Immobilization"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "groups": [
+      {
+        "name": "Classic Buzzwords for Pheochromocytoma",
+        "color": 1,
+        "items": [
+          "Episodic Headache",
+          "Diaphoresis",
+          "Palpitations",
+          "Elevated Metanephrines"
+        ]
+      },
+      {
+        "name": "Organisms Causing Atypical Pneumonia",
+        "color": 2,
+        "items": [
+          "Mycoplasma",
+          "Chlamydophila",
+          "Legionella",
+          "Coxiella"
+        ]
+      },
+      {
+        "name": "Criteria for Major Depressive Episode",
+        "color": 3,
+        "items": [
+          "Anhedonia",
+          "Insomnia",
+          "Worthlessness",
+          "Psychomotor Retardation"
+        ]
+      },
+      {
+        "name": "Drugs That Prolong QT Interval",
+        "color": 4,
+        "items": [
+          "Sotalol",
+          "Haloperidol",
+          "Erythromycin",
+          "Ondansetron"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "groups": [
+      {
+        "name": "X-Linked Recessive Conditions",
+        "color": 1,
+        "items": [
+          "Duchenne MD",
+          "Hemophilia A",
+          "G6PD Deficiency",
+          "Fabry Disease"
+        ]
+      },
+      {
+        "name": "Causes of Macrocytic Anemia",
+        "color": 2,
+        "items": [
+          "B12 Deficiency",
+          "Folate Deficiency",
+          "Liver Disease",
+          "Reticulocytosis"
+        ]
+      },
+      {
+        "name": "Psammoma Body Associations",
+        "color": 3,
+        "items": [
+          "Papillary Thyroid CA",
+          "Meningioma",
+          "Serous Cystadenocarcinoma",
+          "Mesothelioma"
+        ]
+      },
+      {
+        "name": "Triggers for Acute Intermittent Porphyria",
+        "color": 4,
+        "items": [
+          "Alcohol",
+          "Barbiturates",
+          "Starvation",
+          "Oral Contraceptives"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "groups": [
+      {
+        "name": "Causes of Secondary Hypertension",
+        "color": 1,
+        "items": [
+          "Renal Artery Stenosis",
+          "Pheochromocytoma",
+          "Conn Syndrome",
+          "Coarctation"
+        ]
+      },
+      {
+        "name": "HLA Associations",
+        "color": 2,
+        "items": [
+          "HLA-B27",
+          "HLA-DR4",
+          "HLA-DQ2",
+          "HLA-DR2"
+        ]
+      },
+      {
+        "name": "Features of Sarcoidosis",
+        "color": 3,
+        "items": [
+          "Non-Caseating Granulomas",
+          "Bilateral Hilar LAD",
+          "Elevated ACE",
+          "Hypercalcemia"
+        ]
+      },
+      {
+        "name": "Classic Embryology Defects",
+        "color": 4,
+        "items": [
+          "Meckel Diverticulum",
+          "Thyroglossal Duct Cyst",
+          "Branchial Cleft Cyst",
+          "Patent Urachus"
+        ]
+      }
+    ]
+  }
+]
