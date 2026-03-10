@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0a0a10">
+<title>Buzzword Blitz | USMLE Speed Matching by USMLE300</title>
+<meta name="description" content="See the buzzword, name the disease. 60 seconds. How many can you get? Free USMLE pattern recognition drill.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wght@400;600;800;900&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a10;
+  --surface: #131318;
+  --surface-2: #1c1c24;
+  --surface-3: #26262f;
+  --border: rgba(255,255,255,0.06);
+  --orange: #ff6b2b;
+  --orange-dim: rgba(255,107,43,0.12);
+  --orange-glow: rgba(255,107,43,0.25);
+  --green: #00e676;
+  --green-dim: rgba(0,230,118,0.12);
+  --red: #ff3d5a;
+  --red-dim: rgba(255,61,90,0.12);
+  --gold: #f0c040;
+  --burgundy: #722F37;
+  --text: #eae8f4;
+  --text-dim: #7d7b8e;
+  --text-faint: #48475a;
+  --radius: 14px;
+}
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html, body { height:100%; overflow:hidden; }
+body {
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  display:flex; flex-direction:column;
+}
+
+.screen { display:none; flex-direction:column; height:100%; position:relative; z-index:1; }
+.screen.active { display:flex; }
+
+/* ═══ TITLE ═══ */
+.title-screen {
+  align-items:center; justify-content:center;
+  text-align:center; padding:24px;
+}
+.title-logo {
+  font-family:'Anybody',sans-serif;
+  font-weight:900; font-size:2.6rem;
+  letter-spacing:0.04em;
+  background:linear-gradient(135deg, var(--orange), #ff9b60);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text; line-height:1.1;
+}
+.title-sub {
+  color:var(--text-dim); font-size:0.95rem;
+  margin:8px 0 32px; max-width:340px; line-height:1.6;
+}
+.title-rules {
+  display:flex; gap:10px; margin-bottom:32px; flex-wrap:wrap; justify-content:center;
+}
+.title-rule {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:10px 16px;
+  font-size:0.82rem;
+  display:flex; align-items:center; gap:8px;
+  color:var(--text);
+}
+.title-rule strong { font-family:'JetBrains Mono',monospace; font-size:0.85rem; }
+.title-rule .gr { color:var(--green); }
+.title-rule .rd { color:var(--red); }
+.title-rule .or { color:var(--orange); }
+
+.mode-row {
+  display:flex; gap:8px; margin-bottom:16px;
+}
+.mode-btn {
+  padding:10px 20px; border-radius:10px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--text-dim);
+  font-family:'DM Sans',sans-serif;
+  font-weight:600; font-size:0.85rem;
+  cursor:pointer; transition:all 0.15s;
+}
+.mode-btn:hover, .mode-btn.active {
+  border-color:var(--orange);
+  color:var(--orange);
+  background:var(--orange-dim);
+}
+
+.start-btn {
+  padding:18px 60px;
+  border-radius:14px; border:none;
+  background:linear-gradient(135deg, var(--orange), #ff8c50);
+  color:#fff;
+  font-family:'Anybody',sans-serif;
+  font-weight:900; font-size:1.15rem;
+  letter-spacing:0.04em;
+  cursor:pointer; transition:all 0.2s;
+}
+.start-btn:hover { transform:translateY(-3px); box-shadow:0 10px 40px var(--orange-glow); }
+
+.best-line {
+  margin-top:16px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.75rem; color:var(--text-faint);
+}
+
+/* ═══ COUNTDOWN ═══ */
+.countdown-overlay {
+  position:fixed; inset:0;
+  background:rgba(10,10,16,0.95);
+  display:none; align-items:center; justify-content:center;
+  z-index:200;
+}
+.countdown-overlay.active { display:flex; }
+.countdown-num {
+  font-family:'Anybody',sans-serif;
+  font-weight:900; font-size:8rem;
+  color:var(--orange);
+  animation: countPop 0.5s ease;
+}
+@keyframes countPop {
+  0% { transform:scale(2); opacity:0; }
+  50% { transform:scale(0.9); opacity:1; }
+  100% { transform:scale(1); }
+}
+
+/* ═══ GAME ═══ */
+.game-screen {
+  padding:0;
+}
+.game-hud {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:14px 20px;
+  border-bottom:1px solid var(--border);
+  background:var(--surface);
+}
+.hud-timer {
+  font-family:'JetBrains Mono',monospace;
+  font-weight:700; font-size:1.4rem;
+  min-width:50px;
+}
+.hud-timer.urgent { color:var(--red); }
+.hud-score {
+  font-family:'JetBrains Mono',monospace;
+  font-weight:700; font-size:1.1rem;
+  color:var(--orange);
+}
+.hud-streak {
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.78rem; font-weight:600;
+  color:var(--gold);
+  padding:4px 10px;
+  background:rgba(240,192,64,0.1);
+  border:1px solid rgba(240,192,64,0.2);
+  border-radius:6px;
+  opacity:0;
+  transition:opacity 0.2s;
+}
+.hud-streak.visible { opacity:1; }
+
+.game-area {
+  flex:1;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  padding:24px 20px;
+  gap:28px;
+}
+
+/* Buzzword display */
+.buzzword-card {
+  width:100%; max-width:480px;
+  background:var(--surface);
+  border:2px solid var(--border);
+  border-radius:16px;
+  padding:32px 24px;
+  text-align:center;
+  transition: border-color 0.2s, background 0.2s;
+}
+.buzzword-card.correct {
+  border-color:var(--green);
+  background:var(--green-dim);
+}
+.buzzword-card.wrong {
+  border-color:var(--red);
+  background:var(--red-dim);
+  animation: shake 0.35s ease;
+}
+@keyframes shake {
+  0%,100%{transform:translateX(0)} 25%{transform:translateX(-8px)} 75%{transform:translateX(8px)}
+}
+
+.buzzword-label {
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.6rem; font-weight:600;
+  text-transform:uppercase; letter-spacing:0.15em;
+  color:var(--text-faint);
+  margin-bottom:12px;
+}
+
+.buzzword-text {
+  font-family:'Anybody',sans-serif;
+  font-weight:800;
+  font-size:clamp(1.3rem, 4.5vw, 1.8rem);
+  line-height:1.25;
+  color:var(--text);
+  min-height:2.5em;
+  display:flex; align-items:center; justify-content:center;
+}
+
+.buzzword-category {
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.6rem; font-weight:500;
+  color:var(--text-faint);
+  margin-top:10px;
+  letter-spacing:0.06em;
+}
+
+/* Answer options */
+.options-grid {
+  width:100%; max-width:480px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.opt-btn {
+  padding:14px 12px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  font-weight:600; font-size:0.85rem;
+  line-height:1.3;
+  cursor:pointer;
+  transition:all 0.12s;
+  text-align:center;
+}
+.opt-btn:hover:not(:disabled) {
+  border-color:var(--orange);
+  background:var(--orange-dim);
+}
+.opt-btn:disabled { cursor:default; opacity:0.5; }
+.opt-btn.chosen-correct {
+  border-color:var(--green); background:var(--green-dim); color:var(--green);
+}
+.opt-btn.chosen-wrong {
+  border-color:var(--red); background:var(--red-dim); color:var(--red);
+}
+.opt-btn.reveal-correct {
+  border-color:var(--green); background:var(--green-dim); color:var(--green); opacity:1;
+}
+
+/* Score flash */
+.score-flash {
+  position:fixed; top:50%; left:50%;
+  transform:translate(-50%,-50%) scale(0);
+  font-family:'Anybody',sans-serif;
+  font-weight:900; font-size:3rem;
+  pointer-events:none; z-index:100;
+  opacity:0;
+}
+.score-flash.show {
+  animation: flashPop 0.6s ease forwards;
+}
+.score-flash.good { color:var(--green); }
+.score-flash.bad { color:var(--red); }
+@keyframes flashPop {
+  0% { transform:translate(-50%,-50%) scale(0); opacity:0; }
+  30% { transform:translate(-50%,-50%) scale(1.2); opacity:1; }
+  100% { transform:translate(-50%,-50%) scale(0.8) translateY(-30px); opacity:0; }
+}
+
+/* ═══ RESULTS ═══ */
+.results-screen {
+  align-items:center; justify-content:center;
+  text-align:center; padding:24px;
+  overflow-y:auto;
+}
+.res-score {
+  font-family:'Anybody',sans-serif;
+  font-weight:900; font-size:5rem;
+  color:var(--orange); line-height:1;
+}
+.res-label {
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.65rem; font-weight:600;
+  text-transform:uppercase; letter-spacing:0.15em;
+  color:var(--text-faint);
+  margin-top:4px;
+}
+.res-rank {
+  font-family:'Anybody',sans-serif;
+  font-weight:800; font-size:1.3rem;
+  margin:12px 0 24px;
+}
+.res-stats {
+  display:flex; gap:20px; margin-bottom:28px;
+}
+.res-stat {
+  text-align:center;
+}
+.res-stat-val {
+  font-family:'JetBrains Mono',monospace;
+  font-weight:700; font-size:1.2rem;
+}
+.res-stat-lbl {
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.55rem; color:var(--text-faint);
+  text-transform:uppercase; letter-spacing:0.1em;
+}
+.res-stat-val.gr { color:var(--green); }
+.res-stat-val.rd { color:var(--red); }
+.res-stat-val.gd { color:var(--gold); }
+
+.share-box {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:14px 18px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.78rem;
+  color:var(--text-dim);
+  white-space:pre-line;
+  text-align:center;
+  max-width:320px; width:100%;
+  margin-bottom:14px;
+}
+
+.share-btn {
+  width:100%; max-width:320px;
+  padding:14px;
+  border-radius:12px; border:none;
+  background:linear-gradient(135deg, var(--orange), #ff8c50);
+  color:#fff;
+  font-family:'DM Sans',sans-serif;
+  font-weight:700; font-size:0.9rem;
+  cursor:pointer; transition:all 0.2s;
+  margin-bottom:10px;
+}
+.share-btn:hover { transform:translateY(-2px); box-shadow:0 8px 30px var(--orange-glow); }
+
+.retry-btn {
+  width:100%; max-width:320px;
+  padding:14px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:transparent;
+  color:var(--text-dim);
+  font-family:'DM Sans',sans-serif;
+  font-weight:700; font-size:0.9rem;
+  cursor:pointer; transition:all 0.15s;
+  margin-bottom:10px;
+}
+.retry-btn:hover { background:var(--surface); color:var(--text); }
+
+.cta-box {
+  background:linear-gradient(135deg, var(--burgundy), #8a3542);
+  border-radius:12px;
+  padding:18px 20px;
+  max-width:320px; width:100%;
+  margin-top:8px;
+}
+.cta-box-title {
+  font-family:'Anybody',sans-serif;
+  font-weight:800; font-size:0.95rem;
+  margin-bottom:4px;
+}
+.cta-box-text { font-size:0.78rem; color:rgba(255,255,255,0.65); margin-bottom:10px; }
+.cta-box-btn {
+  display:inline-flex; padding:8px 20px;
+  border-radius:6px; border:none;
+  background:#fff; color:var(--burgundy);
+  font-family:'DM Sans',sans-serif;
+  font-weight:700; font-size:0.8rem;
+  cursor:pointer; text-decoration:none;
+  transition:transform 0.15s;
+}
+.cta-box-btn:hover { transform:translateY(-1px); }
+
+.hidden { display:none!important; }
+</style>
+</head>
+<body>
+
+<!-- ═══ TITLE ═══ -->
+<div class="screen title-screen active" id="titleScreen">
+  <div class="title-logo">BUZZWORD BLITZ</div>
+  <div class="title-sub">See the buzzword. Pick the disease. 60 seconds on the clock.</div>
+  <div class="title-rules">
+    <div class="title-rule"><strong class="gr">+10</strong> Correct answer</div>
+    <div class="title-rule"><strong class="rd">−1s</strong> Wrong answer</div>
+    <div class="title-rule"><strong class="or">×2</strong> Streak bonus at 5+</div>
+  </div>
+  <div class="mode-row">
+    <button class="mode-btn active" onclick="setMode('all',this)">All Topics</button>
+    <button class="mode-btn" onclick="setMode('step1',this)">Step 1</button>
+    <button class="mode-btn" onclick="setMode('step2',this)">Step 2</button>
+  </div>
+  <button class="start-btn" onclick="beginCountdown()">START</button>
+  <div class="best-line" id="bestLine"></div>
+</div>
+
+<!-- ═══ COUNTDOWN ═══ -->
+<div class="countdown-overlay" id="countdownOverlay">
+  <div class="countdown-num" id="countdownNum">3</div>
+</div>
+
+<!-- ═══ GAME ═══ -->
+<div class="screen game-screen" id="gameScreen">
+  <div class="game-hud">
+    <div class="hud-timer" id="timer">60</div>
+    <div class="hud-streak" id="streakBadge">STREAK: 0</div>
+    <div class="hud-score" id="scoreDisplay">0 pts</div>
+  </div>
+  <div class="game-area">
+    <div class="buzzword-card" id="buzzCard">
+      <div class="buzzword-label">Name the disease</div>
+      <div class="buzzword-text" id="buzzText"></div>
+      <div class="buzzword-category" id="buzzCat"></div>
+    </div>
+    <div class="options-grid" id="optionsGrid"></div>
+  </div>
+</div>
+
+<!-- ═══ RESULTS ═══ -->
+<div class="screen results-screen" id="resultsScreen">
+  <div id="resContent"></div>
+</div>
+
+<!-- Score flash -->
+<div class="score-flash" id="scoreFlash"></div>
+
+<script>
+// ═══ BUZZWORD DATABASE ═══
+const BUZZWORDS = [
+  // PATHOGNOMONIC FINDINGS
+  {buzz:"Café-au-lait spots", answer:"Neurofibromatosis Type 1", cat:"Genetics", step:"step1", wrong:["Tuberous Sclerosis","McCune-Albright","Marfan Syndrome"]},
+  {buzz:"Strawberry tongue", answer:"Kawasaki Disease", cat:"Pediatrics", step:"step1", wrong:["Scarlet Fever","Toxic Shock Syndrome","Stevens-Johnson"]},
+  {buzz:"Cherry red spot on macula", answer:"Tay-Sachs Disease", cat:"Genetics", step:"step1", wrong:["Niemann-Pick","Gaucher Disease","Fabry Disease"]},
+  {buzz:"Keratin pearls", answer:"Squamous Cell Carcinoma", cat:"Pathology", step:"step1", wrong:["Adenocarcinoma","Basal Cell Carcinoma","Melanoma"]},
+  {buzz:"Owl-eye inclusions", answer:"CMV Infection", cat:"Microbiology", step:"step1", wrong:["EBV Mononucleosis","HSV Encephalitis","Adenovirus"]},
+  {buzz:"Reed-Sternberg cells", answer:"Hodgkin Lymphoma", cat:"Hematology", step:"step1", wrong:["Non-Hodgkin Lymphoma","CLL","Multiple Myeloma"]},
+  {buzz:"Auer rods", answer:"Acute Myeloid Leukemia", cat:"Hematology", step:"step1", wrong:["Acute Lymphoblastic Leukemia","CML","Hairy Cell Leukemia"]},
+  {buzz:"Birbeck granules", answer:"Langerhans Cell Histiocytosis", cat:"Pathology", step:"step1", wrong:["Sarcoidosis","Histoplasmosis","Mastocytosis"]},
+  {buzz:"Kayser-Fleischer rings", answer:"Wilson Disease", cat:"Hepatology", step:"step1", wrong:["Hemochromatosis","Primary Biliary Cholangitis","Alpha-1 Antitrypsin"]},
+  {buzz:"Negri bodies", answer:"Rabies", cat:"Microbiology", step:"step1", wrong:["Herpes Simplex","West Nile Virus","Polio"]},
+  {buzz:"Orphan Annie nuclei", answer:"Papillary Thyroid Carcinoma", cat:"Endocrine", step:"step1", wrong:["Follicular Thyroid CA","Medullary Thyroid CA","Anaplastic Thyroid CA"]},
+  {buzz:"Psammoma bodies", answer:"Papillary Thyroid Carcinoma", cat:"Pathology", step:"step1", wrong:["Meningioma","Serous Ovarian CA","Mesothelioma"]},
+  {buzz:"Koilocytes", answer:"HPV Infection", cat:"Microbiology", step:"step1", wrong:["HSV Infection","Molluscum Contagiosum","Syphilis"]},
+  {buzz:"Apple-green birefringence", answer:"Amyloidosis", cat:"Pathology", step:"step1", wrong:["Sarcoidosis","Multiple Myeloma","Gout"]},
+  {buzz:"Schistocytes on smear", answer:"TTP / HUS", cat:"Hematology", step:"step1", wrong:["Iron Deficiency Anemia","Sickle Cell Disease","Thalassemia"]},
+  {buzz:"Call-Exner bodies", answer:"Granulosa Cell Tumor", cat:"GYN", step:"step1", wrong:["Sertoli-Leydig Tumor","Dysgerminoma","Choriocarcinoma"]},
+  {buzz:"Curschmann spirals", answer:"Bronchial Asthma", cat:"Pulmonology", step:"step1", wrong:["COPD","Bronchiectasis","Cystic Fibrosis"]},
+  {buzz:"Ghon complex", answer:"Primary Tuberculosis", cat:"Pulmonology", step:"step1", wrong:["Sarcoidosis","Histoplasmosis","Lung Adenocarcinoma"]},
+
+  // CLINICAL PRESENTATIONS
+  {buzz:"Painless jaundice", answer:"Pancreatic Head Cancer", cat:"GI", step:"step2", wrong:["Cholangiocarcinoma","Gallstones","Hepatitis"]},
+  {buzz:"Butterfly rash", answer:"Systemic Lupus Erythematosus", cat:"Rheumatology", step:"step1", wrong:["Rosacea","Dermatomyositis","Sarcoidosis"]},
+  {buzz:"Kussmaul breathing", answer:"Diabetic Ketoacidosis", cat:"Endocrine", step:"step1", wrong:["Metabolic Alkalosis","COPD Exacerbation","Pulmonary Embolism"]},
+  {buzz:"Janeway lesions", answer:"Infective Endocarditis", cat:"Cardiology", step:"step1", wrong:["Rheumatic Fever","Vasculitis","SLE"]},
+  {buzz:"Trousseau sign (hand)", answer:"Hypocalcemia", cat:"Endocrine", step:"step1", wrong:["Hyperkalemia","Hyponatremia","Hypomagnesemia"]},
+  {buzz:"Chvostek sign", answer:"Hypocalcemia", cat:"Endocrine", step:"step1", wrong:["Hyperkalemia","Tetanus","Hypomagnesemia"]},
+  {buzz:"Target cells", answer:"Thalassemia", cat:"Hematology", step:"step1", wrong:["Iron Deficiency","Sickle Cell Disease","G6PD Deficiency"]},
+  {buzz:"Erythema migrans (bull's eye)", answer:"Lyme Disease", cat:"Infectious Disease", step:"step2", wrong:["Rocky Mountain Spotted Fever","Cellulitis","Erythema Multiforme"]},
+  {buzz:"Lead pipe rigidity", answer:"Parkinson Disease", cat:"Neurology", step:"step1", wrong:["Huntington Disease","Multiple Sclerosis","ALS"]},
+  {buzz:"Heberden nodes", answer:"Osteoarthritis", cat:"Rheumatology", step:"step1", wrong:["Rheumatoid Arthritis","Gout","Psoriatic Arthritis"]},
+  {buzz:"Boot-shaped heart on CXR", answer:"Tetralogy of Fallot", cat:"Cardiology", step:"step1", wrong:["Transposition of Great Arteries","Coarctation of Aorta","ASD"]},
+  {buzz:"Egg-on-a-string (CXR)", answer:"Transposition of Great Arteries", cat:"Cardiology", step:"step1", wrong:["Tetralogy of Fallot","Truncus Arteriosus","Total Anomalous Pulm Return"]},
+  {buzz:"Steeple sign on X-ray", answer:"Croup", cat:"Pediatrics", step:"step2", wrong:["Epiglottitis","Foreign Body Aspiration","Bronchiolitis"]},
+  {buzz:"Thumbprint sign on X-ray", answer:"Epiglottitis", cat:"Pediatrics", step:"step2", wrong:["Croup","Peritonsillar Abscess","Retropharyngeal Abscess"]},
+  {buzz:"Positive Gowers sign", answer:"Duchenne Muscular Dystrophy", cat:"Neurology", step:"step1", wrong:["Becker MD","Myotonic Dystrophy","Polymyositis"]},
+  {buzz:"Sandpaper rash", answer:"Scarlet Fever", cat:"Pediatrics", step:"step1", wrong:["Measles","Rubella","Fifth Disease"]},
+  {buzz:"Descending paralysis", answer:"Botulism", cat:"Microbiology", step:"step1", wrong:["Guillain-Barré","Myasthenia Gravis","Tetanus"]},
+  {buzz:"Ascending paralysis", answer:"Guillain-Barré Syndrome", cat:"Neurology", step:"step1", wrong:["Botulism","Transverse Myelitis","Poliomyelitis"]},
+  {buzz:"Painless chancre", answer:"Primary Syphilis", cat:"Infectious Disease", step:"step1", wrong:["Chancroid","HSV","Lymphogranuloma Venereum"]},
+  {buzz:"Rat-bite fever pattern", answer:"Tertiary Syphilis", cat:"Infectious Disease", step:"step1", wrong:["Malaria","Brucellosis","Leptospirosis"]},
+  {buzz:"Rice-water stools", answer:"Cholera", cat:"Microbiology", step:"step1", wrong:["Shigella","Salmonella","E. coli O157:H7"]},
+  {buzz:"Currant jelly stools", answer:"Intussusception", cat:"Pediatrics", step:"step2", wrong:["Meckel Diverticulum","Necrotizing Enterocolitis","Volvulus"]},
+  {buzz:"Albuminocytologic dissociation", answer:"Guillain-Barré Syndrome", cat:"Neurology", step:"step1", wrong:["Multiple Sclerosis","Meningitis","Encephalitis"]},
+  {buzz:"WBC casts in urine", answer:"Pyelonephritis", cat:"Nephrology", step:"step1", wrong:["Cystitis","Glomerulonephritis","Nephrotic Syndrome"]},
+  {buzz:"RBC casts in urine", answer:"Glomerulonephritis", cat:"Nephrology", step:"step1", wrong:["Pyelonephritis","UTI","Nephrotic Syndrome"]},
+  {buzz:"Waxy casts in urine", answer:"Chronic Renal Failure", cat:"Nephrology", step:"step1", wrong:["Acute Tubular Necrosis","Nephrotic Syndrome","Pyelonephritis"]},
+  {buzz:"Muddy brown casts", answer:"Acute Tubular Necrosis", cat:"Nephrology", step:"step1", wrong:["Glomerulonephritis","Pyelonephritis","Prerenal AKI"]},
+  {buzz:"Crescent formation on biopsy", answer:"Rapidly Progressive GN", cat:"Nephrology", step:"step1", wrong:["Minimal Change Disease","IgA Nephropathy","Membranous Nephropathy"]},
+  {buzz:"Non-caseating granulomas", answer:"Sarcoidosis", cat:"Pulmonology", step:"step1", wrong:["Tuberculosis","Histoplasmosis","Crohn Disease"]},
+  {buzz:"Caseating granulomas", answer:"Tuberculosis", cat:"Pulmonology", step:"step1", wrong:["Sarcoidosis","Fungal Infection","Wegener Granulomatosis"]},
+  {buzz:"Tram-track appearance (biopsy)", answer:"Membranoproliferative GN", cat:"Nephrology", step:"step1", wrong:["Membranous Nephropathy","IgA Nephropathy","Minimal Change Disease"]},
+  {buzz:"Wireloop lesion on biopsy", answer:"Lupus Nephritis", cat:"Nephrology", step:"step1", wrong:["Diabetic Nephropathy","IgA Nephropathy","FSGS"]},
+  {buzz:"Kimmelstiel-Wilson nodules", answer:"Diabetic Nephropathy", cat:"Nephrology", step:"step1", wrong:["Lupus Nephritis","Amyloidosis","MPGN"]},
+
+  // PHARMACOLOGY ASSOCIATIONS
+  {buzz:"Blue-gray skin discoloration", answer:"Amiodarone Toxicity", cat:"Pharmacology", step:"step1", wrong:["Minocycline","Silver Poisoning","Chloroquine"]},
+  {buzz:"SLE-like syndrome (drug)", answer:"Hydralazine or Procainamide", cat:"Pharmacology", step:"step1", wrong:["Methotrexate","Rituximab","Infliximab"]},
+  {buzz:"Fanconi syndrome (drug)", answer:"Tenofovir", cat:"Pharmacology", step:"step1", wrong:["Cisplatin","Gentamicin","Amphotericin B"]},
+  {buzz:"Red man syndrome", answer:"Vancomycin", cat:"Pharmacology", step:"step1", wrong:["Rifampin","Doxorubicin","Metronidazole"]},
+  {buzz:"Gray baby syndrome", answer:"Chloramphenicol", cat:"Pharmacology", step:"step1", wrong:["Tetracycline","Sulfonamide","Metronidazole"]},
+  {buzz:"Disulfiram-like reaction", answer:"Metronidazole", cat:"Pharmacology", step:"step1", wrong:["Cephalosporins","Ketoconazole","Isoniazid"]},
+  {buzz:"Corneal deposits (drug)", answer:"Amiodarone", cat:"Pharmacology", step:"step1", wrong:["Chloroquine","Tamoxifen","Ethambutol"]},
+  {buzz:"Pulmonary fibrosis (drug)", answer:"Bleomycin", cat:"Pharmacology", step:"step1", wrong:["Amiodarone","Methotrexate","Nitrofurantoin"]},
+  {buzz:"Hemorrhagic cystitis (drug)", answer:"Cyclophosphamide", cat:"Pharmacology", step:"step1", wrong:["Methotrexate","Cisplatin","Ifosfamide"]},
+  {buzz:"Gingival hyperplasia (drug)", answer:"Phenytoin", cat:"Pharmacology", step:"step1", wrong:["Carbamazepine","Valproate","Cyclosporine"]},
+];
+
+// ═══ STATE ═══
+let mode = 'all';
+let questions = [];
+let qIdx = 0;
+let score = 0;
+let correct = 0;
+let wrong = 0;
+let streak = 0;
+let bestStreak = 0;
+let timeLeft = 60.0;
+let timer = null;
+let gameActive = false;
+let best = parseInt(localStorage.getItem('bb_best') || '0');
+
+if (best > 0) document.getElementById('bestLine').innerHTML = `Personal best: <strong>${best}</strong>`;
+
+function setMode(m, el) {
+  mode = m;
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// ═══ COUNTDOWN ═══
+function beginCountdown() {
+  const overlay = document.getElementById('countdownOverlay');
+  const num = document.getElementById('countdownNum');
+  overlay.classList.add('active');
+  let count = 3;
+  num.textContent = count;
+
+  const iv = setInterval(() => {
+    count--;
+    if (count <= 0) {
+      clearInterval(iv);
+      overlay.classList.remove('active');
+      startGame();
+    } else {
+      num.textContent = count;
+      num.style.animation = 'none';
+      void num.offsetWidth;
+      num.style.animation = 'countPop 0.5s ease';
+    }
+  }, 700);
+}
+
+// ═══ START ═══
+function startGame() {
+  let pool = mode === 'all' ? [...BUZZWORDS] :
+             mode === 'step1' ? BUZZWORDS.filter(b => b.step === 'step1') :
+             BUZZWORDS.filter(b => b.step === 'step2');
+
+  // Shuffle
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  questions = pool;
+  qIdx = 0; score = 0; correct = 0; wrong = 0; streak = 0; bestStreak = 0;
+  timeLeft = 60.0; gameActive = true;
+
+  document.getElementById('titleScreen').classList.remove('active');
+  document.getElementById('gameScreen').classList.add('active');
+
+  updateHUD();
+  showBuzzword();
+  startTimer();
+}
+
+function startTimer() {
+  clearInterval(timer);
+  timer = setInterval(() => {
+    timeLeft -= 0.1;
+    if (timeLeft <= 0) {
+      timeLeft = 0;
+      clearInterval(timer);
+      gameActive = false;
+      endGame();
+    }
+    updateTimerDisplay();
+  }, 100);
+}
+
+function updateTimerDisplay() {
+  const el = document.getElementById('timer');
+  el.textContent = Math.ceil(timeLeft);
+  el.classList.toggle('urgent', timeLeft <= 10);
+}
+
+function updateHUD() {
+  document.getElementById('scoreDisplay').textContent = score + ' pts';
+  const sb = document.getElementById('streakBadge');
+  if (streak >= 3) {
+    sb.textContent = 'STREAK: ' + streak + (streak >= 5 ? ' (×2)' : '');
+    sb.classList.add('visible');
+  } else {
+    sb.classList.remove('visible');
+  }
+}
+
+// ═══ SHOW BUZZWORD ═══
+function showBuzzword() {
+  if (qIdx >= questions.length) {
+    // Reshuffle if we run out
+    for (let i = questions.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [questions[i], questions[j]] = [questions[j], questions[i]];
+    }
+    qIdx = 0;
+  }
+
+  const q = questions[qIdx];
+  const card = document.getElementById('buzzCard');
+  card.className = 'buzzword-card';
+  document.getElementById('buzzText').textContent = q.buzz;
+  document.getElementById('buzzCat').textContent = q.cat;
+
+  // Build options: correct + 3 wrong, shuffled
+  let opts = [q.answer, ...q.wrong.slice(0,3)];
+  for (let i = opts.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [opts[i], opts[j]] = [opts[j], opts[i]];
+  }
+
+  const grid = document.getElementById('optionsGrid');
+  grid.innerHTML = '';
+  opts.forEach((o, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'opt-btn';
+    btn.textContent = o;
+    btn.onclick = () => chooseAnswer(i, o === q.answer, q.answer);
+    grid.appendChild(btn);
+  });
+}
+
+function chooseAnswer(idx, isCorrect, correctAnswer) {
+  if (!gameActive) return;
+
+  const btns = document.querySelectorAll('.opt-btn');
+  btns.forEach(b => b.disabled = true);
+  const card = document.getElementById('buzzCard');
+
+  if (isCorrect) {
+    btns[idx].classList.add('chosen-correct');
+    card.classList.add('correct');
+    streak++;
+    if (streak > bestStreak) bestStreak = streak;
+    const mult = streak >= 5 ? 2 : 1;
+    const pts = 10 * mult;
+    score += pts;
+    correct++;
+    flashScore('+' + pts, true);
+  } else {
+    btns[idx].classList.add('chosen-wrong');
+    // Show correct
+    btns.forEach(b => { if (b.textContent === correctAnswer) b.classList.add('reveal-correct'); });
+    card.classList.add('wrong');
+    streak = 0;
+    wrong++;
+    timeLeft = Math.max(0, timeLeft - 1);
+    flashScore('-1s', false);
+  }
+
+  updateHUD();
+
+  // Next after brief pause
+  setTimeout(() => {
+    if (!gameActive) return;
+    qIdx++;
+    showBuzzword();
+  }, isCorrect ? 300 : 600);
+}
+
+function flashScore(text, good) {
+  const el = document.getElementById('scoreFlash');
+  el.textContent = text;
+  el.className = 'score-flash ' + (good ? 'good' : 'bad');
+  void el.offsetWidth;
+  el.classList.add('show');
+}
+
+// ═══ END ═══
+function endGame() {
+  document.getElementById('gameScreen').classList.remove('active');
+  document.getElementById('resultsScreen').classList.add('active');
+
+  if (score > best) {
+    best = score;
+    localStorage.setItem('bb_best', best.toString());
+  }
+
+  const total = correct + wrong;
+  const accuracy = total > 0 ? Math.round((correct / total) * 100) : 0;
+
+  let rank, rankColor;
+  if (score >= 300) { rank = 'LEGENDARY'; rankColor = '#ffd700'; }
+  else if (score >= 200) { rank = 'EXPERT'; rankColor = 'var(--orange)'; }
+  else if (score >= 120) { rank = 'SHARP'; rankColor = 'var(--green)'; }
+  else if (score >= 60) { rank = 'SOLID'; rankColor = 'var(--text)'; }
+  else { rank = 'KEEP GRINDING'; rankColor = 'var(--text-dim)'; }
+
+  const shareText = `Buzzword Blitz ⚡ ${score} pts\n${correct}/${total} correct · ${accuracy}% · best streak ${bestStreak}\nusmlegames.com/buzzwordblitz`;
+
+  document.getElementById('resContent').innerHTML = `
+    <div class="res-score">${score}</div>
+    <div class="res-label">Points</div>
+    <div class="res-rank" style="color:${rankColor}">${rank}</div>
+    <div class="res-stats">
+      <div class="res-stat">
+        <div class="res-stat-val gr">${correct}</div>
+        <div class="res-stat-lbl">Correct</div>
+      </div>
+      <div class="res-stat">
+        <div class="res-stat-val rd">${wrong}</div>
+        <div class="res-stat-lbl">Wrong</div>
+      </div>
+      <div class="res-stat">
+        <div class="res-stat-val gd">${bestStreak}</div>
+        <div class="res-stat-lbl">Best Streak</div>
+      </div>
+      <div class="res-stat">
+        <div class="res-stat-val">${accuracy}%</div>
+        <div class="res-stat-lbl">Accuracy</div>
+      </div>
+    </div>
+    <div class="share-box">${shareText}</div>
+    <button class="share-btn" onclick="copyShare()">Copy Result</button>
+    <button class="retry-btn" onclick="retry()">Play Again</button>
+    <div class="cta-box">
+      <div class="cta-box-title">Weak on buzzwords?</div>
+      <div class="cta-box-text">Our tutors drill high-yield associations until they're automatic.</div>
+      <a href="https://usmle300.com" target="_blank" class="cta-box-btn">Get Tutoring</a>
+    </div>
+  `;
+}
+
+function copyShare() {
+  const total = correct + wrong;
+  const accuracy = total > 0 ? Math.round((correct / total) * 100) : 0;
+  const text = `Buzzword Blitz ⚡ ${score} pts\n${correct}/${total} correct · ${accuracy}% · best streak ${bestStreak}\nusmlegames.com/buzzwordblitz`;
+  navigator.clipboard.writeText(text).catch(() => {});
+  document.querySelector('.share-btn').textContent = 'Copied!';
+  setTimeout(() => { document.querySelector('.share-btn').textContent = 'Copy Result'; }, 1500);
+}
+
+function retry() {
+  document.getElementById('resultsScreen').classList.remove('active');
+  document.getElementById('titleScreen').classList.add('active');
+  if (best > 0) document.getElementById('bestLine').innerHTML = `Personal best: <strong>${best}</strong>`;
+}
+
+// Keyboard support
+document.addEventListener('keydown', e => {
+  if (!gameActive) return;
+  const map = {'1':0,'2':1,'3':2,'4':3};
+  if (map[e.key] !== undefined) {
+    const btns = document.querySelectorAll('.opt-btn:not(:disabled)');
+    if (btns[map[e.key]]) btns[map[e.key]].click();
+  }
+});
+</script>
+</body>
+</html>
