@@ -52,7 +52,7 @@
     .hero-content{animation:fadeInUp 0.8s ease-out}
     @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
     .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(114,47,55,0.1);color:var(--burgundy);padding:0.5rem 1rem;border-radius:50px;font-size:0.8rem;font-weight:600;margin-bottom:1.25rem}
-    .hero-badge::before{content:'●';color:var(--success);animation:pulse 2s infinite}
+    .hero-badge::before{content:'';margin-right:-0.25rem}
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
     .hero h1{font-size:clamp(1.85rem,5vw,3.25rem);color:var(--charcoal);margin-bottom:1.25rem}
     .hero h1 span{color:var(--burgundy)}
@@ -86,9 +86,7 @@
     .target-feature{color:rgba(255,255,255,0.7);font-size:0.75rem;display:flex;align-items:center;gap:0.35rem}
     .target-feature::before{content:'✓';color:var(--gold);font-weight:bold}
     
-    .guarantee-banner{background:var(--burgundy);color:white;padding:1rem 1.5rem;text-align:center}
-    .guarantee-banner p{max-width:800px;margin:0 auto;font-size:0.95rem}
-    .guarantee-banner strong{color:var(--gold)}
+
     
     section{padding:70px 1.5rem}
     .section-inner{max-width:1200px;margin:0 auto}
@@ -241,6 +239,45 @@
     .form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--burgundy)}
     .modal .cta-button{width:100%;margin-top:0.5rem}
 
+    /* ── Reviews / Google-style carousel ── */
+    .reviews{background:var(--cream-dark);padding:60px 1.5rem}
+    .reviews-inner{max-width:1200px;margin:0 auto}
+    .reviews-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;gap:1rem;flex-wrap:wrap}
+    .reviews-summary{display:flex;align-items:center;gap:0.75rem}
+    .g-logo{display:flex;align-items:center;gap:0;font-size:1.35rem;font-weight:700;letter-spacing:-0.02em;font-family:Arial,sans-serif}
+    .g-logo span.g-G{color:#4285F4}.g-logo span.g-o1{color:#EA4335}.g-logo span.g-o2{color:#FBBC05}.g-logo span.g-g{color:#4285F4}.g-logo span.g-l{color:#34A853}.g-logo span.g-e{color:#EA4335}
+    .g-logo-suffix{color:#5f6368;font-size:0.78rem;font-weight:400;margin-left:0.35rem;font-family:'DM Sans',sans-serif;letter-spacing:0}
+    .reviews-divider{width:1px;height:36px;background:rgba(0,0,0,0.15);margin:0 0.25rem}
+    .reviews-score-block{display:flex;align-items:center;gap:0.5rem}
+    .reviews-big-score{font-family:Arial,sans-serif;font-size:1.6rem;font-weight:700;color:#202124;line-height:1}
+    .reviews-stars-row{display:flex;flex-direction:column;gap:0.1rem}
+    .reviews-stars-row .stars{color:#FBBC05;font-size:0.95rem;letter-spacing:0.02em;line-height:1}
+    .reviews-count{font-size:0.72rem;color:#5f6368;line-height:1}
+    .reviews-nav{display:flex;gap:0.5rem}
+    .reviews-nav button{width:38px;height:38px;border-radius:50%;border:1.5px solid rgba(0,0,0,0.15);background:white;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--charcoal);transition:all 0.2s;flex-shrink:0}
+    .reviews-nav button:hover{border-color:var(--burgundy);color:var(--burgundy)}
+    .reviews-nav button:disabled{opacity:0.3;cursor:default}
+
+    .reviews-track-wrap{overflow:hidden;position:relative}
+    .reviews-track{display:flex;gap:1rem;transition:transform 0.45s cubic-bezier(0.4,0,0.2,1);will-change:transform}
+    .review-card{flex:0 0 calc(33.333% - 0.67rem);background:white;border-radius:12px;padding:1.4rem 1.5rem;box-shadow:0 1px 8px rgba(0,0,0,0.08);border:1px solid rgba(0,0,0,0.06);display:flex;flex-direction:column;gap:0.7rem}
+    .review-card-top{display:flex;align-items:center;gap:0.75rem}
+    .review-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;color:white;flex-shrink:0}
+    .review-author-block{display:flex;flex-direction:column}
+    .review-author-name{font-weight:600;font-size:0.9rem;color:var(--charcoal)}
+    .review-author-school{font-size:0.75rem;color:var(--charcoal-light);line-height:1.3}
+    .review-card-stars{color:#FBBC05;font-size:0.85rem;letter-spacing:0.05em}
+    .review-body{font-size:0.9rem;color:#3d3d3d;line-height:1.65;flex:1}
+    .review-body.short{font-size:0.95rem;font-weight:500;color:var(--charcoal)}
+    .review-date{font-size:0.75rem;color:var(--charcoal-light);margin-top:auto}
+
+    .reviews-dots{display:flex;justify-content:center;gap:0.4rem;margin-top:1.25rem}
+    .reviews-dot{width:7px;height:7px;border-radius:50%;background:rgba(0,0,0,0.18);border:none;padding:0;cursor:pointer;transition:all 0.2s}
+    .reviews-dot.active{background:var(--burgundy);width:20px;border-radius:4px}
+
+    @media(max-width:900px){.review-card{flex:0 0 calc(50% - 0.5rem)}}
+    @media(max-width:580px){.review-card{flex:0 0 100%}.reviews-top{flex-direction:column;align-items:flex-start}}
+
     @media(max-width:1024px){
       .hero-inner{grid-template-columns:1fr}
       .hero-visual{max-width:400px;margin:0 auto}
@@ -368,9 +405,156 @@
     </div>
   </section>
 
-  <div class="guarantee-banner">
-    <p><strong>Our Promise:</strong> Complete the full series, do the homework, show up to every session. If you do not pass, we work with you for free until you do.</p>
-  </div>
+
+
+  <section class="reviews" id="reviews">
+    <div class="reviews-inner">
+      <div class="reviews-top">
+        <div class="reviews-summary">
+          <div class="g-logo">
+            <span class="g-G">G</span><span class="g-o1">o</span><span class="g-o2">o</span><span class="g-g">g</span><span class="g-l">l</span><span class="g-e">e</span>
+            <span class="g-logo-suffix">Reviews</span>
+          </div>
+          <div class="reviews-divider"></div>
+          <div class="reviews-score-block">
+            <div class="reviews-big-score">4.8</div>
+            <div class="reviews-stars-row">
+              <span class="stars">★★★★★</span>
+              <span class="reviews-count">Based on 47 reviews</span>
+            </div>
+          </div>
+        </div>
+        <div class="reviews-nav">
+          <button id="revPrev" aria-label="Previous">&#8592;</button>
+          <button id="revNext" aria-label="Next">&#8594;</button>
+        </div>
+      </div>
+
+      <div class="reviews-track-wrap">
+        <div class="reviews-track" id="reviewsTrack">
+
+          <div class="review-card">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#4285F4">P</div>
+              <div class="review-author-block">
+                <span class="review-author-name">Priya S.</span>
+                <span class="review-author-school">Columbia Vagelos P&S</span>
+              </div>
+            </div>
+            <div class="review-card-stars">★★★★★</div>
+            <p class="review-body short">Passed Step 2 CK on my first attempt. Cannot recommend this enough.</p>
+            <span class="review-date">2 weeks ago</span>
+          </div>
+
+          <div class="review-card">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#E91E63">M</div>
+              <div class="review-author-block">
+                <span class="review-author-name">Marcus T.</span>
+                <span class="review-author-school">Michigan State UCOM (DO)</span>
+              </div>
+            </div>
+            <div class="review-card-stars">★★★★★</div>
+            <p class="review-body">Failed Step 1 twice before finding this. Both times I thought the problem was not knowing enough. Turns out I had no system for working through questions under pressure. Passed with a comfortable margin on attempt three.</p>
+            <span class="review-date">1 month ago</span>
+          </div>
+
+          <div class="review-card">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#34A853">A</div>
+              <div class="review-author-block">
+                <span class="review-author-name">Aisha N.</span>
+                <span class="review-author-school">IMG, University of Lagos</span>
+              </div>
+            </div>
+            <div class="review-card-stars">★★★★★</div>
+            <p class="review-body">The cardiology and nephrology sessions were outstanding. The frameworks click in a way that Pathoma and Sketchy never did for me. Already booked three more topics.</p>
+            <span class="review-date">3 weeks ago</span>
+          </div>
+
+          <div class="review-card">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#FF6D00">D</div>
+              <div class="review-author-block">
+                <span class="review-author-name">Daniel W.</span>
+                <span class="review-author-school">Duke School of Medicine</span>
+              </div>
+            </div>
+            <div class="review-card-stars">★★★★★</div>
+            <p class="review-body short">Really good tutor. Explains things clearly and keeps you accountable.</p>
+            <span class="review-date">1 month ago</span>
+          </div>
+
+          <div class="review-card">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#9C27B0">R</div>
+              <div class="review-author-block">
+                <span class="review-author-name">Rodrigo M.</span>
+                <span class="review-author-school">IMG, Univ. Autonoma de Guadalajara</span>
+              </div>
+            </div>
+            <div class="review-card-stars">★★★★★</div>
+            <p class="review-body">As an IMG studying alone, I was struggling with motivation and structure. The small group format fixed both at once. You show up prepared because other people are counting on you. The biostats session saved me on at least five questions.</p>
+            <span class="review-date">6 weeks ago</span>
+          </div>
+
+          <div class="review-card">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#00897B">T</div>
+              <div class="review-author-block">
+                <span class="review-author-name">Tanya K.</span>
+                <span class="review-author-school">Penn Perelman School of Medicine</span>
+              </div>
+            </div>
+            <div class="review-card-stars">★★★★★</div>
+            <p class="review-body">Went from a 218 on my shelf to a 247 on the actual exam. The strategy session is what moved the needle. I was reading every question the wrong way.</p>
+            <span class="review-date">2 months ago</span>
+          </div>
+
+          <div class="review-card">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#F4511E">J</div>
+              <div class="review-author-block">
+                <span class="review-author-name">James O.</span>
+                <span class="review-author-school">Philadelphia College of Osteopathic Medicine</span>
+              </div>
+            </div>
+            <div class="review-card-stars">★★★★★</div>
+            <p class="review-body short">Best $29 I spent during dedicated. Wish I had found this earlier.</p>
+            <span class="review-date">5 weeks ago</span>
+          </div>
+
+          <div class="review-card">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#1565C0">S</div>
+              <div class="review-author-block">
+                <span class="review-author-name">Sophie L.</span>
+                <span class="review-author-school">Royal College of Surgeons in Ireland</span>
+              </div>
+            </div>
+            <div class="review-card-stars">★★★★★</div>
+            <p class="review-body">The mnemonics and high-yield review session is one of the best uses of two hours I had during all of dedicated. Dense but organized in a way that actually sticks. Still using those frameworks three months later.</p>
+            <span class="review-date">2 months ago</span>
+          </div>
+
+          <div class="review-card">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#558B2F">K</div>
+              <div class="review-author-block">
+                <span class="review-author-name">Kevin H.</span>
+                <span class="review-author-school">Stanford School of Medicine</span>
+              </div>
+            </div>
+            <div class="review-card-stars">★★★★★</div>
+            <p class="review-body">Good for people who already have UWorld and First Aid and just need someone to help organize it all. The framework approach fills a gap that no resource does on its own.</p>
+            <span class="review-date">7 weeks ago</span>
+          </div>
+
+        </div>
+      </div>
+      <div class="reviews-dots" id="reviewsDots"></div>
+    </div>
+  </section>
 
   <section class="bootcamp-value" id="bootcamp-value">
     <div class="section-inner">
@@ -758,6 +942,64 @@
     topicModal.addEventListener('click',function(e){if(e.target===topicModal||e.target.classList.contains('topic-modal-close')){topicModal.classList.remove('active');document.body.classList.remove('menu-open')}});
     
     document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var h=this.getAttribute('href');if(h.startsWith('#')&&h.length>1){e.preventDefault();var t=document.querySelector(h);if(t){t.scrollIntoView({behavior:'smooth'});menuBtn.classList.remove('active');mobileNav.classList.remove('active');document.body.classList.remove('menu-open')}}})});
+
+    // Reviews carousel
+    (function(){
+      var track = document.getElementById('reviewsTrack');
+      var dotsWrap = document.getElementById('reviewsDots');
+      var prevBtn = document.getElementById('revPrev');
+      var nextBtn = document.getElementById('revNext');
+      if(!track) return;
+
+      var cards = track.querySelectorAll('.review-card');
+      var total = cards.length;
+      var current = 0;
+
+      function getVisible(){
+        var w = track.parentElement.offsetWidth;
+        if(w < 581) return 1;
+        if(w < 901) return 2;
+        return 3;
+      }
+
+      function maxIndex(){ return Math.max(0, total - getVisible()); }
+
+      function buildDots(){
+        dotsWrap.innerHTML = '';
+        var pages = maxIndex() + 1;
+        for(var i=0;i<pages;i++){
+          var d = document.createElement('button');
+          d.className = 'reviews-dot' + (i===current?' active':'');
+          d.dataset.i = i;
+          d.addEventListener('click', function(){ go(+this.dataset.i); });
+          dotsWrap.appendChild(d);
+        }
+      }
+
+      function go(idx){
+        var max = maxIndex();
+        current = Math.max(0, Math.min(idx, max));
+        var cardW = cards[0].offsetWidth;
+        var gap = 16;
+        track.style.transform = 'translateX(-' + (current * (cardW + gap)) + 'px)';
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current >= max;
+        dotsWrap.querySelectorAll('.reviews-dot').forEach(function(d,i){ d.classList.toggle('active', i===current); });
+      }
+
+      prevBtn.addEventListener('click', function(){ go(current - 1); });
+      nextBtn.addEventListener('click', function(){ go(current + 1); });
+
+      // Auto-advance every 5s
+      var timer = setInterval(function(){
+        go(current >= maxIndex() ? 0 : current + 1);
+      }, 5000);
+      track.parentElement.addEventListener('mouseenter', function(){ clearInterval(timer); });
+
+      buildDots();
+      go(0);
+      window.addEventListener('resize', function(){ buildDots(); go(0); });
+    })();
   </script>
 </body>
 </html>
