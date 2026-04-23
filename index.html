@@ -86,8 +86,6 @@
     .target-feature{color:rgba(255,255,255,0.7);font-size:0.75rem;display:flex;align-items:center;gap:0.35rem}
     .target-feature::before{content:'✓';color:var(--gold);font-weight:bold}
     
-
-    
     section{padding:70px 1.5rem}
     .section-inner{max-width:1200px;margin:0 auto}
     .section-header{text-align:center;margin-bottom:3rem}
@@ -185,7 +183,7 @@
     .pricing-premium-cta .cta-button:hover{background:#d4a849;border-color:#d4a849}
     
     .founder{background:var(--cream)}
-    .founder-content{display:grid;grid-template-columns:280px 1fr;gap:3rem;align-items:center}
+    .founder-content{display:grid;grid-template-columns:280px 1fr;gap:3rem;align-items:start}
     .founder-image{position:relative}
     .founder-image img{width:100%;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.1)}
     .founder-image::before{content:'';position:absolute;top:-12px;left:-12px;right:12px;bottom:12px;background:var(--burgundy);border-radius:16px;z-index:-1;opacity:0.1}
@@ -735,24 +733,26 @@
   <section class="founder" id="founder">
     <div class="section-inner">
       <div class="founder-content">
-        <div class="founder-image">
-          <img src="images/instructor.jpg" alt="Founder">
-          <div class="score-badge">
-            <div class="score">267</div>
-            <div class="label">Step 2 CK Score</div>
+        <div class="founder-sidebar">
+          <div class="founder-image">
+            <img src="images/instructor.jpg" alt="Founder">
+            <div class="score-badge">
+              <div class="score">267</div>
+              <div class="label">Step 2 CK Score</div>
+            </div>
+          </div>
+          <div class="score-report-block" style="margin-top:2.5rem; text-align:center;">
+            <div style="font-size:0.8rem;font-weight:600;color:var(--burgundy);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.6rem">Verified Score Report</div>
+            <a href="images/score-report.png" target="_blank" style="display:inline-block;border-radius:8px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,0.12);border:2px solid var(--cream-dark);transition:box-shadow 0.2s" onmouseover="this.style.boxShadow='0 6px 20px rgba(114,47,55,0.2)'" onmouseout="this.style.boxShadow='0 4px 14px rgba(0,0,0,0.12)'">
+              <img src="images/score-report.png" alt="USMLE Step 2 CK Score Report — 267" style="width:100%;max-width:220px;display:block;border-radius:6px;margin:0 auto">
+            </a>
+            <p style="font-size:0.75rem;color:var(--charcoal-light);margin-top:0.4rem">Click to enlarge · USMLE Step 2 CK · June 2025</p>
           </div>
         </div>
         <div class="founder-info">
           <h3>Built by Someone Who Has Been There</h3>
           <p class="founder-title">Founder & Lead Instructor</p>
           <p class="founder-bio">After years of tutoring medical students, I saw the same pattern: students drowning in resources but lacking a framework to organize it all. They did not need more content. They needed structure, accountability, and someone to practice with.</p>
-          <div style="margin-bottom:1.25rem">
-            <div style="font-size:0.8rem;font-weight:600;color:var(--burgundy);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.6rem">Verified Score Report</div>
-            <a href="images/score-report.png" target="_blank" style="display:inline-block;border-radius:8px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,0.12);border:2px solid var(--cream-dark);transition:box-shadow 0.2s" onmouseover="this.style.boxShadow='0 6px 20px rgba(114,47,55,0.2)'" onmouseout="this.style.boxShadow='0 4px 14px rgba(0,0,0,0.12)'">
-              <img src="images/score-report.png" alt="USMLE Step 2 CK Score Report — 267" style="width:220px;display:block;border-radius:6px">
-            </a>
-            <p style="font-size:0.75rem;color:var(--charcoal-light);margin-top:0.4rem">Click to enlarge · USMLE Step 2 CK · June 2025</p>
-          </div>
           <div class="founder-philosophy">
             <p>"The students who succeed are not the ones with the most resources. They are the ones who show up consistently, practice questions actively, and have someone catching their blind spots."</p>
           </div>
