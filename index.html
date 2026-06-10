@@ -500,6 +500,7 @@
   </section>
 
   <section id="plan">
+    <span id="topics" style="position:relative;top:-80px" aria-hidden="true"></span>
     <div class="section-inner">
       <div class="sec-head">
         <span class="sec-num">04 · The Plan</span>
@@ -535,6 +536,7 @@
   </section>
 
   <section class="rx" id="rx">
+    <span id="pricing" style="position:relative;top:-80px" aria-hidden="true"></span>
     <div class="section-inner">
       <div class="sec-head">
         <span class="sec-num">05 · Rx</span>
@@ -612,6 +614,7 @@
   </section>
 
   <section id="attending">
+    <span id="founder" style="position:relative;top:-80px" aria-hidden="true"></span>
     <div class="section-inner">
       <div class="sec-head">
         <span class="sec-num">06 · Attending</span>
@@ -807,6 +810,8 @@
     topicModal.addEventListener('click',function(e){if(e.target===topicModal||e.target.classList.contains('topic-modal-close')){topicModal.classList.remove('active');document.body.classList.remove('menu-open')}});
 
     document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var h=this.getAttribute('href');if(h.startsWith('#')&&h.length>1&&h!=='#contact'){e.preventDefault();var t=document.querySelector(h);if(t){t.scrollIntoView({behavior:'smooth'});menuBtn.classList.remove('active');mobileNav.classList.remove('active');document.body.classList.remove('menu-open')}}})});
+
+    if(window.location.hash==='#contact'){openContactModal()}
   </script>
 </body>
 </html>
