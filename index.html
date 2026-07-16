@@ -135,14 +135,6 @@ section{padding:100px 0;position:relative;scroll-margin-top:70px}
 .gtype{font-family:var(--mono);font-size:0.6rem;color:var(--text-3)}
 
 /* stripe-style flow band */
-.planner-cta{border-bottom:1px solid var(--line)}
-.pstrip{display:flex;align-items:center;justify-content:space-between;gap:2rem;background:var(--bg-2);border:1px solid var(--line);border-radius:16px;padding:1.8rem 2rem;text-decoration:none;transition:border-color .2s,transform .2s;margin:64px 0}
-.pstrip:hover{border-color:var(--accent);transform:translateY(-2px)}
-.pstrip .pk{font-family:var(--mono);font-size:0.66rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent-2);margin-bottom:0.5rem}
-.pstrip h3{font-family:var(--display);font-size:1.4rem;font-weight:600;margin-bottom:0.4rem;color:var(--text);letter-spacing:-0.02em}
-.pstrip p{color:var(--text-2);font-size:0.95rem;max-width:62ch;line-height:1.6}
-.pstrip .prun{font-family:var(--mono);font-weight:600;font-size:0.85rem;color:var(--accent);white-space:nowrap;flex-shrink:0}
-@media(max-width:768px){.pstrip{flex-direction:column;align-items:flex-start;gap:1rem;margin:40px 0}}
 .flow-band{position:relative;height:260px;overflow:hidden;background:var(--panel);display:flex;align-items:center;justify-content:center}
 .flow-band .blob{position:absolute;border-radius:50%;filter:blur(54px);opacity:0.9;mix-blend-mode:screen;will-change:transform}
 .flow-band .b1{width:520px;height:520px;background:#8A2F38;top:-160px;left:-40px;animation:drift1 13s ease-in-out infinite}
@@ -256,7 +248,6 @@ section{padding:70px 0}
 <nav class="desk">
 <a href="#games">Games</a>
 <a href="#diagnostic">Diagnostic</a>
-<a href="planner.html">Planner</a>
 <a href="#tutoring">Tutoring</a>
 <a href="#topics">Topics</a>
 <a href="#pricing">Pricing</a>
@@ -273,7 +264,6 @@ section{padding:70px 0}
 <nav class="mnav">
 <a href="#games">Games</a>
 <a href="#diagnostic">Diagnostic</a>
-<a href="planner.html">Planner</a>
 <a href="#tutoring">Tutoring</a>
 <a href="#topics">Topics</a>
 <a href="#pricing">Pricing</a>
@@ -299,7 +289,7 @@ section{padding:70px 0}
 <div class="console-copy">
 <div class="tagline">Free · no signup</div>
 <h2>Analyze my exam approach</h2>
-<p>This walks you through five different ways of reading a question and shows you which one actually works best for you. Most people come out of it realizing they've been defaulting to an approach that was quietly costing them.</p>
+<p>It walks you through five different ways of reading and working through a question — using plain, non-medical passages, so it's only testing how you find the details and reason, not what you already know. You get back the approach that fits you best, and most people find they've been defaulting to one that quietly costs them.</p>
 <div class="readout">
 <div>STRATEGIES <b>5</b></div>
 <div>TIME <b>~15:00</b></div>
@@ -318,20 +308,6 @@ section{padding:70px 0}
 </div>
 </section>
 
-<!-- PLANNER CTA -->
-<div class="planner-cta">
-<div class="wrap">
-<a href="planner.html" class="pstrip reveal">
-<div>
-<div class="pk">Free tool · no signup</div>
-<h3>Build your study plan</h3>
-<p>Set your test date, target, and the resources you're using — get an editable week-by-week schedule, with practice tests spaced out and Divine Intervention picks slotted in.</p>
-</div>
-<span class="prun">Open planner →</span>
-</a>
-</div>
-</div>
-
 <!-- GAMES -->
 <section id="games">
 <div class="wrap">
@@ -339,38 +315,7 @@ section{padding:70px 0}
 <p class="topics-lead reveal">A few free browser games I put together to make question practice less of a slog. No account, nothing to install — some reset daily, some you can play as much as you want.</p>
 <div class="games-grid">
 
-<a href="codeblue/" class="gcard reveal" style="--gc:#2aad70">
-<div class="gbar"></div>
-<div class="gc-body">
-<div class="gc-meta"><span class="gbadge">Daily</span><span class="gfreq">New cases every day</span></div>
-<div class="gc-titlerow"><div class="gc-icon"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></div><div class="gc-name">Code Blue</div></div>
-<p class="gc-desc">Five vignettes, 45 seconds each, three lives. Get one wrong and you lose a life; string them together for combo bonuses.</p>
-<div class="gc-tags"><span class="gc-tag">Step 1 + 2</span><span class="gc-tag">Timer</span><span class="gc-tag">Lives</span></div>
-</div>
-<div class="gc-foot"><span class="gplay">Play →</span><span class="gtype">~4 min</span></div>
-</a>
 
-<a href="dxrounds/" class="gcard reveal" style="--gc:#e04050">
-<div class="gbar"></div>
-<div class="gc-body">
-<div class="gc-meta"><span class="gbadge">Daily</span><span class="gfreq">Like Wordle, but medicine</span></div>
-<div class="gc-titlerow"><div class="gc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor" stroke="none" opacity="0.25"/></svg></div><div class="gc-name">Diagnosis Wordle</div></div>
-<p class="gc-desc">One patient a day. Clues come one at a time — the fewer you need to land the diagnosis, the higher you score. Then share your grid.</p>
-<div class="gc-tags"><span class="gc-tag">6 clues</span><span class="gc-tag">Share grid</span><span class="gc-tag">Streaks</span></div>
-</div>
-<div class="gc-foot"><span class="gplay">Play →</span><span class="gtype">~3 min</span></div>
-</a>
-
-<a href="patholinks/" class="gcard reveal" style="--gc:#c9932f">
-<div class="gbar"></div>
-<div class="gc-body">
-<div class="gc-meta"><span class="gbadge">Daily</span><span class="gfreq">Like Connections, but medicine</span></div>
-<div class="gc-titlerow"><div class="gc-icon"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="18" r="2.5"/><line x1="8.5" y1="6" x2="15.5" y2="6"/><line x1="6" y1="8.5" x2="6" y2="15.5"/><line x1="8.5" y1="18" x2="15.5" y2="18"/><line x1="18" y1="8.5" x2="18" y2="15.5"/></svg></div><div class="gc-name">USMLE Connections</div></div>
-<p class="gc-desc">Sixteen terms, four hidden groups of four. Some terms could sit in more than one group, so pick carefully or lose a life.</p>
-<div class="gc-tags"><span class="gc-tag">4 groups</span><span class="gc-tag">4 mistakes allowed</span></div>
-</div>
-<div class="gc-foot"><span class="gplay">Play →</span><span class="gtype">~3 min</span></div>
-</a>
 
 <a href="buzzwordblitz/" class="gcard reveal" style="--gc:#e87040">
 <div class="gbar"></div>
@@ -393,6 +338,41 @@ section{padding:70px 0}
 </div>
 <div class="gc-foot"><span class="gplay">Play →</span><span class="gtype">~5 min</span></div>
 </a>
+
+<a href="dxrounds/" class="gcard reveal" style="--gc:#e04050">
+<div class="gbar"></div>
+<div class="gc-body">
+<div class="gc-meta"><span class="gbadge">Daily</span><span class="gfreq">Like Wordle, but medicine</span></div>
+<div class="gc-titlerow"><div class="gc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor" stroke="none" opacity="0.25"/></svg></div><div class="gc-name">Diagnosis Wordle</div></div>
+<p class="gc-desc">One patient a day. Clues come one at a time — the fewer you need to land the diagnosis, the higher you score. Then share your grid.</p>
+<div class="gc-tags"><span class="gc-tag">6 clues</span><span class="gc-tag">Share grid</span><span class="gc-tag">Streaks</span></div>
+</div>
+<div class="gc-foot"><span class="gplay">Play →</span><span class="gtype">~3 min</span></div>
+</a>
+
+<a href="codeblue/" class="gcard reveal" style="--gc:#2aad70">
+<div class="gbar"></div>
+<div class="gc-body">
+<div class="gc-meta"><span class="gbadge">Daily</span><span class="gfreq">New cases every day</span></div>
+<div class="gc-titlerow"><div class="gc-icon"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></div><div class="gc-name">Code Blue</div></div>
+<p class="gc-desc">Five vignettes, 45 seconds each, three lives. Get one wrong and you lose a life; string them together for combo bonuses.</p>
+<div class="gc-tags"><span class="gc-tag">Step 1 + 2</span><span class="gc-tag">Timer</span><span class="gc-tag">Lives</span></div>
+</div>
+<div class="gc-foot"><span class="gplay">Play →</span><span class="gtype">~4 min</span></div>
+</a>
+
+<a href="patholinks/" class="gcard reveal" style="--gc:#c9932f">
+<div class="gbar"></div>
+<div class="gc-body">
+<div class="gc-meta"><span class="gbadge">Daily</span><span class="gfreq">Like Connections, but medicine</span></div>
+<div class="gc-titlerow"><div class="gc-icon"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="18" r="2.5"/><line x1="8.5" y1="6" x2="15.5" y2="6"/><line x1="6" y1="8.5" x2="6" y2="15.5"/><line x1="8.5" y1="18" x2="15.5" y2="18"/><line x1="18" y1="8.5" x2="18" y2="15.5"/></svg></div><div class="gc-name">USMLE Connections</div></div>
+<p class="gc-desc">Sixteen terms, four hidden groups of four. Some terms could sit in more than one group, so pick carefully or lose a life.</p>
+<div class="gc-tags"><span class="gc-tag">4 groups</span><span class="gc-tag">4 mistakes allowed</span></div>
+</div>
+<div class="gc-foot"><span class="gplay">Play →</span><span class="gtype">~3 min</span></div>
+</a>
+
+
 
 </div>
 </div>
