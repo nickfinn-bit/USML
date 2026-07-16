@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#0d0e12">
+<title>USMLE300 — Study Planner</title>
+<meta name="description" content="Free USMLE study planner. Set your test date, score target and resources; get an editable week-by-week schedule with Divine Intervention picks. No signup.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="images/logo.png" type="image/png">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+:root{--display:'Space Grotesk',sans-serif;--body:'Inter',sans-serif;--mono:'JetBrains Mono',monospace}
+html[data-theme="dark"]{--bg:#0d0e12;--bg-2:#14151b;--bg-3:#1a1c24;--panel:#14151b;--panel-text:#EDEBE4;--text:#ECEAE3;--text-2:#9a978f;--text-3:#5c5a54;--line:rgba(255,255,255,0.12);--line-2:rgba(255,255,255,0.06);--accent:#cf5c68;--accent-2:#e07c87}
+html[data-theme="light"]{--bg:#F4F3EF;--bg-2:#FBFAF7;--bg-3:#fff;--panel:#111318;--panel-text:#EDEBE4;--text:#15161a;--text-2:#57544e;--text-3:#948f87;--line:rgba(0,0,0,0.11);--line-2:rgba(0,0,0,0.06);--accent:#8A2F38;--accent-2:#b8434f}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.55;font-size:16px;transition:background .4s,color .4s}
+h1,h2,h3{font-family:var(--display);font-weight:500;letter-spacing:-0.02em;line-height:1.08}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 2rem}
+.mono{font-family:var(--mono)}
+
+header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.hbar{max-width:1180px;margin:0 auto;padding:0.85rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{display:flex;align-items:center;gap:0.55rem;text-decoration:none}
+.brand img{height:26px}
+.brand b{font-family:var(--display);font-weight:600;font-size:1.05rem;color:var(--text)}
+.hlinks{display:flex;align-items:center;gap:1rem}
+.hlinks a{font-size:0.85rem;color:var(--text-2);text-decoration:none;font-weight:500}
+.hlinks a:hover{color:var(--text)}
+.tgl{font-family:var(--mono);font-size:0.64rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;background:none;border:1px solid var(--line);color:var(--text-2);padding:0.4rem 0.6rem;border-radius:6px;cursor:pointer}
+.tgl:hover{border-color:var(--text-2);color:var(--text)}
+
+.intro{padding:64px 0 30px}
+.eyebrow{font-family:var(--mono);font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--accent)}
+.intro h1{font-size:clamp(2rem,5vw,3.2rem);max-width:18ch}
+.intro p{color:var(--text-2);font-size:1.05rem;max-width:60ch;margin-top:1rem;line-height:1.7}
+
+.layout{display:grid;grid-template-columns:340px 1fr;gap:2rem;align-items:start;padding-bottom:80px}
+.panel{background:var(--bg-2);border:1px solid var(--line);border-radius:16px;padding:1.6rem;position:sticky;top:78px}
+.field{margin-bottom:1.3rem}
+.field:last-child{margin-bottom:0}
+.flabel{font-family:var(--mono);font-size:0.66rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-3);margin-bottom:0.55rem;display:block}
+.seg{display:flex;gap:0.4rem}
+.seg button{flex:1;font-family:var(--body);font-size:0.85rem;font-weight:600;padding:0.6rem;border-radius:8px;border:1px solid var(--line);background:var(--bg-3);color:var(--text-2);cursor:pointer;transition:all .15s}
+.seg button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+input[type=date],input[type=number]{width:100%;font-family:var(--mono);font-size:0.9rem;padding:0.6rem 0.7rem;border-radius:8px;border:1px solid var(--line);background:var(--bg-3);color:var(--text)}
+input[type=date]::-webkit-calendar-picker-indicator{filter:invert(0.6)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem}
+.chips{display:flex;flex-wrap:wrap;gap:0.4rem}
+.chip{font-family:var(--body);font-size:0.76rem;font-weight:500;padding:0.4rem 0.65rem;border-radius:20px;border:1px solid var(--line);background:var(--bg-3);color:var(--text-2);cursor:pointer;transition:all .15s;user-select:none}
+.chip.on{background:color-mix(in srgb,var(--accent) 16%,transparent);border-color:var(--accent);color:var(--text)}
+.chipgroup{margin-bottom:0.7rem}
+.chipgroup .gl{font-family:var(--mono);font-size:0.58rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-3);margin-bottom:0.4rem}
+.gen{width:100%;font-family:var(--mono);font-weight:600;font-size:0.9rem;letter-spacing:0.02em;background:var(--accent);color:#fff;border:none;padding:0.85rem;border-radius:9px;cursor:pointer;margin-top:0.4rem;transition:background .2s}
+.gen:hover{background:var(--accent-2)}
+
+.results{min-height:400px}
+.placeholder{border:1px dashed var(--line);border-radius:16px;padding:4rem 2rem;text-align:center;color:var(--text-3);font-family:var(--mono);font-size:0.8rem;letter-spacing:0.04em}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:0.8rem;margin-bottom:1.2rem}
+.scard{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:1rem}
+.scard .sv{font-family:var(--display);font-size:1.5rem;font-weight:600}
+.scard .sl{font-family:var(--mono);font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-3);margin-top:0.2rem}
+.fitnote{border-radius:10px;padding:0.75rem 1rem;font-size:0.85rem;margin-bottom:1.2rem;border:1px solid var(--line);background:var(--bg-2)}
+.fitnote.warn{border-color:color-mix(in srgb,#e0a13a 50%,var(--line));background:color-mix(in srgb,#e0a13a 8%,var(--bg-2))}
+.fitnote.good{border-color:color-mix(in srgb,#4caf78 45%,var(--line));background:color-mix(in srgb,#4caf78 8%,var(--bg-2))}
+
+.toolbar{display:flex;gap:0.6rem;margin-bottom:1rem;flex-wrap:wrap}
+.dl{font-family:var(--mono);font-size:0.78rem;font-weight:600;padding:0.6rem 1rem;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;display:inline-flex;align-items:center;gap:0.4rem}
+.dl.alt{background:transparent;color:var(--accent)}
+.dl:hover{filter:brightness(1.08)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--bg-2)}
+table{border-collapse:collapse;width:100%;min-width:900px;font-size:0.82rem}
+th{font-family:var(--mono);font-size:0.6rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-3);text-align:left;padding:0.75rem 0.85rem;border-bottom:1px solid var(--line);white-space:nowrap;background:var(--bg-3);position:sticky;top:0}
+td{padding:0.75rem 0.85rem;border-bottom:1px solid var(--line-2);vertical-align:top;color:var(--text-2);line-height:1.45}
+td.wk{font-family:var(--mono);font-weight:600;color:var(--text);white-space:nowrap}
+td.dates{font-family:var(--mono);font-size:0.72rem;color:var(--text-3);white-space:nowrap}
+tr.phase-final td{background:color-mix(in srgb,var(--accent) 7%,transparent)}
+.ptag{font-family:var(--mono);font-size:0.6rem;font-weight:600;padding:0.15rem 0.45rem;border-radius:4px;letter-spacing:0.04em;white-space:nowrap;background:color-mix(in srgb,var(--text) 8%,transparent);color:var(--text-2)}
+.exam-cell{color:var(--accent-2);font-weight:600}
+.di-cell{font-size:0.78rem}
+.di-cell .ep{color:var(--text);font-weight:500}
+
+.notes{margin-top:2rem;border-top:1px solid var(--line);padding-top:1.6rem;color:var(--text-3);font-size:0.82rem;line-height:1.7;max-width:70ch}
+.notes a{color:var(--accent-2)}
+.notes b{color:var(--text-2)}
+
+footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--text-3);font-family:var(--mono);font-size:0.72rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.6rem}
+footer a{color:var(--accent-2);text-decoration:none}
+
+@media(max-width:900px){
+.layout{grid-template-columns:1fr;gap:1.4rem}
+.panel{position:static}
+.summary{grid-template-columns:repeat(2,1fr)}
+.wrap{padding:0 1.3rem}
+.hbar{padding:0.85rem 1.3rem}
+.intro{padding:44px 0 24px}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="hbar">
+<a href="index.html" class="brand"><img src="images/logo.png" alt="USMLE300"><b>USMLE300</b></a>
+<div class="hlinks">
+<a href="index.html">← Home</a>
+<a href="diagnostic.html">Diagnostic</a>
+<button class="tgl" id="tgl">Light</button>
+</div>
+</div>
+</header>
+
+<section class="intro">
+<div class="wrap">
+<div class="eyebrow">Free tool · no signup</div>
+<h1>Build your study plan.</h1>
+<p>Set your test date, a rough score target, and the resources you're actually using. You'll get a week-by-week schedule — question load, practice tests spaced out, and Divine Intervention picks slotted in — that you can download and edit in Excel or Sheets. Nothing's saved; it's yours to take with you.</p>
+</div>
+</section>
+
+<div class="wrap">
+<div class="layout">
+<!-- INPUT PANEL -->
+<div class="panel">
+<div class="field">
+<span class="flabel">Exam</span>
+<div class="seg" id="examSeg">
+<button data-v="step1" class="on">Step 1</button>
+<button data-v="step2">Step 2 CK</button>
+</div>
+</div>
+<div class="field">
+<div class="two">
+<div>
+<span class="flabel">Start</span>
+<input type="date" id="startDate">
+</div>
+<div>
+<span class="flabel">Test date</span>
+<input type="date" id="testDate">
+</div>
+</div>
+</div>
+<div class="field">
+<div class="two">
+<div>
+<span class="flabel">Target score</span>
+<input type="number" id="target" placeholder="e.g. 245" min="1" max="300">
+</div>
+<div>
+<span class="flabel">Pace</span>
+<div class="seg" id="paceSeg" style="flex-direction:column;gap:0.3rem">
+<button data-v="relaxed" style="padding:0.4rem">Relaxed</button>
+<button data-v="standard" class="on" style="padding:0.4rem">Standard</button>
+<button data-v="intense" style="padding:0.4rem">Intense</button>
+</div>
+</div>
+</div>
+</div>
+<div class="field">
+<label class="flabel" style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;text-transform:none;letter-spacing:0;font-family:var(--body);font-size:0.85rem;color:var(--text-2)">
+<input type="checkbox" id="firstPassDone" style="width:auto"> I've already done a first UWorld pass
+</label>
+</div>
+<div class="field">
+<span class="flabel">Resources you're using</span>
+<div id="resBox"></div>
+</div>
+<button class="gen" id="genBtn">Generate plan</button>
+</div>
+
+<!-- RESULTS -->
+<div class="results" id="results">
+<div class="placeholder" id="placeholder">Set your details and hit “Generate plan” — your schedule shows up here.</div>
+</div>
+</div>
+
+<div class="notes" id="notes" style="display:none">
+<p><b>How to use this:</b> the plan is a starting scaffold, not gospel — download it and adjust. Push hard weeks lighter, move a practice test, swap resources. The point is to have a concrete map instead of a blank calendar.</p>
+<p><b>On the Divine Intervention picks:</b> these are curated from the community “must-listen” list on r/Step2 and Divine's own catalogue — all credit to Divine Intervention. This planner just points you to episodes by topic; it doesn't host or reproduce them. Full list and audio: <a href="https://divineinterventionpodcasts.com" target="_blank" rel="noopener">divineinterventionpodcasts.com</a> and the <a href="https://www.reddit.com/r/Step2/comments/11idsim/must_listen_divine_intervention_podcasts_all/" target="_blank" rel="noopener">r/Step2 must-listen thread</a>.</p>
+<p><b>Not medical or academic advice</b>, and not affiliated with the NBME, UWorld, AMBOSS, AnKing, or Divine Intervention — just a scheduling helper built from how people actually study.</p>
+</div>
+</div>
+
+<footer>
+<div class="wrap" style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:0.6rem;padding:0 2rem">
+<span>© 2025 USMLE300 · Study Planner</span>
+<span><a href="index.html">usmle300.com</a></span>
+</div>
+</footer>
+
+<script>
+// ---------- resources ----------
+const RES=[
+ {g:'Question banks',items:[
+   {id:'uworld',label:'UWorld',both:1,def:1},
+   {id:'amboss',label:'AMBOSS',both:1,def:1},
+ ]},
+ {g:'Flashcards',items:[
+   {id:'anking',label:'AnKing (Anki)',both:1,def:1},
+ ]},
+ {g:'Content & videos',items:[
+   {id:'bnb',label:'Boards & Beyond',step1:1,def1:1},
+   {id:'pathoma',label:'Pathoma',step1:1,def1:1},
+   {id:'sketchy',label:'Sketchy',step1:1,def1:1},
+   {id:'physeo',label:'Physeo',step1:1},
+   {id:'dirty',label:'Dirty Medicine',both:1},
+   {id:'ome',label:'OnlineMedEd',step2:1,def2:1},
+   {id:'emma',label:'Emma Holliday',step2:1,def2:1},
+   {id:'dhy',label:'Doctor High Yield',step2:1,def2:1},
+ ]},
+ {g:'Review & audio',items:[
+   {id:'firstaid',label:'First Aid',step1:1,def1:1},
+   {id:'mehlman',label:'Mehlman PDFs',both:1,def:1},
+   {id:'divine',label:'Divine Intervention',both:1,def2:1},
+ ]},
+ {g:'Assessments',items:[
+   {id:'nbme',label:'NBMEs',both:1,def:1},
+   {id:'uwsa',label:'UWSAs',both:1,def:1},
+   {id:'free120',label:'Free 120',both:1,def:1},
+   {id:'cms',label:'CMS forms',step2:1,def2:1},
+ ]},
+];
+const state={exam:'step1',pace:'standard'};
+
+function renderRes(){
+ const box=document.getElementById('resBox');box.innerHTML='';
+ RES.forEach(grp=>{
+  const relevant=grp.items.filter(it=>it.both||it[state.exam]);
+  if(!relevant.length)return;
+  const gd=document.createElement('div');gd.className='chipgroup';
+  gd.innerHTML='<div class="gl">'+grp.g+'</div>';
+  const wrap=document.createElement('div');wrap.className='chips';
+  relevant.forEach(it=>{
+   const def = it.def || (state.exam==='step1'?it.def1:it.def2);
+   const c=document.createElement('div');c.className='chip'+(def?' on':'');c.dataset.id=it.id;c.textContent=it.label;
+   c.onclick=()=>c.classList.toggle('on');
+   wrap.appendChild(c);
+  });
+  gd.appendChild(wrap);box.appendChild(gd);
+ });
+}
+function selectedRes(){return [...document.querySelectorAll('.chip.on')].map(c=>c.dataset.id)}
+
+// ---------- segmented controls ----------
+function seg(id,key,after){
+ document.querySelectorAll('#'+id+' button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#'+id+' button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');state[key]=b.dataset.v;if(after)after();
+ });
+}
+seg('examSeg','exam',renderRes);
+seg('paceSeg','pace');
+
+// ---------- theme ----------
+const root=document.documentElement,tgl=document.getElementById('tgl');
+function setT(t){root.setAttribute('data-theme',t);tgl.textContent=t==='dark'?'Light':'Dark';try{localStorage.setItem('u300theme',t)}catch(e){}}
+try{const s=localStorage.getItem('u300theme');if(s)setT(s)}catch(e){}
+tgl.textContent=root.getAttribute('data-theme')==='dark'?'Light':'Dark';
+tgl.onclick=()=>setT(root.getAttribute('data-theme')==='dark'?'light':'dark');
+
+// ---------- dates ----------
+const today=new Date();const iso=d=>d.toISOString().slice(0,10);
+document.getElementById('startDate').value=iso(today);
+const plus=new Date(today);plus.setDate(plus.getDate()+56);
+document.getElementById('testDate').value=iso(plus);
+
+// ---------- data ----------
+const SYSTEMS=['Cardiology','Pulmonology','GI / Hepatology','Renal / GU','Endocrine','Heme / Onc','Neurology','Psychiatry','MSK / Rheum / Derm','Repro / OBGYN','Pediatrics','Micro / ID','Immunology','Biostats / Ethics'];
+// Divine Intervention curated picks (credit: Divine Intervention; community must-listen list)
+const DI_FOUNDATION={
+ step2:[
+  {n:'37',t:'Risk factors, prevention & screening'},
+  {n:'97',t:'Risk factors 2'},
+  {n:'184',t:'NBME “weird” / risk-factor extension'},
+  {n:'325',t:'HY screening guidelines'},
+  {n:'123',t:'USMLE ethics 1'},
+  {n:'132',t:'Social sciences'},
+  {n:'143',t:'Biostats'},
+  {n:'197',t:'Bias in biostats'},
+  {n:'137',t:'Next best step in management 1'},
+  {n:'239',t:'NBME & OBGYN risk factors'},
+ ],
+ step1:[
+  {n:'143',t:'Biostats'},
+  {n:'197',t:'Bias in biostats'},
+  {n:'123',t:'USMLE ethics 1'},
+  {n:'132',t:'Social sciences'},
+ ],
+};
+const DI_SYSTEM={
+ 'Repro / OBGYN':'Ep 239 – OBGYN risk factors',
+ 'Biostats / Ethics':'Ep 143 biostats · 123 ethics',
+ 'Neurology':'Neuro shelf-review series',
+ 'Pediatrics':'Peds RR / shelf series',
+ 'Psychiatry':'Psych RR / shelf series',
+};
+const ASSESS={
+ step1:['NBME 26','NBME 27','NBME 28','NBME 29','NBME 30','NBME 31','UWSA 1','UWSA 2','Free 120'],
+ step2:['NBME 10','NBME 11','NBME 12','NBME 13','NBME 14','UWSA 1','UWSA 2','Free 120'],
+};
+const UW_TOTAL={step1:3200,step2:4300};
+const PACE_Q={relaxed:55,standard:90,intense:125};
+
+// ---------- generate ----------
+let LAST=null;
+document.getElementById('genBtn').onclick=generate;
+
+function generate(){
+ const exam=state.exam;
+ const start=new Date(document.getElementById('startDate').value);
+ const test=new Date(document.getElementById('testDate').value);
+ const target=document.getElementById('target').value.trim();
+ const res=selectedRes();
+ const has=id=>res.includes(id);
+ const firstPassDone=document.getElementById('firstPassDone').checked;
+ if(isNaN(start)||isNaN(test)||test<=start){alert('Pick a test date that comes after your start date.');return;}
+
+ const dayMs=86400000;
+ const days=Math.round((test-start)/dayMs);
+ const weeks=Math.max(1,Math.ceil(days/7));
+ const qday=PACE_Q[state.pace];
+ const uwTotal=UW_TOTAL[exam];
+ const coverage=Math.min(100,Math.round((qday*days*0.8)/uwTotal*100)); // ~80% of days on fresh Qs
+
+ // assessment placement: back-loaded, one per week ending at test week
+ const pool=ASSESS[exam].filter(a=>{
+   if(a==='Free 120') return has('free120');
+   if(a.startsWith('UWSA')) return has('uwsa');
+   if(a.startsWith('NBME')) return has('nbme');
+   return true;
+ });
+ const assessByWeek=Array(weeks).fill(null);
+ const reserve=(weeks>=6 && !firstPassDone)?Math.round(weeks*0.30):0; // early weeks kept for learning
+ const avail=weeks-reserve;
+ const k=Math.min(pool.length,avail);
+ const startAt=weeks-k;
+ for(let i=0;i<k;i++){assessByWeek[startAt+i]=pool[pool.length-k+i];}
+
+ const foundation=DI_FOUNDATION[exam];
+ const rows=[];
+ for(let w=0;w<weeks;w++){
+  const wStart=new Date(start.getTime()+w*7*dayMs);
+  let wEnd=new Date(wStart.getTime()+6*dayMs);
+  if(wEnd>test)wEnd=new Date(test);
+  const sys=SYSTEMS[w%SYSTEMS.length];
+  const frac=weeks>1?w/(weeks-1):1;
+  const isFinal=(w===weeks-1);
+  const assess=assessByWeek[w];
+  // phase
+  let phase;
+  if(isFinal)phase='Final week';
+  else if(assess)phase='Assess + fix weak spots';
+  else if(frac<0.42 && !firstPassDone)phase='Learn + first pass';
+  else phase='Questions + review';
+
+  // questions
+  let q;
+  if(isFinal){q='Light UWorld incorrects only — taper down';}
+  else if(firstPassDone||phase==='Questions + review'||phase==='Assess + fix weak spots'){
+   q='UWorld ~'+qday+'/day (incorrects + mixed)';
+   if(has('amboss'))q+=' · AMBOSS '+sys;
+  }else{
+   q='UWorld ~'+qday+'/day (first pass, '+sys+')';
+   if(has('amboss'))q+=' · AMBOSS Qbank';
+  }
+
+  // content + anki
+  const cparts=[];
+  if(phase==='Learn + first pass'){
+   const vids=[];
+   if(exam==='step1'){if(has('bnb'))vids.push('B&B');if(has('pathoma'))vids.push('Pathoma');if(has('sketchy'))vids.push('Sketchy');if(has('physeo'))vids.push('Physeo');}
+   else{if(has('ome'))vids.push('OME');if(has('dhy'))vids.push('Dr HY');if(has('emma'))vids.push('Emma Holliday');}
+   if(has('dirty'))vids.push('Dirty Medicine');
+   if(vids.length)cparts.push(vids.join(' + ')+': '+sys);
+   if(has('firstaid'))cparts.push('First Aid: '+sys);
+  }else if(isFinal){
+   const fin=[];if(has('firstaid'))fin.push('First Aid');if(has('mehlman'))fin.push('Mehlman');
+   cparts.push((fin.length?fin.join(' / '):'Rapid')+' review + key formulas');
+  }else{
+   if(has('mehlman'))cparts.push('Mehlman: '+sys);
+   cparts.push('Targeted review of weak areas');
+  }
+  if(has('anking'))cparts.unshift(isFinal?'AnKing: due reviews only':(phase==='Learn + first pass'?'AnKing: '+sys+' + due reviews':'AnKing: due reviews'));
+  const content=cparts.join(' · ');
+
+  // divine
+  let di='—';
+  if(has('divine')){
+   if(isFinal){di='<span class="ep">Ep 37 · 97 · 184 · 325</span> risk factors & screening · <span class="ep">123</span> ethics';}
+   else{
+    const f=foundation[w%foundation.length];
+    const sysPick=DI_SYSTEM[sys]||('RR / shelf series – '+sys);
+    di='<span class="ep">Ep '+f.n+'</span> '+f.t+' · '+sysPick;
+   }
+  }
+
+  rows.push({week:'W'+(w+1),dates:fmt(wStart)+' – '+fmt(wEnd),phase,sys,q,content,di,assess,isFinal});
+ }
+
+ LAST={exam,target,weeks,days,qday,coverage,rows};
+ renderResults(LAST);
+}
+
+function fmt(d){return d.toLocaleDateString('en-US',{month:'short',day:'numeric'})}
+function strip(html){return html.replace(/<[^>]+>/g,'')}
+
+function renderResults(P){
+ document.getElementById('placeholder').style.display='none';
+ document.getElementById('notes').style.display='block';
+ const examName=P.exam==='step1'?'Step 1':'Step 2 CK';
+ const fitClass=P.coverage>=92?'good':(P.coverage>=70?'':'warn');
+ const fitMsg=P.coverage>=92
+   ?'At this pace you\'ll comfortably finish UWorld before test day.'
+   :(P.coverage>=70
+     ?'This pace covers most of UWorld before test day — tighten it if you want a full pass plus incorrects.'
+     :'Heads up: at this pace you\'d only get through roughly '+P.coverage+'% of UWorld. Bump your pace up, start sooner, or plan to focus on the highest-yield blocks.');
+
+ let html='<div class="toolbar">'
+  +'<button class="dl" id="dlx">↓ Download .xlsx</button>'
+  +'<button class="dl alt" id="dlc">↓ Download .csv</button>'
+  +'<button class="dl alt" id="regen">↻ Regenerate</button></div>';
+
+ html+='<div class="summary">'
+  +sc(examName,'Exam')
+  +sc(P.weeks+' wk','Runway ('+P.days+' days)')
+  +sc('~'+P.qday,'Questions / day')
+  +sc((P.target?P.target:'—'),'Target score')
+  +'</div>';
+ html+='<div class="fitnote '+fitClass+'">'+fitMsg+'</div>';
+
+ html+='<div class="tablewrap"><table><thead><tr>'
+  +'<th>Wk</th><th>Dates</th><th>Phase</th><th>Focus</th><th>Questions</th><th>Content &amp; Anki</th><th>Divine Intervention</th><th>Practice test</th></tr></thead><tbody>';
+ P.rows.forEach(r=>{
+  html+='<tr class="'+(r.isFinal?'phase-final':'')+'">'
+   +'<td class="wk">'+r.week+'</td>'
+   +'<td class="dates">'+r.dates+'</td>'
+   +'<td><span class="ptag">'+r.phase+'</span></td>'
+   +'<td>'+r.sys+'</td>'
+   +'<td>'+r.q+'</td>'
+   +'<td>'+r.content+'</td>'
+   +'<td class="di-cell">'+r.di+'</td>'
+   +'<td class="exam-cell">'+(r.assess||'—')+'</td></tr>';
+ });
+ html+='</tbody></table></div>';
+ document.getElementById('results').innerHTML=html;
+
+ document.getElementById('dlx').onclick=()=>downloadXlsx(P);
+ document.getElementById('dlc').onclick=()=>downloadCsv(P);
+ document.getElementById('regen').onclick=()=>document.getElementById('genBtn').scrollIntoView({behavior:'smooth'});
+}
+function sc(v,l){return '<div class="scard"><div class="sv">'+v+'</div><div class="sl">'+l+'</div></div>'}
+
+// ---------- downloads ----------
+function aoa(P){
+ const examName=P.exam==='step1'?'Step 1':'Step 2 CK';
+ const head=['Week','Dates','Phase','Focus','Questions','Content & Anki','Divine Intervention','Practice test','Your notes'];
+ const out=[
+  ['USMLE300 — Study Plan'],
+  ['Exam',examName,'Target',P.target||'—','Runway',P.weeks+' weeks / '+P.days+' days','Pace','~'+P.qday+' Q/day'],
+  ['Divine Intervention picks credit Divine Intervention (divineinterventionpodcasts.com). Edit any cell to fit your life.'],
+  [],
+  head,
+ ];
+ P.rows.forEach(r=>out.push([r.week,r.dates,r.phase,r.sys,strip(r.q),strip(r.content),strip(r.di),r.assess||'','']));
+ return out;
+}
+function downloadXlsx(P){
+ const ws=XLSX.utils.aoa_to_sheet(aoa(P));
+ ws['!cols']=[{wch:6},{wch:16},{wch:22},{wch:20},{wch:34},{wch:40},{wch:40},{wch:14},{wch:26}];
+ const wb=XLSX.utils.book_new();
+ XLSX.utils.book_append_sheet(wb,ws,'Study Plan');
+ XLSX.writeFile(wb,'USMLE300-study-plan.xlsx');
+}
+function downloadCsv(P){
+ const rows=aoa(P).map(r=>r.map(c=>{c=(c==null?'':String(c));return /[",\n]/.test(c)?'"'+c.replace(/"/g,'""')+'"':c}).join(','));
+ const blob=new Blob([rows.join('\n')],{type:'text/csv;charset=utf-8'});
+ const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='USMLE300-study-plan.csv';a.click();URL.revokeObjectURL(a.href);
+}
+
+// init
+renderRes();
+</script>
+</body>
+</html>
