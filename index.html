@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#0e0f13">
+<meta name="theme-color" content="#0d0e12">
 <title>USMLE300 — Exam Strategy Tutoring, Free Games & a Strategy Diagnostic</title>
 <meta name="description" content="One-on-one USMLE tutoring focused on exam strategy and how you read questions. Plus free games and a free strategy diagnostic.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,7 +70,7 @@ nav.desk a:hover{color:var(--text)}
 .cursor-hud{position:fixed;left:1.2rem;bottom:1.1rem;z-index:800;font-family:var(--mono);font-size:0.66rem;color:var(--text-3);letter-spacing:0.06em;pointer-events:none;font-variant-numeric:tabular-nums;mix-blend-mode:difference;opacity:0.8}
 @media(hover:none){.cursor-hud{display:none}}
 
-section{padding:100px 0;position:relative}
+section{padding:100px 0;position:relative;scroll-margin-top:70px}
 .sec-tag{display:flex;align-items:center;gap:0.75rem;font-family:var(--mono);font-size:0.7rem;color:var(--text-3);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1.6rem}
 .sec-tag::before{content:'';width:30px;height:1px;background:var(--accent)}
 .sec-tag .idx{color:var(--accent);font-weight:600}
@@ -83,7 +83,7 @@ section{padding:100px 0;position:relative}
 .metric .v{font-family:var(--display);font-size:1.5rem;font-weight:600;letter-spacing:-0.02em}
 .metric .l{font-family:var(--mono);font-size:0.66rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-top:0.2rem}
 
-.console{margin-top:3.5rem;background:var(--panel);border-radius:16px;overflow:hidden;position:relative;box-shadow:0 30px 70px -30px rgba(0,0,0,0.5)}
+.console{scroll-margin-top:84px;margin-top:3.5rem;background:var(--panel);border-radius:16px;overflow:hidden;position:relative;box-shadow:0 30px 70px -30px rgba(0,0,0,0.5)}
 .console-bar{display:flex;align-items:center;gap:0.6rem;padding:0.85rem 1.2rem;border-bottom:1px solid rgba(255,255,255,0.08)}
 .dot{width:10px;height:10px;border-radius:50%}
 .dot.a{background:#e0574f}.dot.b{background:#e0a13a}.dot.c{background:#4caf78}
@@ -108,21 +108,26 @@ section{padding:100px 0;position:relative}
 .run-btn:hover{transform:translateY(-2px);background:var(--accent-2)}
 .run-btn::before{content:'▸'}
 
-/* games */
-.games-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0.9rem}
-.gcard{background:var(--bg-2);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:transform .25s,border-color .25s}
-.gcard:hover{transform:translateY(-4px);border-color:var(--accent)}
-.gthumb{aspect-ratio:16/10;background:linear-gradient(135deg,var(--c),color-mix(in srgb,var(--c) 45%,#0c0c10));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.gthumb::after{content:'';position:absolute;inset:0;background:radial-gradient(120% 90% at 20% 10%,rgba(255,255,255,0.18),transparent 55%)}
-.gthumb img{max-width:72%;max-height:70%;object-fit:contain;position:relative;z-index:1}
-.gtop{display:flex;justify-content:space-between;align-items:center;padding:0.85rem 1rem 0}
-.gidx{font-family:var(--mono);font-size:0.62rem;color:var(--text-3)}
-.gfreq{font-family:var(--mono);font-size:0.56rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-3)}
-.gbody{padding:0.55rem 1rem 1.1rem;flex:1;display:flex;flex-direction:column}
-.gname{font-family:var(--display);font-weight:600;font-size:1.05rem;letter-spacing:-0.01em;margin-bottom:0.35rem}
-.gdesc{font-size:0.8rem;color:var(--text-2);line-height:1.5;flex:1}
-.gplay{font-family:var(--mono);font-size:0.68rem;font-weight:600;margin-top:0.9rem;color:var(--accent);transition:letter-spacing .2s}
-.gcard:hover .gplay{letter-spacing:0.06em}
+/* games — icon/badge/tags presentation */
+.games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1rem}
+.gcard{background:var(--bg-2);border:1px solid var(--line);border-radius:13px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:transform .22s,border-color .22s;--gc:var(--accent)}
+.gcard:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--gc) 55%,var(--line))}
+.gbar{height:4px;background:var(--gc)}
+.gc-body{padding:1.3rem 1.4rem 0.8rem;flex:1}
+.gc-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.gbadge{font-family:var(--mono);font-size:0.58rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;padding:0.2rem 0.5rem;border-radius:4px;color:var(--gc);background:color-mix(in srgb,var(--gc) 13%,transparent)}
+.gfreq{font-family:var(--mono);font-size:0.58rem;font-weight:500;color:var(--text-3);letter-spacing:0.04em}
+.gc-titlerow{display:flex;align-items:center;gap:0.65rem;margin-bottom:0.7rem}
+.gc-icon{width:32px;height:32px;flex-shrink:0;border-radius:8px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--gc) 14%,transparent)}
+.gc-icon svg{width:19px;height:19px;fill:none;stroke:var(--gc);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.gc-name{font-family:var(--display);font-weight:600;font-size:1.25rem;letter-spacing:-0.02em;color:var(--text)}
+.gc-desc{font-size:0.86rem;line-height:1.55;color:var(--text-2);margin-bottom:1rem}
+.gc-tags{display:flex;gap:0.4rem;flex-wrap:wrap}
+.gc-tag{font-family:var(--mono);font-size:0.58rem;font-weight:500;color:var(--text-3);background:color-mix(in srgb,var(--text) 6%,transparent);border-radius:4px;padding:0.2rem 0.5rem}
+.gc-foot{padding:0.9rem 1.4rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.gplay{font-family:var(--display);font-size:0.9rem;font-weight:600;color:var(--gc);transition:letter-spacing .2s}
+.gcard:hover .gplay{letter-spacing:0.03em}
+.gtype{font-family:var(--mono);font-size:0.6rem;color:var(--text-3)}
 
 /* stripe-style flow band */
 .flow-band{position:relative;height:260px;overflow:hidden;background:var(--panel);display:flex;align-items:center;justify-content:center}
@@ -235,15 +240,15 @@ section{padding:70px 0}
 <div class="hbar">
 <a href="#" class="brand"><img src="images/logo.png" alt="USMLE300"><b>USMLE300</b></a>
 <nav class="desk">
-<a href="games.html">Games</a>
-<a href="diagnostic.html">Diagnostic</a>
+<a href="#games">Games</a>
+<a href="#diagnostic">Diagnostic</a>
 <a href="#tutoring">Tutoring</a>
 <a href="#topics">Topics</a>
-<a href="blog/">Blog</a>
+<a href="#pricing">Pricing</a>
 </nav>
 <div class="hright">
 <span class="clock" id="clock">--:--:--</span>
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">Dark</button>
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">Light</button>
 <a href="#contact" class="cta-mini">Get started</a>
 <button class="menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
 </div>
@@ -251,11 +256,11 @@ section{padding:70px 0}
 </header>
 
 <nav class="mnav">
-<a href="games.html">Games</a>
-<a href="diagnostic.html">Diagnostic</a>
+<a href="#games">Games</a>
+<a href="#diagnostic">Diagnostic</a>
 <a href="#tutoring">Tutoring</a>
 <a href="#topics">Topics</a>
-<a href="blog/">Blog</a>
+<a href="#pricing">Pricing</a>
 <a href="#contact">Get started</a>
 </nav>
 
@@ -263,16 +268,11 @@ section{padding:70px 0}
 <section class="hero" id="top">
 <div class="wrap">
 <div class="sec-tag reveal"><span class="idx">00</span> USMLE300 / Step 1 · Step 2 CK</div>
-<h1 class="reveal">By the time you're sitting boards, you probably know enough. <span class="mut">What's costing you points is how you're reading the questions.</span></h1>
-<p class="hero-sub reveal">That's the part I work on with people — exam strategy, how you approach a question, and the way you actually move through a stem when the clock's running. There are a few free things below you can try right now, and one-on-one tutoring whenever you want it.</p>
-<div class="hero-metrics reveal">
-<div class="metric"><div class="v">5</div><div class="l">Games</div></div>
-<div class="metric"><div class="v">~15m</div><div class="l">Strategy diagnostic</div></div>
-<div class="metric"><div class="v">$40/hr</div><div class="l">1-on-1 tutoring</div></div>
-</div>
+<h1 class="reveal">A lot of what separates USMLE scores comes down to how you take the test — <span class="mut">not how much more you can memorize.</span></h1>
+<p class="hero-sub reveal">USMLE300 focuses on that side of it: how you read a question, work through the options, and manage your time under pressure. There's a strategy tool and a few games below to try for free, and one-on-one tutoring whenever you want it.</p>
 
 <!-- console -->
-<div class="console reveal">
+<div class="console reveal" id="diagnostic">
 <div class="console-bar">
 <span class="dot a"></span><span class="dot b"></span><span class="dot c"></span>
 <span class="path">~/exam-approach-analyzer</span>
@@ -305,31 +305,62 @@ section{padding:70px 0}
 <div class="sec-tag reveal"><span class="idx">01</span> Games</div>
 <p class="topics-lead reveal">A few free browser games I put together to make question practice less of a slog. No account, nothing to install — some reset daily, some you can play as much as you want.</p>
 <div class="games-grid">
-<a href="codeblue/" class="gcard reveal">
-<div class="gthumb" style="--c:#2aad70"><img src="images/games/codeblue.png" alt="Code Blue" onerror="this.remove()"></div>
-<div class="gtop"><span class="gidx">G01</span><span class="gfreq">Daily</span></div>
-<div class="gbody"><div class="gname">Code Blue</div><div class="gdesc">Five vignettes, 45 seconds each, three lives. Get one wrong and you lose a life.</div><div class="gplay">Play →</div></div>
+
+<a href="codeblue/" class="gcard reveal" style="--gc:#2aad70">
+<div class="gbar"></div>
+<div class="gc-body">
+<div class="gc-meta"><span class="gbadge">Daily</span><span class="gfreq">New cases every day</span></div>
+<div class="gc-titlerow"><div class="gc-icon"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></div><div class="gc-name">Code Blue</div></div>
+<p class="gc-desc">Five vignettes, 45 seconds each, three lives. Get one wrong and you lose a life; string them together for combo bonuses.</p>
+<div class="gc-tags"><span class="gc-tag">Step 1 + 2</span><span class="gc-tag">Timer</span><span class="gc-tag">Lives</span></div>
+</div>
+<div class="gc-foot"><span class="gplay">Play →</span><span class="gtype">~4 min</span></div>
 </a>
-<a href="dxrounds/" class="gcard reveal">
-<div class="gthumb" style="--c:#e04050"><img src="images/games/dxrounds.png" alt="Diagnosis Wordle" onerror="this.remove()"></div>
-<div class="gtop"><span class="gidx">G02</span><span class="gfreq">Daily</span></div>
-<div class="gbody"><div class="gname">Diagnosis Wordle</div><div class="gdesc">One patient a day. Clues come one at a time — the fewer you need, the better you score.</div><div class="gplay">Play →</div></div>
+
+<a href="dxrounds/" class="gcard reveal" style="--gc:#e04050">
+<div class="gbar"></div>
+<div class="gc-body">
+<div class="gc-meta"><span class="gbadge">Daily</span><span class="gfreq">Like Wordle, but medicine</span></div>
+<div class="gc-titlerow"><div class="gc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor" stroke="none" opacity="0.25"/></svg></div><div class="gc-name">Diagnosis Wordle</div></div>
+<p class="gc-desc">One patient a day. Clues come one at a time — the fewer you need to land the diagnosis, the higher you score. Then share your grid.</p>
+<div class="gc-tags"><span class="gc-tag">6 clues</span><span class="gc-tag">Share grid</span><span class="gc-tag">Streaks</span></div>
+</div>
+<div class="gc-foot"><span class="gplay">Play →</span><span class="gtype">~3 min</span></div>
 </a>
-<a href="patholinks/" class="gcard reveal">
-<div class="gthumb" style="--c:#c9932f"><img src="images/games/patholinks.png" alt="USMLE Connections" onerror="this.remove()"></div>
-<div class="gtop"><span class="gidx">G03</span><span class="gfreq">Daily</span></div>
-<div class="gbody"><div class="gname">USMLE Connections</div><div class="gdesc">Sixteen terms, four hidden groups. Some could sit in more than one, so pick carefully.</div><div class="gplay">Play →</div></div>
+
+<a href="patholinks/" class="gcard reveal" style="--gc:#c9932f">
+<div class="gbar"></div>
+<div class="gc-body">
+<div class="gc-meta"><span class="gbadge">Daily</span><span class="gfreq">Like Connections, but medicine</span></div>
+<div class="gc-titlerow"><div class="gc-icon"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="18" r="2.5"/><line x1="8.5" y1="6" x2="15.5" y2="6"/><line x1="6" y1="8.5" x2="6" y2="15.5"/><line x1="8.5" y1="18" x2="15.5" y2="18"/><line x1="18" y1="8.5" x2="18" y2="15.5"/></svg></div><div class="gc-name">USMLE Connections</div></div>
+<p class="gc-desc">Sixteen terms, four hidden groups of four. Some terms could sit in more than one group, so pick carefully or lose a life.</p>
+<div class="gc-tags"><span class="gc-tag">4 groups</span><span class="gc-tag">4 mistakes allowed</span></div>
+</div>
+<div class="gc-foot"><span class="gplay">Play →</span><span class="gtype">~3 min</span></div>
 </a>
-<a href="buzzwordblitz/" class="gcard reveal">
-<div class="gthumb" style="--c:#e87040"><img src="images/games/buzzwordblitz.png" alt="Buzzword Blitz" onerror="this.remove()"></div>
-<div class="gtop"><span class="gidx">G04</span><span class="gfreq">Unlimited</span></div>
-<div class="gbody"><div class="gname">Buzzword Blitz</div><div class="gdesc">See a buzzword, name the diagnosis. Sixty seconds, no vignettes, just recall.</div><div class="gplay">Play →</div></div>
+
+<a href="buzzwordblitz/" class="gcard reveal" style="--gc:#e87040">
+<div class="gbar"></div>
+<div class="gc-body">
+<div class="gc-meta"><span class="gbadge">Unlimited</span><span class="gfreq">Pattern recognition</span></div>
+<div class="gc-titlerow"><div class="gc-icon"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div class="gc-name">Buzzword Blitz</div></div>
+<p class="gc-desc">See a buzzword, name the diagnosis. "Keratin pearls" → ? "Reed-Sternberg cells" → ? Sixty seconds, no vignettes, just recall.</p>
+<div class="gc-tags"><span class="gc-tag">60+ buzzwords</span><span class="gc-tag">Step 1 + 2</span><span class="gc-tag">Streak ×2</span></div>
+</div>
+<div class="gc-foot"><span class="gplay">Play →</span><span class="gtype">60 sec</span></div>
 </a>
-<a href="gunner/" class="gcard reveal">
-<div class="gthumb" style="--c:#22d3ee"><img src="images/games/gunner.png" alt="Gunner" onerror="this.remove()"></div>
-<div class="gtop"><span class="gidx">G05</span><span class="gfreq">Unlimited</span></div>
-<div class="gbody"><div class="gname">Gunner</div><div class="gdesc">Head-to-head against an AI opponent. Whoever answers correctly first takes the round, best of five.</div><div class="gplay">Play →</div></div>
+
+<a href="gunner/" class="gcard reveal" style="--gc:#22d3ee">
+<div class="gbar"></div>
+<div class="gc-body">
+<div class="gc-meta"><span class="gbadge">Unlimited</span><span class="gfreq">1v1 battle</span></div>
+<div class="gc-titlerow"><div class="gc-icon"><svg viewBox="0 0 24 24"><path d="M4 20L14 10"/><path d="M14 4l2 2-8 8-4 0 0-4 8-8z"/><path d="M20 4L10 14"/><path d="M10 4L8 6l8 8 4 0 0-4-8-8z"/></svg></div><div class="gc-name">Gunner</div></div>
+<p class="gc-desc">Head-to-head against an AI opponent on the same five questions. Fastest correct answer takes the round, best of five, and you earn an Elo rating.</p>
+<div class="gc-tags"><span class="gc-tag">Step 1 + 2</span><span class="gc-tag">5 rounds</span><span class="gc-tag">Elo rating</span></div>
+</div>
+<div class="gc-foot"><span class="gplay">Play →</span><span class="gtype">~5 min</span></div>
 </a>
+
 </div>
 </div>
 </section>
@@ -394,8 +425,8 @@ section{padding:70px 0}
 <div class="foot-cols">
 <div class="fcol">
 <h4>Practice</h4>
-<a href="games.html">Games</a>
-<a href="diagnostic.html">Strategy diagnostic</a>
+<a href="#games">Games</a>
+<a href="#diagnostic">Strategy diagnostic</a>
 </div>
 <div class="fcol">
 <h4>Tutoring</h4>
@@ -405,7 +436,6 @@ section{padding:70px 0}
 </div>
 <div class="fcol">
 <h4>More</h4>
-<a href="blog/">Blog</a>
 <a href="#contact">Contact</a>
 </div>
 </div>
@@ -424,8 +454,8 @@ section{padding:70px 0}
 <p style="color:var(--text-2);font-size:0.92rem">Email's the easiest way to reach me — I read and reply to all of them myself.</p>
 <div class="cbox">
 <div class="cl">Email</div>
-<a href="mailto:alex@usmle300.com" class="em">alex@usmle300.com</a>
-<a href="mailto:alex@usmle300.com" class="run-btn">Send an email</a>
+<a href="mailto:usmle300tutor@gmail.com" class="em">usmle300tutor@gmail.com</a>
+<a href="mailto:usmle300tutor@gmail.com" class="run-btn">Send an email</a>
 </div>
 <p style="font-size:0.82rem;color:var(--text-3);text-align:center;margin-top:0.5rem">Let me know which exam you're on and roughly when it's scheduled.</p>
 </div>
@@ -485,6 +515,7 @@ grid.appendChild(el);
 const root=document.documentElement, tbtn=document.getElementById('themeToggle');
 function setTheme(t){root.setAttribute('data-theme',t);tbtn.textContent=t==='dark'?'Light':'Dark';try{localStorage.setItem('u300theme',t)}catch(e){}}
 try{const saved=localStorage.getItem('u300theme');if(saved)setTheme(saved)}catch(e){}
+tbtn.textContent=root.getAttribute('data-theme')==='dark'?'Light':'Dark';
 tbtn.addEventListener('click',()=>setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark'));
 
 const clock=document.getElementById('clock');
