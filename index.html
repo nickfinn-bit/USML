@@ -136,17 +136,17 @@ section{padding:100px 0;position:relative;scroll-margin-top:70px}
 
 /* stripe-style flow band */
 .flow-band{position:relative;height:260px;overflow:hidden;background:var(--panel);display:flex;align-items:center;justify-content:center}
-.flow-band .blob{position:absolute;border-radius:50%;filter:blur(64px);opacity:0.85;mix-blend-mode:screen;will-change:transform}
-.flow-band .b1{width:520px;height:520px;background:#8A2F38;top:-160px;left:-40px;animation:drift1 18s ease-in-out infinite}
-.flow-band .b2{width:440px;height:440px;background:#c9932f;top:-80px;left:28%;animation:drift2 22s ease-in-out infinite}
-.flow-band .b3{width:480px;height:480px;background:#0dd196;bottom:-200px;left:44%;animation:drift3 20s ease-in-out infinite}
-.flow-band .b4{width:420px;height:420px;background:#7c3aed;top:-60px;right:16%;animation:drift4 24s ease-in-out infinite}
-.flow-band .b5{width:460px;height:460px;background:#22d3ee;bottom:-220px;right:-60px;animation:drift5 19s ease-in-out infinite}
-@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(120px,40px) scale(1.15)}}
-@keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-90px,60px) scale(0.9)}}
-@keyframes drift3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(80px,-70px) scale(1.1)}}
-@keyframes drift4{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-110px,50px) scale(1.12)}}
-@keyframes drift5{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-70px,-50px) scale(0.92)}}
+.flow-band .blob{position:absolute;border-radius:50%;filter:blur(54px);opacity:0.9;mix-blend-mode:screen;will-change:transform}
+.flow-band .b1{width:520px;height:520px;background:#8A2F38;top:-160px;left:-40px;animation:drift1 13s ease-in-out infinite}
+.flow-band .b2{width:440px;height:440px;background:#c9932f;top:-80px;left:28%;animation:drift2 16s ease-in-out infinite}
+.flow-band .b3{width:480px;height:480px;background:#0dd196;bottom:-200px;left:44%;animation:drift3 12s ease-in-out infinite}
+.flow-band .b4{width:420px;height:420px;background:#7c3aed;top:-60px;right:16%;animation:drift4 17s ease-in-out infinite}
+.flow-band .b5{width:460px;height:460px;background:#22d3ee;bottom:-220px;right:-60px;animation:drift5 14s ease-in-out infinite}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(240px,70px) scale(1.28)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-200px,100px) scale(0.82)}}
+@keyframes drift3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(190px,-120px) scale(1.25)}}
+@keyframes drift4{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-220px,80px) scale(1.3)}}
+@keyframes drift5{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-160px,-100px) scale(0.8)}}
 .flow-cap{position:relative;z-index:2;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(237,235,228,0.85);text-align:center;padding:0 1.5rem;text-shadow:0 2px 20px rgba(0,0,0,0.5)}
 
 /* tutoring */
@@ -255,7 +255,7 @@ section{padding:70px 0}
 <div class="hright">
 <span class="clock" id="clock">--:--:--</span>
 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">Light</button>
-<a href="https://calendly.com/usmle300tutor/30min" target="_blank" rel="noopener" class="cta-mini">Book a free call</a>
+<a href="#contact" class="cta-mini">Book a free call</a>
 <button class="menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
 </div>
 </div>
@@ -267,7 +267,7 @@ section{padding:70px 0}
 <a href="#tutoring">Tutoring</a>
 <a href="#topics">Topics</a>
 <a href="#pricing">Pricing</a>
-<a href="https://calendly.com/usmle300tutor/30min" target="_blank" rel="noopener">Book a free call</a>
+<a href="#contact">Book a free call</a>
 </nav>
 
 <!-- HERO -->
@@ -275,8 +275,8 @@ section{padding:70px 0}
 <div class="wrap hero-grid">
 <div class="hero-left">
 <div class="sec-tag reveal"><span class="idx">00</span> USMLE300 / Step 1 · Step 2 CK</div>
-<h1 class="reveal">Scores usually come down to how you take the test, <span class="mut">not how much more you know.</span></h1>
-<p class="hero-sub reveal">USMLE300 works on that part — reading the question properly, working through the options, and keeping your timing under control. There's a free strategy tool and a few games below, plus one-on-one tutoring when you want it.</p>
+<h1 class="reveal">Scores usually come down to how you prepare and take the test, <span class="mut">not just how much you know.</span></h1>
+<p class="hero-sub reveal">USMLE300 works on all of that — how you read and approach questions, how you study, and how you plan the run-up to your test. There's a free strategy tool and a few games below, plus one-on-one tutoring when you want it.</p>
 </div>
 <div class="hero-right">
 <!-- console -->
@@ -377,7 +377,7 @@ section{padding:70px 0}
 <!-- STRIPE-STYLE FLOW BAND -->
 <div class="flow-band" aria-hidden="true">
 <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span><span class="blob b5"></span>
-<div class="flow-cap">Strategy · question approach · reading under time</div>
+<div class="flow-cap">Exam approach · study technique · planning</div>
 </div>
 
 <!-- TUTORING -->
@@ -388,9 +388,9 @@ section{padding:70px 0}
 <div class="reveal">
 <h2>One-on-one, built around your gaps.</h2>
 <p>Sessions are built around your gaps — the questions you're missing and how you're reading the exam, not a set syllabus.</p>
-<p>Most of it is approach: breaking down a stem, ruling options in and out, and holding your pace across a full block. We fill in content gaps when they come up, but technique is usually what moves the score.</p>
+<p>A lot of it is approach — breaking down a stem, ruling options in and out, holding your pace across a block. We also work on how you're studying and how to plan the weeks you've got left. Content gaps get filled when they come up, but technique and a solid plan are usually what move the score.</p>
 <p class="mono" style="font-size:0.8rem;color:var(--text-3);letter-spacing:0.04em">STEP 1 · STEP 2 CK</p>
-<a href="https://calendly.com/usmle300tutor/30min" target="_blank" rel="noopener" class="run-btn">Book a free call</a>
+<a href="#contact" class="run-btn">Book a free call</a>
 </div>
 <div class="specimen reveal">
 <a href="images/score-report.png" target="_blank"><img src="images/score-report.png" alt="USMLE Step 2 CK score report"></a>
@@ -422,7 +422,7 @@ section{padding:70px 0}
 <div class="rlabel">1-on-1 tutoring</div>
 <div class="ramt">$40<span> / hour</span></div>
 <div class="rnote">Step 1 & Step 2 CK · flexible scheduling</div>
-<a href="https://calendly.com/usmle300tutor/30min" target="_blank" rel="noopener" class="run-btn">Book a free call</a>
+<a href="#contact" class="run-btn">Book a free call</a>
 </div>
 </div>
 </div>
@@ -478,7 +478,7 @@ section{padding:70px 0}
 <h3 id="tmTitle">Cardiology</h3>
 <div class="tm-h4">What we'd work through</div>
 <ul class="tm-list" id="tmContent"></ul>
-<a href="https://calendly.com/usmle300tutor/30min" target="_blank" rel="noopener" class="run-btn tm-book">Book a free call</a>
+<a href="#contact" class="run-btn tm-book">Book a free call</a>
 </div>
 </div>
 
