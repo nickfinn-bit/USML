@@ -76,6 +76,11 @@ section{padding:100px 0;position:relative;scroll-margin-top:70px}
 .sec-tag .idx{color:var(--accent);font-weight:600}
 
 .hero{padding:150px 0 80px;border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:1.02fr 0.98fr;gap:3rem;align-items:center}
+.hero-left{min-width:0}
+.hero-right{min-width:0}
+.hero-right .console{margin-top:0}
+.hero-right .console-body{grid-template-columns:1fr;gap:1.4rem}
 .hero h1{font-size:clamp(2.1rem,5.2vw,3.9rem);font-weight:500;letter-spacing:-0.03em;max-width:20ch}
 .hero h1 .mut{color:var(--text-3)}
 .hero-sub{margin-top:1.6rem;font-size:1.1rem;color:var(--text-2);max-width:56ch;line-height:1.7}
@@ -208,6 +213,7 @@ footer{background:var(--panel);color:var(--panel-text);padding:4rem 0 2rem}
 .cbox a.em{font-family:var(--display);font-size:1.25rem;font-weight:600;color:var(--accent);text-decoration:none;display:block;margin-bottom:0.8rem}
 
 @media(max-width:960px){
+.hero-grid{grid-template-columns:1fr;gap:2.4rem}
 .console-body{grid-template-columns:1fr;gap:1.6rem}
 .games-grid{grid-template-columns:repeat(3,1fr)}
 .tutor-grid{grid-template-columns:1fr;gap:2.5rem}
@@ -249,7 +255,7 @@ section{padding:70px 0}
 <div class="hright">
 <span class="clock" id="clock">--:--:--</span>
 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">Light</button>
-<a href="#contact" class="cta-mini">Get started</a>
+<a href="https://calendly.com/usmle300tutor/30min" target="_blank" rel="noopener" class="cta-mini">Book a free call</a>
 <button class="menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
 </div>
 </div>
@@ -261,16 +267,18 @@ section{padding:70px 0}
 <a href="#tutoring">Tutoring</a>
 <a href="#topics">Topics</a>
 <a href="#pricing">Pricing</a>
-<a href="#contact">Get started</a>
+<a href="https://calendly.com/usmle300tutor/30min" target="_blank" rel="noopener">Book a free call</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="top">
-<div class="wrap">
+<div class="wrap hero-grid">
+<div class="hero-left">
 <div class="sec-tag reveal"><span class="idx">00</span> USMLE300 / Step 1 · Step 2 CK</div>
-<h1 class="reveal">A lot of what separates USMLE scores comes down to how you take the test — <span class="mut">not how much more you can memorize.</span></h1>
-<p class="hero-sub reveal">USMLE300 focuses on that side of it: how you read a question, work through the options, and manage your time under pressure. There's a strategy tool and a few games below to try for free, and one-on-one tutoring whenever you want it.</p>
-
+<h1 class="reveal">Scores usually come down to how you take the test, <span class="mut">not how much more you know.</span></h1>
+<p class="hero-sub reveal">USMLE300 works on that part — reading the question properly, working through the options, and keeping your timing under control. There's a free strategy tool and a few games below, plus one-on-one tutoring when you want it.</p>
+</div>
+<div class="hero-right">
 <!-- console -->
 <div class="console reveal" id="diagnostic">
 <div class="console-bar">
@@ -293,6 +301,7 @@ section{padding:70px 0}
 <span class="r1"></span><span class="sweep"></span><span class="r2"></span><span class="r3"></span><span class="core"></span>
 </div>
 <a href="diagnostic.html" class="run-btn">Run analysis</a>
+</div>
 </div>
 </div>
 </div>
@@ -378,10 +387,10 @@ section{padding:70px 0}
 <div class="tutor-grid">
 <div class="reveal">
 <h2>One-on-one, built around your gaps.</h2>
-<p>We work through your weak areas, the questions you're getting wrong, and how you're actually reading the exam — shaped around where you lose points, not a fixed syllabus.</p>
-<p>Most of the work is on approach: how you break down a stem, how you rule options in and out, and how you keep your pace and your head steady across a full block. Content gaps come up too, and we fill them, but the technique is usually what moves the score.</p>
+<p>Sessions are built around your gaps — the questions you're missing and how you're reading the exam, not a set syllabus.</p>
+<p>Most of it is approach: breaking down a stem, ruling options in and out, and holding your pace across a full block. We fill in content gaps when they come up, but technique is usually what moves the score.</p>
 <p class="mono" style="font-size:0.8rem;color:var(--text-3);letter-spacing:0.04em">STEP 1 · STEP 2 CK</p>
-<a href="#contact" class="run-btn">Book a session</a>
+<a href="https://calendly.com/usmle300tutor/30min" target="_blank" rel="noopener" class="run-btn">Book a free call</a>
 </div>
 <div class="specimen reveal">
 <a href="images/score-report.png" target="_blank"><img src="images/score-report.png" alt="USMLE Step 2 CK score report"></a>
@@ -395,7 +404,7 @@ section{padding:70px 0}
 <section id="topics">
 <div class="wrap">
 <div class="sec-tag reveal"><span class="idx">03</span> Topics we cover</div>
-<p class="topics-lead reveal">We can work through any of these, but even here the focus is on how the exam tests them — the patterns it reuses and the traps it leans on — not just the facts. Tap one to see what a session might look like.</p>
+<p class="topics-lead reveal">We can cover any of these, but the focus stays on how the exam actually tests them — the patterns it repeats and the traps it likes — not just the facts. Tap one to see what a session might cover.</p>
 <div class="topics-grid" id="topicsGrid"></div>
 </div>
 </section>
@@ -413,7 +422,7 @@ section{padding:70px 0}
 <div class="rlabel">1-on-1 tutoring</div>
 <div class="ramt">$40<span> / hour</span></div>
 <div class="rnote">Step 1 & Step 2 CK · flexible scheduling</div>
-<a href="#contact" class="run-btn">Book a session</a>
+<a href="https://calendly.com/usmle300tutor/30min" target="_blank" rel="noopener" class="run-btn">Book a free call</a>
 </div>
 </div>
 </div>
@@ -451,11 +460,11 @@ section{padding:70px 0}
 <div class="modal">
 <button class="modal-x" data-close>×</button>
 <h3>Get in touch</h3>
-<p style="color:var(--text-2);font-size:0.92rem">Email's the easiest way to reach me — I read and reply to all of them myself.</p>
+<p style="color:var(--text-2);font-size:0.92rem">Easiest way to start is a free 30-minute call — no pressure, just to work out where you're at and whether I can help.</p>
+<a href="https://calendly.com/usmle300tutor/30min" target="_blank" rel="noopener" class="run-btn" style="width:100%;justify-content:center;margin:1.2rem 0 0">Book a free call</a>
 <div class="cbox">
-<div class="cl">Email</div>
+<div class="cl">Or email me</div>
 <a href="mailto:usmle300tutor@gmail.com" class="em">usmle300tutor@gmail.com</a>
-<a href="mailto:usmle300tutor@gmail.com" class="run-btn">Send an email</a>
 </div>
 <p style="font-size:0.82rem;color:var(--text-3);text-align:center;margin-top:0.5rem">Let me know which exam you're on and roughly when it's scheduled.</p>
 </div>
@@ -469,7 +478,7 @@ section{padding:70px 0}
 <h3 id="tmTitle">Cardiology</h3>
 <div class="tm-h4">What we'd work through</div>
 <ul class="tm-list" id="tmContent"></ul>
-<a href="#contact" class="run-btn tm-book">Book a session</a>
+<a href="https://calendly.com/usmle300tutor/30min" target="_blank" rel="noopener" class="run-btn tm-book">Book a free call</a>
 </div>
 </div>
 
