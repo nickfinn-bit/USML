@@ -1,571 +1,654 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#0d0e12">
-<title>USMLE300 — Exam Strategy Tutoring, Free Games & a Strategy Diagnostic</title>
-<meta name="description" content="One-on-one USMLE tutoring focused on exam strategy and how you read questions. Plus free games and a free strategy diagnostic.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="icon" href="images/logo.png" type="image/png">
-<link rel="apple-touch-icon" href="images/logo.png">
-<style>
-:root{
---display:'Space Grotesk',sans-serif;
---body:'Inter',sans-serif;
---mono:'JetBrains Mono',monospace;
-}
-html[data-theme="light"]{
---bg:#F4F3EF;--bg-2:#FBFAF7;--panel:#111318;--panel-text:#EDEBE4;
---text:#15161a;--text-2:#57544e;--text-3:#948f87;
---line:rgba(0,0,0,0.11);--line-2:rgba(0,0,0,0.06);
---accent:#8A2F38;--accent-2:#b8434f;
-}
-html[data-theme="dark"]{
---bg:#0d0e12;--bg-2:#14151b;--panel:#14151b;--panel-text:#EDEBE4;
---text:#ECEAE3;--text-2:#9a978f;--text-3:#5c5a54;
---line:rgba(255,255,255,0.12);--line-2:rgba(255,255,255,0.06);
---accent:#cf5c68;--accent-2:#e07c87;
-}
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html{scroll-behavior:smooth}
-body{font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;transition:background .4s ease,color .4s ease;font-size:16px}
-body.locked{overflow:hidden}
-h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.08;letter-spacing:-0.02em}
-a{color:inherit}
-.wrap{max-width:1200px;margin:0 auto;padding:0 2rem}
-.mono{font-family:var(--mono)}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Strategy Diagnostic | USMLE300</title>
+    <meta name="description" content="Free reading-strategy diagnostic. Test 5 ways of reading a question on plain passages and find which one works best for you.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --nbme-blue:#1a2744;--nbme-teal:#2a7d8c;--nbme-teal-hover:#1f5f6b;
+            --cream:#FAF9F6;--cream-dark:#F0EEEB;--burgundy:#722F37;--burgundy-dark:#5a252c;--gold:#C9A227;
+            --charcoal:#2D2D2D;--success:#2E7D4A;--danger:#c0392b;
+            --gray-100:#f8f9fa;--gray-200:#e9ecef;--gray-300:#dee2e6;--gray-500:#6c757d;--gray-700:#495057;
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'DM Sans','Segoe UI',sans-serif;background:#e8eaed;height:100vh;display:flex;flex-direction:column;font-size:15px;line-height:1.6}
 
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
-.reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{animation:none!important}}
+        /* landing */
+        #landing-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;padding:2rem;background:linear-gradient(160deg,var(--cream) 0%,var(--cream-dark) 100%)}
+        .landing-logo{font-family:'Fraunces',Georgia,serif;font-size:1.35rem;font-weight:700;color:var(--burgundy);margin-bottom:0.25rem}
+        .landing-title{font-family:'Fraunces',Georgia,serif;font-size:clamp(1.6rem,4vw,2.25rem);color:var(--nbme-blue);margin-bottom:0.75rem;font-weight:700}
+        .landing-subtitle{color:var(--gray-700);margin-bottom:1rem;max-width:580px;font-size:1rem;line-height:1.7}
+        .landing-meta{display:flex;gap:1.5rem;margin-bottom:2rem;color:var(--gray-500);font-size:0.85rem;flex-wrap:wrap;justify-content:center}
+        .landing-meta b{color:var(--charcoal)}
+        .exam-btn{padding:15px 44px;font-size:1rem;border:2px solid var(--burgundy);background:var(--burgundy);color:#fff;border-radius:8px;cursor:pointer;transition:all 0.2s;font-weight:600;font-family:inherit}
+        .exam-btn:hover{background:var(--burgundy-dark);border-color:var(--burgundy-dark);transform:translateY(-2px);box-shadow:0 6px 16px rgba(114,47,55,0.25)}
+        .landing-note{margin-top:1.4rem;font-size:0.82rem;color:var(--gray-500);max-width:540px;line-height:1.6}
 
-header{position:fixed;top:0;left:0;right:0;z-index:900;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s,background .4s}
-header.scrolled{border-bottom-color:var(--line)}
-.hbar{max-width:1200px;margin:0 auto;padding:0.85rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.brand{display:flex;align-items:center;gap:0.6rem;text-decoration:none;flex-shrink:0}
-.brand img{height:26px}
-.brand b{font-family:var(--display);font-weight:600;font-size:1.05rem;letter-spacing:-0.02em;color:var(--text)}
-nav.desk{display:flex;gap:1.9rem;align-items:center}
-nav.desk a{text-decoration:none;color:var(--text-2);font-size:0.85rem;font-weight:500;transition:color .2s}
-nav.desk a:hover{color:var(--text)}
-.hright{display:flex;align-items:center;gap:1rem;flex-shrink:0}
-.clock{font-family:var(--mono);font-size:0.72rem;color:var(--text-3);letter-spacing:0.05em;font-variant-numeric:tabular-nums}
-.theme-toggle{font-family:var(--mono);font-size:0.66rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;background:none;border:1px solid var(--line);color:var(--text-2);padding:0.4rem 0.6rem;border-radius:6px;cursor:pointer;transition:all .2s}
-.theme-toggle:hover{border-color:var(--text-2);color:var(--text)}
-.cta-mini{font-size:0.82rem;font-weight:600;text-decoration:none;color:#fff;background:var(--accent);padding:0.5rem 1rem;border-radius:7px;transition:background .2s}
-.cta-mini:hover{background:var(--accent-2)}
-.menu-btn{display:none;flex-direction:column;width:40px;height:40px;background:none;border:none;cursor:pointer;justify-content:center;align-items:center;z-index:1001}
-.menu-btn span{display:block;width:22px;height:2px;background:var(--text);margin:2.5px 0;transition:.3s}
-.menu-btn.active span:nth-child(1){transform:rotate(45deg) translate(4px,5px)}
-.menu-btn.active span:nth-child(2){opacity:0}
-.menu-btn.active span:nth-child(3){transform:rotate(-45deg) translate(4px,-5px)}
-.mnav{display:none;position:fixed;inset:0;background:var(--bg);z-index:1000;padding:88px 2rem 2rem;flex-direction:column;opacity:0;visibility:hidden;transition:.3s}
-.mnav.active{opacity:1;visibility:visible}
-.mnav a{padding:1.1rem 0;font-family:var(--display);font-size:1.6rem;font-weight:500;color:var(--text);text-decoration:none;border-bottom:1px solid var(--line-2)}
+        /* header */
+        #nbme-header{display:none;background:var(--nbme-blue);color:#fff;flex-shrink:0;border-bottom:3px solid var(--nbme-teal)}
+        .nbme-header-row{display:flex;justify-content:space-between;align-items:center;padding:8px 20px}
+        .nbme-header-row.top{border-bottom:1px solid rgba(255,255,255,0.1)}
+        .nbme-item-info{font-size:0.9rem;display:flex;align-items:center;gap:12px}
+        .nbme-item-info strong{font-size:1rem}
+        .nbme-nav-buttons{display:flex;gap:8px;align-items:center}
+        .nbme-nav-btn{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:5px 14px;border-radius:3px;cursor:pointer;font-size:0.8rem;font-family:inherit;display:flex;align-items:center;gap:5px;transition:background 0.15s}
+        .nbme-nav-btn:hover{background:rgba(255,255,255,0.15)}
+        .nbme-nav-btn.disabled{opacity:0.4;cursor:not-allowed;pointer-events:none}
+        .nbme-tools{display:flex;gap:4px;align-items:center}
+        .nbme-tool-btn{display:flex;flex-direction:column;align-items:center;gap:1px;color:rgba(255,255,255,0.75);font-size:0.65rem;cursor:pointer;padding:4px 10px;border-radius:3px;transition:all 0.15s;background:none;border:1px solid transparent;font-family:inherit}
+        .nbme-tool-btn:hover{background:rgba(255,255,255,0.08);color:#fff;border-color:rgba(255,255,255,0.15)}
+        .strategy-badge{padding:5px 14px;border-radius:3px;font-weight:700;font-size:0.82rem;letter-spacing:0.3px}
+        .nbme-timer{font-family:'Consolas','Courier New',monospace;font-size:0.9rem;background:rgba(0,0,0,0.3);padding:4px 14px;border-radius:3px;letter-spacing:1px}
 
-.cursor-hud{position:fixed;left:1.2rem;bottom:1.1rem;z-index:800;font-family:var(--mono);font-size:0.66rem;color:var(--text-3);letter-spacing:0.06em;pointer-events:none;font-variant-numeric:tabular-nums;mix-blend-mode:difference;opacity:0.8}
-@media(hover:none){.cursor-hud{display:none}}
+        /* game */
+        #game-screen{display:none;flex:1;overflow:hidden}
+        .nbme-layout{display:flex;height:100%}
+        .nbme-line-numbers{width:36px;background:#d5d8dc;border-right:1px solid #b0b3b8;padding:20px 0;font-family:'Consolas','Courier New',monospace;font-size:0.75rem;color:#666;text-align:center;overflow-y:auto;flex-shrink:0}
+        .line-num{padding:1px 6px;height:22px;display:flex;align-items:center;justify-content:flex-end}
+        .nbme-content{flex:1;background:#fff;padding:28px 40px;overflow-y:auto;max-width:920px}
+        .strategy-instruction{padding:11px 16px;border-radius:4px;margin-bottom:20px;font-size:0.9rem;border-left:4px solid}
+        .strategy-instruction.standard{background:#f1f3f5;color:var(--gray-700);border-color:#adb5bd}
+        .strategy-instruction.highlighter{background:#fff8e1;color:#6d4c00;border-color:#f9a825}
+        .strategy-instruction.speed{background:#fde8e8;color:#8b1a1a;border-color:var(--danger)}
+        .strategy-instruction.options-first{background:#e3f2fd;color:#0d47a1;border-color:#1976d2}
+        .strategy-instruction.last-sentence{background:#fef3c7;color:#78350f;border-color:#d97706}
+        .question-vignette{font-size:1.04rem;line-height:1.9;color:#333;margin-bottom:22px}
+        .question-vignette.blur-content{filter:blur(8px);user-select:none;pointer-events:none;opacity:0.5;transition:all 0.4s ease}
+        .highlightable-word{cursor:pointer;padding:1px 2px;border-radius:2px;transition:background 0.1s}
+        .highlightable-word:hover{background:#e8eaed}
+        .highlighted{background-color:#fff176 !important;font-weight:600}
+        .last-sentence-highlight{background:#fef9e7;padding:11px 15px;border-radius:4px;border-left:3px solid #f59e0b;margin:10px 0 15px;font-weight:500}
+        .question-lead{font-weight:700;font-size:1.05rem;color:var(--nbme-blue);margin-bottom:18px;line-height:1.5}
+        .reveal-btn{background:var(--nbme-teal);color:#fff;border:none;padding:9px 20px;border-radius:4px;font-weight:600;cursor:pointer;margin-bottom:18px;font-size:0.9rem;font-family:inherit;transition:all 0.15s}
+        .reveal-btn:hover{background:var(--nbme-teal-hover)}
+        .options-container{border:1px solid var(--gray-300);border-radius:4px;background:#fff;padding:12px;max-width:580px}
+        .options-container.locked{opacity:0.35;pointer-events:none;filter:grayscale(0.8)}
+        .option{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;margin-bottom:4px;border-radius:4px;cursor:pointer;transition:background 0.1s;border:1px solid transparent}
+        .option:last-child{margin-bottom:0}
+        .option:hover{background:var(--gray-100)}
+        .option-radio{width:18px;height:18px;border:2px solid #888;border-radius:50%;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all 0.1s}
+        .option.selected{background:#e8f0fe;border-color:#c2d7f5}
+        .option.selected .option-radio{border-color:var(--nbme-blue);background:var(--nbme-blue)}
+        .option.selected .option-radio::after{content:'';width:7px;height:7px;background:#fff;border-radius:50%}
+        .option.correct{background:#d4edda;border-color:#a3d9b1}
+        .option.correct .option-radio{border-color:var(--success);background:var(--success)}
+        .option.correct .option-radio::after{content:'';width:7px;height:7px;background:#fff;border-radius:50%}
+        .option.incorrect{background:#f8d7da;border-color:#f1aeb5}
+        .option.incorrect .option-radio{border-color:var(--danger);background:var(--danger)}
+        .option.incorrect .option-radio::after{content:'';width:7px;height:7px;background:#fff;border-radius:50%}
+        .option-label{font-weight:700;color:#333;margin-right:4px}
+        .option-text{color:#333;font-size:0.96rem}
+        .unlock-message{margin-top:10px;font-weight:600;font-size:0.88rem}
+        .unlock-message.locked{color:var(--danger)}
+        .unlock-message.unlocked{color:var(--success)}
 
-section{padding:100px 0;position:relative;scroll-margin-top:70px}
-.sec-tag{display:flex;align-items:center;gap:0.75rem;font-family:var(--mono);font-size:0.7rem;color:var(--text-3);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1.6rem}
-.sec-tag::before{content:'';width:30px;height:1px;background:var(--accent)}
-.sec-tag .idx{color:var(--accent);font-weight:600}
+        /* footer */
+        #nbme-footer{display:none;background:#f5f5f5;border-top:2px solid #c8c8c8;padding:10px 20px;flex-shrink:0}
+        .nbme-footer-content{display:flex;justify-content:space-between;align-items:center}
+        .nbme-footer-left{display:flex;align-items:center;gap:20px}
+        .nbme-block-info{font-size:0.82rem;color:var(--gray-500)}
+        .nbme-block-info strong{color:#333}
+        .feedback-message{font-size:0.92rem;max-width:540px}
+        .feedback-message .correct{color:var(--success);font-weight:700}
+        .feedback-message .incorrect{color:var(--danger);font-weight:700}
+        .nbme-proceed-btn{background:var(--nbme-teal);color:#fff;border:none;padding:9px 22px;border-radius:4px;font-weight:600;cursor:pointer;font-size:0.9rem;font-family:inherit;transition:background 0.15s}
+        .nbme-proceed-btn:hover{background:var(--nbme-teal-hover)}
 
-.hero{padding:150px 0 80px;border-bottom:1px solid var(--line)}
-.hero-grid{display:grid;grid-template-columns:1.02fr 0.98fr;gap:3rem;align-items:center}
-.hero-left{min-width:0}
-.hero-right{min-width:0}
-.hero-right .console{margin-top:0}
-.hero-right .console-body{grid-template-columns:1fr;gap:1.4rem}
-.hero h1{font-size:clamp(2.1rem,5.2vw,3.9rem);font-weight:500;letter-spacing:-0.03em;max-width:20ch}
-.hero h1 .mut{color:var(--text-3)}
-.hero-sub{margin-top:1.6rem;font-size:1.1rem;color:var(--text-2);max-width:56ch;line-height:1.7}
-.hero-metrics{display:flex;gap:2.5rem;margin-top:2.6rem;flex-wrap:wrap}
-.metric .v{font-family:var(--display);font-size:1.5rem;font-weight:600;letter-spacing:-0.02em}
-.metric .l{font-family:var(--mono);font-size:0.66rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-top:0.2rem}
+        /* first-time strategy intro */
+        .intro-overlay{position:fixed;inset:0;background:rgba(12,18,28,0.94);display:none;align-items:center;justify-content:center;z-index:6000;padding:2rem}
+        .intro-overlay.active{display:flex}
+        .intro-card{background:#fff;max-width:540px;width:100%;border-radius:16px;padding:2.6rem 2.4rem;box-shadow:0 30px 80px rgba(0,0,0,0.5);animation:introPop 0.25s ease}
+        @keyframes introPop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+        .intro-kicker{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--nbme-teal);font-weight:700;margin-bottom:0.6rem;text-align:center}
+        .intro-title{font-family:'Fraunces',serif;font-size:1.9rem;color:var(--nbme-blue);margin-bottom:1.1rem;text-align:center;font-weight:700}
+        .intro-what{font-size:1.05rem;color:#333;line-height:1.75;margin-bottom:1.2rem}
+        .intro-why{font-size:0.9rem;color:var(--gray-700);background:var(--gray-100);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:0.9rem 1.1rem;margin-bottom:1.6rem;line-height:1.6}
+        .intro-why strong{color:var(--charcoal)}
+        .intro-btn{width:100%;background:var(--burgundy);color:#fff;border:none;padding:0.95rem;border-radius:9px;font-weight:700;font-size:0.98rem;cursor:pointer;font-family:inherit;transition:background 0.2s}
+        .intro-btn:hover{background:var(--burgundy-dark)}
+        .intro-count{text-align:center;font-size:0.75rem;color:var(--gray-500);margin-top:0.9rem}
 
-.console{scroll-margin-top:84px;margin-top:3.5rem;background:var(--panel);border-radius:16px;overflow:hidden;position:relative;box-shadow:0 30px 70px -30px rgba(0,0,0,0.5)}
-.console-bar{display:flex;align-items:center;gap:0.6rem;padding:0.85rem 1.2rem;border-bottom:1px solid rgba(255,255,255,0.08)}
-.dot{width:10px;height:10px;border-radius:50%}
-.dot.a{background:#e0574f}.dot.b{background:#e0a13a}.dot.c{background:#4caf78}
-.console-bar .path{margin-left:0.6rem;font-family:var(--mono);font-size:0.72rem;color:rgba(237,235,228,0.45);letter-spacing:0.04em}
-.console-body{padding:2.4rem 2.2rem;display:grid;grid-template-columns:1.4fr 1fr;gap:2rem;align-items:center}
-.console-copy .tagline{font-family:var(--mono);font-size:0.68rem;color:var(--accent-2);text-transform:uppercase;letter-spacing:0.14em;margin-bottom:1rem}
-.console-copy h2{color:var(--panel-text);font-size:clamp(1.6rem,3.2vw,2.2rem);font-weight:500;margin-bottom:0.85rem}
-.console-copy p{color:rgba(237,235,228,0.62);font-size:1rem;max-width:44ch;line-height:1.65}
-.readout{margin-top:1.4rem;display:flex;gap:1.4rem;flex-wrap:wrap}
-.readout div{font-family:var(--mono);font-size:0.66rem;color:rgba(237,235,228,0.4);letter-spacing:0.05em}
-.readout div b{color:rgba(237,235,228,0.8);font-weight:600}
-.console-cta{text-align:center}
-.radar{position:relative;width:150px;height:150px;margin:0 auto 1.3rem}
-.radar span{position:absolute;inset:0;margin:auto;border-radius:50%;border:1px solid rgba(207,92,104,0.35)}
-.radar .r1{width:150px;height:150px;animation:spin 16s linear infinite}
-.radar .r2{width:100px;height:100px;border-color:rgba(207,92,104,0.5)}
-.radar .r3{width:52px;height:52px;border-color:rgba(207,92,104,0.7)}
-.radar .core{width:8px;height:8px;border:none;background:var(--accent-2);box-shadow:0 0 12px 2px rgba(207,92,104,0.6)}
-.radar .sweep{width:150px;height:150px;border:none;background:conic-gradient(from 0deg,transparent 0deg,rgba(207,92,104,0.18) 40deg,transparent 60deg);animation:spin 4s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.run-btn{display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--mono);font-weight:600;font-size:0.9rem;letter-spacing:0.02em;background:var(--accent);color:#fff;padding:0.85rem 1.5rem;border-radius:9px;text-decoration:none;transition:transform .2s,background .2s}
-.run-btn:hover{transform:translateY(-2px);background:var(--accent-2)}
-.run-btn::before{content:'▸'}
+        /* results */
+        .results-wrap{min-height:100vh;background:linear-gradient(160deg,#0f172a 0%,#1e293b 40%,#1a2744 100%);padding:40px 20px;overflow-y:auto}
+        .results-container{max-width:620px;margin:0 auto}
+        .results-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 25px 80px rgba(0,0,0,0.4)}
+        .results-card-top{background:linear-gradient(135deg,var(--burgundy) 0%,var(--burgundy-dark) 100%);padding:32px 28px 24px;text-align:center;color:#fff;position:relative}
+        .results-card-top::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:24px;background:#fff;border-radius:24px 24px 0 0}
+        .results-logo{font-family:'Fraunces',serif;font-size:0.9rem;font-weight:700;opacity:0.8;margin-bottom:4px}
+        .results-title{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;margin-bottom:16px}
+        .results-score-circle{width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,0.15);border:4px solid rgba(255,255,255,0.4);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 10px}
+        .results-score-num{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:700;line-height:1}
+        .results-score-label{font-size:0.75rem;opacity:0.75;margin-top:2px}
+        .results-time{font-size:0.82rem;opacity:0.7}
+        .results-card-body{padding:8px 28px 28px}
+        .results-section-title{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:700;color:var(--charcoal);margin-bottom:6px}
+        .results-section-sub{font-size:0.82rem;color:var(--gray-500);margin-bottom:14px;line-height:1.5}
+        .delta-banner{background:linear-gradient(135deg,#1a2744 0%,#253558 100%);color:#fff;border-radius:12px;padding:16px 18px;margin-bottom:18px;text-align:center}
+        .delta-num{font-family:'Fraunces',serif;font-size:2rem;font-weight:700;color:#fff;line-height:1}
+        .delta-text{font-size:0.85rem;opacity:0.85;margin-top:6px;line-height:1.5}
+        .strategy-row{display:flex;align-items:center;padding:12px 14px;margin-bottom:8px;border-radius:10px;background:var(--gray-100);border:2px solid transparent;gap:12px;transition:all 0.2s}
+        .strategy-row.best{background:#ecfdf5;border-color:var(--success)}
+        .strategy-row.worst{background:#fef2f2;border-color:#fca5a5}
+        .strategy-rank{width:28px;height:28px;border-radius:50%;background:var(--gray-200);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;color:var(--gray-700);flex-shrink:0}
+        .strategy-row.best .strategy-rank{background:var(--success);color:#fff}
+        .strategy-row.worst .strategy-rank{background:#fca5a5;color:#7f1d1d}
+        .strategy-info{flex:1;min-width:0}
+        .strategy-name{font-weight:700;font-size:0.92rem;color:var(--charcoal)}
+        .strategy-meta{font-size:0.78rem;color:var(--gray-500);margin-top:2px}
+        .strategy-bar-wrap{height:6px;background:var(--gray-200);border-radius:3px;overflow:hidden;margin-top:6px}
+        .strategy-bar-fill{height:100%;border-radius:3px;transition:width 0.6s ease}
+        .strategy-pct{font-family:'Fraunces',serif;font-size:1.35rem;font-weight:700;flex-shrink:0}
+        .strategy-row.best .strategy-pct{color:var(--success)}
+        .strategy-row.worst .strategy-pct{color:var(--danger)}
+        .recommendation-card{margin-top:20px;padding:20px;border-radius:12px;background:linear-gradient(135deg,#faf5ff 0%,#f0e7ff 100%);border:1px solid #ddd6fe}
+        .recommendation-card h3{font-family:'Fraunces',serif;font-size:1rem;color:#5b21b6;margin-bottom:8px}
+        .recommendation-card p{font-size:0.9rem;color:#4c1d95;line-height:1.6;margin-bottom:6px}
+        .recommendation-card .avoid-note{font-size:0.82rem;color:#7c3aed;border-top:1px solid #ddd6fe;margin-top:10px;padding-top:10px}
+        .tutor-cta{margin-top:16px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--burgundy);text-align:center}
+        .tutor-cta p{font-size:0.9rem;color:var(--charcoal);margin-bottom:12px}
+        .results-actions{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
+        .results-btn{flex:1;min-width:140px;padding:12px 16px;border-radius:10px;font-weight:700;font-size:0.88rem;cursor:pointer;text-align:center;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:inherit;transition:all 0.2s;border:none}
+        .results-btn.primary{background:var(--burgundy);color:#fff}
+        .results-btn.primary:hover{background:var(--burgundy-dark);transform:translateY(-1px)}
+        .results-btn.secondary{background:#fff;color:var(--charcoal);border:2px solid var(--gray-300)}
+        .results-btn.secondary:hover{border-color:var(--charcoal)}
+        .results-btn.share{background:#1da1f2;color:#fff}
+        .results-btn.share:hover{background:#0c85d0;transform:translateY(-1px)}
+        .results-watermark{text-align:center;margin-top:20px;font-size:0.8rem;color:rgba(255,255,255,0.4)}
+        .results-watermark a{color:rgba(255,255,255,0.6);text-decoration:none}
+        .share-toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--charcoal);color:#fff;padding:12px 24px;border-radius:10px;font-size:0.9rem;font-weight:600;opacity:0;transition:all 0.3s;z-index:9999;pointer-events:none}
+        .share-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-/* games — icon/badge/tags presentation */
-.games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1rem}
-.gcard{background:var(--bg-2);border:1px solid var(--line);border-radius:13px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:transform .22s,border-color .22s;--gc:var(--accent)}
-.gcard:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--gc) 55%,var(--line))}
-.gbar{height:4px;background:var(--gc)}
-.gc-body{padding:1.3rem 1.4rem 0.8rem;flex:1}
-.gc-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
-.gbadge{font-family:var(--mono);font-size:0.58rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;padding:0.2rem 0.5rem;border-radius:4px;color:var(--gc);background:color-mix(in srgb,var(--gc) 13%,transparent)}
-.gfreq{font-family:var(--mono);font-size:0.58rem;font-weight:500;color:var(--text-3);letter-spacing:0.04em}
-.gc-titlerow{display:flex;align-items:center;gap:0.65rem;margin-bottom:0.7rem}
-.gc-icon{width:32px;height:32px;flex-shrink:0;border-radius:8px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--gc) 14%,transparent)}
-.gc-icon svg{width:19px;height:19px;fill:none;stroke:var(--gc);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.gc-name{font-family:var(--display);font-weight:600;font-size:1.25rem;letter-spacing:-0.02em;color:var(--text)}
-.gc-desc{font-size:0.86rem;line-height:1.55;color:var(--text-2);margin-bottom:1rem}
-.gc-tags{display:flex;gap:0.4rem;flex-wrap:wrap}
-.gc-tag{font-family:var(--mono);font-size:0.58rem;font-weight:500;color:var(--text-3);background:color-mix(in srgb,var(--text) 6%,transparent);border-radius:4px;padding:0.2rem 0.5rem}
-.gc-foot{padding:0.9rem 1.4rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
-.gplay{font-family:var(--display);font-size:0.9rem;font-weight:600;color:var(--gc);transition:letter-spacing .2s}
-.gcard:hover .gplay{letter-spacing:0.03em}
-.gtype{font-family:var(--mono);font-size:0.6rem;color:var(--text-3)}
-
-/* stripe-style flow band */
-.flow-band{position:relative;height:260px;overflow:hidden;background:var(--panel);display:flex;align-items:center;justify-content:center}
-.flow-band .blob{position:absolute;border-radius:50%;filter:blur(54px);opacity:0.9;mix-blend-mode:screen;will-change:transform}
-.flow-band .b1{width:520px;height:520px;background:#8A2F38;top:-160px;left:-40px;animation:drift1 13s ease-in-out infinite}
-.flow-band .b2{width:440px;height:440px;background:#c9932f;top:-80px;left:28%;animation:drift2 16s ease-in-out infinite}
-.flow-band .b3{width:480px;height:480px;background:#0dd196;bottom:-200px;left:44%;animation:drift3 12s ease-in-out infinite}
-.flow-band .b4{width:420px;height:420px;background:#7c3aed;top:-60px;right:16%;animation:drift4 17s ease-in-out infinite}
-.flow-band .b5{width:460px;height:460px;background:#22d3ee;bottom:-220px;right:-60px;animation:drift5 14s ease-in-out infinite}
-@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(240px,70px) scale(1.28)}}
-@keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-200px,100px) scale(0.82)}}
-@keyframes drift3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(190px,-120px) scale(1.25)}}
-@keyframes drift4{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-220px,80px) scale(1.3)}}
-@keyframes drift5{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-160px,-100px) scale(0.8)}}
-.flow-cap{position:relative;z-index:2;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(237,235,228,0.85);text-align:center;padding:0 1.5rem;text-shadow:0 2px 20px rgba(0,0,0,0.5)}
-
-/* tutoring */
-.tutor{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2)}
-.tutor-grid{display:grid;grid-template-columns:1fr 300px;gap:4rem;align-items:center}
-.tutor h2{font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:500;letter-spacing:-0.025em;margin-bottom:1.1rem}
-.tutor p{color:var(--text-2);font-size:1.05rem;max-width:52ch;margin-bottom:1rem;line-height:1.7}
-.tutor .run-btn{margin-top:0.6rem}
-.specimen{position:relative}
-.specimen a{display:block;border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 50px -24px rgba(0,0,0,0.45);transition:transform .3s}
-.specimen a:hover{transform:translateY(-4px)}
-.specimen img{width:100%;display:block}
-.specimen .cap{font-family:var(--mono);font-size:0.64rem;color:var(--text-3);letter-spacing:0.05em;margin-top:0.7rem;display:flex;justify-content:space-between}
-
-/* topics */
-.topics-lead{color:var(--text-2);font-size:1.02rem;max-width:56ch;margin-bottom:2.2rem;line-height:1.7}
-.topics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.7rem}
-.tcard{background:var(--bg-2);border:1px solid var(--line);border-radius:11px;padding:1.15rem 1rem;cursor:pointer;transition:all .2s;display:flex;flex-direction:column;gap:0.5rem;min-height:96px}
-.tcard:hover{border-color:var(--accent);transform:translateY(-3px)}
-.tcard .trow{display:flex;justify-content:space-between;align-items:flex-start}
-.tcard .tic{font-size:1.2rem;line-height:1}
-.tcard .tnum{font-family:var(--mono);font-size:0.62rem;color:var(--text-3)}
-.tcard .tname{font-family:var(--display);font-weight:500;font-size:0.92rem;letter-spacing:-0.01em;margin-top:auto}
-.tcard.key{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 7%,var(--bg-2))}
-.tcard.key .tnum{color:var(--accent)}
-
-/* pricing */
-.pricing{border-top:1px solid var(--line)}
-.price-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-.price-left h2{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:500;letter-spacing:-0.025em;margin-bottom:1rem}
-.price-left p{color:var(--text-2);max-width:44ch;line-height:1.7}
-.rate{background:var(--panel);color:var(--panel-text);border-radius:16px;padding:2.4rem}
-.rate .rlabel{font-family:var(--mono);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent-2);margin-bottom:1.1rem}
-.rate .ramt{font-family:var(--display);font-size:4rem;font-weight:600;letter-spacing:-0.03em;line-height:1}
-.rate .ramt span{font-size:1.1rem;font-weight:400;color:rgba(237,235,228,0.5);font-family:var(--mono)}
-.rate .rnote{color:rgba(237,235,228,0.55);font-size:0.9rem;margin:0.7rem 0 1.6rem}
-.rate .run-btn{width:100%;justify-content:center}
-
-/* footer */
-footer{background:var(--panel);color:var(--panel-text);padding:4rem 0 2rem}
-.foot-mark{font-family:var(--display);font-weight:600;font-size:clamp(2.5rem,10vw,7rem);letter-spacing:-0.04em;line-height:0.9;color:var(--panel-text);opacity:0.9;margin-bottom:2.5rem}
-.foot-cols{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.1);padding-top:2rem}
-.foot-cols .fcol{display:flex;flex-direction:column;gap:0.55rem}
-.foot-cols h4{font-family:var(--mono);font-size:0.64rem;text-transform:uppercase;letter-spacing:0.12em;color:rgba(237,235,228,0.4);margin-bottom:0.3rem}
-.foot-cols a{color:rgba(237,235,228,0.75);text-decoration:none;font-size:0.9rem}
-.foot-cols a:hover{color:var(--panel-text)}
-.foot-bot{margin-top:2.5rem;font-family:var(--mono);font-size:0.68rem;color:rgba(237,235,228,0.4);display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.6rem;letter-spacing:0.04em}
-
-/* modals */
-.overlay{position:fixed;inset:0;background:rgba(8,8,11,0.6);backdrop-filter:blur(5px);display:flex;align-items:center;justify-content:center;z-index:2000;opacity:0;visibility:hidden;transition:.25s;padding:1rem}
-.overlay.active{opacity:1;visibility:visible}
-.modal{background:var(--bg-2);border:1px solid var(--line);border-radius:16px;padding:2rem;max-width:480px;width:100%;transform:translateY(16px);transition:transform .25s;position:relative;max-height:90vh;overflow-y:auto}
-.overlay.active .modal{transform:translateY(0)}
-.modal-x{position:absolute;top:0.8rem;right:0.8rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text-2);width:40px;height:40px}
-.modal h3{font-family:var(--display);font-size:1.4rem;font-weight:600;margin-bottom:0.4rem}
-.tm-ic{font-size:1.7rem;margin-bottom:0.5rem}
-.tm-h4{font-family:var(--mono);font-size:0.66rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:0.5rem 0 0.6rem}
-.tm-list{list-style:none}
-.tm-list li{padding:0.34rem 0 0.34rem 1.2rem;position:relative;font-size:0.9rem;color:var(--text-2);line-height:1.5}
-.tm-list li::before{content:'→';position:absolute;left:0;color:var(--accent)}
-.modal .run-btn{width:100%;justify-content:center;margin-top:1.2rem}
-.cbox{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:1.4rem;text-align:center;margin:1.2rem 0 0.4rem}
-.cbox .cl{font-family:var(--mono);font-size:0.66rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-3);margin-bottom:0.4rem}
-.cbox a.em{font-family:var(--display);font-size:1.25rem;font-weight:600;color:var(--accent);text-decoration:none;display:block;margin-bottom:0.8rem}
-
-@media(max-width:960px){
-.hero-grid{grid-template-columns:1fr;gap:2.4rem}
-.console-body{grid-template-columns:1fr;gap:1.6rem}
-.games-grid{grid-template-columns:repeat(3,1fr)}
-.tutor-grid{grid-template-columns:1fr;gap:2.5rem}
-.specimen{max-width:300px}
-.topics-grid{grid-template-columns:repeat(3,1fr)}
-.price-wrap{grid-template-columns:1fr;gap:2rem}
-}
-@media(max-width:768px){
-.wrap{padding:0 1.3rem}
-nav.desk,.clock{display:none}
-.menu-btn{display:flex}
-.mnav{display:flex}
-section{padding:70px 0}
-.hero{padding:120px 0 60px}
-.games-grid{grid-template-columns:repeat(2,1fr)}
-.hbar{padding:0.85rem 1.3rem}
-.flow-band{height:200px}
-}
-@media(max-width:480px){
-.topics-grid{grid-template-columns:repeat(2,1fr)}
-.console-body{padding:1.6rem}
-.hero-metrics{gap:1.6rem}
-}
-</style>
+        @media (max-width:768px){
+            .nbme-line-numbers{display:none}
+            .nbme-content{padding:20px 16px}
+            .nbme-header-row{padding:6px 12px;flex-wrap:wrap;gap:6px}
+            .nbme-tools{display:none}
+            .nbme-footer-content{flex-direction:column;gap:12px;text-align:center}
+            .nbme-footer-left{flex-direction:column;gap:6px}
+            .options-container{max-width:100%}
+            .results-card-body{padding:8px 20px 24px}
+            .results-card-top{padding:24px 20px 20px}
+            .intro-card{padding:2rem 1.6rem}
+        }
+    </style>
 </head>
 <body>
-<div class="cursor-hud" id="hud">X:0000 Y:0000</div>
 
-<header>
-<div class="hbar">
-<a href="#" class="brand"><img src="images/logo.png" alt="USMLE300"><b>USMLE300</b></a>
-<nav class="desk">
-<a href="#games">Games</a>
-<a href="#diagnostic">Diagnostic</a>
-<a href="#tutoring">Tutoring</a>
-<a href="#topics">Topics</a>
-<a href="#pricing">Pricing</a>
-</nav>
-<div class="hright">
-<span class="clock" id="clock">--:--:--</span>
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">Light</button>
-<a href="#contact" class="cta-mini">Book a free call</a>
-<button class="menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
-</div>
-</div>
-</header>
+    <div id="landing-screen">
+        <div class="landing-logo">USMLE300</div>
+        <h1 class="landing-title">Exam Strategy Diagnostic</h1>
+        <p class="landing-subtitle">
+            Twenty questions, read five different ways. The passages aren't medical and every answer is right there in the text, so the only thing being measured is how you read, not what you already know.
+        </p>
+        <div class="landing-meta">
+            <span><b>20</b> questions</span>
+            <span><b>5</b> reading strategies</span>
+            <span><b>~15</b> min</span>
+            <span><b>No</b> signup</span>
+        </div>
+        <button class="exam-btn" onclick="startGame()">Start the diagnostic</button>
+        <p class="landing-note">Each strategy is tested on the same spread of question types (quick gist, buried detail, logic, and traps), so your result reflects the approach that fits you, not luck of the draw. The first time you meet each strategy, you'll get a quick explainer.</p>
+    </div>
 
-<nav class="mnav">
-<a href="#games">Games</a>
-<a href="#diagnostic">Diagnostic</a>
-<a href="#tutoring">Tutoring</a>
-<a href="#topics">Topics</a>
-<a href="#pricing">Pricing</a>
-<a href="#contact">Book a free call</a>
-</nav>
+    <div id="nbme-header">
+        <div class="nbme-header-row top">
+            <div class="nbme-item-info">
+                <strong>Item <span id="item-current">1</span> of <span id="item-total">20</span></strong>
+                <span style="opacity:0.7;font-size:0.85rem">Reading Strategy Diagnostic</span>
+            </div>
+            <div class="nbme-nav-buttons">
+                <button class="nbme-nav-btn disabled" id="prev-btn" onclick="goToPrevious()"><span>&#9664;</span> Previous</button>
+                <button class="nbme-nav-btn" id="next-nav-btn" onclick="goToNext()">Next <span>&#9654;</span></button>
+            </div>
+            <div class="nbme-tools">
+                <button class="nbme-tool-btn" onclick="toggleZoom()"><span>Aa</span><span>Zoom</span></button>
+            </div>
+        </div>
+        <div class="nbme-header-row">
+            <div id="strategy-display" class="strategy-badge">Standard read</div>
+            <div class="nbme-timer" id="timer">00:00</div>
+        </div>
+    </div>
 
-<!-- HERO -->
-<section class="hero" id="top">
-<div class="wrap hero-grid">
-<div class="hero-left">
-<div class="sec-tag reveal"><span class="idx">00</span> USMLE300 / Step 1 · Step 2 CK</div>
-<h1 class="reveal">Scores usually come down to how you prepare and take the test, <span class="mut">not just how much you know.</span></h1>
-<p class="hero-sub reveal">USMLE300 works on all of that — how you read and approach questions, how you study, and how you plan the run-up to your test. There's a free strategy tool and a few games below, plus one-on-one tutoring when you want it.</p>
-</div>
-<div class="hero-right">
-<!-- console -->
-<div class="console reveal" id="diagnostic">
-<div class="console-bar">
-<span class="dot a"></span><span class="dot b"></span><span class="dot c"></span>
-<span class="path">~/exam-approach-analyzer</span>
-</div>
-<div class="console-body">
-<div class="console-copy">
-<div class="tagline">Free · no signup</div>
-<h2>Analyze my exam approach</h2>
-<p>It walks you through five different ways of reading and working through a question — using plain, non-medical passages, so it's only testing how you find the details and reason, not what you already know. You get back the approach that fits you best, and most people find they've been defaulting to one that quietly costs them.</p>
-<div class="readout">
-<div>STRATEGIES <b>5</b></div>
-<div>TIME <b>~15:00</b></div>
-<div>AUTH <b>none</b></div>
-</div>
-</div>
-<div class="console-cta">
-<div class="radar">
-<span class="r1"></span><span class="sweep"></span><span class="r2"></span><span class="r3"></span><span class="core"></span>
-</div>
-<a href="diagnostic.html" class="run-btn">Run analysis</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
+    <!-- first-time strategy explainer -->
+    <div class="intro-overlay" id="intro-overlay">
+        <div class="intro-card">
+            <div class="intro-kicker" id="intro-kicker">New strategy</div>
+            <div class="intro-title" id="intro-title"></div>
+            <div class="intro-what" id="intro-what"></div>
+            <div class="intro-why" id="intro-why"></div>
+            <button class="intro-btn" id="intro-btn" onclick="dismissIntro()">Got it, start this one</button>
+            <div class="intro-count" id="intro-count"></div>
+        </div>
+    </div>
 
-<!-- GAMES -->
-<section id="games">
-<div class="wrap">
-<div class="sec-tag reveal"><span class="idx">01</span> Games</div>
-<p class="topics-lead reveal">A few free browser games I put together to make question practice less of a slog. No account, nothing to install — some reset daily, some you can play as much as you want.</p>
-<div class="games-grid">
+    <div id="game-screen">
+        <div class="nbme-layout">
+            <div class="nbme-line-numbers" id="line-numbers"></div>
+            <div class="nbme-content" id="question-content"></div>
+        </div>
+    </div>
 
+    <div id="nbme-footer">
+        <div class="nbme-footer-content">
+            <div class="nbme-footer-left">
+                <div class="nbme-block-info"><strong>Block 1</strong> · Strategy Diagnostic</div>
+                <div id="feedback-msg" class="feedback-message"></div>
+            </div>
+            <button id="proceed-btn" class="nbme-proceed-btn" onclick="nextQuestion()">Submit Answer</button>
+        </div>
+    </div>
 
+    <div class="share-toast" id="share-toast">Results copied to clipboard.</div>
 
-<a href="buzzwordblitz/" class="gcard reveal" style="--gc:#e87040">
-<div class="gbar"></div>
-<div class="gc-body">
-<div class="gc-meta"><span class="gbadge">Unlimited</span><span class="gfreq">Pattern recognition</span></div>
-<div class="gc-titlerow"><div class="gc-icon"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div class="gc-name">Buzzword Blitz</div></div>
-<p class="gc-desc">See a buzzword, name the diagnosis. "Keratin pearls" → ? "Reed-Sternberg cells" → ? Sixty seconds, no vignettes, just recall.</p>
-<div class="gc-tags"><span class="gc-tag">60+ buzzwords</span><span class="gc-tag">Step 1 + 2</span><span class="gc-tag">Streak ×2</span></div>
-</div>
-<div class="gc-foot"><span class="gplay">Play →</span><span class="gtype">60 sec</span></div>
-</a>
+    <script>
+    // ============ QUESTION BANK ============
+    // Non-medical, long stems in the style of exam vignettes. Every answer is fully in the text.
+    // 4 questions per strategy, each strategy facing the same spread of types, so results reflect
+    // strategy fit rather than luck.
+    const QUESTIONS = [
+      // ---- STEM_FIRST ----
+      {strategy:'STEM_FIRST',
+       text:"The Harrow Library has occupied the same red-brick building on Chapel Street since it first opened its doors in the spring of 1962. In those early years it was something of a local institution, staying open until nine o'clock every night of the week, and for its first full decade that generous schedule never changed. The picture shifted in 1973, when a round of council budget cuts forced weekday closing back to six o'clock in the evening, though for a long time the library proudly held on to its nine o'clock closing on Saturdays as a nod to tradition. That too eventually gave way: in 2001, facing another squeeze on funding, the trustees reduced the Saturday hours as well, bringing the Saturday closing time down to five o'clock, where it has remained ever since.",
+       lead:"Based on the passage, what time does the Harrow Library close on Saturdays today?",
+       options:["9 p.m.","6 p.m.","5 p.m.","8 p.m.","It is closed on Saturdays"],correct:2,
+       objective:"The final sentence overrides the earlier 9 p.m.: Saturday closing became 5 p.m. in 2001."},
+      {strategy:'STEM_FIRST',
+       text:"Commuters on the Eastbrook line have long memorised the unofficial rankings of the morning services. The 7:15 is notorious among regulars: it is always more crowded than the 8:00, to the point where seasoned travellers will let it pass entirely if they want any chance of a seat. The 8:00, in turn, is reliably more crowded than the sleepy 9:30, which usually carries only a scattering of late starters and shift workers. This particular morning broke the usual calm, however, because a cancellation further up the line meant the 9:30 pulled in completely full, every seat taken and passengers standing all down the aisles.",
+       lead:"Given the usual pattern described, which statement must be true about this morning?",
+       options:["The 7:15 was emptier than the 9:30","The 8:00 was more crowded than the 9:30","The 9:30 was the least crowded of the three","The 7:15 was cancelled","The 8:00 was the emptiest of the three"],correct:1,
+       objective:"The stated order is 7:15 > 8:00 > 9:30, so the 8:00 must be more crowded than the 9:30."},
+      {strategy:'STEM_FIRST',
+       text:"The organisers circulated a detailed timetable for the opening day of the symposium so that nobody would be caught out. Delegates were told that registration and morning coffee would run from eight o'clock, giving everyone time to collect badges and settle into the venue. The formal welcome and the opening address by the chair were scheduled for half past nine in the main hall. The first workshop session, split across four separate seminar rooms by theme, was set to begin at a quarter past ten, and a networking lunch would then follow in the glass atrium at a quarter to one.",
+       lead:"According to the timetable, what time does the first workshop session begin?",
+       options:["8:00","9:30","10:15","12:45","10:45"],correct:2,
+       objective:"The first workshop session is set for a quarter past ten, i.e. 10:15."},
+      {strategy:'STEM_FIRST',
+       text:"The scholarship committee published unusually strict instructions for the application pack this year. Every candidate is required to submit a current CV, a one-page cover letter explaining their interest in the award, and the names of two academic references who can speak directly to their work. The notice is just as clear about what to leave out. Candidates are specifically asked not to include any photographs of themselves, since the first round of selection is meant to be carried out blind, and no application, counting every appendix and attachment, may run to more than five pages in total.",
+       lead:"According to the instructions, which of the following should candidates NOT include?",
+       options:["A CV","A cover letter","Two references","A photograph","Their name"],correct:3,
+       objective:"The instructions state that photographs should not be included."},
 
-<a href="gunner/" class="gcard reveal" style="--gc:#22d3ee">
-<div class="gbar"></div>
-<div class="gc-body">
-<div class="gc-meta"><span class="gbadge">Unlimited</span><span class="gfreq">1v1 battle</span></div>
-<div class="gc-titlerow"><div class="gc-icon"><svg viewBox="0 0 24 24"><path d="M4 20L14 10"/><path d="M14 4l2 2-8 8-4 0 0-4 8-8z"/><path d="M20 4L10 14"/><path d="M10 4L8 6l8 8 4 0 0-4-8-8z"/></svg></div><div class="gc-name">Gunner</div></div>
-<p class="gc-desc">Head-to-head against an AI opponent on the same five questions. Fastest correct answer takes the round, best of five, and you earn an Elo rating.</p>
-<div class="gc-tags"><span class="gc-tag">Step 1 + 2</span><span class="gc-tag">5 rounds</span><span class="gc-tag">Elo rating</span></div>
-</div>
-<div class="gc-foot"><span class="gplay">Play →</span><span class="gtype">~5 min</span></div>
-</a>
+      // ---- HIGHLIGHTER ----
+      {strategy:'HIGHLIGHTER',
+       text:"Ahead of the weekend expedition, the troop leader handed out a printed kit list so that nobody would turn up unprepared for the conditions. Each scout was told to bring two full water bottles, a single warm sleeping bag rated for cold overnight temperatures, three separate pairs of walking socks, and a working torch with a set of spare batteries. The list ended with a line set in bold, reminding everyone that all meals and snacks for the trip would be supplied by the troop from a central store, so scouts were asked, quite specifically, not to pack any food of their own.",
+       lead:"According to the kit list, how many pairs of socks must each scout bring?",
+       options:["One","Two","Three","Four","None, they are provided"],correct:2,
+       objective:"Three separate pairs of walking socks are required."},
+      {strategy:'HIGHLIGHTER',
+       text:"The Ashcombe Museum is split into two very different halves that run on almost opposite schedules. Its north wing, which holds the natural history collection, is open to the public on Mondays, Wednesdays, and Fridays for most of the year. The south wing, home to the art galleries, keeps nearly the reverse pattern, opening its doors only at weekends. There is one important exception to all of this that catches visitors out: during the whole month of August, the north wing closes down entirely so that its ageing displays can be renovated, and to make up for the loss the south wing opens every single day of the week for that month alone.",
+       lead:"During August, which wing can a visitor enter on a Monday?",
+       options:["North wing only","South wing only","Both wings","Neither wing","The passage does not say"],correct:1,
+       objective:"In August the north wing is closed and the south opens every day, so only the south is open on a Monday."},
+      {strategy:'HIGHLIGHTER',
+       text:"The old walled garden behind the manor is laid out as a series of concentric rings, each planted with a single kind of greenery, so that from the upstairs windows the whole thing reads like a great target. The broad outer ring is given over to lavender, whose scent drifts across the lawn on warm evenings. Just inside the lavender runs a dense ring of rose bushes, and inside the roses sits a neatly clipped ring of low box hedge. Right at the very heart of the garden, encircled by every other ring, stands one gnarled old fig tree that the current owner's grandmother is said to have planted as a girl.",
+       lead:"According to the passage, what stands at the very centre of the garden?",
+       options:["Lavender","Rose bushes","Box hedge","A fig tree","A stone fountain"],correct:3,
+       objective:"The centre of the garden holds a single old fig tree."},
+      {strategy:'HIGHLIGHTER',
+       text:"Jorge volunteered to handle all the baking for the school fundraiser and pulled out his favourite muffin recipe, the one he clipped from a magazine years ago and has used ever since. As written, the recipe yields exactly twelve muffins, which is plenty for a family breakfast but nowhere near enough for a busy stall. He has worked out that he will need a total of thirty-six muffins to keep the table stocked through the afternoon, and rather than go hunting for a larger recipe he has decided to simply scale this one up, keeping every single ingredient in exactly the same proportion as the original.",
+       lead:"By what factor must Jorge multiply each ingredient to make enough muffins?",
+       options:["Two","Three","Four","Six","Twelve"],correct:1,
+       objective:"36 divided by 12 is 3, so every ingredient is tripled."},
 
-<a href="dxrounds/" class="gcard reveal" style="--gc:#e04050">
-<div class="gbar"></div>
-<div class="gc-body">
-<div class="gc-meta"><span class="gbadge">Daily</span><span class="gfreq">Like Wordle, but medicine</span></div>
-<div class="gc-titlerow"><div class="gc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor" stroke="none" opacity="0.25"/></svg></div><div class="gc-name">Diagnosis Wordle</div></div>
-<p class="gc-desc">One patient a day. Clues come one at a time — the fewer you need to land the diagnosis, the higher you score. Then share your grid.</p>
-<div class="gc-tags"><span class="gc-tag">6 clues</span><span class="gc-tag">Share grid</span><span class="gc-tag">Streaks</span></div>
-</div>
-<div class="gc-foot"><span class="gplay">Play →</span><span class="gtype">~3 min</span></div>
-</a>
+      // ---- SPEED_SCAN ----
+      {strategy:'SPEED_SCAN',
+       text:"The short film, barely twenty minutes long, unfolds almost entirely without dialogue and relies on its images to carry the story. It follows a solitary lighthouse keeper who, across three decades of near-total isolation on his windswept rocky outcrop, slowly teaches himself to paint using whatever brushes and materials the monthly supply boat happens to bring. The turning point arrives when a violent storm finally destroys the lighthouse itself; in the wreckage the only things to survive intact are his stacked canvases, and it is these salvaged paintings that go on to make the reclusive keeper unexpectedly and reluctantly famous.",
+       lead:"What is the film mainly about?",
+       options:["A famous painter who builds a lighthouse","A lighthouse keeper who becomes a painter","A storm chaser filming the coast","A teacher who moves to the seaside","A museum curator's daily life"],correct:1,
+       objective:"The gist is a lighthouse keeper who teaches himself to paint."},
+      {strategy:'SPEED_SCAN',
+       text:"The dispatch note taped to the top of the box gave the courier a short but specific set of instructions to follow that afternoon. The parcel itself weighed four kilograms, light enough to be handled by a single driver without any assistance from the depot. It was marked as fragile in two places and, most importantly for the delivery, it was to be taken to the address printed clearly in the box just below the barcode: 42 Oak Lane, with a firm requirement that it arrive before noon on Friday so that the recipient could be there to sign for it in person.",
+       lead:"According to the dispatch note, where must the parcel be delivered?",
+       options:["24 Oak Lane","42 Oak Road","42 Oak Lane","4 Oak Lane","Noon Street"],correct:2,
+       objective:"The address is 42 Oak Lane, easy to misread as 24, or as 'Road,' when scanning quickly."},
+      {strategy:'SPEED_SCAN',
+       text:"Financial reports from the regional league made for surprising reading at the end of this season. The Foxes, a fairly modest club with the smallest marketing department of any side in the division, spent less on advertising than every one of their rivals, running almost no paid campaigns at all across the year. And yet, when the season-ticket figures were finally published, the Foxes had comfortably sold more than anyone else in the league. Analysts writing up the numbers put the result down almost entirely to word of mouth and to an unusually loyal local following that filled the stands week after week.",
+       lead:"According to the passage, what best explains the Foxes' strong ticket sales?",
+       options:["The biggest advertising budget in the league","Word of mouth and a loyal local following","The lowest ticket prices in the league","Winning every single match","A brand-new stadium"],correct:1,
+       objective:"The passage credits word of mouth and a loyal local following."},
+      {strategy:'SPEED_SCAN',
+       text:"The handover notes left for the new office assistant tried hard to be helpful about the filing system, but they come with a catch buried in the middle. The blue folder on the top shelf holds last year's accounts, all reconciled and signed off by the auditors. The red folder sitting right beside it holds this year's accounts, which are still being updated month to month as invoices come in. The green folder is where people are most often caught out: despite the faded label on its spine that still clearly reads 'Accounts,' it was quietly repurposed long ago and now contains nothing but the staff photographs from the summer party.",
+       lead:"According to the notes, which folder holds this year's accounts?",
+       options:["The blue folder","The red folder","The green folder","None of them","Both blue and green"],correct:1,
+       objective:"The red folder holds this year's accounts; the green folder is a deliberate distractor."},
 
-<a href="codeblue/" class="gcard reveal" style="--gc:#2aad70">
-<div class="gbar"></div>
-<div class="gc-body">
-<div class="gc-meta"><span class="gbadge">Daily</span><span class="gfreq">New cases every day</span></div>
-<div class="gc-titlerow"><div class="gc-icon"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></div><div class="gc-name">Code Blue</div></div>
-<p class="gc-desc">Five vignettes, 45 seconds each, three lives. Get one wrong and you lose a life; string them together for combo bonuses.</p>
-<div class="gc-tags"><span class="gc-tag">Step 1 + 2</span><span class="gc-tag">Timer</span><span class="gc-tag">Lives</span></div>
-</div>
-<div class="gc-foot"><span class="gplay">Play →</span><span class="gtype">~4 min</span></div>
-</a>
+      // ---- OPTIONS_FIRST ----
+      {strategy:'OPTIONS_FIRST',
+       text:"A couple of small facts about the reference room, taken together, settle a question that keeps coming up at the desk. Every book kept on the top shelf of that room is, without a single exception, a hardcover edition, because the paperbacks are all shelved lower down where they are easier to reach. A separate and strict rule of the room is that none of the hardcovers may ever be taken out on loan, since they are held purely as reference copies for use inside the building. The librarian mentions, almost in passing, that the large medical dictionary everyone keeps asking about currently sits up on that top shelf.",
+       lead:"Based only on the passage, which statement must be true of the dictionary?",
+       options:["It is currently out on loan","It is a hardcover edition","It is a paperback edition","Some hardcovers are on loan","It is not on the top shelf"],correct:1,
+       objective:"Top-shelf books are all hardcover and the dictionary is on the top shelf, so it must be a hardcover."},
+      {strategy:'OPTIONS_FIRST',
+       text:"The summer festival's programme was built around three headline acts, one for each night of the long weekend, and the organisers made a point of spacing them out. The Ferns, a folk group with a devoted regional following, were given the Friday-night slot and the honour of opening the whole festival. Marigold, by some distance the biggest commercial draw of the three, took the Saturday-night headline slot on the main stage, while the psychedelic outfit Slow Tide were left to close things out on the Sunday. Organisers noted afterwards that, of all three nights, it was the Saturday show that sold out first, within a few hours of tickets going on sale.",
+       lead:"According to the programme, which act headlines on Saturday night?",
+       options:["The Ferns","Marigold","Slow Tide","No act headlines Saturday","The passage does not say"],correct:1,
+       objective:"Marigold headlines the Saturday night."},
+      {strategy:'OPTIONS_FIRST',
+       text:"The local paper ran a pointed editorial this week weighing in on how the council should spend its limited transport budget for the coming year. Rather than back the eye-catching proposal for a brand-new cycle bridge over the river, which had grabbed most of the headlines, the piece argued that the same money would be far better spent first on repairing the town's existing network of footpaths, many of which are now cracked, uneven, and poorly lit at night. Its central reasoning was refreshingly simple: those footpaths are used, on foot, by far more residents every single day than any single bridge realistically ever would be.",
+       lead:"What does the editorial ultimately recommend?",
+       options:["Building the cycle bridge first","Repairing footpaths before building the bridge","Removing the footpaths entirely","Charging residents to use the paths","Doing neither project at all"],correct:1,
+       objective:"The editorial recommends repairing footpaths before building the bridge."},
+      {strategy:'OPTIONS_FIRST',
+       text:"Maria's travel plans changed more than once in the week before the reunion, which caused no end of confusion in the group chat. She had originally told everyone that she would come up either on the Thursday or the Friday, depending on how work went. A couple of days later she texted the group to say that the Thursday train was already completely booked out, so the Friday was now looking far more likely for her. In the end, though, she surprised every one of them: she borrowed her neighbour's car and drove up on the Wednesday night, arriving at the house well before anyone was expecting her.",
+       lead:"According to the passage, when did Maria actually arrive?",
+       options:["On Thursday","On Friday","On Wednesday night","She never arrived","On Saturday"],correct:2,
+       objective:"Despite the earlier plans, Maria actually arrived on Wednesday night."},
 
-<a href="patholinks/" class="gcard reveal" style="--gc:#c9932f">
-<div class="gbar"></div>
-<div class="gc-body">
-<div class="gc-meta"><span class="gbadge">Daily</span><span class="gfreq">Like Connections, but medicine</span></div>
-<div class="gc-titlerow"><div class="gc-icon"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="18" r="2.5"/><line x1="8.5" y1="6" x2="15.5" y2="6"/><line x1="6" y1="8.5" x2="6" y2="15.5"/><line x1="8.5" y1="18" x2="15.5" y2="18"/><line x1="18" y1="8.5" x2="18" y2="15.5"/></svg></div><div class="gc-name">USMLE Connections</div></div>
-<p class="gc-desc">Sixteen terms, four hidden groups of four. Some terms could sit in more than one group, so pick carefully or lose a life.</p>
-<div class="gc-tags"><span class="gc-tag">4 groups</span><span class="gc-tag">4 mistakes allowed</span></div>
-</div>
-<div class="gc-foot"><span class="gplay">Play →</span><span class="gtype">~3 min</span></div>
-</a>
+      // ---- LAST_SENTENCE (question first) ----
+      {strategy:'LAST_SENTENCE',
+       text:"The small expedition set out from base camp in good spirits, a party of six porters and four climbers hoping to reach the high camp inside three days. The first day went about as well as they could have asked: the weather stayed clear and they climbed steadily, gaining nine hundred metres of altitude before making camp for the night. The second day was a very different story, as loose scree underfoot and increasingly thin air slowed the whole party to a crawl, and by nightfall they had managed to gain only four hundred metres. On the third day, better rested and properly acclimatised at last, they pushed on strongly and gained a further eight hundred metres to reach the high camp.",
+       lead:"How much altitude did the expedition gain on the second day?",
+       options:["900 metres","400 metres","800 metres","1,300 metres","600 metres"],correct:1,
+       objective:"The passage states the second day's gain was four hundred metres."},
+      {strategy:'LAST_SENTENCE',
+       text:"Critics tend to describe the sprawling family novel in terms of its four distinct parts, each with a very different feel. Part one is a gentle, slow opening that introduces the family and the remote hill farm where they live. Part two shifts perspective entirely to follow the eldest daughter as she leaves home for the city and a life her parents struggle to understand. Part three, which almost every reviewer agrees is by some distance the longest section of the whole book, covers the long and punishing years of the drought that slowly reshapes the entire family. Part four reads almost like an epilogue, just twenty pages long, jumping forward two full decades to a single quiet reunion dinner.",
+       lead:"According to the passage, which part of the novel is the longest?",
+       options:["Part one","Part two","Part three","Part four","They are all equal"],correct:2,
+       objective:"Part three, covering the years of the drought, is described as by far the longest."},
+      {strategy:'LAST_SENTENCE',
+       text:"The village committee's decision about when to hold the summer fair went through several twists before it was finally settled. At the very first meeting the members agreed, by a clear show of hands, to hold the fair in June as they usually did. A few of them warned that June was often the wettest month of the year in the valley and pushed hard for a later date, but they were outvoted and the June plan stood for a while. It was only some weeks later, when the recreation ground turned out to be already booked solid throughout June for a series of other events, that the committee reconvened and moved the fair to September after all.",
+       lead:"In which month will the fair actually be held?",
+       options:["June","July","September","It was cancelled","The passage does not say"],correct:2,
+       objective:"June was chosen first, but the final decision moved the fair to September."},
+      {strategy:'LAST_SENTENCE',
+       text:"The county relay final came right down to the very last metres, and the school's team of four had an absolute rollercoaster of a race. Amara, running the opening leg, was superb from the gun and handed the baton over while still in the lead. Ben, on the second leg, struggled badly on the long uphill stretch and slipped back two places before he could pass the baton on. Chen steadied things considerably on the third leg, clawing back one of those lost places along the flat back straight. Then Dara, anchoring the team on the final leg, produced a storming finish and overtook two more rivals down the home straight to bring them across the line in second place overall.",
+       lead:"Where did the school's team finish overall?",
+       options:["First","Second","Third","Fourth","Fifth"],correct:1,
+       objective:"The anchor runner brought the team home in second place overall."}
+    ];
 
+    // ============ STRATEGY EXPLAINERS (first-time full-screen intro) ============
+    const STRAT_INFO={
+        STEM_FIRST:{name:'Standard read',
+            what:'Read the whole passage from top to bottom at your normal pace, then answer. This is the approach most people default to without thinking about it.',
+            why:'<strong>Why it is here:</strong> it is your baseline. Everything else gets measured against how you do reading normally.'},
+        HIGHLIGHTER:{name:'Active highlight',
+            what:'As you read, click on words to highlight them. You have to mark at least three key words before the answer choices will unlock. The aim is to force you to engage actively with the text instead of skimming past it.',
+            why:'<strong>Why it is here:</strong> some people retain and reason much better when they physically mark up the stem. This checks whether that is you.'},
+        SPEED_SCAN:{name:'Speed scan',
+            what:'Read as fast as you comfortably can and go with your first instinct. Try not to reread. Aim to lock in an answer in under forty-five seconds.',
+            why:'<strong>Why it is here:</strong> speed saves time you badly need on a real block, but it can cost you on detail and trap questions. This shows which way it cuts for you.'},
+        OPTIONS_FIRST:{name:'Options first',
+            what:'The passage starts blurred out. Read the answer choices first to prime your thinking, then click to reveal the passage and read it with those options already in mind.',
+            why:'<strong>Why it is here:</strong> reading options first helps some people focus and misleads others toward a tempting wrong answer. This tells you which.'},
+        LAST_SENTENCE:{name:'Question first',
+            what:'You will see the final line of the passage and the actual question before anything else. Read those first, then reveal the full passage and hunt specifically for what the question is asking.',
+            why:'<strong>Why it is here:</strong> on long stems, knowing the question before you read can save time and sharpen your focus. This checks whether it works for you.'}
+    };
 
+    // ============ STATE ============
+    let examQuestions=[],currentIdx=0,userAnswers=[],timerSeconds=0,timerInterval,questionStartTime=0,zoomLevel=1;
+    let strategyData={},currentStrategy='',highlightCount=0,hasSubmitted=false;
+    const introduced={};
+    function resetStrategyData(){strategyData={STEM_FIRST:{correct:0,total:0,totalTime:0},HIGHLIGHTER:{correct:0,total:0,totalTime:0},SPEED_SCAN:{correct:0,total:0,totalTime:0},OPTIONS_FIRST:{correct:0,total:0,totalTime:0},LAST_SENTENCE:{correct:0,total:0,totalTime:0}};}
 
-</div>
-</div>
-</section>
+    function toggleZoom(){zoomLevel=zoomLevel===1?1.15:zoomLevel===1.15?1.3:1;document.getElementById('question-content').style.fontSize=zoomLevel+'rem';}
 
-<!-- STRIPE-STYLE FLOW BAND -->
-<div class="flow-band" aria-hidden="true">
-<span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span><span class="blob b5"></span>
-<div class="flow-cap">Exam approach · study technique · planning</div>
-</div>
+    function startGame(){
+        resetStrategyData();userAnswers=[];
+        var order=['STEM_FIRST','HIGHLIGHTER','SPEED_SCAN','OPTIONS_FIRST','LAST_SENTENCE'];
+        var groups={};order.forEach(function(s){groups[s]=QUESTIONS.filter(function(q){return q.strategy===s;});});
+        var maxLen=Math.max.apply(null,order.map(function(s){return groups[s].length;}));
+        examQuestions=[];
+        for(var r=0;r<maxLen;r++){order.forEach(function(s){if(groups[s][r])examQuestions.push(groups[s][r]);});}
+        document.getElementById('landing-screen').style.display='none';
+        document.getElementById('nbme-header').style.display='block';
+        document.getElementById('game-screen').style.display='flex';
+        document.getElementById('nbme-footer').style.display='block';
+        document.getElementById('item-total').innerText=examQuestions.length;
+        timerSeconds=0;startTimer();generateLineNumbers();loadQuestion(0);
+    }
 
-<!-- TUTORING -->
-<section class="tutor" id="tutoring">
-<div class="wrap">
-<div class="sec-tag reveal"><span class="idx">02</span> Tutoring</div>
-<div class="tutor-grid">
-<div class="reveal">
-<h2>One-on-one, built around your gaps.</h2>
-<p>Sessions are built around your gaps — the questions you're missing and how you're reading the exam, not a set syllabus.</p>
-<p>A lot of it is approach — breaking down a stem, ruling options in and out, holding your pace across a block. We also work on how you're studying and how to plan the weeks you've got left. Content gaps get filled when they come up, but technique and a solid plan are usually what move the score.</p>
-<p class="mono" style="font-size:0.8rem;color:var(--text-3);letter-spacing:0.04em">STEP 1 · STEP 2 CK</p>
-<a href="#contact" class="run-btn">Book a free call</a>
-</div>
-<div class="specimen reveal">
-<a href="images/score-report.png" target="_blank"><img src="images/score-report.png" alt="USMLE Step 2 CK score report"></a>
-<div class="cap"><span>STEP 2 CK · VERIFIED</span><span>↗ ENLARGE</span></div>
-</div>
-</div>
-</div>
-</section>
+    function startTimer(){
+        clearInterval(timerInterval);
+        timerInterval=setInterval(function(){
+            timerSeconds++;
+            var m=Math.floor(timerSeconds/60).toString().padStart(2,'0');
+            var s=(timerSeconds%60).toString().padStart(2,'0');
+            document.getElementById('timer').innerText=m+':'+s;
+        },1000);
+    }
+    function generateLineNumbers(){
+        var c=document.getElementById('line-numbers');c.innerHTML='';
+        for(var i=1;i<=44;i++){var l=document.createElement('div');l.className='line-num';l.textContent=i;c.appendChild(l);}
+    }
 
-<!-- TOPICS -->
-<section id="topics">
-<div class="wrap">
-<div class="sec-tag reveal"><span class="idx">03</span> Topics we cover</div>
-<p class="topics-lead reveal">We can cover any of these, but the focus stays on how the exam actually tests them — the patterns it repeats and the traps it likes — not just the facts. Tap one to see what a session might cover.</p>
-<div class="topics-grid" id="topicsGrid"></div>
-</div>
-</section>
+    function loadQuestion(idx){
+        if(idx>=examQuestions.length){finishExam();return;}
+        currentIdx=idx;hasSubmitted=false;
+        var q=examQuestions[idx];
+        document.getElementById('item-current').innerText=idx+1;
+        document.getElementById('prev-btn').classList.toggle('disabled',idx===0);
+        currentStrategy=q.strategy;
+        updateStrategyBadge(currentStrategy);
+        renderQuestion(q);
+        // first time we hit a strategy, show the full-screen explainer (pauses the clock)
+        if(!introduced[currentStrategy]){showIntro(currentStrategy);}
+        else{questionStartTime=timerSeconds;}
+    }
 
-<!-- PRICING -->
-<section class="pricing" id="pricing">
-<div class="wrap">
-<div class="sec-tag reveal"><span class="idx">04</span> Pricing</div>
-<div class="price-wrap">
-<div class="price-left reveal">
-<h2>It's forty dollars an hour.</h2>
-<p>No packages, no tiers, nothing to sign up for. You book however many hours you actually need, and we spend them wherever you're losing the most points.</p>
-</div>
-<div class="rate reveal">
-<div class="rlabel">1-on-1 tutoring</div>
-<div class="ramt">$40<span> / hour</span></div>
-<div class="rnote">Step 1 & Step 2 CK · flexible scheduling</div>
-<a href="#contact" class="run-btn">Book a free call</a>
-</div>
-</div>
-</div>
-</section>
+    function renderQuestion(q){
+        var content=document.getElementById('question-content');content.innerHTML='';highlightCount=0;
+        var html=getStrategyInstruction(currentStrategy);
+        if(currentStrategy==='OPTIONS_FIRST'){
+            html+='<button class="reveal-btn" id="reveal-btn" onclick="revealCase()">Reveal the passage</button>';
+            html+='<div id="vignette-wrapper" class="question-vignette blur-content">'+q.text+'</div>';
+            html+='<div class="question-lead" id="lead-text" style="filter:blur(8px);opacity:0.5;">'+q.lead+'</div>';
+            html+='<p style="color:#888;font-size:0.85rem;margin-bottom:14px;"><em>Read the answer choices first, then click &ldquo;Reveal the passage.&rdquo;</em></p>';
+            html+=buildOptions(q,false);
+        }else if(currentStrategy==='HIGHLIGHTER'){
+            var words=q.text.split(' '),htext='';
+            for(var i=0;i<words.length;i++){htext+='<span class="highlightable-word" id="word-'+i+'" onclick="highlightWord('+i+')">'+words[i]+' </span>';}
+            html+='<div class="question-vignette" id="vignette-text">'+htext+'</div>';
+            html+='<div class="question-lead">'+q.lead+'</div>';
+            html+=buildOptions(q,true);
+            html+='<div id="unlock-msg" class="unlock-message locked">Highlight at least 3 key words to unlock the options.</div>';
+        }else if(currentStrategy==='LAST_SENTENCE'){
+            var sentences=q.text.match(/[^.!?]+[.!?]+/g)||[q.text];
+            var lastSentence=sentences[sentences.length-1].trim();
+            var earlierText=sentences.slice(0,-1).join(' ').trim();
+            html+='<div id="earlier-text" class="question-vignette blur-content">'+earlierText+'</div>';
+            html+='<div class="last-sentence-highlight">'+lastSentence+'</div>';
+            html+='<div class="question-lead">'+q.lead+'</div>';
+            html+='<button class="reveal-btn" id="reveal-passage-btn" onclick="revealFullPassage()">Reveal the full passage</button>';
+            html+=buildOptions(q,false);
+        }else{
+            html+='<div class="question-vignette">'+q.text+'</div>';
+            html+='<div class="question-lead">'+q.lead+'</div>';
+            html+=buildOptions(q,false);
+        }
+        content.innerHTML=html;
+        document.getElementById('feedback-msg').innerHTML='';
+        document.getElementById('proceed-btn').innerText='Submit Answer';
+    }
 
-<footer>
-<div class="wrap">
-<div class="foot-mark reveal">USMLE300</div>
-<div class="foot-cols">
-<div class="fcol">
-<h4>Practice</h4>
-<a href="#games">Games</a>
-<a href="#diagnostic">Strategy diagnostic</a>
-</div>
-<div class="fcol">
-<h4>Tutoring</h4>
-<a href="#tutoring">1-on-1</a>
-<a href="#topics">Topics</a>
-<a href="#pricing">Pricing</a>
-</div>
-<div class="fcol">
-<h4>More</h4>
-<a href="#contact">Contact</a>
-</div>
-</div>
-<div class="foot-bot">
-<span>© 2025 USMLE300</span>
-<span>STEP 1 · STEP 2 CK</span>
-</div>
-</div>
-</footer>
+    function showIntro(strategy){
+        clearInterval(timerInterval); // pause clock while they read
+        var info=STRAT_INFO[strategy];
+        var num=Object.keys(introduced).length+1;
+        document.getElementById('intro-title').innerText=info.name;
+        document.getElementById('intro-what').innerText=info.what;
+        document.getElementById('intro-why').innerHTML=info.why;
+        document.getElementById('intro-count').innerText='Strategy '+num+' of 5 · you will only see this once';
+        document.getElementById('intro-overlay').classList.add('active');
+    }
+    function dismissIntro(){
+        introduced[currentStrategy]=true;
+        document.getElementById('intro-overlay').classList.remove('active');
+        questionStartTime=timerSeconds;
+        startTimer(); // resume clock
+    }
 
-<!-- contact modal -->
-<div class="overlay" id="contactModal">
-<div class="modal">
-<button class="modal-x" data-close>×</button>
-<h3>Get in touch</h3>
-<p style="color:var(--text-2);font-size:0.92rem">Easiest way to start is a free 30-minute call — no pressure, just to work out where you're at and whether I can help.</p>
-<a href="https://calendly.com/usmle300tutor/30min" target="_blank" rel="noopener" class="run-btn" style="width:100%;justify-content:center;margin:1.2rem 0 0">Book a free call</a>
-<div class="cbox">
-<div class="cl">Or email me</div>
-<a href="mailto:usmle300tutor@gmail.com" class="em">usmle300tutor@gmail.com</a>
-</div>
-<p style="font-size:0.82rem;color:var(--text-3);text-align:center;margin-top:0.5rem">Let me know which exam you're on and roughly when it's scheduled.</p>
-</div>
-</div>
+    function updateStrategyBadge(strategy){
+        var badge=document.getElementById('strategy-display');
+        var c={STEM_FIRST:{text:'Standard read',bg:'#e9ecef',color:'#495057'},HIGHLIGHTER:{text:'Active highlight',bg:'#fff3cd',color:'#856404'},SPEED_SCAN:{text:'Speed scan',bg:'#fde8e8',color:'#8b1a1a'},OPTIONS_FIRST:{text:'Options first',bg:'#e3f2fd',color:'#0d47a1'},LAST_SENTENCE:{text:'Question first',bg:'#fef3c7',color:'#78350f'}}[strategy];
+        badge.innerText=c.text;badge.style.background=c.bg;badge.style.color=c.color;
+    }
+    function getStrategyInstruction(strategy){
+        return {
+            STEM_FIRST:'<div class="strategy-instruction standard"><strong>Standard read.</strong> Read the whole passage top to bottom, then answer.</div>',
+            HIGHLIGHTER:'<div class="strategy-instruction highlighter"><strong>Active highlight.</strong> Click to highlight at least 3 key words before the options unlock.</div>',
+            SPEED_SCAN:'<div class="strategy-instruction speed"><strong>Speed scan.</strong> Read fast and trust your instinct. Aim to answer in under 45 seconds.</div>',
+            OPTIONS_FIRST:'<div class="strategy-instruction options-first"><strong>Options first.</strong> Read the answer choices before the passage to prime your thinking.</div>',
+            LAST_SENTENCE:'<div class="strategy-instruction last-sentence"><strong>Question first.</strong> Read the key line and the question, then reveal the passage to hunt for the answer.</div>'
+        }[strategy]||'';
+    }
+    function buildOptions(q,locked){
+        var html='<div class="options-container '+(locked?'locked':'')+'" id="options-container">';
+        var labels=['A','B','C','D','E','F'];
+        for(var i=0;i<q.options.length;i++){
+            html+='<div class="option" id="option-'+i+'" onclick="selectOption('+i+',this)"><div class="option-radio"></div><div><span class="option-label">'+labels[i]+'.</span> <span class="option-text">'+q.options[i]+'</span></div></div>';
+        }
+        return html+'</div>';
+    }
+    function revealCase(){
+        var v=document.getElementById('vignette-wrapper');v.classList.remove('blur-content');v.style.filter='none';v.style.opacity='1';
+        var l=document.getElementById('lead-text');l.style.filter='none';l.style.opacity='1';
+        document.getElementById('reveal-btn').style.display='none';
+    }
+    function revealFullPassage(){
+        var e=document.getElementById('earlier-text');e.classList.remove('blur-content');e.style.filter='none';e.style.opacity='1';
+        document.getElementById('reveal-passage-btn').style.display='none';
+    }
+    function highlightWord(id){
+        if(currentStrategy!=='HIGHLIGHTER')return;
+        var el=document.getElementById('word-'+id);
+        if(!el.classList.contains('highlighted')){
+            el.classList.add('highlighted');highlightCount++;
+            if(highlightCount>=3){
+                document.getElementById('options-container').classList.remove('locked');
+                var u=document.getElementById('unlock-msg');u.innerText='Options unlocked. Select your answer.';u.classList.remove('locked');u.classList.add('unlocked');
+            }
+        }
+    }
+    function selectOption(optIdx,el){
+        if(hasSubmitted)return;
+        if(currentStrategy==='HIGHLIGHTER'&&highlightCount<3)return;
+        userAnswers[currentIdx]=optIdx;
+        document.querySelectorAll('.option').forEach(function(o){o.classList.remove('selected');});
+        el.classList.add('selected');
+    }
+    function goToPrevious(){if(currentIdx>0)loadQuestion(currentIdx-1);}
+    function goToNext(){nextQuestion();}
 
-<!-- topic modal -->
-<div class="overlay" id="topicModal">
-<div class="modal">
-<button class="modal-x" data-close>×</button>
-<div class="tm-ic" id="tmIcon">❤️</div>
-<h3 id="tmTitle">Cardiology</h3>
-<div class="tm-h4">What we'd work through</div>
-<ul class="tm-list" id="tmContent"></ul>
-<a href="#contact" class="run-btn tm-book">Book a free call</a>
-</div>
-</div>
+    function nextQuestion(){
+        var btn=document.getElementById('proceed-btn');
+        if(btn.innerText==='Submit Answer'){
+            if(userAnswers[currentIdx]===undefined){alert('Please select an answer.');return;}
+            hasSubmitted=true;
+            var q=examQuestions[currentIdx];
+            var isCorrect=userAnswers[currentIdx]===q.correct;
+            var questionTime=timerSeconds-questionStartTime;
+            strategyData[currentStrategy].total++;
+            strategyData[currentStrategy].totalTime+=questionTime;
+            if(isCorrect)strategyData[currentStrategy].correct++;
+            document.querySelectorAll('.option').forEach(function(o,i){
+                if(i===q.correct)o.classList.add('correct');
+                else if(i===userAnswers[currentIdx]&&!isCorrect)o.classList.add('incorrect');
+                o.style.pointerEvents='none';
+            });
+            document.getElementById('feedback-msg').innerHTML=isCorrect
+                ?'<span class="correct">Correct.</span> '+q.objective
+                :'<span class="incorrect">Not quite.</span> '+q.objective;
+            btn.innerText=currentIdx<examQuestions.length-1?'Next Item':'See My Results';
+        }else{loadQuestion(currentIdx+1);}
+    }
 
-<script>
-const topicData={
-'exam-strategy':{icon:'🎯',title:'Strategy',content:['Question approach frameworks tested across 500+ questions','When to skim vs read carefully based on question type','Answer elimination techniques that actually work','Time management: 90 seconds per question pacing','Handling questions on topics you have never seen','Common trap patterns and how to recognize them','Flagging strategy and when to change answers','Test day mental game and managing anxiety']},
-'mnemonics':{icon:'🧩',title:'Mnemonics & HY Review',content:['High-yield mnemonics for the toughest topics across all systems','Pattern recognition for commonly confused drug classes and mechanisms','Visual memory anchors for complex pathophysiology','Rapid-fire review of the facts students miss most often','Side-by-side comparisons of look-alike, sound-alike diseases','High-yield lab value patterns and when they appear together','Top 10 exam traps by system and how to avoid them','Consolidation strategies to make mnemonics stick under pressure']},
-'cardiology':{icon:'❤️',title:'Cardiology',content:['Shock hemodynamics: CO/SVR patterns (distributive vs cardiogenic vs obstructive)','Tamponade vs constrictive pericarditis: y descent blunted vs prominent','Post-MI complications by timeline: 24h arrhythmia, 3-7d rupture, 2wk Dressler','Murmur localization: left sternal border (HCM systolic, AR diastolic)','HCM vs MVP: both decrease with squatting, differentiate by crescendo-decrescendo','JVP waveforms: cannon a waves in complete heart block, prominent v wave in TR','ECG changes in electrolyte disorders: peaked T (hyperK), prolonged QT (hypoMg/Ca)','Wide pulse pressure differential: AR in adults, PDA in kids']},
-'respiratory':{icon:'🫁',title:'Respiratory',content:['Obstructive vs restrictive PFT patterns and when FEV1/FVC ratio fails you','Lights criteria and when to suspect TB (lymphocyte predominant, low glucose)','Pulmonary embolism workup: Wells score, D-dimer utility, when to skip to CT','ARDS Berlin criteria and ventilator management principles','Lung cancer staging that matters: T3 vs T4, when surgery is off the table','Pneumonia empiric coverage: CAP vs HAP vs aspiration','Asthma vs COPD exacerbation management differences','Pleural effusion analysis: transudate vs exudate and the exceptions']},
-'neurology':{icon:'🧠',title:'Neurology',content:['Stroke: NIHSS cutoffs, tPA window, thrombectomy criteria','Seizure classification and first-line agents by seizure type','Headache red flags: thunderclap, positional, papilledema','Myasthenia vs Lambert-Eaton: ptosis vs proximal weakness, antibody targets','Spinal cord lesion localization: Brown-Sequard, anterior cord, central cord','Dementia workup: reversible causes to always rule out','Peripheral neuropathy patterns: length-dependent vs mononeuritis multiplex','CSF analysis: bacterial vs viral vs TB vs fungal patterns']},
-'hemeonc':{icon:'🩸',title:'Heme/Onc',content:['Anemia workup by MCV: then reticulocyte count, then smear findings','Coagulation cascades: PT vs PTT, mixing studies interpretation','Thrombotic microangiopathies: TTP vs HUS vs DIC differentiation','Leukemia classification: ALL vs AML vs CLL vs CML by age and markers','Tumor lysis syndrome: prevention, monitoring, and treatment','Transfusion reactions: timing helps identify the type','Anticoagulation reversal: vitamin K vs FFP vs PCC vs idarucizumab','Bleeding disorders: hemophilia vs vWD vs platelet dysfunction']},
-'pharmacology':{icon:'💊',title:'Pharmacology',content:['Autonomic pharmacology: receptor selectivity and clinical effects','Antiarrhythmics by class: when to use and when absolutely not to','Antimicrobial coverage charts: empiric therapy by site and resistance patterns','Drug-induced QT prolongation: the common culprits','Serotonin syndrome vs NMS vs anticholinergic toxicity differentiation','Antidote matching: which toxin gets which reversal agent','Renal dosing: drugs that need adjustment vs contraindicated','Drug interactions that show up on exams: warfarin, statins, seizure meds']},
-'microbiology':{icon:'🦠',title:'Microbiology',content:['Gram positive cocci: staph vs strep vs enterococcus by clinical scenario','Gram negative rods: when to suspect Pseudomonas vs Klebsiella vs E. coli','Atypical organisms: Legionella, Mycoplasma, Chlamydia presentations','Opportunistic infections by CD4 count thresholds','Viral exanthems: rash timing and distribution patterns','Fungal infections: endemic mycoses by geography','Parasites: transmission routes and diagnostic findings','Antibiotic resistance mechanisms and when to suspect MRSA/ESBL/VRE']},
-'pathology':{icon:'🔬',title:'Pathology',content:['Cell injury patterns: coagulative vs liquefactive vs caseous necrosis','Inflammation timeline: acute (neutrophils) vs chronic (lymphocytes/macrophages)','Amyloidosis: AA vs AL, organ involvement patterns','Neoplasia principles: benign vs malignant features, grading vs staging','Paraneoplastic syndromes: which tumor causes which syndrome','Genetic tumor syndromes: Li-Fraumeni, Lynch, MEN syndromes','Granulomatous diseases: caseating vs non-caseating differential','Lab value patterns: which disease causes which abnormality']},
-'biochemistry':{icon:'🧬',title:'Biochemistry',content:['Glycolysis regulation: rate-limiting enzymes and their regulators','TCA cycle: which steps produce NADH/FADH2/GTP','Glycogen storage diseases: which enzyme, which organ, which presentation','Lysosomal storage diseases: cherry red macula, hepatosplenomegaly patterns','Amino acid metabolism disorders: PKU, maple syrup, homocystinuria','Vitamin deficiencies: B12 vs folate, water vs fat soluble presentations','Lipid metabolism: familial hyperlipidemias by phenotype','Purine/pyrimidine metabolism: gout, SCID, orotic aciduria']},
-'immunology':{icon:'🛡️',title:'Immunology',content:['Hypersensitivity reactions: Type I through IV with clinical examples','Complement pathways: which deficiency causes which infection pattern','Autoantibody associations: ANA patterns, specific antibodies by disease','Immunodeficiency presentations: which infections suggest which defect','Transplant rejection: hyperacute vs acute vs chronic, timeline and mechanism','Cytokine functions: IL-1 through IL-17 key players','T cell vs B cell deficiencies: clinical differentiation','Vaccination principles: live vs killed, contraindications']},
-'gi':{icon:'💩',title:'GI / Hepatology',content:['GI bleeding: upper vs lower, variceal vs non-variceal management','IBD: Crohn vs UC, extraintestinal manifestations, when surgery is indicated','Liver cirrhosis complications: ascites, SBP, hepatorenal, encephalopathy','Hepatitis serologies: acute vs chronic vs immune vs vaccinated','Pancreatitis: Ranson criteria, BISAP, when to get CT','Biliary disease: Charcot triad, Reynold pentad, imaging choice','Malabsorption: celiac vs tropical sprue vs Whipple vs bacterial overgrowth','GI malignancies: Lynch syndrome screening, staging that matters']},
-'renal':{icon:'💧',title:'Nephrology/GU',content:['AKI: prerenal vs intrinsic vs postrenal, FENa interpretation','Glomerulonephritis: nephritic vs nephrotic, serology patterns','Acid-base: anion gap calculation, Winter formula, respiratory compensation','Electrolyte emergencies: hyperkalemia ECG changes and treatment order','Renal tubular acidosis: Type 1 vs 2 vs 4, urine pH patterns','Nephrolithiasis: stone type by imaging and urine findings','Dialysis indications: AEIOU mnemonic and when to emergently dialyze','Polycystic kidney disease: ADPKD vs ARPKD, extrarenal manifestations']},
-'endocrine':{icon:'⚡',title:'Endocrinology',content:['Diabetes management: insulin regimens, oral agents by mechanism and side effects','Thyroid: TSH/T4 patterns in primary vs secondary vs sick euthyroid','Adrenal: Cushing vs Addison, dexamethasone suppression interpretation','Pituitary: which hormone deficiency causes which presentation','Calcium disorders: PTH-dependent vs PTH-independent hypercalcemia','Pheochromocytoma: rule of 10s, preoperative management','MEN syndromes: 1 vs 2A vs 2B tumor associations','PCOS vs congenital adrenal hyperplasia differentiation']},
-'msk':{icon:'🦴',title:'MSK / Rheum',content:['Arthritis patterns: inflammatory vs non-inflammatory, monoarticular vs polyarticular','RA vs OA vs gout vs pseudogout: joint distribution and crystal analysis','Lupus criteria: which manifestations count, drug-induced lupus differences','Scleroderma: limited vs diffuse, CREST syndrome','Vasculitis: large vs medium vs small vessel, ANCA associations','Spondyloarthropathies: AS vs reactive vs psoriatic vs IBD-associated','Myopathies: dermatomyositis vs polymyositis, malignancy association','Septic arthritis: when to tap, synovial fluid analysis']},
-'obgyn':{icon:'🤰',title:'OB/GYN',content:['Obstetric emergencies: placenta previa vs abruption vs vasa previa','Preeclampsia vs eclampsia: diagnosis criteria, management, when to deliver','Labor and delivery: stages, normal vs abnormal progress, interventions','Postpartum hemorrhage: causes by timeline (4 Ts), management ladder','Ectopic pregnancy: risk factors, workup, beta-hCG discriminatory zone','Gynecologic malignancies: cervical vs endometrial vs ovarian by age and presentation','Contraception: mechanism, efficacy, contraindications by method','STI management: treatment regimens, reporting requirements, partner notification']},
-'derm':{icon:'🧴',title:'Dermatology',content:['Skin cancer: melanoma ABCDE, BCC vs SCC features','Psoriasis vs eczema: distribution, triggers, nail findings','Drug eruptions: SJS/TEN timeline, DRESS syndrome','Bullous diseases: pemphigus vs pemphigoid, antibody targets','Bacterial skin infections: impetigo vs cellulitis vs necrotizing fasciitis','Viral exanthems: measles vs rubella vs roseola vs erythema infectiosum','Fungal infections: dermatophytes vs candida, KOH prep findings','Hypersensitivity skin reactions: urticaria vs angioedema management']},
-'pediatrics':{icon:'👶',title:'Pediatrics',content:['Developmental milestones: gross motor, fine motor, language, social by age','Vaccination schedule: which vaccines at which visits, contraindications','Congenital heart defects: cyanotic vs acyanotic, duct-dependent lesions','Pediatric emergencies: intussusception, pyloric stenosis, malrotation','Failure to thrive: organic vs non-organic, workup approach','Child abuse: fracture patterns, retinal hemorrhages, reporting requirements','Common pediatric infections: bronchiolitis, croup, epiglottitis differentiation','Genetic syndromes: Down, Turner, Klinefelter, Fragile X presentations']},
-'psychiatry':{icon:'🧠',title:'Psychiatry',content:['Depression vs bipolar: treatment implications, antidepressant-induced mania','Psychosis: schizophrenia timeline, brief psychotic vs schizophreniform','Anxiety disorders: GAD vs panic vs phobias, first-line treatments','Personality disorders: cluster A vs B vs C, classic presentations','Substance use: intoxication vs withdrawal patterns, treatment protocols','Eating disorders: anorexia vs bulimia, refeeding syndrome','Suicide risk assessment: protective factors, when to hospitalize','Capacity vs competency: who decides, when to override']},
-'ophthalmology':{icon:'👁️',title:'Ophthalmology',content:['Red eye differential: conjunctivitis vs uveitis vs acute glaucoma vs keratitis','Glaucoma: open vs closed angle, acute management','Retinal pathology: detachment, macular degeneration, diabetic retinopathy stages','Optic neuritis vs papilledema: visual field defects, pupil findings','Pupil abnormalities: Horner vs CN3 palsy, relative afferent pupillary defect','Eye trauma: hyphema, globe rupture, chemical burn management','Pediatric eye conditions: leukocoria differential, amblyopia management','Visual field defects: localize the lesion from the field cut pattern']},
-'ent':{icon:'👂',title:'ENT',content:['Otitis media vs externa: presentation, organisms, management','Hearing loss: conductive vs sensorineural, Weber and Rinne interpretation','Vertigo: peripheral vs central, BPPV vs Meniere vs vestibular neuritis','Sinusitis: acute vs chronic, when imaging and antibiotics are indicated','Pharyngitis: Centor criteria, when to test and treat','Neck masses: location-based differential, branchial cleft vs thyroglossal','Head and neck cancer: risk factors, presentation, staging','Epistaxis: anterior vs posterior, management approach']},
-'biostats':{icon:'📊',title:'Biostatistics',content:['Sensitivity vs specificity: when each matters, SnNout and SpPin rules','PPV/NPV: how prevalence affects them, calculation shortcuts','Study designs: RCT vs cohort vs case-control, which answers which question','Bias types: selection, recall, lead-time, length-time','Statistical tests: which test for which data type','Confidence intervals: interpretation, relationship to p-values','Number needed to treat/harm: calculation and clinical meaning','Survival analysis: Kaplan-Meier curves, hazard ratios']},
-'socialsciences':{icon:'⚖️',title:'Ethics / QI',content:['Informed consent: required elements, exceptions, who can consent','Capacity assessment: four components, who determines it','Advance directives: living will vs healthcare proxy, limitations','Confidentiality: when you must break it, mandatory reporting','Quality improvement frameworks: PDSA cycles, root cause analysis','Health disparities: social determinants of health, implicit bias','End of life: withdrawing vs withholding, physician-assisted death','Minors: emancipated minor, mature minor doctrine, STI treatment']}
-};
-const topicOrder=['exam-strategy','mnemonics','cardiology','respiratory','neurology','hemeonc','pharmacology','microbiology','pathology','biochemistry','immunology','gi','renal','endocrine','msk','obgyn','derm','pediatrics','psychiatry','ophthalmology','ent','biostats','socialsciences'];
-const keyTopics=['exam-strategy','mnemonics'];
+    function finishExam(){
+        clearInterval(timerInterval);
+        document.getElementById('nbme-header').style.display='none';
+        document.getElementById('nbme-footer').style.display='none';
 
-const grid=document.getElementById('topicsGrid');
-topicOrder.forEach((k,i)=>{
-const d=topicData[k];
-const el=document.createElement('div');
-el.className='tcard reveal'+(keyTopics.includes(k)?' key':'');
-el.dataset.topic=k;
-el.innerHTML='<div class="trow"><span class="tic">'+d.icon+'</span><span class="tnum">'+String(i+1).padStart(2,'0')+'</span></div><div class="tname">'+d.title+'</div>';
-grid.appendChild(el);
-});
+        var totalCorrect=0,totalQuestions=0,strategyResults=[];
+        for(var s in strategyData){
+            var d=strategyData[s];
+            if(d.total>0){
+                strategyResults.push({name:s,accuracy:Math.round(d.correct/d.total*100),avgTime:Math.round(d.totalTime/d.total),correct:d.correct,total:d.total});
+                totalCorrect+=d.correct;totalQuestions+=d.total;
+            }
+        }
+        strategyResults.sort(function(a,b){return b.accuracy!==a.accuracy?b.accuracy-a.accuracy:a.avgTime-b.avgTime;});
+        var best=strategyResults[0],worst=strategyResults[strategyResults.length-1];
+        var overallPct=Math.round(totalCorrect/totalQuestions*100),totalTime=document.getElementById('timer').innerText;
 
-const root=document.documentElement, tbtn=document.getElementById('themeToggle');
-function setTheme(t){root.setAttribute('data-theme',t);tbtn.textContent=t==='dark'?'Light':'Dark';try{localStorage.setItem('u300theme',t)}catch(e){}}
-try{const saved=localStorage.getItem('u300theme');if(saved)setTheme(saved)}catch(e){}
-tbtn.textContent=root.getAttribute('data-theme')==='dark'?'Light':'Dark';
-tbtn.addEventListener('click',()=>setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark'));
+        var names={STEM_FIRST:'Standard read',HIGHLIGHTER:'Active highlight',SPEED_SCAN:'Speed scan',OPTIONS_FIRST:'Options first',LAST_SENTENCE:'Question first'};
+        var descs={
+            STEM_FIRST:'reading the whole passage carefully, top to bottom, before answering.',
+            HIGHLIGHTER:'actively marking key words as you read to anchor your reasoning.',
+            SPEED_SCAN:'reading fast and trusting gut-level pattern recognition.',
+            OPTIONS_FIRST:'scanning the answer choices first to prime your brain before the passage.',
+            LAST_SENTENCE:'reading the question first, then hunting the passage for the specific answer.'
+        };
 
-const clock=document.getElementById('clock');
-function tick(){const n=new Date();clock.textContent=[n.getHours(),n.getMinutes(),n.getSeconds()].map(x=>String(x).padStart(2,'0')).join(':')}
-tick();setInterval(tick,1000);
+        var deltaPts=best.accuracy-worst.accuracy;
+        var blockExtra=Math.round(deltaPts/100*40);
 
-const hud=document.getElementById('hud');
-addEventListener('mousemove',e=>{hud.textContent='X:'+String(e.clientX).padStart(4,'0')+' Y:'+String(e.clientY).padStart(4,'0')});
+        var html='<div class="results-wrap"><div class="results-container"><div class="results-card">';
+        html+='<div class="results-card-top">';
+        html+='<div class="results-logo">USMLE300</div>';
+        html+='<div class="results-title">Your Reading Profile</div>';
+        html+='<div class="results-score-circle"><div class="results-score-num">'+totalCorrect+'/'+totalQuestions+'</div><div class="results-score-label">'+overallPct+'% · '+totalTime+'</div></div>';
+        html+='<div class="results-time">Reading Strategy Diagnostic</div>';
+        html+='</div>';
 
-addEventListener('scroll',()=>document.querySelector('header').classList.toggle('scrolled',scrollY>30));
+        html+='<div class="results-card-body">';
 
-const io=new IntersectionObserver((es)=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+        if(best.name!==worst.name && deltaPts>0){
+            html+='<div class="delta-banner"><div class="delta-num">+'+deltaPts+'%</div><div class="delta-text">On the same questions, your best approach ('+names[best.name]+') scored '+best.accuracy+'% while your worst ('+names[worst.name]+') scored '+worst.accuracy+'%. Reading everything your best way would have meant about <strong>'+blockExtra+' more correct on a 40-question block</strong>, without knowing a single extra fact.</div></div>';
+        }
 
-const mb=document.querySelector('.menu-btn'),mn=document.querySelector('.mnav');
-mb.addEventListener('click',()=>{mb.classList.toggle('active');mn.classList.toggle('active');document.body.classList.toggle('locked')});
-mn.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mb.classList.remove('active');mn.classList.remove('active');document.body.classList.remove('locked')}));
+        html+='<div class="results-section-title">How each approach did for you</div>';
+        html+='<div class="results-section-sub">Every strategy faced the same mix of question types, so this ranking reflects the way you read, not which questions each one happened to get.</div>';
 
-const cModal=document.getElementById('contactModal'),tModal=document.getElementById('topicModal');
-function openContact(e){if(e)e.preventDefault();tModal.classList.remove('active');cModal.classList.add('active');document.body.classList.add('locked')}
-document.querySelectorAll('a[href="#contact"]').forEach(l=>l.addEventListener('click',openContact));
-document.addEventListener('click',e=>{
-const card=e.target.closest('.tcard');
-if(card){const d=topicData[card.dataset.topic];if(!d)return;
-document.getElementById('tmIcon').textContent=d.icon;
-document.getElementById('tmTitle').textContent=d.title;
-document.getElementById('tmContent').innerHTML=d.content.map(i=>'<li>'+i+'</li>').join('');
-tModal.classList.add('active');document.body.classList.add('locked');}
-});
-[cModal,tModal].forEach(m=>m.addEventListener('click',e=>{if(e.target===m||e.target.hasAttribute('data-close')){m.classList.remove('active');document.body.classList.remove('locked')}}));
+        for(var idx=0;idx<strategyResults.length;idx++){
+            var r=strategyResults[idx];
+            var isBest=idx===0,isWorst=idx===strategyResults.length-1&&strategyResults.length>1;
+            var rowClass=isBest?'best':isWorst?'worst':'';
+            var barColor=isBest?'var(--success)':isWorst?'var(--danger)':'#6366f1';
+            html+='<div class="strategy-row '+rowClass+'"><div class="strategy-rank">'+(idx+1)+'</div><div class="strategy-info"><div class="strategy-name">'+names[r.name]+'</div><div class="strategy-meta">'+r.correct+'/'+r.total+' correct · avg '+r.avgTime+'s / question</div><div class="strategy-bar-wrap"><div class="strategy-bar-fill" style="width:'+r.accuracy+'%;background:'+barColor+';"></div></div></div><div class="strategy-pct">'+r.accuracy+'%</div></div>';
+        }
 
-document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){
-const h=this.getAttribute('href');
-if(h==='#contact'||h==='#'||h.length<=1)return;
-const t=document.querySelector(h);
-if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});mb.classList.remove('active');mn.classList.remove('active');document.body.classList.remove('locked')}
-}));
-</script>
+        html+='<div class="recommendation-card"><h3>Your best approach</h3>';
+        html+='<p><strong>'+names[best.name]+'</strong> — '+descs[best.name]+'</p>';
+        html+='<p>You scored <strong>'+best.accuracy+'%</strong> with this approach, averaging <strong>'+best.avgTime+'s</strong> per question.</p>';
+        if(worst.name!==best.name){html+='<div class="avoid-note"><strong>Watch out for:</strong> '+names[worst.name]+' ('+worst.accuracy+'%). It cost you the most here, so be deliberate about not slipping into it under time pressure.</div>';}
+        html+='</div>';
+
+        html+='<div class="tutor-cta"><p>Want to turn this into a full test-taking system for the real thing?</p><a class="results-btn primary" href="index.html#contact" style="min-width:auto;padding:12px 24px;">Book a free call</a></div>';
+
+        var shareText='My USMLE300 Reading Profile\n\n'+totalCorrect+'/'+totalQuestions+' ('+overallPct+'%) in '+totalTime+'\n\n';
+        for(var j=0;j<strategyResults.length;j++){var sr=strategyResults[j];shareText+=(j+1)+'. '+names[sr.name]+': '+sr.accuracy+'%\n';}
+        shareText+='\nBest: '+names[best.name]+'\nGap between best and worst: '+deltaPts+' points\n\nFind YOUR best strategy at usmle300.com/diagnostic.html';
+        var tweetText=encodeURIComponent('Found my best exam reading strategy with @usmle300.\n\nBest: '+names[best.name]+' ('+best.accuracy+'%)\nOverall: '+totalCorrect+'/'+totalQuestions+'\n\nFind yours at usmle300.com/diagnostic.html');
+
+        html+='<div class="results-actions">';
+        html+='<button class="results-btn secondary" onclick="location.reload()">Try again</button>';
+        html+='<button class="results-btn share" onclick="shareTweet(\''+tweetText+'\')">Share</button>';
+        html+='<button class="results-btn primary" onclick="copyResults()">Copy results</button>';
+        html+='</div>';
+        html+='</div></div>';
+        html+='<div class="results-watermark"><a href="index.html">usmle300.com</a> · Free Strategy Diagnostic</div>';
+        html+='</div></div>';
+
+        window._shareText=shareText;
+        var gs=document.getElementById('game-screen');gs.innerHTML=html;gs.style.overflow='auto';gs.style.background='transparent';
+    }
+
+    function copyResults(){
+        navigator.clipboard.writeText(window._shareText).then(function(){
+            var toast=document.getElementById('share-toast');
+            if(!toast){toast=document.createElement('div');toast.className='share-toast';toast.id='share-toast';toast.textContent='Results copied to clipboard.';document.body.appendChild(toast);}
+            toast.classList.add('show');setTimeout(function(){toast.classList.remove('show');},2500);
+        });
+    }
+    function shareTweet(text){window.open('https://twitter.com/intent/tweet?text='+text,'_blank');}
+    </script>
 </body>
 </html>
