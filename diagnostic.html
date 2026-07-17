@@ -7,7 +7,7 @@
     <meta name="description" content="Free reading-strategy diagnostic. Test 5 ways of reading a question on plain passages and find which one works best for you.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root{
             --nbme-blue:#1a2744;--nbme-teal:#2a7d8c;--nbme-teal-hover:#1f5f6b;
@@ -113,55 +113,52 @@
         .intro-btn:hover{background:var(--burgundy-dark)}
         .intro-count{text-align:center;font-size:0.75rem;color:var(--gray-500);margin-top:0.9rem}
 
-        /* results */
-        .results-wrap{min-height:100vh;background:linear-gradient(160deg,#0f172a 0%,#1e293b 40%,#1a2744 100%);padding:40px 20px;overflow-y:auto}
-        .results-container{max-width:620px;margin:0 auto}
-        .results-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 25px 80px rgba(0,0,0,0.4)}
-        .results-card-top{background:linear-gradient(135deg,var(--burgundy) 0%,var(--burgundy-dark) 100%);padding:32px 28px 24px;text-align:center;color:#fff;position:relative}
-        .results-card-top::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:24px;background:#fff;border-radius:24px 24px 0 0}
-        .results-logo{font-family:'Fraunces',serif;font-size:0.9rem;font-weight:700;opacity:0.8;margin-bottom:4px}
-        .results-title{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;margin-bottom:16px}
-        .results-score-circle{width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,0.15);border:4px solid rgba(255,255,255,0.4);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 10px}
-        .results-score-num{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:700;line-height:1}
-        .results-score-label{font-size:0.75rem;opacity:0.75;margin-top:2px}
-        .results-time{font-size:0.82rem;opacity:0.7}
-        .results-card-body{padding:8px 28px 28px}
-        .results-section-title{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:700;color:var(--charcoal);margin-bottom:6px}
-        .results-section-sub{font-size:0.82rem;color:var(--gray-500);margin-bottom:14px;line-height:1.5}
-        .delta-banner{background:linear-gradient(135deg,#1a2744 0%,#253558 100%);color:#fff;border-radius:12px;padding:16px 18px;margin-bottom:18px;text-align:center}
-        .delta-num{font-family:'Fraunces',serif;font-size:2rem;font-weight:700;color:#fff;line-height:1}
-        .delta-text{font-size:0.85rem;opacity:0.85;margin-top:6px;line-height:1.5}
-        .strategy-row{display:flex;align-items:center;padding:12px 14px;margin-bottom:8px;border-radius:10px;background:var(--gray-100);border:2px solid transparent;gap:12px;transition:all 0.2s}
-        .strategy-row.best{background:#ecfdf5;border-color:var(--success)}
-        .strategy-row.worst{background:#fef2f2;border-color:#fca5a5}
-        .strategy-rank{width:28px;height:28px;border-radius:50%;background:var(--gray-200);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;color:var(--gray-700);flex-shrink:0}
-        .strategy-row.best .strategy-rank{background:var(--success);color:#fff}
-        .strategy-row.worst .strategy-rank{background:#fca5a5;color:#7f1d1d}
-        .strategy-info{flex:1;min-width:0}
-        .strategy-name{font-weight:700;font-size:0.92rem;color:var(--charcoal)}
-        .strategy-meta{font-size:0.78rem;color:var(--gray-500);margin-top:2px}
-        .strategy-bar-wrap{height:6px;background:var(--gray-200);border-radius:3px;overflow:hidden;margin-top:6px}
-        .strategy-bar-fill{height:100%;border-radius:3px;transition:width 0.6s ease}
-        .strategy-pct{font-family:'Fraunces',serif;font-size:1.35rem;font-weight:700;flex-shrink:0}
-        .strategy-row.best .strategy-pct{color:var(--success)}
-        .strategy-row.worst .strategy-pct{color:var(--danger)}
-        .recommendation-card{margin-top:20px;padding:20px;border-radius:12px;background:linear-gradient(135deg,#faf5ff 0%,#f0e7ff 100%);border:1px solid #ddd6fe}
-        .recommendation-card h3{font-family:'Fraunces',serif;font-size:1rem;color:#5b21b6;margin-bottom:8px}
-        .recommendation-card p{font-size:0.9rem;color:#4c1d95;line-height:1.6;margin-bottom:6px}
-        .recommendation-card .avoid-note{font-size:0.82rem;color:#7c3aed;border-top:1px solid #ddd6fe;margin-top:10px;padding-top:10px}
-        .tutor-cta{margin-top:16px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--burgundy);text-align:center}
-        .tutor-cta p{font-size:0.9rem;color:var(--charcoal);margin-bottom:12px}
-        .results-actions{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
-        .results-btn{flex:1;min-width:140px;padding:12px 16px;border-radius:10px;font-weight:700;font-size:0.88rem;cursor:pointer;text-align:center;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:inherit;transition:all 0.2s;border:none}
-        .results-btn.primary{background:var(--burgundy);color:#fff}
-        .results-btn.primary:hover{background:var(--burgundy-dark);transform:translateY(-1px)}
-        .results-btn.secondary{background:#fff;color:var(--charcoal);border:2px solid var(--gray-300)}
-        .results-btn.secondary:hover{border-color:var(--charcoal)}
-        .results-btn.share{background:#1da1f2;color:#fff}
-        .results-btn.share:hover{background:#0c85d0;transform:translateY(-1px)}
-        .results-watermark{text-align:center;margin-top:20px;font-size:0.8rem;color:rgba(255,255,255,0.4)}
-        .results-watermark a{color:rgba(255,255,255,0.6);text-decoration:none}
-        .share-toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--charcoal);color:#fff;padding:12px 24px;border-radius:10px;font-size:0.9rem;font-weight:600;opacity:0;transition:all 0.3s;z-index:9999;pointer-events:none}
+        /* results (site-matching, dark) */
+        .rz-wrap{min-height:100vh;background:#0d0e12;background-image:radial-gradient(80% 55% at 50% -12%,rgba(207,92,104,0.16),transparent 60%);color:#ECEAE3;font-family:'Inter',sans-serif;padding:60px 20px 64px;overflow-y:auto}
+        .rz-shell{max-width:680px;margin:0 auto}
+        .rz-eyebrow{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:#cf5c68;margin-bottom:0.9rem;display:flex;align-items:center;gap:0.6rem}
+        .rz-eyebrow::before{content:'';width:26px;height:1px;background:#cf5c68}
+        .rz-title{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(1.9rem,5vw,2.8rem);letter-spacing:-0.025em;margin-bottom:1.8rem;color:#fff;line-height:1.05}
+        .rz-scorerow{display:grid;grid-template-columns:0.85fr 1.15fr;gap:0.9rem;margin-bottom:2rem}
+        .rz-score,.rz-delta{background:#14151b;border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:1.4rem 1.5rem}
+        .rz-score{display:flex;flex-direction:column;justify-content:center}
+        .rz-score-num{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:3rem;line-height:1;letter-spacing:-0.03em;color:#fff}
+        .rz-score-num span{font-size:1.3rem;color:#5c5a54}
+        .rz-score-meta{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:#9a978f;margin-top:0.6rem;letter-spacing:0.03em}
+        .rz-delta{border-color:rgba(207,92,104,0.4);background:linear-gradient(135deg,#1b1216,#14151b)}
+        .rz-delta-label{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:#9a978f;margin-bottom:0.45rem}
+        .rz-delta-num{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:2rem;color:#e07c87;line-height:1}
+        .rz-delta-text{font-size:0.8rem;color:#9a978f;margin-top:0.55rem;line-height:1.55}
+        .rz-rank-label{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:#5c5a54;margin-bottom:0.85rem}
+        .rz-rows{display:flex;flex-direction:column;gap:0.5rem}
+        .rz-row{display:flex;gap:0.9rem;align-items:center;background:#14151b;border:1px solid rgba(255,255,255,0.1);border-radius:11px;padding:0.85rem 1rem}
+        .rz-row.best{border-color:rgba(76,175,120,0.5);background:linear-gradient(135deg,rgba(76,175,120,0.09),#14151b)}
+        .rz-row.worst{opacity:0.78}
+        .rz-rank{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:#5c5a54;width:14px;flex-shrink:0;text-align:center}
+        .rz-row.best .rz-rank{color:#4caf78}
+        .rz-rowmain{flex:1;min-width:0}
+        .rz-rowtop{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.45rem}
+        .rz-name{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:0.98rem;color:#ECEAE3}
+        .rz-pct{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.05rem;color:#ECEAE3}
+        .rz-row.best .rz-pct{color:#4caf78}
+        .rz-row.worst .rz-pct{color:#e0574f}
+        .rz-bar{height:5px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden}
+        .rz-bar span{display:block;height:100%;border-radius:3px;transition:width 0.6s ease}
+        .rz-rowsub{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:#5c5a54;margin-top:0.45rem;letter-spacing:0.02em}
+        .rz-note{font-size:0.76rem;color:#5c5a54;margin:0.9rem 0 0;line-height:1.5}
+        .rz-best{margin-top:1.8rem;background:#14151b;border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:1.4rem 1.5rem}
+        .rz-best-label{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:#cf5c68;margin-bottom:0.4rem}
+        .rz-best-name{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.4rem;color:#fff;margin-bottom:0.35rem;letter-spacing:-0.01em}
+        .rz-best-tag{font-size:0.88rem;color:#9a978f;line-height:1.55}
+        .rz-cta{display:block;margin-top:1.4rem;text-align:center;background:#cf5c68;color:#fff;text-decoration:none;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.98rem;padding:1rem;border-radius:11px;transition:background .2s}
+        .rz-cta:hover{background:#e07c87}
+        .rz-actions{display:flex;gap:0.6rem;margin-top:0.8rem}
+        .rz-btn{flex:1;font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:600;letter-spacing:0.04em;padding:0.78rem;border-radius:9px;border:1px solid rgba(255,255,255,0.16);background:transparent;color:#9a978f;cursor:pointer;transition:all .2s}
+        .rz-btn:hover{border-color:#9a978f;color:#ECEAE3}
+        .rz-btn.primary{background:#14151b;color:#ECEAE3;border-color:rgba(255,255,255,0.22)}
+        .rz-foot{text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.64rem;color:#5c5a54;margin-top:1.6rem;letter-spacing:0.04em}
+        .rz-foot a{color:#9a978f;text-decoration:none}
+        .share-toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(80px);background:#14151b;border:1px solid rgba(255,255,255,0.16);color:#ECEAE3;padding:12px 22px;border-radius:10px;font-family:'JetBrains Mono',monospace;font-size:0.78rem;opacity:0;transition:all .3s;z-index:9999;pointer-events:none}
         .share-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
         @media (max-width:768px){
@@ -173,8 +170,9 @@
             .nbme-footer-left{flex-direction:column;gap:6px}
             .options-container{max-width:100%}
             .results-card-body{padding:8px 20px 24px}
-            .results-card-top{padding:24px 20px 20px}
             .intro-card{padding:2rem 1.6rem}
+            .rz-scorerow{grid-template-columns:1fr}
+            .rz-wrap{padding:44px 16px 52px}
         }
     </style>
 </head>
@@ -565,80 +563,47 @@
         clearInterval(timerInterval);
         document.getElementById('nbme-header').style.display='none';
         document.getElementById('nbme-footer').style.display='none';
-
-        var totalCorrect=0,totalQuestions=0,strategyResults=[];
-        for(var s in strategyData){
-            var d=strategyData[s];
-            if(d.total>0){
-                strategyResults.push({name:s,accuracy:Math.round(d.correct/d.total*100),avgTime:Math.round(d.totalTime/d.total),correct:d.correct,total:d.total});
-                totalCorrect+=d.correct;totalQuestions+=d.total;
-            }
-        }
-        strategyResults.sort(function(a,b){return b.accuracy!==a.accuracy?b.accuracy-a.accuracy:a.avgTime-b.avgTime;});
-        var best=strategyResults[0],worst=strategyResults[strategyResults.length-1];
-        var overallPct=Math.round(totalCorrect/totalQuestions*100),totalTime=document.getElementById('timer').innerText;
-
+        var totalCorrect=0,totalQuestions=0,rows=[];
+        for(var s in strategyData){var d=strategyData[s];if(d.total>0){rows.push({name:s,acc:Math.round(d.correct/d.total*100),avg:Math.round(d.totalTime/d.total),correct:d.correct,total:d.total});totalCorrect+=d.correct;totalQuestions+=d.total;}}
+        rows.sort(function(a,b){return b.acc!==a.acc?b.acc-a.acc:a.avg-b.avg;});
+        var best=rows[0],worst=rows[rows.length-1];
+        var overall=Math.round(totalCorrect/totalQuestions*100),time=document.getElementById('timer').innerText;
         var names={STEM_FIRST:'Standard read',HIGHLIGHTER:'Active highlight',SPEED_SCAN:'Speed scan',OPTIONS_FIRST:'Options first',LAST_SENTENCE:'Question first'};
-        var descs={
-            STEM_FIRST:'reading the whole passage carefully, top to bottom, before answering.',
-            HIGHLIGHTER:'actively marking key words as you read to anchor your reasoning.',
-            SPEED_SCAN:'reading fast and trusting gut-level pattern recognition.',
-            OPTIONS_FIRST:'scanning the answer choices first to prime your brain before the passage.',
-            LAST_SENTENCE:'reading the question first, then hunting the passage for the specific answer.'
-        };
+        var tags={STEM_FIRST:'read it all, top to bottom',HIGHLIGHTER:'mark key words as you read',SPEED_SCAN:'fast, gut-instinct reading',OPTIONS_FIRST:'answers first, then the passage',LAST_SENTENCE:'question first, then hunt the text'};
+        var delta=best.acc-worst.acc,extra=Math.round(delta/100*40),diff=best.name!==worst.name;
 
-        var deltaPts=best.accuracy-worst.accuracy;
-        var blockExtra=Math.round(deltaPts/100*40);
-
-        var html='<div class="results-wrap"><div class="results-container"><div class="results-card">';
-        html+='<div class="results-card-top">';
-        html+='<div class="results-logo">USMLE300</div>';
-        html+='<div class="results-title">Your Reading Profile</div>';
-        html+='<div class="results-score-circle"><div class="results-score-num">'+totalCorrect+'/'+totalQuestions+'</div><div class="results-score-label">'+overallPct+'% · '+totalTime+'</div></div>';
-        html+='<div class="results-time">Reading Strategy Diagnostic</div>';
-        html+='</div>';
-
-        html+='<div class="results-card-body">';
-
-        if(best.name!==worst.name && deltaPts>0){
-            html+='<div class="delta-banner"><div class="delta-num">+'+deltaPts+'%</div><div class="delta-text">On the same questions, your best approach ('+names[best.name]+') scored '+best.accuracy+'% while your worst ('+names[worst.name]+') scored '+worst.accuracy+'%. Reading everything your best way would have meant about <strong>'+blockExtra+' more correct on a 40-question block</strong>, without knowing a single extra fact.</div></div>';
+        var h='<div class="rz-wrap"><div class="rz-shell">';
+        h+='<div class="rz-eyebrow">USMLE300 / Reading diagnostic</div>';
+        h+='<h1 class="rz-title">Your reading profile</h1>';
+        h+='<div class="rz-scorerow">';
+        h+='<div class="rz-score"><div class="rz-score-num">'+totalCorrect+'<span>/'+totalQuestions+'</span></div><div class="rz-score-meta">'+overall+'% correct · '+time+'</div></div>';
+        if(diff&&delta>0){
+            h+='<div class="rz-delta"><div class="rz-delta-label">Best vs worst strategy</div><div class="rz-delta-num">+'+delta+'%</div><div class="rz-delta-text">Same questions, same knowledge. Reading everything your best way is worth about '+extra+' more right on a 40-question block.</div></div>';
+        }else{
+            h+='<div class="rz-delta"><div class="rz-delta-label">Consistent</div><div class="rz-delta-num">'+overall+'%</div><div class="rz-delta-text">Your approaches landed close together, so lead with whichever feels least tiring under time.</div></div>';
         }
-
-        html+='<div class="results-section-title">How each approach did for you</div>';
-        html+='<div class="results-section-sub">Every strategy faced the same mix of question types, so this ranking reflects the way you read, not which questions each one happened to get.</div>';
-
-        for(var idx=0;idx<strategyResults.length;idx++){
-            var r=strategyResults[idx];
-            var isBest=idx===0,isWorst=idx===strategyResults.length-1&&strategyResults.length>1;
-            var rowClass=isBest?'best':isWorst?'worst':'';
-            var barColor=isBest?'var(--success)':isWorst?'var(--danger)':'#6366f1';
-            html+='<div class="strategy-row '+rowClass+'"><div class="strategy-rank">'+(idx+1)+'</div><div class="strategy-info"><div class="strategy-name">'+names[r.name]+'</div><div class="strategy-meta">'+r.correct+'/'+r.total+' correct · avg '+r.avgTime+'s / question</div><div class="strategy-bar-wrap"><div class="strategy-bar-fill" style="width:'+r.accuracy+'%;background:'+barColor+';"></div></div></div><div class="strategy-pct">'+r.accuracy+'%</div></div>';
+        h+='</div>';
+        h+='<div class="rz-rank-label">How each approach did</div><div class="rz-rows">';
+        for(var i=0;i<rows.length;i++){
+            var r=rows[i],cls=i===0?'best':(i===rows.length-1&&rows.length>1?'worst':'');
+            var bar=i===0?'#4caf78':(cls==='worst'?'#e0574f':'#cf5c68');
+            h+='<div class="rz-row '+cls+'"><span class="rz-rank">'+(i+1)+'</span><div class="rz-rowmain"><div class="rz-rowtop"><span class="rz-name">'+names[r.name]+'</span><span class="rz-pct">'+r.acc+'%</span></div><div class="rz-bar"><span style="width:'+r.acc+'%;background:'+bar+'"></span></div><div class="rz-rowsub">'+r.correct+'/'+r.total+' correct · '+r.avg+'s avg</div></div></div>';
         }
+        h+='</div>';
+        h+='<div class="rz-note">Every strategy saw the same spread of question types, so this is about fit, not luck.</div>';
+        h+='<div class="rz-best"><div class="rz-best-label">Lead with</div><div class="rz-best-name">'+names[best.name]+'</div><div class="rz-best-tag">'+tags[best.name]+'.'+(diff?' Watch '+names[worst.name].toLowerCase()+' when the clock is tight.':'')+'</div></div>';
+        h+='<a class="rz-cta" href="index.html#contact">Turn this into a full plan</a>';
+        h+='<div class="rz-actions"><button class="rz-btn" onclick="location.reload()">Try again</button><button class="rz-btn" onclick="shareTweet(window._tweet)">Share</button><button class="rz-btn primary" onclick="copyResults()">Copy</button></div>';
+        h+='<div class="rz-foot"><a href="index.html">usmle300.com</a> · free strategy diagnostic</div>';
+        h+='</div></div>';
 
-        html+='<div class="recommendation-card"><h3>Your best approach</h3>';
-        html+='<p><strong>'+names[best.name]+'</strong> — '+descs[best.name]+'</p>';
-        html+='<p>You scored <strong>'+best.accuracy+'%</strong> with this approach, averaging <strong>'+best.avgTime+'s</strong> per question.</p>';
-        if(worst.name!==best.name){html+='<div class="avoid-note"><strong>Watch out for:</strong> '+names[worst.name]+' ('+worst.accuracy+'%). It cost you the most here, so be deliberate about not slipping into it under time pressure.</div>';}
-        html+='</div>';
+        var share='My USMLE300 reading profile\n\n'+totalCorrect+'/'+totalQuestions+' ('+overall+'%) in '+time+'\n\n';
+        for(var j=0;j<rows.length;j++){share+=(j+1)+'. '+names[rows[j].name]+': '+rows[j].acc+'%\n';}
+        share+='\nBest: '+names[best.name]+(diff?' (beats worst by '+delta+' points)':'')+'\n\nFind yours at usmle300.com/diagnostic.html';
+        window._shareText=share;
+        window._tweet=encodeURIComponent('Found my best exam reading strategy with @usmle300.\n\nBest: '+names[best.name]+' ('+best.acc+'%)\nOverall: '+totalCorrect+'/'+totalQuestions+'\n\nFind yours at usmle300.com/diagnostic.html');
 
-        html+='<div class="tutor-cta"><p>Want to turn this into a full test-taking system for the real thing?</p><a class="results-btn primary" href="index.html#contact" style="min-width:auto;padding:12px 24px;">Book a free call</a></div>';
-
-        var shareText='My USMLE300 Reading Profile\n\n'+totalCorrect+'/'+totalQuestions+' ('+overallPct+'%) in '+totalTime+'\n\n';
-        for(var j=0;j<strategyResults.length;j++){var sr=strategyResults[j];shareText+=(j+1)+'. '+names[sr.name]+': '+sr.accuracy+'%\n';}
-        shareText+='\nBest: '+names[best.name]+'\nGap between best and worst: '+deltaPts+' points\n\nFind YOUR best strategy at usmle300.com/diagnostic.html';
-        var tweetText=encodeURIComponent('Found my best exam reading strategy with @usmle300.\n\nBest: '+names[best.name]+' ('+best.accuracy+'%)\nOverall: '+totalCorrect+'/'+totalQuestions+'\n\nFind yours at usmle300.com/diagnostic.html');
-
-        html+='<div class="results-actions">';
-        html+='<button class="results-btn secondary" onclick="location.reload()">Try again</button>';
-        html+='<button class="results-btn share" onclick="shareTweet(\''+tweetText+'\')">Share</button>';
-        html+='<button class="results-btn primary" onclick="copyResults()">Copy results</button>';
-        html+='</div>';
-        html+='</div></div>';
-        html+='<div class="results-watermark"><a href="index.html">usmle300.com</a> · Free Strategy Diagnostic</div>';
-        html+='</div></div>';
-
-        window._shareText=shareText;
-        var gs=document.getElementById('game-screen');gs.innerHTML=html;gs.style.overflow='auto';gs.style.background='transparent';
+        var gs=document.getElementById('game-screen');gs.innerHTML=h;gs.style.overflow='auto';gs.style.background='transparent';
     }
 
     function copyResults(){
