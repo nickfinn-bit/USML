@@ -20,13 +20,13 @@
 }
 html[data-theme="light"]{
 --bg:#F4F3EF;--bg-2:#FBFAF7;--panel:#111318;--panel-text:#EDEBE4;
---text:#15161a;--text-2:#57544e;--text-3:#948f87;
+--text:#15161a;--text-2:#57544e;--text-3:#7c766c;
 --line:rgba(0,0,0,0.11);--line-2:rgba(0,0,0,0.06);
 --accent:#8A2F38;--accent-2:#b8434f;
 }
 html[data-theme="dark"]{
 --bg:#0d0e12;--bg-2:#14151b;--panel:#14151b;--panel-text:#EDEBE4;
---text:#ECEAE3;--text-2:#9a978f;--text-3:#5c5a54;
+--text:#ECEAE3;--text-2:#9a978f;--text-3:#807c73;
 --line:rgba(255,255,255,0.12);--line-2:rgba(255,255,255,0.06);
 --accent:#cf5c68;--accent-2:#e07c87;
 }
@@ -82,7 +82,7 @@ section{padding:100px 0;position:relative;scroll-margin-top:70px}
 .hero-right .console{margin-top:0}
 .hero-right .console-body{grid-template-columns:1fr;gap:1.4rem}
 .hero h1{font-size:clamp(2.1rem,5.2vw,3.9rem);font-weight:500;letter-spacing:-0.03em;max-width:20ch}
-.hero h1 .mut{color:var(--text-3)}
+.hero h1 .mut{color:var(--text-2)}
 .hero-sub{margin-top:1.6rem;font-size:1.1rem;color:var(--text-2);max-width:56ch;line-height:1.7}
 .hero-metrics{display:flex;gap:2.5rem;margin-top:2.6rem;flex-wrap:wrap}
 .metric .v{font-family:var(--display);font-size:1.5rem;font-weight:600;letter-spacing:-0.02em}
@@ -98,7 +98,7 @@ section{padding:100px 0;position:relative;scroll-margin-top:70px}
 .console-copy h2{color:var(--panel-text);font-size:clamp(1.6rem,3.2vw,2.2rem);font-weight:500;margin-bottom:0.85rem}
 .console-copy p{color:rgba(237,235,228,0.62);font-size:1rem;max-width:44ch;line-height:1.65}
 .readout{margin-top:1.4rem;display:flex;gap:1.4rem;flex-wrap:wrap}
-.readout div{font-family:var(--mono);font-size:0.66rem;color:rgba(237,235,228,0.4);letter-spacing:0.05em}
+.readout div{font-family:var(--mono);font-size:0.66rem;color:rgba(237,235,228,0.52);letter-spacing:0.05em}
 .readout div b{color:rgba(237,235,228,0.8);font-weight:600}
 .console-cta{text-align:center}
 .radar{position:relative;width:150px;height:150px;margin:0 auto 1.3rem}
@@ -190,10 +190,10 @@ footer{background:var(--panel);color:var(--panel-text);padding:4rem 0 2rem}
 .foot-mark{font-family:var(--display);font-weight:600;font-size:clamp(2.5rem,10vw,7rem);letter-spacing:-0.04em;line-height:0.9;color:var(--panel-text);opacity:0.9;margin-bottom:2.5rem}
 .foot-cols{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.1);padding-top:2rem}
 .foot-cols .fcol{display:flex;flex-direction:column;gap:0.55rem}
-.foot-cols h4{font-family:var(--mono);font-size:0.64rem;text-transform:uppercase;letter-spacing:0.12em;color:rgba(237,235,228,0.4);margin-bottom:0.3rem}
+.foot-cols h4{font-family:var(--mono);font-size:0.64rem;text-transform:uppercase;letter-spacing:0.12em;color:rgba(237,235,228,0.52);margin-bottom:0.3rem}
 .foot-cols a{color:rgba(237,235,228,0.75);text-decoration:none;font-size:0.9rem}
 .foot-cols a:hover{color:var(--panel-text)}
-.foot-bot{margin-top:2.5rem;font-family:var(--mono);font-size:0.68rem;color:rgba(237,235,228,0.4);display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.6rem;letter-spacing:0.04em}
+.foot-bot{margin-top:2.5rem;font-family:var(--mono);font-size:0.68rem;color:rgba(237,235,228,0.52);display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.6rem;letter-spacing:0.04em}
 
 /* modals */
 .overlay{position:fixed;inset:0;background:rgba(8,8,11,0.6);backdrop-filter:blur(5px);display:flex;align-items:center;justify-content:center;z-index:2000;opacity:0;visibility:hidden;transition:.25s;padding:1rem}
@@ -275,7 +275,7 @@ section{padding:70px 0}
 <div class="wrap hero-grid">
 <div class="hero-left">
 <div class="sec-tag reveal"><span class="idx">00</span> USMLE300 / Step 1 · Step 2 CK</div>
-<h1 class="reveal">Scores usually come down to how you prepare and take the test, <span class="mut">not just how much you know.</span></h1>
+<h1 class="reveal">Score up to 20% higher <span class="mut">on the knowledge you already have.</span></h1>
 <p class="hero-sub reveal">USMLE300 was built for exactly this. I've spent the last few years mentoring students through the USMLE, helping them break score plateaus and hit their targets, including several who got past 250 on Step 2 CK. What I focus on isn't piling up more resources; it's engineering how you approach questions and building the test-taking habits that separate good scores from great ones. There's a free strategy tool and a few games below, and one-on-one tutoring whenever you want it.</p>
 </div>
 <div class="hero-right">
