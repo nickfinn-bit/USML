@@ -202,6 +202,10 @@
             box-shadow: 0 0 0 3px rgba(139,92,246,0.08);
         }
         .field-input::placeholder { color:var(--text-faint); font-weight:500; }
+        .field-select option, .field-select optgroup {
+            background:#12111a; color:#f0eef5; font-weight:600;
+        }
+        .field-select optgroup { color:#9490a5; font-style:normal; }
         .field-select {
             cursor:pointer; appearance:none;
             background-image:url("data:image/svg+xml,%3Csvg width='12' height='7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m1 1 5 5 5-5' stroke='%235c586d' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
@@ -285,7 +289,7 @@
             font-weight:700; font-size:0.88rem; margin-bottom:2px;
         }
         .match-fighter-school {
-            font-size:0.68rem; color:var(--text-faint); margin-bottom:4px;
+            font-size:0.68rem; color:var(--text-secondary); margin-bottom:4px;
         }
         .match-fighter-rating {
             font-family:'Geist Mono',monospace;
@@ -805,8 +809,9 @@
         </div>
         <div class="field">
             <div class="field-label">Medical School</div>
-            <select class="field-select" id="playerSchool">
+                        <select class="field-select" id="playerSchool">
                 <option value="Unaffiliated">Select your school...</option>
+                <optgroup label="US MD">
                 <option>Harvard Medical School</option>
                 <option>Johns Hopkins SOM</option>
                 <option>Stanford Medicine</option>
@@ -823,10 +828,136 @@
                 <option>Baylor COM</option>
                 <option>Vanderbilt SOM</option>
                 <option>UChicago Pritzker</option>
-                <option>Caribbean / IMG</option>
-                <option>Other US MD</option>
-                <option>Other US DO</option>
-                <option>Other / Prefer Not to Say</option>
+                <option>Weill Cornell</option>
+                <option>Yale SOM</option>
+                <option>WashU St. Louis</option>
+                <option>Mayo Clinic Alix</option>
+                <option>Pittsburgh SOM</option>
+                <option>UNC Chapel Hill</option>
+                <option>UT Southwestern</option>
+                <option>UC San Diego SOM</option>
+                <option>Case Western Reserve</option>
+                <option>Ohio State COM</option>
+                <option>Boston University</option>
+                <option>Georgetown SOM</option>
+                <option>USC Keck</option>
+                <option>Brown Alpert</option>
+                <option>Dartmouth Geisel</option>
+                <option>Rochester SMD</option>
+                <option>Wisconsin SMPH</option>
+                <option>Colorado SOM</option>
+                <option>Indiana SOM</option>
+                <option>Minnesota Medical School</option>
+                <option>Maryland SOM</option>
+                <option>Virginia SOM (UVA)</option>
+                <option>Miami Miller</option>
+                <option>Florida COM</option>
+                <option>Cincinnati COM</option>
+                <option>Iowa Carver</option>
+                <option>UAB Heersink</option>
+                <option>Wake Forest SOM</option>
+                <option>Tufts SOM</option>
+                <option>George Washington</option>
+                <option>Jefferson (Kimmel)</option>
+                <option>Temple Katz</option>
+                <option>Drexel COM</option>
+                <option>Albert Einstein</option>
+                <option>Rutgers RWJ / NJMS</option>
+                <option>Stony Brook</option>
+                <option>Buffalo Jacobs</option>
+                <option>SUNY Downstate</option>
+                <option>Loyola Stritch</option>
+                <option>Rush Medical College</option>
+                <option>Tulane SOM</option>
+                <option>LSU SOM</option>
+                <option>Kansas SOM</option>
+                <option>Nebraska COM</option>
+                <option>OHSU (Oregon)</option>
+                <option>Utah SOM</option>
+                <option>Arizona COM</option>
+                <option>Texas A&M COM</option>
+                <option>UTHealth McGovern</option>
+                <option>UT San Antonio Long</option>
+                <option>Penn State Hershey</option>
+                <option>Michigan State CHM</option>
+                <option>Wayne State SOM</option>
+                <option>VCU SOM</option>
+                <option>MUSC COM</option>
+                <option>Kentucky COM</option>
+                <option>Missouri SOM</option>
+                <option>Oklahoma COM</option>
+                <option>New Mexico SOM</option>
+                <option>Hawaii Burns</option>
+                <option>Vermont Larner</option>
+                <option>Connecticut SOM</option>
+                <option>Howard COM</option>
+                <option>Meharry Medical College</option>
+                <option>Morehouse SOM</option>
+                <option>Creighton SOM</option>
+                <option>Saint Louis University</option>
+                <option>Loma Linda SOM</option>
+                <option>Hofstra Zucker</option>
+                <option>Albany Medical College</option>
+                <option>New York Medical College</option>
+                <option>Quinnipiac Netter</option>
+                </optgroup>
+                <optgroup label="US DO">
+                <option>KCU (Kansas City)</option>
+                <option>PCOM (Philadelphia)</option>
+                <option>Des Moines University</option>
+                <option>Midwestern (CCOM / AZCOM)</option>
+                <option>NYITCOM</option>
+                <option>Nova Southeastern KPCOM</option>
+                <option>Touro COM</option>
+                <option>Western University COMP</option>
+                <option>Rowan SOM</option>
+                <option>Michigan State COM</option>
+                <option>Oklahoma State COM</option>
+                <option>LMU-DCOM</option>
+                <option>VCOM (Edward Via)</option>
+                <option>LECOM</option>
+                <option>ATSU (KCOM / SOMA)</option>
+                <option>Marian COM</option>
+                <option>Liberty COM</option>
+                <option>Campbell SOM</option>
+                <option>Sam Houston COM</option>
+                <option>Rocky Vista University</option>
+                <option>Pacific Northwest University</option>
+                <option>William Carey COM</option>
+                <option>Arkansas COM</option>
+                <option>Burrell COM</option>
+                <option>Noorda COM</option>
+                </optgroup>
+                <optgroup label="International &amp; Caribbean">
+                <option>St. George's (SGU)</option>
+                <option>Ross University</option>
+                <option>AUC</option>
+                <option>Saba University</option>
+                <option>MUA</option>
+                <option>Trinity (Caribbean)</option>
+                <option>Oxford / Cambridge</option>
+                <option>Imperial College London</option>
+                <option>UCL Medical School</option>
+                <option>Edinburgh</option>
+                <option>RCSI</option>
+                <option>Trinity College Dublin</option>
+                <option>Toronto</option>
+                <option>McGill</option>
+                <option>UBC</option>
+                <option>Sydney / Melbourne</option>
+                <option>Monash</option>
+                <option>AIIMS</option>
+                <option>CMC Vellore</option>
+                <option>Karolinska</option>
+                </optgroup>
+                <optgroup label="Other">
+                    <option>Other US MD</option>
+                    <option>Other US DO</option>
+                    <option>Other International</option>
+                    <option>Caribbean / IMG</option>
+                    <option>Pre-med / Not started</option>
+                    <option>Other / Prefer Not to Say</option>
+                </optgroup>
             </select>
         </div>
         <div class="field" style="margin-bottom:18px;">
