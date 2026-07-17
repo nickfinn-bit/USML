@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root{
-            --nbme-blue:#1a2744;--nbme-blue-mid:#253558;--nbme-teal:#2a7d8c;--nbme-teal-hover:#1f5f6b;
+            --nbme-blue:#1a2744;--nbme-teal:#2a7d8c;--nbme-teal-hover:#1f5f6b;
             --cream:#FAF9F6;--cream-dark:#F0EEEB;--burgundy:#722F37;--burgundy-dark:#5a252c;--gold:#C9A227;
             --charcoal:#2D2D2D;--success:#2E7D4A;--danger:#c0392b;
             --gray-100:#f8f9fa;--gray-200:#e9ecef;--gray-300:#dee2e6;--gray-500:#6c757d;--gray-700:#495057;
@@ -20,14 +20,14 @@
 
         /* landing */
         #landing-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;padding:2rem;background:linear-gradient(160deg,var(--cream) 0%,var(--cream-dark) 100%)}
-        .landing-logo{font-family:'Fraunces',Georgia,serif;font-size:1.35rem;font-weight:700;color:var(--burgundy);margin-bottom:0.25rem;letter-spacing:-0.01em}
+        .landing-logo{font-family:'Fraunces',Georgia,serif;font-size:1.35rem;font-weight:700;color:var(--burgundy);margin-bottom:0.25rem}
         .landing-title{font-family:'Fraunces',Georgia,serif;font-size:clamp(1.6rem,4vw,2.25rem);color:var(--nbme-blue);margin-bottom:0.75rem;font-weight:700}
-        .landing-subtitle{color:var(--gray-700);margin-bottom:1rem;max-width:560px;font-size:1rem;line-height:1.7}
+        .landing-subtitle{color:var(--gray-700);margin-bottom:1rem;max-width:580px;font-size:1rem;line-height:1.7}
         .landing-meta{display:flex;gap:1.5rem;margin-bottom:2rem;color:var(--gray-500);font-size:0.85rem;flex-wrap:wrap;justify-content:center}
         .landing-meta b{color:var(--charcoal)}
         .exam-btn{padding:15px 44px;font-size:1rem;border:2px solid var(--burgundy);background:var(--burgundy);color:#fff;border-radius:8px;cursor:pointer;transition:all 0.2s;font-weight:600;font-family:inherit}
         .exam-btn:hover{background:var(--burgundy-dark);border-color:var(--burgundy-dark);transform:translateY(-2px);box-shadow:0 6px 16px rgba(114,47,55,0.25)}
-        .landing-note{margin-top:1.4rem;font-size:0.82rem;color:var(--gray-500);max-width:520px}
+        .landing-note{margin-top:1.4rem;font-size:0.82rem;color:var(--gray-500);max-width:540px;line-height:1.6}
 
         /* header */
         #nbme-header{display:none;background:var(--nbme-blue);color:#fff;flex-shrink:0;border-bottom:3px solid var(--nbme-teal)}
@@ -42,8 +42,7 @@
         .nbme-tools{display:flex;gap:4px;align-items:center}
         .nbme-tool-btn{display:flex;flex-direction:column;align-items:center;gap:1px;color:rgba(255,255,255,0.75);font-size:0.65rem;cursor:pointer;padding:4px 10px;border-radius:3px;transition:all 0.15s;background:none;border:1px solid transparent;font-family:inherit}
         .nbme-tool-btn:hover{background:rgba(255,255,255,0.08);color:#fff;border-color:rgba(255,255,255,0.15)}
-        .nbme-tool-icon{font-size:1.1rem}
-        .strategy-badge{padding:4px 12px;border-radius:3px;font-weight:600;font-size:0.8rem;letter-spacing:0.3px}
+        .strategy-badge{padding:5px 14px;border-radius:3px;font-weight:700;font-size:0.82rem;letter-spacing:0.3px}
         .nbme-timer{font-family:'Consolas','Courier New',monospace;font-size:0.9rem;background:rgba(0,0,0,0.3);padding:4px 14px;border-radius:3px;letter-spacing:1px}
 
         /* game */
@@ -51,23 +50,23 @@
         .nbme-layout{display:flex;height:100%}
         .nbme-line-numbers{width:36px;background:#d5d8dc;border-right:1px solid #b0b3b8;padding:20px 0;font-family:'Consolas','Courier New',monospace;font-size:0.75rem;color:#666;text-align:center;overflow-y:auto;flex-shrink:0}
         .line-num{padding:1px 6px;height:22px;display:flex;align-items:center;justify-content:flex-end}
-        .nbme-content{flex:1;background:#fff;padding:28px 40px;overflow-y:auto;max-width:900px}
-        .strategy-instruction{padding:10px 14px;border-radius:4px;margin-bottom:18px;font-size:0.88rem;display:flex;align-items:center;gap:8px;border-left:4px solid}
+        .nbme-content{flex:1;background:#fff;padding:28px 40px;overflow-y:auto;max-width:920px}
+        .strategy-instruction{padding:11px 16px;border-radius:4px;margin-bottom:20px;font-size:0.9rem;border-left:4px solid}
         .strategy-instruction.standard{background:#f1f3f5;color:var(--gray-700);border-color:#adb5bd}
         .strategy-instruction.highlighter{background:#fff8e1;color:#6d4c00;border-color:#f9a825}
         .strategy-instruction.speed{background:#fde8e8;color:#8b1a1a;border-color:var(--danger)}
         .strategy-instruction.options-first{background:#e3f2fd;color:#0d47a1;border-color:#1976d2}
         .strategy-instruction.last-sentence{background:#fef3c7;color:#78350f;border-color:#d97706}
-        .question-vignette{font-size:1.02rem;line-height:1.9;color:#333;margin-bottom:22px}
+        .question-vignette{font-size:1.04rem;line-height:1.9;color:#333;margin-bottom:22px}
         .question-vignette.blur-content{filter:blur(8px);user-select:none;pointer-events:none;opacity:0.5;transition:all 0.4s ease}
         .highlightable-word{cursor:pointer;padding:1px 2px;border-radius:2px;transition:background 0.1s}
         .highlightable-word:hover{background:#e8eaed}
         .highlighted{background-color:#fff176 !important;font-weight:600}
-        .last-sentence-highlight{background:#fef9e7;padding:10px 14px;border-radius:4px;border-left:3px solid #f59e0b;margin:10px 0 15px;font-weight:500}
-        .question-lead{font-weight:700;font-size:1.04rem;color:var(--nbme-blue);margin-bottom:18px;line-height:1.5}
-        .reveal-btn{background:var(--nbme-teal);color:#fff;border:none;padding:9px 20px;border-radius:4px;font-weight:600;cursor:pointer;margin-bottom:18px;font-size:0.9rem;display:inline-flex;align-items:center;gap:6px;font-family:inherit;transition:all 0.15s}
+        .last-sentence-highlight{background:#fef9e7;padding:11px 15px;border-radius:4px;border-left:3px solid #f59e0b;margin:10px 0 15px;font-weight:500}
+        .question-lead{font-weight:700;font-size:1.05rem;color:var(--nbme-blue);margin-bottom:18px;line-height:1.5}
+        .reveal-btn{background:var(--nbme-teal);color:#fff;border:none;padding:9px 20px;border-radius:4px;font-weight:600;cursor:pointer;margin-bottom:18px;font-size:0.9rem;font-family:inherit;transition:all 0.15s}
         .reveal-btn:hover{background:var(--nbme-teal-hover)}
-        .options-container{border:1px solid var(--gray-300);border-radius:4px;background:#fff;padding:12px;max-width:560px}
+        .options-container{border:1px solid var(--gray-300);border-radius:4px;background:#fff;padding:12px;max-width:580px}
         .options-container.locked{opacity:0.35;pointer-events:none;filter:grayscale(0.8)}
         .option{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;margin-bottom:4px;border-radius:4px;cursor:pointer;transition:background 0.1s;border:1px solid transparent}
         .option:last-child{margin-bottom:0}
@@ -83,7 +82,7 @@
         .option.incorrect .option-radio{border-color:var(--danger);background:var(--danger)}
         .option.incorrect .option-radio::after{content:'';width:7px;height:7px;background:#fff;border-radius:50%}
         .option-label{font-weight:700;color:#333;margin-right:4px}
-        .option-text{color:#333;font-size:0.95rem}
+        .option-text{color:#333;font-size:0.96rem}
         .unlock-message{margin-top:10px;font-weight:600;font-size:0.88rem}
         .unlock-message.locked{color:var(--danger)}
         .unlock-message.unlocked{color:var(--success)}
@@ -94,11 +93,25 @@
         .nbme-footer-left{display:flex;align-items:center;gap:20px}
         .nbme-block-info{font-size:0.82rem;color:var(--gray-500)}
         .nbme-block-info strong{color:#333}
-        .feedback-message{font-size:0.92rem;max-width:520px}
+        .feedback-message{font-size:0.92rem;max-width:540px}
         .feedback-message .correct{color:var(--success);font-weight:700}
         .feedback-message .incorrect{color:var(--danger);font-weight:700}
         .nbme-proceed-btn{background:var(--nbme-teal);color:#fff;border:none;padding:9px 22px;border-radius:4px;font-weight:600;cursor:pointer;font-size:0.9rem;font-family:inherit;transition:background 0.15s}
         .nbme-proceed-btn:hover{background:var(--nbme-teal-hover)}
+
+        /* first-time strategy intro */
+        .intro-overlay{position:fixed;inset:0;background:rgba(12,18,28,0.94);display:none;align-items:center;justify-content:center;z-index:6000;padding:2rem}
+        .intro-overlay.active{display:flex}
+        .intro-card{background:#fff;max-width:540px;width:100%;border-radius:16px;padding:2.6rem 2.4rem;box-shadow:0 30px 80px rgba(0,0,0,0.5);animation:introPop 0.25s ease}
+        @keyframes introPop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+        .intro-kicker{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--nbme-teal);font-weight:700;margin-bottom:0.6rem;text-align:center}
+        .intro-title{font-family:'Fraunces',serif;font-size:1.9rem;color:var(--nbme-blue);margin-bottom:1.1rem;text-align:center;font-weight:700}
+        .intro-what{font-size:1.05rem;color:#333;line-height:1.75;margin-bottom:1.2rem}
+        .intro-why{font-size:0.9rem;color:var(--gray-700);background:var(--gray-100);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:0.9rem 1.1rem;margin-bottom:1.6rem;line-height:1.6}
+        .intro-why strong{color:var(--charcoal)}
+        .intro-btn{width:100%;background:var(--burgundy);color:#fff;border:none;padding:0.95rem;border-radius:9px;font-weight:700;font-size:0.98rem;cursor:pointer;font-family:inherit;transition:background 0.2s}
+        .intro-btn:hover{background:var(--burgundy-dark)}
+        .intro-count{text-align:center;font-size:0.75rem;color:var(--gray-500);margin-top:0.9rem}
 
         /* results */
         .results-wrap{min-height:100vh;background:linear-gradient(160deg,#0f172a 0%,#1e293b 40%,#1a2744 100%);padding:40px 20px;overflow-y:auto}
@@ -113,12 +126,15 @@
         .results-score-label{font-size:0.75rem;opacity:0.75;margin-top:2px}
         .results-time{font-size:0.82rem;opacity:0.7}
         .results-card-body{padding:8px 28px 28px}
-        .results-section-title{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:700;color:var(--charcoal);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+        .results-section-title{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:700;color:var(--charcoal);margin-bottom:6px}
         .results-section-sub{font-size:0.82rem;color:var(--gray-500);margin-bottom:14px;line-height:1.5}
+        .delta-banner{background:linear-gradient(135deg,#1a2744 0%,#253558 100%);color:#fff;border-radius:12px;padding:16px 18px;margin-bottom:18px;text-align:center}
+        .delta-num{font-family:'Fraunces',serif;font-size:2rem;font-weight:700;color:#fff;line-height:1}
+        .delta-text{font-size:0.85rem;opacity:0.85;margin-top:6px;line-height:1.5}
         .strategy-row{display:flex;align-items:center;padding:12px 14px;margin-bottom:8px;border-radius:10px;background:var(--gray-100);border:2px solid transparent;gap:12px;transition:all 0.2s}
         .strategy-row.best{background:#ecfdf5;border-color:var(--success)}
         .strategy-row.worst{background:#fef2f2;border-color:#fca5a5}
-        .strategy-rank{width:28px;height:28px;border-radius:50%;background:var(--gray-200);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.8rem;color:var(--gray-700);flex-shrink:0}
+        .strategy-rank{width:28px;height:28px;border-radius:50%;background:var(--gray-200);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;color:var(--gray-700);flex-shrink:0}
         .strategy-row.best .strategy-rank{background:var(--success);color:#fff}
         .strategy-row.worst .strategy-rank{background:#fca5a5;color:#7f1d1d}
         .strategy-info{flex:1;min-width:0}
@@ -158,6 +174,7 @@
             .options-container{max-width:100%}
             .results-card-body{padding:8px 20px 24px}
             .results-card-top{padding:24px 20px 20px}
+            .intro-card{padding:2rem 1.6rem}
         }
     </style>
 </head>
@@ -167,35 +184,47 @@
         <div class="landing-logo">USMLE300</div>
         <h1 class="landing-title">Exam Strategy Diagnostic</h1>
         <p class="landing-subtitle">
-            Twenty short questions, read five different ways. The passages aren't medical and every answer is right there in the text — so the only thing being measured is <em>how you read</em>, not what you already know.
+            Twenty questions, read five different ways. The passages aren't medical and every answer is right there in the text, so the only thing being measured is how you read, not what you already know.
         </p>
         <div class="landing-meta">
             <span><b>20</b> questions</span>
             <span><b>5</b> reading strategies</span>
-            <span><b>~12</b> min</span>
+            <span><b>~15</b> min</span>
             <span><b>No</b> signup</span>
         </div>
-        <button class="exam-btn" onclick="startGame()">Start the diagnostic →</button>
-        <p class="landing-note">Each strategy is tested on the same spread of question types — quick-gist, buried detail, logic, and traps — so your result reflects the approach that fits <em>you</em>, not luck of the draw.</p>
+        <button class="exam-btn" onclick="startGame()">Start the diagnostic</button>
+        <p class="landing-note">Each strategy is tested on the same spread of question types (quick gist, buried detail, logic, and traps), so your result reflects the approach that fits you, not luck of the draw. The first time you meet each strategy, you'll get a quick explainer.</p>
     </div>
 
     <div id="nbme-header">
         <div class="nbme-header-row top">
             <div class="nbme-item-info">
                 <strong>Item <span id="item-current">1</span> of <span id="item-total">20</span></strong>
-                <span class="nbme-exam-label" style="opacity:0.7;font-size:0.85rem">Reading Strategy Diagnostic</span>
+                <span style="opacity:0.7;font-size:0.85rem">Reading Strategy Diagnostic</span>
             </div>
             <div class="nbme-nav-buttons">
-                <button class="nbme-nav-btn disabled" id="prev-btn" onclick="goToPrevious()"><span>◀</span> Previous</button>
-                <button class="nbme-nav-btn" id="next-nav-btn" onclick="goToNext()">Next <span>▶</span></button>
+                <button class="nbme-nav-btn disabled" id="prev-btn" onclick="goToPrevious()"><span>&#9664;</span> Previous</button>
+                <button class="nbme-nav-btn" id="next-nav-btn" onclick="goToNext()">Next <span>&#9654;</span></button>
             </div>
             <div class="nbme-tools">
-                <button class="nbme-tool-btn" onclick="toggleZoom()"><span class="nbme-tool-icon">🔤</span><span>Zoom</span></button>
+                <button class="nbme-tool-btn" onclick="toggleZoom()"><span>Aa</span><span>Zoom</span></button>
             </div>
         </div>
         <div class="nbme-header-row">
-            <div id="strategy-display" class="strategy-badge">🛡️ Standard</div>
+            <div id="strategy-display" class="strategy-badge">Standard read</div>
             <div class="nbme-timer" id="timer">00:00</div>
+        </div>
+    </div>
+
+    <!-- first-time strategy explainer -->
+    <div class="intro-overlay" id="intro-overlay">
+        <div class="intro-card">
+            <div class="intro-kicker" id="intro-kicker">New strategy</div>
+            <div class="intro-title" id="intro-title"></div>
+            <div class="intro-what" id="intro-what"></div>
+            <div class="intro-why" id="intro-why"></div>
+            <button class="intro-btn" id="intro-btn" onclick="dismissIntro()">Got it, start this one</button>
+            <div class="intro-count" id="intro-count"></div>
         </div>
     </div>
 
@@ -216,138 +245,154 @@
         </div>
     </div>
 
-    <div class="share-toast" id="share-toast">✓ Results copied to clipboard!</div>
+    <div class="share-toast" id="share-toast">Results copied to clipboard.</div>
 
     <script>
     // ============ QUESTION BANK ============
-    // Non-medical. Every answer is fully derivable from the passage — no outside knowledge.
-    // Each of the 5 strategies is assigned exactly 4 questions, spanning the same 4 types
-    // (gist / detail / inference / trap) so results reflect strategy fit, not question luck.
+    // Non-medical, long stems in the style of exam vignettes. Every answer is fully in the text.
+    // 4 questions per strategy, each strategy facing the same spread of types, so results reflect
+    // strategy fit rather than luck.
     const QUESTIONS = [
-      // --- STEM_FIRST (standard full read) ---
-      {strategy:'STEM_FIRST',type:'trap',
-       text:"When the Harrow Library first opened in 1962, it stayed open until 9 p.m. every night. For its first decade this held true. But after budget cuts in 1973 it began closing at 6 p.m. on weekdays, while keeping its 9 p.m. closing on Saturdays. In 2001 the Saturday hours were cut as well, down to 5 p.m.",
-       lead:"According to the passage, what time does the library close on Saturdays now?",
+      // ---- STEM_FIRST ----
+      {strategy:'STEM_FIRST',
+       text:"The Harrow Library has occupied the same red-brick building on Chapel Street since it first opened its doors in the spring of 1962. In those early years it was something of a local institution, staying open until nine o'clock every night of the week, and for its first full decade that generous schedule never changed. The picture shifted in 1973, when a round of council budget cuts forced weekday closing back to six o'clock in the evening, though for a long time the library proudly held on to its nine o'clock closing on Saturdays as a nod to tradition. That too eventually gave way: in 2001, facing another squeeze on funding, the trustees reduced the Saturday hours as well, bringing the Saturday closing time down to five o'clock, where it has remained ever since.",
+       lead:"Based on the passage, what time does the Harrow Library close on Saturdays today?",
        options:["9 p.m.","6 p.m.","5 p.m.","8 p.m.","It is closed on Saturdays"],correct:2,
-       objective:"The final sentence overrides the earlier 9 p.m. — Saturdays now close at 5 p.m."},
-      {strategy:'STEM_FIRST',type:'inference',
-       text:"The 7:15 train is always more crowded than the 8:00 train. The 8:00 train is always more crowded than the 9:30 train. This morning, the 9:30 train was completely full.",
-       lead:"Which statement must be true this morning?",
-       options:["The 7:15 was emptier than the 9:30","The 8:00 was more crowded than the 9:30","The 9:30 was the least crowded of the three","The 7:15 was cancelled","The 8:00 was the emptiest"],correct:1,
-       objective:"Crowding order is 7:15 > 8:00 > 9:30, so the 8:00 must be more crowded than the 9:30."},
-      {strategy:'STEM_FIRST',type:'detail',
-       text:"Registration opens at 8:00, the opening address is at 9:30, the first workshop begins at 10:15, and lunch is served at 12:45.",
-       lead:"What time does the first workshop begin?",
+       objective:"The final sentence overrides the earlier 9 p.m.: Saturday closing became 5 p.m. in 2001."},
+      {strategy:'STEM_FIRST',
+       text:"Commuters on the Eastbrook line have long memorised the unofficial rankings of the morning services. The 7:15 is notorious among regulars: it is always more crowded than the 8:00, to the point where seasoned travellers will let it pass entirely if they want any chance of a seat. The 8:00, in turn, is reliably more crowded than the sleepy 9:30, which usually carries only a scattering of late starters and shift workers. This particular morning broke the usual calm, however, because a cancellation further up the line meant the 9:30 pulled in completely full, every seat taken and passengers standing all down the aisles.",
+       lead:"Given the usual pattern described, which statement must be true about this morning?",
+       options:["The 7:15 was emptier than the 9:30","The 8:00 was more crowded than the 9:30","The 9:30 was the least crowded of the three","The 7:15 was cancelled","The 8:00 was the emptiest of the three"],correct:1,
+       objective:"The stated order is 7:15 > 8:00 > 9:30, so the 8:00 must be more crowded than the 9:30."},
+      {strategy:'STEM_FIRST',
+       text:"The organisers circulated a detailed timetable for the opening day of the symposium so that nobody would be caught out. Delegates were told that registration and morning coffee would run from eight o'clock, giving everyone time to collect badges and settle into the venue. The formal welcome and the opening address by the chair were scheduled for half past nine in the main hall. The first workshop session, split across four separate seminar rooms by theme, was set to begin at a quarter past ten, and a networking lunch would then follow in the glass atrium at a quarter to one.",
+       lead:"According to the timetable, what time does the first workshop session begin?",
        options:["8:00","9:30","10:15","12:45","10:45"],correct:2,
-       objective:"The first workshop begins at 10:15."},
-      {strategy:'STEM_FIRST',type:'negation',
-       text:"All applicants must submit a CV, a cover letter, and two references. Photographs, however, should not be included, and no application may exceed five pages.",
-       lead:"Which of the following should applicants NOT include?",
+       objective:"The first workshop session is set for a quarter past ten, i.e. 10:15."},
+      {strategy:'STEM_FIRST',
+       text:"The scholarship committee published unusually strict instructions for the application pack this year. Every candidate is required to submit a current CV, a one-page cover letter explaining their interest in the award, and the names of two academic references who can speak directly to their work. The notice is just as clear about what to leave out. Candidates are specifically asked not to include any photographs of themselves, since the first round of selection is meant to be carried out blind, and no application, counting every appendix and attachment, may run to more than five pages in total.",
+       lead:"According to the instructions, which of the following should candidates NOT include?",
        options:["A CV","A cover letter","Two references","A photograph","Their name"],correct:3,
-       objective:"The passage says photographs should not be included."},
+       objective:"The instructions state that photographs should not be included."},
 
-      // --- HIGHLIGHTER ---
-      {strategy:'HIGHLIGHTER',type:'detail',
-       text:"For the trip, each scout must pack two water bottles, one sleeping bag, three pairs of socks, and a torch. Snacks are provided by the troop, so scouts should not bring their own food.",
-       lead:"How many pairs of socks must each scout pack?",
-       options:["One","Two","Three","Four","None — they are provided"],correct:2,
-       objective:"Three pairs of socks are specified."},
-      {strategy:'HIGHLIGHTER',type:'trap',
-       text:"The museum's north wing is open on Mondays, Wednesdays, and Fridays. The south wing, by contrast, opens only at weekends. During August, however, the north wing closes entirely for renovation, and the south wing opens every single day instead.",
-       lead:"During August, which wing can you visit on a Monday?",
+      // ---- HIGHLIGHTER ----
+      {strategy:'HIGHLIGHTER',
+       text:"Ahead of the weekend expedition, the troop leader handed out a printed kit list so that nobody would turn up unprepared for the conditions. Each scout was told to bring two full water bottles, a single warm sleeping bag rated for cold overnight temperatures, three separate pairs of walking socks, and a working torch with a set of spare batteries. The list ended with a line set in bold, reminding everyone that all meals and snacks for the trip would be supplied by the troop from a central store, so scouts were asked, quite specifically, not to pack any food of their own.",
+       lead:"According to the kit list, how many pairs of socks must each scout bring?",
+       options:["One","Two","Three","Four","None, they are provided"],correct:2,
+       objective:"Three separate pairs of walking socks are required."},
+      {strategy:'HIGHLIGHTER',
+       text:"The Ashcombe Museum is split into two very different halves that run on almost opposite schedules. Its north wing, which holds the natural history collection, is open to the public on Mondays, Wednesdays, and Fridays for most of the year. The south wing, home to the art galleries, keeps nearly the reverse pattern, opening its doors only at weekends. There is one important exception to all of this that catches visitors out: during the whole month of August, the north wing closes down entirely so that its ageing displays can be renovated, and to make up for the loss the south wing opens every single day of the week for that month alone.",
+       lead:"During August, which wing can a visitor enter on a Monday?",
        options:["North wing only","South wing only","Both wings","Neither wing","The passage does not say"],correct:1,
        objective:"In August the north wing is closed and the south opens every day, so only the south is open on a Monday."},
-      {strategy:'HIGHLIGHTER',type:'detail-buried',
-       text:"The garden is arranged in concentric rings. The outer ring is planted with lavender, prized for its scent. Inside that lies a ring of rose bushes, then a ring of low box hedge. At the very centre, surrounded by all the rest, stands a single old fig tree that the owner's grandmother planted.",
-       lead:"What stands at the very centre of the garden?",
-       options:["Lavender","Rose bushes","Box hedge","A fig tree","A fountain"],correct:3,
-       objective:"The centre holds a single old fig tree."},
-      {strategy:'HIGHLIGHTER',type:'inference',
-       text:"The recipe as written makes exactly twelve muffins. Jorge needs thirty-six muffins for the bake sale, and he has decided to keep every ingredient in the same proportion.",
-       lead:"By what factor must Jorge multiply each ingredient?",
+      {strategy:'HIGHLIGHTER',
+       text:"The old walled garden behind the manor is laid out as a series of concentric rings, each planted with a single kind of greenery, so that from the upstairs windows the whole thing reads like a great target. The broad outer ring is given over to lavender, whose scent drifts across the lawn on warm evenings. Just inside the lavender runs a dense ring of rose bushes, and inside the roses sits a neatly clipped ring of low box hedge. Right at the very heart of the garden, encircled by every other ring, stands one gnarled old fig tree that the current owner's grandmother is said to have planted as a girl.",
+       lead:"According to the passage, what stands at the very centre of the garden?",
+       options:["Lavender","Rose bushes","Box hedge","A fig tree","A stone fountain"],correct:3,
+       objective:"The centre of the garden holds a single old fig tree."},
+      {strategy:'HIGHLIGHTER',
+       text:"Jorge volunteered to handle all the baking for the school fundraiser and pulled out his favourite muffin recipe, the one he clipped from a magazine years ago and has used ever since. As written, the recipe yields exactly twelve muffins, which is plenty for a family breakfast but nowhere near enough for a busy stall. He has worked out that he will need a total of thirty-six muffins to keep the table stocked through the afternoon, and rather than go hunting for a larger recipe he has decided to simply scale this one up, keeping every single ingredient in exactly the same proportion as the original.",
+       lead:"By what factor must Jorge multiply each ingredient to make enough muffins?",
        options:["Two","Three","Four","Six","Twelve"],correct:1,
-       objective:"36 ÷ 12 = 3, so he triples every ingredient."},
+       objective:"36 divided by 12 is 3, so every ingredient is tripled."},
 
-      // --- SPEED_SCAN ---
-      {strategy:'SPEED_SCAN',type:'gist',
-       text:"This short film tells the story of a lighthouse keeper who, over thirty years of solitude, teaches himself to paint. When a storm finally destroys the lighthouse, his paintings are all that survive — and they make him unexpectedly famous.",
+      // ---- SPEED_SCAN ----
+      {strategy:'SPEED_SCAN',
+       text:"The short film, barely twenty minutes long, unfolds almost entirely without dialogue and relies on its images to carry the story. It follows a solitary lighthouse keeper who, across three decades of near-total isolation on his windswept rocky outcrop, slowly teaches himself to paint using whatever brushes and materials the monthly supply boat happens to bring. The turning point arrives when a violent storm finally destroys the lighthouse itself; in the wreckage the only things to survive intact are his stacked canvases, and it is these salvaged paintings that go on to make the reclusive keeper unexpectedly and reluctantly famous.",
        lead:"What is the film mainly about?",
-       options:["A famous painter who builds a lighthouse","A lighthouse keeper who becomes a painter","A storm chaser","A teacher who moves to the coast","A museum curator"],correct:1,
-       objective:"The gist: a lighthouse keeper who teaches himself to paint."},
-      {strategy:'SPEED_SCAN',type:'detail',
-       text:"The parcel weighs four kilograms and must be delivered to 42 Oak Lane before noon on Friday.",
-       lead:"Where must the parcel be delivered?",
+       options:["A famous painter who builds a lighthouse","A lighthouse keeper who becomes a painter","A storm chaser filming the coast","A teacher who moves to the seaside","A museum curator's daily life"],correct:1,
+       objective:"The gist is a lighthouse keeper who teaches himself to paint."},
+      {strategy:'SPEED_SCAN',
+       text:"The dispatch note taped to the top of the box gave the courier a short but specific set of instructions to follow that afternoon. The parcel itself weighed four kilograms, light enough to be handled by a single driver without any assistance from the depot. It was marked as fragile in two places and, most importantly for the delivery, it was to be taken to the address printed clearly in the box just below the barcode: 42 Oak Lane, with a firm requirement that it arrive before noon on Friday so that the recipient could be there to sign for it in person.",
+       lead:"According to the dispatch note, where must the parcel be delivered?",
        options:["24 Oak Lane","42 Oak Road","42 Oak Lane","4 Oak Lane","Noon Street"],correct:2,
-       objective:"42 Oak Lane — easy to misread as 24 or as 'Road' when scanning too fast."},
-      {strategy:'SPEED_SCAN',type:'gist-inference',
-       text:"Despite spending the least on advertising of any club in the league, the Foxes sold more season tickets than anyone else — largely through word of mouth and a fiercely loyal local following.",
-       lead:"What best explains the Foxes' ticket sales?",
-       options:["The biggest advertising budget","Word of mouth and local loyalty","The lowest ticket prices","Winning every match","A brand-new stadium"],correct:1,
-       objective:"The passage credits word of mouth and a loyal following."},
-      {strategy:'SPEED_SCAN',type:'trap',
-       text:"The blue folder contains last year's accounts. The red folder contains this year's accounts. The green folder, despite the label on its spine, actually holds the staff photographs — not any accounts at all.",
-       lead:"Which folder holds this year's accounts?",
-       options:["Blue","Red","Green","None of them","Both blue and green"],correct:1,
-       objective:"Red holds this year's accounts; the green folder is a deliberate distractor."},
+       objective:"The address is 42 Oak Lane, easy to misread as 24, or as 'Road,' when scanning quickly."},
+      {strategy:'SPEED_SCAN',
+       text:"Financial reports from the regional league made for surprising reading at the end of this season. The Foxes, a fairly modest club with the smallest marketing department of any side in the division, spent less on advertising than every one of their rivals, running almost no paid campaigns at all across the year. And yet, when the season-ticket figures were finally published, the Foxes had comfortably sold more than anyone else in the league. Analysts writing up the numbers put the result down almost entirely to word of mouth and to an unusually loyal local following that filled the stands week after week.",
+       lead:"According to the passage, what best explains the Foxes' strong ticket sales?",
+       options:["The biggest advertising budget in the league","Word of mouth and a loyal local following","The lowest ticket prices in the league","Winning every single match","A brand-new stadium"],correct:1,
+       objective:"The passage credits word of mouth and a loyal local following."},
+      {strategy:'SPEED_SCAN',
+       text:"The handover notes left for the new office assistant tried hard to be helpful about the filing system, but they come with a catch buried in the middle. The blue folder on the top shelf holds last year's accounts, all reconciled and signed off by the auditors. The red folder sitting right beside it holds this year's accounts, which are still being updated month to month as invoices come in. The green folder is where people are most often caught out: despite the faded label on its spine that still clearly reads 'Accounts,' it was quietly repurposed long ago and now contains nothing but the staff photographs from the summer party.",
+       lead:"According to the notes, which folder holds this year's accounts?",
+       options:["The blue folder","The red folder","The green folder","None of them","Both blue and green"],correct:1,
+       objective:"The red folder holds this year's accounts; the green folder is a deliberate distractor."},
 
-      // --- OPTIONS_FIRST ---
-      {strategy:'OPTIONS_FIRST',type:'inference',
-       text:"Every book on the top shelf is a hardcover. None of the hardcovers are out on loan. The dictionary is on the top shelf.",
-       lead:"Which statement must be true?",
-       options:["The dictionary is out on loan","The dictionary is a hardcover","The dictionary is a paperback","Some hardcovers are on loan","The dictionary is not on the top shelf"],correct:1,
-       objective:"Top-shelf books are all hardcover and the dictionary is on the top shelf, so it is a hardcover."},
-      {strategy:'OPTIONS_FIRST',type:'detail',
-       text:"The festival headliners are The Ferns on Friday, Marigold on Saturday, and Slow Tide on Sunday. Tickets for the Saturday night show sold out first.",
-       lead:"Which act headlines on Saturday?",
-       options:["The Ferns","Marigold","Slow Tide","No one","It doesn't say"],correct:1,
-       objective:"Marigold headlines Saturday."},
-      {strategy:'OPTIONS_FIRST',type:'gist',
-       text:"The editorial argues that the town should repair its existing footpaths before spending any money on a new cycle bridge, because the paths are used by far more residents every day.",
-       lead:"What does the editorial recommend?",
-       options:["Building the cycle bridge first","Repairing footpaths before building the bridge","Removing the footpaths entirely","Charging residents to use the paths","Doing neither project"],correct:1,
-       objective:"It recommends repairing footpaths before building the bridge."},
-      {strategy:'OPTIONS_FIRST',type:'trap',
-       text:"Maria said she would arrive either on Thursday or Friday. She later texted to say the Thursday train was fully booked. In the end she surprised everyone by driving up on Wednesday night.",
-       lead:"When did Maria actually arrive?",
-       options:["Thursday","Friday","Wednesday night","She never arrived","Saturday"],correct:2,
-       objective:"Despite the earlier plan, she actually arrived on Wednesday night."},
+      // ---- OPTIONS_FIRST ----
+      {strategy:'OPTIONS_FIRST',
+       text:"A couple of small facts about the reference room, taken together, settle a question that keeps coming up at the desk. Every book kept on the top shelf of that room is, without a single exception, a hardcover edition, because the paperbacks are all shelved lower down where they are easier to reach. A separate and strict rule of the room is that none of the hardcovers may ever be taken out on loan, since they are held purely as reference copies for use inside the building. The librarian mentions, almost in passing, that the large medical dictionary everyone keeps asking about currently sits up on that top shelf.",
+       lead:"Based only on the passage, which statement must be true of the dictionary?",
+       options:["It is currently out on loan","It is a hardcover edition","It is a paperback edition","Some hardcovers are on loan","It is not on the top shelf"],correct:1,
+       objective:"Top-shelf books are all hardcover and the dictionary is on the top shelf, so it must be a hardcover."},
+      {strategy:'OPTIONS_FIRST',
+       text:"The summer festival's programme was built around three headline acts, one for each night of the long weekend, and the organisers made a point of spacing them out. The Ferns, a folk group with a devoted regional following, were given the Friday-night slot and the honour of opening the whole festival. Marigold, by some distance the biggest commercial draw of the three, took the Saturday-night headline slot on the main stage, while the psychedelic outfit Slow Tide were left to close things out on the Sunday. Organisers noted afterwards that, of all three nights, it was the Saturday show that sold out first, within a few hours of tickets going on sale.",
+       lead:"According to the programme, which act headlines on Saturday night?",
+       options:["The Ferns","Marigold","Slow Tide","No act headlines Saturday","The passage does not say"],correct:1,
+       objective:"Marigold headlines the Saturday night."},
+      {strategy:'OPTIONS_FIRST',
+       text:"The local paper ran a pointed editorial this week weighing in on how the council should spend its limited transport budget for the coming year. Rather than back the eye-catching proposal for a brand-new cycle bridge over the river, which had grabbed most of the headlines, the piece argued that the same money would be far better spent first on repairing the town's existing network of footpaths, many of which are now cracked, uneven, and poorly lit at night. Its central reasoning was refreshingly simple: those footpaths are used, on foot, by far more residents every single day than any single bridge realistically ever would be.",
+       lead:"What does the editorial ultimately recommend?",
+       options:["Building the cycle bridge first","Repairing footpaths before building the bridge","Removing the footpaths entirely","Charging residents to use the paths","Doing neither project at all"],correct:1,
+       objective:"The editorial recommends repairing footpaths before building the bridge."},
+      {strategy:'OPTIONS_FIRST',
+       text:"Maria's travel plans changed more than once in the week before the reunion, which caused no end of confusion in the group chat. She had originally told everyone that she would come up either on the Thursday or the Friday, depending on how work went. A couple of days later she texted the group to say that the Thursday train was already completely booked out, so the Friday was now looking far more likely for her. In the end, though, she surprised every one of them: she borrowed her neighbour's car and drove up on the Wednesday night, arriving at the house well before anyone was expecting her.",
+       lead:"According to the passage, when did Maria actually arrive?",
+       options:["On Thursday","On Friday","On Wednesday night","She never arrived","On Saturday"],correct:2,
+       objective:"Despite the earlier plans, Maria actually arrived on Wednesday night."},
 
-      // --- LAST_SENTENCE (question-first) ---
-      {strategy:'LAST_SENTENCE',type:'targeted',
-       text:"The team left base camp with six porters and four climbers. On the first day they climbed steadily and gained nine hundred metres of altitude. The second day was harder — loose rock and thin air slowed them, and they gained only four hundred metres. On the third day, rested and acclimatised, they gained a further eight hundred metres to reach the high camp.",
-       lead:"How much altitude did the team gain on the second day?",
+      // ---- LAST_SENTENCE (question first) ----
+      {strategy:'LAST_SENTENCE',
+       text:"The small expedition set out from base camp in good spirits, a party of six porters and four climbers hoping to reach the high camp inside three days. The first day went about as well as they could have asked: the weather stayed clear and they climbed steadily, gaining nine hundred metres of altitude before making camp for the night. The second day was a very different story, as loose scree underfoot and increasingly thin air slowed the whole party to a crawl, and by nightfall they had managed to gain only four hundred metres. On the third day, better rested and properly acclimatised at last, they pushed on strongly and gained a further eight hundred metres to reach the high camp.",
+       lead:"How much altitude did the expedition gain on the second day?",
        options:["900 metres","400 metres","800 metres","1,300 metres","600 metres"],correct:1,
-       objective:"The second day's gain was four hundred metres."},
-      {strategy:'LAST_SENTENCE',type:'targeted',
-       text:"The novel is divided into four parts. Part one introduces the family and their farm. Part two follows the eldest daughter as she leaves for the city. Part three, the longest, covers the years of the drought. Part four, only twenty pages long, jumps forward two decades to a single reunion dinner.",
-       lead:"Which part of the novel is the longest?",
-       options:["Part one","Part two","Part three","Part four","They are equal"],correct:2,
-       objective:"Part three, covering the drought, is described as the longest."},
-      {strategy:'LAST_SENTENCE',type:'trap',
-       text:"At first the committee agreed to hold the fair in June. Several members argued that June was too rainy, but they were outvoted. Later, when the venue turned out to be unavailable in June, the date was moved to September after all.",
+       objective:"The passage states the second day's gain was four hundred metres."},
+      {strategy:'LAST_SENTENCE',
+       text:"Critics tend to describe the sprawling family novel in terms of its four distinct parts, each with a very different feel. Part one is a gentle, slow opening that introduces the family and the remote hill farm where they live. Part two shifts perspective entirely to follow the eldest daughter as she leaves home for the city and a life her parents struggle to understand. Part three, which almost every reviewer agrees is by some distance the longest section of the whole book, covers the long and punishing years of the drought that slowly reshapes the entire family. Part four reads almost like an epilogue, just twenty pages long, jumping forward two full decades to a single quiet reunion dinner.",
+       lead:"According to the passage, which part of the novel is the longest?",
+       options:["Part one","Part two","Part three","Part four","They are all equal"],correct:2,
+       objective:"Part three, covering the years of the drought, is described as by far the longest."},
+      {strategy:'LAST_SENTENCE',
+       text:"The village committee's decision about when to hold the summer fair went through several twists before it was finally settled. At the very first meeting the members agreed, by a clear show of hands, to hold the fair in June as they usually did. A few of them warned that June was often the wettest month of the year in the valley and pushed hard for a later date, but they were outvoted and the June plan stood for a while. It was only some weeks later, when the recreation ground turned out to be already booked solid throughout June for a series of other events, that the committee reconvened and moved the fair to September after all.",
        lead:"In which month will the fair actually be held?",
        options:["June","July","September","It was cancelled","The passage does not say"],correct:2,
        objective:"June was chosen first, but the final decision moved the fair to September."},
-      {strategy:'LAST_SENTENCE',type:'targeted',
-       text:"The relay has four legs. The first runner, Amara, handed over in the lead. The second runner, Ben, lost two places on the long uphill leg. The third runner, Chen, clawed one place back on the flat. The final runner, Dara, overtook two rivals on the home straight to finish second overall.",
-       lead:"Where did the team finish overall?",
+      {strategy:'LAST_SENTENCE',
+       text:"The county relay final came right down to the very last metres, and the school's team of four had an absolute rollercoaster of a race. Amara, running the opening leg, was superb from the gun and handed the baton over while still in the lead. Ben, on the second leg, struggled badly on the long uphill stretch and slipped back two places before he could pass the baton on. Chen steadied things considerably on the third leg, clawing back one of those lost places along the flat back straight. Then Dara, anchoring the team on the final leg, produced a storming finish and overtook two more rivals down the home straight to bring them across the line in second place overall.",
+       lead:"Where did the school's team finish overall?",
        options:["First","Second","Third","Fourth","Fifth"],correct:1,
-       objective:"The final runner brought the team home in second place."}
+       objective:"The anchor runner brought the team home in second place overall."}
     ];
+
+    // ============ STRATEGY EXPLAINERS (first-time full-screen intro) ============
+    const STRAT_INFO={
+        STEM_FIRST:{name:'Standard read',
+            what:'Read the whole passage from top to bottom at your normal pace, then answer. This is the approach most people default to without thinking about it.',
+            why:'<strong>Why it is here:</strong> it is your baseline. Everything else gets measured against how you do reading normally.'},
+        HIGHLIGHTER:{name:'Active highlight',
+            what:'As you read, click on words to highlight them. You have to mark at least three key words before the answer choices will unlock. The aim is to force you to engage actively with the text instead of skimming past it.',
+            why:'<strong>Why it is here:</strong> some people retain and reason much better when they physically mark up the stem. This checks whether that is you.'},
+        SPEED_SCAN:{name:'Speed scan',
+            what:'Read as fast as you comfortably can and go with your first instinct. Try not to reread. Aim to lock in an answer in under forty-five seconds.',
+            why:'<strong>Why it is here:</strong> speed saves time you badly need on a real block, but it can cost you on detail and trap questions. This shows which way it cuts for you.'},
+        OPTIONS_FIRST:{name:'Options first',
+            what:'The passage starts blurred out. Read the answer choices first to prime your thinking, then click to reveal the passage and read it with those options already in mind.',
+            why:'<strong>Why it is here:</strong> reading options first helps some people focus and misleads others toward a tempting wrong answer. This tells you which.'},
+        LAST_SENTENCE:{name:'Question first',
+            what:'You will see the final line of the passage and the actual question before anything else. Read those first, then reveal the full passage and hunt specifically for what the question is asking.',
+            why:'<strong>Why it is here:</strong> on long stems, knowing the question before you read can save time and sharpen your focus. This checks whether it works for you.'}
+    };
 
     // ============ STATE ============
     let examQuestions=[],currentIdx=0,userAnswers=[],timerSeconds=0,timerInterval,questionStartTime=0,zoomLevel=1;
-    let strategyData={};
+    let strategyData={},currentStrategy='',highlightCount=0,hasSubmitted=false;
+    const introduced={};
     function resetStrategyData(){strategyData={STEM_FIRST:{correct:0,total:0,totalTime:0},HIGHLIGHTER:{correct:0,total:0,totalTime:0},SPEED_SCAN:{correct:0,total:0,totalTime:0},OPTIONS_FIRST:{correct:0,total:0,totalTime:0},LAST_SENTENCE:{correct:0,total:0,totalTime:0}};}
-    let currentStrategy='',highlightCount=0,hasSubmitted=false;
 
     function toggleZoom(){zoomLevel=zoomLevel===1?1.15:zoomLevel===1.15?1.3:1;document.getElementById('question-content').style.fontSize=zoomLevel+'rem';}
 
     function startGame(){
-        resetStrategyData();
-        userAnswers=[];
-        // interleave strategies round-robin so the reading mode varies each question,
-        // while keeping each strategy's balanced set intact
+        resetStrategyData();userAnswers=[];
         var order=['STEM_FIRST','HIGHLIGHTER','SPEED_SCAN','OPTIONS_FIRST','LAST_SENTENCE'];
         var groups={};order.forEach(function(s){groups[s]=QUESTIONS.filter(function(q){return q.strategy===s;});});
         var maxLen=Math.max.apply(null,order.map(function(s){return groups[s].length;}));
@@ -362,6 +407,7 @@
     }
 
     function startTimer(){
+        clearInterval(timerInterval);
         timerInterval=setInterval(function(){
             timerSeconds++;
             var m=Math.floor(timerSeconds/60).toString().padStart(2,'0');
@@ -371,25 +417,31 @@
     }
     function generateLineNumbers(){
         var c=document.getElementById('line-numbers');c.innerHTML='';
-        for(var i=1;i<=40;i++){var l=document.createElement('div');l.className='line-num';l.textContent=i;c.appendChild(l);}
+        for(var i=1;i<=44;i++){var l=document.createElement('div');l.className='line-num';l.textContent=i;c.appendChild(l);}
     }
 
     function loadQuestion(idx){
         if(idx>=examQuestions.length){finishExam();return;}
-        currentIdx=idx;questionStartTime=timerSeconds;hasSubmitted=false;
+        currentIdx=idx;hasSubmitted=false;
         var q=examQuestions[idx];
         document.getElementById('item-current').innerText=idx+1;
         document.getElementById('prev-btn').classList.toggle('disabled',idx===0);
         currentStrategy=q.strategy;
         updateStrategyBadge(currentStrategy);
+        renderQuestion(q);
+        // first time we hit a strategy, show the full-screen explainer (pauses the clock)
+        if(!introduced[currentStrategy]){showIntro(currentStrategy);}
+        else{questionStartTime=timerSeconds;}
+    }
+
+    function renderQuestion(q){
         var content=document.getElementById('question-content');content.innerHTML='';highlightCount=0;
         var html=getStrategyInstruction(currentStrategy);
-
         if(currentStrategy==='OPTIONS_FIRST'){
-            html+='<button class="reveal-btn" id="reveal-btn" onclick="revealCase()">👀 Reveal the passage</button>';
+            html+='<button class="reveal-btn" id="reveal-btn" onclick="revealCase()">Reveal the passage</button>';
             html+='<div id="vignette-wrapper" class="question-vignette blur-content">'+q.text+'</div>';
             html+='<div class="question-lead" id="lead-text" style="filter:blur(8px);opacity:0.5;">'+q.lead+'</div>';
-            html+='<p style="color:#888;font-size:0.85rem;margin-bottom:14px;"><em>Read the answer choices first, then click “Reveal the passage.”</em></p>';
+            html+='<p style="color:#888;font-size:0.85rem;margin-bottom:14px;"><em>Read the answer choices first, then click &ldquo;Reveal the passage.&rdquo;</em></p>';
             html+=buildOptions(q,false);
         }else if(currentStrategy==='HIGHLIGHTER'){
             var words=q.text.split(' '),htext='';
@@ -397,7 +449,7 @@
             html+='<div class="question-vignette" id="vignette-text">'+htext+'</div>';
             html+='<div class="question-lead">'+q.lead+'</div>';
             html+=buildOptions(q,true);
-            html+='<div id="unlock-msg" class="unlock-message locked">🔒 Highlight at least 3 key words to unlock the options.</div>';
+            html+='<div id="unlock-msg" class="unlock-message locked">Highlight at least 3 key words to unlock the options.</div>';
         }else if(currentStrategy==='LAST_SENTENCE'){
             var sentences=q.text.match(/[^.!?]+[.!?]+/g)||[q.text];
             var lastSentence=sentences[sentences.length-1].trim();
@@ -405,7 +457,7 @@
             html+='<div id="earlier-text" class="question-vignette blur-content">'+earlierText+'</div>';
             html+='<div class="last-sentence-highlight">'+lastSentence+'</div>';
             html+='<div class="question-lead">'+q.lead+'</div>';
-            html+='<button class="reveal-btn" id="reveal-passage-btn" onclick="revealFullPassage()">👀 Reveal the full passage</button>';
+            html+='<button class="reveal-btn" id="reveal-passage-btn" onclick="revealFullPassage()">Reveal the full passage</button>';
             html+=buildOptions(q,false);
         }else{
             html+='<div class="question-vignette">'+q.text+'</div>';
@@ -417,18 +469,35 @@
         document.getElementById('proceed-btn').innerText='Submit Answer';
     }
 
+    function showIntro(strategy){
+        clearInterval(timerInterval); // pause clock while they read
+        var info=STRAT_INFO[strategy];
+        var num=Object.keys(introduced).length+1;
+        document.getElementById('intro-title').innerText=info.name;
+        document.getElementById('intro-what').innerText=info.what;
+        document.getElementById('intro-why').innerHTML=info.why;
+        document.getElementById('intro-count').innerText='Strategy '+num+' of 5 · you will only see this once';
+        document.getElementById('intro-overlay').classList.add('active');
+    }
+    function dismissIntro(){
+        introduced[currentStrategy]=true;
+        document.getElementById('intro-overlay').classList.remove('active');
+        questionStartTime=timerSeconds;
+        startTimer(); // resume clock
+    }
+
     function updateStrategyBadge(strategy){
         var badge=document.getElementById('strategy-display');
-        var c={STEM_FIRST:{text:'🛡️ Standard read',bg:'#e9ecef',color:'#495057'},HIGHLIGHTER:{text:'🖍️ Active highlight',bg:'#fff3cd',color:'#856404'},SPEED_SCAN:{text:'⚡ Speed scan',bg:'#fde8e8',color:'#8b1a1a'},OPTIONS_FIRST:{text:'🫣 Options first',bg:'#e3f2fd',color:'#0d47a1'},LAST_SENTENCE:{text:'📖 Question first',bg:'#fef3c7',color:'#78350f'}}[strategy];
+        var c={STEM_FIRST:{text:'Standard read',bg:'#e9ecef',color:'#495057'},HIGHLIGHTER:{text:'Active highlight',bg:'#fff3cd',color:'#856404'},SPEED_SCAN:{text:'Speed scan',bg:'#fde8e8',color:'#8b1a1a'},OPTIONS_FIRST:{text:'Options first',bg:'#e3f2fd',color:'#0d47a1'},LAST_SENTENCE:{text:'Question first',bg:'#fef3c7',color:'#78350f'}}[strategy];
         badge.innerText=c.text;badge.style.background=c.bg;badge.style.color=c.color;
     }
     function getStrategyInstruction(strategy){
         return {
-            STEM_FIRST:'<div class="strategy-instruction standard">🛡️ <strong>Standard read:</strong> read the whole passage top to bottom, then answer.</div>',
-            HIGHLIGHTER:'<div class="strategy-instruction highlighter">🖍️ <strong>Active highlight:</strong> click to highlight 3+ key words before the options unlock.</div>',
-            SPEED_SCAN:'<div class="strategy-instruction speed">⚡ <strong>Speed scan:</strong> read fast and trust your instinct — aim to answer in under 45 seconds.</div>',
-            OPTIONS_FIRST:'<div class="strategy-instruction options-first">🫣 <strong>Options first:</strong> read the answer choices before the passage to prime your thinking.</div>',
-            LAST_SENTENCE:'<div class="strategy-instruction last-sentence">📖 <strong>Question first:</strong> read the key line and the question, then reveal the passage to hunt for the answer.</div>'
+            STEM_FIRST:'<div class="strategy-instruction standard"><strong>Standard read.</strong> Read the whole passage top to bottom, then answer.</div>',
+            HIGHLIGHTER:'<div class="strategy-instruction highlighter"><strong>Active highlight.</strong> Click to highlight at least 3 key words before the options unlock.</div>',
+            SPEED_SCAN:'<div class="strategy-instruction speed"><strong>Speed scan.</strong> Read fast and trust your instinct. Aim to answer in under 45 seconds.</div>',
+            OPTIONS_FIRST:'<div class="strategy-instruction options-first"><strong>Options first.</strong> Read the answer choices before the passage to prime your thinking.</div>',
+            LAST_SENTENCE:'<div class="strategy-instruction last-sentence"><strong>Question first.</strong> Read the key line and the question, then reveal the passage to hunt for the answer.</div>'
         }[strategy]||'';
     }
     function buildOptions(q,locked){
@@ -455,7 +524,7 @@
             el.classList.add('highlighted');highlightCount++;
             if(highlightCount>=3){
                 document.getElementById('options-container').classList.remove('locked');
-                var u=document.getElementById('unlock-msg');u.innerText='🔓 Options unlocked — select your answer.';u.classList.remove('locked');u.classList.add('unlocked');
+                var u=document.getElementById('unlock-msg');u.innerText='Options unlocked. Select your answer.';u.classList.remove('locked');u.classList.add('unlocked');
             }
         }
     }
@@ -486,9 +555,9 @@
                 o.style.pointerEvents='none';
             });
             document.getElementById('feedback-msg').innerHTML=isCorrect
-                ?'<span class="correct">✓ Correct.</span> '+q.objective
-                :'<span class="incorrect">✗ Not quite.</span> '+q.objective;
-            btn.innerText=currentIdx<examQuestions.length-1?'Next Item →':'See My Results 📊';
+                ?'<span class="correct">Correct.</span> '+q.objective
+                :'<span class="incorrect">Not quite.</span> '+q.objective;
+            btn.innerText=currentIdx<examQuestions.length-1?'Next Item':'See My Results';
         }else{loadQuestion(currentIdx+1);}
     }
 
@@ -509,7 +578,7 @@
         var best=strategyResults[0],worst=strategyResults[strategyResults.length-1];
         var overallPct=Math.round(totalCorrect/totalQuestions*100),totalTime=document.getElementById('timer').innerText;
 
-        var names={STEM_FIRST:'🛡️ Standard read',HIGHLIGHTER:'🖍️ Active highlight',SPEED_SCAN:'⚡ Speed scan',OPTIONS_FIRST:'🫣 Options first',LAST_SENTENCE:'📖 Question first'};
+        var names={STEM_FIRST:'Standard read',HIGHLIGHTER:'Active highlight',SPEED_SCAN:'Speed scan',OPTIONS_FIRST:'Options first',LAST_SENTENCE:'Question first'};
         var descs={
             STEM_FIRST:'reading the whole passage carefully, top to bottom, before answering.',
             HIGHLIGHTER:'actively marking key words as you read to anchor your reasoning.',
@@ -517,6 +586,9 @@
             OPTIONS_FIRST:'scanning the answer choices first to prime your brain before the passage.',
             LAST_SENTENCE:'reading the question first, then hunting the passage for the specific answer.'
         };
+
+        var deltaPts=best.accuracy-worst.accuracy;
+        var blockExtra=Math.round(deltaPts/100*40);
 
         var html='<div class="results-wrap"><div class="results-container"><div class="results-card">';
         html+='<div class="results-card-top">';
@@ -527,8 +599,13 @@
         html+='</div>';
 
         html+='<div class="results-card-body">';
-        html+='<div class="results-section-title">📊 How each approach did for you</div>';
-        html+='<div class="results-section-sub">Every strategy faced the same mix of question types, so this ranking reflects the way <em>you</em> read — not which questions each one happened to get.</div>';
+
+        if(best.name!==worst.name && deltaPts>0){
+            html+='<div class="delta-banner"><div class="delta-num">+'+deltaPts+'%</div><div class="delta-text">On the same questions, your best approach ('+names[best.name]+') scored '+best.accuracy+'% while your worst ('+names[worst.name]+') scored '+worst.accuracy+'%. Reading everything your best way would have meant about <strong>'+blockExtra+' more correct on a 40-question block</strong>, without knowing a single extra fact.</div></div>';
+        }
+
+        html+='<div class="results-section-title">How each approach did for you</div>';
+        html+='<div class="results-section-sub">Every strategy faced the same mix of question types, so this ranking reflects the way you read, not which questions each one happened to get.</div>';
 
         for(var idx=0;idx<strategyResults.length;idx++){
             var r=strategyResults[idx];
@@ -538,23 +615,23 @@
             html+='<div class="strategy-row '+rowClass+'"><div class="strategy-rank">'+(idx+1)+'</div><div class="strategy-info"><div class="strategy-name">'+names[r.name]+'</div><div class="strategy-meta">'+r.correct+'/'+r.total+' correct · avg '+r.avgTime+'s / question</div><div class="strategy-bar-wrap"><div class="strategy-bar-fill" style="width:'+r.accuracy+'%;background:'+barColor+';"></div></div></div><div class="strategy-pct">'+r.accuracy+'%</div></div>';
         }
 
-        html+='<div class="recommendation-card"><h3>💡 Your best approach</h3>';
+        html+='<div class="recommendation-card"><h3>Your best approach</h3>';
         html+='<p><strong>'+names[best.name]+'</strong> — '+descs[best.name]+'</p>';
         html+='<p>You scored <strong>'+best.accuracy+'%</strong> with this approach, averaging <strong>'+best.avgTime+'s</strong> per question.</p>';
-        if(worst.name!==best.name){html+='<div class="avoid-note"><strong>Watch out for:</strong> '+names[worst.name]+' ('+worst.accuracy+'%). It cost you the most here — worth being deliberate about not defaulting to it under time pressure.</div>';}
+        if(worst.name!==best.name){html+='<div class="avoid-note"><strong>Watch out for:</strong> '+names[worst.name]+' ('+worst.accuracy+'%). It cost you the most here, so be deliberate about not slipping into it under time pressure.</div>';}
         html+='</div>';
 
-        html+='<div class="tutor-cta"><p>Want to turn this into a full test-taking system for the real thing?</p><a class="results-btn primary" href="index.html#contact" style="min-width:auto;padding:12px 24px;">Book a free call →</a></div>';
+        html+='<div class="tutor-cta"><p>Want to turn this into a full test-taking system for the real thing?</p><a class="results-btn primary" href="index.html#contact" style="min-width:auto;padding:12px 24px;">Book a free call</a></div>';
 
-        var shareText='🧠 My USMLE300 Reading Profile\n\n📊 '+totalCorrect+'/'+totalQuestions+' ('+overallPct+'%) · '+totalTime+'\n\n';
-        for(var j=0;j<strategyResults.length;j++){var sr=strategyResults[j];var pfx=j===0?'🥇':j===1?'🥈':j===2?'🥉':'  ';shareText+=pfx+' '+names[sr.name]+': '+sr.accuracy+'%\n';}
-        shareText+='\n🏆 Best: '+names[best.name]+'\n\nFind YOUR best strategy → usmle300.com/diagnostic.html';
-        var tweetText=encodeURIComponent('Found my best exam reading strategy with @usmle300 🧠\n\n🏆 '+names[best.name]+' — '+best.accuracy+'%\n📊 '+totalCorrect+'/'+totalQuestions+' overall\n\nFind yours → usmle300.com/diagnostic.html');
+        var shareText='My USMLE300 Reading Profile\n\n'+totalCorrect+'/'+totalQuestions+' ('+overallPct+'%) in '+totalTime+'\n\n';
+        for(var j=0;j<strategyResults.length;j++){var sr=strategyResults[j];shareText+=(j+1)+'. '+names[sr.name]+': '+sr.accuracy+'%\n';}
+        shareText+='\nBest: '+names[best.name]+'\nGap between best and worst: '+deltaPts+' points\n\nFind YOUR best strategy at usmle300.com/diagnostic.html';
+        var tweetText=encodeURIComponent('Found my best exam reading strategy with @usmle300.\n\nBest: '+names[best.name]+' ('+best.accuracy+'%)\nOverall: '+totalCorrect+'/'+totalQuestions+'\n\nFind yours at usmle300.com/diagnostic.html');
 
         html+='<div class="results-actions">';
-        html+='<button class="results-btn secondary" onclick="location.reload()">🔄 Try again</button>';
-        html+='<button class="results-btn share" onclick="shareTweet(\''+tweetText+'\')">𝕏 Share</button>';
-        html+='<button class="results-btn primary" onclick="copyResults()">📋 Copy results</button>';
+        html+='<button class="results-btn secondary" onclick="location.reload()">Try again</button>';
+        html+='<button class="results-btn share" onclick="shareTweet(\''+tweetText+'\')">Share</button>';
+        html+='<button class="results-btn primary" onclick="copyResults()">Copy results</button>';
         html+='</div>';
         html+='</div></div>';
         html+='<div class="results-watermark"><a href="index.html">usmle300.com</a> · Free Strategy Diagnostic</div>';
@@ -567,7 +644,7 @@
     function copyResults(){
         navigator.clipboard.writeText(window._shareText).then(function(){
             var toast=document.getElementById('share-toast');
-            if(!toast){toast=document.createElement('div');toast.className='share-toast';toast.id='share-toast';toast.textContent='✓ Results copied to clipboard!';document.body.appendChild(toast);}
+            if(!toast){toast=document.createElement('div');toast.className='share-toast';toast.id='share-toast';toast.textContent='Results copied to clipboard.';document.body.appendChild(toast);}
             toast.classList.add('show');setTimeout(function(){toast.classList.remove('show');},2500);
         });
     }
