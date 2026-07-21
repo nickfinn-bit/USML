@@ -12,6 +12,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" href="images/logo.png" type="image/png">
 <link rel="apple-touch-icon" href="images/logo.png">
+<!-- Google Analytics 4 — replace G-XXXXXXX with your real Measurement ID from analytics.google.com -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y1T4JNBR3T"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Y1T4JNBR3T');
+</script>
 <style>
 :root{
 --display:'Space Grotesk',sans-serif;
@@ -546,8 +554,13 @@ mb.addEventListener('click',()=>{mb.classList.toggle('active');mn.classList.togg
 mn.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mb.classList.remove('active');mn.classList.remove('active');document.body.classList.remove('locked')}));
 
 const cModal=document.getElementById('contactModal'),tModal=document.getElementById('topicModal');
-function openContact(e){if(e)e.preventDefault();tModal.classList.remove('active');cModal.classList.add('active');document.body.classList.add('locked')}
+function openContact(e){if(e)e.preventDefault();tModal.classList.remove('active');cModal.classList.add('active');document.body.classList.add('locked');if(typeof gtag==='function')gtag('event','book_call_open');}
 document.querySelectorAll('a[href="#contact"]').forEach(l=>l.addEventListener('click',openContact));
+
+// analytics: key funnel events (safe no-ops if gtag/GA hasn't loaded)
+document.querySelectorAll('a[href="diagnostic.html"]').forEach(l=>l.addEventListener('click',()=>{if(typeof gtag==='function')gtag('event','diagnostic_start');}));
+document.querySelectorAll('a[href="https://calendly.com/usmle300tutor/30min"]').forEach(l=>l.addEventListener('click',()=>{if(typeof gtag==='function')gtag('event','book_call_confirmed');}));
+document.querySelectorAll('.gcard').forEach(c=>c.addEventListener('click',()=>{if(typeof gtag==='function')gtag('event','game_click',{game_name:c.querySelector('.gname')?c.querySelector('.gname').textContent:c.getAttribute('href')});}));
 document.addEventListener('click',e=>{
 const card=e.target.closest('.tcard');
 if(card){const d=topicData[card.dataset.topic];if(!d)return;
