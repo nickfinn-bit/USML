@@ -8,6 +8,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Google Analytics 4 — replace G-XXXXXXX with your real Measurement ID from analytics.google.com -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXX');
+    </script>
     <style>
         :root{
             --nbme-blue:#1a2744;--nbme-teal:#2a7d8c;--nbme-teal-hover:#1f5f6b;
@@ -158,6 +166,19 @@
         .rz-btn.primary{background:#14151b;color:#ECEAE3;border-color:rgba(255,255,255,0.22)}
         .rz-foot{text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.64rem;color:#5c5a54;margin-top:1.6rem;letter-spacing:0.04em}
         .rz-foot a{color:#9a978f;text-decoration:none}
+        .rz-capture{margin-top:1.4rem;background:#14151b;border:1px solid rgba(207,92,104,0.35);border-radius:14px;padding:1.3rem 1.4rem}
+        .rz-capture-label{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:#cf5c68;margin-bottom:0.4rem}
+        .rz-capture-sub{font-size:0.85rem;color:#9a978f;line-height:1.5;margin-bottom:0.9rem}
+        .rz-capture-row{display:flex;gap:0.5rem;flex-wrap:wrap}
+        .rz-capture-row input{flex:1;min-width:180px;padding:0.7rem 0.85rem;border-radius:9px;border:1px solid rgba(255,255,255,0.16);background:#0d0e12;color:#ECEAE3;font-family:'Inter',sans-serif;font-size:0.88rem;outline:none}
+        .rz-capture-row input:focus{border-color:#cf5c68}
+        .rz-capture-row input::placeholder{color:#5c5a54}
+        .rz-capture-btn{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:0.78rem;background:#cf5c68;color:#fff;border:none;padding:0.7rem 1.1rem;border-radius:9px;cursor:pointer;white-space:nowrap;transition:background .2s}
+        .rz-capture-btn:hover{background:#e07c87}
+        .rz-capture-btn:disabled{opacity:0.6;cursor:default}
+        .rz-capture-note{font-size:0.7rem;color:#5c5a54;margin-top:0.6rem}
+        .rz-capture.sent{border-color:rgba(76,175,120,0.5)}
+        .rz-capture-success{color:#4caf78;font-size:0.9rem;font-weight:600}
         .share-toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(80px);background:#14151b;border:1px solid rgba(255,255,255,0.16);color:#ECEAE3;padding:12px 22px;border-radius:10px;font-family:'JetBrains Mono',monospace;font-size:0.78rem;opacity:0;transition:all .3s;z-index:9999;pointer-events:none}
         .share-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
@@ -390,6 +411,7 @@
     function toggleZoom(){zoomLevel=zoomLevel===1?1.15:zoomLevel===1.15?1.3:1;document.getElementById('question-content').style.fontSize=zoomLevel+'rem';}
 
     function startGame(){
+        if(typeof gtag==='function')gtag('event','diagnostic_started');
         resetStrategyData();userAnswers=[];
         var order=['STEM_FIRST','HIGHLIGHTER','SPEED_SCAN','OPTIONS_FIRST','LAST_SENTENCE'];
         var groups={};order.forEach(function(s){groups[s]=QUESTIONS.filter(function(q){return q.strategy===s;});});
@@ -568,6 +590,7 @@
         rows.sort(function(a,b){return b.acc!==a.acc?b.acc-a.acc:a.avg-b.avg;});
         var best=rows[0],worst=rows[rows.length-1];
         var overall=Math.round(totalCorrect/totalQuestions*100),time=document.getElementById('timer').innerText;
+        if(typeof gtag==='function')gtag('event','diagnostic_completed',{score_pct:overall,best_strategy:best.name});
         var names={STEM_FIRST:'Standard read',HIGHLIGHTER:'Active highlight',SPEED_SCAN:'Speed scan',OPTIONS_FIRST:'Options first',LAST_SENTENCE:'Question first'};
         var tags={STEM_FIRST:'read it all, top to bottom',HIGHLIGHTER:'mark key words as you read',SPEED_SCAN:'fast, gut-instinct reading',OPTIONS_FIRST:'answers first, then the passage',LAST_SENTENCE:'question first, then hunt the text'};
         var delta=best.acc-worst.acc,extra=Math.round(delta/100*40),diff=best.name!==worst.name;
@@ -592,6 +615,7 @@
         h+='</div>';
         h+='<div class="rz-note">Every strategy saw the same spread of question types, so this is about fit, not luck.</div>';
         h+='<div class="rz-best"><div class="rz-best-label">Lead with</div><div class="rz-best-name">'+names[best.name]+'</div><div class="rz-best-tag">'+tags[best.name]+'.'+(diff?' Watch '+names[worst.name].toLowerCase()+' when the clock is tight.':'')+'</div></div>';
+        h+='<div class="rz-capture" id="rzCapture"><div class="rz-capture-label">Get this emailed to you</div><div class="rz-capture-sub">Save your result and get one tip for your worst strategy. No spam, just this.</div><div class="rz-capture-row"><input type="email" id="rzEmail" placeholder="you@email.com" autocomplete="email"><button class="rz-capture-btn" id="rzSubmit" onclick="submitEmail()">Send it</button></div><div class="rz-capture-note">Optional — your results above are already yours either way.</div></div>';
         h+='<a class="rz-cta" href="index.html#contact">Turn this into a full plan</a>';
         h+='<div class="rz-actions"><button class="rz-btn" onclick="location.reload()">Try again</button><button class="rz-btn" onclick="shareTweet(window._tweet)">Share</button><button class="rz-btn primary" onclick="copyResults()">Copy</button></div>';
         h+='<div class="rz-foot"><a href="index.html">usmle300.com</a> · free strategy diagnostic</div>';
@@ -602,8 +626,45 @@
         share+='\nBest: '+names[best.name]+(diff?' (beats worst by '+delta+' points)':'')+'\n\nFind yours at usmle300.com/diagnostic.html';
         window._shareText=share;
         window._tweet=encodeURIComponent('Found my best exam reading strategy with @usmle300.\n\nBest: '+names[best.name]+' ('+best.acc+'%)\nOverall: '+totalCorrect+'/'+totalQuestions+'\n\nFind yours at usmle300.com/diagnostic.html');
+        window._resultSummary={score:totalCorrect+'/'+totalQuestions+' ('+overall+'%)',best_strategy:names[best.name],worst_strategy:names[worst.name],time:time};
 
         var gs=document.getElementById('game-screen');gs.innerHTML=h;gs.style.overflow='auto';gs.style.background='transparent';
+    }
+
+    function submitEmail(){
+        var input=document.getElementById('rzEmail');
+        var email=input.value.trim();
+        var re=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(!re.test(email)){input.style.borderColor='#e0574f';input.focus();return;}
+        var btn=document.getElementById('rzSubmit');
+        btn.disabled=true;btn.textContent='Sending...';
+        var summary=window._resultSummary||{};
+        // Formspree — replace YOUR_FORM_ID with your real endpoint from formspree.io
+        fetch('https://formspree.io/f/https://formspree.io/f/mlgqlzpl',{
+            method:'POST',
+            headers:{'Content-Type':'application/json','Accept':'application/json'},
+            body:JSON.stringify({
+                email:email,
+                score:summary.score,
+                best_strategy:summary.best_strategy,
+                worst_strategy:summary.worst_strategy,
+                time:summary.time,
+                source:'diagnostic_results'
+            })
+        }).then(function(res){
+            var box=document.getElementById('rzCapture');
+            if(res.ok){
+                box.classList.add('sent');
+                box.innerHTML='<div class="rz-capture-success">Sent — check your inbox.</div>';
+                if(typeof gtag==='function')gtag('event','email_captured',{source:'diagnostic_results'});
+            }else{
+                btn.disabled=false;btn.textContent='Send it';
+                alert('Something went wrong — try again, or just email usmle300tutor@gmail.com directly.');
+            }
+        }).catch(function(){
+            btn.disabled=false;btn.textContent='Send it';
+            alert('Something went wrong — try again, or just email usmle300tutor@gmail.com directly.');
+        });
     }
 
     function copyResults(){
