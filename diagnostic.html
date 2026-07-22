@@ -54,7 +54,7 @@
         .nbme-timer{font-family:'Consolas','Courier New',monospace;font-size:0.9rem;background:rgba(0,0,0,0.3);padding:4px 14px;border-radius:3px;letter-spacing:1px}
 
         /* game */
-        #game-screen{display:none;flex:1;overflow:hidden}
+        #game-screen{display:none;flex:1;overflow:hidden;width:100%;box-sizing:border-box}
         .nbme-layout{display:flex;height:100%}
         .nbme-line-numbers{width:36px;background:#d5d8dc;border-right:1px solid #b0b3b8;padding:20px 0;font-family:'Consolas','Courier New',monospace;font-size:0.75rem;color:#666;text-align:center;overflow-y:auto;flex-shrink:0}
         .line-num{padding:1px 6px;height:22px;display:flex;align-items:center;justify-content:flex-end}
@@ -122,7 +122,7 @@
         .intro-count{text-align:center;font-size:0.75rem;color:var(--gray-500);margin-top:0.9rem}
 
         /* results (site-matching, dark) */
-        .rz-wrap{min-height:100vh;background:#0d0e12;background-image:radial-gradient(80% 55% at 50% -12%,rgba(207,92,104,0.16),transparent 60%);color:#ECEAE3;font-family:'Inter',sans-serif;padding:60px 20px 64px;overflow-y:auto}
+        .rz-wrap{width:100%;box-sizing:border-box;min-height:100vh;background:#0d0e12;background-image:radial-gradient(80% 55% at 50% -12%,rgba(207,92,104,0.16),transparent 60%);color:#ECEAE3;font-family:'Inter',sans-serif;padding:60px 20px 64px;overflow-y:auto}
         .rz-shell{max-width:680px;margin:0 auto}
         .rz-eyebrow{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:#cf5c68;margin-bottom:0.9rem;display:flex;align-items:center;gap:0.6rem}
         .rz-eyebrow::before{content:'';width:26px;height:1px;background:#cf5c68}
@@ -628,6 +628,23 @@
         window._tweet=encodeURIComponent('Found my best exam reading strategy with @usmle300.\n\nBest: '+names[best.name]+' ('+best.acc+'%)\nOverall: '+totalCorrect+'/'+totalQuestions+'\n\nFind yours at usmle300.com/diagnostic.html');
         window._resultSummary={score:totalCorrect+'/'+totalQuestions+' ('+overall+'%)',best_strategy:names[best.name],worst_strategy:names[worst.name],time:time};
 
+        // silent log: records every completed diagnostic, even if the visitor never gives an email.
+        // Uses the same Formspree endpoint with source:'diagnostic_auto_log' so you can filter it apart
+        // from real opt-ins. NOTE: Formspree's free plan caps monthly submissions — if volume grows,
+        // move this to its own Formspree form (or a Google Sheet webhook) so it doesn't eat your quota.
+        fetch('https://formspree.io/f/mlgqlzpl',{
+            method:'POST',
+            headers:{'Content-Type':'application/json','Accept':'application/json'},
+            body:JSON.stringify({
+                email:'(not provided)',
+                score:totalCorrect+'/'+totalQuestions+' ('+overall+'%)',
+                best_strategy:names[best.name],
+                worst_strategy:names[worst.name],
+                time:time,
+                source:'diagnostic_auto_log'
+            })
+        }).catch(function(){ /* silent — never interrupt the results screen if this fails */ });
+
         var gs=document.getElementById('game-screen');gs.innerHTML=h;gs.style.overflow='auto';gs.style.background='transparent';
     }
 
@@ -639,8 +656,8 @@
         var btn=document.getElementById('rzSubmit');
         btn.disabled=true;btn.textContent='Sending...';
         var summary=window._resultSummary||{};
-        // Formspree — replace YOUR_FORM_ID with your real endpoint from formspree.io
-        fetch('https://formspree.io/f/https://formspree.io/f/mlgqlzpl',{
+        // Formspree — your endpoint
+        fetch('https://formspree.io/f/mlgqlzpl',{
             method:'POST',
             headers:{'Content-Type':'application/json','Accept':'application/json'},
             body:JSON.stringify({
