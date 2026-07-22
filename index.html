@@ -109,14 +109,36 @@ section{padding:100px 0;position:relative;scroll-margin-top:70px}
 .readout div{font-family:var(--mono);font-size:0.66rem;color:rgba(237,235,228,0.52);letter-spacing:0.05em}
 .readout div b{color:rgba(237,235,228,0.8);font-weight:600}
 .console-cta{text-align:center}
-.radar{position:relative;width:150px;height:150px;margin:0 auto 1.3rem}
-.radar span{position:absolute;inset:0;margin:auto;border-radius:50%;border:1px solid rgba(207,92,104,0.35)}
-.radar .r1{width:150px;height:150px;animation:spin 16s linear infinite}
-.radar .r2{width:100px;height:100px;border-color:rgba(207,92,104,0.5)}
-.radar .r3{width:52px;height:52px;border-color:rgba(207,92,104,0.7)}
-.radar .core{width:8px;height:8px;border:none;background:var(--accent-2);box-shadow:0 0 12px 2px rgba(207,92,104,0.6)}
-.radar .sweep{width:150px;height:150px;border:none;background:conic-gradient(from 0deg,transparent 0deg,rgba(207,92,104,0.18) 40deg,transparent 60deg);animation:spin 4s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
+.pv-card{width:100%;max-width:280px;margin:0 auto 1.1rem;background:#0d0e12;background-image:radial-gradient(90% 70% at 50% -10%,rgba(207,92,104,0.18),transparent 60%);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:1.2rem 1.15rem;text-align:left;box-shadow:0 20px 45px -22px rgba(0,0,0,0.55)}
+.pv-tag{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.13em;text-transform:uppercase;color:#cf5c68;margin-bottom:0.15rem;display:flex;align-items:center;gap:0.4rem}
+.pv-tag::before{content:'';width:14px;height:1px;background:#cf5c68;opacity:0.6}
+.pv-title{font-family:var(--display);font-weight:500;font-size:0.92rem;color:#fff;margin-bottom:0.85rem;letter-spacing:-0.01em}
+.pv-scorerow{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:0.85rem}
+.pv-score,.pv-delta{background:#14151b;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.6rem 0.7rem}
+.pv-delta{border-color:rgba(207,92,104,0.4)}
+.pv-num{font-family:var(--display);font-weight:600;font-size:1.7rem;color:#fff;letter-spacing:-0.03em;line-height:1;display:block}
+.pv-num small{font-size:0.85rem;font-weight:400;color:#5c5a54}
+.pv-meta{font-family:var(--mono);font-size:0.58rem;color:#9a978f;margin-top:0.3rem;display:block}
+.pv-delta-lbl{font-family:var(--mono);font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;color:#9a978f;display:block;margin-bottom:0.2rem}
+.pv-delta-num{font-family:var(--display);font-weight:600;font-size:1.35rem;color:#e07c87;line-height:1;display:block}
+.pv-rank-label{font-family:var(--mono);font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:#5c5a54;margin-bottom:0.5rem}
+.pv-rows{display:flex;flex-direction:column;gap:0.32rem;margin-bottom:0.9rem}
+.pv-row{display:flex;align-items:center;gap:0.45rem;background:#14151b;border:1px solid rgba(255,255,255,0.07);border-radius:7px;padding:0.4rem 0.55rem}
+.pv-row.best{border-color:rgba(76,175,120,0.45);background:linear-gradient(135deg,rgba(76,175,120,0.08),#14151b)}
+.pv-rank{font-family:var(--mono);font-size:0.6rem;color:#5c5a54;width:11px;flex-shrink:0}
+.pv-row.best .pv-rank{color:#4caf78}
+.pv-name{font-size:0.66rem;color:#c7c4bc;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pv-row.best .pv-name{color:#fff;font-weight:600}
+.pv-bar{width:44px;height:4px;background:rgba(255,255,255,0.09);border-radius:2px;overflow:hidden;flex-shrink:0}
+.pv-bar span{display:block;height:100%;border-radius:2px}
+.pv-row.best .pv-bar span{background:#4caf78}
+.pv-row.worst .pv-bar span{background:#e0574f}
+.pv-row:not(.best):not(.worst) .pv-bar span{background:#cf5c68}
+.pv-pct{font-family:var(--mono);font-size:0.62rem;color:#ECEAE3;width:26px;text-align:right;flex-shrink:0;font-weight:600}
+.pv-lead{background:#14151b;border:1px solid rgba(255,255,255,0.1);border-radius:9px;padding:0.6rem 0.7rem}
+.pv-lead-lbl{font-family:var(--mono);font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;color:#cf5c68;display:block;margin-bottom:0.2rem}
+.pv-lead-name{font-family:var(--display);font-weight:600;font-size:0.88rem;color:#fff}
 .run-btn{display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--mono);font-weight:600;font-size:0.9rem;letter-spacing:0.02em;background:var(--accent);color:#fff;padding:0.85rem 1.5rem;border-radius:9px;text-decoration:none;transition:transform .2s,background .2s}
 .run-btn:hover{transform:translateY(-2px);background:var(--accent-2)}
 .run-btn::before{content:'▸'}
@@ -303,8 +325,22 @@ section{padding:70px 0}
 </div>
 </div>
 <div class="console-cta">
-<div class="radar">
-<span class="r1"></span><span class="sweep"></span><span class="r2"></span><span class="r3"></span><span class="core"></span>
+<div class="pv-card">
+<div class="pv-tag">Example result</div>
+<div class="pv-title">Your reading profile</div>
+<div class="pv-scorerow">
+<div class="pv-score"><span class="pv-num">16<small>/20</small></span><span class="pv-meta">80% correct · 9:42</span></div>
+<div class="pv-delta"><span class="pv-delta-lbl">Best vs worst</span><span class="pv-delta-num">+27%</span></div>
+</div>
+<div class="pv-rank-label">How each approach did</div>
+<div class="pv-rows">
+<div class="pv-row best"><span class="pv-rank">1</span><span class="pv-name">Question first</span><div class="pv-bar"><span style="width:87%"></span></div><span class="pv-pct">87%</span></div>
+<div class="pv-row"><span class="pv-rank">2</span><span class="pv-name">Active highlight</span><div class="pv-bar"><span style="width:80%"></span></div><span class="pv-pct">80%</span></div>
+<div class="pv-row"><span class="pv-rank">3</span><span class="pv-name">Standard read</span><div class="pv-bar"><span style="width:73%"></span></div><span class="pv-pct">73%</span></div>
+<div class="pv-row"><span class="pv-rank">4</span><span class="pv-name">Options first</span><div class="pv-bar"><span style="width:67%"></span></div><span class="pv-pct">67%</span></div>
+<div class="pv-row worst"><span class="pv-rank">5</span><span class="pv-name">Speed scan</span><div class="pv-bar"><span style="width:60%"></span></div><span class="pv-pct">60%</span></div>
+</div>
+<div class="pv-lead"><span class="pv-lead-lbl">Lead with</span><span class="pv-lead-name">Question first</span></div>
 </div>
 <a href="diagnostic.html" class="run-btn">Run analysis</a>
 </div>
