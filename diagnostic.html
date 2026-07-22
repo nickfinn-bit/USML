@@ -219,7 +219,7 @@
         <div class="nbme-header-row top">
             <div class="nbme-item-info">
                 <strong>Item <span id="item-current">1</span> of <span id="item-total">20</span></strong>
-                <span style="opacity:0.7;font-size:0.85rem">Reading Strategy Diagnostic</span>
+                <span style="opacity:0.7;font-size:0.85rem">Exam Strategy Diagnostic</span>
             </div>
             <div class="nbme-nav-buttons">
                 <button class="nbme-nav-btn disabled" id="prev-btn" onclick="goToPrevious()"><span>&#9664;</span> Previous</button>
@@ -597,11 +597,11 @@
 
         var h='<div class="rz-wrap"><div class="rz-shell">';
         h+='<div class="rz-eyebrow">USMLE300 / Reading diagnostic</div>';
-        h+='<h1 class="rz-title">Your reading profile</h1>';
+        h+='<h1 class="rz-title">Your strategy profile</h1>';
         h+='<div class="rz-scorerow">';
         h+='<div class="rz-score"><div class="rz-score-num">'+totalCorrect+'<span>/'+totalQuestions+'</span></div><div class="rz-score-meta">'+overall+'% correct · '+time+'</div></div>';
         if(diff&&delta>0){
-            h+='<div class="rz-delta"><div class="rz-delta-label">Best vs worst strategy</div><div class="rz-delta-num">+'+delta+'%</div><div class="rz-delta-text">Same questions, same knowledge. Reading everything your best way is worth about '+extra+' more right on a 40-question block.</div></div>';
+            h+='<div class="rz-delta"><div class="rz-delta-label">Score gain from technique</div><div class="rz-delta-num">+'+delta+'%</div><div class="rz-delta-text">Same questions, same knowledge. Switching to your best approach is worth about '+extra+' more right on a 40-question block.</div></div>';
         }else{
             h+='<div class="rz-delta"><div class="rz-delta-label">Consistent</div><div class="rz-delta-num">'+overall+'%</div><div class="rz-delta-text">Your approaches landed close together, so lead with whichever feels least tiring under time.</div></div>';
         }
@@ -621,11 +621,11 @@
         h+='<div class="rz-foot"><a href="index.html">usmle300.com</a> · free strategy diagnostic</div>';
         h+='</div></div>';
 
-        var share='My USMLE300 reading profile\n\n'+totalCorrect+'/'+totalQuestions+' ('+overall+'%) in '+time+'\n\n';
+        var share='My USMLE300 strategy profile\n\n'+totalCorrect+'/'+totalQuestions+' ('+overall+'%) in '+time+'\n\n';
         for(var j=0;j<rows.length;j++){share+=(j+1)+'. '+names[rows[j].name]+': '+rows[j].acc+'%\n';}
         share+='\nBest: '+names[best.name]+(diff?' (beats worst by '+delta+' points)':'')+'\n\nFind yours at usmle300.com/diagnostic.html';
         window._shareText=share;
-        window._tweet=encodeURIComponent('Found my best exam reading strategy with @usmle300.\n\nBest: '+names[best.name]+' ('+best.acc+'%)\nOverall: '+totalCorrect+'/'+totalQuestions+'\n\nFind yours at usmle300.com/diagnostic.html');
+        window._tweet=encodeURIComponent('Found my best exam strategy with @usmle300.\n\nBest: '+names[best.name]+' ('+best.acc+'%)\nOverall: '+totalCorrect+'/'+totalQuestions+'\n\nFind yours at usmle300.com/diagnostic.html');
         window._resultSummary={score:totalCorrect+'/'+totalQuestions+' ('+overall+'%)',best_strategy:names[best.name],worst_strategy:names[worst.name],time:time};
 
         // silent log: records every completed diagnostic, even if the visitor never gives an email.
