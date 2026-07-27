@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0d0e12">
+<title>USMLE300 Español | Tutoría USMLE en español</title>
+<meta name="description" content="Tutoría 1 a 1 para el USMLE en español, con alguien que estudió medicina en español y ahora vive en EE. UU. Estrategia de examen, no solo contenido.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="images/logo.png" type="image/png">
+<link rel="apple-touch-icon" href="images/logo.png">
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y1T4JNBR3T"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Y1T4JNBR3T');
+</script>
+<style>
+:root{--display:'Space Grotesk',sans-serif;--body:'Inter',sans-serif;--mono:'JetBrains Mono',monospace}
+html[data-theme="light"]{--bg:#F4F3EF;--bg-2:#FBFAF7;--panel:#111318;--panel-text:#EDEBE4;--text:#15161a;--text-2:#57544e;--text-3:#7c766c;--line:rgba(0,0,0,0.11);--line-2:rgba(0,0,0,0.06);--accent:#8A2F38;--accent-2:#b8434f}
+html[data-theme="dark"]{--bg:#0d0e12;--bg-2:#14151b;--panel:#14151b;--panel-text:#EDEBE4;--text:#ECEAE3;--text-2:#9a978f;--text-3:#807c73;--line:rgba(255,255,255,0.12);--line-2:rgba(255,255,255,0.06);--accent:#cf5c68;--accent-2:#e07c87}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;transition:background .4s ease,color .4s ease;font-size:16px}
+body.locked{overflow:hidden}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.08;letter-spacing:-0.02em}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 2rem}
+.mono{font-family:var(--mono)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+header{position:fixed;top:0;left:0;right:0;z-index:900;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s,background .4s}
+header.scrolled{border-bottom-color:var(--line)}
+.hbar{max-width:1100px;margin:0 auto;padding:0.85rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{display:flex;align-items:center;gap:0.6rem;text-decoration:none}
+.brand img{height:26px}
+.brand b{font-family:var(--display);font-weight:600;font-size:1.05rem;color:var(--text)}
+.brand span{font-family:var(--mono);font-size:0.65rem;color:var(--accent);letter-spacing:0.06em;margin-left:0.3rem;padding:0.15rem 0.4rem;border:1px solid var(--accent);border-radius:4px}
+nav.desk{display:flex;gap:1.7rem;align-items:center}
+nav.desk a{text-decoration:none;color:var(--text-2);font-size:0.88rem;font-weight:500;transition:color .2s}
+nav.desk a:hover{color:var(--text)}
+.hright{display:flex;align-items:center;gap:1rem}
+.theme-toggle{font-family:var(--mono);font-size:0.64rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;background:none;border:1px solid var(--line);color:var(--text-2);padding:0.4rem 0.6rem;border-radius:6px;cursor:pointer}
+.theme-toggle:hover{border-color:var(--text-2);color:var(--text)}
+.cta-mini{font-size:0.82rem;font-weight:600;text-decoration:none;color:#fff;background:var(--accent);padding:0.5rem 1rem;border-radius:7px;transition:background .2s}
+.cta-mini:hover{background:var(--accent-2)}
+.menu-btn{display:none;flex-direction:column;width:40px;height:40px;background:none;border:none;cursor:pointer;justify-content:center;align-items:center}
+.menu-btn span{display:block;width:22px;height:2px;background:var(--text);margin:2.5px 0;transition:.3s}
+.menu-btn.active span:nth-child(1){transform:rotate(45deg) translate(4px,5px)}
+.menu-btn.active span:nth-child(2){opacity:0}
+.menu-btn.active span:nth-child(3){transform:rotate(-45deg) translate(4px,-5px)}
+.mnav{display:none;position:fixed;inset:0;background:var(--bg);z-index:1000;padding:88px 2rem 2rem;flex-direction:column;opacity:0;visibility:hidden;transition:.3s}
+.mnav.active{opacity:1;visibility:visible}
+.mnav a{padding:1.1rem 0;font-family:var(--display);font-size:1.5rem;font-weight:500;color:var(--text);text-decoration:none;border-bottom:1px solid var(--line-2)}
+
+section{padding:100px 0;position:relative;scroll-margin-top:70px}
+.sec-tag{display:flex;align-items:center;gap:0.75rem;font-family:var(--mono);font-size:0.7rem;color:var(--text-3);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1.6rem}
+.sec-tag::before{content:'';width:30px;height:1px;background:var(--accent)}
+
+.hero{padding:140px 0 70px;border-bottom:1px solid var(--line)}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:500;letter-spacing:-0.03em;max-width:18ch}
+.hero h1 .mut{color:var(--text-2)}
+.hero-sub{margin-top:1.5rem;font-size:1.05rem;color:var(--text-2);max-width:56ch;line-height:1.7}
+.hero-cta{margin-top:2rem;display:flex;gap:0.8rem;flex-wrap:wrap}
+.run-btn{display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--mono);font-weight:600;font-size:0.9rem;letter-spacing:0.02em;background:var(--accent);color:#fff;padding:0.85rem 1.5rem;border-radius:9px;text-decoration:none;transition:transform .2s,background .2s}
+.run-btn:hover{transform:translateY(-2px);background:var(--accent-2)}
+.run-btn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--text)}
+.run-btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+.run-btn::before{content:'▸'}
+
+.credibility{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.cred-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.cred-copy h2{font-size:clamp(1.6rem,3.4vw,2.2rem);margin-bottom:1rem}
+.cred-copy p{color:var(--text-2);font-size:1rem;line-height:1.75;margin-bottom:1rem}
+.cred-copy p b{color:var(--text)}
+.flags{display:flex;gap:0.6rem;margin-top:1.4rem;flex-wrap:wrap}
+.flag-chip{font-family:var(--mono);font-size:0.72rem;background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:0.4rem 0.9rem;color:var(--text-2)}
+.specimen{border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 50px -24px rgba(0,0,0,0.45)}
+.specimen img{width:100%;display:block}
+
+.points-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.point{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:1.5rem}
+.point .n{font-family:var(--mono);font-size:0.7rem;color:var(--accent);letter-spacing:0.08em;margin-bottom:0.7rem}
+.point h3{font-size:1.1rem;margin-bottom:0.6rem}
+.point p{font-size:0.9rem;color:var(--text-2);line-height:1.6}
+
+.tool-box{background:var(--panel);border-radius:14px;padding:1.8rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.tool-box h3{color:var(--panel-text);font-size:1.15rem;margin-bottom:0.5rem}
+.tool-box p{color:rgba(237,235,228,0.65);font-size:0.9rem;max-width:48ch;line-height:1.6}
+
+.pricing{border-top:1px solid var(--line)}
+.price-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.price-left h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:0.8rem}
+.price-left p{color:var(--text-2);max-width:40ch;line-height:1.7}
+.rate{background:var(--panel);color:var(--panel-text);border-radius:16px;padding:2.2rem}
+.rate .rlabel{font-family:var(--mono);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent-2);margin-bottom:1rem}
+.rate .ramt{font-family:var(--display);font-size:3.4rem;font-weight:600;letter-spacing:-0.03em;line-height:1}
+.rate .ramt span{font-size:1rem;font-weight:400;color:rgba(237,235,228,0.5);font-family:var(--mono)}
+.rate .rnote{color:rgba(237,235,228,0.55);font-size:0.88rem;margin:0.6rem 0 1.5rem}
+.rate .run-btn{width:100%;justify-content:center}
+
+footer{background:var(--panel);color:var(--panel-text);padding:3rem 0 2rem}
+.foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;align-items:center}
+.foot-row a{color:rgba(237,235,228,0.7);text-decoration:none;font-size:0.88rem}
+.foot-row a:hover{color:#fff}
+.foot-bot{margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.1);font-family:var(--mono);font-size:0.7rem;color:rgba(237,235,228,0.4);display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.6rem}
+
+.overlay{position:fixed;inset:0;background:rgba(8,8,11,0.6);backdrop-filter:blur(5px);display:flex;align-items:center;justify-content:center;z-index:2000;opacity:0;visibility:hidden;transition:.25s;padding:1rem}
+.overlay.active{opacity:1;visibility:visible}
+.modal{background:var(--bg-2);border:1px solid var(--line);border-radius:16px;padding:2rem;max-width:460px;width:100%;transform:translateY(16px);transition:transform .25s;position:relative}
+.overlay.active .modal{transform:translateY(0)}
+.modal-x{position:absolute;top:0.8rem;right:0.8rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text-2);width:40px;height:40px}
+.modal h3{font-family:var(--display);font-size:1.4rem;font-weight:600;margin-bottom:0.4rem}
+.cbox{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:1.4rem;text-align:center;margin:1.2rem 0 0.4rem}
+.cbox .cl{font-family:var(--mono);font-size:0.66rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-3);margin-bottom:0.4rem}
+.cbox a.em{font-family:var(--display);font-size:1.2rem;font-weight:600;color:var(--accent);text-decoration:none;display:block;margin-bottom:0.8rem}
+
+@media(max-width:960px){
+.cred-grid{grid-template-columns:1fr;gap:2rem}
+.points-grid{grid-template-columns:1fr}
+.price-wrap{grid-template-columns:1fr;gap:2rem}
+}
+@media(max-width:768px){
+.wrap{padding:0 1.3rem}
+nav.desk{display:none}
+.menu-btn{display:flex}
+.mnav{display:flex}
+section{padding:64px 0}
+.hero{padding:110px 0 50px}
+.tool-box{flex-direction:column;align-items:flex-start;text-align:left}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="hbar">
+<a href="index.html" class="brand"><img src="images/logo.png" alt="USMLE300"><b>USMLE300</b><span>ES</span></a>
+<nav class="desk">
+<a href="#por-que">Por qué yo</a>
+<a href="#temas">Cómo trabajamos</a>
+<a href="#precio">Precio</a>
+<a href="index.html">English site</a>
+</nav>
+<div class="hright">
+<button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">Light</button>
+<a href="#contact" class="cta-mini">Reservar llamada</a>
+<button class="menu-btn" aria-label="Menú"><span></span><span></span><span></span></button>
+</div>
+</div>
+</header>
+
+<nav class="mnav">
+<a href="#por-que">Por qué yo</a>
+<a href="#temas">Cómo trabajamos</a>
+<a href="#precio">Precio</a>
+<a href="index.html">English site</a>
+<a href="#contact">Reservar llamada</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+<div class="wrap">
+<div class="sec-tag reveal"><span>USMLE300 / Tutoría en español</span></div>
+<h1 class="reveal">Tutoría de USMLE en español.</h1>
+<p class="hero-sub reveal">Estudié medicina en español y ahora vivo en Estados Unidos. El examen es en inglés, así que trabajamos las dos cosas juntas: el contenido y cómo leer la pregunta cuando el reloj está corriendo.</p>
+<div class="hero-cta reveal">
+<a href="#contact" class="run-btn">Reservar una llamada gratis</a>
+<a href="diagnostic.html" class="run-btn ghost">Probar el diagnóstico gratis</a>
+</div>
+</div>
+</section>
+
+<!-- CREDIBILITY -->
+<section class="credibility" id="por-que">
+<div class="wrap cred-grid">
+<div class="cred-copy reveal">
+<div class="sec-tag"><span>Por qué yo</span></div>
+<h2>No es solo que hablo español.</h2>
+<p>Estudié medicina en español, así que conozco el vocabulario y el enfoque con el que llegaste. Ahora vivo en Estados Unidos y he pasado por el USMLE desde dentro del sistema.</p>
+<p>Puedo explicarte en español cuando hace falta, pero también ayudarte a pensar en inglés, que es donde se pierden puntos sin darte cuenta.</p>
+<div class="flags">
+<span class="flag-chip">Medicina en español</span>
+<span class="flag-chip">USMLE en EE. UU.</span>
+<span class="flag-chip">Sesiones en español</span>
+</div>
+</div>
+<div class="specimen reveal">
+<img src="images/score-report.png" alt="Reporte de puntaje verificado, Step 2 CK">
+</div>
+</div>
+</section>
+
+<!-- HOW WE WORK -->
+<section id="temas">
+<div class="wrap">
+<div class="sec-tag reveal"><span>Cómo trabajamos</span></div>
+<h2 class="reveal" style="font-size:clamp(1.6rem,3.4vw,2.2rem);margin-bottom:2.2rem">La estrategia importa tanto como el contenido.</h2>
+<div class="points-grid">
+<div class="point reveal">
+<div class="n">01</div>
+<h3>Cómo leer la pregunta</h3>
+<p>El inglés del USMLE tiene su propia lógica, así que trabajamos técnica de lectura y manejo del tiempo, no solo contenido.</p>
+</div>
+<div class="point reveal">
+<div class="n">02</div>
+<h3>El cambio de idioma del examen</h3>
+<p>Conozco el salto de estudiar en español a examinarte en inglés, y ajustamos tu forma de estudiar a lo que el examen realmente pide.</p>
+</div>
+<div class="point reveal">
+<div class="n">03</div>
+<h3>Un plan según tu fecha</h3>
+<p>Las sesiones son 1 a 1, en español o mitad inglés si quieres practicar, al ritmo que te funcione a ti.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TOOL CROSS-LINK -->
+<section style="padding-top:0">
+<div class="wrap">
+<div class="tool-box reveal">
+<div>
+<h3>El examen es en inglés, así que la lectura bajo presión también cuenta.</h3>
+<p>Tengo una herramienta gratuita que mide cómo lees bajo presión de tiempo. No es de medicina, así que no depende de lo que ya sabes.</p>
+</div>
+<a href="diagnostic.html" class="run-btn ghost">Probar el diagnóstico</a>
+</div>
+</div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="precio">
+<div class="wrap price-wrap">
+<div class="price-left reveal">
+<h2>Solo hay un precio.</h2>
+<p>No hay paquetes ni niveles, reservas las horas que necesites, cuando las necesites.</p>
+</div>
+<div class="rate reveal">
+<div class="rlabel">Tutoría 1 a 1</div>
+<div class="ramt">$40<span> / hora</span></div>
+<div class="rnote">Step 1 y Step 2 CK · en español</div>
+<a href="#contact" class="run-btn">Reservar llamada gratis</a>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="wrap">
+<div class="foot-row">
+<a href="index.html">← USMLE300 (English)</a>
+<a href="diagnostic.html">Diagnóstico gratis</a>
+<a href="#contact">Contacto</a>
+</div>
+<div class="foot-bot">
+<span>© 2025 USMLE300</span>
+<span>Step 1 · Step 2 CK · Tutoría en español</span>
+</div>
+</div>
+</footer>
+
+<div class="overlay" id="contactModal">
+<div class="modal">
+<button class="modal-x" data-close>×</button>
+<h3>Hablemos</h3>
+<p style="color:var(--text-2);font-size:0.92rem">Lo más fácil es una llamada gratis de 30 minutos, sin compromiso, para ver en qué punto estás y si puedo ayudarte.</p>
+<a href="https://calendly.com/usmle300tutor/30min" target="_blank" rel="noopener" class="run-btn" style="width:100%;justify-content:center;margin:1.2rem 0 0">Reservar llamada gratis</a>
+<div class="cbox">
+<div class="cl">O escríbeme</div>
+<a href="mailto:usmle300tutor@gmail.com" class="em">usmle300tutor@gmail.com</a>
+</div>
+<p style="font-size:0.82rem;color:var(--text-3);text-align:center;margin-top:0.5rem">Cuéntame qué examen preparas y para cuándo.</p>
+</div>
+</div>
+
+<script>
+const root=document.documentElement,tbtn=document.getElementById('themeToggle');
+function setTheme(t){root.setAttribute('data-theme',t);tbtn.textContent=t==='dark'?'Light':'Dark';try{localStorage.setItem('u300theme',t)}catch(e){}}
+try{const s=localStorage.getItem('u300theme');if(s)setTheme(s)}catch(e){}
+tbtn.textContent=root.getAttribute('data-theme')==='dark'?'Light':'Dark';
+tbtn.addEventListener('click',()=>setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark'));
+
+addEventListener('scroll',()=>document.querySelector('header').classList.toggle('scrolled',scrollY>30));
+
+const mb=document.querySelector('.menu-btn'),mn=document.querySelector('.mnav');
+mb.addEventListener('click',()=>{mb.classList.toggle('active');mn.classList.toggle('active');document.body.classList.toggle('locked')});
+mn.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mb.classList.remove('active');mn.classList.remove('active');document.body.classList.remove('locked')}));
+
+const cModal=document.getElementById('contactModal');
+function openContact(e){if(e)e.preventDefault();cModal.classList.add('active');document.body.classList.add('locked');if(typeof gtag==='function')gtag('event','book_call_open',{lang:'es'});}
+document.querySelectorAll('a[href="#contact"]').forEach(l=>l.addEventListener('click',openContact));
+cModal.addEventListener('click',e=>{if(e.target===cModal||e.target.hasAttribute('data-close')){cModal.classList.remove('active');document.body.classList.remove('locked')}});
+document.querySelectorAll('a[href="https://calendly.com/usmle300tutor/30min"]').forEach(l=>l.addEventListener('click',()=>{if(typeof gtag==='function')gtag('event','book_call_confirmed',{lang:'es'});}));
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){
+const h=this.getAttribute('href');
+if(h==='#contact'||h==='#'||h.length<=1)return;
+const t=document.querySelector(h);
+if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});mb.classList.remove('active');mn.classList.remove('active');document.body.classList.remove('locked')}
+}));
+
+const io=new IntersectionObserver((es)=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
