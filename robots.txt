@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.usmle300.com/sitemap.xml
+Sitemap: https://usmle300.com/sitemap.xml
