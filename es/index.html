@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USMLE300 | Saca mejor nota en el USMLE con lo que ya sabes</title>
+<meta name="description" content="Revisión individual de cómo haces el USMLE: ritmo, lectura de preguntas, cambios de respuesta y resistencia. Para estudiantes que saben el temario pero rinden menos el día del examen.">
+<meta property="og:title" content="USMLE300 | Saca mejor nota con lo que ya sabes">
+<meta property="og:description" content="Una revisión individual de cómo haces el examen, no de lo que sabes.">
+<meta property="og:url" content="https://www.usmle300.com/es/">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://www.usmle300.com/es/">
+<link rel="alternate" hreflang="en" href="https://www.usmle300.com/">
+<link rel="alternate" hreflang="es" href="https://www.usmle300.com/es/">
+<link rel="alternate" hreflang="zh-Hans" href="https://www.usmle300.com/zh/">
+<link rel="alternate" hreflang="x-default" href="https://www.usmle300.com/">
+<link rel="icon" href="../images/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y1T4JNBR3T"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','G-Y1T4JNBR3T');
+</script>
+<style>
+:root{
+  --ink:#1a1420;--ink-2:#6b6472;--ink-3:#9a93a0;
+  --bg:#ffffff;--bg-2:#faf7f7;--line:#ece6e7;
+  --red:#8A2F38;--red-2:#b8434f;--rose:#e07c87;--amber:#f2a65a;--blush:#f7c6c9;
+  --max:1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 28px;position:relative}
+h1,h2,h3{font-weight:500;letter-spacing:-0.025em;line-height:1.1}
+.muted{color:var(--ink-2)}
+.two-tone{font-size:clamp(1.7rem,3.2vw,2.5rem);max-width:30ch;letter-spacing:-0.025em;line-height:1.15;font-weight:500}
+.two-tone span{color:var(--ink-2)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;text-decoration:none;font-weight:500;font-size:.98rem;padding:12px 22px;border-radius:7px;border:1px solid var(--red);transition:background .15s}
+.btn:hover{background:#74252d}
+.btn.ghost{background:#fff;color:var(--red);border-color:#e3d6d8}
+.btn.ghost:hover{border-color:var(--red)}
+.btn.sm{padding:9px 16px;font-size:.9rem}
+.btn .chev{font-size:.8em;transition:transform .15s}
+.btn:hover .chev{transform:translateX(2px)}
+
+/* header */
+header{position:absolute;top:0;left:0;right:0;z-index:20}
+.hbar{display:flex;align-items:center;justify-content:space-between;height:76px}
+.brand{font-weight:600;font-size:1.2rem;text-decoration:none;letter-spacing:-0.03em}
+.brand span{color:var(--red)}
+nav{display:flex;gap:30px;align-items:center;font-size:.95rem;font-weight:500}
+nav a{text-decoration:none}
+nav a:not(.btn):hover{color:var(--red)}
+@media(max-width:820px){nav a:not(.btn){display:none}}
+
+/* hero + ribbon */
+.hero{position:relative;padding:170px 0 96px;overflow:hidden;border-bottom:1px solid var(--line)}
+.ribbon{position:absolute;top:0;left:50%;width:46%;height:100%;transform:skewX(38deg);transform-origin:top left;
+  background:
+    repeating-linear-gradient(100deg,rgba(255,255,255,.18) 0 2px,transparent 2px 9px),
+    linear-gradient(100deg,#f3d1d4 0%,#e9a3ab 14%,var(--red-2) 30%,var(--red) 42%,#c4566a 52%,var(--amber) 66%,#f6c48a 76%,var(--blush) 88%,#fff 100%);
+  filter:saturate(1.05);opacity:.95;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 14%,#000 80%,transparent 100%);
+          mask-image:linear-gradient(90deg,transparent 0%,#000 14%,#000 80%,transparent 100%)}
+.ribbon::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.0) 60%,#fff 100%)}
+.hero .wrap{z-index:2}
+.hero h1{font-size:clamp(2.4rem,5.6vw,4.4rem);max-width:15ch;line-height:1.04;letter-spacing:-0.035em}
+.hero h1 + p{font-size:clamp(1.25rem,2.3vw,1.75rem);color:var(--ink-2);max-width:30ch;margin:20px 0 40px;letter-spacing:-0.02em;line-height:1.3}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+@media(max-width:820px){.ribbon{left:55%;width:90%;opacity:.5}.hero{padding:140px 0 80px}}
+
+/* sections */
+section{padding:110px 0}
+section.tint{background:var(--bg-2)}
+.head{margin-bottom:56px}
+
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:32px;overflow:hidden;position:relative;display:flex;flex-direction:column}
+.card h3{font-size:1.45rem;max-width:20ch}
+.card p{color:var(--ink-2);margin-top:10px;font-size:.98rem;max-width:44ch}
+.c-wide{grid-column:span 4}.c-narrow{grid-column:span 2}.c-half{grid-column:span 3}
+@media(max-width:900px){.c-wide,.c-narrow,.c-half{grid-column:span 6}}
+.glow{position:absolute;inset:auto -20% -40% -20%;height:70%;background:radial-gradient(ellipse at 30% 60%,rgba(184,67,79,.28),transparent 60%),radial-gradient(ellipse at 75% 70%,rgba(242,166,90,.28),transparent 60%);pointer-events:none}
+.mock{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 18px 40px -18px rgba(60,20,30,.25);position:relative;z-index:1;font-size:.85rem}
+.mock .bar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--line);color:var(--ink-3);font-size:.75rem}
+.mock .bar i{width:8px;height:8px;border-radius:50%;background:#e8e2e3;display:inline-block}
+.mock .bar em{font-style:normal;margin-left:auto}
+.tag{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);border:1px solid var(--line);border-radius:4px;padding:2px 6px}
+
+/* report mock */
+.rep{padding:18px 20px}
+.rep h4{font-size:.95rem;font-weight:600;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.rep table{width:100%;border-collapse:collapse}
+.rep th{text-align:left;font-weight:500;color:var(--ink-3);font-size:.75rem;padding:6px 0;border-bottom:1px solid var(--line)}
+.rep td{padding:9px 0;border-bottom:1px solid var(--line)}
+.rep td:last-child{width:42%}
+.meter{height:6px;background:#f3eced;border-radius:3px;overflow:hidden}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--red),var(--rose),var(--amber));border-radius:3px}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+.step{border-top:1px solid var(--ink);padding-top:18px;counter-increment:s}
+.step::before{content:counter(s,decimal-leading-zero);display:block;color:var(--red);font-weight:600;font-size:.85rem;margin-bottom:14px;font-variant-numeric:tabular-nums}
+.step h3{font-size:1.1rem;letter-spacing:-0.015em}
+.step p{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+@media(max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.steps{grid-template-columns:1fr}}
+
+/* pricing */
+.plans{display:grid;grid-template-columns:1.25fr 1fr;gap:20px}
+.plan{background:#fff;border:1px solid var(--line);border-radius:12px;padding:36px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.plan.main::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--red),var(--rose),var(--amber))}
+.plan h3{font-size:1.2rem}
+.price{font-size:2.6rem;font-weight:500;letter-spacing:-0.035em;margin:14px 0 4px}
+.price small{font-size:1rem;color:var(--ink-3);font-weight:400;letter-spacing:0}
+.plan > p{color:var(--ink-2)}
+.plan ul{list-style:none;margin:22px 0 32px;display:grid;gap:10px;font-size:.96rem}
+.plan li{padding-left:24px;position:relative}
+.plan li::before{content:"";position:absolute;left:2px;top:.45em;width:10px;height:6px;border-left:2px solid var(--red);border-bottom:2px solid var(--red);transform:rotate(-45deg)}
+.plan .btn{margin-top:auto;justify-content:center}
+@media(max-width:820px){.plans{grid-template-columns:1fr}}
+
+/* about */
+.about{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center}
+.about p{color:var(--ink-2);margin-top:16px;max-width:52ch}
+.about figure{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;box-shadow:0 24px 50px -24px rgba(60,20,30,.3)}
+.about img{width:100%;display:block;border-radius:4px}
+.about figcaption{font-size:.8rem;color:var(--ink-3);margin-top:10px}
+@media(max-width:820px){.about{grid-template-columns:1fr;gap:36px}}
+
+/* faq */
+.faq{display:grid;grid-template-columns:1fr 1.6fr;gap:64px}
+details{border-bottom:1px solid var(--line);padding:20px 0}
+details:first-child{border-top:1px solid var(--line)}
+summary{cursor:pointer;font-weight:500;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--ink-3)}
+details[open] summary::after{content:"\2212"}
+details p{color:var(--ink-2);margin-top:10px;font-size:.97rem}
+@media(max-width:820px){.faq{grid-template-columns:1fr;gap:28px}}
+
+/* cta band */
+.band{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.band .ribbon{left:58%;opacity:.9}
+.band .ribbon::after{background:none}
+.band .two-tone span{color:#b9b0bc}
+.band .ctas{margin-top:36px}
+.band .btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+
+
+
+
+/* marquee */
+.marquee{display:flex;overflow:hidden;border-bottom:1px solid var(--line);background:#fff;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee ul{display:flex;flex-shrink:0;min-width:100vw;justify-content:space-around;list-style:none;gap:120px;padding:30px 60px;animation:marq 70s linear infinite}
+.marquee:hover ul{animation-play-state:paused}
+.marquee li{display:flex;align-items:baseline;gap:10px;white-space:nowrap}
+.marquee b{font-size:1.5rem;font-weight:500;letter-spacing:-0.03em;background:linear-gradient(90deg,var(--red),var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent}
+.marquee span{color:var(--ink-2);font-size:.95rem}
+@keyframes marq{to{transform:translateX(-100%)}}
+@media(prefers-reduced-motion:reduce){.marquee ul{animation:none}}
+
+/* results */
+.results{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.results .card h3{font-size:1.15rem;margin-top:26px}
+.jump{display:flex;align-items:baseline;gap:12px;position:relative;z-index:1}
+.jump span{font-size:2.2rem;color:var(--ink-3);font-weight:500;letter-spacing:-0.03em}
+.jump i{font-style:normal;color:var(--ink-3);font-size:1.4rem}
+.jump b{font-size:2.8rem;font-weight:500;letter-spacing:-0.035em;background:linear-gradient(90deg,var(--red),var(--red-2) 50%,var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent}
+.jump small{color:var(--ink-3);font-size:.9rem}
+.results .card p{position:relative;z-index:1}
+@media(max-width:900px){.results{grid-template-columns:1fr}}
+
+/* free analysis profile rows */
+.sm{font-size:.8rem}
+.rows{display:grid;gap:9px}
+.r{display:grid;grid-template-columns:18px minmax(96px,120px) minmax(60px,1fr) 40px;align-items:center;gap:10px;font-size:.85rem}
+.r span{color:var(--ink-3);font-variant-numeric:tabular-nums}
+.r em{font-style:normal}
+.r b{font-weight:500;text-align:right;font-variant-numeric:tabular-nums}
+.r.best em,.r.best b{color:var(--red);font-weight:600}
+.prof-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+
+.eyebrow{font-size:.85rem;font-weight:500;color:var(--red);margin-bottom:14px}
+/* flowchart */
+.free-head{margin-bottom:44px}
+.fc{display:grid;grid-template-columns:1fr 40px 1.15fr 40px 1fr;align-items:stretch}
+.fc-col{display:flex;flex-direction:column;min-width:0}
+.fc-step{display:flex;align-items:center;gap:10px;font-weight:600;font-size:.98rem;margin-bottom:14px}
+.fc-step span{width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;font-size:.8rem;display:grid;place-items:center;flex-shrink:0}
+.fc-card{flex:1;background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;box-shadow:0 18px 40px -24px rgba(60,20,30,.25);transition:box-shadow .4s,border-color .4s}
+.fc-note{color:var(--ink-2);font-size:.88rem;margin-bottom:14px}
+.fc-arrow{position:relative}
+.fc-arrow::before{content:"";position:absolute;left:8px;right:12px;top:50%;height:2px;background:linear-gradient(90deg,var(--red),var(--amber));border-radius:2px}
+.fc-arrow::after{content:"";position:absolute;right:8px;top:50%;width:9px;height:9px;border-top:2px solid var(--amber);border-right:2px solid var(--amber);transform:translateY(-50%) rotate(45deg)}
+.methods{list-style:none;display:grid;gap:6px}
+.methods li{border:1px solid var(--line);border-radius:8px;padding:9px 12px;transition:border-color .3s,background .3s}
+.methods b{display:block;font-weight:600;font-size:.9rem}
+.methods span{display:block;color:var(--ink-3);font-size:.8rem}
+.methods li.on{border-color:var(--red);background:#fdf6f6}
+.methods li.on b{color:var(--red)}
+.tagline{margin-bottom:8px}
+.dq{font-size:1rem;font-weight:500;line-height:1.4;margin-bottom:10px}
+.passage{font-size:.8rem;line-height:1.55;color:var(--ink);background:var(--bg-2);border-radius:8px;padding:10px 12px;margin-bottom:10px;max-height:150px;overflow:auto}
+.opts{display:grid;gap:5px}
+.opt{display:flex;align-items:center;gap:10px;text-align:left;font:inherit;font-size:.85rem;background:#fff;border:1px solid var(--line);border-radius:7px;padding:6px 10px;cursor:pointer;transition:border-color .15s,background .15s}
+.opt span{width:20px;height:20px;border-radius:50%;border:1px solid #e3d6d8;display:grid;place-items:center;font-size:.7rem;color:var(--ink-3);flex-shrink:0}
+.opt:hover{border-color:var(--red);background:#fdf8f8}
+.opt.right{border-color:#2f6b3a;background:#eef6ef}
+.opt.wrong{border-color:var(--red);background:#fbe9eb}
+.opt:disabled{cursor:default}
+.verdict-box{display:none;margin-top:12px;animation:fadein .4s cubic-bezier(.2,.7,.2,1)}
+.verdict-box.on{display:block}
+.verdict{font-size:1.05rem;font-weight:600;margin-bottom:4px}
+.verdict.ok{color:#2f6b3a}.verdict.no{color:var(--red)}
+.dhint{color:var(--ink-2);font-size:.82rem;margin-bottom:6px}
+.link{background:none;border:0;font:inherit;font-size:.82rem;color:var(--ink-2);cursor:pointer;text-decoration:underline;padding:0}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.fc-result .big{font-size:2rem;font-weight:500;letter-spacing:-0.03em;line-height:1.1;margin:4px 0}
+.fc-result .big small{font-size:.95rem;color:var(--ink-3)}
+.fc-result .r{grid-template-columns:14px minmax(84px,1fr) minmax(40px,.8fr) 34px;gap:8px;font-size:.8rem}
+.fc-result.lit{border-color:var(--red);box-shadow:0 0 0 4px rgba(184,67,79,.12),0 18px 40px -24px rgba(60,20,30,.25)}
+.fc-cta{text-align:center;margin-top:40px}
+@media(max-width:960px){
+  .fc{grid-template-columns:1fr}
+  .fc-arrow{height:44px}
+  .fc-arrow::before{left:50%;right:auto;top:8px;bottom:12px;width:2px;height:auto;background:linear-gradient(var(--red),var(--amber))}
+  .fc-arrow::after{left:50%;right:auto;top:auto;bottom:10px;transform:translateX(-50%) rotate(135deg)}
+}
+
+
+/* stripe-style gradient wash inside cards */
+.wash{position:relative;overflow:hidden;isolation:isolate}
+.wash::before,.wash::after{content:"";position:absolute;z-index:-1;left:-25%;right:-25%;top:46%;bottom:-60%;transform:skewY(-9deg);transform-origin:left}
+.wash::before{background:linear-gradient(105deg,#f6dadd 0%,var(--rose) 14%,var(--red-2) 28%,var(--red) 40%,#c4566a 52%,var(--amber) 68%,#f8cf9c 82%,#fbe3e5 96%);
+  background-size:150% 100%;animation:wash 16s ease-in-out infinite alternate;opacity:.92}
+.wash::after{background:repeating-linear-gradient(100deg,rgba(255,255,255,.14) 0 2px,transparent 2px 10px);animation:drift 14s linear infinite alternate}
+.wash-v::before,.wash-v::after{top:66%;transform:skewY(-12deg)}
+.wash-low{padding-bottom:150px}
+.wash-low::before,.wash-low::after{top:calc(100% - 92px);transform:skewY(-6deg)}
+.fc-card.wash::before,.fc-card.wash::after{top:52%}
+@keyframes wash{from{background-position:0% 0}to{background-position:100% 0}}
+.wash .mock{background:#fff}
+.glow{display:none}
+
+/* flowchart panels */
+.fc-card{padding:14px}
+.fc-card .panel{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;box-shadow:0 18px 40px -20px rgba(60,20,30,.35);height:100%}
+
+/* floating chips */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:28px}
+.chips span{background:#fff;border-radius:20px;padding:7px 13px;font-size:.82rem;font-weight:500;box-shadow:0 10px 24px -12px rgba(60,20,30,.45);animation:float 5s ease-in-out infinite}
+.chips span:nth-child(2){animation-delay:-1s}.chips span:nth-child(3){animation-delay:-2s}.chips span:nth-child(4){animation-delay:-3s}.chips span:nth-child(5){animation-delay:-4s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@media(prefers-reduced-motion:reduce){.wash::before,.wash::after,.chips span{animation:none}}
+
+/* motion */
+.meter i{width:0;transition:width 1.1s cubic-bezier(.2,.7,.2,1) .25s}
+.in .meter i,.in.meter i{width:var(--w)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.tilt{transform-style:preserve-3d;will-change:transform;transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s,opacity .7s cubic-bezier(.2,.7,.2,1)}
+.tilt.in{transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px))}
+.tilt:hover{--ty:-4px;box-shadow:0 30px 60px -30px rgba(60,20,30,.35)}
+.tilt.moving{transition:transform .12s linear,box-shadow .5s}
+.ribbon{animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{from{background-position:0 0,0 0}to{background-position:90px 0,0 0}}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.ribbon{animation:none}.tilt.in{transform:none}.meter i{width:var(--w);transition:none}}
+
+footer{padding:44px 0;font-size:.88rem;color:var(--ink-3)}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:22px}
+footer a:hover{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap hbar">
+    <a href="/es/" class="brand">USMLE<span>300</span></a>
+    <nav>
+      <a href="#review">Revisión de rendimiento</a>
+      <a href="#pricing">Precios</a>
+      <a href="#results">Resultados</a>
+      <a href="#free">Análisis gratis</a>
+      <a href="https://calendly.com/usmle300tutor/30min" target="_blank" rel="noopener" class="btn sm">Reservar llamada <span class="chev">&rsaquo;</span></a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="ribbon" aria-hidden="true"></div>
+  <div class="wrap">
+    <h1 class="reveal">Saca mejor nota con lo que ya sabes.</h1>
+    <p class="reveal">La mayoría de los estudiantes que se estancan no necesitan más temario. Veo cómo resuelves las preguntas en la práctica y te ayudo a corregir los hábitos que te cuestan puntos el día del examen.</p>
+    <div class="ctas reveal">
+      <a href="https://calendly.com/usmle300tutor/30min" target="_blank" rel="noopener" class="btn">Reserva una llamada gratis <span class="chev">&rsaquo;</span></a>
+      <a href="../diagnostic.html" class="btn ghost">Prueba el análisis gratis</a>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-label="Resultados de estudiantes">
+  <ul><li><b>217 &rarr; 254</b><span>de exámenes de práctica a Step 2 CK en tres meses</span></li><li><b>243</b><span>en Step 2 CK tras suspender un año de medicina</span></li><li><b>Aprobados</b><span>exámenes shelf antes suspendidos, en todas las asignaturas</span></li><li><b>Aprobados</b><span>exámenes de licencia médica en el Reino Unido y España</span></li></ul><ul aria-hidden="true"><li><b>217 &rarr; 254</b><span>de exámenes de práctica a Step 2 CK en tres meses</span></li><li><b>243</b><span>en Step 2 CK tras suspender un año de medicina</span></li><li><b>Aprobados</b><span>exámenes shelf antes suspendidos, en todas las asignaturas</span></li><li><b>Aprobados</b><span>exámenes de licencia médica en el Reino Unido y España</span></li></ul>
+</div>
+
+<section class="tint" id="free">
+  <div class="wrap">
+    <div class="free-head reveal">
+      <div class="eyebrow">Gratis, sin registro, unos 15 minutos (en inglés)</div>
+      <h2 class="two-tone">Analiza mi forma de hacer el examen. <span>Descubre qué forma de leer una pregunta te hace perder menos puntos.</span></h2>
+    </div>
+
+    <div class="fc reveal">
+      <div class="fc-col">
+        <div class="fc-step"><span>1</span>Cinco formas de leer una pregunta</div>
+        <div class="fc-card wash"><div class="panel">
+          <p class="fc-note">Respondes 20 preguntas cortas, cuatro con cada método. Los textos no son médicos, así que solo mide cómo lees y razonas.</p>
+          <ul class="methods">
+            <li class="on"><b>Pregunta primero</b><span>Lee la pregunta y después el texto</span></li>
+            <li><b>Subrayado activo</b><span>Marca palabras clave mientras lees</span></li>
+            <li><b>Lectura normal</b><span>Lee de principio a fin y luego responde</span></li>
+            <li><b>Opciones primero</b><span>Lee las respuestas antes que el texto</span></li>
+            <li><b>Lectura rápida</b><span>Lee rápido y fíate de tu instinto</span></li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="fc-arrow" aria-hidden="true"></div>
+
+      <div class="fc-col">
+        <div class="fc-step"><span>2</span>Prueba una ahora</div>
+        <div class="fc-card wash"><div class="panel" id="demo">
+          <div class="tagline"><span class="tag">Pregunta primero</span></div>
+          <p class="dq">¿A qué hora cierra hoy la Biblioteca Harrow los sábados?</p>
+          <p class="passage">La Biblioteca Harrow ocupa el mismo edificio de ladrillo rojo en Chapel Street desde que abrió sus puertas en la primavera de 1962. En aquellos primeros años era toda una institución local: abría hasta las nueve de la noche todos los días de la semana, y durante su primera década ese horario tan generoso no cambió. Todo cambió en 1973, cuando unos recortes del ayuntamiento obligaron a adelantar el cierre de entre semana a las seis de la tarde, aunque durante mucho tiempo la biblioteca mantuvo con orgullo el cierre a las nueve los sábados, como guiño a la tradición. Eso también acabó cediendo: en 2001, ante otro recorte de financiación, el patronato redujo también el horario de los sábados y adelantó el cierre a las cinco de la tarde, donde se ha mantenido desde entonces.</p>
+          <div class="opts"><button class="opt" data-i="0"><span>A</span>21:00</button><button class="opt" data-i="1"><span>B</span>18:00</button><button class="opt" data-i="2"><span>C</span>17:00</button><button class="opt" data-i="3"><span>D</span>20:00</button><button class="opt" data-i="4"><span>E</span>Los sábados está cerrada</button></div>
+          <div class="verdict-box" id="vbox">
+            <div class="verdict" id="verdict"></div>
+            <p class="dhint">El texto dice 21:00 al principio, pero la última frase lo cambia a 17:00. Captar detalles del final como ese es donde los métodos se diferencian.</p>
+            <button class="link" id="retry">Volver a intentarlo</button>
+          </div>
+        </div></div>
+      </div>
+      <div class="fc-arrow" aria-hidden="true"></div>
+
+      <div class="fc-col">
+        <div class="fc-step"><span>3</span>Descubre qué te funciona</div>
+        <div class="fc-card wash"><div class="panel fc-result" id="fcres">
+          <div class="prof-head">
+            <div><div class="muted sm">Tu perfil de estrategia <span class="tag">Ejemplo</span></div><div class="big">16<small>/20</small></div><div class="muted sm">80% correctas · 9:42</div></div>
+          </div>
+          <div class="muted sm" style="margin:16px 0 8px">Cómo te fue con cada enfoque</div>
+          <div class="rows">
+                <div class="r best"><span>1</span><em>Pregunta primero</em><div class="meter"><i style="--w:87%"></i></div><b>87%</b></div>
+                <div class="r"><span>2</span><em>Subrayado activo</em><div class="meter"><i style="--w:80%"></i></div><b>80%</b></div>
+                <div class="r"><span>3</span><em>Lectura normal</em><div class="meter"><i style="--w:73%"></i></div><b>73%</b></div>
+                <div class="r"><span>4</span><em>Opciones primero</em><div class="meter"><i style="--w:67%"></i></div><b>67%</b></div>
+                <div class="r"><span>5</span><em>Lectura rápida</em><div class="meter"><i style="--w:60%"></i></div><b>60%</b></div>
+              </div>
+          <p class="fc-note" style="margin:16px 0 0">La mayoría descubre que el método que usa por defecto no es el mejor.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="fc-cta reveal">
+      <a href="../diagnostic.html" class="btn">Empezar el análisis completo <span class="chev">&rsaquo;</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="review">
+  <div class="wrap">
+    <h2 class="two-tone head reveal">La revisión de rendimiento. <span>Para cuando quieres que alguien mire de cerca cómo haces el examen y te diga exactamente qué cambiar.</span></h2>
+    <div class="bento">
+      <div class="card c-wide tilt reveal wash">
+        <h3>Un informe escrito con el que trabajar</h3>
+        <p>Todo lo que observo, ordenado según cuántos puntos te está costando, con ejemplos de tus propias preguntas.</p>
+        <div class="mock">
+          <div class="bar"><i></i><i></i><i></i><em>Revisión de rendimiento</em></div>
+          <div class="rep">
+            <h4>Resumen de patrones <span class="tag">Ejemplo</span></h4>
+            <table>
+              <tr><th>Área</th><th>Hallazgo</th><th>Impacto</th></tr>
+              <tr><td>Lectura del enunciado</td><td>Lee por encima la última línea antes de mirar las opciones</td><td><div class="meter"><i style="--w:82%"></i></div></td></tr>
+              <tr><td>Cambios de respuesta</td><td>Cambia respuestas correctas cuando duda</td><td><div class="meter"><i style="--w:64%"></i></div></td></tr>
+              <tr><td>Ritmo</td><td>Tarda demasiado al principio y va con prisa al final del bloque</td><td><div class="meter"><i style="--w:48%"></i></div></td></tr>
+              <tr><td>Resistencia</td><td>La precisión baja en los últimos bloques</td><td><div class="meter"><i style="--w:30%"></i></div></td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="card c-narrow tilt reveal wash wash-v">
+        <h3>Qué miramos</h3>
+        <p>Cómo lees la pregunta, cómo descartas opciones, cuándo cambias la respuesta, cómo usas el tiempo y cómo aguantas un día largo de examen.</p>
+        <p>Si hay lagunas de contenido reales te las señalo, pero no es el objetivo.</p>
+        <div class="chips"><span>Lectura de la pregunta</span><span>Descartar opciones</span><span>Cambios de respuesta</span><span>Tiempo</span><span>Resistencia</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tint" id="results">
+  <div class="wrap">
+    <h2 class="two-tone head reveal">Resultados. <span>Algunos de los estudiantes con los que he trabajado, en exámenes reales.</span></h2>
+    <div class="results">
+      <div class="card tilt reveal wash wash-low">
+        <div class="jump"><span>217</span><i>&rarr;</i><b>254</b></div>
+        <h3>De 217 a 254 en tres meses</h3>
+        <p>Sacaba alrededor de 217 en los exámenes de práctica. Tres meses después, sacó 254 en Step 2 CK.</p>
+      </div>
+      <div class="card tilt reveal wash wash-low">
+        <div class="jump"><b>243</b><small>Step 2 CK</small></div>
+        <h3>De suspender un año de medicina a un 243</h3>
+        <p>Había suspendido un año de medicina y después sacó 243 en Step 2 CK.</p>
+      </div>
+      <div class="card tilt reveal wash wash-low">
+        <div class="jump"><b>Aprobados</b><small>Exámenes shelf y de licencia</small></div>
+        <h3>Aprobando exámenes que antes habían suspendido</h3>
+        <p>Estudiantes que habían suspendido exámenes shelf los aprobaron, en todas las asignaturas. Otros han aprobado exámenes de licencia médica en el Reino Unido y España.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="two-tone head reveal">Cómo funciona. <span>Lo ideal es hacerlo de cuatro a ocho semanas antes del examen, para que tengas tiempo de practicar los cambios.</span></h2>
+    <div class="steps">
+      <div class="step reveal"><h3>Envíame tus notas</h3><p>Tus informes de NBME o exámenes de práctica y las estadísticas de tu banco de preguntas, para ver dónde se te van los puntos.</p></div>
+      <div class="step reveal"><h3>Hacemos preguntas juntos</h3><p>Hacemos un bloque cronometrado por videollamada y comentamos cómo abordaste cada pregunta.</p></div>
+      <div class="step reveal"><h3>Recibe tu informe</h3><p>Un informe breve con los hábitos que más te importan, con ejemplos de tus propias respuestas.</p></div>
+      <div class="step reveal"><h3>Hacemos un plan</h3><p>Lo revisamos juntos y decidimos qué practicar en las semanas antes del examen.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="tint" id="pricing">
+  <div class="wrap">
+    <h2 class="two-tone head reveal">Precios. <span>Empieza con la revisión y añade horas de tutoría solo si quieres ayuda para ponerlo en práctica.</span></h2>
+    <div class="plans">
+      <div class="plan main tilt reveal">
+        <h3>Revisión de rendimiento</h3>
+        <div class="price">$150 <small>pago único</small></div>
+        <p>La revisión completa, de principio a fin.</p>
+        <ul>
+          <li>Revisión de tus informes de notas y datos del banco de preguntas</li>
+          <li>Un bloque de preguntas cronometrado que hacemos juntos</li>
+          <li>Un informe escrito con los hábitos que corregir primero</li>
+          <li>Una llamada de seguimiento para fijar tu plan de práctica</li>
+        </ul>
+        <a href="https://calendly.com/usmle300tutor/30min" target="_blank" rel="noopener" class="btn">Reserva antes una llamada gratis <span class="chev">&rsaquo;</span></a>
+      </div>
+      <div class="plan tilt reveal">
+        <h3>Tutoría</h3>
+        <div class="price">$50 <small>/ hora</small></div>
+        <p>Sesiones continuas para trabajar lo que encontremos. Reserva las horas que necesites.</p>
+        <ul>
+          <li>Hacer preguntas juntos</li>
+          <li>Práctica centrada en tus puntos débiles</li>
+          <li>Seguimiento después de tus exámenes de práctica</li>
+        </ul>
+        <a href="https://calendly.com/usmle300tutor/30min" target="_blank" rel="noopener" class="btn ghost">Reserva una llamada gratis</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section>
+  <div class="wrap faq">
+    <h2 class="two-tone reveal">Preguntas. <span>Si la tuya no está aquí, pregúntamela en la llamada gratis.</span></h2>
+    <div class="reveal">
+      <details><summary>¿Esto es tutoría de contenido?</summary><p>No exactamente. Si tienes lagunas de contenido te las señalo, pero la revisión trata de cómo haces el examen.</p></details>
+      <details><summary>Soy estudiante DO. ¿Sirve para el COMLEX?</summary><p>Los hábitos que analizo son los mismos en los dos exámenes. Mi experiencia es con el USMLE, así que si solo vas a hacer el COMLEX, hablemos antes en la llamada gratis.</p></details>
+      <details><summary>Soy padre o madre. ¿Puedo reservar para mi hijo o hija?</summary><p>Sí. Solo hace falta que el estudiante se una a la llamada gratis y esté de acuerdo. Solo comparto el informe con los padres si el estudiante quiere.</p></details>
+      <details><summary>¿Qué tengo que enviar?</summary><p>Tus informes de exámenes de práctica y las estadísticas de tu banco de preguntas. Solo los uso para tu revisión.</p></details>
+      <details><summary>¿Con cuánta antelación al examen debo hacerlo?</summary><p>Lo ideal son de cuatro a ocho semanas antes, pero también puede ayudar si el examen es antes.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="contact">
+  <div class="ribbon" aria-hidden="true"></div>
+  <div class="wrap">
+    <h2 class="two-tone reveal">¿No sabes dónde se te van los puntos? <span>Reserva una llamada gratis de 15 minutos o escríbeme y cuéntame cómo vas con tu preparación.</span></h2>
+    <div class="ctas reveal">
+      <a href="https://calendly.com/usmle300tutor/30min" target="_blank" rel="noopener" class="btn">Reserva una llamada gratis <span class="chev">&rsaquo;</span></a>
+      <a href="mailto:usmle300tutor@gmail.com" class="btn ghost">usmle300tutor@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© USMLE300</div>
+    <div>
+      <a href="../diagnostic.html">Análisis gratis</a>
+      <a href="../games.html">Juegos de práctica</a>
+      <a href="/">English</a>
+      <a href="/es/">Español</a>
+      <a href="/zh/">中文</a>
+      <a href="../medical-spanish.html">Español médico</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href*="calendly.com"]').forEach(function(a){a.addEventListener('click',function(){if(typeof gtag==='function')gtag('event','book_call_confirmed');});});
+document.querySelectorAll('a[href$="diagnostic.html"]').forEach(function(a){a.addEventListener('click',function(){if(typeof gtag==='function')gtag('event','diagnostic_start');});});
+document.querySelectorAll('a[href^="mailto:"]').forEach(function(a){a.addEventListener('click',function(){if(typeof gtag==='function')gtag('event','email_click');});});
+
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)||reduce){els.forEach(function(e){e.classList.add('in')});}
+  else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.15});els.forEach(function(e){io.observe(e)});}
+  if(reduce||!window.matchMedia('(hover: hover)').matches)return;
+  document.querySelectorAll('.tilt').forEach(function(c){
+    c.addEventListener('mousemove',function(ev){var r=c.getBoundingClientRect();var x=(ev.clientX-r.left)/r.width-.5,y=(ev.clientY-r.top)/r.height-.5;c.classList.add('moving');c.style.setProperty('--ry',(x*5).toFixed(2)+'deg');c.style.setProperty('--rx',(-y*5).toFixed(2)+'deg');});
+    c.addEventListener('mouseleave',function(){c.classList.remove('moving');c.style.setProperty('--ry','0deg');c.style.setProperty('--rx','0deg');});
+  });
+})();
+
+(function(){
+  var d=document.getElementById('demo');if(!d)return;
+  var opts=d.querySelectorAll('.opt'),vb=document.getElementById('vbox'),v=document.getElementById('verdict'),res=document.getElementById('fcres');
+  var OK='Correcto, 17:00.',NO='No exactamente. Son las 17:00.';
+  opts.forEach(function(o){o.addEventListener('click',function(){
+    var ok=o.dataset.i==='2';
+    opts.forEach(function(x){x.disabled=true;if(x.dataset.i==='2')x.classList.add('right');});
+    if(!ok)o.classList.add('wrong');
+    v.className='verdict '+(ok?'ok':'no');v.textContent=ok?OK:NO;vb.classList.add('on');
+    res.classList.add('lit');setTimeout(function(){res.classList.remove('lit')},2200);
+    if(typeof gtag==='function')gtag('event','demo_answer',{correct:ok});
+  });});
+  document.getElementById('retry').addEventListener('click',function(){
+    opts.forEach(function(x){x.disabled=false;x.classList.remove('right','wrong');});vb.classList.remove('on');
+  });
+})();
+</script>
+</body>
+</html>
