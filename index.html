@@ -1,625 +1,442 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#0d0e12">
-<title>USMLE300 | Exam Strategy Tutoring, Free Games & a Strategy Diagnostic</title>
-<meta name="description" content="One-on-one USMLE tutoring focused on exam strategy and how you read questions. Plus free games and a free strategy diagnostic.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USMLE300 | Score higher with the knowledge you already have</title>
+<meta name="description" content="A one-on-one review of how you take the USMLE: pacing, question reading, answer changes and endurance. For students who know the material but underperform on test day.">
+<meta property="og:title" content="USMLE300 | Score higher with the knowledge you already have">
+<meta property="og:description" content="A one-on-one review of how you take the exam, not what you know.">
+<meta property="og:url" content="https://www.usmle300.com/">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://www.usmle300.com/">
+<link rel="icon" href="images/logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="icon" href="images/logo.png" type="image/png">
-<link rel="apple-touch-icon" href="images/logo.png">
-<!-- Google Analytics 4 — replace G-XXXXXXX with your real Measurement ID from analytics.google.com -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y1T4JNBR3T"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-Y1T4JNBR3T');
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','G-Y1T4JNBR3T');
 </script>
 <style>
 :root{
---display:'Space Grotesk',sans-serif;
---body:'Inter',sans-serif;
---mono:'JetBrains Mono',monospace;
+  --ink:#1a1420;--ink-2:#6b6472;--ink-3:#9a93a0;
+  --bg:#ffffff;--bg-2:#faf7f7;--line:#ece6e7;
+  --red:#8A2F38;--red-2:#b8434f;--rose:#e07c87;--amber:#f2a65a;--blush:#f7c6c9;
+  --max:1120px;
 }
-html[data-theme="light"]{
---bg:#F4F3EF;--bg-2:#FBFAF7;--panel:#111318;--panel-text:#EDEBE4;
---text:#15161a;--text-2:#57544e;--text-3:#7c766c;
---line:rgba(0,0,0,0.11);--line-2:rgba(0,0,0,0.06);
---accent:#8A2F38;--accent-2:#b8434f;
-}
-html[data-theme="dark"]{
---bg:#0d0e12;--bg-2:#14151b;--panel:#14151b;--panel-text:#EDEBE4;
---text:#ECEAE3;--text-2:#9a978f;--text-3:#807c73;
---line:rgba(255,255,255,0.12);--line-2:rgba(255,255,255,0.06);
---accent:#cf5c68;--accent-2:#e07c87;
-}
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+*{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;transition:background .4s ease,color .4s ease;font-size:16px}
-body.locked{overflow:hidden}
-h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.08;letter-spacing:-0.02em}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}
-.wrap{max-width:1200px;margin:0 auto;padding:0 2rem}
-.mono{font-family:var(--mono)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 28px;position:relative}
+h1,h2,h3{font-weight:500;letter-spacing:-0.025em;line-height:1.1}
+.muted{color:var(--ink-2)}
+.two-tone{font-size:clamp(1.7rem,3.2vw,2.5rem);max-width:30ch;letter-spacing:-0.025em;line-height:1.15;font-weight:500}
+.two-tone span{color:var(--ink-2)}
 
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
-.reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{animation:none!important}}
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;text-decoration:none;font-weight:500;font-size:.98rem;padding:12px 22px;border-radius:7px;border:1px solid var(--red);transition:background .15s}
+.btn:hover{background:#74252d}
+.btn.ghost{background:#fff;color:var(--red);border-color:#e3d6d8}
+.btn.ghost:hover{border-color:var(--red)}
+.btn.sm{padding:9px 16px;font-size:.9rem}
+.btn .chev{font-size:.8em;transition:transform .15s}
+.btn:hover .chev{transform:translateX(2px)}
 
-header{position:fixed;top:0;left:0;right:0;z-index:900;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s,background .4s}
-header.scrolled{border-bottom-color:var(--line)}
-.hbar{max-width:1200px;margin:0 auto;padding:0.85rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.brand{display:flex;align-items:center;gap:0.6rem;text-decoration:none;flex-shrink:0}
-.brand img{height:26px}
-.brand b{font-family:var(--display);font-weight:600;font-size:1.05rem;letter-spacing:-0.02em;color:var(--text)}
-nav.desk{display:flex;gap:1.9rem;align-items:center}
-nav.desk a{text-decoration:none;color:var(--text-2);font-size:0.85rem;font-weight:500;transition:color .2s}
-nav.desk a:hover{color:var(--text)}
-.hright{display:flex;align-items:center;gap:1rem;flex-shrink:0}
-.clock{font-family:var(--mono);font-size:0.72rem;color:var(--text-3);letter-spacing:0.05em;font-variant-numeric:tabular-nums}
-.theme-toggle{font-family:var(--mono);font-size:0.66rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;background:none;border:1px solid var(--line);color:var(--text-2);padding:0.4rem 0.6rem;border-radius:6px;cursor:pointer;transition:all .2s}
-.theme-toggle:hover{border-color:var(--text-2);color:var(--text)}
-.cta-mini{font-size:0.82rem;font-weight:600;text-decoration:none;color:#fff;background:var(--accent);padding:0.5rem 1rem;border-radius:7px;transition:background .2s}
-.cta-mini:hover{background:var(--accent-2)}
-.menu-btn{display:none;flex-direction:column;width:40px;height:40px;background:none;border:none;cursor:pointer;justify-content:center;align-items:center;z-index:1001}
-.menu-btn span{display:block;width:22px;height:2px;background:var(--text);margin:2.5px 0;transition:.3s}
-.menu-btn.active span:nth-child(1){transform:rotate(45deg) translate(4px,5px)}
-.menu-btn.active span:nth-child(2){opacity:0}
-.menu-btn.active span:nth-child(3){transform:rotate(-45deg) translate(4px,-5px)}
-.mnav{display:none;position:fixed;inset:0;background:var(--bg);z-index:1000;padding:88px 2rem 2rem;flex-direction:column;opacity:0;visibility:hidden;transition:.3s}
-.mnav.active{opacity:1;visibility:visible}
-.mnav a{padding:1.1rem 0;font-family:var(--display);font-size:1.6rem;font-weight:500;color:var(--text);text-decoration:none;border-bottom:1px solid var(--line-2)}
+/* header */
+header{position:absolute;top:0;left:0;right:0;z-index:20}
+.hbar{display:flex;align-items:center;justify-content:space-between;height:76px}
+.brand{font-weight:600;font-size:1.2rem;text-decoration:none;letter-spacing:-0.03em}
+.brand span{color:var(--red)}
+nav{display:flex;gap:30px;align-items:center;font-size:.95rem;font-weight:500}
+nav a{text-decoration:none}
+nav a:not(.btn):hover{color:var(--red)}
+@media(max-width:820px){nav a:not(.btn){display:none}}
 
-.cursor-hud{position:fixed;left:1.2rem;bottom:1.1rem;z-index:800;font-family:var(--mono);font-size:0.66rem;color:var(--text-3);letter-spacing:0.06em;pointer-events:none;font-variant-numeric:tabular-nums;mix-blend-mode:difference;opacity:0.8}
-@media(hover:none){.cursor-hud{display:none}}
+/* hero + ribbon */
+.hero{position:relative;padding:170px 0 96px;overflow:hidden;border-bottom:1px solid var(--line)}
+.ribbon{position:absolute;top:0;left:50%;width:46%;height:100%;transform:skewX(38deg);transform-origin:top left;
+  background:
+    repeating-linear-gradient(100deg,rgba(255,255,255,.18) 0 2px,transparent 2px 9px),
+    linear-gradient(100deg,#f3d1d4 0%,#e9a3ab 14%,var(--red-2) 30%,var(--red) 42%,#c4566a 52%,var(--amber) 66%,#f6c48a 76%,var(--blush) 88%,#fff 100%);
+  filter:saturate(1.05);opacity:.95;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 14%,#000 80%,transparent 100%);
+          mask-image:linear-gradient(90deg,transparent 0%,#000 14%,#000 80%,transparent 100%)}
+.ribbon::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.0) 60%,#fff 100%)}
+.hero .wrap{z-index:2}
+.hero h1{font-size:clamp(2.4rem,5.6vw,4.4rem);max-width:15ch;line-height:1.04;letter-spacing:-0.035em}
+.hero h1 + p{font-size:clamp(1.25rem,2.3vw,1.75rem);color:var(--ink-2);max-width:30ch;margin:20px 0 40px;letter-spacing:-0.02em;line-height:1.3}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+@media(max-width:820px){.ribbon{left:55%;width:90%;opacity:.5}.hero{padding:140px 0 80px}}
 
-section{padding:100px 0;position:relative;scroll-margin-top:70px}
-.sec-tag{display:flex;align-items:center;gap:0.75rem;font-family:var(--mono);font-size:0.7rem;color:var(--text-3);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1.6rem}
-.sec-tag::before{content:'';width:30px;height:1px;background:var(--accent)}
-.sec-tag .idx{color:var(--accent);font-weight:600}
+/* sections */
+section{padding:110px 0}
+section.tint{background:var(--bg-2)}
+.head{margin-bottom:56px}
 
-.hero{padding:150px 0 80px;border-bottom:1px solid var(--line)}
-.hero-grid{display:grid;grid-template-columns:1.02fr 0.98fr;gap:3rem;align-items:center}
-.hero-left{min-width:0}
-.hero-right{min-width:0}
-.hero-right .console{margin-top:0}
-.hero-right .console-body{grid-template-columns:1fr;gap:1.4rem}
-.hero h1{font-size:clamp(2.1rem,5.2vw,3.9rem);font-weight:500;letter-spacing:-0.03em;max-width:20ch}
-.hero h1 .mut{color:var(--text-2)}
-.hero-sub{margin-top:1.6rem;font-size:1.1rem;color:var(--text-2);max-width:56ch;line-height:1.7}
-.hero-metrics{display:flex;gap:2.5rem;margin-top:2.6rem;flex-wrap:wrap}
-.metric .v{font-family:var(--display);font-size:1.5rem;font-weight:600;letter-spacing:-0.02em}
-.metric .l{font-family:var(--mono);font-size:0.66rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-top:0.2rem}
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:32px;overflow:hidden;position:relative;display:flex;flex-direction:column}
+.card h3{font-size:1.45rem;max-width:20ch}
+.card p{color:var(--ink-2);margin-top:10px;font-size:.98rem;max-width:44ch}
+.c-wide{grid-column:span 4}.c-narrow{grid-column:span 2}.c-half{grid-column:span 3}
+@media(max-width:900px){.c-wide,.c-narrow,.c-half{grid-column:span 6}}
+.glow{position:absolute;inset:auto -20% -40% -20%;height:70%;background:radial-gradient(ellipse at 30% 60%,rgba(184,67,79,.28),transparent 60%),radial-gradient(ellipse at 75% 70%,rgba(242,166,90,.28),transparent 60%);pointer-events:none}
+.mock{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 18px 40px -18px rgba(60,20,30,.25);position:relative;z-index:1;font-size:.85rem}
+.mock .bar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--line);color:var(--ink-3);font-size:.75rem}
+.mock .bar i{width:8px;height:8px;border-radius:50%;background:#e8e2e3;display:inline-block}
+.mock .bar em{font-style:normal;margin-left:auto}
+.tag{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);border:1px solid var(--line);border-radius:4px;padding:2px 6px}
 
-.console{scroll-margin-top:84px;margin-top:3.5rem;background:var(--panel);border-radius:16px;overflow:hidden;position:relative;box-shadow:0 30px 70px -30px rgba(0,0,0,0.5)}
-.console-bar{display:flex;align-items:center;gap:0.6rem;padding:0.85rem 1.2rem;border-bottom:1px solid rgba(255,255,255,0.08)}
-.dot{width:10px;height:10px;border-radius:50%}
-.dot.a{background:#e0574f}.dot.b{background:#e0a13a}.dot.c{background:#4caf78}
-.console-bar .path{margin-left:0.6rem;font-family:var(--mono);font-size:0.72rem;color:rgba(237,235,228,0.45);letter-spacing:0.04em}
-.console-body{padding:2.4rem 2.2rem;display:grid;grid-template-columns:1.4fr 1fr;gap:2rem;align-items:center}
-.console-copy .tagline{font-family:var(--mono);font-size:0.68rem;color:var(--accent-2);text-transform:uppercase;letter-spacing:0.14em;margin-bottom:1rem}
-.console-copy h2{color:var(--panel-text);font-size:clamp(1.6rem,3.2vw,2.2rem);font-weight:500;margin-bottom:0.85rem}
-.console-copy p{color:rgba(237,235,228,0.62);font-size:1rem;max-width:44ch;line-height:1.65}
-.readout{margin-top:1.4rem;display:flex;gap:1.4rem;flex-wrap:wrap}
-.readout div{font-family:var(--mono);font-size:0.66rem;color:rgba(237,235,228,0.52);letter-spacing:0.05em}
-.readout div b{color:rgba(237,235,228,0.8);font-weight:600}
-.console-cta{text-align:center}
-@keyframes spin{to{transform:rotate(360deg)}}
-.pv-card{width:100%;max-width:280px;margin:0 auto 1.1rem;background:#0d0e12;background-image:radial-gradient(90% 70% at 50% -10%,rgba(207,92,104,0.18),transparent 60%);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:1.2rem 1.15rem;text-align:left;box-shadow:0 20px 45px -22px rgba(0,0,0,0.55)}
-.pv-tag{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.13em;text-transform:uppercase;color:#cf5c68;margin-bottom:0.15rem;display:flex;align-items:center;gap:0.4rem}
-.pv-tag::before{content:'';width:14px;height:1px;background:#cf5c68;opacity:0.6}
-.pv-title{font-family:var(--display);font-weight:500;font-size:0.92rem;color:#fff;margin-bottom:0.85rem;letter-spacing:-0.01em}
-.pv-scorerow{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:0.85rem}
-.pv-score,.pv-delta{background:#14151b;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.6rem 0.7rem}
-.pv-delta{border-color:rgba(207,92,104,0.4)}
-.pv-num{font-family:var(--display);font-weight:600;font-size:1.7rem;color:#fff;letter-spacing:-0.03em;line-height:1;display:block}
-.pv-num small{font-size:0.85rem;font-weight:400;color:#5c5a54}
-.pv-meta{font-family:var(--mono);font-size:0.58rem;color:#9a978f;margin-top:0.3rem;display:block}
-.pv-delta-lbl{font-family:var(--mono);font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;color:#9a978f;display:block;margin-bottom:0.2rem}
-.pv-delta-num{font-family:var(--display);font-weight:600;font-size:1.35rem;color:#e07c87;line-height:1;display:block}
-.pv-rank-label{font-family:var(--mono);font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:#5c5a54;margin-bottom:0.5rem}
-.pv-rows{display:flex;flex-direction:column;gap:0.32rem;margin-bottom:0.9rem}
-.pv-row{display:flex;align-items:center;gap:0.45rem;background:#14151b;border:1px solid rgba(255,255,255,0.07);border-radius:7px;padding:0.4rem 0.55rem}
-.pv-row.best{border-color:rgba(76,175,120,0.45);background:linear-gradient(135deg,rgba(76,175,120,0.08),#14151b)}
-.pv-rank{font-family:var(--mono);font-size:0.6rem;color:#5c5a54;width:11px;flex-shrink:0}
-.pv-row.best .pv-rank{color:#4caf78}
-.pv-name{font-size:0.66rem;color:#c7c4bc;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.pv-row.best .pv-name{color:#fff;font-weight:600}
-.pv-bar{width:44px;height:4px;background:rgba(255,255,255,0.09);border-radius:2px;overflow:hidden;flex-shrink:0}
-.pv-bar span{display:block;height:100%;border-radius:2px}
-.pv-row.best .pv-bar span{background:#4caf78}
-.pv-row.worst .pv-bar span{background:#e0574f}
-.pv-row:not(.best):not(.worst) .pv-bar span{background:#cf5c68}
-.pv-pct{font-family:var(--mono);font-size:0.62rem;color:#ECEAE3;width:26px;text-align:right;flex-shrink:0;font-weight:600}
-.pv-lead{background:#14151b;border:1px solid rgba(255,255,255,0.1);border-radius:9px;padding:0.6rem 0.7rem}
-.pv-lead-lbl{font-family:var(--mono);font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;color:#cf5c68;display:block;margin-bottom:0.2rem}
-.pv-lead-name{font-family:var(--display);font-weight:600;font-size:0.88rem;color:#fff}
-.run-btn{display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--mono);font-weight:600;font-size:0.9rem;letter-spacing:0.02em;background:var(--accent);color:#fff;padding:0.85rem 1.5rem;border-radius:9px;text-decoration:none;transition:transform .2s,background .2s}
-.run-btn:hover{transform:translateY(-2px);background:var(--accent-2)}
-.run-btn::before{content:'▸'}
+/* report mock */
+.rep{padding:18px 20px}
+.rep h4{font-size:.95rem;font-weight:600;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.rep table{width:100%;border-collapse:collapse}
+.rep th{text-align:left;font-weight:500;color:var(--ink-3);font-size:.75rem;padding:6px 0;border-bottom:1px solid var(--line)}
+.rep td{padding:9px 0;border-bottom:1px solid var(--line)}
+.rep td:last-child{width:42%}
+.meter{height:6px;background:#f3eced;border-radius:3px;overflow:hidden}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--red),var(--rose),var(--amber));border-radius:3px}
 
-/* games — icon/badge/tags presentation */
-.games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1rem}
-.gcard{background:var(--bg-2);border:1px solid var(--line);border-radius:13px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:transform .22s,border-color .22s;--gc:var(--accent)}
-.gcard:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--gc) 55%,var(--line))}
-.gbar{height:4px;background:var(--gc)}
-.gc-body{padding:1.3rem 1.4rem 0.8rem;flex:1}
-.gc-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
-.gbadge{font-family:var(--mono);font-size:0.58rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;padding:0.2rem 0.5rem;border-radius:4px;color:var(--gc);background:color-mix(in srgb,var(--gc) 13%,transparent)}
-.gfreq{font-family:var(--mono);font-size:0.58rem;font-weight:500;color:var(--text-3);letter-spacing:0.04em}
-.gc-titlerow{display:flex;align-items:center;gap:0.65rem;margin-bottom:0.7rem}
-.gc-icon{width:32px;height:32px;flex-shrink:0;border-radius:8px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--gc) 14%,transparent)}
-.gc-icon svg{width:19px;height:19px;fill:none;stroke:var(--gc);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.gc-name{font-family:var(--display);font-weight:600;font-size:1.25rem;letter-spacing:-0.02em;color:var(--text)}
-.gc-desc{font-size:0.86rem;line-height:1.55;color:var(--text-2);margin-bottom:1rem}
-.gc-tags{display:flex;gap:0.4rem;flex-wrap:wrap}
-.gc-tag{font-family:var(--mono);font-size:0.58rem;font-weight:500;color:var(--text-3);background:color-mix(in srgb,var(--text) 6%,transparent);border-radius:4px;padding:0.2rem 0.5rem}
-.gc-foot{padding:0.9rem 1.4rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
-.gplay{font-family:var(--display);font-size:0.9rem;font-weight:600;color:var(--gc);transition:letter-spacing .2s}
-.gcard:hover .gplay{letter-spacing:0.03em}
-.gtype{font-family:var(--mono);font-size:0.6rem;color:var(--text-3)}
-
-/* stripe-style flow band */
-.flow-band{position:relative;height:260px;overflow:hidden;background:var(--panel);display:flex;align-items:center;justify-content:center}
-.flow-band .blob{position:absolute;border-radius:50%;filter:blur(54px);opacity:0.9;mix-blend-mode:screen;will-change:transform}
-.flow-band .b1{width:520px;height:520px;background:#8A2F38;top:-160px;left:-40px;animation:drift1 13s ease-in-out infinite}
-.flow-band .b2{width:440px;height:440px;background:#c9932f;top:-80px;left:28%;animation:drift2 16s ease-in-out infinite}
-.flow-band .b3{width:480px;height:480px;background:#0dd196;bottom:-200px;left:44%;animation:drift3 12s ease-in-out infinite}
-.flow-band .b4{width:420px;height:420px;background:#7c3aed;top:-60px;right:16%;animation:drift4 17s ease-in-out infinite}
-.flow-band .b5{width:460px;height:460px;background:#22d3ee;bottom:-220px;right:-60px;animation:drift5 14s ease-in-out infinite}
-@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(240px,70px) scale(1.28)}}
-@keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-200px,100px) scale(0.82)}}
-@keyframes drift3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(190px,-120px) scale(1.25)}}
-@keyframes drift4{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-220px,80px) scale(1.3)}}
-@keyframes drift5{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-160px,-100px) scale(0.8)}}
-.flow-cap{position:relative;z-index:2;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(237,235,228,0.85);text-align:center;padding:0 1.5rem;text-shadow:0 2px 20px rgba(0,0,0,0.5)}
-
-/* tutoring */
-.tutor{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2)}
-.tutor-grid{display:grid;grid-template-columns:1fr 300px;gap:4rem;align-items:center}
-.tutor h2{font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:500;letter-spacing:-0.025em;margin-bottom:1.1rem}
-.tutor p{color:var(--text-2);font-size:1.05rem;max-width:52ch;margin-bottom:1rem;line-height:1.7}
-.tutor .run-btn{margin-top:0.6rem}
-.specimen{position:relative}
-.specimen a{display:block;border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 50px -24px rgba(0,0,0,0.45);transition:transform .3s}
-.specimen a:hover{transform:translateY(-4px)}
-.specimen img{width:100%;display:block}
-.specimen .cap{font-family:var(--mono);font-size:0.64rem;color:var(--text-3);letter-spacing:0.05em;margin-top:0.7rem;display:flex;justify-content:space-between}
-
-/* topics */
-.topics-lead{color:var(--text-2);font-size:1.02rem;max-width:56ch;margin-bottom:2.2rem;line-height:1.7}
-.topics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.7rem}
-.tcard{background:var(--bg-2);border:1px solid var(--line);border-radius:11px;padding:1.15rem 1rem;cursor:pointer;transition:all .2s;display:flex;flex-direction:column;gap:0.5rem;min-height:96px}
-.tcard:hover{border-color:var(--accent);transform:translateY(-3px)}
-.tcard .trow{display:flex;justify-content:space-between;align-items:flex-start}
-.tcard .tic{font-size:1.2rem;line-height:1}
-.tcard .tnum{font-family:var(--mono);font-size:0.62rem;color:var(--text-3)}
-.tcard .tname{font-family:var(--display);font-weight:500;font-size:0.92rem;letter-spacing:-0.01em;margin-top:auto}
-.tcard.key{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 7%,var(--bg-2))}
-.tcard.key .tnum{color:var(--accent)}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+.step{border-top:1px solid var(--ink);padding-top:18px;counter-increment:s}
+.step::before{content:counter(s,decimal-leading-zero);display:block;color:var(--red);font-weight:600;font-size:.85rem;margin-bottom:14px;font-variant-numeric:tabular-nums}
+.step h3{font-size:1.1rem;letter-spacing:-0.015em}
+.step p{color:var(--ink-2);font-size:.95rem;margin-top:6px}
+@media(max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.steps{grid-template-columns:1fr}}
 
 /* pricing */
-.pricing{border-top:1px solid var(--line)}
-.price-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-.price-left h2{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:500;letter-spacing:-0.025em;margin-bottom:1rem}
-.price-left p{color:var(--text-2);max-width:44ch;line-height:1.7}
-.rate{background:var(--panel);color:var(--panel-text);border-radius:16px;padding:2.4rem}
-.rate .rlabel{font-family:var(--mono);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent-2);margin-bottom:1.1rem}
-.rate .ramt{font-family:var(--display);font-size:4rem;font-weight:600;letter-spacing:-0.03em;line-height:1}
-.rate .ramt span{font-size:1.1rem;font-weight:400;color:rgba(237,235,228,0.5);font-family:var(--mono)}
-.rate .rnote{color:rgba(237,235,228,0.55);font-size:0.9rem;margin:0.7rem 0 1.6rem}
-.rate .run-btn{width:100%;justify-content:center}
+.plans{display:grid;grid-template-columns:1.25fr 1fr;gap:20px}
+.plan{background:#fff;border:1px solid var(--line);border-radius:12px;padding:36px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.plan.main::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--red),var(--rose),var(--amber))}
+.plan h3{font-size:1.2rem}
+.price{font-size:2.6rem;font-weight:500;letter-spacing:-0.035em;margin:14px 0 4px}
+.price small{font-size:1rem;color:var(--ink-3);font-weight:400;letter-spacing:0}
+.plan > p{color:var(--ink-2)}
+.plan ul{list-style:none;margin:22px 0 32px;display:grid;gap:10px;font-size:.96rem}
+.plan li{padding-left:24px;position:relative}
+.plan li::before{content:"";position:absolute;left:2px;top:.45em;width:10px;height:6px;border-left:2px solid var(--red);border-bottom:2px solid var(--red);transform:rotate(-45deg)}
+.plan .btn{margin-top:auto;justify-content:center}
+@media(max-width:820px){.plans{grid-template-columns:1fr}}
 
-/* footer */
-footer{background:var(--panel);color:var(--panel-text);padding:4rem 0 2rem}
-.foot-mark{font-family:var(--display);font-weight:600;font-size:clamp(2.5rem,10vw,7rem);letter-spacing:-0.04em;line-height:0.9;color:var(--panel-text);opacity:0.9;margin-bottom:2.5rem}
-.foot-cols{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.1);padding-top:2rem}
-.foot-cols .fcol{display:flex;flex-direction:column;gap:0.55rem}
-.foot-cols h4{font-family:var(--mono);font-size:0.64rem;text-transform:uppercase;letter-spacing:0.12em;color:rgba(237,235,228,0.52);margin-bottom:0.3rem}
-.foot-cols a{color:rgba(237,235,228,0.75);text-decoration:none;font-size:0.9rem}
-.foot-cols a:hover{color:var(--panel-text)}
-.foot-bot{margin-top:2.5rem;font-family:var(--mono);font-size:0.68rem;color:rgba(237,235,228,0.52);display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.6rem;letter-spacing:0.04em}
+/* about */
+.about{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center}
+.about p{color:var(--ink-2);margin-top:16px;max-width:52ch}
+.about figure{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;box-shadow:0 24px 50px -24px rgba(60,20,30,.3)}
+.about img{width:100%;display:block;border-radius:4px}
+.about figcaption{font-size:.8rem;color:var(--ink-3);margin-top:10px}
+@media(max-width:820px){.about{grid-template-columns:1fr;gap:36px}}
 
-/* modals */
-.overlay{position:fixed;inset:0;background:rgba(8,8,11,0.6);backdrop-filter:blur(5px);display:flex;align-items:center;justify-content:center;z-index:2000;opacity:0;visibility:hidden;transition:.25s;padding:1rem}
-.overlay.active{opacity:1;visibility:visible}
-.modal{background:var(--bg-2);border:1px solid var(--line);border-radius:16px;padding:2rem;max-width:480px;width:100%;transform:translateY(16px);transition:transform .25s;position:relative;max-height:90vh;overflow-y:auto}
-.overlay.active .modal{transform:translateY(0)}
-.modal-x{position:absolute;top:0.8rem;right:0.8rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text-2);width:40px;height:40px}
-.modal h3{font-family:var(--display);font-size:1.4rem;font-weight:600;margin-bottom:0.4rem}
-.tm-ic{font-size:1.7rem;margin-bottom:0.5rem}
-.tm-h4{font-family:var(--mono);font-size:0.66rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:0.5rem 0 0.6rem}
-.tm-list{list-style:none}
-.tm-list li{padding:0.34rem 0 0.34rem 1.2rem;position:relative;font-size:0.9rem;color:var(--text-2);line-height:1.5}
-.tm-list li::before{content:'→';position:absolute;left:0;color:var(--accent)}
-.modal .run-btn{width:100%;justify-content:center;margin-top:1.2rem}
-.cbox{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:1.4rem;text-align:center;margin:1.2rem 0 0.4rem}
-.cbox .cl{font-family:var(--mono);font-size:0.66rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-3);margin-bottom:0.4rem}
-.cbox a.em{font-family:var(--display);font-size:1.25rem;font-weight:600;color:var(--accent);text-decoration:none;display:block;margin-bottom:0.8rem}
+/* faq */
+.faq{display:grid;grid-template-columns:1fr 1.6fr;gap:64px}
+details{border-bottom:1px solid var(--line);padding:20px 0}
+details:first-child{border-top:1px solid var(--line)}
+summary{cursor:pointer;font-weight:500;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--ink-3)}
+details[open] summary::after{content:"\2212"}
+details p{color:var(--ink-2);margin-top:10px;font-size:.97rem}
+@media(max-width:820px){.faq{grid-template-columns:1fr;gap:28px}}
 
-@media(max-width:960px){
-.hero-grid{grid-template-columns:1fr;gap:2.4rem}
-.console-body{grid-template-columns:1fr;gap:1.6rem}
-.games-grid{grid-template-columns:repeat(3,1fr)}
-.tutor-grid{grid-template-columns:1fr;gap:2.5rem}
-.specimen{max-width:300px}
-.topics-grid{grid-template-columns:repeat(3,1fr)}
-.price-wrap{grid-template-columns:1fr;gap:2rem}
-}
-@media(max-width:768px){
-.wrap{padding:0 1.3rem}
-nav.desk,.clock{display:none}
-.menu-btn{display:flex}
-.mnav{display:flex}
-section{padding:70px 0}
-.hero{padding:120px 0 60px}
-.games-grid{grid-template-columns:repeat(2,1fr)}
-.hbar{padding:0.85rem 1.3rem}
-.flow-band{height:200px}
-}
-@media(max-width:480px){
-.topics-grid{grid-template-columns:repeat(2,1fr)}
-.console-body{padding:1.6rem}
-.hero-metrics{gap:1.6rem}
-}
+/* cta band */
+.band{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.band .ribbon{left:58%;opacity:.9}
+.band .ribbon::after{background:none}
+.band .two-tone span{color:#b9b0bc}
+.band .ctas{margin-top:36px}
+.band .btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+
+
+
+
+/* marquee */
+.marquee{display:flex;overflow:hidden;border-bottom:1px solid var(--line);background:#fff;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee ul{display:flex;flex-shrink:0;min-width:100vw;justify-content:space-around;list-style:none;gap:120px;padding:30px 60px;animation:marq 70s linear infinite}
+.marquee:hover ul{animation-play-state:paused}
+.marquee li{display:flex;align-items:baseline;gap:10px;white-space:nowrap}
+.marquee b{font-size:1.5rem;font-weight:500;letter-spacing:-0.03em;background:linear-gradient(90deg,var(--red),var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent}
+.marquee span{color:var(--ink-2);font-size:.95rem}
+@keyframes marq{to{transform:translateX(-100%)}}
+@media(prefers-reduced-motion:reduce){.marquee ul{animation:none}}
+
+/* results */
+.results{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.results .card h3{font-size:1.15rem;margin-top:26px}
+.jump{display:flex;align-items:baseline;gap:12px;position:relative;z-index:1}
+.jump span{font-size:2.2rem;color:var(--ink-3);font-weight:500;letter-spacing:-0.03em}
+.jump i{font-style:normal;color:var(--ink-3);font-size:1.4rem}
+.jump b{font-size:2.8rem;font-weight:500;letter-spacing:-0.035em;background:linear-gradient(90deg,var(--red),var(--red-2) 50%,var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent}
+.jump small{color:var(--ink-3);font-size:.9rem}
+.results .card p{position:relative;z-index:1}
+@media(max-width:900px){.results{grid-template-columns:1fr}}
+
+/* free analysis panel */
+.eyebrow{font-size:.85rem;font-weight:500;color:var(--red);margin-bottom:14px}
+.free{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.free p{color:var(--ink-2);margin-top:16px;max-width:50ch}
+.free .btn{margin-top:30px}
+.free .card{padding:28px}
+.free .mock{margin-top:0}
+@media(max-width:900px){.free{grid-template-columns:1fr;gap:40px}}
+.prof{padding:22px 24px}
+.sm{font-size:.8rem}
+.prof-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+.prof .big{font-size:2.4rem;font-weight:500;letter-spacing:-0.03em;line-height:1.1;margin:4px 0}
+.prof .big small{font-size:1rem;color:var(--ink-3)}
+.gain{text-align:right}.gain b{font-size:1.5rem;font-weight:600;color:var(--red)}
+.rows{display:grid;gap:10px}
+.r{display:grid;grid-template-columns:18px minmax(96px,120px) minmax(60px,1fr) 40px;align-items:center;gap:10px;font-size:.85rem}
+.r span{color:var(--ink-3);font-variant-numeric:tabular-nums}
+.r em{font-style:normal}
+.r b{font-weight:500;text-align:right;font-variant-numeric:tabular-nums}
+.r.best em,.r.best b{color:var(--red);font-weight:600}
+
+/* motion */
+.meter i{width:0;transition:width 1.1s cubic-bezier(.2,.7,.2,1) .25s}
+.in .meter i,.in.meter i{width:var(--w)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.tilt{transform-style:preserve-3d;will-change:transform;transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s,opacity .7s cubic-bezier(.2,.7,.2,1)}
+.tilt.in{transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px))}
+.tilt:hover{--ty:-4px;box-shadow:0 30px 60px -30px rgba(60,20,30,.35)}
+.tilt.moving{transition:transform .12s linear,box-shadow .5s}
+.ribbon{animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{from{background-position:0 0,0 0}to{background-position:90px 0,0 0}}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.ribbon{animation:none}.tilt.in{transform:none}.meter i{width:var(--w);transition:none}}
+
+footer{padding:44px 0;font-size:.88rem;color:var(--ink-3)}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:22px}
+footer a:hover{color:var(--ink)}
 </style>
 </head>
 <body>
-<div class="cursor-hud" id="hud">X:0000 Y:0000</div>
 
 <header>
-<div class="hbar">
-<a href="#" class="brand"><img src="images/logo.png" alt="USMLE300"><b>USMLE300</b></a>
-<nav class="desk">
-<a href="#games">Games</a>
-<a href="#diagnostic">Diagnostic</a>
-<a href="#tutoring">Tutoring</a>
-<a href="#topics">Topics</a>
-<a href="#pricing">Pricing</a>
-<a href="espanol.html">Español</a>
-</nav>
-<div class="hright">
-<span class="clock" id="clock">--:--:--</span>
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">Light</button>
-<a href="#contact" class="cta-mini">Book a free call</a>
-<button class="menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
-</div>
-</div>
+  <div class="wrap hbar">
+    <a href="/" class="brand">USMLE<span>300</span></a>
+    <nav>
+      <a href="#review">Performance review</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#results">Results</a>
+      <a href="#free">Free analysis</a>
+      <a href="https://calendly.com/usmle300tutor/30min" target="_blank" rel="noopener" class="btn sm">Book a call <span class="chev">&rsaquo;</span></a>
+    </nav>
+  </div>
 </header>
 
-<nav class="mnav">
-<a href="#games">Games</a>
-<a href="#diagnostic">Diagnostic</a>
-<a href="#tutoring">Tutoring</a>
-<a href="#topics">Topics</a>
-<a href="#pricing">Pricing</a>
-<a href="espanol.html">Español</a>
-<a href="#contact">Book a free call</a>
-</nav>
+<main>
 
-<!-- HERO -->
-<section class="hero" id="top">
-<div class="wrap hero-grid">
-<div class="hero-left">
-<div class="sec-tag reveal"><span class="idx">00</span> USMLE300 / Step 1 · Step 2 CK</div>
-<h1 class="reveal">Score higher <span class="mut">with the knowledge you already have.</span></h1>
-<p class="hero-sub reveal">USMLE300 was built for exactly this. I've spent the last few years mentoring students through the USMLE and board exams helping them break score plateaus and hit their targets, including several who got past 250 on Step 2 CK. What I focus on isn't searching for more resources; it's engineering how you approach questions and building the test taking habits that separate good scores from great ones. There's a free strategy tool and a few games below, and one on one tutoring whenever you want it.</p>
-</div>
-<div class="hero-right">
-<!-- console -->
-<div class="console reveal" id="diagnostic">
-<div class="console-bar">
-<span class="dot a"></span><span class="dot b"></span><span class="dot c"></span>
-<span class="path">~/exam-approach-analyzer</span>
-</div>
-<div class="console-body">
-<div class="console-copy">
-<div class="tagline">Free · no signup</div>
-<h2>Analyze my exam approach</h2>
-<p>It walks you through five different ways of reading and working through a question, using plain, non-medical passages, so it's only testing how you find the details and reason, not what you already know. You get back the approach that fits you best, and most people find they've been defaulting to one that quietly costs them.</p>
-<div class="readout">
-<div>TIME <b>~15:00</b></div>
-</div>
-</div>
-<div class="console-cta">
-<div class="pv-card">
-<div class="pv-tag">Example result</div>
-<div class="pv-title">Your strategy profile</div>
-<div class="pv-scorerow">
-<div class="pv-score"><span class="pv-num">16<small>/20</small></span><span class="pv-meta">80% correct · 9:42</span></div>
-<div class="pv-delta"><span class="pv-delta-lbl">Score gain from technique</span><span class="pv-delta-num">+27%</span></div>
-</div>
-<div class="pv-rank-label">How each approach did</div>
-<div class="pv-rows">
-<div class="pv-row best"><span class="pv-rank">1</span><span class="pv-name">Question first</span><div class="pv-bar"><span style="width:87%"></span></div><span class="pv-pct">87%</span></div>
-<div class="pv-row"><span class="pv-rank">2</span><span class="pv-name">Active highlight</span><div class="pv-bar"><span style="width:80%"></span></div><span class="pv-pct">80%</span></div>
-<div class="pv-row"><span class="pv-rank">3</span><span class="pv-name">Standard read</span><div class="pv-bar"><span style="width:73%"></span></div><span class="pv-pct">73%</span></div>
-<div class="pv-row"><span class="pv-rank">4</span><span class="pv-name">Options first</span><div class="pv-bar"><span style="width:67%"></span></div><span class="pv-pct">67%</span></div>
-<div class="pv-row worst"><span class="pv-rank">5</span><span class="pv-name">Speed scan</span><div class="pv-bar"><span style="width:60%"></span></div><span class="pv-pct">60%</span></div>
-</div>
-<div class="pv-lead"><span class="pv-lead-lbl">Lead with</span><span class="pv-lead-name">Question first</span></div>
-</div>
-<a href="diagnostic.html" class="run-btn">Run analysis</a>
-</div>
-</div>
-</div>
-</div>
-</div>
+<section class="hero">
+  <div class="ribbon" aria-hidden="true"></div>
+  <div class="wrap">
+    <h1 class="reveal">Score higher with the knowledge you already have.</h1>
+    <p class="reveal">Most students who plateau don't need more content. I look at how you actually work through questions and help you fix the habits that cost you points on test day.</p>
+    <div class="ctas reveal">
+      <a href="https://calendly.com/usmle300tutor/30min" target="_blank" rel="noopener" class="btn">Book a free call <span class="chev">&rsaquo;</span></a>
+      <a href="diagnostic.html" class="btn ghost">Try the free analysis</a>
+    </div>
+  </div>
 </section>
 
-<!-- GAMES -->
-<section id="games">
-<div class="wrap">
-<div class="sec-tag reveal"><span class="idx">01</span> Games</div>
-<p class="topics-lead reveal">A few free browser games I put together to make question practice less of a slog. No account, nothing to install; some reset daily, some you can play as much as you want.</p>
-<div class="games-grid">
-
-
-
-<a href="buzzwordblitz/" class="gcard reveal" style="--gc:#e87040">
-<div class="gbar"></div>
-<div class="gc-body">
-<div class="gc-meta"><span class="gbadge">Unlimited</span><span class="gfreq">Pattern recognition</span></div>
-<div class="gc-titlerow"><div class="gc-icon"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div class="gc-name">Buzzword Blitz</div></div>
-<p class="gc-desc">See a buzzword, name the diagnosis. "Keratin pearls" → ? "Reed-Sternberg cells" → ? Sixty seconds, no vignettes, just recall.</p>
-<div class="gc-tags"><span class="gc-tag">60+ buzzwords</span><span class="gc-tag">Step 1 + 2</span><span class="gc-tag">Streak ×2</span></div>
+<div class="marquee" aria-label="Student results">
+  <ul><li><b>217 &rarr; 254</b><span>practice exams to Step 2 CK in three months</span></li><li><b>243</b><span>on Step 2 CK after failing a year of medical school</span></li><li><b>Passed</b><span>shelf exams after failing them before, across all subjects</span></li><li><b>Passed</b><span>medical boards and licensing exams in the UK and Spain</span></li></ul><ul aria-hidden="true"><li><b>217 &rarr; 254</b><span>practice exams to Step 2 CK in three months</span></li><li><b>243</b><span>on Step 2 CK after failing a year of medical school</span></li><li><b>Passed</b><span>shelf exams after failing them before, across all subjects</span></li><li><b>Passed</b><span>medical boards and licensing exams in the UK and Spain</span></li></ul>
 </div>
-<div class="gc-foot"><span class="gplay">Play →</span><span class="gtype">60 sec</span></div>
-</a>
 
-<a href="gunner/" class="gcard reveal" style="--gc:#22d3ee">
-<div class="gbar"></div>
-<div class="gc-body">
-<div class="gc-meta"><span class="gbadge">Unlimited</span><span class="gfreq">1v1 battle</span></div>
-<div class="gc-titlerow"><div class="gc-icon"><svg viewBox="0 0 24 24"><path d="M4 20L14 10"/><path d="M14 4l2 2-8 8-4 0 0-4 8-8z"/><path d="M20 4L10 14"/><path d="M10 4L8 6l8 8 4 0 0-4-8-8z"/></svg></div><div class="gc-name">Gunner</div></div>
-<p class="gc-desc">Head-to-head against an AI opponent on the same five questions. Fastest correct answer takes the round, best of five, and you earn an Elo rating.</p>
-<div class="gc-tags"><span class="gc-tag">Step 1 + 2</span><span class="gc-tag">5 rounds</span><span class="gc-tag">Elo rating</span></div>
-</div>
-<div class="gc-foot"><span class="gplay">Play →</span><span class="gtype">~5 min</span></div>
-</a>
-
-<a href="dxrounds/" class="gcard reveal" style="--gc:#e04050">
-<div class="gbar"></div>
-<div class="gc-body">
-<div class="gc-meta"><span class="gbadge">Daily</span><span class="gfreq">Like Wordle, but medicine</span></div>
-<div class="gc-titlerow"><div class="gc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor" stroke="none" opacity="0.25"/></svg></div><div class="gc-name">Diagnosis Wordle</div></div>
-<p class="gc-desc">One patient a day. Clues come one at a time, and the fewer you need to land the diagnosis, the higher you score. Then share your grid.</p>
-<div class="gc-tags"><span class="gc-tag">6 clues</span><span class="gc-tag">Share grid</span><span class="gc-tag">Streaks</span></div>
-</div>
-<div class="gc-foot"><span class="gplay">Play →</span><span class="gtype">~3 min</span></div>
-</a>
-
-<a href="codeblue/" class="gcard reveal" style="--gc:#2aad70">
-<div class="gbar"></div>
-<div class="gc-body">
-<div class="gc-meta"><span class="gbadge">Daily</span><span class="gfreq">New cases every day</span></div>
-<div class="gc-titlerow"><div class="gc-icon"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></div><div class="gc-name">Code Blue</div></div>
-<p class="gc-desc">Five vignettes, 45 seconds each, three lives. Get one wrong and you lose a life; string them together for combo bonuses.</p>
-<div class="gc-tags"><span class="gc-tag">Step 1 + 2</span><span class="gc-tag">Timer</span><span class="gc-tag">Lives</span></div>
-</div>
-<div class="gc-foot"><span class="gplay">Play →</span><span class="gtype">~4 min</span></div>
-</a>
-
-<a href="patholinks/" class="gcard reveal" style="--gc:#c9932f">
-<div class="gbar"></div>
-<div class="gc-body">
-<div class="gc-meta"><span class="gbadge">Daily</span><span class="gfreq">Like Connections, but medicine</span></div>
-<div class="gc-titlerow"><div class="gc-icon"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="18" r="2.5"/><line x1="8.5" y1="6" x2="15.5" y2="6"/><line x1="6" y1="8.5" x2="6" y2="15.5"/><line x1="8.5" y1="18" x2="15.5" y2="18"/><line x1="18" y1="8.5" x2="18" y2="15.5"/></svg></div><div class="gc-name">USMLE Connections</div></div>
-<p class="gc-desc">Sixteen terms, four hidden groups of four. Some terms could sit in more than one group, so pick carefully or lose a life.</p>
-<div class="gc-tags"><span class="gc-tag">4 groups</span><span class="gc-tag">4 mistakes allowed</span></div>
-</div>
-<div class="gc-foot"><span class="gplay">Play →</span><span class="gtype">~3 min</span></div>
-</a>
-
-
-
-</div>
-</div>
+<section class="tint" id="free">
+  <div class="wrap free">
+    <div class="reveal">
+      <div class="eyebrow">Free, no signup, about 15 minutes</div>
+      <h2 class="two-tone">Analyze my exam approach. <span>See which way of reading a question works best for you.</span></h2>
+      <p>It walks you through five different ways of reading and working through a question, using plain, non-medical passages, so it's only testing how you find the details and reason, not what you already know.</p>
+      <p>You get back the approach that fits you best. Most people find they've been defaulting to one that quietly costs them.</p>
+      <a href="diagnostic.html" class="btn">Run the analysis <span class="chev">&rsaquo;</span></a>
+    </div>
+    <div class="card tilt reveal">
+      <div class="glow"></div>
+      <div class="mock">
+        <div class="bar"><i></i><i></i><i></i><em>Example result</em></div>
+        <div class="prof">
+          <div class="prof-head">
+            <div><div class="muted sm">Your strategy profile</div><div class="big">16<small>/20</small></div><div class="muted sm">80% correct · 9:42</div></div>
+            <div class="gain"><div class="muted sm">Score gain from technique</div><b>+27%</b></div>
+          </div>
+          <div class="muted sm" style="margin:18px 0 8px">How each approach did</div>
+          <div class="rows">
+            <div class="r best"><span>1</span><em>Question first</em><div class="meter"><i style="--w:87%"></i></div><b>87%</b></div>
+            <div class="r"><span>2</span><em>Active highlight</em><div class="meter"><i style="--w:80%"></i></div><b>80%</b></div>
+            <div class="r"><span>3</span><em>Standard read</em><div class="meter"><i style="--w:73%"></i></div><b>73%</b></div>
+            <div class="r"><span>4</span><em>Options first</em><div class="meter"><i style="--w:67%"></i></div><b>67%</b></div>
+            <div class="r"><span>5</span><em>Speed scan</em><div class="meter"><i style="--w:60%"></i></div><b>60%</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- STRIPE-STYLE FLOW BAND -->
-<div class="flow-band" aria-hidden="true">
-<span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span><span class="blob b5"></span>
-<div class="flow-cap">Exam approach · study technique · planning</div>
-</div>
-
-<!-- TUTORING -->
-<section class="tutor" id="tutoring">
-<div class="wrap">
-<div class="sec-tag reveal"><span class="idx">02</span> Tutoring</div>
-<div class="tutor-grid">
-<div class="reveal">
-<h2>Tutoring focused around your gaps.</h2>
-<p>Sessions are built around your gaps from the questions you're missing and how you're reading the exam, not a set syllabus.</p>
-<p>A lot of success in the usmle is in the approach to questions, as well as how you're studying and how to plan the weeks you've got left. Content gaps get filled when they come up, but technique and a solid plan are usually what move the score.</p>
-<p class="mono" style="font-size:0.8rem;color:var(--text-3);letter-spacing:0.04em">STEP 1 · STEP 2 CK</p>
-<a href="#contact" class="run-btn">Book a free call</a>
-</div>
-<div class="specimen reveal">
-<a href="images/score-report.png" target="_blank"><img src="images/score-report.png" alt="USMLE Step 2 CK score report"></a>
-<div class="cap"><span>STEP 2 CK · VERIFIED</span><span>↗ ENLARGE</span></div>
-</div>
-</div>
-</div>
+<section id="review">
+  <div class="wrap">
+    <h2 class="two-tone head reveal">The performance review. <span>For when you want someone to look closely at how you take the exam and tell you exactly what to change.</span></h2>
+    <div class="bento">
+      <div class="card c-wide tilt reveal">
+        <div class="glow"></div>
+        <h3>A written report you can work from</h3>
+        <p>Everything I notice, ranked by how much it's likely costing you, with examples from your own questions.</p>
+        <div class="mock">
+          <div class="bar"><i></i><i></i><i></i><em>Performance review</em></div>
+          <div class="rep">
+            <h4>Pattern summary <span class="tag">Example</span></h4>
+            <table>
+              <tr><th>Area</th><th>Finding</th><th>Impact</th></tr>
+              <tr><td>Reading the stem</td><td>Skims the last line before looking at the options</td><td><div class="meter"><i style="--w:82%"></i></div></td></tr>
+              <tr><td>Answer changes</td><td>Switches away from correct answers when unsure</td><td><div class="meter"><i style="--w:64%"></i></div></td></tr>
+              <tr><td>Pacing</td><td>Spends too long early and rushes the end of the block</td><td><div class="meter"><i style="--w:48%"></i></div></td></tr>
+              <tr><td>Endurance</td><td>Accuracy drops in the later blocks</td><td><div class="meter"><i style="--w:30%"></i></div></td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="card c-narrow tilt reveal">
+        <div class="glow"></div>
+        <h3>What we look at</h3>
+        <p>How you read the question, how you narrow down options, when you change your answer, how you use your time, and how you hold up over a long day.</p>
+        <p>If there are real content gaps I'll point them out, but that isn't the focus.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- TOPICS -->
-<section id="topics">
-<div class="wrap">
-<div class="sec-tag reveal"><span class="idx">03</span> Topics we cover</div>
-<p class="topics-lead reveal">We can cover any of these, but the focus stays on how the exam actually tests them: the patterns it repeats and the traps it likes, not just the facts. Tap one to see what a session might cover.</p>
-<div class="topics-grid" id="topicsGrid"></div>
-</div>
+<section class="tint" id="results">
+  <div class="wrap">
+    <h2 class="two-tone head reveal">Results. <span>A few of the students I've worked with, on real exams.</span></h2>
+    <div class="results">
+      <div class="card tilt reveal">
+        <div class="glow"></div>
+        <div class="jump"><span>217</span><i>&rarr;</i><b>254</b></div>
+        <h3>From 217 to 254 in three months</h3>
+        <p>Was scoring around 217 on practice exams. Three months later, scored 254 on Step 2 CK.</p>
+      </div>
+      <div class="card tilt reveal">
+        <div class="glow"></div>
+        <div class="jump"><b>243</b><small>Step 2 CK</small></div>
+        <h3>From failing a year of med school to a 243</h3>
+        <p>Had failed a year of medical school, then went on to score 243 on Step 2 CK.</p>
+      </div>
+      <div class="card tilt reveal">
+        <div class="glow"></div>
+        <div class="jump"><b>Passed</b><small>Shelf exams and boards</small></div>
+        <h3>Passing exams they had failed before</h3>
+        <p>Students who had failed shelf exams before passed them, across all subjects. Others have passed medical boards and licensing exams in the UK and Spain.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- PRICING -->
-<section class="pricing" id="pricing">
-<div class="wrap">
-<div class="sec-tag reveal"><span class="idx">04</span> Pricing</div>
-<div class="price-wrap">
-<div class="price-left reveal">
-<h2>It's forty dollars an hour.</h2>
-<p>No packages, no tiers, nothing to sign up for. You book however many hours you actually need, and we spend them wherever you're losing the most points.</p>
-</div>
-<div class="rate reveal">
-<div class="rlabel">1-on-1 tutoring</div>
-<div class="ramt">$40<span> / hour</span></div>
-<div class="rnote">Step 1 & Step 2 CK · flexible scheduling</div>
-<a href="#contact" class="run-btn">Book a free call</a>
-</div>
-</div>
-</div>
+<section>
+  <div class="wrap">
+    <h2 class="two-tone head reveal">How it works. <span>It's best done four to eight weeks before your exam, so you have time to practice the changes.</span></h2>
+    <div class="steps">
+      <div class="step reveal"><h3>Send me your scores</h3><p>Your NBME or practice exam reports and your question bank stats, so I can see where the points are going.</p></div>
+      <div class="step reveal"><h3>Work through questions together</h3><p>We do a timed set over video and talk through how you approached each one.</p></div>
+      <div class="step reveal"><h3>Get your report</h3><p>A short write-up of the habits that matter most for you, with examples from your own work.</p></div>
+      <div class="step reveal"><h3>Make a plan</h3><p>We go through it together and decide what to practice in the weeks before your exam.</p></div>
+    </div>
+  </div>
 </section>
+
+<section class="tint" id="pricing">
+  <div class="wrap">
+    <h2 class="two-tone head reveal">Pricing. <span>Start with the review, and add tutoring hours only if you want help putting it into practice.</span></h2>
+    <div class="plans">
+      <div class="plan main tilt reveal">
+        <h3>Performance review</h3>
+        <div class="price">$150 <small>one time</small></div>
+        <p>The full review, start to finish.</p>
+        <ul>
+          <li>A look at your score reports and question bank data</li>
+          <li>A timed question set we work through together</li>
+          <li>A written report with the habits to fix first</li>
+          <li>A follow-up call to set your practice plan</li>
+        </ul>
+        <a href="https://calendly.com/usmle300tutor/30min" target="_blank" rel="noopener" class="btn">Book a free call first <span class="chev">&rsaquo;</span></a>
+      </div>
+      <div class="plan tilt reveal">
+        <h3>Tutoring</h3>
+        <div class="price">$50 <small>/ hour</small></div>
+        <p>Ongoing sessions to work on whatever we find. Book as many hours as you need.</p>
+        <ul>
+          <li>Going through questions together</li>
+          <li>Practice aimed at your specific weak spots</li>
+          <li>Check-ins after your practice exams</li>
+        </ul>
+        <a href="https://calendly.com/usmle300tutor/30min" target="_blank" rel="noopener" class="btn ghost">Book a free call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section>
+  <div class="wrap faq">
+    <h2 class="two-tone reveal">Questions. <span>If yours isn't here, ask me on the free call.</span></h2>
+    <div class="reveal">
+      <details><summary>Is this content tutoring?</summary><p>Not really. If you have real content gaps I'll point them out, but the review is about how you take the exam.</p></details>
+      <details><summary>I'm a DO student. Does this work for COMLEX?</summary><p>The habits I look at are the same on both exams. My own experience is with the USMLE, so if you're only taking COMLEX, let's talk on the free call first.</p></details>
+      <details><summary>I'm a parent. Can I book for my son or daughter?</summary><p>Yes. The student just needs to join the free call and be on board with it. I only share the report with parents if the student is happy for me to.</p></details>
+      <details><summary>What do I need to send?</summary><p>Your practice exam score reports and question bank stats. I only use them for your review.</p></details>
+      <details><summary>How close to my exam can I do this?</summary><p>Four to eight weeks out is ideal, but it can still help if your exam is sooner.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="contact">
+  <div class="ribbon" aria-hidden="true"></div>
+  <div class="wrap">
+    <h2 class="two-tone reveal">Not sure where your points are going? <span>Book a free 15-minute call, or email me and tell me where you are with your prep.</span></h2>
+    <div class="ctas reveal">
+      <a href="https://calendly.com/usmle300tutor/30min" target="_blank" rel="noopener" class="btn">Book a free call <span class="chev">&rsaquo;</span></a>
+      <a href="mailto:usmle300tutor@gmail.com" class="btn ghost">usmle300tutor@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+</main>
 
 <footer>
-<div class="wrap">
-<div class="foot-mark reveal">USMLE300</div>
-<div class="foot-cols">
-<div class="fcol">
-<h4>Practice</h4>
-<a href="#games">Games</a>
-<a href="#diagnostic">Strategy diagnostic</a>
-</div>
-<div class="fcol">
-<h4>Tutoring</h4>
-<a href="#tutoring">1-on-1</a>
-<a href="#topics">Topics</a>
-<a href="#pricing">Pricing</a>
-</div>
-<div class="fcol">
-<h4>More</h4>
-<a href="#contact">Contact</a>
-</div>
-<div class="fcol">
-<h4>Other languages</h4>
-<a href="espanol.html">USMLE en Español</a>
-<a href="medical-spanish.html">Medical Spanish</a>
-</div>
-</div>
-<div class="foot-bot">
-<span>© 2025 USMLE300</span>
-<span>STEP 1 · STEP 2 CK</span>
-</div>
-</div>
+  <div class="wrap">
+    <div>© USMLE300</div>
+    <div>
+      <a href="diagnostic.html">Free analysis</a>
+      <a href="games.html">Practice games</a>
+      <a href="espanol.html">Español</a>
+      <a href="medical-spanish.html">Medical Spanish</a>
+    </div>
+  </div>
 </footer>
 
-<!-- contact modal -->
-<div class="overlay" id="contactModal">
-<div class="modal">
-<button class="modal-x" data-close>×</button>
-<h3>Get in touch</h3>
-<p style="color:var(--text-2);font-size:0.92rem">Easiest way to start is a free 30-minute call. No pressure, just to work out where you're at and whether I can help.</p>
-<a href="https://calendly.com/usmle300tutor/30min" target="_blank" rel="noopener" class="run-btn" style="width:100%;justify-content:center;margin:1.2rem 0 0">Book a free call</a>
-<div class="cbox">
-<div class="cl">Or email me</div>
-<a href="mailto:usmle300tutor@gmail.com" class="em">usmle300tutor@gmail.com</a>
-</div>
-<p style="font-size:0.82rem;color:var(--text-3);text-align:center;margin-top:0.5rem">Let me know which exam you're on and roughly when it's scheduled.</p>
-</div>
-</div>
-
-<!-- topic modal -->
-<div class="overlay" id="topicModal">
-<div class="modal">
-<button class="modal-x" data-close>×</button>
-<div class="tm-ic" id="tmIcon">❤️</div>
-<h3 id="tmTitle">Cardiology</h3>
-<div class="tm-h4">What we'd work through</div>
-<ul class="tm-list" id="tmContent"></ul>
-<a href="#contact" class="run-btn tm-book">Book a free call</a>
-</div>
-</div>
-
 <script>
-const topicData={
-'exam-strategy':{icon:'🎯',title:'Strategy',content:['Question approach frameworks tested across 500+ questions','When to skim vs read carefully based on question type','Answer elimination techniques that actually work','Time management: 90 seconds per question pacing','Handling questions on topics you have never seen','Common trap patterns and how to recognize them','Flagging strategy and when to change answers','Test day mental game and managing anxiety']},
-'mnemonics':{icon:'🧩',title:'Mnemonics & HY Review',content:['High-yield mnemonics for the toughest topics across all systems','Pattern recognition for commonly confused drug classes and mechanisms','Visual memory anchors for complex pathophysiology','Rapid-fire review of the facts students miss most often','Side-by-side comparisons of look-alike, sound-alike diseases','High-yield lab value patterns and when they appear together','Top 10 exam traps by system and how to avoid them','Consolidation strategies to make mnemonics stick under pressure']},
-'cardiology':{icon:'❤️',title:'Cardiology',content:['Shock hemodynamics: CO/SVR patterns (distributive vs cardiogenic vs obstructive)','Tamponade vs constrictive pericarditis: y descent blunted vs prominent','Post-MI complications by timeline: 24h arrhythmia, 3-7d rupture, 2wk Dressler','Murmur localization: left sternal border (HCM systolic, AR diastolic)','HCM vs MVP: both decrease with squatting, differentiate by crescendo-decrescendo','JVP waveforms: cannon a waves in complete heart block, prominent v wave in TR','ECG changes in electrolyte disorders: peaked T (hyperK), prolonged QT (hypoMg/Ca)','Wide pulse pressure differential: AR in adults, PDA in kids']},
-'respiratory':{icon:'🫁',title:'Respiratory',content:['Obstructive vs restrictive PFT patterns and when FEV1/FVC ratio fails you','Lights criteria and when to suspect TB (lymphocyte predominant, low glucose)','Pulmonary embolism workup: Wells score, D-dimer utility, when to skip to CT','ARDS Berlin criteria and ventilator management principles','Lung cancer staging that matters: T3 vs T4, when surgery is off the table','Pneumonia empiric coverage: CAP vs HAP vs aspiration','Asthma vs COPD exacerbation management differences','Pleural effusion analysis: transudate vs exudate and the exceptions']},
-'neurology':{icon:'🧠',title:'Neurology',content:['Stroke: NIHSS cutoffs, tPA window, thrombectomy criteria','Seizure classification and first-line agents by seizure type','Headache red flags: thunderclap, positional, papilledema','Myasthenia vs Lambert-Eaton: ptosis vs proximal weakness, antibody targets','Spinal cord lesion localization: Brown-Sequard, anterior cord, central cord','Dementia workup: reversible causes to always rule out','Peripheral neuropathy patterns: length-dependent vs mononeuritis multiplex','CSF analysis: bacterial vs viral vs TB vs fungal patterns']},
-'hemeonc':{icon:'🩸',title:'Heme/Onc',content:['Anemia workup by MCV: then reticulocyte count, then smear findings','Coagulation cascades: PT vs PTT, mixing studies interpretation','Thrombotic microangiopathies: TTP vs HUS vs DIC differentiation','Leukemia classification: ALL vs AML vs CLL vs CML by age and markers','Tumor lysis syndrome: prevention, monitoring, and treatment','Transfusion reactions: timing helps identify the type','Anticoagulation reversal: vitamin K vs FFP vs PCC vs idarucizumab','Bleeding disorders: hemophilia vs vWD vs platelet dysfunction']},
-'pharmacology':{icon:'💊',title:'Pharmacology',content:['Autonomic pharmacology: receptor selectivity and clinical effects','Antiarrhythmics by class: when to use and when absolutely not to','Antimicrobial coverage charts: empiric therapy by site and resistance patterns','Drug-induced QT prolongation: the common culprits','Serotonin syndrome vs NMS vs anticholinergic toxicity differentiation','Antidote matching: which toxin gets which reversal agent','Renal dosing: drugs that need adjustment vs contraindicated','Drug interactions that show up on exams: warfarin, statins, seizure meds']},
-'microbiology':{icon:'🦠',title:'Microbiology',content:['Gram positive cocci: staph vs strep vs enterococcus by clinical scenario','Gram negative rods: when to suspect Pseudomonas vs Klebsiella vs E. coli','Atypical organisms: Legionella, Mycoplasma, Chlamydia presentations','Opportunistic infections by CD4 count thresholds','Viral exanthems: rash timing and distribution patterns','Fungal infections: endemic mycoses by geography','Parasites: transmission routes and diagnostic findings','Antibiotic resistance mechanisms and when to suspect MRSA/ESBL/VRE']},
-'pathology':{icon:'🔬',title:'Pathology',content:['Cell injury patterns: coagulative vs liquefactive vs caseous necrosis','Inflammation timeline: acute (neutrophils) vs chronic (lymphocytes/macrophages)','Amyloidosis: AA vs AL, organ involvement patterns','Neoplasia principles: benign vs malignant features, grading vs staging','Paraneoplastic syndromes: which tumor causes which syndrome','Genetic tumor syndromes: Li-Fraumeni, Lynch, MEN syndromes','Granulomatous diseases: caseating vs non-caseating differential','Lab value patterns: which disease causes which abnormality']},
-'biochemistry':{icon:'🧬',title:'Biochemistry',content:['Glycolysis regulation: rate-limiting enzymes and their regulators','TCA cycle: which steps produce NADH/FADH2/GTP','Glycogen storage diseases: which enzyme, which organ, which presentation','Lysosomal storage diseases: cherry red macula, hepatosplenomegaly patterns','Amino acid metabolism disorders: PKU, maple syrup, homocystinuria','Vitamin deficiencies: B12 vs folate, water vs fat soluble presentations','Lipid metabolism: familial hyperlipidemias by phenotype','Purine/pyrimidine metabolism: gout, SCID, orotic aciduria']},
-'immunology':{icon:'🛡️',title:'Immunology',content:['Hypersensitivity reactions: Type I through IV with clinical examples','Complement pathways: which deficiency causes which infection pattern','Autoantibody associations: ANA patterns, specific antibodies by disease','Immunodeficiency presentations: which infections suggest which defect','Transplant rejection: hyperacute vs acute vs chronic, timeline and mechanism','Cytokine functions: IL-1 through IL-17 key players','T cell vs B cell deficiencies: clinical differentiation','Vaccination principles: live vs killed, contraindications']},
-'gi':{icon:'💩',title:'GI / Hepatology',content:['GI bleeding: upper vs lower, variceal vs non-variceal management','IBD: Crohn vs UC, extraintestinal manifestations, when surgery is indicated','Liver cirrhosis complications: ascites, SBP, hepatorenal, encephalopathy','Hepatitis serologies: acute vs chronic vs immune vs vaccinated','Pancreatitis: Ranson criteria, BISAP, when to get CT','Biliary disease: Charcot triad, Reynold pentad, imaging choice','Malabsorption: celiac vs tropical sprue vs Whipple vs bacterial overgrowth','GI malignancies: Lynch syndrome screening, staging that matters']},
-'renal':{icon:'💧',title:'Nephrology/GU',content:['AKI: prerenal vs intrinsic vs postrenal, FENa interpretation','Glomerulonephritis: nephritic vs nephrotic, serology patterns','Acid-base: anion gap calculation, Winter formula, respiratory compensation','Electrolyte emergencies: hyperkalemia ECG changes and treatment order','Renal tubular acidosis: Type 1 vs 2 vs 4, urine pH patterns','Nephrolithiasis: stone type by imaging and urine findings','Dialysis indications: AEIOU mnemonic and when to emergently dialyze','Polycystic kidney disease: ADPKD vs ARPKD, extrarenal manifestations']},
-'endocrine':{icon:'⚡',title:'Endocrinology',content:['Diabetes management: insulin regimens, oral agents by mechanism and side effects','Thyroid: TSH/T4 patterns in primary vs secondary vs sick euthyroid','Adrenal: Cushing vs Addison, dexamethasone suppression interpretation','Pituitary: which hormone deficiency causes which presentation','Calcium disorders: PTH-dependent vs PTH-independent hypercalcemia','Pheochromocytoma: rule of 10s, preoperative management','MEN syndromes: 1 vs 2A vs 2B tumor associations','PCOS vs congenital adrenal hyperplasia differentiation']},
-'msk':{icon:'🦴',title:'MSK / Rheum',content:['Arthritis patterns: inflammatory vs non-inflammatory, monoarticular vs polyarticular','RA vs OA vs gout vs pseudogout: joint distribution and crystal analysis','Lupus criteria: which manifestations count, drug-induced lupus differences','Scleroderma: limited vs diffuse, CREST syndrome','Vasculitis: large vs medium vs small vessel, ANCA associations','Spondyloarthropathies: AS vs reactive vs psoriatic vs IBD-associated','Myopathies: dermatomyositis vs polymyositis, malignancy association','Septic arthritis: when to tap, synovial fluid analysis']},
-'obgyn':{icon:'🤰',title:'OB/GYN',content:['Obstetric emergencies: placenta previa vs abruption vs vasa previa','Preeclampsia vs eclampsia: diagnosis criteria, management, when to deliver','Labor and delivery: stages, normal vs abnormal progress, interventions','Postpartum hemorrhage: causes by timeline (4 Ts), management ladder','Ectopic pregnancy: risk factors, workup, beta-hCG discriminatory zone','Gynecologic malignancies: cervical vs endometrial vs ovarian by age and presentation','Contraception: mechanism, efficacy, contraindications by method','STI management: treatment regimens, reporting requirements, partner notification']},
-'derm':{icon:'🧴',title:'Dermatology',content:['Skin cancer: melanoma ABCDE, BCC vs SCC features','Psoriasis vs eczema: distribution, triggers, nail findings','Drug eruptions: SJS/TEN timeline, DRESS syndrome','Bullous diseases: pemphigus vs pemphigoid, antibody targets','Bacterial skin infections: impetigo vs cellulitis vs necrotizing fasciitis','Viral exanthems: measles vs rubella vs roseola vs erythema infectiosum','Fungal infections: dermatophytes vs candida, KOH prep findings','Hypersensitivity skin reactions: urticaria vs angioedema management']},
-'pediatrics':{icon:'👶',title:'Pediatrics',content:['Developmental milestones: gross motor, fine motor, language, social by age','Vaccination schedule: which vaccines at which visits, contraindications','Congenital heart defects: cyanotic vs acyanotic, duct-dependent lesions','Pediatric emergencies: intussusception, pyloric stenosis, malrotation','Failure to thrive: organic vs non-organic, workup approach','Child abuse: fracture patterns, retinal hemorrhages, reporting requirements','Common pediatric infections: bronchiolitis, croup, epiglottitis differentiation','Genetic syndromes: Down, Turner, Klinefelter, Fragile X presentations']},
-'psychiatry':{icon:'🧠',title:'Psychiatry',content:['Depression vs bipolar: treatment implications, antidepressant-induced mania','Psychosis: schizophrenia timeline, brief psychotic vs schizophreniform','Anxiety disorders: GAD vs panic vs phobias, first-line treatments','Personality disorders: cluster A vs B vs C, classic presentations','Substance use: intoxication vs withdrawal patterns, treatment protocols','Eating disorders: anorexia vs bulimia, refeeding syndrome','Suicide risk assessment: protective factors, when to hospitalize','Capacity vs competency: who decides, when to override']},
-'ophthalmology':{icon:'👁️',title:'Ophthalmology',content:['Red eye differential: conjunctivitis vs uveitis vs acute glaucoma vs keratitis','Glaucoma: open vs closed angle, acute management','Retinal pathology: detachment, macular degeneration, diabetic retinopathy stages','Optic neuritis vs papilledema: visual field defects, pupil findings','Pupil abnormalities: Horner vs CN3 palsy, relative afferent pupillary defect','Eye trauma: hyphema, globe rupture, chemical burn management','Pediatric eye conditions: leukocoria differential, amblyopia management','Visual field defects: localize the lesion from the field cut pattern']},
-'ent':{icon:'👂',title:'ENT',content:['Otitis media vs externa: presentation, organisms, management','Hearing loss: conductive vs sensorineural, Weber and Rinne interpretation','Vertigo: peripheral vs central, BPPV vs Meniere vs vestibular neuritis','Sinusitis: acute vs chronic, when imaging and antibiotics are indicated','Pharyngitis: Centor criteria, when to test and treat','Neck masses: location-based differential, branchial cleft vs thyroglossal','Head and neck cancer: risk factors, presentation, staging','Epistaxis: anterior vs posterior, management approach']},
-'biostats':{icon:'📊',title:'Biostatistics',content:['Sensitivity vs specificity: when each matters, SnNout and SpPin rules','PPV/NPV: how prevalence affects them, calculation shortcuts','Study designs: RCT vs cohort vs case-control, which answers which question','Bias types: selection, recall, lead-time, length-time','Statistical tests: which test for which data type','Confidence intervals: interpretation, relationship to p-values','Number needed to treat/harm: calculation and clinical meaning','Survival analysis: Kaplan-Meier curves, hazard ratios']},
-'socialsciences':{icon:'⚖️',title:'Ethics / QI',content:['Informed consent: required elements, exceptions, who can consent','Capacity assessment: four components, who determines it','Advance directives: living will vs healthcare proxy, limitations','Confidentiality: when you must break it, mandatory reporting','Quality improvement frameworks: PDSA cycles, root cause analysis','Health disparities: social determinants of health, implicit bias','End of life: withdrawing vs withholding, physician-assisted death','Minors: emancipated minor, mature minor doctrine, STI treatment']}
-};
-const topicOrder=['exam-strategy','mnemonics','cardiology','respiratory','neurology','hemeonc','pharmacology','microbiology','pathology','biochemistry','immunology','gi','renal','endocrine','msk','obgyn','derm','pediatrics','psychiatry','ophthalmology','ent','biostats','socialsciences'];
-const keyTopics=['exam-strategy','mnemonics'];
+document.querySelectorAll('a[href*="calendly.com"]').forEach(function(a){a.addEventListener('click',function(){if(typeof gtag==='function')gtag('event','book_call_confirmed');});});
+document.querySelectorAll('a[href="diagnostic.html"]').forEach(function(a){a.addEventListener('click',function(){if(typeof gtag==='function')gtag('event','diagnostic_start');});});
+document.querySelectorAll('a[href^="mailto:"]').forEach(function(a){a.addEventListener('click',function(){if(typeof gtag==='function')gtag('event','email_click');});});
 
-const grid=document.getElementById('topicsGrid');
-topicOrder.forEach((k,i)=>{
-const d=topicData[k];
-const el=document.createElement('div');
-el.className='tcard reveal'+(keyTopics.includes(k)?' key':'');
-el.dataset.topic=k;
-el.innerHTML='<div class="trow"><span class="tic">'+d.icon+'</span><span class="tnum">'+String(i+1).padStart(2,'0')+'</span></div><div class="tname">'+d.title+'</div>';
-grid.appendChild(el);
-});
-
-const root=document.documentElement, tbtn=document.getElementById('themeToggle');
-function setTheme(t){root.setAttribute('data-theme',t);tbtn.textContent=t==='dark'?'Light':'Dark';try{localStorage.setItem('u300theme',t)}catch(e){}}
-try{const saved=localStorage.getItem('u300theme');if(saved)setTheme(saved)}catch(e){}
-tbtn.textContent=root.getAttribute('data-theme')==='dark'?'Light':'Dark';
-tbtn.addEventListener('click',()=>setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark'));
-
-const clock=document.getElementById('clock');
-function tick(){const n=new Date();clock.textContent=[n.getHours(),n.getMinutes(),n.getSeconds()].map(x=>String(x).padStart(2,'0')).join(':')}
-tick();setInterval(tick,1000);
-
-const hud=document.getElementById('hud');
-addEventListener('mousemove',e=>{hud.textContent='X:'+String(e.clientX).padStart(4,'0')+' Y:'+String(e.clientY).padStart(4,'0')});
-
-addEventListener('scroll',()=>document.querySelector('header').classList.toggle('scrolled',scrollY>30));
-
-const io=new IntersectionObserver((es)=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-const mb=document.querySelector('.menu-btn'),mn=document.querySelector('.mnav');
-mb.addEventListener('click',()=>{mb.classList.toggle('active');mn.classList.toggle('active');document.body.classList.toggle('locked')});
-mn.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mb.classList.remove('active');mn.classList.remove('active');document.body.classList.remove('locked')}));
-
-const cModal=document.getElementById('contactModal'),tModal=document.getElementById('topicModal');
-function openContact(e){if(e)e.preventDefault();tModal.classList.remove('active');cModal.classList.add('active');document.body.classList.add('locked');if(typeof gtag==='function')gtag('event','book_call_open');}
-document.querySelectorAll('a[href="#contact"]').forEach(l=>l.addEventListener('click',openContact));
-
-// analytics: key funnel events (safe no-ops if gtag/GA hasn't loaded)
-document.querySelectorAll('a[href="diagnostic.html"]').forEach(l=>l.addEventListener('click',()=>{if(typeof gtag==='function')gtag('event','diagnostic_start');}));
-document.querySelectorAll('a[href="https://calendly.com/usmle300tutor/30min"]').forEach(l=>l.addEventListener('click',()=>{if(typeof gtag==='function')gtag('event','book_call_confirmed');}));
-document.querySelectorAll('.gcard').forEach(c=>c.addEventListener('click',()=>{if(typeof gtag==='function')gtag('event','game_click',{game_name:c.querySelector('.gname')?c.querySelector('.gname').textContent:c.getAttribute('href')});}));
-document.addEventListener('click',e=>{
-const card=e.target.closest('.tcard');
-if(card){const d=topicData[card.dataset.topic];if(!d)return;
-document.getElementById('tmIcon').textContent=d.icon;
-document.getElementById('tmTitle').textContent=d.title;
-document.getElementById('tmContent').innerHTML=d.content.map(i=>'<li>'+i+'</li>').join('');
-tModal.classList.add('active');document.body.classList.add('locked');}
-});
-[cModal,tModal].forEach(m=>m.addEventListener('click',e=>{if(e.target===m||e.target.hasAttribute('data-close')){m.classList.remove('active');document.body.classList.remove('locked')}}));
-
-document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){
-const h=this.getAttribute('href');
-if(h==='#contact'||h==='#'||h.length<=1)return;
-const t=document.querySelector(h);
-if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});mb.classList.remove('active');mn.classList.remove('active');document.body.classList.remove('locked')}
-}));
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)||reduce){els.forEach(function(e){e.classList.add('in')});}
+  else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.15});els.forEach(function(e){io.observe(e)});}
+  if(reduce||!window.matchMedia('(hover: hover)').matches)return;
+  document.querySelectorAll('.tilt').forEach(function(c){
+    c.addEventListener('mousemove',function(ev){var r=c.getBoundingClientRect();var x=(ev.clientX-r.left)/r.width-.5,y=(ev.clientY-r.top)/r.height-.5;c.classList.add('moving');c.style.setProperty('--ry',(x*5).toFixed(2)+'deg');c.style.setProperty('--rx',(-y*5).toFixed(2)+'deg');});
+    c.addEventListener('mouseleave',function(){c.classList.remove('moving');c.style.setProperty('--ry','0deg');c.style.setProperty('--rx','0deg');});
+  });
+})();
 </script>
 </body>
 </html>
